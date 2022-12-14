@@ -1,0 +1,24 @@
+{
+  "name": "playground",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@remirror/extension-blockquote": "^2.0.10",
+    "@remirror/extension-hard-break": "^2.0.9",
+    "@remirror/extension-heading": "^2.0.9",
+    "@remirror/extension-link": "^2.0.10",
+    "@remirror/pm": "^2.0.2",
+    "@remirror/react": "^2.0.21",
+    "@remirror/styles": "^2.0.2",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remirror": "^2.0.20",
+    "remirror-extension-flat-list": "workspace:*"
+  }
+}
