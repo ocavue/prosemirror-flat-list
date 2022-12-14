@@ -1,0 +1,60 @@
+{
+  "name": "remirror-extension-flat-list",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.18.1",
+  "description": "",
+  "author": "ocavue <ocavue@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ocavue",
+  "homepage": "https://github.com/ocavue/remirror-extension-flat-list#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocavue/remirror-extension-flat-list.git"
+  },
+  "bugs": "https://github.com/ocavue/remirror-extension-flat-list/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.18.0",
+    "@ocavue/eslint-config": "^0.4.4",
+    "@types/node": "^18.7.18",
+    "eslint": "^8.29.0",
+    "esno": "^0.16.3",
+    "prettier": "^2.8.0",
+    "typescript": "^4.8.3",
+    "unbuild": "^0.8.11",
+    "vite": "^3.1.2",
+    "vitest": "^0.23.4"
+  }
+}
