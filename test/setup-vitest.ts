@@ -1,3 +1,3 @@
-import { setupRemirrorEnvironment } from "jest-remirror"
+import { setupRemirrorEnvironment } from 'jest-remirror'
 
 setupRemirrorEnvironment()

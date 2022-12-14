@@ -1,5 +1,5 @@
 import '@remirror/styles/all.css'
-import 'remirror-extension-flat-list/style.css'
+import '../src/style.css'
 
 import * as React from 'react'
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
@@ -13,7 +13,7 @@ import {
   useRemirror,
 } from '@remirror/react'
 
-import { ExperimentalItemExtension } from 'remirror-extension-flat-list'
+import { ExperimentalItemExtension } from '../src/'
 
 const Button = (): JSX.Element => {
   // const commands = useCommands();
