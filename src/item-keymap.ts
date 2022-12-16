@@ -1,10 +1,8 @@
 import { KeyBindings, NodeType } from '@remirror/core'
 
-import {
-  createDedentListCommand,
-  createIndentListCommand,
-  createSplitListCommand,
-} from './item-commands'
+import { createDedentListCommand } from './commands/dedent-list'
+import { createSplitListCommand } from './commands/split-list'
+import { createIndentListCommand } from './commands/indent-list'
 
 export function createListItemKeymap(itemType: NodeType): KeyBindings {
   return {

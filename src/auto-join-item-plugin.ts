@@ -5,6 +5,7 @@ import { canJoin } from '@remirror/pm/transform'
 
 import { isListItemNode } from './item-utils'
 
+// TODO: remove this plugin
 export function createAutoJoinItemPlugin(itemType: NodeType): Plugin {
   return new Plugin({
     key: new PluginKey('auto-join-item'),
