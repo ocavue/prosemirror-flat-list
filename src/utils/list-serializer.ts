@@ -3,7 +3,9 @@ import { DOMOutputSpec, DOMSerializer, Schema } from '@remirror/pm/model'
 import { ListAttributes } from '../item-types'
 
 export class ListDOMSerializer extends DOMSerializer {
-  static nodesFromSchema(schema: Schema) {
+  static nodesFromSchema(schema: Schema): {
+    [node: string]: (node: ProsemirrorNode) => DOMOutputSpec
+  } {
     const nodes = DOMSerializer.nodesFromSchema(schema)
     const toDOM = nodes['list']
     if (!toDOM) {
