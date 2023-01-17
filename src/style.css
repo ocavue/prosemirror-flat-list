@@ -38,6 +38,14 @@
       &::after {
         content: ' ';
       }
+
+      /* TODO: Why do I need to set the pointer twice? */
+      & > label {
+        cursor: pointer;
+      }
+      & > label > input {
+        cursor: pointer;
+      }
     }
   }
 
@@ -48,23 +56,49 @@
       position: absolute;
       right: 100%;
       white-space: pre;
-      font-size: 1.6em;
+      font-size: 1.2em;
       font-weight: 600;
     }
 
-    &[data-list-collapsed] > .item-mark-container::after {
-      /*
-      https://www.w3.org/TR/css-counter-styles-3/#disclosure-open 
+    /*
+    https://www.w3.org/TR/css-counter-styles-3/#disclosure-open 
 
-      For example, the disclosure-closed style might use the characters U+25B8
-      BLACK RIGHT-POINTING SMALL TRIANGLE (▸) and U+25C2 BLACK LEFT-POINTING
-      SMALL TRIANGLE (◂), while the disclosure-open style might use the
-      character U+25BE BLACK DOWN-POINTING SMALL TRIANGLE (▾).
-      */
-      content: '▸ ';
-    }
+    For example, the disclosure-closed style might use the characters U+25B8
+    BLACK RIGHT-POINTING SMALL TRIANGLE (▸) and U+25C2 BLACK LEFT-POINTING
+    SMALL TRIANGLE (◂), while the disclosure-open style might use the
+    character U+25BE BLACK DOWN-POINTING SMALL TRIANGLE (▾).
+    */
     &:not([data-list-collapsed]) > .item-mark-container::after {
       content: '▾ ';
+    }
+    &[data-list-collapsed] > .item-mark-container::after {
+      content: '▸ ';
+    }
+
+    /* The list node has only one child */
+    &:not(:has(> .item-content-container > *:nth-child(n + 2))) {
+      /* Make the marker gray */
+      & > .item-mark-container {
+        opacity: 40%;
+      }
+
+      /* Always show to right triangle */
+      & > .item-mark-container::after {
+        content: '▸ ';
+      }
+    }
+
+    /* The list node has two or more children */
+    &:has(> .item-content-container > *:nth-child(n + 2)) {
+      /* Make the marker clickable */
+      & > .item-mark-container {
+        cursor: pointer;
+      }
+
+      /* If collapsed, hide the second and futher children */
+      &[data-list-collapsed] > .item-content-container > *:nth-child(n + 2) {
+        display: none;
+      }
     }
   }
 }

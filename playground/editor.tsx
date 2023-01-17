@@ -98,8 +98,22 @@ const content = html`
     <li data-task-list-item data-checked>second task list item</li>
   </ul>
   <ul data-toggle-list>
-    <li data-toggle-list-item>first toggle list item</li>
-    <li data-toggle-list-item data-list-collapsed>second toggle list item</li>
+    <li data-toggle-list-item data-list-collapsed>empty toggle list item</li>
+    <li data-toggle-list-item>
+      expanded toggle list item
+      <ul>
+        <li>sub list item</li>
+      </ul>
+    </li>
+    <li data-toggle-list-item data-list-collapsed>
+      collapsed toggle list item
+      <ul>
+        <li>sub list item</li>
+        <li>sub list item</li>
+        <li>sub list item</li>
+        <li>sub list item</li>
+      </ul>
+    </li>
   </ul>
 
   <h2>Nested bullet list:</h2>
