@@ -1,3 +1,48 @@
+.ProseMirror {
+  & .remirror-flat-list-v2 {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 32px;
+    margin-bottom: 0;
+
+    position: relative;
+    display: list-item;
+  }
+
+  & .remirror-flat-list-v2[data-list-type='bullet'] {
+    list-style: disc;
+  }
+
+  & .remirror-flat-list-v2[data-list-type='ordered'] {
+    list-style: none;
+    counter-reset: remirror-ordered-item-number;
+    counter-increment: remirror-ordered-item-number;
+    & + & {
+      counter-reset: none;
+    }
+    &::marker {
+      content: counter(remirror-ordered-item-number, decimal) '. ';
+    }
+  }
+
+  & .remirror-flat-list-v2[data-list-type='task'],
+  & .remirror-flat-list-v2[data-list-type='toggle'] {
+    list-style: none;
+
+    & > .item-mark-container {
+      position: absolute;
+      right: 100%;
+      white-space: pre;
+
+      /* Add a suffix after the marker, just like how bullet and ordered list do */
+      &::after {
+        content: ' ';
+      }
+    }
+  }
+}
+
 .remirror-flat-list {
   padding: 0;
   display: flex;
@@ -21,8 +66,6 @@
     & > .item-mark-ordered {
       text-align: center;
       &:before {
-        counter-increment: remirror-ordered-item-number;
-        content: counter(remirror-ordered-item-number, decimal) '.';
       }
     }
 

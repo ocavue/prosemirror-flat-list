@@ -59,75 +59,76 @@ export class ExperimentalItemExtension extends NodeExtension {
         },
       },
       toDOM: (node): DOMOutputSpec => {
-        const isNested = node.content.firstChild?.type === this.type
-
         const attrs = node.attrs as ListAttributes
 
-        // TODO: rename
-        const itemClassNames: string[] = ['remirror-flat-list']
+        let marker: DOMOutputSpec | null = null
 
-        if (!isNested && node.childCount >= 2 && attrs.type === 'bullet') {
-          itemClassNames.push('collapsable')
-
-          if (node.attrs.collapsed) {
-            itemClassNames.push('collapsed')
-          }
+        switch (attrs.type) {
+          case 'task':
+            // Use a `label` element here so that the area around the checkbox is also checkable.
+            marker = [
+              'label',
+              { class: `item-mark item-mark-task` },
+              [
+                'input',
+                {
+                  type: 'checkbox',
+                  checked: attrs.checked ? '' : undefined,
+                },
+              ],
+            ]
+            break
+          case 'toggle':
+            marker = [
+              'label',
+              { class: `item-mark item-mark-task` },
+              [
+                'input',
+                {
+                  type: 'checkbox',
+                  checked: attrs.checked ? '' : undefined,
+                },
+              ],
+            ]
+            break
         }
 
-        let mark: DOMOutputSpec | null = null
-
-        if (!isNested) {
-          switch (attrs.type) {
-            case 'ordered':
-              mark = ['span', { class: `item-mark item-mark-ordered` }]
-              break
-            case 'bullet':
-              mark = ['span', { class: `item-mark item-mark-bullet` }]
-              break
-            case 'task':
-              // Use a `label` element here so that the area around the checkbox is also checkable.
-              mark = [
-                'label',
-                { class: `item-mark item-mark-task` },
-                [
-                  'input',
-                  {
-                    type: 'checkbox',
-                    checked: attrs.checked ? '' : undefined,
-                  },
-                ],
-              ]
-          }
+        const domAttrs = {
+          class: 'remirror-flat-list-v2',
+          'data-list': '',
+          'data-list-type': attrs.type || 'bullet',
+          'data-list-order':
+            attrs.type === 'ordered' && attrs.order != null
+              ? String(attrs.order)
+              : undefined,
+          'data-list-checked':
+            attrs.type === 'task' && attrs.checked ? '' : undefined,
+          'data-list-collapsed':
+            attrs.type === 'toggle' && attrs.collapsed ? '' : undefined,
+          ...extra.dom(node),
         }
 
-        return [
+        const contentContainer: DOMOutputSpec = [
           'div',
-          {
-            class: itemClassNames.join(' '),
-            'data-list': '',
-            'data-list-type': attrs.type == null ? attrs.type : undefined,
-            'data-list-order':
-              attrs.order != null ? String(attrs.order) : undefined,
-            'data-list-checked': attrs.checked ? '' : undefined,
-            'data-list-collapsed': attrs.collapsed ? '' : undefined,
-            ...extra.dom(node),
-          },
-
-          // the container for the list item markers
-          [
+          { class: 'item-content-container' },
+          0,
+        ]
+        if (marker) {
+          const markerContainer: DOMOutputSpec = [
             'div',
             {
-              class: `item-mark-container`,
+              class: 'item-mark-container',
               // Set `contenteditable` to `false` so that the cursor won't be
               // moved into the mark container when clicking on it.
               contenteditable: 'false',
             },
-            ...(mark ? [mark] : []),
-          ],
+            marker,
+          ]
 
-          // the container for the list item content
-          ['div', { class: `item-content-container` }, 0],
-        ]
+          return ['div', domAttrs, markerContainer, contentContainer]
+        } else {
+          return ['div', domAttrs, contentContainer]
+        }
       },
 
       parseDOM: [
