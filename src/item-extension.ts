@@ -84,7 +84,7 @@ export class ExperimentalItemExtension extends NodeExtension {
         }
 
         const domAttrs = {
-          class: 'remirror-flat-list-v2',
+          class: 'flat-list',
           'data-list': '',
           'data-list-type': attrs.type || 'bullet',
           'data-list-order':
