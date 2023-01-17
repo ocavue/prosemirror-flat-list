@@ -22,6 +22,7 @@ import { patchRender } from './dom-utils'
 import { wrappingItemInputRule } from './item-input-rule'
 import { createListItemKeymap } from './item-keymap'
 import { ListAttributes, ListType } from './item-types'
+import { ListDOMSerializer } from './utils/list-serializer'
 import { parseIntAttribute } from './utils/parse-int-attribute'
 
 export class ExperimentalItemExtension extends NodeExtension {
@@ -234,6 +235,8 @@ export class ExperimentalItemExtension extends NodeExtension {
   }
 
   createPlugin(): CreateExtensionPlugin {
+    const schema = this.store.schema
+
     return {
       props: {
         handleDOMEvents: {
@@ -268,6 +271,11 @@ export class ExperimentalItemExtension extends NodeExtension {
             return false
           },
         },
+
+        clipboardSerializer: new ListDOMSerializer(
+          ListDOMSerializer.nodesFromSchema(schema),
+          ListDOMSerializer.marksFromSchema(schema)
+        ),
       },
     }
   }
