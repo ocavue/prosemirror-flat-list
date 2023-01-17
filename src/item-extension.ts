@@ -29,7 +29,7 @@ export class ExperimentalItemExtension extends NodeExtension {
   static disableExtraAttributes = true
 
   get name() {
-    return 'item'
+    return 'list'
   }
 
   createTags() {
