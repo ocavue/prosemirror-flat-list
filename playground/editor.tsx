@@ -97,6 +97,10 @@ const content = html`
     <li data-task-list-item>first task list item</li>
     <li data-task-list-item data-checked>second task list item</li>
   </ul>
+  <ul data-toggle-list>
+    <li data-toggle-list-item>first toggle list item</li>
+    <li data-toggle-list-item data-list-collapsed>second toggle list item</li>
+  </ul>
 
   <h2>Nested bullet list:</h2>
 

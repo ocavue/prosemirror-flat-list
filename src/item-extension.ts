@@ -79,17 +79,7 @@ export class ExperimentalItemExtension extends NodeExtension {
             ]
             break
           case 'toggle':
-            marker = [
-              'label',
-              { class: `item-mark item-mark-task` },
-              [
-                'input',
-                {
-                  type: 'checkbox',
-                  checked: attrs.checked ? '' : undefined,
-                },
-              ],
-            ]
+            marker = ['span']
             break
         }
 
@@ -170,6 +160,14 @@ export class ExperimentalItemExtension extends NodeExtension {
                 return {
                   type: 'task',
                   checked: element.hasAttribute('data-checked'),
+                  ...extra.parse(element),
+                }
+              }
+
+              if (element.hasAttribute('data-toggle-list-item')) {
+                return {
+                  type: 'toggle',
+                  collapsed: element.hasAttribute('data-list-collapsed'),
                   ...extra.parse(element),
                 }
               }
