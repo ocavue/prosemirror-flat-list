@@ -1,7 +1,7 @@
 import '@remirror/styles/all.css'
 import '../src/style.css'
 
-import * as React from 'react'
+import { ProsemirrorDevTools } from '@remirror/dev'
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HardBreakExtension } from '@remirror/extension-hard-break'
 import { HeadingExtension } from '@remirror/extension-heading'
@@ -12,6 +12,7 @@ import {
   ThemeProvider,
   useRemirror,
 } from '@remirror/react'
+import * as React from 'react'
 
 import { ExperimentalItemExtension } from '../src/'
 
@@ -60,6 +61,7 @@ const Editor = (): JSX.Element => {
       <Remirror manager={manager} initialContent={state}>
         <Button />
         <EditorComponent />
+        <ProsemirrorDevTools />
       </Remirror>
     </ThemeProvider>
   )

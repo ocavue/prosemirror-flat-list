@@ -4,13 +4,11 @@ import {
   DOMOutputSpec,
   EditorView,
   ExtensionTag,
-  findParentNodeOfType,
   invariant,
   KeyBindings,
   NodeExtension,
   NodeExtensionSpec,
   NodeSpecOverride,
-  NodeType,
   NodeView,
   NodeViewMethod,
   ProsemirrorNode,
@@ -239,45 +237,32 @@ export class ExperimentalItemExtension extends NodeExtension {
     return {
       props: {
         handleDOMEvents: {
-          mousedown: (_view, event): boolean => {
-            const target = event.target as HTMLElement
+          mousedown: (view, event): boolean => {
+            const target = event.target as HTMLElement | null
 
             if (
-              target.classList.contains('item-mark') ||
-              target.classList.contains('item-mark-container')
+              target?.classList.contains('item-mark') ||
+              target?.classList.contains('item-mark-container')
             ) {
               event.preventDefault()
-              return true
-            }
 
-            return false
-          },
-          mouseup: (_view, event): boolean => {
-            const target = event.target as HTMLElement
-
-            if (
-              target.classList.contains('item-mark') ||
-              target.classList.contains('item-mark-container')
-            ) {
-              event.preventDefault()
-              return true
-            }
-
-            return false
-          },
-          click: (view, event): boolean => {
-            const target = event.target as HTMLElement
-
-            if (
-              target.classList.contains('item-mark') ||
-              target.classList.contains('item-mark-container')
-            ) {
-              event.preventDefault()
-              const pos = view.posAtCoords(eventCoords(event))
-
-              if (pos && pos.pos > 0) {
-                return handleClick(view, event, pos.pos, this.type)
+              const pos = view.posAtDOM(target, -10, -10)
+              const tr = view.state.tr
+              const $pos = tr.doc.resolve(pos)
+              const list = $pos.parent
+              if (list.type !== this.type) {
+                return false
               }
+
+              const attrs = list.attrs as ListAttributes
+              const listPos = $pos.before($pos.depth)
+              if (attrs.type === 'task') {
+                tr.setNodeAttribute(listPos, 'checked', !attrs.checked)
+              } else if (attrs.type === 'toggle') {
+                tr.setNodeAttribute(listPos, 'collapsed', !attrs.collapsed)
+              }
+              view.dispatch(tr)
+              return true
             }
 
             return false
@@ -305,49 +290,4 @@ export class ExperimentalItemExtension extends NodeExtension {
       })),
     ]
   }
-}
-
-function handleClick(
-  view: EditorView,
-  event: MouseEvent,
-  pos: number,
-  itemType: NodeType
-): boolean {
-  const target = event.target as HTMLElement
-
-  const found = findParentNodeOfType({
-    selection: view.state.doc.resolve(pos),
-    types: itemType,
-  })
-
-  if (!found) {
-    return false
-  }
-
-  const attrs = found.node.attrs as ListAttributes
-
-  if (found.node.childCount >= 2 && attrs.type === 'bullet') {
-    event.preventDefault()
-    view.dispatch(
-      view.state.tr.setNodeMarkup(found.pos, null, {
-        ...attrs,
-        collapsed: !attrs.collapsed,
-      })
-    )
-
-    return true
-  } else if (attrs.type === 'task' && target.classList.contains('item-mark')) {
-    view.dispatch(
-      view.state.tr.setNodeMarkup(found.pos, null, {
-        ...attrs,
-        checked: !attrs.checked,
-      })
-    )
-  }
-
-  return false
-}
-
-function eventCoords(event: MouseEvent) {
-  return { left: event.clientX, top: event.clientY }
 }

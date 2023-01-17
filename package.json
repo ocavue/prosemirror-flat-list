@@ -52,6 +52,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.18.8",
     "@ocavue/eslint-config": "^0.4.5",
+    "@remirror/dev": "^2.0.15",
     "@remirror/extension-blockquote": "^2.0.10",
     "@remirror/extension-hard-break": "^2.0.9",
     "@remirror/extension-heading": "^2.0.9",

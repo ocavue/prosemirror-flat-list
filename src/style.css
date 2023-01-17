@@ -33,18 +33,15 @@
       position: absolute;
       right: 100%;
       white-space: pre;
+      cursor: pointer;
 
       /* Add a suffix after the marker, just like how bullet and ordered list do */
       &::after {
         content: ' ';
       }
 
-      /* TODO: Why do I need to set the pointer twice? */
-      & > label {
-        cursor: pointer;
-      }
-      & > label > input {
-        cursor: pointer;
+      & * {
+        pointer-events: none;
       }
     }
   }
