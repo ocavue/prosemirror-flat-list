@@ -23,7 +23,8 @@ import { createAutoJoinItemPlugin } from './auto-join-item-plugin'
 import { patchRender } from './dom-utils'
 import { wrappingItemInputRule } from './item-input-rule'
 import { createListItemKeymap } from './item-keymap'
-import { ListAttributes } from './item-types'
+import { ListAttributes, ListType } from './item-types'
+import { parseIntAttribute } from './utils/parse-int-attribute'
 
 export class ExperimentalItemExtension extends NodeExtension {
   static disableExtraAttributes = true
@@ -44,8 +45,11 @@ export class ExperimentalItemExtension extends NodeExtension {
       content: 'block+',
       defining: true,
       attrs: {
-        kind: {
+        type: {
           default: 'bullet',
+        },
+        counter: {
+          default: null,
         },
         checked: {
           default: false,
@@ -54,7 +58,7 @@ export class ExperimentalItemExtension extends NodeExtension {
           default: false,
         },
       },
-      toDOM: (node) => {
+      toDOM: (node): DOMOutputSpec => {
         const isNested = node.content.firstChild?.type === this.type
 
         const attrs = node.attrs as ListAttributes
@@ -62,7 +66,7 @@ export class ExperimentalItemExtension extends NodeExtension {
         // TODO: rename
         const itemClassNames: string[] = ['remirror-flat-list']
 
-        if (!isNested && node.childCount >= 2 && attrs.kind === 'bullet') {
+        if (!isNested && node.childCount >= 2 && attrs.type === 'bullet') {
           itemClassNames.push('collapsable')
 
           if (node.attrs.collapsed) {
@@ -73,7 +77,7 @@ export class ExperimentalItemExtension extends NodeExtension {
         let mark: DOMOutputSpec | null = null
 
         if (!isNested) {
-          switch (attrs.kind) {
+          switch (attrs.type) {
             case 'ordered':
               mark = ['span', { class: `item-mark item-mark-ordered` }]
               break
@@ -100,10 +104,12 @@ export class ExperimentalItemExtension extends NodeExtension {
           'div',
           {
             class: itemClassNames.join(' '),
-            'data-item': '',
-            'data-item-kind': attrs.kind,
-            'data-item-checked': attrs.checked ? '' : undefined,
-            'data-item-collapsed': attrs.collapsed ? '' : undefined,
+            'data-list': '',
+            'data-list-type': attrs.type == null ? attrs.type : undefined,
+            'data-list-order':
+              attrs.order != null ? String(attrs.order) : undefined,
+            'data-list-checked': attrs.checked ? '' : undefined,
+            'data-list-collapsed': attrs.collapsed ? '' : undefined,
             ...extra.dom(node),
           },
 
@@ -126,20 +132,18 @@ export class ExperimentalItemExtension extends NodeExtension {
 
       parseDOM: [
         {
-          tag: 'div[data-item]',
-          getAttrs: (element) => {
+          tag: 'div[data-list]',
+          getAttrs: (element): ListAttributes => {
             if (typeof element === 'string') {
               return {}
             }
 
-            const kind = element.getAttribute('data-item-kind')
-            const checked = element.hasAttribute('data-item-checked')
-            const collapsed = element.hasAttribute('data-item-collapsed')
-
             return {
-              kind,
-              checked,
-              collapsed,
+              type: (element.getAttribute('data-list-type') ||
+                'bullet') as ListType,
+              order: parseIntAttribute(element.getAttribute('data-list-order')),
+              checked: element.hasAttribute('data-list-checked'),
+              collapsed: element.hasAttribute('data-list-collapsed'),
             }
           },
         },
@@ -155,7 +159,7 @@ export class ExperimentalItemExtension extends NodeExtension {
                 checkbox.getAttribute('type') === 'checkbox'
               ) {
                 return {
-                  kind: 'task',
+                  type: 'task',
                   checked: checkbox.hasAttribute('checked'),
                   ...extra.parse(element),
                 }
@@ -163,7 +167,7 @@ export class ExperimentalItemExtension extends NodeExtension {
 
               if (element.hasAttribute('data-task-list-item')) {
                 return {
-                  kind: 'task',
+                  type: 'task',
                   checked: element.hasAttribute('data-checked'),
                   ...extra.parse(element),
                 }
@@ -171,7 +175,7 @@ export class ExperimentalItemExtension extends NodeExtension {
             }
 
             return {
-              kind: 'bullet',
+              type: 'bullet',
               ...extra.parse(element),
             }
           },
@@ -180,7 +184,7 @@ export class ExperimentalItemExtension extends NodeExtension {
           tag: 'ol > li',
           getAttrs: (element) => {
             return {
-              kind: 'ordered',
+              type: 'ordered',
               ...extra.parse(element),
             }
           },
@@ -294,10 +298,10 @@ export class ExperimentalItemExtension extends NodeExtension {
     const taskRegexp = /^\s?\[([\sXx]?)]\s$/
 
     return [
-      wrappingItemInputRule(bulletRegexp, this.type, { kind: 'bullet' }),
-      wrappingItemInputRule(orderedRegexp, this.type, { kind: 'ordered' }),
+      wrappingItemInputRule(bulletRegexp, this.type, { type: 'bullet' }),
+      wrappingItemInputRule(orderedRegexp, this.type, { type: 'ordered' }),
       wrappingItemInputRule(taskRegexp, this.type, (match) => ({
-        kind: 'task',
+        type: 'task',
         checked: ['x', 'X'].includes(match[1]),
       })),
     ]
@@ -323,7 +327,7 @@ function handleClick(
 
   const attrs = found.node.attrs as ListAttributes
 
-  if (found.node.childCount >= 2 && attrs.kind === 'bullet') {
+  if (found.node.childCount >= 2 && attrs.type === 'bullet') {
     event.preventDefault()
     view.dispatch(
       view.state.tr.setNodeMarkup(found.pos, null, {
@@ -333,7 +337,7 @@ function handleClick(
     )
 
     return true
-  } else if (attrs.kind === 'task' && target.classList.contains('item-mark')) {
+  } else if (attrs.type === 'task' && target.classList.contains('item-mark')) {
     view.dispatch(
       view.state.tr.setNodeMarkup(found.pos, null, {
         ...attrs,
