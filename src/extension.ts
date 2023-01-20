@@ -17,7 +17,8 @@ import { createListInputRules } from './input-rule'
 import { createListKeymap } from './keymap'
 import { createListNodeView } from './node-view'
 import { createAutoJoinItemPlugin } from './plugins/auto-join-item-plugin'
-import { createParseDomRules, listToDOM } from './schema'
+import { createParseDomRules } from './schema/parse-dom'
+import { listToDOM } from './schema/to-dom'
 import { ListDOMSerializer } from './utils/list-serializer'
 
 export class ListExtension extends NodeExtension {
