@@ -30,14 +30,11 @@
     & > .list-marker {
       position: absolute;
       right: 100%;
-      white-space: pre;
+      text-align: center;
+      width: 1.5em;
+      width: 1lh;
+
       cursor: pointer;
-
-      /* Add a suffix after the marker, just like how bullet and ordered list do */
-      &::after {
-        content: ' ';
-      }
-
       & * {
         pointer-events: none;
       }
@@ -48,50 +45,29 @@
     & > .list-marker {
       position: absolute;
       right: 100%;
-      white-space: pre;
-      font-size: 1.2em;
-      font-weight: 600;
+      text-align: center;
+      width: 1.5em;
+      width: 1lh;
     }
 
-    /*
-    https://www.w3.org/TR/css-counter-styles-3/#disclosure-open 
-
-    For example, the disclosure-closed style might use the characters U+25B8
-    BLACK RIGHT-POINTING SMALL TRIANGLE (▸) and U+25C2 BLACK LEFT-POINTING
-    SMALL TRIANGLE (◂), while the disclosure-open style might use the
-    character U+25BE BLACK DOWN-POINTING SMALL TRIANGLE (▾).
-    */
-    &:not([data-list-collapsed]) > .list-marker::after {
-      content: '▾ ';
+    &:not([data-list-collapsed]) > .list-marker::before {
+      content: '\23F7'; /* Black Medium Down-Pointing Triangle */
     }
-    &[data-list-collapsed] > .list-marker::after {
-      content: '▸ ';
+    &[data-list-collapsed] > .list-marker::before {
+      content: '\23F5'; /* Black Medium Right-Pointing Triangle */
     }
 
-    /* The list node has only one child */
-    &:not(:has(> .list-content > *:nth-child(n + 2))) {
-      /* Make the marker gray */
-      & > .list-marker {
-        opacity: 40%;
-      }
-
-      /* Always show to down triangle */
-      & > .list-marker::after {
-        content: '▾ ';
-      }
+    &:not([data-list-disabled]) > .list-marker {
+      cursor: pointer;
+    }
+    &[data-list-disabled] > .list-marker {
+      opacity: 40%;
+      pointer-events: none;
     }
 
-    /* The list node has two or more children */
-    &:has(> .list-content > *:nth-child(n + 2)) {
-      /* Make the marker clickable */
-      & > .list-marker {
-        cursor: pointer;
-      }
-
-      /* If collapsed, hide the second and futher children */
-      &[data-list-collapsed] > .list-content > *:nth-child(n + 2) {
-        display: none;
-      }
+    /* If collapsed, hide the second and futher children */
+    &[data-list-collapsed] > .list-content > *:nth-child(n + 2) {
+      display: none;
     }
   }
 }

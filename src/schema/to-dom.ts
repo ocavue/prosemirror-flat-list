@@ -42,6 +42,8 @@ export function listToDOM(
       markerType === 'task' && attrs.checked ? '' : undefined,
     'data-list-collapsed':
       markerType === 'toggle' && attrs.collapsed ? '' : undefined,
+    'data-list-disabled':
+      markerType === 'toggle' && node.childCount < 2 ? '' : undefined,
     ...extra?.dom(node),
   }
 
