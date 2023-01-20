@@ -21,7 +21,10 @@
     & + & {
       counter-reset: none;
     }
-    &::marker {
+    &::before {
+      position: absolute;
+      right: 100%;
+      font-variant-numeric: tabular-nums;
       content: counter(prosemirror-flat-list-counter, decimal) '. ';
     }
   }
