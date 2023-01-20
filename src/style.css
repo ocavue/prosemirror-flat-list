@@ -98,4 +98,14 @@
       }
     }
   }
+
+  & .flat-list[data-list-hide-marker] {
+    &::marker {
+      content: none;
+      display: none;
+    }
+    & > .item-mark-container {
+      display: none;
+    }
+  }
 }
