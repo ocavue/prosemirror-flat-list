@@ -2,25 +2,20 @@ import {
   ApplySchemaAttributes,
   CreateExtensionPlugin,
   DOMOutputSpec,
-  EditorView,
   ExtensionTag,
-  invariant,
   KeyBindings,
   NodeExtension,
   NodeExtensionSpec,
   NodeSpecOverride,
-  NodeView,
   NodeViewMethod,
-  ProsemirrorNode,
 } from '@remirror/core'
 import { InputRule } from '@remirror/pm/inputrules'
-import { DOMSerializer } from '@remirror/pm/model'
 import { Plugin } from '@remirror/pm/state'
 
 import { handleListMarkerMouseDown } from './dom-events'
-import { patchRender } from './dom-render'
 import { createListInputRules } from './input-rule'
 import { createListKeymap } from './keymap'
+import { createListNodeView } from './node-view'
 import { createAutoJoinItemPlugin } from './plugins/auto-join-item-plugin'
 import { createParseDomRules, listToDOM } from './schema'
 import { ListDOMSerializer } from './utils/list-serializer'
@@ -65,43 +60,9 @@ export class ListExtension extends NodeExtension {
     }
   }
 
-  // TODO: this is too hacky
   createNodeViews(): NodeViewMethod {
-    return (
-      node: ProsemirrorNode,
-      _view: EditorView,
-      _getPos: (() => number) | boolean
-    ): NodeView => {
-      const spec = this.type.spec.toDOM?.(node) as DOMOutputSpec
-      invariant(spec, { message: "Couldn't find a spec for the node" })
-      let { dom, contentDOM } = DOMSerializer.renderSpec(document, spec)
-
-      let prevSpec = spec
-
-      const update = (node: ProsemirrorNode) => {
-        if (node.type !== this.type) {
-          return false
-        }
-
-        const nextSpec = this.type.spec.toDOM?.(node) as DOMOutputSpec
-        invariant(nextSpec, { message: "Couldn't find a spec for the node" })
-        const rendered = patchRender(prevSpec, nextSpec, dom as Element)
-
-        if (rendered) {
-          dom = rendered.dom
-          contentDOM = rendered.contentDOM
-        }
-
-        prevSpec = nextSpec
-        return true
-      }
-
-      return {
-        dom,
-        contentDOM,
-        update,
-      }
-    }
+    // @ts-expect-error: TODO: this need to be fixed on the remirror side
+    return createListNodeView
   }
 
   createKeymap(): KeyBindings {
