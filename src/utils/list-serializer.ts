@@ -1,29 +1,14 @@
 import type { Fragment, ProsemirrorNode } from '@remirror/pm'
 import { DOMOutputSpec, DOMSerializer, Schema } from '@remirror/pm/model'
 import { ListAttributes } from '../item-types'
+import { listToDOM } from '../schema/list-to-dom'
 
 export class ListDOMSerializer extends DOMSerializer {
   static nodesFromSchema(schema: Schema): {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec
   } {
     const nodes = DOMSerializer.nodesFromSchema(schema)
-    const toDOM = nodes['list']
-    if (!toDOM) {
-      return nodes
-    }
-
-    const newToDOM = (node: ProsemirrorNode): DOMOutputSpec => {
-      const attrs = node.attrs as ListAttributes
-      let spec = toDOM(node)
-      if (Array.isArray(spec)) {
-        spec = ['li', ...spec.slice(1)]
-      } else {
-        spec = ['li', spec]
-      }
-      return [attrs.type === 'ordered' ? 'ol' : 'ul', spec]
-    }
-
-    return { ...nodes, list: newToDOM }
+    return { ...nodes, list: (node) => listToDOM(node, true) }
   }
 
   serializeFragment(

@@ -22,6 +22,7 @@ import { patchRender } from './dom-utils'
 import { wrappingItemInputRule } from './item-input-rule'
 import { createListItemKeymap } from './item-keymap'
 import { ListAttributes, ListType } from './item-types'
+import { listToDOM } from './schema/list-to-dom'
 import { ListDOMSerializer } from './utils/list-serializer'
 import { parseIntAttribute } from './utils/parse-int-attribute'
 
@@ -58,66 +59,7 @@ export class ExperimentalItemExtension extends NodeExtension {
         },
       },
       toDOM: (node): DOMOutputSpec => {
-        const attrs = node.attrs as ListAttributes
-
-        let marker: DOMOutputSpec | null = null
-
-        switch (attrs.type) {
-          case 'task':
-            // Use a `label` element here so that the area around the checkbox is also checkable.
-            marker = [
-              'label',
-              { class: `item-mark item-mark-task` },
-              [
-                'input',
-                {
-                  type: 'checkbox',
-                  checked: attrs.checked ? '' : undefined,
-                },
-              ],
-            ]
-            break
-          case 'toggle':
-            marker = ['span']
-            break
-        }
-
-        const domAttrs = {
-          class: 'flat-list',
-          'data-list': '',
-          'data-list-type': attrs.type || 'bullet',
-          'data-list-order':
-            attrs.type === 'ordered' && attrs.order != null
-              ? String(attrs.order)
-              : undefined,
-          'data-list-checked':
-            attrs.type === 'task' && attrs.checked ? '' : undefined,
-          'data-list-collapsed':
-            attrs.type === 'toggle' && attrs.collapsed ? '' : undefined,
-          ...extra.dom(node),
-        }
-
-        const contentContainer: DOMOutputSpec = [
-          'div',
-          { class: 'item-content-container' },
-          0,
-        ]
-        if (marker) {
-          const markerContainer: DOMOutputSpec = [
-            'div',
-            {
-              class: 'item-mark-container',
-              // Set `contenteditable` to `false` so that the cursor won't be
-              // moved into the mark container when clicking on it.
-              contenteditable: 'false',
-            },
-            marker,
-          ]
-
-          return ['div', domAttrs, markerContainer, contentContainer]
-        } else {
-          return ['div', domAttrs, contentContainer]
-        }
+        return listToDOM(node, false, extra)
       },
 
       parseDOM: [
@@ -155,7 +97,10 @@ export class ExperimentalItemExtension extends NodeExtension {
                 }
               }
 
-              if (element.hasAttribute('data-task-list-item')) {
+              if (
+                element.hasAttribute('data-task-list-item') ||
+                element.getAttribute('data-list-type') === 'task'
+              ) {
                 return {
                   type: 'task',
                   checked: element.hasAttribute('data-checked'),
@@ -163,7 +108,10 @@ export class ExperimentalItemExtension extends NodeExtension {
                 }
               }
 
-              if (element.hasAttribute('data-toggle-list-item')) {
+              if (
+                element.hasAttribute('data-toggle-list-item') ||
+                element.getAttribute('data-list-type') === 'toggle'
+              ) {
                 return {
                   type: 'toggle',
                   collapsed: element.hasAttribute('data-list-collapsed'),
