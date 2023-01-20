@@ -1,5 +1,5 @@
 import { renderEditor } from 'jest-remirror'
-import { BlockquoteExtension } from 'remirror/extensions'
+import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { describe, expect, it } from 'vitest'
 
 import { ExperimentalItemExtension } from '../src'
