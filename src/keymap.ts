@@ -4,7 +4,7 @@ import { createDedentListCommand } from './commands/dedent-list'
 import { createSplitListCommand } from './commands/split-list'
 import { createIndentListCommand } from './commands/indent-list'
 
-export function createListItemKeymap(itemType: NodeType): KeyBindings {
+export function createListKeymap(itemType: NodeType): KeyBindings {
   return {
     Enter: createSplitListCommand(itemType),
 
@@ -12,6 +12,7 @@ export function createListItemKeymap(itemType: NodeType): KeyBindings {
 
     Tab: createIndentListCommand(itemType),
 
+    // TODO: remove this
     'Mod-Shift-l': ({ tr, dispatch }): boolean => {
       let range: number[] | null = null
 

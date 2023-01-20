@@ -2,7 +2,8 @@ import { CommandFunction, DispatchFunction } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Transaction } from '@remirror/pm/state'
 import { liftTarget, ReplaceAroundStep } from '@remirror/pm/transform'
-import { findIndentationRange, isItemRange } from '../item-utils'
+import { findIndentationRange } from "../utils/find-indentation-range"
+import { isItemRange } from "../utils/is-item-range"
 
 export function createDedentListCommand(itemType: NodeType): CommandFunction {
   return (props): boolean => {

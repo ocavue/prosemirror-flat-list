@@ -3,8 +3,6 @@ import { NodeType } from '@remirror/pm/model'
 import { Plugin, PluginKey } from '@remirror/pm/state'
 import { canJoin } from '@remirror/pm/transform'
 
-import { isListItemNode } from './item-utils'
-
 // TODO: remove this plugin
 export function createAutoJoinItemPlugin(itemType: NodeType): Plugin {
   return new Plugin({
@@ -123,9 +121,9 @@ function isListJoinable(
   let joinDepth = 0
 
   while (
-    isListItemNode(before, itemType) &&
-    isListItemNode(after, itemType) &&
-    isListItemNode(after.firstChild, itemType)
+    before?.type === itemType &&
+    after?.type === itemType &&
+    after?.firstChild?.type === itemType
   ) {
     joinDepth++
     before = before.lastChild

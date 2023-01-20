@@ -1,7 +1,7 @@
 import { CommandFunction } from '@remirror/pm'
 import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { findIndentationRange } from '../item-utils'
+import { findIndentationRange } from "../utils/find-indentation-range"
 
 export function createIndentListCommand(itemType: NodeType): CommandFunction {
   return (props): boolean => {

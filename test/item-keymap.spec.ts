@@ -2,13 +2,10 @@ import { renderEditor } from 'jest-remirror'
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { describe, expect, it } from 'vitest'
 
-import { ExperimentalItemExtension } from '../src'
+import { ListExtension } from '../src'
 
 const setup = () => {
-  const extensions = [
-    new ExperimentalItemExtension(),
-    new BlockquoteExtension(),
-  ]
+  const extensions = [new ListExtension(), new BlockquoteExtension()]
   const editor = renderEditor(extensions, {})
   const {
     view,

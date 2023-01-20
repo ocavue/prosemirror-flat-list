@@ -5,7 +5,6 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
   <ol>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="ordered"
     >
       <div
@@ -18,7 +17,6 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="ordered"
     >
       <div
@@ -38,7 +36,6 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
   <ul>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -51,7 +48,6 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -71,7 +67,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
   <ul>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -84,7 +79,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="task"
     >
       <div
@@ -109,7 +103,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="toggle"
     >
       <div
@@ -130,7 +123,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
   <ol>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="ordered"
     >
       <div
@@ -145,7 +137,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
   <ul>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -158,7 +149,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="task"
     >
       <div
@@ -183,7 +173,6 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="toggle"
     >
       <div
@@ -209,7 +198,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
   <ul>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -221,7 +209,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
         <ol>
           <li
             class="flat-list"
-            data-list=""
             data-list-type="ordered"
           >
             <div
@@ -234,7 +221,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
           </li>
           <li
             class="flat-list"
-            data-list=""
             data-list-type="ordered"
           >
             <div
@@ -250,7 +236,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
     </li>
     <li
       class="flat-list"
-      data-list=""
       data-list-type="bullet"
     >
       <div
@@ -262,7 +247,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
         <ol>
           <li
             class="flat-list"
-            data-list=""
             data-list-type="ordered"
           >
             <div
@@ -275,7 +259,6 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
           </li>
           <li
             class="flat-list"
-            data-list=""
             data-list-type="ordered"
           >
             <div

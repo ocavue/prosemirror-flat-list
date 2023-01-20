@@ -1,1 +1,1 @@
-export { ExperimentalItemExtension } from './item-extension'
+export { ListExtension } from './item-extension'

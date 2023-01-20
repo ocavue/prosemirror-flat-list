@@ -1,10 +1,10 @@
 import { renderEditor } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
-import { ExperimentalItemExtension } from '../item-extension'
+import { ListExtension } from '../item-extension'
 import { ListDOMSerializer } from './list-serializer'
 
 const setup = () => {
-  const extensions = [new ExperimentalItemExtension()]
+  const extensions = [new ListExtension()]
   const editor = renderEditor(extensions, {})
   const {
     view,

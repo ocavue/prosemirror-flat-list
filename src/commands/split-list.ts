@@ -1,7 +1,7 @@
 import { CommandFunction } from '@remirror/pm'
 import { NodeType } from '@remirror/pm/model'
 import { canSplit } from '@remirror/pm/transform'
-import { isBlockNodeSelection } from '../item-utils'
+import { isBlockNodeSelection } from "../utils/is-block-node-selection"
 import { enterWithoutLift } from './enter-without-lift'
 
 export function createSplitListCommand(itemType: NodeType): CommandFunction {

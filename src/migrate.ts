@@ -1,5 +1,5 @@
 import type { RemirrorJSON } from '@remirror/core'
-import type { ListAttributes } from './item-types'
+import type { ListAttributes } from './types'
 
 function migrateNodes(nodes: RemirrorJSON[]): RemirrorJSON[] {
   const content: RemirrorJSON[] = []

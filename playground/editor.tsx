@@ -14,7 +14,7 @@ import {
 } from '@remirror/react'
 import * as React from 'react'
 
-import { ExperimentalItemExtension } from '../src/'
+import { ListExtension } from '../src/'
 
 const Button = (): JSX.Element => {
   // const commands = useCommands();
@@ -68,7 +68,7 @@ const Editor = (): JSX.Element => {
 }
 
 const extensions = () => [
-  new ExperimentalItemExtension(),
+  new ListExtension(),
   new HeadingExtension(),
   new LinkExtension(),
   /**
@@ -83,7 +83,7 @@ const html = String.raw // Just for better editor support
 
 const content = html`
   <h1>
-    <code>ExperimentalItemExtension</code> is a WIP experimental implementation
+    <code>ListExtension</code> is a WIP experimental implementation
     of list. Do not use it in production yet.
   </h1>
 
