@@ -5,7 +5,6 @@ import {
 } from '@remirror/core'
 import { ProsemirrorNode } from '@remirror/pm'
 import { ParseRule } from '@remirror/pm/model'
-import { clsx } from 'clsx'
 import { ListAttributes, ListType } from './types'
 import { parseInteger } from './utils/parse-integer'
 
@@ -15,43 +14,43 @@ export function listToDOM(
   extra?: ApplySchemaAttributes
 ): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
+  const markerHidden = node.firstChild?.type === node.type
 
   let marker: DOMOutputSpec | null = null
 
-  switch (attrs.type) {
-    case 'task':
-      // Use a `label` element here so that the area around the checkbox is also checkable.
-      marker = [
-        'label',
-        { class: `item-mark item-mark-task` },
-        [
-          'input',
-          {
-            type: 'checkbox',
-            checked: attrs.checked ? '' : undefined,
-          },
-        ],
-      ]
-      break
-    case 'toggle':
-      marker = ['span']
-      break
+  if (!markerHidden) {
+    switch (attrs.type) {
+      case 'task':
+        // Use a `label` element here so that the area around the checkbox is also checkable.
+        marker = [
+          'label',
+          { class: `item-mark item-mark-task` },
+          [
+            'input',
+            {
+              type: 'checkbox',
+              checked: attrs.checked ? '' : undefined,
+            },
+          ],
+        ]
+        break
+      case 'toggle':
+        marker = ['span']
+        break
+    }
   }
 
+  const listType = markerHidden ? undefined : attrs.type || 'bullet'
   const domAttrs = {
-    class: clsx(
-      'flat-list',
-      node.firstChild?.type === node.type ? 'flat-list-marker-hidden' : null
-    ),
-    'data-list-type': attrs.type || 'bullet',
+    class: 'flat-list',
+    'data-list-type': listType,
     'data-list-order':
-      attrs.type === 'ordered' && attrs.order != null
+      listType === 'ordered' && attrs.order != null
         ? String(attrs.order)
         : undefined,
-    'data-list-checked':
-      attrs.type === 'task' && attrs.checked ? '' : undefined,
+    'data-list-checked': listType === 'task' && attrs.checked ? '' : undefined,
     'data-list-collapsed':
-      attrs.type === 'toggle' && attrs.collapsed ? '' : undefined,
+      listType === 'toggle' && attrs.collapsed ? '' : undefined,
     ...extra?.dom(node),
   }
 

@@ -8,6 +8,7 @@
 
     position: relative;
     display: list-item;
+    list-style: none;
   }
 
   &[data-list-type='bullet'] {
@@ -15,7 +16,6 @@
   }
 
   &[data-list-type='ordered'] {
-    list-style: none;
     counter-reset: remirror-ordered-item-number;
     counter-increment: remirror-ordered-item-number;
     & + & {
@@ -27,8 +27,6 @@
   }
 
   &[data-list-type='task'] {
-    list-style: none;
-
     & > .item-mark-container {
       position: absolute;
       right: 100%;
@@ -47,8 +45,6 @@
   }
 
   &[data-list-type='toggle'] {
-    list-style: none;
-
     & > .item-mark-container {
       position: absolute;
       right: 100%;
@@ -96,16 +92,6 @@
       &[data-list-collapsed] > .item-content-container > *:nth-child(n + 2) {
         display: none;
       }
-    }
-  }
-
-  &.flat-list-marker-hidden {
-    &::marker {
-      content: none;
-      display: none;
-    }
-    & > .item-mark-container {
-      display: none;
     }
   }
 }
