@@ -7,18 +7,19 @@ import { type NodeViewConstructor } from '@remirror/pm/view'
  * list node get updated when its marker styling should changes.
  */
 export const createListNodeView: NodeViewConstructor = (node) => {
-  const prevNode = node
+  let prevNode = node
   const prevNested = node.firstChild?.type === node.type
   const prevSingleChild = node.childCount === 1
 
   const spec = node.type.spec.toDOM!(node)
   const { dom, contentDOM } = DOMSerializer.renderSpec(document, spec)
 
-  const update = (node: ProsemirrorNode) => {
+  const update = (node: ProsemirrorNode): boolean => {
     if (!node.sameMarkup(prevNode)) return false
     const nested = node.firstChild?.type === node.type
     const singleChild = node.childCount === 1
     if (prevNested !== nested || prevSingleChild !== singleChild) return false
+    prevNode = node
     return true
   }
 
