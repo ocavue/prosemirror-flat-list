@@ -8,10 +8,7 @@ export function handleListMarkerMouseDown(
 ): boolean {
   const target = event.target as HTMLElement | null
 
-  if (
-    target?.classList.contains('item-mark') ||
-    target?.classList.contains('item-mark-container')
-  ) {
+  if (target?.classList.contains('list-marker')) {
     event.preventDefault()
 
     const pos = view.posAtDOM(target, -10, -10)

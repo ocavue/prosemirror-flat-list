@@ -4,11 +4,11 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
 <DocumentFragment>
   <ol>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -16,11 +16,11 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -35,11 +35,11 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
 <DocumentFragment>
   <ul>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -47,11 +47,11 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -66,11 +66,11 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
 <DocumentFragment>
   <ul>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -78,23 +78,21 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="task"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
-        <label
-          class="item-mark item-mark-task"
-        >
+        <label>
           <input
             type="checkbox"
           />
         </label>
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -102,17 +100,17 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="toggle"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <span />
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           C
@@ -122,11 +120,11 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
   </ul>
   <ol>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -136,11 +134,11 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
   </ol>
   <ul>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -148,23 +146,21 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="task"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
-        <label
-          class="item-mark item-mark-task"
-        >
+        <label>
           <input
             type="checkbox"
           />
         </label>
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           E
@@ -172,17 +168,17 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="toggle"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <span />
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -197,22 +193,22 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
 <DocumentFragment>
   <ul>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
         </p>
         <ol>
           <li
-            class="flat-list"
+            class="prosemirror-flat-list"
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 B
@@ -220,11 +216,11 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             </div>
           </li>
           <li
-            class="flat-list"
+            class="prosemirror-flat-list"
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 C
@@ -235,22 +231,22 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
       </div>
     </li>
     <li
-      class="flat-list"
+      class="prosemirror-flat-list"
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
         </p>
         <ol>
           <li
-            class="flat-list"
+            class="prosemirror-flat-list"
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 E
@@ -258,11 +254,11 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             </div>
           </li>
           <li
-            class="flat-list"
+            class="prosemirror-flat-list"
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 F

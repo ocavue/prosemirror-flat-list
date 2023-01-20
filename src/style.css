@@ -1,4 +1,4 @@
-.ProseMirror .flat-list {
+.prosemirror-flat-list {
   & {
     padding: 0;
     margin-top: 0;
@@ -16,18 +16,18 @@
   }
 
   &[data-list-type='ordered'] {
-    counter-reset: remirror-ordered-item-number;
-    counter-increment: remirror-ordered-item-number;
+    counter-reset: prosemirror-flat-list-counter;
+    counter-increment: prosemirror-flat-list-counter;
     & + & {
       counter-reset: none;
     }
     &::marker {
-      content: counter(remirror-ordered-item-number, decimal) '. ';
+      content: counter(prosemirror-flat-list-counter, decimal) '. ';
     }
   }
 
   &[data-list-type='task'] {
-    & > .item-mark-container {
+    & > .list-marker {
       position: absolute;
       right: 100%;
       white-space: pre;
@@ -45,7 +45,7 @@
   }
 
   &[data-list-type='toggle'] {
-    & > .item-mark-container {
+    & > .list-marker {
       position: absolute;
       right: 100%;
       white-space: pre;
@@ -61,35 +61,35 @@
     SMALL TRIANGLE (◂), while the disclosure-open style might use the
     character U+25BE BLACK DOWN-POINTING SMALL TRIANGLE (▾).
     */
-    &:not([data-list-collapsed]) > .item-mark-container::after {
+    &:not([data-list-collapsed]) > .list-marker::after {
       content: '▾ ';
     }
-    &[data-list-collapsed] > .item-mark-container::after {
+    &[data-list-collapsed] > .list-marker::after {
       content: '▸ ';
     }
 
     /* The list node has only one child */
-    &:not(:has(> .item-content-container > *:nth-child(n + 2))) {
+    &:not(:has(> .list-content > *:nth-child(n + 2))) {
       /* Make the marker gray */
-      & > .item-mark-container {
+      & > .list-marker {
         opacity: 40%;
       }
 
       /* Always show to down triangle */
-      & > .item-mark-container::after {
+      & > .list-marker::after {
         content: '▾ ';
       }
     }
 
     /* The list node has two or more children */
-    &:has(> .item-content-container > *:nth-child(n + 2)) {
+    &:has(> .list-content > *:nth-child(n + 2)) {
       /* Make the marker clickable */
-      & > .item-mark-container {
+      & > .list-marker {
         cursor: pointer;
       }
 
       /* If collapsed, hide the second and futher children */
-      &[data-list-collapsed] > .item-content-container > *:nth-child(n + 2) {
+      &[data-list-collapsed] > .list-content > *:nth-child(n + 2) {
         display: none;
       }
     }

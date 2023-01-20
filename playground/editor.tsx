@@ -100,7 +100,7 @@ const content = html`
     <li data-task-list-item data-checked>second task list item</li>
   </ul>
   <ul data-toggle-list>
-    <li data-toggle-list-item data-list-collapsed>empty toggle list item</li>
+    <li data-toggle-list-item>empty toggle list item</li>
     <li data-toggle-list-item>
       expanded toggle list item
       <ul>

@@ -24,13 +24,9 @@ export function listToDOM(
         // Use a `label` element here so that the area around the checkbox is also checkable.
         marker = [
           'label',
-          { class: `item-mark item-mark-task` },
           [
             'input',
-            {
-              type: 'checkbox',
-              checked: attrs.checked ? '' : undefined,
-            },
+            { type: 'checkbox', checked: attrs.checked ? '' : undefined },
           ],
         ]
         break
@@ -40,31 +36,28 @@ export function listToDOM(
     }
   }
 
-  const listType = markerHidden ? undefined : attrs.type || 'bullet'
+  const markerType = markerHidden ? undefined : attrs.type || 'bullet'
   const domAttrs = {
-    class: 'flat-list',
-    'data-list-type': listType,
+    class: 'prosemirror-flat-list',
+    'data-list-type': markerType,
     'data-list-order':
-      listType === 'ordered' && attrs.order != null
+      markerType === 'ordered' && attrs.order != null
         ? String(attrs.order)
         : undefined,
-    'data-list-checked': listType === 'task' && attrs.checked ? '' : undefined,
+    'data-list-checked':
+      markerType === 'task' && attrs.checked ? '' : undefined,
     'data-list-collapsed':
-      listType === 'toggle' && attrs.collapsed ? '' : undefined,
+      markerType === 'toggle' && attrs.collapsed ? '' : undefined,
     ...extra?.dom(node),
   }
 
-  const contentContainer: DOMOutputSpec = [
-    'div',
-    { class: 'item-content-container' },
-    0,
-  ]
+  const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]
 
   if (marker) {
     const markerContainer: DOMOutputSpec = [
       'div',
       {
-        class: 'item-mark-container',
+        class: 'list-marker',
         // Set `contenteditable` to `false` so that the cursor won't be
         // moved into the mark container when clicking on it.
         contenteditable: 'false',

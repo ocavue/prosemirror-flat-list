@@ -9,7 +9,7 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -22,7 +22,7 @@ exports[`ListDOMSerializer > can serialize list nodes into <ol> 1`] = `
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -42,7 +42,7 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -55,7 +55,7 @@ exports[`ListDOMSerializer > can serialize list nodes into <ul> 1`] = `
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -75,7 +75,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -88,7 +88,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="task"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <label
@@ -100,7 +100,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
         </label>
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           B
@@ -113,13 +113,13 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="toggle"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <span />
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           C
@@ -134,7 +134,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="ordered"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -149,7 +149,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -162,7 +162,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="task"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <label
@@ -174,7 +174,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
         </label>
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           E
@@ -187,13 +187,13 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="toggle"
     >
       <div
-        class="item-mark-container"
+        class="list-marker"
         contenteditable="false"
       >
         <span />
       </div>
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -213,7 +213,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           A
@@ -225,7 +225,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 B
@@ -238,7 +238,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 C
@@ -254,7 +254,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
       data-list-type="bullet"
     >
       <div
-        class="item-content-container"
+        class="list-content"
       >
         <p>
           D
@@ -266,7 +266,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 E
@@ -279,7 +279,7 @@ exports[`ListDOMSerializer > can serialize nested list node  1`] = `
             data-list-type="ordered"
           >
             <div
-              class="item-content-container"
+              class="list-content"
             >
               <p>
                 F
