@@ -41,7 +41,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@remirror/core": "^2.0.11"
+    "@remirror/core": "^2.0.11",
+    "clsx": "^1.2.1"
   },
   "peerDependencies": {
     "@remirror/pm": "^2.0.3"

@@ -1,5 +1,5 @@
-.ProseMirror {
-  & .flat-list {
+.ProseMirror .flat-list {
+  & {
     padding: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -10,11 +10,11 @@
     display: list-item;
   }
 
-  & .flat-list[data-list-type='bullet'] {
+  &[data-list-type='bullet'] {
     list-style: disc;
   }
 
-  & .flat-list[data-list-type='ordered'] {
+  &[data-list-type='ordered'] {
     list-style: none;
     counter-reset: remirror-ordered-item-number;
     counter-increment: remirror-ordered-item-number;
@@ -26,7 +26,7 @@
     }
   }
 
-  & .flat-list[data-list-type='task'] {
+  &[data-list-type='task'] {
     list-style: none;
 
     & > .item-mark-container {
@@ -46,7 +46,7 @@
     }
   }
 
-  & .flat-list[data-list-type='toggle'] {
+  &[data-list-type='toggle'] {
     list-style: none;
 
     & > .item-mark-container {
@@ -99,7 +99,7 @@
     }
   }
 
-  & .flat-list[data-list-hide-marker] {
+  &.flat-list-marker-hidden {
     &::marker {
       content: none;
       display: none;

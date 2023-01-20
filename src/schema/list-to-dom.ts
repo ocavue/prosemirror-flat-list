@@ -1,5 +1,6 @@
 import { ApplySchemaAttributes, DOMOutputSpec } from '@remirror/core'
 import { ProsemirrorNode } from '@remirror/pm'
+import { clsx } from 'clsx'
 import { ListAttributes } from '../item-types'
 
 export function listToDOM(
@@ -32,7 +33,10 @@ export function listToDOM(
   }
 
   const domAttrs = {
-    class: 'flat-list',
+    class: clsx(
+      'flat-list',
+      node.firstChild?.type === node.type ? 'flat-list-marker-hidden' : null
+    ),
     'data-list': '',
     'data-list-type': attrs.type || 'bullet',
     'data-list-order':
@@ -43,8 +47,6 @@ export function listToDOM(
       attrs.type === 'task' && attrs.checked ? '' : undefined,
     'data-list-collapsed':
       attrs.type === 'toggle' && attrs.collapsed ? '' : undefined,
-    'data-list-hide-marker':
-      node.firstChild?.type === node.type ? '' : undefined,
     ...extra?.dom(node),
   }
 
