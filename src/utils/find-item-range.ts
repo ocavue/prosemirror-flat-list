@@ -1,5 +1,5 @@
-import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model';
-import { isItemRange } from './is-item-range';
+import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model'
+import { isItemRange } from './is-item-range'
 
 /**
  * Returns a minimal block range that includes the given two positions and
@@ -12,22 +12,22 @@ export default function findItemRange(
   itemType: NodeType
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
-    return findItemRange($to, $from, itemType);
+    return findItemRange($to, $from, itemType)
   }
 
-  let range = $from.blockRange($to);
+  let range = $from.blockRange($to)
 
   while (range) {
     if (isItemRange(range, itemType)) {
-      return range;
+      return range
     }
 
     if (range.depth <= 0) {
-      break;
+      break
     }
 
-    range = new NodeRange($from, $to, range.depth - 1);
+    range = new NodeRange($from, $to, range.depth - 1)
   }
 
-  return null;
+  return null
 }

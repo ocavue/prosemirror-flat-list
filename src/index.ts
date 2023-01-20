@@ -1,1 +1,1 @@
-export { ListExtension } from './item-extension'
+export { ListExtension } from './extension'

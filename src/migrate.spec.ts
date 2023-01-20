@@ -2,7 +2,7 @@ import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HeadingExtension } from '@remirror/extension-heading'
 import { renderEditor } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
-import { ListExtension } from './item-extension'
+import { ListExtension } from './extension'
 import { migrateDoc } from './migrate'
 
 describe('migrateDoc', () => {
