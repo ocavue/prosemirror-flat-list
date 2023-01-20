@@ -83,9 +83,14 @@ const html = String.raw // Just for better editor support
 
 const content = html`
   <h1>
-    <code>ListExtension</code> is a WIP experimental implementation
-    of list. Do not use it in production yet.
+    <code>Remirror Flat List</code>
   </h1>
+
+  <p>
+    <a href="https://github.com/ocavue/remirror-extension-flat-list"
+      >https://github.com/ocavue/remirror-extension-flat-list</a
+    >
+  </p>
 
   <ul>
     <li>first unordered list item</li>

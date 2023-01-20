@@ -101,6 +101,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="prosemirror-flat-list"
+      data-list-disabled=""
       data-list-type="toggle"
     >
       <div
@@ -169,6 +170,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
     </li>
     <li
       class="prosemirror-flat-list"
+      data-list-disabled=""
       data-list-type="toggle"
     >
       <div
