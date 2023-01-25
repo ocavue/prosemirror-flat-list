@@ -1,18 +1,17 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
 
 describe('indentList', () => {
   const t = setupTestingEditor()
+  const commands = t.editor.commands
 
   it('can indent a list node', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - A1
         - A<cursor>2
-        `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+        `,
       t.markdown`
         - A1
           - A<cursor>2
@@ -21,15 +20,13 @@ describe('indentList', () => {
   })
 
   it('can indent multiple list nodes', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - A1
         - A<start>2
         - A<end>3
-      `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+      `,
       t.markdown`
         - A1
           - A<start>2
@@ -39,14 +36,12 @@ describe('indentList', () => {
   })
 
   it('can add ambitious indentations', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - A1
           - A<cursor>2
-      `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+      `,
       t.markdown`
         - A1
           - - A<cursor>2
@@ -55,14 +50,12 @@ describe('indentList', () => {
   })
 
   it('can keep attributes', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - [ ] A1
         - [x] A<cursor>2
-      `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+      `,
       t.markdown`
         - [ ] A1
           - [x] A<cursor>2
@@ -71,7 +64,8 @@ describe('indentList', () => {
   })
 
   it.skip('can keep the indentation of sub list nodes', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - A1
         - A2
@@ -79,10 +73,7 @@ describe('indentList', () => {
           - B1 
           - B2 
           - B3
-      `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+      `,
       t.markdown`
         - A1
         - A2
@@ -95,7 +86,8 @@ describe('indentList', () => {
   })
 
   it.skip('can keep the indentation of sub list nodes when moving multiple list', () => {
-    const editor = t.add(
+    t.runCommand(
+      commands.indentList,
       t.markdown`
         - A1
         - <start>A2
@@ -103,10 +95,7 @@ describe('indentList', () => {
           - B1 
           - B2 
           - B3 
-      `
-    )
-    editor.commands.indentList()
-    expect(editor.state).toEqualRemirrorState(
+      `,
       t.markdown`
         - A1
           - <start>A2

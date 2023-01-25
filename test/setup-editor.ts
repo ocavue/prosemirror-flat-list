@@ -1,5 +1,6 @@
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
+import { expect } from 'vitest'
 import { ListExtension } from '../src/extension'
 import { ListAttributes } from '../src/types'
 import { markdownToTaggedDoc } from './markdown'
@@ -24,6 +25,16 @@ export function setupTestingEditor() {
     return markdownToTaggedDoc(editor, markdown)
   }
 
+  const runCommand = (
+    commandFunction: () => void,
+    before: TaggedProsemirrorNode,
+    after: TaggedProsemirrorNode
+  ) => {
+    add(before)
+    commandFunction()
+    expect(editor.state).toEqualRemirrorState(after)
+  }
+
   const bulletList = list({ type: 'bullet' })
   const orderedList = list({ type: 'ordered' })
   const checkedTaskList = list({ type: 'task', checked: true })
@@ -43,7 +54,9 @@ export function setupTestingEditor() {
     schema,
     add,
     markdown,
+    runCommand,
     editor,
+    comments: editor.commands,
 
     doc,
     p,
