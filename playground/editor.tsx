@@ -100,13 +100,8 @@ const content = html`
       A3
       <ul>
         <li>B1</li>
-        <li>
-          B2
-          <ul>
-            <li>C1</li>
-            <li>C2</li>
-          </ul>
-        </li>
+        <li>B2</li>
+        <li>B3</li>
       </ul>
     </li>
   </ul>
