@@ -84,38 +84,39 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
     const { $from, $to } = tr.selection
 
     // The block range that includes both $from and $to. It could contain one or more list nodes.
-    const totalItemRange = findItemRange($from, $to, listType)
-    if (!totalItemRange) {
+    const allItemsRange = findItemRange($from, $to, listType)
+    if (!allItemsRange) {
       return false
     }
 
-    // The block range that includes the $from. It should contain only one top-level list node.
-    const fromItemRange = findItemRange($from, $from, listType)
-    if (!fromItemRange) {
+    // The block range that includes $from. It should contain only one top-level list node.
+    const firstItemRange = findItemRange($from, $from, listType)
+    if (!firstItemRange) {
       return false
     }
 
-    // The block range that includes the $to. It should contain only one top-level list node.
-    const toItemRange = $from.sameParent($to)
-      ? fromItemRange
+    // The block range that includes $to. It should contain only one top-level list node.
+    const lastItemRange = $from.sameParent($to)
+      ? firstItemRange
       : findItemRange($to, $to, listType)
-    if (!toItemRange) {
+    if (!lastItemRange) {
       return false
     }
 
-    if (!tr.selection.empty && totalItemRange.end !== toItemRange.end) {
-      const $toItemRangeEnd = doc.resolve(toItemRange.end)
-      const $totalItemRangeEnd = doc.resolve(totalItemRange.end)
-      if (!equalMaxOpenEnd($toItemRangeEnd, $totalItemRangeEnd)) {
-        const maxDepthOffset = $toItemRangeEnd.depth - $totalItemRangeEnd.depth
+    if (!tr.selection.empty && allItemsRange.end !== lastItemRange.end) {
+      const $posAfterLastItem = doc.resolve(lastItemRange.end)
+      const $posAfterAllItems = doc.resolve(allItemsRange.end)
+
+      if (!equalMaxOpenEnd($posAfterLastItem, $posAfterAllItems)) {
+        const maxDepthOffset = $posAfterLastItem.depth - $posAfterAllItems.depth
 
         for (let depthOffset = 0; depthOffset < maxDepthOffset; depthOffset++) {
-          const after = $toItemRangeEnd.after(
-            $toItemRangeEnd.depth - depthOffset
+          const after = $posAfterLastItem.after(
+            $posAfterLastItem.depth - depthOffset
           )
-          const expectedAfter = $toItemRangeEnd.pos + depthOffset + 1
+          const expectedAfter = $posAfterLastItem.pos + depthOffset + 1
 
-          if (after !== $toItemRangeEnd.pos + depthOffset + 1) {
+          if (after !== $posAfterLastItem.pos + depthOffset + 1) {
             console.log('split At depth', depthOffset, {
               after,
               expectedAfter,
