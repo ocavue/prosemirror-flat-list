@@ -81,15 +81,7 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
     const { tr, dispatch } = props
     const { doc } = tr
 
-    const selection = normalizeSelection(tr.selection)
     const { $from, $to } = tr.selection
-    // console.log(
-    //   'selection',
-    //   tr.selection.from,
-    //   tr.selection.to,
-    //   selection.from,
-    //   selection.to
-    // )
 
     // The block range that includes both $from and $to. It could contain one or more list nodes.
     const totalItemRange = findItemRange($from, $to, listType)
@@ -114,33 +106,21 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
     if (!tr.selection.empty && totalItemRange.end !== toItemRange.end) {
       const $toItemRangeEnd = doc.resolve(toItemRange.end)
       const $totalItemRangeEnd = doc.resolve(totalItemRange.end)
-
-      console.log('toItemRangeEnd', $toItemRangeEnd.pos, $toItemRangeEnd.depth)
-      console.log(
-        'totalItemRangeEnd',
-        $totalItemRangeEnd.pos,
-        $totalItemRangeEnd.depth
-      )
-
       if (!equalMaxOpenEnd($toItemRangeEnd, $totalItemRangeEnd)) {
         const maxDepthOffset = $toItemRangeEnd.depth - $totalItemRangeEnd.depth
 
-        for (
-          let depthOffset = 0;
-          depthOffset <= maxDepthOffset;
-          depthOffset++
-        ) {
+        for (let depthOffset = 0; depthOffset < maxDepthOffset; depthOffset++) {
           const after = $toItemRangeEnd.after(
-            $toItemRangeEnd.depth + 1 - depthOffset
+            $toItemRangeEnd.depth - depthOffset
           )
-          const expectedAfter = $toItemRangeEnd.pos + depthOffset
+          const expectedAfter = $toItemRangeEnd.pos + depthOffset + 1
 
-          if (after !== $toItemRangeEnd.pos + depthOffset) {
+          if (after !== $toItemRangeEnd.pos + depthOffset + 1) {
             console.log('split At depth', depthOffset, {
               after,
               expectedAfter,
             })
-            tr.split(expectedAfter - 1, maxDepthOffset - depthOffset + 1)
+            tr.split(expectedAfter - 1, maxDepthOffset - depthOffset)
             break
           }
         }
