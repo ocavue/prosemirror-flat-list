@@ -1,37 +1,11 @@
-import { renderEditor } from 'jest-remirror'
-import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { describe, expect, it } from 'vitest'
 
-import { ListExtension } from '../src'
-
-const setup = () => {
-  const extensions = [new ListExtension(), new BlockquoteExtension()]
-  const editor = renderEditor(extensions, {})
-  const {
-    view,
-    add,
-    nodes: { doc, p, list, hardBreak, blockquote },
-    manager,
-    schema,
-  } = editor
-
-  return {
-    manager,
-    view,
-    schema,
-    add,
-    doc,
-    p,
-    list,
-    hardBreak,
-    blockquote,
-  }
-}
+import { setupTestingEditor, TestingEditor } from './setup-editor'
 
 describe('Enter', () => {
-  const { add, doc, p, list, blockquote } = setup()
+  const { add, doc, p, list, blockquote } = setupTestingEditor()
 
-  let editor: ReturnType<typeof add>
+  let editor: TestingEditor
 
   it('can split non-empty item', () => {
     editor = add(
@@ -471,9 +445,9 @@ describe('Enter', () => {
 })
 
 describe('Shift-Tab', () => {
-  const { add, doc, p, list } = setup()
+  const { add, doc, p, list } = setupTestingEditor()
 
-  let editor: ReturnType<typeof add>
+  let editor: TestingEditor
 
   it('can decrease the indentation of a nested item', () => {
     editor = add(
@@ -647,9 +621,9 @@ describe('Shift-Tab', () => {
 })
 
 describe('Tab', () => {
-  const { add, doc, p, list } = setup()
+  const { add, doc, p, list } = setupTestingEditor()
 
-  let editor: ReturnType<typeof add>
+  let editor: TestingEditor
 
   it('can increase the indentation of a nested item', () => {
     editor = add(
