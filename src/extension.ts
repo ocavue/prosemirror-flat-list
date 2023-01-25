@@ -11,6 +11,7 @@ import {
 } from '@remirror/core'
 import { InputRule } from '@remirror/pm/inputrules'
 import { Plugin } from '@remirror/pm/state'
+import { createIndentListCommand } from './commands/indent-list'
 
 import { handleListMarkerMouseDown } from './dom-events'
 import { createListInputRules } from './input-rule'
@@ -95,5 +96,11 @@ export class ListExtension extends NodeExtension {
 
   createInputRules(): InputRule[] {
     return createListInputRules(this.type)
+  }
+
+  createCommands() {
+    return {
+      indentList: () => createIndentListCommand(this.type),
+    }
   }
 }
