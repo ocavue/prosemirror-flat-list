@@ -2,6 +2,7 @@ import { CommandFunction } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { findIndentationRange } from '../utils/find-indentation-range'
+import findItemRange from '../utils/find-item-range'
 import { isLastChild } from '../utils/is-last-child'
 
 export function createIndentListCommand(listType: NodeType): CommandFunction {
@@ -83,7 +84,40 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
         )
       )
 
-      if (true && siblingAfterFrom < siblingAfterTo) {
+      {
+        const { $to } = tr.selection
+        const listRange = findItemRange($to, $to, listType)
+        if (listRange) {
+          const listDepth = listRange.depth + 1
+          const listContentDepth = listDepth + 1
+          const listContentRangeAfterFrom = $to.after(listContentDepth)
+          const listContentRangeAfterTo = $to.after(listDepth) - 1
+
+          if (listContentRangeAfterFrom < listContentRangeAfterTo) {
+            tr.step(
+              new ReplaceAroundStep(
+                listContentRangeAfterFrom,
+                listContentRangeAfterTo + 1,
+                listContentRangeAfterFrom,
+                listContentRangeAfterTo,
+                new Slice(
+                  Fragment.fromArray([
+                    //
+                    listType.create(null),
+                    // listType.create(null),
+                  ]),
+                  1,
+                  0
+                ),
+                1,
+                true
+              )
+            )
+          }
+        }
+      }
+
+      if (false && siblingAfterFrom < siblingAfterTo) {
         if (itemBefore) {
           siblingAfterFrom--
           siblingAfterTo--
