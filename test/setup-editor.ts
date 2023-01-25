@@ -1,7 +1,8 @@
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
-import { renderEditor } from 'jest-remirror'
+import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
 import { ListExtension } from '../src/extension'
 import { ListAttributes } from '../src/types'
+import { markdownToTaggedDoc } from './markdown'
 
 export function setupTestingEditor() {
   const extensions = [new ListExtension(), new BlockquoteExtension()]
@@ -14,6 +15,14 @@ export function setupTestingEditor() {
     manager,
     schema,
   } = editor
+
+  const markdown = (
+    strings: TemplateStringsArray,
+    ...values: any[]
+  ): TaggedProsemirrorNode => {
+    const markdown = String.raw({ raw: strings }, ...values)
+    return markdownToTaggedDoc(editor, markdown)
+  }
 
   const bulletList = list({ type: 'bullet' })
   const orderedList = list({ type: 'ordered' })
@@ -33,13 +42,15 @@ export function setupTestingEditor() {
     view,
     schema,
     add,
+    markdown,
+    editor,
+
     doc,
     p,
-
     hardBreak,
     blockquote,
 
-    // TODO: remove
+    // TODO: remove list
     list: bulletList,
     bulletList,
     orderedList,

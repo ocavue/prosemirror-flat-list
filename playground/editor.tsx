@@ -13,6 +13,7 @@ import {
   useRemirror,
 } from '@remirror/react'
 import * as React from 'react'
+import { useEffect } from 'react'
 
 import { ListExtension } from '../src/'
 
@@ -55,6 +56,12 @@ const Editor = (): JSX.Element => {
     content,
     stringHandler: 'html',
   })
+
+  useEffect(() => {
+    const view = manager.view
+    // @ts-expect-error this is for debugging
+    window._view = view
+  }, [])
 
   return (
     <ThemeProvider>
@@ -104,12 +111,35 @@ const content = html`
     <li data-task-list-item>first task list item</li>
     <li data-task-list-item data-checked>second task list item</li>
   </ul>
+
   <ul data-toggle-list>
     <li data-toggle-list-item>empty toggle list item</li>
     <li data-toggle-list-item>
       expanded toggle list item
       <ul>
         <li>sub list item</li>
+      </ul>
+
+      <ul>
+        <li>
+          sub list item
+
+          <ul data-task-list>
+            <li data-task-list-item>
+              list with multiple paragraphs
+              <p>paragraph</p>
+              <p>paragraph</p>
+            </li>
+          </ul>
+
+          <ul data-task-list>
+            <li data-task-list-item>
+              list with multiple paragraphs
+              <p>paragraph</p>
+              <p>paragraph</p>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li data-toggle-list-item data-list-collapsed>
