@@ -95,13 +95,14 @@ const content = html`
 
   <ul>
     <li>A1</li>
-    <li>A2</li>
+    <li>
+      <p>A2</p>
+    </li>
     <li>
       A3
       <ul>
         <li>B1</li>
         <li>B2</li>
-        <li>B3</li>
       </ul>
     </li>
   </ul>

@@ -1,7 +1,12 @@
 import { CommandFunction } from '@remirror/pm'
 import { Fragment, NodeType, Slice } from '@remirror/pm/model'
-import { ReplaceAroundStep, ReplaceStep } from '@remirror/pm/transform'
+import {
+  ReplaceAroundStep,
+  ReplaceStep,
+  replaceStep,
+} from '@remirror/pm/transform'
 import { findIndentationRange } from '../utils/find-indentation-range'
+import { isFirstChild, isLastChild } from '../utils/is-last-child'
 
 export function createIndentListCommand(listType: NodeType): CommandFunction {
   return (props): boolean => {
@@ -53,16 +58,39 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
         itemBefore ? 1 : 0
       )
       const { start, end } = range
+      const listDepth = range.depth + 1
+      const siblingBefore = !isFirstChild($from, listDepth)
+      const siblingAfter = !isLastChild($to, listDepth)
+
+      // const siblingBefore =
+      //   $from.before($from.depth) - 1 ===` $from.before($from.depth - 1)
+      //     ? false
+      //     : true
+
+      // const siblingAfter =
+      //   $to.end($to.depth) + 1 === $to.after($to.depth - 1) ? false : true
+
       console.log('start end', start, end)
+      console.log('siblingBefore siblingAfter', siblingBefore, siblingAfter)
+
+      const fr = tr.doc.slice(27, 37).content
+      console.log('fr', fr.toString())
+      // debugger
       tr.step(
-        new ReplaceAroundStep(
-          start - (itemBefore ? 1 : 0),
-          end - (itemBefore ? 1 : 0),
-          start,
-          end,
-          slice,
-          itemBefore ? 0 : 1,
-          true
+        // new ReplaceAroundStep(
+        //   start - (itemBefore ? 1 : 0),
+        //   end - (itemBefore ? 1 : 0),
+        //   start,
+        //   end,
+        //   slice,
+        //   itemBefore ? 0 : 1,
+        //   true
+        // )
+        new ReplaceStep(
+          25,
+          37,
+          new Slice(tr.doc.slice(27, 37).content, 0, 0),
+          false
         )
       )
       dispatch(tr.scrollIntoView())

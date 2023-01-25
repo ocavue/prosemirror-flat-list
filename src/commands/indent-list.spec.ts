@@ -63,7 +63,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can keep the indentation of sub list nodes', () => {
+  it.only('can keep the indentation of sub list nodes', () => {
     t.runCommand(
       commands.indentList,
       t.markdown`
