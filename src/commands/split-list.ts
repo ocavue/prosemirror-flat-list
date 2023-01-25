@@ -18,13 +18,9 @@ export function createSplitListCommand(listType: NodeType): CommandFunction {
       return false
     }
 
-    if ($from.depth < 2) {
-      return false
-    }
+    const listNode = $from.node(-1)
 
-    const currItem = $from.node(-1)
-
-    if (currItem.type !== listType) {
+    if (!listNode || listNode.type !== listType) {
       return false
     }
 
@@ -42,14 +38,24 @@ export function createSplitListCommand(listType: NodeType): CommandFunction {
       return false
     }
 
-    // Split the list item
+    tr.delete($from.pos, $to.pos)
+
+    // If split the list at the start or at the middle, we want to inherit the
+    // current parent type (e.g. heading); otherwise, we want to create a new
+    // default block type (typically paragraph)
     const nextType =
       $to.pos === $from.end()
-        ? currItem.contentMatchAt(0).defaultType
+        ? listNode.contentMatchAt(0).defaultType
         : undefined
-    tr.delete($from.pos, $to.pos)
     const typesAfter = [
-      { type: currItem.type, attrs: currItem.attrs },
+      {
+        type: listType,
+        attrs: {
+          // We don't want to inherit the list attributes (e.g. checked) except
+          // for the list type
+          type: listNode.attrs.type,
+        },
+      },
       nextType ? { type: nextType } : null,
     ]
 

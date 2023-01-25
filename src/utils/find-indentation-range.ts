@@ -9,7 +9,6 @@ export function findIndentationRange(
 ): NodeRange | null {
   const range = findItemRange($from, $to, listType)
 
-  // If the range is not inside a list item, then we do nothing for its indentation.
   if (!range) {
     return null
   }
