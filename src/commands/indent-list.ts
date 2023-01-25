@@ -77,7 +77,15 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
       console.log('fr', fr.toString())
       // debugger
       tr.step(
-        // new ReplaceAroundStep(25, 37, 27, 37, slice, 1, true)
+        // new ReplaceAroundStep(
+        //   start - (itemBefore ? 1 : 0),
+        //   end - (itemBefore ? 1 : 0),
+        //   start,
+        //   end,
+        //   slice,
+        //   itemBefore ? 0 : 1,
+        //   true
+        // )
         new ReplaceStep(
           25,
           37,
