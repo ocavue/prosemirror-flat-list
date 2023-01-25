@@ -4,13 +4,13 @@ import { createDedentListCommand } from './commands/dedent-list'
 import { createSplitListCommand } from './commands/split-list'
 import { createIndentListCommand } from './commands/indent-list'
 
-export function createListKeymap(itemType: NodeType): KeyBindings {
+export function createListKeymap(listType: NodeType): KeyBindings {
   return {
-    Enter: createSplitListCommand(itemType),
+    Enter: createSplitListCommand(listType),
 
-    'Shift-Tab': createDedentListCommand(itemType),
+    'Shift-Tab': createDedentListCommand(listType),
 
-    Tab: createIndentListCommand(itemType),
+    Tab: createIndentListCommand(listType),
 
     // TODO: remove this
     'Mod-Shift-l': ({ tr, dispatch }): boolean => {

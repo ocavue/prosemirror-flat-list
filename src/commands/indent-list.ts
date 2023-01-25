@@ -1,15 +1,15 @@
 import { CommandFunction } from '@remirror/pm'
 import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { findIndentationRange } from "../utils/find-indentation-range"
+import { findIndentationRange } from '../utils/find-indentation-range'
 
-export function createIndentListCommand(itemType: NodeType): CommandFunction {
+export function createIndentListCommand(listType: NodeType): CommandFunction {
   return (props): boolean => {
     const { tr, dispatch } = props
 
     const { $from, $to } = tr.selection
-    // const range = findItemRange($from, $to, itemType)
-    const range = findIndentationRange($from, $to, itemType, true)
+    // const range = findItemRange($from, $to, listType)
+    const range = findIndentationRange($from, $to, listType, true)
 
     if (!range) {
       return false
@@ -18,12 +18,12 @@ export function createIndentListCommand(itemType: NodeType): CommandFunction {
     const { startIndex, parent } = range
 
     const nodeBefore = startIndex > 0 ? parent.child(startIndex - 1) : null
-    const itemBefore = nodeBefore?.type === itemType ? nodeBefore : null
+    const itemBefore = nodeBefore?.type === listType ? nodeBefore : null
 
     if (dispatch) {
-      const attrs = parent.type === itemType ? parent.attrs : null
+      const attrs = parent.type === listType ? parent.attrs : null
       const slice = new Slice(
-        Fragment.from(itemType.create({ ...attrs })),
+        Fragment.from(listType.create({ ...attrs })),
         itemBefore ? 1 : 0,
         0
       )

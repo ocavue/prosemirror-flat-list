@@ -9,16 +9,16 @@ import { isItemRange } from './is-item-range'
 export default function findItemRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
-  itemType: NodeType
+  listType: NodeType
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
-    return findItemRange($to, $from, itemType)
+    return findItemRange($to, $from, listType)
   }
 
   let range = $from.blockRange($to)
 
   while (range) {
-    if (isItemRange(range, itemType)) {
+    if (isItemRange(range, listType)) {
       return range
     }
 

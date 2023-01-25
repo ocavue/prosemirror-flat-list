@@ -1,10 +1,10 @@
 import { CommandFunction } from '@remirror/pm'
 import { NodeType } from '@remirror/pm/model'
 import { canSplit } from '@remirror/pm/transform'
-import { isBlockNodeSelection } from "../utils/is-block-node-selection"
+import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { enterWithoutLift } from './enter-without-lift'
 
-export function createSplitListCommand(itemType: NodeType): CommandFunction {
+export function createSplitListCommand(listType: NodeType): CommandFunction {
   return (props): boolean => {
     const { tr, dispatch, state } = props
     const { selection } = state
@@ -24,7 +24,7 @@ export function createSplitListCommand(itemType: NodeType): CommandFunction {
 
     const currItem = $from.node(-1)
 
-    if (currItem.type !== itemType) {
+    if (currItem.type !== listType) {
       return false
     }
 

@@ -5,20 +5,20 @@ import { liftTarget, ReplaceAroundStep } from '@remirror/pm/transform'
 import { findIndentationRange } from '../utils/find-indentation-range'
 import { isItemRange } from '../utils/is-item-range'
 
-export function createDedentListCommand(itemType: NodeType): CommandFunction {
+export function createDedentListCommand(listType: NodeType): CommandFunction {
   return (props): boolean => {
     const { state, dispatch, tr } = props
 
     const { $from, $to } = state.selection
-    // const range = findItemRange($from, $to, itemType)
-    const range = findIndentationRange($from, $to, itemType, false)
+    // const range = findItemRange($from, $to, listType)
+    const range = findIndentationRange($from, $to, listType, false)
 
     if (!range) {
       return false
     }
 
-    if (isItemRange(range, itemType)) {
-      return liftToOuterList(tr, dispatch, itemType, range)
+    if (isItemRange(range, listType)) {
+      return liftToOuterList(tr, dispatch, listType, range)
     }
 
     return liftBlockRange(tr, dispatch, range)
@@ -28,7 +28,7 @@ export function createDedentListCommand(itemType: NodeType): CommandFunction {
 export function liftToOuterList(
   tr: Transaction,
   dispatch: DispatchFunction | undefined,
-  itemType: NodeType,
+  listType: NodeType,
   range: NodeRange
 ) {
   const endOfItem = range.end
@@ -43,7 +43,7 @@ export function liftToOuterList(
         endOfSiblings,
         endOfItem,
         endOfSiblings,
-        new Slice(Fragment.from(itemType.create(null)), 1, 0),
+        new Slice(Fragment.from(listType.create(null)), 1, 0),
         0,
         true
       )

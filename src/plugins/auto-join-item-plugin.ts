@@ -4,7 +4,7 @@ import { Plugin, PluginKey } from '@remirror/pm/state'
 import { canJoin } from '@remirror/pm/transform'
 
 // TODO: remove this plugin
-export function createAutoJoinItemPlugin(itemType: NodeType): Plugin {
+export function createAutoJoinItemPlugin(listType: NodeType): Plugin {
   return new Plugin({
     key: new PluginKey('auto-join-item'),
 
@@ -79,7 +79,7 @@ export function createAutoJoinItemPlugin(itemType: NodeType): Plugin {
             const before = parent.child(index - 1)
 
             if (before.type === after.type) {
-              const joinDepth = isListJoinable(before, after, itemType)
+              const joinDepth = isListJoinable(before, after, listType)
 
               if (joinDepth) {
                 joinDpeths.set(pos, joinDepth)
@@ -116,14 +116,14 @@ export function createAutoJoinItemPlugin(itemType: NodeType): Plugin {
 function isListJoinable(
   before: ProsemirrorNode | null,
   after: ProsemirrorNode | null,
-  itemType: NodeType
+  listType: NodeType
 ): number {
   let joinDepth = 0
 
   while (
-    before?.type === itemType &&
-    after?.type === itemType &&
-    after?.firstChild?.type === itemType
+    before?.type === listType &&
+    after?.type === listType &&
+    after?.firstChild?.type === listType
   ) {
     joinDepth++
     before = before.lastChild
