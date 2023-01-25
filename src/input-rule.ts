@@ -17,19 +17,18 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
     const attrs = typeof getAttrs === 'function' ? getAttrs(match) : getAttrs
 
     const $pos = tr.selection.$from
-    if ($pos.depth >= 2) {
-      const list = $pos.node(-1)
-      if (list.type === listType) {
-        const oldAttrs: T = list.attrs as T
-        const newAttrs: T = { ...oldAttrs, attrs }
-        const needUpdate = Object.keys(newAttrs).some(
-          (key) => newAttrs[key] != oldAttrs[key]
-        )
-        if (needUpdate) {
-          return tr.setNodeMarkup($pos.before(-1), undefined, newAttrs)
-        } else {
-          return null
-        }
+    const listNode = $pos.node(-1)
+    if (listNode && listNode.type === listType) {
+      const oldAttrs: T = listNode.attrs as T
+      const newAttrs: T = { ...oldAttrs, ...attrs }
+      const needUpdate = Object.keys(newAttrs).some(
+        (key) => newAttrs[key] != oldAttrs[key]
+      )
+
+      if (needUpdate) {
+        return tr.setNodeMarkup($pos.before(-1), undefined, newAttrs)
+      } else {
+        return null
       }
     }
 
