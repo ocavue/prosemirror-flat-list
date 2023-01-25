@@ -18,16 +18,18 @@ export function findIndentationRange(
     return range
   }
 
-  // When indent, we want to only indent the first child inside that item, and keep the reset children (if any) stay at the same level.
-  // When dedent, we want to dedent the item itself, including all its children.
-  if (
-    isIndent === false &&
-    $from.depth > range.depth &&
-    $from.index(range.depth + 1) === 0
-  ) {
-    return range
-  }
+  return range
 
-  // Otherwise, we only lift/sink the block range inside the item.
-  return new NodeRange($from, $to, range.depth + 1)
+  // // When indent, we want to only indent the first child inside that item, and keep the reset children (if any) stay at the same level.
+  // // When dedent, we want to dedent the item itself, including all its children.
+  // if (
+  //   isIndent === false &&
+  //   $from.depth > range.depth &&
+  //   $from.index(range.depth + 1) === 0
+  // ) {
+  //   return range
+  // }
+
+  // // Otherwise, we only lift/sink the block range inside the item.
+  // return new NodeRange($from, $to, range.depth + 1)
 }

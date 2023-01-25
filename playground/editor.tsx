@@ -93,6 +93,23 @@ const content = html`
     <code>Remirror Flat List</code>
   </h1>
 
+  <ul>
+    <li>A1</li>
+    <li>A2</li>
+    <li>
+      A3
+      <ul>
+        <li>B1</li>
+        <li>B2</li>
+        <li>B3</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h1>
+    <code>For test</code>
+  </h1>
+
   <p>
     <a href="https://github.com/ocavue/remirror-extension-flat-list"
       >https://github.com/ocavue/remirror-extension-flat-list</a
@@ -118,9 +135,7 @@ const content = html`
       expanded toggle list item
       <ul>
         <li>sub list item</li>
-      </ul>
-
-      <ul>
+        <li>sub list item</li>
         <li>
           sub list item
 

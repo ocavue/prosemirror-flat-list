@@ -1,10 +1,12 @@
 .prosemirror-flat-list {
   & {
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    padding: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     margin-left: 32px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
+
+    border: 2px solid red;
 
     position: relative;
     display: list-item;

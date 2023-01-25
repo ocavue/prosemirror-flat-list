@@ -90,9 +90,9 @@ export class ListExtension extends NodeExtension {
     }
   }
 
-  createExternalPlugins(): Plugin[] {
-    return [createAutoJoinItemPlugin(this.type)]
-  }
+  // createExternalPlugins(): Plugin[] {
+  //   return [createAutoJoinItemPlugin(this.type)]
+  // }
 
   createInputRules(): InputRule[] {
     return createListInputRules(this.type)
