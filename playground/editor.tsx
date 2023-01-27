@@ -113,31 +113,52 @@ const content = html`
   <h1></h1>
 
   <ul>
-    <li>A1</li>
-    <li>A2</li>
+    <li>
+      <p>A1</p>
+    </li>
+    <li>
+      <p>A2</p>
+    </li>
     <li>
       A3
       <ul>
-        <li>B1</li>
+        <li>
+          <p>B1</p>
+        </li>
         <li>
           B2
           <ul>
-            <li>C1</li>
-            <li>C2</li>
+            <li>
+              <p>C1</p>
+            </li>
+            <li>
+              <p>C2</p>
+            </li>
           </ul>
         </li>
-        <li>B3</li>
+        <li>
+          <p>B3</p>
+          <p>B3</p>
+        </li>
         <li>
           B4
           <ul>
-            <li>C3</li>
-            <li>C4</li>
+            <li>
+              <p>C3</p>
+            </li>
+            <li>
+              <p>C4</p>
+            </li>
           </ul>
         </li>
-        <li>B5</li>
+        <li>
+          <p>B5</p>
+        </li>
       </ul>
     </li>
-    <li>A4</li>
+    <li>
+      <p>A4</p>
+    </li>
   </ul>
 
   <h1>
