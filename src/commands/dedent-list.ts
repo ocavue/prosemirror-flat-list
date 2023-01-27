@@ -351,7 +351,7 @@ function dedentToOuterList(
   const { $to, $from, depth, end, parent, endIndex } = range
 
   const endOfList = $to.end(depth)
-  if (end < endOfList) {
+  if (end < endOfList && parent.child(endIndex - 1).type === listType) {
     // There are siblings after the lifted items, which must become
     // children of the last item
     tr.step(
