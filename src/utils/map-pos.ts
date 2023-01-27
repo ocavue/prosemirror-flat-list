@@ -1,17 +1,16 @@
 import { Transaction } from '@remirror/pm/state'
 
-export function mapPos(tr: Transaction) {
+export function mapPos(tr: Transaction, pos: number) {
   let nextStepIndex = tr.steps.length
 
-  const map = (pos: number): number => {
+  const getPos = (): number => {
     if (nextStepIndex < tr.steps.length) {
       const mapping = tr.mapping.slice(nextStepIndex)
       nextStepIndex = tr.steps.length
-      return mapping.map(pos)
-    } else {
-      return pos
+      pos = mapping.map(pos)
     }
+    return pos
   }
 
-  return map
+  return getPos
 }

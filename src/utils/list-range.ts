@@ -16,7 +16,7 @@ export function findListsRange(
   let range = $from.blockRange($to)
 
   while (range) {
-    if (isItemsRange(range, listType)) {
+    if (isListsRange(range, listType)) {
       return range
     }
 
@@ -30,7 +30,7 @@ export function findListsRange(
   return null
 }
 
-function isItemsRange(range: NodeRange, listType: NodeType): boolean {
+export function isListsRange(range: NodeRange, listType: NodeType): boolean {
   const { startIndex, endIndex, parent } = range
 
   for (let i = startIndex; i < endIndex; i++) {

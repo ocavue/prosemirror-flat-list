@@ -1,4 +1,4 @@
-import { DispatchFunction } from '@remirror/pm'
+import { DispatchFunction, ProsemirrorNode, ResolvedPos } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
@@ -7,6 +7,7 @@ import { findListContentRange } from '../utils/find-item-content-range'
 import {
   findListsRange,
   isLeftOpenRange,
+  isListsRange,
   isRightOpenRange,
 } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
@@ -241,16 +242,16 @@ export function createDedentListCommandV2(listType: NodeType): Command {
 }
 
 export function createDedentListCommandV3(listType: NodeType): Command {
-  const indentListCommand: Command = (state, dispatch): boolean => {
+  const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    if (dedentListV3(tr, tr.selection.from, tr.selection.to, listType)) {
+    if (doDedent(tr, tr.selection.from, tr.selection.to, listType)) {
       dispatch?.(tr)
       return true
     }
     return false
   }
 
-  return autoJoinList(indentListCommand, listType)
+  return autoJoinList(dedentListCommand, listType)
 }
 
 export function dedentListV3(
@@ -259,7 +260,7 @@ export function dedentListV3(
   to: number,
   listType: NodeType,
 ): boolean {
-  const map = mapPos(tr)
+  // const map = mapPos(tr)
 
   const $from = tr.doc.resolve(from)
   const $to = tr.doc.resolve(to)
@@ -291,34 +292,101 @@ export function dedentListV3(
   return true
 }
 
+function doDedent(
+  tr: Transaction,
+  from: number,
+  to: number,
+  listType: NodeType,
+): boolean {
+  if (from === to) {
+    if (!tr.doc.resolve(from).parent.isTextblock) {
+      return false
+    }
+  } else if (isEmptyRange(tr.doc, from, to)) {
+    return false
+  }
+
+  const $from = tr.doc.resolve(from)
+  const $to = tr.doc.resolve(to)
+
+  const range = $from.blockRange($to)
+  if (!range) {
+    return false
+  }
+
+  const { parent, startIndex, endIndex, start, end, depth } = range
+  console.log('doDedent', {
+    startIndex,
+    endIndex,
+    start,
+    end,
+    depth,
+    parent: parent.toString(),
+  })
+
+  if (parent.type !== listType && isListsRange(range, listType)) {
+    return dedentOutOfList(tr, range)
+  } else {
+    return dedentToOuterList(tr, range, listType)
+  }
+}
+
 function dedentListsRange(
   tr: Transaction,
   range: NodeRange,
   listType: NodeType,
 ): boolean {
   if (range.parent.type === listType) {
-    return dedentToOuterList(tr, range)
+    return dedentToOuterList(tr, range, listType)
   } else {
     return dedentOutOfList(tr, range)
   }
 }
 
-function dedentToOuterList(tr: Transaction, range: NodeRange): boolean {
+function dedentToOuterList(
+  tr: Transaction,
+  range: NodeRange,
+  listType: NodeType,
+): boolean {
+  const { $to, $from, depth, end, parent, endIndex } = range
+
+  const endOfList = $to.end(depth)
+  if (end < endOfList) {
+    // There are siblings after the lifted items, which must become
+    // children of the last item
+    tr.step(
+      new ReplaceAroundStep(
+        end - 1,
+        endOfList,
+        end,
+        endOfList,
+        new Slice(Fragment.from(listType.create(null)), 1, 0),
+        0,
+        true,
+      ),
+    )
+    range = new NodeRange(
+      tr.doc.resolve($from.pos),
+      tr.doc.resolve(endOfList),
+      depth,
+    )
+  }
   return safeLift(tr, range)
 }
 
 function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
-  const map = mapPos(tr)
-
   const { startIndex, endIndex, parent } = range
 
+  const getRangeStart = mapPos(tr, range.start)
+  const getRangeEnd = mapPos(tr, range.end)
+
   // Merge the list nodes into a single big list node
-  for (let end = range.end, i = endIndex - 1; i > startIndex; i--) {
+  for (let end = getRangeEnd(), i = endIndex - 1; i > startIndex; i--) {
     end -= parent.child(i).nodeSize
     tr.delete(end - 1, end + 1)
   }
 
-  const $start = tr.doc.resolve(range.start)
+  const $start = tr.doc.resolve(getRangeStart())
   const listNode = $start.nodeAfter
 
   if (!listNode) return false
@@ -326,7 +394,7 @@ function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
   const start = range.start
   const end = start + listNode.nodeSize
 
-  if (map(range.end) !== end) return false
+  if (getRangeEnd() !== end) return false
 
   if (
     !$start.parent.canReplace(
@@ -371,53 +439,93 @@ export function indentListV3(
   to: number,
   listType: NodeType,
 ): boolean {
-  const map = mapPos(tr)
-
   const $from = tr.doc.resolve(from)
   const $to = tr.doc.resolve(to)
   const range = findListsRange($from, $to, listType)
   if (!range) return false
 
-  const leftOpenIndex = isLeftOpenRange(range)
-  const rightOpenIndex = isRightOpenRange(range)
+  const { start: itemBefore, end: itemAfter } = range
+  let itemStart = itemBefore + 1
+  let itemEnd = itemAfter - 1
+  let before = $from.before($from.depth)
+  let after = $to.after($to.depth)
 
-  let leftStart = leftOpenIndex !== false && $from.before(range.depth + 1) + 1
-  let leftEnd = leftOpenIndex !== false && $from.before($from.depth + 1) + 1
+  const getStart = mapPos(tr, itemStart)
+  const getEnd = mapPos(tr, itemEnd)
+  const getBefore = mapPos(tr, before)
+  const getAfter = mapPos(tr, after)
 
-  let rightStart = rightOpenIndex !== false && $to.after(range.depth + 1) - 1
-  let rightEnd = rightOpenIndex !== false && $to.after($to.depth - 1) - 1
-
-  indentListsRange(tr, range, listType)
-
-  leftStart = leftStart !== false && map(leftStart)
-  leftEnd = leftEnd !== false && map(leftEnd)
-  rightStart = rightStart !== false && map(rightStart)
-  rightEnd = rightEnd !== false && map(rightEnd)
-
-  console.log('indentListV3:', {
-    leftStart,
-    leftEnd,
-    rightStart,
-    rightEnd,
+  console.log('indentListV3 A', {
+    // itemBefore,
+    // itemAfter,
+    itemStart,
+    itemEnd,
+    before,
+    after,
   })
 
-  if (rightStart !== false && rightEnd !== false) {
-    dedentListV3(tr, rightStart, rightEnd, listType)
-  }
+  doIndent(tr, itemBefore, itemAfter, listType)
 
-  if (leftStart !== false && leftEnd !== false) {
-    dedentListV3(tr, leftStart, leftEnd, listType)
-  }
+  itemStart = getStart()
+  itemEnd = getEnd()
+  before = getBefore()
+  after = getAfter()
+
+  console.log('indentListV3 B', {
+    // itemBefore,
+    // itemAfter,
+    itemStart,
+    itemEnd,
+    before,
+    after,
+  })
+
+  doDedent(tr, after, itemEnd, listType)
+  doDedent(tr, itemStart, before, listType)
 
   return true
 }
 
-function indentListsRange(
+export function doIndent(
   tr: Transaction,
-  range: NodeRange,
+  from: number,
+  to: number,
   listType: NodeType,
 ): boolean {
-  const { start, end } = range
+  console.log('doIndent', { from, to })
+
+  if (from === to) {
+    if (!tr.doc.resolve(from).parent.isTextblock) {
+      return false
+    }
+  } else if (isEmptyRange(tr.doc, from, to)) {
+    return false
+  }
+
+  const range = tr.doc.resolve(from).blockRange(tr.doc.resolve(to))
+  if (!range) {
+    return false
+  }
+
+  const { parent, startIndex, endIndex, start, end } = range
+
+  if (startIndex > 0) {
+    const nodeBefore = parent.child(startIndex - 1)
+    if (nodeBefore.type === listType) {
+      tr.step(
+        new ReplaceAroundStep(
+          start - 1,
+          end,
+          start,
+          end,
+          new Slice(Fragment.from(listType.create(null)), 1, 0),
+          0,
+          true,
+        ),
+      )
+      return true
+    }
+  }
 
   tr.step(
     new ReplaceAroundStep(
@@ -432,4 +540,24 @@ function indentListsRange(
   )
 
   return true
+}
+
+function isEmptyRange(doc: ProsemirrorNode, from: number, to: number): boolean {
+  return doc.slice(from, to).size === 0
+}
+
+function maybeTextBlockStart($pos: ResolvedPos): number {
+  if ($pos.parent.isTextblock) {
+    return $pos.start()
+  } else {
+    return $pos.pos
+  }
+}
+
+function maybeTextBlockEnd($pos: ResolvedPos): number {
+  if ($pos.parent.isTextblock) {
+    return $pos.start()
+  } else {
+    return $pos.pos
+  }
 }
