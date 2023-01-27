@@ -1,5 +1,7 @@
 import { CommandFunction } from '@remirror/pm'
-import { NodeType } from '@remirror/pm/model'
+import { ReplaceAroundStep } from '@remirror/pm/transform'
+import { Fragment, NodeType, Slice } from '@remirror/pm/model'
+import { appendTransaction } from '../plugins/auto-join-item-plugin'
 import findItemRange from '../utils/find-item-range'
 import { splitBoundary } from '../utils/split-boundary'
 
@@ -81,47 +83,76 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
     const { tr, dispatch } = props
     const { doc } = tr
 
-    const { $from, $to } = tr.selection
+    {
+      const { $from, $to } = tr.selection
 
-    // The block range that includes both $from and $to. It could contain one or more list nodes.
-    const allItemsRange = findItemRange($from, $to, listType)
-    if (!allItemsRange) {
-      return false
+      // The block range that includes both $from and $to. It could contain one or more list nodes.
+      const allItemsRange = findItemRange($from, $to, listType)
+      if (!allItemsRange) {
+        return false
+      }
+
+      // The block range that includes $from. It should contain only one top-level list node.
+      const firstItemRange = findItemRange($from, $from, listType)
+      if (!firstItemRange) {
+        return false
+      }
+
+      // The block range that includes $to. It should contain only one top-level list node.
+      const lastItemRange = $from.sameParent($to)
+        ? firstItemRange
+        : findItemRange($to, $to, listType)
+      if (!lastItemRange) {
+        return false
+      }
+
+      if (
+        !tr.selection.empty &&
+        (allItemsRange.start !== lastItemRange.start ||
+          allItemsRange.end !== lastItemRange.end)
+      ) {
+        const $posBeforeAllItems = doc.resolve(allItemsRange.start)
+        const $posBeforeFirstItem = doc.resolve(firstItemRange.start)
+        const $posAfterLastItem = doc.resolve(lastItemRange.end)
+        const $posAfterAllItems = doc.resolve(allItemsRange.end)
+        splitBoundary(
+          tr,
+          $posAfterLastItem.pos,
+          $posAfterLastItem.depth - $posAfterAllItems.depth,
+        )
+        splitBoundary(
+          tr,
+          $posBeforeFirstItem.pos,
+          $posBeforeFirstItem.depth - $posBeforeAllItems.depth,
+        )
+      }
     }
 
-    // The block range that includes $from. It should contain only one top-level list node.
-    const firstItemRange = findItemRange($from, $from, listType)
-    if (!firstItemRange) {
-      return false
-    }
+    {
+      const { $from, $to } = tr.selection
 
-    // The block range that includes $to. It should contain only one top-level list node.
-    const lastItemRange = $from.sameParent($to)
-      ? firstItemRange
-      : findItemRange($to, $to, listType)
-    if (!lastItemRange) {
-      return false
-    }
+      const allItemsRange = findItemRange($from, $to, listType)
+      if (!allItemsRange) {
+        return false
+      }
 
-    if (
-      !tr.selection.empty &&
-      (allItemsRange.start !== lastItemRange.start ||
-        allItemsRange.end !== lastItemRange.end)
-    ) {
-      const $posBeforeAllItems = doc.resolve(allItemsRange.start)
-      const $posBeforeFirstItem = doc.resolve(firstItemRange.start)
-      const $posAfterLastItem = doc.resolve(lastItemRange.end)
-      const $posAfterAllItems = doc.resolve(allItemsRange.end)
-      splitBoundary(
-        tr,
-        $posAfterLastItem.pos,
-        $posAfterLastItem.depth - $posAfterAllItems.depth,
+      const { start, end } = allItemsRange
+
+      tr.step(
+        new ReplaceAroundStep(
+          start,
+          end,
+          start,
+          end,
+          new Slice(Fragment.from(listType.create(null)), 0, 0),
+          1,
+          true,
+        ),
       )
-      splitBoundary(
-        tr,
-        $posBeforeFirstItem.pos,
-        $posBeforeFirstItem.depth - $posBeforeAllItems.depth,
-      )
+    }
+
+    {
+      appendTransaction([tr], tr, listType)
     }
 
     if (dispatch) {
