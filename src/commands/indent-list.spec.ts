@@ -193,4 +193,30 @@ describe('indentList', () => {
       `,
     )
   })
+
+  it.skip('can handle some complex nested lists', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+          - B1
+          - <start>B2
+        - A2
+          - B3
+            - C1<end>
+              - D1
+          - B4
+      `,
+      markdown`
+        - A1
+          - B1
+            - <start>B2
+          - A2
+            - B3
+              - C1<end>
+              - D1
+          - B4
+      `,
+    )
+  })
 })
