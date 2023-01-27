@@ -1,7 +1,7 @@
 import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { autoJoinList } from '../plugins/auto-join-item-plugin'
+import { autoJoinList } from '../utils/auto-join-list'
 import { findItemsRange } from '../utils/find-items-range'
 import { separateItemRange } from './separate-item-range'
 
