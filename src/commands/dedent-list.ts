@@ -194,35 +194,36 @@ export function createDedentListCommandV2(listType: NodeType): Command {
       }
 
       const leftOpenIndex = isLeftOpenRange(itemsRange)
-      if (leftOpenIndex !== false) {
-        const leftItem = itemsRange.parent.child(itemsRange.startIndex)
-        const leftEnd = itemsRange.start + leftItem.nodeSize
 
-        safeLift(
-          tr,
-          new NodeRange(
-            $from,
-            tr.doc.resolve(leftEnd - 1),
+      {
+        let end = itemsRange.end
+        // const startIndex =
+        //   leftOpenIndex === false
+        //     ? itemsRange.startIndex + 1
+        //     : itemsRange.startIndex
+        for (let i = itemsRange.endIndex - 1; i >=  itemsRange.startIndex; i--) {
+          const listNode = itemsRange.parent.child(i)
+          const start = end - listNode.nodeSize
+          const itemContentRange = new NodeRange(
+            tr.doc.resolve(start + 1),
+            tr.doc.resolve(end - 1),
             itemsRange.depth + 1,
-          ),
-        )
+          )
+          safeLift(tr, itemContentRange)
+          end = start
+        }
       }
 
-      //   if (!itemsRange) {
-      //     return false
-      //   }
+      // if (leftOpenIndex !== false) {
+      //   const leftItem = itemsRange.parent.child(itemsRange.startIndex)
+      //   const leftEnd = itemsRange.start + leftItem.nodeSize
 
-      //   const { start, end } = itemsRange
-
-      //   tr.step(
-      //     new ReplaceAroundStep(
-      //       start,
-      //       end,
-      //       start,
-      //       end,
-      //       new Slice(Fragment.from(listType.create(null)), 0, 0),
-      //       1,
-      //       true,
+      //   safeLift(
+      //     tr,
+      //     new NodeRange(
+      //       $from,
+      //       tr.doc.resolve(leftEnd - 1),
+      //       itemsRange.depth + 1,
       //     ),
       //   )
       // }
