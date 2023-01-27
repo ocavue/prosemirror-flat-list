@@ -1,7 +1,7 @@
 import { CommandFunction } from '@remirror/pm'
 import { NodeType } from '@remirror/pm/model'
 import findItemRange from '../utils/find-item-range'
-import { equalMaxOpenEnd } from '../utils/max-open'
+import { splitBoundary } from '../utils/split-boundary'
 
 export function createIndentListCommand(listType: NodeType): CommandFunction {
   return (props): boolean => {
@@ -103,23 +103,25 @@ export function createIndentListCommand(listType: NodeType): CommandFunction {
       return false
     }
 
-    if (!tr.selection.empty && allItemsRange.end !== lastItemRange.end) {
+    if (
+      !tr.selection.empty &&
+      (allItemsRange.start !== lastItemRange.start ||
+        allItemsRange.end !== lastItemRange.end)
+    ) {
+      const $posBeforeAllItems = doc.resolve(allItemsRange.start)
+      const $posBeforeFirstItem = doc.resolve(firstItemRange.start)
       const $posAfterLastItem = doc.resolve(lastItemRange.end)
       const $posAfterAllItems = doc.resolve(allItemsRange.end)
-
-      const maxDepthOffset = $posAfterLastItem.depth - $posAfterAllItems.depth
-
-      for (let depthOffset = 0; depthOffset < maxDepthOffset; depthOffset++) {
-        const after =
-          $posAfterLastItem.end($posAfterLastItem.depth - depthOffset) + 1
-        const expectedAfter = $posAfterLastItem.pos + depthOffset + 1
-
-        if (after !== expectedAfter) {
-          console.log('split At depth', { depthOffset, after, expectedAfter })
-          tr.split(expectedAfter - 1, maxDepthOffset - depthOffset)
-          break
-        }
-      }
+      splitBoundary(
+        tr,
+        $posAfterLastItem.pos,
+        $posAfterLastItem.depth - $posAfterAllItems.depth,
+      )
+      splitBoundary(
+        tr,
+        $posBeforeFirstItem.pos,
+        $posBeforeFirstItem.depth - $posBeforeAllItems.depth,
+      )
     }
 
     if (dispatch) {
