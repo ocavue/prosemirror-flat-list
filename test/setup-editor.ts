@@ -56,8 +56,6 @@ export function setupTestingEditor() {
     markdown,
     runCommand,
     editor,
-    // TODO: typo
-    comments: editor.commands,
 
     doc,
     p,
