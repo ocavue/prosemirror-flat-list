@@ -1,23 +1,22 @@
 import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model'
-import { isItemRange } from './is-item-range'
 
 /**
  * Returns a minimal block range that includes the given two positions and
  * represents one or multiple sibling list nodes.
  */
-export default function findItemRange(
+export function findItemsRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
-  listType: NodeType
+  listType: NodeType,
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
-    return findItemRange($to, $from, listType)
+    return findItemsRange($to, $from, listType)
   }
 
   let range = $from.blockRange($to)
 
   while (range) {
-    if (isItemRange(range, listType)) {
+    if (isItemsRange(range, listType)) {
       return range
     }
 
@@ -29,4 +28,16 @@ export default function findItemRange(
   }
 
   return null
+}
+
+function isItemsRange(range: NodeRange, listType: NodeType): boolean {
+  const { startIndex, endIndex, parent } = range
+
+  for (let i = startIndex; i < endIndex; i++) {
+    if (parent.child(i).type !== listType) {
+      return false
+    }
+  }
+
+  return true
 }

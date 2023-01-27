@@ -1,5 +1,6 @@
 import {
   ApplySchemaAttributes,
+  convertCommand,
   CreateExtensionPlugin,
   DOMOutputSpec,
   ExtensionTag,
@@ -10,16 +11,16 @@ import {
   NodeViewMethod,
 } from '@remirror/core'
 import { InputRule } from '@remirror/pm/inputrules'
-import { Plugin } from '@remirror/pm/state'
+import { createDedentListCommand } from './commands/dedent-list'
 import { createIndentListCommand } from './commands/indent-list'
+import { createSplitListCommand } from './commands/split-list'
 
 import { handleListMarkerMouseDown } from './dom-events'
 import { createListInputRules } from './input-rule'
-import { createListKeymap } from './keymap'
 import { createListNodeView } from './node-view'
-import { createAutoJoinItemPlugin } from './plugins/auto-join-item-plugin'
 import { createParseDomRules } from './schema/parse-dom'
 import { listToDOM } from './schema/to-dom'
+import { alwaysTrue } from './utils/always-true'
 import { ListDOMSerializer } from './utils/list-serializer'
 
 export class ListExtension extends NodeExtension {
@@ -35,7 +36,7 @@ export class ListExtension extends NodeExtension {
 
   createNodeSpec(
     extra: ApplySchemaAttributes,
-    override: NodeSpecOverride
+    override: NodeSpecOverride,
   ): NodeExtensionSpec {
     return {
       content: 'block+',
@@ -68,7 +69,15 @@ export class ListExtension extends NodeExtension {
   }
 
   createKeymap(): KeyBindings {
-    return createListKeymap(this.type)
+    return {
+      Enter: createSplitListCommand(this.type),
+
+      'Shift-Tab': alwaysTrue(
+        convertCommand(createDedentListCommand(this.type)),
+      ),
+
+      Tab: alwaysTrue(convertCommand(createIndentListCommand(this.type))),
+    }
   }
 
   createPlugin(): CreateExtensionPlugin {
@@ -84,14 +93,10 @@ export class ListExtension extends NodeExtension {
 
         clipboardSerializer: new ListDOMSerializer(
           ListDOMSerializer.nodesFromSchema(schema),
-          ListDOMSerializer.marksFromSchema(schema)
+          ListDOMSerializer.marksFromSchema(schema),
         ),
       },
     }
-  }
-
-  createExternalPlugins(): Plugin[] {
-    return [createAutoJoinItemPlugin(this.type)]
   }
 
   createInputRules(): InputRule[] {
@@ -100,7 +105,16 @@ export class ListExtension extends NodeExtension {
 
   createCommands() {
     return {
-      indentList: () => createIndentListCommand(this.type),
+      indentList: () => convertCommand(createIndentListCommand(this.type)),
+      dedentList: () => convertCommand(createDedentListCommand(this.type)),
+    } as const
+  }
+}
+
+declare global {
+  namespace Remirror {
+    interface AllExtensions {
+      list: ListExtension
     }
   }
 }

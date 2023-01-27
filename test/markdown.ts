@@ -36,7 +36,7 @@ function markdownToHtml(markdown: string): string {
 
 function textNodeToTaggedTextNode(
   t: RemirrorTestChain<AnyExtension>,
-  node: ProsemirrorNode
+  node: ProsemirrorNode,
 ): TaggedContentWithText {
   let tagged: TaggedContentWithText = node.text!
   if (node.marks?.length) {
@@ -61,20 +61,20 @@ function fragmentToArray(fragment: Fragment) {
 
 function nodeToTaggedNode(
   t: RemirrorTestChain<AnyExtension>,
-  node: ProsemirrorNode
+  node: ProsemirrorNode,
 ): TaggedContentWithText {
   if (node.isText) {
     return textNodeToTaggedTextNode(t, node)
   }
   const content = fragmentToArray(node.content).map((node) =>
-    nodeToTaggedNode(t, node)
+    nodeToTaggedNode(t, node),
   )
   return t.attributeNodes[node.type.name](node.attrs)(...content)
 }
 
 function docToTaggedDoc(
   t: RemirrorTestChain<AnyExtension>,
-  doc: ProsemirrorNode
+  doc: ProsemirrorNode,
 ): TaggedProsemirrorNode {
   const taggedDoc = nodeToTaggedNode(t, doc)
   if (!isProsemirrorNode(taggedDoc)) {
@@ -85,7 +85,7 @@ function docToTaggedDoc(
 
 export function markdownToTaggedDoc(
   t: RemirrorTestChain<any>,
-  markdown: string
+  markdown: string,
 ): TaggedProsemirrorNode {
   markdown = dedent(markdown).replaceAll('<', '\\<').replaceAll('>', '\\>')
   const html = markdownToHtml(markdown)

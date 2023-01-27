@@ -38,7 +38,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x, 16.x]
+        node: [16.x, 18.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
       fail-fast: false
 
@@ -69,10 +69,10 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './playground/dist'
+          publish-dir: "./playground/dist"
           production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: 'Deploy from GitHub Actions'
+          deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: true
           enable-commit-comment: false
           overwrites-pull-request-comment: true

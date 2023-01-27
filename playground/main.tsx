@@ -8,7 +8,7 @@ function main() {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <Editor />
-    </React.StrictMode>
+    </React.StrictMode>,
   )
 }
 

@@ -11,7 +11,7 @@ describe('markdownToTaggedDoc', () => {
     `
     const output = markdownToTaggedDoc(t.editor, input)
     expect(output.toString()).toMatchInlineSnapshot(
-      '"doc(list(paragraph(\\"A1\\")), list(paragraph(\\"A2\\")))"'
+      '"doc(list(paragraph(\\"A1\\")), list(paragraph(\\"A2\\")))"',
     )
   })
 
@@ -38,8 +38,8 @@ describe('markdownToTaggedDoc', () => {
       t.doc(
         //
         t.uncheckedTaskList(t.p('A1')),
-        t.checkedTaskList(t.p('A2'))
-      )
+        t.checkedTaskList(t.p('A2')),
+      ),
     )
   })
 
@@ -54,8 +54,8 @@ describe('markdownToTaggedDoc', () => {
       t.doc(
         //
         t.orderedList(t.p('A1')),
-        t.orderedList(t.p('A2'))
-      )
+        t.orderedList(t.p('A2')),
+      ),
     )
   })
 })

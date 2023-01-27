@@ -4,7 +4,7 @@ import { ListAttributes } from './types'
 export function handleListMarkerMouseDown(
   view: EditorView,
   event: MouseEvent,
-  listType: NodeType
+  listType: NodeType,
 ): boolean {
   const target = event.target as HTMLElement | null
 

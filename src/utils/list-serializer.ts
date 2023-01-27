@@ -13,7 +13,7 @@ export class ListDOMSerializer extends DOMSerializer {
   serializeFragment(
     fragment: Fragment,
     options?: { document?: Document },
-    target?: HTMLElement | DocumentFragment
+    target?: HTMLElement | DocumentFragment,
   ): HTMLElement | DocumentFragment {
     const dom = super.serializeFragment(fragment, options, target)
     return joinListElements(dom)
@@ -26,7 +26,7 @@ export class ListDOMSerializer extends DOMSerializer {
  * @internal
  */
 export function joinListElements<T extends Element | DocumentFragment>(
-  parent: T
+  parent: T,
 ): T {
   for (let i = 0; i < parent.childNodes.length; i++) {
     const child = parent.children.item(i)
