@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { setupTestingEditor, TestingEditor } from './setup-editor'
+import { setupTestingEditor, TestingEditor } from '../test/setup-editor'
 
 // TODO: move these test to the command file
 describe('Enter', () => {
