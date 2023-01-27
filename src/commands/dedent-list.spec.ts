@@ -191,4 +191,24 @@ describe('dedentList', () => {
       `,
     )
   })
+
+  it('can dedent a nested list item', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - - B1<cursor>
+
+            B2
+
+          A1
+      `,
+      markdown`
+        - B1
+
+          - B2
+
+          A1
+      `,
+    )
+  })
 })
