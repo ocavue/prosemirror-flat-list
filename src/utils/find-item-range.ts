@@ -5,7 +5,7 @@ import { isItemRange } from './is-item-range'
  * Returns a minimal block range that includes the given two positions and
  * represents one or multiple sibling list nodes.
  */
-export default function findItemRange(
+export function findItemRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
   listType: NodeType,

@@ -2,8 +2,8 @@ import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../plugins/auto-join-item-plugin'
-import findItemRange from '../utils/find-item-range'
-import { splitBoundary } from '../utils/split-boundary'
+import { findItemRange } from '../utils/find-item-range'
+import { separateItemRange } from './separate-item-range'
 
 export function createIndentListCommand(listType: NodeType): Command {
   /*
@@ -81,48 +81,10 @@ export function createIndentListCommand(listType: NodeType): Command {
 
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    const { doc } = tr
 
     {
       const { $from, $to } = tr.selection
-
-      // The block range that includes both $from and $to. It could contain one or more list nodes.
-      const allItemsRange = findItemRange($from, $to, listType)
-      if (!allItemsRange) {
-        return false
-      }
-
-      // The block range that includes $from. It should contain only one top-level list node.
-      const firstItemRange = $from.blockRange()
-      if (!firstItemRange) {
-        return false
-      }
-
-      // The block range that includes $to. It should contain only one top-level list node.
-      const lastItemRange = $to.blockRange()
-      if (!lastItemRange) {
-        return false
-      }
-
-      if (
-        allItemsRange.start !== lastItemRange.start ||
-        allItemsRange.end !== lastItemRange.end
-      ) {
-        const $posBeforeAllItems = doc.resolve(allItemsRange.start)
-        const $posBeforeFirstItem = doc.resolve(firstItemRange.start)
-        const $posAfterLastItem = doc.resolve(lastItemRange.end)
-        const $posAfterAllItems = doc.resolve(allItemsRange.end)
-        splitBoundary(
-          tr,
-          $posAfterLastItem.pos,
-          $posAfterLastItem.depth - $posAfterAllItems.depth,
-        )
-        splitBoundary(
-          tr,
-          $posBeforeFirstItem.pos,
-          $posBeforeFirstItem.depth - $posBeforeAllItems.depth,
-        )
-      }
+      separateItemRange(tr, $from, $to, listType)
     }
 
     {

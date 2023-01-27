@@ -94,6 +94,24 @@ const content = html`
   </h1>
 
   <ul>
+    <li>
+      <p>A1</p>
+      <ul>
+        <li>
+          <p>B1</p>
+        </li>
+        <li>
+          <p>B2</p>
+          <p>B2</p>
+        </li>
+      </ul>
+      <p>A1</p>
+    </li>
+  </ul>
+
+  <h1></h1>
+
+  <ul>
     <li>A1</li>
     <li>A2</li>
     <li>

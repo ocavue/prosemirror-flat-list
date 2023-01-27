@@ -2,10 +2,15 @@ import { DispatchFunction } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { liftTarget, ReplaceAroundStep } from '@remirror/pm/transform'
+import { autoJoinList } from '../plugins/auto-join-item-plugin'
 import { findIndentationRange } from '../utils/find-indentation-range'
+import { findItemRange } from '../utils/find-item-range'
 import { isItemRange } from '../utils/is-item-range'
+import { separateItemRange } from './separate-item-range'
 
-export function createDedentListCommand(listType: NodeType): Command {
+export { createDedentListCommandV1 as createDedentListCommand }
+
+export function createDedentListCommandV1(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const { $from, $to } = state.selection
     // const range = findItemRange($from, $to, listType)
@@ -23,6 +28,35 @@ export function createDedentListCommand(listType: NodeType): Command {
   }
 
   return dedentListCommand
+}
+
+export function createDedentListCommandV2(listType: NodeType): Command {
+  const dedentListCommand: Command = (state, dispatch): boolean => {
+    const tr = state.tr
+
+    {
+      const { $from, $to } = tr.selection
+      separateItemRange(tr, $from, $to, listType)
+    }
+
+    {
+      const { $from, $to } = tr.selection
+      const range = findItemRange($from, $to, listType)
+      if (!range) {
+        return false
+      }
+
+      const target = liftTarget(range)
+      if (target == null) {
+        return false
+      }
+
+      dispatch?.(tr.lift(range, target).scrollIntoView())
+      return true
+    }
+  }
+
+  return autoJoinList(dedentListCommand, listType)
 }
 
 export function liftToOuterList(

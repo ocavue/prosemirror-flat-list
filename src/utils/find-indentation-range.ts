@@ -1,5 +1,5 @@
 import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model'
-import findItemRange from './find-item-range'
+import { findItemRange } from './find-item-range'
 
 export function findIndentationRange(
   $from: ResolvedPos,
