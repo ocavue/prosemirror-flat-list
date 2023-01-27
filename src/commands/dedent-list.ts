@@ -9,10 +9,12 @@ import {
   isLeftOpenRange,
   isRightOpenRange,
 } from '../utils/list-range'
+import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
+import { indentListV3 } from './indent-list'
 import { separateItemRange } from './separate-item-range'
 
-export { createDedentListCommandV2 as createDedentListCommand }
+export { createDedentListCommandV3 as createDedentListCommand }
 
 export function createDedentListCommandV1(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
@@ -201,7 +203,7 @@ export function createDedentListCommandV2(listType: NodeType): Command {
         //   leftOpenIndex === false
         //     ? itemsRange.startIndex + 1
         //     : itemsRange.startIndex
-        for (let i = itemsRange.endIndex - 1; i >=  itemsRange.startIndex; i--) {
+        for (let i = itemsRange.endIndex - 1; i >= itemsRange.startIndex; i--) {
           const listNode = itemsRange.parent.child(i)
           const start = end - listNode.nodeSize
           const itemContentRange = new NodeRange(
@@ -237,4 +239,116 @@ export function createDedentListCommandV2(listType: NodeType): Command {
   }
 
   return autoJoinList(indentListCommand, listType)
+}
+
+export function createDedentListCommandV3(listType: NodeType): Command {
+  const indentListCommand: Command = (state, dispatch): boolean => {
+    const tr = state.tr
+    if (dedentListV3(tr, tr.selection.from, tr.selection.to, listType)) {
+      dispatch?.(tr)
+      return true
+    }
+    return false
+  }
+
+  return autoJoinList(indentListCommand, listType)
+}
+
+export function dedentListV3(
+  tr: Transaction,
+  from: number,
+  to: number,
+  listType: NodeType,
+): boolean {
+  const map = mapPos(tr)
+
+  const $from = tr.doc.resolve(from)
+  const $to = tr.doc.resolve(to)
+  const range = findListsRange($from, $to, listType)
+  if (!range) return false
+
+  const rightOpenIndex = isRightOpenRange(range)
+  const leftOpenIndex = isLeftOpenRange(range)
+
+  const leftStart = $from.before(range.depth + 1) + 1
+  const leftEnd = $from.before($from.depth + 1) + 1
+
+  const rightStart = $to.after(range.depth + 1) - 1
+  const rightEnd = $to.after($to.depth + 1) - 1
+
+  dedentListsRange(tr, range, listType)
+
+  console.log('leftOpenIndex:', leftOpenIndex)
+  console.log('rightOpenIndex:', rightOpenIndex)
+
+  // if (rightOpenIndex !== false) {
+  //   indentListV3(tr, map(leftStart), map(leftEnd), listType)
+  // }
+
+  // if (leftOpenIndex !== false) {
+  //   indentListV3(tr, map(rightStart), map(rightEnd), listType)
+  // }
+
+  return true
+}
+
+function dedentListsRange(
+  tr: Transaction,
+  range: NodeRange,
+  listType: NodeType,
+): boolean {
+  if (range.parent.type === listType) {
+    return dedentToOuterList(tr, range)
+  } else {
+    return dedentOutOfList(tr, range)
+  }
+}
+
+function dedentToOuterList(tr: Transaction, range: NodeRange): boolean {
+  return safeLift(tr, range)
+}
+
+function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
+  const map = mapPos(tr)
+
+  const { startIndex, endIndex, parent } = range
+
+  // Merge the list nodes into a single big list node
+  for (let end = range.end, i = endIndex - 1; i > startIndex; i--) {
+    end -= parent.child(i).nodeSize
+    tr.delete(end - 1, end + 1)
+  }
+
+  const $start = tr.doc.resolve(range.start)
+  const listNode = $start.nodeAfter
+
+  if (!listNode) return false
+
+  const start = range.start
+  const end = start + listNode.nodeSize
+
+  if (map(range.end) !== end) return false
+
+  if (
+    !$start.parent.canReplace(
+      startIndex,
+      startIndex + 1,
+      Fragment.from(listNode),
+    )
+  ) {
+    return false
+  }
+
+  tr.step(
+    new ReplaceAroundStep(
+      start,
+      end,
+      start + 1,
+      end - 1,
+      new Slice(Fragment.empty, 0, 0),
+      0,
+      true,
+    ),
+  )
+  return true
 }
