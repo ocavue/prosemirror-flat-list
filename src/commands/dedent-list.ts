@@ -1,14 +1,12 @@
-import { CommandFunction, DispatchFunction } from '@remirror/pm'
+import { DispatchFunction } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
-import { Transaction } from '@remirror/pm/state'
+import { Command, Transaction } from '@remirror/pm/state'
 import { liftTarget, ReplaceAroundStep } from '@remirror/pm/transform'
 import { findIndentationRange } from '../utils/find-indentation-range'
 import { isItemRange } from '../utils/is-item-range'
 
-export function createDedentListCommand(listType: NodeType): CommandFunction {
-  return (props): boolean => {
-    const { state, dispatch, tr } = props
-
+export function createDedentListCommand(listType: NodeType): Command {
+  const dedentListCommand: Command = (state, dispatch): boolean => {
     const { $from, $to } = state.selection
     // const range = findItemRange($from, $to, listType)
     const range = findIndentationRange($from, $to, listType, false)
@@ -18,11 +16,13 @@ export function createDedentListCommand(listType: NodeType): CommandFunction {
     }
 
     if (isItemRange(range, listType)) {
-      return liftToOuterList(tr, dispatch, listType, range)
+      return liftToOuterList(state.tr, dispatch, listType, range)
     }
 
-    return liftBlockRange(tr, dispatch, range)
+    return liftBlockRange(state.tr, dispatch, range)
   }
+
+  return dedentListCommand
 }
 
 export function liftToOuterList(

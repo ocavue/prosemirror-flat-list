@@ -68,12 +68,10 @@ export class ListExtension extends NodeExtension {
   }
 
   createKeymap(): KeyBindings {
-    const listType = this.type
-
     return {
-      Enter: createSplitListCommand(listType),
+      Enter: createSplitListCommand(this.type),
 
-      'Shift-Tab': createDedentListCommand(listType),
+      'Shift-Tab': convertCommand(createDedentListCommand(this.type)),
 
       Tab: convertCommand(createIndentListCommand(this.type)),
     }
@@ -105,6 +103,7 @@ export class ListExtension extends NodeExtension {
   createCommands() {
     return {
       indentList: () => convertCommand(createIndentListCommand(this.type)),
+      dedentList: () => convertCommand(createDedentListCommand(this.type)),
     } as const
   }
 }
