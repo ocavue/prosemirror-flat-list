@@ -116,7 +116,7 @@ const content = html`
           </ul>
         </li>
         <li>B5</li>
-        </ul>
+      </ul>
     </li>
     <li>A4</li>
   </ul>

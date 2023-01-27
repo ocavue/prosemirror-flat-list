@@ -28,7 +28,7 @@ export function setupTestingEditor() {
   const runCommand = (
     commandFunction: () => void,
     before: TaggedProsemirrorNode,
-    after: TaggedProsemirrorNode
+    after: TaggedProsemirrorNode,
   ) => {
     add(before)
     commandFunction()

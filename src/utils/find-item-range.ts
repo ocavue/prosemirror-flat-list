@@ -8,7 +8,7 @@ import { isItemRange } from './is-item-range'
 export default function findItemRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
-  listType: NodeType
+  listType: NodeType,
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
     return findItemRange($to, $from, listType)

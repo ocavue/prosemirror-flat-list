@@ -5,7 +5,7 @@ import { parseInteger } from '../utils/parse-integer'
 
 export function createParseDomRules(
   extra: ApplySchemaAttributes,
-  override: NodeSpecOverride
+  override: NodeSpecOverride,
 ): readonly ParseRule[] {
   return [
     {

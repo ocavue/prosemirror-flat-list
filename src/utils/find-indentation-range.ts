@@ -5,7 +5,7 @@ export function findIndentationRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
   listType: NodeType,
-  isIndent: boolean
+  isIndent: boolean,
 ): NodeRange | null {
   const range = findItemRange($from, $to, listType)
 

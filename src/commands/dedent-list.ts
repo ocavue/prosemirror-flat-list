@@ -29,7 +29,7 @@ export function liftToOuterList(
   tr: Transaction,
   dispatch: DispatchFunction | undefined,
   listType: NodeType,
-  range: NodeRange
+  range: NodeRange,
 ) {
   const endOfItem = range.end
   const endOfSiblings = range.$to.end(range.depth)
@@ -45,13 +45,13 @@ export function liftToOuterList(
         endOfSiblings,
         new Slice(Fragment.from(listType.create(null)), 1, 0),
         0,
-        true
-      )
+        true,
+      ),
     )
     range = new NodeRange(
       tr.doc.resolve(range.$from.pos),
       tr.doc.resolve(endOfSiblings),
-      range.depth
+      range.depth,
     )
   }
 
@@ -61,7 +61,7 @@ export function liftToOuterList(
 export function liftBlockRange(
   tr: Transaction,
   dispatch: DispatchFunction | undefined,
-  range: NodeRange
+  range: NodeRange,
 ) {
   const target = liftTarget(range)
 

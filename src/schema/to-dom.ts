@@ -5,7 +5,7 @@ import { ListAttributes } from '../types'
 export function listToDOM(
   node: ProsemirrorNode,
   nativeList: boolean,
-  extra?: ApplySchemaAttributes
+  extra?: ApplySchemaAttributes,
 ): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type

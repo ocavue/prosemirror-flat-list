@@ -8,7 +8,7 @@ import { ListAttributes } from './types'
 export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   re: RegExp,
   listType: NodeType,
-  getAttrs: T | ((matches: RegExpMatchArray) => T)
+  getAttrs: T | ((matches: RegExpMatchArray) => T),
 ): InputRule {
   return new InputRule(re, (state, match, start, end): Transaction | null => {
     const tr = state.tr
@@ -22,7 +22,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
       const oldAttrs: T = listNode.attrs as T
       const newAttrs: T = { ...oldAttrs, ...attrs }
       const needUpdate = Object.keys(newAttrs).some(
-        (key) => newAttrs[key] != oldAttrs[key]
+        (key) => newAttrs[key] != oldAttrs[key],
       )
 
       if (needUpdate) {

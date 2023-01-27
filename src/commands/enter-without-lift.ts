@@ -10,5 +10,5 @@ import {
 // `liftEmptyBlock` command.
 
 export const enterWithoutLift = convertCommand(
-  pmChainCommands(newlineInCode, createParagraphNear, splitBlock)
+  pmChainCommands(newlineInCode, createParagraphNear, splitBlock),
 )

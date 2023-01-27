@@ -45,7 +45,7 @@ describe('ListDOMSerializer', () => {
 
     const serializer = new ListDOMSerializer(
       ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema)
+      ListDOMSerializer.marksFromSchema(schema),
     )
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
@@ -61,7 +61,7 @@ describe('ListDOMSerializer', () => {
 
     const serializer = new ListDOMSerializer(
       ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema)
+      ListDOMSerializer.marksFromSchema(schema),
     )
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
@@ -83,13 +83,13 @@ describe('ListDOMSerializer', () => {
 
         bulletList(p('D')),
         taskList(p('E')),
-        toggleList(p('D'))
-      )
+        toggleList(p('D')),
+      ),
     )
 
     const serializer = new ListDOMSerializer(
       ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema)
+      ListDOMSerializer.marksFromSchema(schema),
     )
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
@@ -105,13 +105,13 @@ describe('ListDOMSerializer', () => {
     editor = add(
       doc(
         bulletList(p('A'), orderedList(p('B')), orderedList(p('C'))),
-        bulletList(p('D'), orderedList(p('E')), orderedList(p('F')))
-      )
+        bulletList(p('D'), orderedList(p('E')), orderedList(p('F'))),
+      ),
     )
 
     const serializer = new ListDOMSerializer(
       ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema)
+      ListDOMSerializer.marksFromSchema(schema),
     )
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
