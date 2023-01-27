@@ -3,19 +3,21 @@ import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
-import { findItemContentRange } from '../utils/find-item-content-range'
-import { findItemsRange } from '../utils/find-items-range'
+import { findListContentRange } from '../utils/find-item-content-range'
+import { findListsRange, isLeftOpenRange } from '../utils/list-range'
 import { safeLift } from '../utils/safe-lift'
 import { separateItemRange } from './separate-item-range'
 
-export function createDedentListCommand(listType: NodeType): Command {
+export { createDedentListCommandV2 as createDedentListCommand }
+
+export function createDedentListCommandV1(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
 
     separateItemRange(tr, tr.selection.$from, tr.selection.$to, listType)
 
     const { $from, $to } = tr.selection
-    const range = findItemsRange($from, $to, listType)
+    const range = findListsRange($from, $to, listType)
     if (!range) {
       return false
     }
@@ -25,14 +27,14 @@ export function createDedentListCommand(listType: NodeType): Command {
     }
 
     {
-      const range = findItemContentRange($from, $to, listType)
+      const range = findListContentRange($from, $to, listType)
       if (range && safeLift(tr, range)) {
         dispatch?.(tr)
         return true
       }
     }
     {
-      const range = findItemsRange($from, $to, listType)
+      const range = findListsRange($from, $to, listType)
       if (range) {
         let end = range.end
         for (let i = range.endIndex - 1; i >= range.startIndex; i--) {
@@ -93,4 +95,61 @@ export function liftToOuterList(
     return true
   }
   return false
+}
+
+export function createDedentListCommandV2(listType: NodeType): Command {
+  const indentListCommand: Command = (state, dispatch): boolean => {
+    const tr = state.tr
+
+    {
+      const { $from, $to } = tr.selection
+
+      const itemsRange = findListsRange($from, $to, listType)
+      if (!itemsRange) {
+        return false
+      }
+
+      const leftOpenIndex = isLeftOpenRange(itemsRange)
+      if (leftOpenIndex !== false) {
+        const leftItem = itemsRange.parent.child(itemsRange.startIndex)
+        const leftEnd = itemsRange.start + leftItem.nodeSize
+
+        safeLift(
+          tr,
+          new NodeRange(
+            $from,
+            tr.doc.resolve(leftEnd - 1),
+            itemsRange.depth + 1,
+          ),
+        )
+      }
+
+      //   if (!itemsRange) {
+      //     return false
+      //   }
+
+      //   const { start, end } = itemsRange
+
+      //   tr.step(
+      //     new ReplaceAroundStep(
+      //       start,
+      //       end,
+      //       start,
+      //       end,
+      //       new Slice(Fragment.from(listType.create(null)), 0, 0),
+      //       1,
+      //       true,
+      //     ),
+      //   )
+      // }
+
+      if (dispatch) {
+        dispatch(tr)
+      }
+
+      return true
+    }
+  }
+
+  return autoJoinList(indentListCommand, listType)
 }

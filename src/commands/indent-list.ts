@@ -2,10 +2,12 @@ import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
-import { findItemsRange } from '../utils/find-items-range'
+import { findListsRange } from '../utils/list-range'
 import { separateItemRange } from './separate-item-range'
 
-export function createIndentListCommand(listType: NodeType): Command {
+export { createIndentListCommandV1 as createIndentListCommand }
+
+export function createIndentListCommandV1(listType: NodeType): Command {
   /*
 
   Let's say we have the following list nodes, represented in the Markdown
@@ -90,7 +92,7 @@ export function createIndentListCommand(listType: NodeType): Command {
     {
       const { $from, $to } = tr.selection
 
-      const itemsRange = findItemsRange($from, $to, listType)
+      const itemsRange = findListsRange($from, $to, listType)
       if (!itemsRange) {
         return false
       }

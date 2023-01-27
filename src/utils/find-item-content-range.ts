@@ -1,7 +1,7 @@
 import { NodeType, ProsemirrorNode } from '@remirror/pm'
 import { NodeRange, ResolvedPos } from '@remirror/pm/model'
 
-export function findItemContentRange(
+export function findListContentRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
   listType: NodeType,

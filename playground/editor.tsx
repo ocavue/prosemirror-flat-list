@@ -99,14 +99,25 @@ const content = html`
       <ul>
         <li>
           <p>B1</p>
+          <ul>
+            <li>
+              <p>C1</p>
+              <p>C1</p>
+            </li>
+          </ul>
+          <p>B1</p>
         </li>
         <li>
           <p>B2</p>
-          <p>B2</p>
+          <ul>
+            <li>
+              <p>C2</p>
+              <p>C2</p>
+            </li>
+          </ul>
           <p>B2</p>
         </li>
       </ul>
-      <p>A1</p>
     </li>
   </ul>
 
