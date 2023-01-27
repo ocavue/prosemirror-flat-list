@@ -20,6 +20,7 @@ import { createListInputRules } from './input-rule'
 import { createListNodeView } from './node-view'
 import { createParseDomRules } from './schema/parse-dom'
 import { listToDOM } from './schema/to-dom'
+import { alwaysTrue } from './utils/always-true'
 import { ListDOMSerializer } from './utils/list-serializer'
 
 export class ListExtension extends NodeExtension {
@@ -71,9 +72,11 @@ export class ListExtension extends NodeExtension {
     return {
       Enter: createSplitListCommand(this.type),
 
-      'Shift-Tab': convertCommand(createDedentListCommand(this.type)),
+      'Shift-Tab': alwaysTrue(
+        convertCommand(createDedentListCommand(this.type)),
+      ),
 
-      Tab: convertCommand(createIndentListCommand(this.type)),
+      Tab: alwaysTrue(convertCommand(createIndentListCommand(this.type))),
     }
   }
 
