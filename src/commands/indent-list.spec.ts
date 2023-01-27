@@ -113,14 +113,17 @@ describe('indentList', () => {
       commands.indentList,
       markdown`
         - A1
-        - <cursor>A2
+
+        - A2<cursor>
 
           A2
       `,
       markdown`
         - A1
-          - <cursor>A2
-        - A2
+
+          - A2<cursor>
+
+            A2
       `,
     )
 
@@ -129,7 +132,7 @@ describe('indentList', () => {
       markdown`
         - A1
 
-        - <cursor>A2
+        - A2<cursor>
 
           A2
 
@@ -138,9 +141,9 @@ describe('indentList', () => {
       markdown`
         - A1
 
-          - <cursor>A2
+          - A2<cursor>
 
-        - A2
+            A2
 
           - B1
       `,

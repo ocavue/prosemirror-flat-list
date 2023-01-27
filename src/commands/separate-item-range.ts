@@ -1,4 +1,5 @@
 import { NodeType, ResolvedPos, Transaction } from '@remirror/pm'
+import { findItemContentRange } from '../utils/find-item-content-range'
 import { findItemRange } from '../utils/find-item-range'
 import { splitBoundary } from '../utils/split-boundary'
 
@@ -23,7 +24,7 @@ export function separateItemRange(
   }
 
   // The block range that includes $to. It should contain only one top-level list node.
-  const lastItemRange = $to.blockRange()
+  const lastItemRange = findItemContentRange($to, listType)
   if (!lastItemRange) {
     return false
   }
