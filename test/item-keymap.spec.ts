@@ -12,8 +12,8 @@ describe('Enter', () => {
       doc(
         //
         list(p('123')),
-        list(p('456<cursor>'))
-      )
+        list(p('456<cursor>')),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -21,16 +21,16 @@ describe('Enter', () => {
         //
         list(p('123')),
         list(p('456')),
-        list(p('<cursor>'))
-      )
+        list(p('<cursor>')),
+      ),
     )
 
     editor = add(
       doc(
         //
         list(p('123')),
-        list(p('45<cursor>6'))
-      )
+        list(p('45<cursor>6')),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -38,16 +38,16 @@ describe('Enter', () => {
         //
         list(p('123')),
         list(p('45')),
-        list(p('<cursor>6'))
-      )
+        list(p('<cursor>6')),
+      ),
     )
 
     editor = add(
       doc(
         //
         list(p('1<cursor>23')),
-        list(p('456'))
-      )
+        list(p('456')),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -55,8 +55,8 @@ describe('Enter', () => {
         //
         list(p('1')),
         list(p('<cursor>23')),
-        list(p('456'))
-      )
+        list(p('456')),
+      ),
     )
   })
 
@@ -66,9 +66,9 @@ describe('Enter', () => {
         list(
           //
           p('123'),
-          list(p('456<cursor>'))
-        )
-      )
+          list(p('456<cursor>')),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -77,9 +77,9 @@ describe('Enter', () => {
           //
           p('123'),
           list(p('456')),
-          list(p('<cursor>'))
-        )
-      )
+          list(p('<cursor>')),
+        ),
+      ),
     )
   })
 
@@ -88,25 +88,8 @@ describe('Enter', () => {
       doc(
         //
         list(p('123')),
-        list(p('<cursor>'))
-      )
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        p('<cursor>')
-      )
-    )
-
-    editor = add(
-      doc(
-        //
-        list(p('123')),
         list(p('<cursor>')),
-        list(p('456'))
-      )
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -114,24 +97,41 @@ describe('Enter', () => {
         //
         list(p('123')),
         p('<cursor>'),
-        list(p('456'))
-      )
+      ),
+    )
+
+    editor = add(
+      doc(
+        //
+        list(p('123')),
+        list(p('<cursor>')),
+        list(p('456')),
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        //
+        list(p('123')),
+        p('<cursor>'),
+        list(p('456')),
+      ),
     )
 
     editor = add(
       doc(
         //
         list(p('<cursor>')),
-        list(p('123'))
-      )
+        list(p('123')),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
         //
         p('<cursor>'),
-        list(p('123'))
-      )
+        list(p('123')),
+      ),
     )
   })
 
@@ -141,9 +141,9 @@ describe('Enter', () => {
         list(
           //
           p('123'),
-          list(p('<cursor>'))
-        )
-      )
+          list(p('<cursor>')),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -151,9 +151,9 @@ describe('Enter', () => {
         list(
           //
           p('123'),
-          p('<cursor>')
-        )
-      )
+          p('<cursor>'),
+        ),
+      ),
     )
   })
 
@@ -162,8 +162,8 @@ describe('Enter', () => {
       doc(
         //
         list(p('<start>123<end>')),
-        list(p('456'))
-      )
+        list(p('456')),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -171,8 +171,8 @@ describe('Enter', () => {
         //
         list(p('')),
         list(p('<cursor>')),
-        list(p('456'))
-      )
+        list(p('456')),
+      ),
     )
   })
 
@@ -183,24 +183,24 @@ describe('Enter', () => {
           //
           p('123<cursor>'),
           p('456'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
         list(
           //
-          p('123')
+          p('123'),
         ),
         list(
           //
           p('<cursor>'),
           p('456'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
 
     // Nested list item
@@ -212,10 +212,10 @@ describe('Enter', () => {
             //
             p('123<cursor>'),
             p('456'),
-            p('789')
-          )
-        )
-      )
+            p('789'),
+          ),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -224,16 +224,16 @@ describe('Enter', () => {
           p('0'),
           list(
             //
-            p('123')
+            p('123'),
           ),
           list(
             //
             p('<cursor>'),
             p('456'),
-            p('789')
-          )
-        )
-      )
+            p('789'),
+          ),
+        ),
+      ),
     )
   })
 
@@ -244,9 +244,9 @@ describe('Enter', () => {
         list(
           //
           p('123'),
-          p('456<cursor>')
-        )
-      )
+          p('456<cursor>'),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -255,9 +255,9 @@ describe('Enter', () => {
           //
           p('123'),
           p('456'),
-          p('<cursor>')
-        )
-      )
+          p('<cursor>'),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -267,9 +267,9 @@ describe('Enter', () => {
           p('123'),
           p('456'),
           p(''),
-          p('<cursor>')
-        )
-      )
+          p('<cursor>'),
+        ),
+      ),
     )
 
     // Cursor in the middle paragraph of the item
@@ -279,9 +279,9 @@ describe('Enter', () => {
           //
           p('123'),
           p('456<cursor>'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -291,9 +291,9 @@ describe('Enter', () => {
           p('123'),
           p('456'),
           p('<cursor>'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -304,9 +304,9 @@ describe('Enter', () => {
           p('456'),
           p(''),
           p('<cursor>'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
 
     // Cursor in the last paragraph of the item (nested list item)
@@ -317,10 +317,10 @@ describe('Enter', () => {
           list(
             //
             p('123'),
-            p('456<cursor>')
-          )
-        )
-      )
+            p('456<cursor>'),
+          ),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -331,10 +331,10 @@ describe('Enter', () => {
             //
             p('123'),
             p('456'),
-            p('<cursor>')
-          )
-        )
-      )
+            p('<cursor>'),
+          ),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -346,10 +346,10 @@ describe('Enter', () => {
             p('123'),
             p('456'),
             p(''),
-            p('<cursor>')
-          )
-        )
-      )
+            p('<cursor>'),
+          ),
+        ),
+      ),
     )
 
     // Cursor in the middle paragraph of the item (nested list item)
@@ -361,10 +361,10 @@ describe('Enter', () => {
             //
             p('123'),
             p('456<cursor>'),
-            p('789')
-          )
-        )
-      )
+            p('789'),
+          ),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -376,10 +376,10 @@ describe('Enter', () => {
             p('123'),
             p('456'),
             p('<cursor>'),
-            p('789')
-          )
-        )
-      )
+            p('789'),
+          ),
+        ),
+      ),
     )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
@@ -392,10 +392,10 @@ describe('Enter', () => {
             p('456'),
             p(''),
             p('<cursor>'),
-            p('789')
-          )
-        )
-      )
+            p('789'),
+          ),
+        ),
+      ),
     )
   })
 
@@ -404,16 +404,16 @@ describe('Enter', () => {
       editor = add(
         doc(
           //
-          p('1<cursor>23')
-        )
+          p('1<cursor>23'),
+        ),
       )
       editor.press('Enter')
       expect(editor.state).toEqualRemirrorState(
         doc(
           //
           p('1'),
-          p('23')
-        )
+          p('23'),
+        ),
       )
 
       editor = add(
@@ -422,10 +422,10 @@ describe('Enter', () => {
             p('123'),
             blockquote(
               //
-              p('4<cursor>56')
-            )
-          )
-        )
+              p('4<cursor>56'),
+            ),
+          ),
+        ),
       )
       editor.press('Enter')
       expect(editor.state).toEqualRemirrorState(
@@ -435,10 +435,10 @@ describe('Enter', () => {
             blockquote(
               //
               p('4'),
-              p('<cursor>56')
-            )
-          )
-        )
+              p('<cursor>56'),
+            ),
+          ),
+        ),
       )
     })
   })
@@ -455,17 +455,17 @@ describe('Shift-Tab', () => {
         list(
           //
           p('123'),
-          list(p('456<cursor>'))
-        )
-      )
+          list(p('456<cursor>')),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
       doc(
         //
         list(p('123')),
-        list(p('456<cursor>'))
-      )
+        list(p('456<cursor>')),
+      ),
     )
   })
 
@@ -476,9 +476,9 @@ describe('Shift-Tab', () => {
           //
           p('123'),
           list(p('45<start>6')),
-          list(p('7<end>89'))
-        )
-      )
+          list(p('7<end>89')),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -486,8 +486,8 @@ describe('Shift-Tab', () => {
         //
         list(p('123')),
         list(p('45<start>6')),
-        list(p('7<end>89'))
-      )
+        list(p('7<end>89')),
+      ),
     )
 
     editor = add(
@@ -500,28 +500,28 @@ describe('Shift-Tab', () => {
             p('45<start>6'),
             list(
               //
-              p('7<end>89')
-            )
-          )
-        )
-      )
+              p('7<end>89'),
+            ),
+          ),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
       doc(
         list(
           //
-          p('123')
+          p('123'),
         ),
         list(
           //
           p('45<start>6'),
           list(
             //
-            p('7<end>89')
-          )
-        )
-      )
+            p('7<end>89'),
+          ),
+        ),
+      ),
     )
   })
 
@@ -532,9 +532,9 @@ describe('Shift-Tab', () => {
           //
           p('123'),
           list(p('456<cursor>')),
-          list(p('789'))
-        )
-      )
+          list(p('789')),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -543,9 +543,9 @@ describe('Shift-Tab', () => {
         list(
           //
           p('456<cursor>'),
-          list(p('789'))
-        )
-      )
+          list(p('789')),
+        ),
+      ),
     )
 
     editor = add(
@@ -554,9 +554,9 @@ describe('Shift-Tab', () => {
           //
           p('123'),
           list(p('456<cursor>')),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -565,9 +565,9 @@ describe('Shift-Tab', () => {
         list(
           //
           p('456<cursor>'),
-          p('789')
-        )
-      )
+          p('789'),
+        ),
+      ),
     )
 
     editor = add(
@@ -576,9 +576,9 @@ describe('Shift-Tab', () => {
           //
           p('123'),
           p('123'),
-          list(p('456<cursor>'))
-        )
-      )
+          list(p('456<cursor>')),
+        ),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -586,13 +586,13 @@ describe('Shift-Tab', () => {
         list(
           //
           p('123'),
-          p('123')
+          p('123'),
         ),
         list(
           //
-          p('456<cursor>')
-        )
-      )
+          p('456<cursor>'),
+        ),
+      ),
     )
   })
 
@@ -600,22 +600,22 @@ describe('Shift-Tab', () => {
     editor = add(
       doc(
         //
-        list(list(list(p('123<cursor>'))))
-      )
+        list(list(list(p('123<cursor>')))),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
       doc(
         //
-        list(list(p('123<cursor>')))
-      )
+        list(list(p('123<cursor>'))),
+      ),
     )
     editor.press('Shift-Tab')
     expect(editor.state).toEqualRemirrorState(
       doc(
         //
-        list(p('123<cursor>'))
-      )
+        list(p('123<cursor>')),
+      ),
     )
   })
 })
@@ -630,8 +630,8 @@ describe('Tab', () => {
       doc(
         //
         list(p('123')),
-        list(p('456<cursor>'))
-      )
+        list(p('456<cursor>')),
+      ),
     )
     editor.press('Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -639,9 +639,9 @@ describe('Tab', () => {
         list(
           //
           p('123'),
-          list(p('456<cursor>'))
-        )
-      )
+          list(p('456<cursor>')),
+        ),
+      ),
     )
   })
 
@@ -651,8 +651,8 @@ describe('Tab', () => {
         //
         list(p('123')),
         list(p('45<start>6')),
-        list(p('7<end>89'))
-      )
+        list(p('7<end>89')),
+      ),
     )
     editor.press('Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -661,26 +661,26 @@ describe('Tab', () => {
           //
           p('123'),
           list(p('45<start>6')),
-          list(p('7<end>89'))
-        )
-      )
+          list(p('7<end>89')),
+        ),
+      ),
     )
 
     editor = add(
       doc(
         list(
           //
-          p('123')
+          p('123'),
         ),
         list(
           //
           p('45<start>6'),
           list(
             //
-            p('7<end>89')
-          )
-        )
-      )
+            p('7<end>89'),
+          ),
+        ),
+      ),
     )
     editor.press('Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -693,71 +693,27 @@ describe('Tab', () => {
             p('45<start>6'),
             list(
               //
-              p('7<end>89')
-            )
-          )
-        )
-      )
+              p('7<end>89'),
+            ),
+          ),
+        ),
+      ),
     )
   })
 
   it('can keep the indentation of siblings around the indented item', () => {
     editor = add(
       doc(
-        list(p('123')),
-        list(
-          //
-          p('456<cursor>'),
-          list(p('789'))
-        )
-      )
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
         list(
           //
           p('123'),
-          list(p('456<cursor>')),
-          list(p('789'))
-        )
-      )
-    )
-
-    editor = add(
-      doc(
-        list(p('123')),
-        list(
-          //
-          p('456<cursor>'),
-          p('789')
-        )
-      )
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
           p('123'),
-          list(p('456<cursor>')),
-          p('789')
-        )
-      )
-    )
-
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          p('123')
         ),
         list(
           //
-          p('456<cursor>')
-        )
-      )
+          p('456<cursor>'),
+        ),
+      ),
     )
     editor.press('Tab')
     expect(editor.state).toEqualRemirrorState(
@@ -766,9 +722,9 @@ describe('Tab', () => {
           //
           p('123'),
           p('123'),
-          list(p('456<cursor>'))
-        )
-      )
+          list(p('456<cursor>')),
+        ),
+      ),
     )
   })
 })

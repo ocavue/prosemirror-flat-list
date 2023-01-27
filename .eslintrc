@@ -1,6 +1,7 @@
 {
   "extends": "@ocavue/eslint-config",
   "rules": {
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "no-console": "error"
   }
 }

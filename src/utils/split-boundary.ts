@@ -7,20 +7,10 @@ import { Transaction } from '@remirror/pm'
  * avoid creating empty nodes during the split.
  */
 export function splitBoundary(tr: Transaction, pos: number, depth = 1): void {
-  // if (depth <= 0) return
+  if (depth <= 0) return
 
   const $pos = tr.doc.resolve(pos)
   const parent = $pos.node()
-
-  console.log('splitBoundary', {
-    pos,
-    depth,
-    parent: parent.type.name,
-    parentOffset: $pos.parentOffset,
-    index: $pos.index($pos.depth),
-  })
-
-  if (depth <= 0) return
 
   if (parent.isTextblock) {
     const parentOffset = $pos.parentOffset

@@ -15,7 +15,7 @@ describe('indentList', () => {
       t.markdown`
         - A1
           - A<cursor>2
-        `
+        `,
     )
   })
 
@@ -31,7 +31,7 @@ describe('indentList', () => {
         - A1
           - A<start>2
           - A<end>3
-      `
+      `,
     )
   })
 
@@ -45,7 +45,7 @@ describe('indentList', () => {
       t.markdown`
         - A1
           - - A<cursor>2
-      `
+      `,
     )
   })
 
@@ -59,11 +59,11 @@ describe('indentList', () => {
       t.markdown`
         - [ ] A1
           - [x] A<cursor>2
-      `
+      `,
     )
   })
 
-  it.skip('can keep the indentation of sub list nodes', () => {
+  it('can keep the indentation of sub list nodes', () => {
     t.runCommand(
       commands.indentList,
       t.markdown`
@@ -81,11 +81,11 @@ describe('indentList', () => {
           - B1 
           - B2 
           - B3 
-      `
+      `,
     )
   })
 
-  it.skip('can keep the indentation of sub list nodes when moving multiple list', () => {
+  it('can keep the indentation of sub list nodes when moving multiple list', () => {
     t.runCommand(
       commands.indentList,
       t.markdown`
@@ -103,7 +103,57 @@ describe('indentList', () => {
           - B1 
           - B2 
           - B3 
-      `
+      `,
+    )
+  })
+
+  it('can keep the indentation of siblings around the indented item', () => {
+    t.runCommand(
+      commands.indentList,
+      t.markdown`
+        - A1
+        - <cursor>A2
+
+          A2
+      `,
+      t.markdown`
+        - A1
+          - <cursor>A2
+        - A2
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      t.markdown`
+        - A1
+        - <cursor>A2
+
+          A2
+          - B1
+      `,
+      t.markdown`
+        - A1
+          - <cursor>A2
+        - A2
+          - B1
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      t.markdown`
+        - A1
+          
+          A1
+        - <cursor>A2
+      `,
+      t.markdown`
+        - A1
+            
+          A1
+          - <cursor>A2
+      `,
     )
   })
 })

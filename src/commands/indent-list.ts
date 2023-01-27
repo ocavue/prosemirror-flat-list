@@ -93,23 +93,20 @@ export function createIndentListCommand(listType: NodeType): Command {
       }
 
       // The block range that includes $from. It should contain only one top-level list node.
-      const firstItemRange = findItemRange($from, $from, listType)
+      const firstItemRange = $from.blockRange()
       if (!firstItemRange) {
         return false
       }
 
       // The block range that includes $to. It should contain only one top-level list node.
-      const lastItemRange = $from.sameParent($to)
-        ? firstItemRange
-        : findItemRange($to, $to, listType)
+      const lastItemRange = $to.blockRange()
       if (!lastItemRange) {
         return false
       }
 
       if (
-        !tr.selection.empty &&
-        (allItemsRange.start !== lastItemRange.start ||
-          allItemsRange.end !== lastItemRange.end)
+        allItemsRange.start !== lastItemRange.start ||
+        allItemsRange.end !== lastItemRange.end
       ) {
         const $posBeforeAllItems = doc.resolve(allItemsRange.start)
         const $posBeforeFirstItem = doc.resolve(firstItemRange.start)
