@@ -5831,7 +5831,7 @@ packages:
     resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==}
     dependencies:
       acorn: 8.8.1
-      pathe: 1.0.0
+      pathe: 1.1.0
       pkg-types: 1.0.1
       ufo: 1.0.1
     dev: true
@@ -6208,10 +6208,6 @@ packages:
     resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
     dev: true
 
-  /pathe/1.0.0:
-    resolution: {integrity: sha512-nPdMG0Pd09HuSsr7QOKUXO2Jr9eqaDiZvDwdyIhNG5SHYujkQHYKDfGQkulBxvbDHz8oHLsTgKN86LSwYzSHAg==}
-    dev: true
-
   /pathe/1.1.0:
     resolution: {integrity: sha512-ODbEPR0KKHqECXW1GoxdDb+AZvULmXjVPy4rt+pGo2+TnjJTIPJQSVS6N63n8T2Ip+syHhbn52OewKicV0373w==}
     dev: true
@@ -6250,7 +6246,7 @@ packages:
     dependencies:
       jsonc-parser: 3.2.0
       mlly: 1.1.0
-      pathe: 1.0.0
+      pathe: 1.1.0
     dev: true
 
   /pluralize/8.0.0:
@@ -7460,11 +7456,6 @@ packages:
     resolution: {integrity: sha512-h80m9GPFGbcLzZByXlNSEhp1gf8Dy+VX/2JCGUZsWLo7lV1mnE/XlxGYgRBoMLJh1lIDXP0EMC4RPTjlRaV+Bg==}
     dev: true
 
-  /tinypool/0.3.0:
-    resolution: {integrity: sha512-NX5KeqHOBZU6Bc0xj9Vr5Szbb1j8tUHIeD18s41aDJaPeC5QTdEhK0SpdpUrZlj2nv5cctNcSjaKNanXlfcVEQ==}
-    engines: {node: '>=14.0.0'}
-    dev: true
-
   /tinypool/0.3.1:
     resolution: {integrity: sha512-zLA1ZXlstbU2rlpA4CIeVaqvWq41MTWqLY3FfsAXgC8+f7Pk7zroaJQxDgxn1xNudKW6Kmj4808rPFShUlIRmQ==}
     engines: {node: '>=14.0.0'}
@@ -7949,7 +7940,7 @@ packages:
       source-map: 0.6.1
       strip-literal: 1.0.0
       tinybench: 2.3.1
-      tinypool: 0.3.0
+      tinypool: 0.3.1
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
       vite-node: 0.27.2_@types+node@18.11.18
