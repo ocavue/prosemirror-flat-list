@@ -67,11 +67,13 @@ describe('list range', () => {
       return isRightOpenRange(range)
     }
 
-    expect(isRightOpen(3)).toBe(true)
-    expect(isRightOpen(7)).toBe(true)
-    expect(isRightOpen(9)).toBe(true)
-    expect(isRightOpen(10)).toBe(true)
-    expect(isRightOpen(11)).toBe(true)
+    expect(isRightOpen(3)).toBe(0)
+    expect(isRightOpen(4)).toBe(1)
+    expect(isRightOpen(6)).toBe(1)
+    expect(isRightOpen(7)).toBe(1)
+    expect(isRightOpen(8)).toBe(2)
+    expect(isRightOpen(10)).toBe(2)
+    expect(isRightOpen(11)).toBe(2)
     expect(isRightOpen(12)).toBe(false)
     expect(isRightOpen(15)).toBe(false)
   })

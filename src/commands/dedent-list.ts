@@ -4,7 +4,11 @@ import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListContentRange } from '../utils/find-item-content-range'
-import { findListsRange, isLeftOpenRange } from '../utils/list-range'
+import {
+  findListsRange,
+  isLeftOpenRange,
+  isRightOpenRange,
+} from '../utils/list-range'
 import { safeLift } from '../utils/safe-lift'
 import { separateItemRange } from './separate-item-range'
 
@@ -107,6 +111,86 @@ export function createDedentListCommandV2(listType: NodeType): Command {
       const itemsRange = findListsRange($from, $to, listType)
       if (!itemsRange) {
         return false
+      }
+
+      const rightOpenIndex = isRightOpenRange(itemsRange)
+      if (rightOpenIndex !== false) {
+        const rightItem = itemsRange.parent.child(itemsRange.endIndex - 1)
+        const rightItemBefore = itemsRange.end - rightItem.nodeSize
+        const rightItemAfter = rightItemBefore + rightItem.nodeSize
+
+        const extraItemContentStartIndex = rightOpenIndex
+        const extraItemContentEndIndex = rightItem.childCount
+
+        const extraItemContentStartPos = $to.after(itemsRange.depth + 2)
+        const extraItemContentEndPos = $to.after(itemsRange.depth + 1) - 1
+
+        const lastSelectedContent = rightItem.maybeChild(rightOpenIndex - 1)
+
+        if (lastSelectedContent?.type === listType) {
+          /* 
+          
+          Example: Put B2b as a child of C1.
+
+          before: 
+
+          - A1
+            - <start>B1
+            - B2a
+              - C1<end>
+              B2b
+          
+          after:
+
+          - A1
+            - <start>B1
+            - B2a
+              - C1<end>
+                B2b
+          */
+          tr.step(
+            new ReplaceAroundStep(
+              extraItemContentStartPos - 1,
+              extraItemContentEndPos,
+              extraItemContentStartPos,
+              extraItemContentEndPos,
+              new Slice(Fragment.from(listType.create(null)), 1, 0),
+              0,
+              true,
+            ),
+          )
+        } else {
+          /* 
+
+          Example: Wrap B2b with a list node, so that it becomes a child of B2a.
+          This is not ideal because we add an extra list bullet before B2b.
+
+          before: 
+
+          - A1
+            - <start>B1
+            - B2a<end>
+              B2b
+
+          after:
+
+          - A1
+            - <start>B1
+            - B2a<end>
+              - B2b
+          */
+          tr.step(
+            new ReplaceAroundStep(
+              extraItemContentStartPos,
+              extraItemContentEndPos,
+              extraItemContentStartPos,
+              extraItemContentEndPos,
+              new Slice(Fragment.from(listType.create(null)), 0, 0),
+              1,
+              true,
+            ),
+          )
+        }
       }
 
       const leftOpenIndex = isLeftOpenRange(itemsRange)

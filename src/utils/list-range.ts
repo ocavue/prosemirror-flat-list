@@ -67,12 +67,12 @@ export function isLeftOpenRange(range: NodeRange): false | number {
   return false
 }
 
-export function isRightOpenRange(range: NodeRange) {
+export function isRightOpenRange(range: NodeRange): false | number {
   const { $to } = range
   if ($to.depth > range.depth) {
     const endIndex = $to.indexAfter(range.depth + 1)
     if (endIndex < $to.node(range.depth + 1).childCount) {
-      return true
+      return endIndex
     }
   }
   return false
