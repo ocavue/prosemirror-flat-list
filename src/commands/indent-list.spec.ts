@@ -154,6 +154,32 @@ describe('indentList', () => {
       markdown`
         - A1
 
+        - A2
+
+          A2<cursor>
+
+          A2
+
+          - B1
+      `,
+      markdown`
+        - A1
+
+        - A2
+
+          - A2<cursor>
+
+        - A2
+
+          - B1
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+
           A1
 
         - <cursor>A2

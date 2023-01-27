@@ -2,11 +2,12 @@ import { NodeType, ProsemirrorNode } from '@remirror/pm'
 import { NodeRange, ResolvedPos } from '@remirror/pm/model'
 
 export function findItemContentRange(
-  $pos: ResolvedPos,
+  $from: ResolvedPos,
+  $to: ResolvedPos,
   listType: NodeType,
 ): NodeRange | null {
-  const range = $pos.blockRange(
-    $pos,
+  const range = $from.blockRange(
+    $to,
     (parent: ProsemirrorNode) => parent.type === listType,
   )
 
@@ -20,11 +21,12 @@ export function findItemContentRange(
 
     for (let i = 1; i < listNode.childCount; i++) {
       const child = listNode.child(i)
-      if (child.type !== listType) {
-        end += child.nodeSize
+      if (child.type === listType) {
+        break
       }
+      end += child.nodeSize
     }
-    return new NodeRange($pos, $pos.doc.resolve(end - 1), range.depth)
+    return new NodeRange($from, $from.doc.resolve(end - 1), range.depth)
   } else {
     return range
   }

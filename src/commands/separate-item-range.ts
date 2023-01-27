@@ -24,7 +24,7 @@ export function separateItemRange(
   }
 
   // The block range that includes $to. It should contain only one top-level list node.
-  const lastItemRange = findItemContentRange($to, listType)
+  const lastItemRange = findItemContentRange($to, $to, listType)
   if (!lastItemRange) {
     return false
   }

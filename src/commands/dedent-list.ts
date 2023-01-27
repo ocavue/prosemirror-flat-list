@@ -1,36 +1,14 @@
 import { DispatchFunction } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
-import { liftTarget, ReplaceAroundStep } from '@remirror/pm/transform'
+import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../plugins/auto-join-item-plugin'
-import { findIndentationRange } from '../utils/find-indentation-range'
+import { findItemContentRange } from '../utils/find-item-content-range'
 import { findItemRange } from '../utils/find-item-range'
-import { isItemRange } from '../utils/is-item-range'
+import { safeLift } from '../utils/safe-lift'
 import { separateItemRange } from './separate-item-range'
 
-export { createDedentListCommandV1 as createDedentListCommand }
-
-export function createDedentListCommandV1(listType: NodeType): Command {
-  const dedentListCommand: Command = (state, dispatch): boolean => {
-    const { $from, $to } = state.selection
-    // const range = findItemRange($from, $to, listType)
-    const range = findIndentationRange($from, $to, listType, false)
-
-    if (!range) {
-      return false
-    }
-
-    if (isItemRange(range, listType)) {
-      return liftToOuterList(state.tr, dispatch, listType, range)
-    }
-
-    return liftBlockRange(state.tr, dispatch, range)
-  }
-
-  return dedentListCommand
-}
-
-export function createDedentListCommandV2(listType: NodeType): Command {
+export function createDedentListCommand(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
 
@@ -46,14 +24,40 @@ export function createDedentListCommandV2(listType: NodeType): Command {
         return false
       }
 
-      const target = liftTarget(range)
-      if (target == null) {
-        return false
+      if (range.parent.type === listType) {
+        return liftToOuterList(state.tr, dispatch, listType, range)
       }
-
-      dispatch?.(tr.lift(range, target).scrollIntoView())
-      return true
     }
+    {
+      const { $from, $to } = tr.selection
+      const range = findItemContentRange($from, $to, listType)
+      if (range && safeLift(tr, range)) {
+        dispatch?.(tr)
+        return true
+      }
+    }
+    {
+      const { $from, $to } = tr.selection
+      const range = findItemRange($from, $to, listType)
+      if (range) {
+        let end = range.end
+        for (let i = range.endIndex - 1; i >= range.startIndex; i--) {
+          const listNode = range.parent.child(i)
+          const start = end - listNode.nodeSize
+          const itemContentRange = new NodeRange(
+            tr.doc.resolve(start + 1),
+            tr.doc.resolve(end - 1),
+            range.depth + 1,
+          )
+          safeLift(tr, itemContentRange)
+          end = start
+        }
+        dispatch?.(tr)
+        return true
+      }
+    }
+
+    return false
   }
 
   return autoJoinList(dedentListCommand, listType)
@@ -69,8 +73,8 @@ export function liftToOuterList(
   const endOfSiblings = range.$to.end(range.depth)
 
   if (endOfItem < endOfSiblings) {
-    // There are siblings after the lifted items, which must become
-    // children of the last item
+    // There are siblings after the lifted items, which must become children of
+    // the last item
     tr.step(
       new ReplaceAroundStep(
         endOfItem - 1,
@@ -89,20 +93,9 @@ export function liftToOuterList(
     )
   }
 
-  return liftBlockRange(tr, dispatch, range)
-}
-
-export function liftBlockRange(
-  tr: Transaction,
-  dispatch: DispatchFunction | undefined,
-  range: NodeRange,
-) {
-  const target = liftTarget(range)
-
-  if (target == null) {
-    return false
+  if (safeLift(tr, range)) {
+    dispatch?.(tr)
+    return true
   }
-
-  dispatch?.(tr.lift(range, target).scrollIntoView())
-  return true
+  return false
 }
