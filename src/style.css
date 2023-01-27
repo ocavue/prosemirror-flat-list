@@ -6,7 +6,9 @@
     margin-left: 32px;
     margin-bottom: 0;
 
-    outline: solid red 2px;
+    outline-color: rgb(255 0 100 / 40%);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: -1px;
 
     position: relative;
