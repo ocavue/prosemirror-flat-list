@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { setupTestingEditor, TestingEditor } from './setup-editor'
 
+// TODO: move these test to the command file
 describe('Enter', () => {
   const { add, doc, p, list, blockquote } = setupTestingEditor()
 
@@ -444,287 +445,47 @@ describe('Enter', () => {
   })
 })
 
-describe('Shift-Tab', () => {
-  const { add, doc, p, list } = setupTestingEditor()
+describe('Keymap', () => {
+  const { markdown, editor, runCommand } = setupTestingEditor()
 
-  let editor: TestingEditor
-
-  it('can decrease the indentation of a nested item', () => {
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456<cursor>')),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        list(p('456<cursor>')),
-      ),
+  it('can increase the indentation by pressing Tab', () => {
+    runCommand(
+      () => editor.press('Tab'),
+      markdown`
+        - A1
+        - A2<cursor>
+      `,
+      markdown`
+        - A1
+          - A2<cursor>
+      `,
     )
   })
 
-  it('can decrease the indentation of multiple nested items', () => {
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('45<start>6')),
-          list(p('7<end>89')),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        list(p('45<start>6')),
-        list(p('7<end>89')),
-      ),
-    )
-
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(
-            //
-            p('45<start>6'),
-            list(
-              //
-              p('7<end>89'),
-            ),
-          ),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-        ),
-        list(
-          //
-          p('45<start>6'),
-          list(
-            //
-            p('7<end>89'),
-          ),
-        ),
-      ),
+  it('can decrease the indentation by pressing Shift-Tab', () => {
+    runCommand(
+      () => editor.press('Shift-Tab'),
+      markdown`
+        - A1
+          - B2<cursor>
+      `,
+      markdown`
+        - A1
+        - B2<cursor>
+      `,
     )
   })
 
-  it('can keep the indentation of siblings around the dedented item', () => {
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456<cursor>')),
-          list(p('789')),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(p('123')),
-        list(
-          //
-          p('456<cursor>'),
-          list(p('789')),
-        ),
-      ),
-    )
-
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456<cursor>')),
-          p('789'),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(p('123')),
-        list(
-          //
-          p('456<cursor>'),
-          p('789'),
-        ),
-      ),
-    )
-
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          p('123'),
-          list(p('456<cursor>')),
-        ),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          p('123'),
-        ),
-        list(
-          //
-          p('456<cursor>'),
-        ),
-      ),
-    )
-  })
-
-  it('can decrease the indentation of a multiple level nested item', () => {
-    editor = add(
-      doc(
-        //
-        list(list(list(p('123<cursor>')))),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(list(p('123<cursor>'))),
-      ),
-    )
-    editor.press('Shift-Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123<cursor>')),
-      ),
-    )
-  })
-})
-
-describe('Tab', () => {
-  const { add, doc, p, list } = setupTestingEditor()
-
-  let editor: TestingEditor
-
-  it('can increase the indentation of a nested item', () => {
-    editor = add(
-      doc(
-        //
-        list(p('123')),
-        list(p('456<cursor>')),
-      ),
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456<cursor>')),
-        ),
-      ),
-    )
-  })
-
-  it('can increase the indentation of multiple nested items', () => {
-    editor = add(
-      doc(
-        //
-        list(p('123')),
-        list(p('45<start>6')),
-        list(p('7<end>89')),
-      ),
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('45<start>6')),
-          list(p('7<end>89')),
-        ),
-      ),
-    )
-
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-        ),
-        list(
-          //
-          p('45<start>6'),
-          list(
-            //
-            p('7<end>89'),
-          ),
-        ),
-      ),
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          list(
-            //
-            p('45<start>6'),
-            list(
-              //
-              p('7<end>89'),
-            ),
-          ),
-        ),
-      ),
-    )
-  })
-
-  it('can keep the indentation of siblings around the indented item', () => {
-    editor = add(
-      doc(
-        list(
-          //
-          p('123'),
-          p('123'),
-        ),
-        list(
-          //
-          p('456<cursor>'),
-        ),
-      ),
-    )
-    editor.press('Tab')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          p('123'),
-          list(p('456<cursor>')),
-        ),
-      ),
+  it('can split a list by pressing Enter', () => {
+    runCommand(
+      () => editor.press('Enter'),
+      markdown`
+        - Foo<cursor>Bar
+      `,
+      markdown`
+        - Foo
+        - Bar
+      `,
     )
   })
 })
