@@ -388,7 +388,6 @@ export function indentListV3(
   let rightEnd = rightOpenIndex !== false && $to.after($to.depth - 1) - 1
 
   indentListsRange(tr, range, listType)
-  // return true
 
   leftStart = leftStart !== false && map(leftStart)
   leftEnd = leftEnd !== false && map(leftEnd)
