@@ -135,4 +135,60 @@ describe('dedentList', () => {
       `,
     )
   })
+
+  it('can keep siblings after the lifted items at the same position', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1
+
+            B1
+
+          - B2<start>
+
+            B2
+
+          - B3<end>
+
+            B3
+
+          - B4
+
+            B4
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+            B1
+
+        - B2<start>
+
+          B2
+
+        - B3<end>
+
+          B3
+
+          - B4
+
+            B4
+      `,
+    )
+  })
+
+  it('do nothing when not inside a list', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        Hello<cursor>
+      `,
+      markdown`
+        Hello<cursor>
+      `,
+    )
+  })
 })
