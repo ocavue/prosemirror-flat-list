@@ -12,24 +12,19 @@ export function createDedentListCommand(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
 
-    {
-      const { $from, $to } = tr.selection
-      separateItemRange(tr, $from, $to, listType)
+    separateItemRange(tr, tr.selection.$from, tr.selection.$to, listType)
+
+    const { $from, $to } = tr.selection
+    const range = findItemsRange($from, $to, listType)
+    if (!range) {
+      return false
+    }
+
+    if (range.parent.type === listType) {
+      return liftToOuterList(state.tr, dispatch, listType, range)
     }
 
     {
-      const { $from, $to } = tr.selection
-      const range = findItemsRange($from, $to, listType)
-      if (!range) {
-        return false
-      }
-
-      if (range.parent.type === listType) {
-        return liftToOuterList(state.tr, dispatch, listType, range)
-      }
-    }
-    {
-      const { $from, $to } = tr.selection
       const range = findItemContentRange($from, $to, listType)
       if (range && safeLift(tr, range)) {
         dispatch?.(tr)
@@ -37,7 +32,6 @@ export function createDedentListCommand(listType: NodeType): Command {
       }
     }
     {
-      const { $from, $to } = tr.selection
       const range = findItemsRange($from, $to, listType)
       if (range) {
         let end = range.end
@@ -63,24 +57,25 @@ export function createDedentListCommand(listType: NodeType): Command {
   return autoJoinList(dedentListCommand, listType)
 }
 
+/** @internal */
 export function liftToOuterList(
   tr: Transaction,
   dispatch: DispatchFunction | undefined,
   listType: NodeType,
   range: NodeRange,
 ) {
-  const endOfItem = range.end
-  const endOfSiblings = range.$to.end(range.depth)
+  const siblingStart = range.end
+  const siblingEnd = range.$to.end(range.depth)
 
-  if (endOfItem < endOfSiblings) {
-    // There are siblings after the lifted items, which must become children of
-    // the last item
+  if (siblingStart < siblingEnd) {
+    // There are siblings after the lifted list node, which must become children
+    // of the last list node
     tr.step(
       new ReplaceAroundStep(
-        endOfItem - 1,
-        endOfSiblings,
-        endOfItem,
-        endOfSiblings,
+        siblingStart - 1,
+        siblingEnd,
+        siblingStart,
+        siblingEnd,
         new Slice(Fragment.from(listType.create(null)), 1, 0),
         0,
         true,
@@ -88,7 +83,7 @@ export function liftToOuterList(
     )
     range = new NodeRange(
       tr.doc.resolve(range.$from.pos),
-      tr.doc.resolve(endOfSiblings),
+      tr.doc.resolve(siblingEnd),
       range.depth,
     )
   }
