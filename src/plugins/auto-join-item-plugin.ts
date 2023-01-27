@@ -1,7 +1,19 @@
 import { ProsemirrorNode, Transaction } from '@remirror/core'
+import { autoJoin } from '@remirror/pm/commands'
 import { NodeType } from '@remirror/pm/model'
-import { Plugin, PluginKey } from '@remirror/pm/state'
+import { Command, Plugin, PluginKey } from '@remirror/pm/state'
 import { canJoin } from '@remirror/pm/transform'
+
+export function autoJoinList(command: Command, listType: NodeType): Command {
+  const isListJoinable = (before: ProsemirrorNode, after: ProsemirrorNode) => {
+    return (
+      before.type === listType &&
+      after.type === listType &&
+      after.firstChild?.type === listType
+    )
+  }
+  return autoJoin(command, isListJoinable)
+}
 
 export function appendTransaction(
   transactions: readonly Transaction[],
