@@ -7,6 +7,7 @@
     margin-bottom: 0;
 
     outline: solid red 2px;
+    outline-offset: -1px;
 
     position: relative;
     display: list-item;
