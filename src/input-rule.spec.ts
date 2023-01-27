@@ -29,11 +29,59 @@ describe('input rules', () => {
     )
   })
 
-  it('can turn a task list into an ordered list', () => {
+  it('can change list type', () => {
     const editor = t.add(t.doc(t.uncheckedTaskList(t.p('<cursor>'))))
     editor.insertText('1. ')
     expect(editor.state).toEqualRemirrorState(
       t.doc(t.orderedList(t.p('<cursor>'))),
+    )
+  })
+
+  it('can turn a paragraph into a sub-list', () => {
+    const editor = t.add(
+      t.doc(
+        t.bulletList(
+          //
+          t.p('A1'),
+          t.p('<cursor>A1'),
+          t.p('A1'),
+        ),
+      ),
+    )
+    editor.insertText('- ')
+
+    expect(editor.state).toEqualRemirrorState(
+      t.doc(
+        t.bulletList(
+          //
+          t.p('A1'),
+          t.bulletList(t.p('<cursor>A1')),
+          t.p('A1'),
+        ),
+      ),
+    )
+  })
+
+  it("can ignore the input rule if it's already that list type", () => {
+    const editor = t.add(
+      t.doc(
+        t.bulletList(
+          //
+          t.p('<cursor>A1'),
+          t.p('A1'),
+        ),
+      ),
+    )
+    editor.insertText('- ')
+
+    expect(editor.state).toEqualRemirrorState(
+      t.doc(
+        t.bulletList(
+          //
+          t.p('- A1'),
+          t.p('A1'),
+        ),
+      ),
     )
   })
 })

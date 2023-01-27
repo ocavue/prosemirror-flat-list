@@ -26,12 +26,12 @@ export function setupTestingEditor() {
   }
 
   const runCommand = (
-    commandFunction: () => void,
+    action: () => void,
     before: TaggedProsemirrorNode,
     after: TaggedProsemirrorNode,
   ) => {
     add(before)
-    commandFunction()
+    action()
     expect(editor.state).toEqualRemirrorState(after)
   }
 
@@ -56,6 +56,7 @@ export function setupTestingEditor() {
     markdown,
     runCommand,
     editor,
+    // TODO: typo
     comments: editor.commands,
 
     doc,

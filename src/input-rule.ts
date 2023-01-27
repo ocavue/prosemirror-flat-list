@@ -17,7 +17,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
     const attrs = typeof getAttrs === 'function' ? getAttrs(match) : getAttrs
 
     const $pos = tr.selection.$from
-    const listNode = $pos.node(-1)
+    const listNode = $pos.index(-1) === 0 && $pos.node(-1)
     if (listNode && listNode.type === listType) {
       const oldAttrs: T = listNode.attrs as T
       const newAttrs: T = { ...oldAttrs, ...attrs }
