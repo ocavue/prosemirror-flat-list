@@ -2,7 +2,7 @@ import { Fragment, NodeType, Slice } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../plugins/auto-join-item-plugin'
-import { findItemRange } from '../utils/find-item-range'
+import { findItemsRange } from '../utils/find-items-range'
 import { separateItemRange } from './separate-item-range'
 
 export function createIndentListCommand(listType: NodeType): Command {
@@ -90,12 +90,12 @@ export function createIndentListCommand(listType: NodeType): Command {
     {
       const { $from, $to } = tr.selection
 
-      const allItemsRange = findItemRange($from, $to, listType)
-      if (!allItemsRange) {
+      const itemsRange = findItemsRange($from, $to, listType)
+      if (!itemsRange) {
         return false
       }
 
-      const { start, end } = allItemsRange
+      const { start, end } = itemsRange
 
       tr.step(
         new ReplaceAroundStep(

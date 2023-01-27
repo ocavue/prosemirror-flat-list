@@ -4,7 +4,7 @@ import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../plugins/auto-join-item-plugin'
 import { findItemContentRange } from '../utils/find-item-content-range'
-import { findItemRange } from '../utils/find-item-range'
+import { findItemsRange } from '../utils/find-items-range'
 import { safeLift } from '../utils/safe-lift'
 import { separateItemRange } from './separate-item-range'
 
@@ -19,7 +19,7 @@ export function createDedentListCommand(listType: NodeType): Command {
 
     {
       const { $from, $to } = tr.selection
-      const range = findItemRange($from, $to, listType)
+      const range = findItemsRange($from, $to, listType)
       if (!range) {
         return false
       }
@@ -38,7 +38,7 @@ export function createDedentListCommand(listType: NodeType): Command {
     }
     {
       const { $from, $to } = tr.selection
-      const range = findItemRange($from, $to, listType)
+      const range = findItemsRange($from, $to, listType)
       if (range) {
         let end = range.end
         for (let i = range.endIndex - 1; i >= range.startIndex; i--) {
