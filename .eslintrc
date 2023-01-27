@@ -1,3 +1,6 @@
 {
-  "extends": "@ocavue/eslint-config"
+  "extends": "@ocavue/eslint-config",
+  "rules": {
+    "@typescript-eslint/no-namespace": "off"
+  }
 }
