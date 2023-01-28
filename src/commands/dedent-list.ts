@@ -1,6 +1,6 @@
 import { DispatchFunction, ProsemirrorNode, ResolvedPos } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
-import { Command, Transaction } from '@remirror/pm/state'
+import { Command, Transaction, Selection } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListContentRange } from '../utils/find-item-content-range'
@@ -298,6 +298,11 @@ function doDedent(
   to: number,
   listType: NodeType,
 ): boolean {
+  console.log('doDedent A:', { from, to })
+  if (from === 40) {
+    from = 41
+  }
+
   if (from === to) {
     if (!tr.doc.resolve(from).parent.isTextblock) {
       return false
@@ -306,13 +311,48 @@ function doDedent(
     return false
   }
 
-  const $from = tr.doc.resolve(from)
-  const $to = tr.doc.resolve(to)
+  console.warn('doDedent B:', { from, to })
+  // return false
 
+  const $from = normalizeFrom(tr.doc.resolve(from))
+  const $to = normalizeTo(tr.doc.resolve(to))
+  if ($from == null || $to == null) {
+    return false
+  }
+
+  // const range =  $from.blockRange($to)
   const range = $from.blockRange($to)
   if (!range) {
     return false
   }
+
+
+
+
+
+
+
+
+  // doDedent(tr, after, itemEnd, listType)
+  // doDedent(tr, itemStart, before, listType)
+
+
+
+
+
+
+
+
+
+
+  // const listsRange = findListsRange($from, $to, listType)
+  // if (
+  //   listsRange &&
+  //   listsRange.start + 1 === range.start &&
+  //   listsRange.end - 1 === range.end
+  // ) {
+  //   range = listsRange
+  // }
 
   const { parent, startIndex, endIndex, start, end, depth } = range
   console.log('doDedent', {
@@ -325,8 +365,11 @@ function doDedent(
   })
 
   if (parent.type !== listType && isListsRange(range, listType)) {
+    console.log('dedentOutOfList')
+
     return dedentOutOfList(tr, range)
   } else {
+    console.log('dedentToOuterList')
     return dedentToOuterList(tr, range, listType)
   }
 }
@@ -348,29 +391,43 @@ function dedentToOuterList(
   range: NodeRange,
   listType: NodeType,
 ): boolean {
-  const { $to, $from, depth, end, parent, endIndex } = range
+  {
+    const { $to, $from, depth, end, parent, endIndex } = range
 
-  const endOfList = $to.end(depth)
-  if (end < endOfList && parent.child(endIndex - 1).type === listType) {
-    // There are siblings after the lifted items, which must become
-    // children of the last item
-    tr.step(
-      new ReplaceAroundStep(
-        end - 1,
-        endOfList,
-        end,
-        endOfList,
-        new Slice(Fragment.from(listType.create(null)), 1, 0),
-        0,
-        true,
-      ),
-    )
-    range = new NodeRange(
-      tr.doc.resolve($from.pos),
-      tr.doc.resolve(endOfList),
-      depth,
-    )
+    const endOfList = $to.end(depth)
+    if (end < endOfList && parent.child(endIndex - 1).type === listType) {
+      console.log('dedentToOuterList: ReplaceAroundStep')
+      // There are siblings after the lifted items, which must become
+      // children of the last item
+      tr.step(
+        new ReplaceAroundStep(
+          end - 1,
+          endOfList,
+          end,
+          endOfList,
+          new Slice(Fragment.from(listType.create(null)), 1, 0),
+          0,
+          true,
+        ),
+      )
+      range = new NodeRange(
+        tr.doc.resolve($from.pos),
+        tr.doc.resolve(endOfList),
+        depth,
+      )
+    }
   }
+
+  {
+    const { $to, $from, depth, end, parent, endIndex, startIndex } = range
+  }
+
+  console.log(
+    'dedentToOuterList: safeLift:',
+    range.parent.toString(),
+    range.startIndex,
+    range.endIndex,
+  )
   return safeLift(tr, range)
 }
 
@@ -439,8 +496,12 @@ export function indentListV3(
   to: number,
   listType: NodeType,
 ): boolean {
-  const $from = tr.doc.resolve(from)
-  const $to = tr.doc.resolve(to)
+  const $from = normalizeFrom(tr.doc.resolve(from))
+  const $to = normalizeTo(tr.doc.resolve(to))
+  if ($from == null || $to == null) {
+    return false
+  }
+
   const range = findListsRange($from, $to, listType)
   if (!range) return false
 
@@ -502,7 +563,13 @@ export function doIndent(
     return false
   }
 
-  const range = tr.doc.resolve(from).blockRange(tr.doc.resolve(to))
+  const $from = normalizeFrom(tr.doc.resolve(from))
+  const $to = normalizeTo(tr.doc.resolve(to))
+  if ($from == null || $to == null) {
+    return false
+  }
+
+  const range = $from.blockRange($to)
   if (!range) {
     return false
   }
@@ -560,4 +627,14 @@ function maybeTextBlockEnd($pos: ResolvedPos): number {
   } else {
     return $pos.pos
   }
+}
+
+function normalizeFrom($from: ResolvedPos): ResolvedPos | null {
+  return $from
+  return Selection.findFrom($from, 1)?.$to ?? null
+}
+
+function normalizeTo($to: ResolvedPos): ResolvedPos | null {
+  return $to
+  return Selection.findFrom($to, -1)?.$from ?? null
 }
