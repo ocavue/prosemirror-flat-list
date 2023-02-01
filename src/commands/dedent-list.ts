@@ -259,37 +259,65 @@ export function dedentListV3(
   from: number,
   to: number,
   listType: NodeType,
+  cycle = 0,
 ): boolean {
-  // const map = mapPos(tr)
+  if (cycle >= 3) {
+    console.warn('dedentListV3 cycle limit reached')
+    return false
+  }
 
-  const $from = tr.doc.resolve(from)
-  const $to = tr.doc.resolve(to)
-  const range = findListsRange($from, $to, listType)
+  const $from = normalizeFrom(tr.doc.resolve(from))
+  const $to = normalizeTo(tr.doc.resolve(to))
+  if ($from == null || $to == null) {
+    return false
+  }
+
+  const range = $from.blockRange($to)
   if (!range) return false
 
-  const rightOpenIndex = isRightOpenRange(range)
-  const leftOpenIndex = isLeftOpenRange(range)
+  const { start: itemBefore, end: itemAfter } = range
+  let itemStart = itemBefore + 1
+  let itemEnd = itemAfter - 1
+  let before = $from.before($from.depth)
+  let after = $to.after($to.depth)
 
-  const leftStart = $from.before(range.depth + 1) + 1
-  const leftEnd = $from.before($from.depth + 1) + 1
+  const getStart = mapPos(tr, itemStart)
+  const getEnd = mapPos(tr, itemEnd)
+  const getBefore = mapPos(tr, before)
+  const getAfter = mapPos(tr, after)
 
-  const rightStart = $to.after(range.depth + 1) - 1
-  const rightEnd = $to.after($to.depth + 1) - 1
+  console.log('dedentListV3 A', {
+    // itemBefore,
+    // itemAfter,
+    itemStart,
+    itemEnd,
+    before,
+    after,
+  })
 
-  dedentListsRange(tr, range, listType)
+  itemStart = getStart()
+  itemEnd = getEnd()
+  before = getBefore()
+  after = getAfter()
 
-  console.log('leftOpenIndex:', leftOpenIndex)
-  console.log('rightOpenIndex:', rightOpenIndex)
+  indentListV3(tr, after, itemEnd, listType, cycle + 1)
+  // indentListV3(tr, itemStart, before, listType, cycle + 1)
 
-  // if (rightOpenIndex !== false) {
-  //   indentListV3(tr, map(leftStart), map(leftEnd), listType)
-  // }
+  itemStart = getStart()
+  itemEnd = getEnd()
+  before = getBefore()
+  after = getAfter()
 
-  // if (leftOpenIndex !== false) {
-  //   indentListV3(tr, map(rightStart), map(rightEnd), listType)
-  // }
+  console.log('dedentListV3 B', {
+    // itemBefore,
+    // itemAfter,
+    itemStart,
+    itemEnd,
+    before,
+    after,
+  })
 
-  return true
+  return doDedent(tr, itemStart, itemEnd, listType)
 }
 
 function doDedent(
@@ -299,9 +327,6 @@ function doDedent(
   listType: NodeType,
 ): boolean {
   console.log('doDedent A:', { from, to })
-  if (from === 40) {
-    from = 41
-  }
 
   if (from === to) {
     if (!tr.doc.resolve(from).parent.isTextblock) {
@@ -325,25 +350,6 @@ function doDedent(
   if (!range) {
     return false
   }
-
-
-
-
-
-
-
-
-  // doDedent(tr, after, itemEnd, listType)
-  // doDedent(tr, itemStart, before, listType)
-
-
-
-
-
-
-
-
-
 
   // const listsRange = findListsRange($from, $to, listType)
   // if (
@@ -480,7 +486,7 @@ function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
 export function createIndentListCommandV3(listType: NodeType): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    if (indentListV3(tr, tr.selection.from, tr.selection.to, listType)) {
+    if (indentListV3(tr, tr.selection.from, tr.selection.to, listType, 0)) {
       dispatch?.(tr)
       return true
     }
@@ -495,7 +501,13 @@ export function indentListV3(
   from: number,
   to: number,
   listType: NodeType,
+  cycle: number,
 ): boolean {
+  if (cycle >= 3) {
+    console.warn('indentListV3 cycle limit reached')
+    return false
+  }
+
   const $from = normalizeFrom(tr.doc.resolve(from))
   const $to = normalizeTo(tr.doc.resolve(to))
   if ($from == null || $to == null) {
@@ -541,8 +553,11 @@ export function indentListV3(
     after,
   })
 
-  doDedent(tr, after, itemEnd, listType)
-  doDedent(tr, itemStart, before, listType)
+  dedentListV3(tr, after, itemEnd, listType, cycle + 1)
+  dedentListV3(tr, itemStart, before, listType, cycle + 1)
+
+  // doDedent(tr, after, itemEnd, listType)
+  // doDedent(tr, itemStart, before, listType)
 
   return true
 }
