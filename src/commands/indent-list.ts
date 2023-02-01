@@ -1,12 +1,16 @@
-import { Fragment, NodeType, Slice } from '@remirror/pm/model'
+import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListsRange } from '../utils/list-range'
+import { safeLift } from '../utils/safe-lift'
 import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
-export { createIndentListCommandV3 as createIndentListCommand }
+export {
+  createIndentListCommandV3,
+  createIndentListCommandV4 as createIndentListCommand,
+}
 
 export function createIndentListCommandV1(listType: NodeType): Command {
   /*
@@ -118,6 +122,125 @@ export function createIndentListCommandV1(listType: NodeType): Command {
     }
 
     return true
+  }
+
+  return autoJoinList(indentListCommand, listType)
+}
+
+export function createIndentListCommandV4(listType: NodeType): Command {
+  /*
+
+  Let's say we have the following list nodes, represented in the Markdown
+  syntax. The <start> and <end> are the current selection range.
+
+  - A1
+    - B1
+    - <start>B2
+  - A2
+    - B3
+      - C1<end>
+        - D1
+    - B4
+
+  Here is what this function will do to indent the list nodes:
+
+  Step 1: we split these list nodes into three parts. (FYI, the following code snippet is a 100%
+  valid Markdown syntax based on the CommonMark spec).
+
+  - A1
+    - B1
+
+  - - <start>B2
+  - A2
+    - B3
+      - C1<end>
+
+  - - - - D1
+    - B4
+
+  Step 2: we need to increase the indentation for the middle part. 
+
+  - A1
+    - B1
+
+  - - - <start>B2
+    - A2
+      - B3
+        - C1<end>
+
+  - - - - D1
+    - B4
+
+  Step 3: we join all three parts together and get rid of the extra list nodes
+
+  - A1
+    - B1
+      - <start>B2
+    - A2
+      - B3
+        - C1<end>
+        - D1
+    - B4
+
+  Q&A
+
+  Q: Why don't we just use the `ReplaceAroundStep` to do the job?
+
+  A: We cannot, at least with the current `ReplaceAroundStep` design.
+  `ReplaceAroundStep` requires the gap to be a flat range
+  (https://github.com/prosemirror/prosemirror-transform/blob/1.7.1/src/replace_step.ts#L116),
+  while the slice between <start> and <end> in the example above is not flat.
+  We could, however, update the current `ReplaceAroundStep` to support such
+  cases, but I would like to avoid changing the core library for now.
+
+  Q: Why don't we just use one big `ReplaceStep`, to wrap the content that
+  need to be indented? 
+
+  A: Because we will lose the text selection, as the selection range will been
+  replaced if we do so.
+
+  */
+
+  const indentListCommand: Command = (state, dispatch): boolean => {
+    const tr = state.tr
+    const { $from, $to } = tr.selection
+
+    const listsRange = findListsRange($from, $to, listType)
+    if (!listsRange) return false
+
+    // TODO: support this
+    if (listsRange.endIndex - listsRange.startIndex !== 1) return false
+    const listNode = listsRange.parent.child(listsRange.startIndex)
+
+    const firstChildEnd =
+      listsRange.start + 1 + (listNode.firstChild?.nodeSize || 0)
+    const includeFirstChild = $from.pos <= firstChildEnd
+
+    const lastChildStart =
+      listsRange.end - 1 - (listNode.lastChild?.nodeSize || 0)
+    const includeLastChild = $to.pos >= lastChildStart
+
+    if (includeFirstChild && includeLastChild) {
+      const { start, end } = listsRange
+
+      tr.step(
+        new ReplaceAroundStep(
+          start,
+          end,
+          start,
+          end,
+          new Slice(Fragment.from(listType.create(null)), 0, 0),
+          1,
+          true,
+        ),
+      )
+
+      dispatch?.(tr)
+      return true
+    } else {
+      // TODO
+      return false
+    }
   }
 
   return autoJoinList(indentListCommand, listType)
