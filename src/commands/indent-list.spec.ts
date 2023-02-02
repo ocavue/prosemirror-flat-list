@@ -136,7 +136,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can indent multiple list nodes and append them to the previous list node', () => {
+  it('can indent multiple list nodes and append them to the previous list node', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -152,7 +152,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can add ambitious indentations', () => {
+  it('can add ambitious indentations', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -166,7 +166,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can keep attributes', () => {
+  it('can keep attributes', () => {
     t.runCommand(
       commands.indentList,
       markdown`
