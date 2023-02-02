@@ -229,7 +229,12 @@ function indentRange(
 
   const firstChildRange = zoomInRange(range, startIndex)
   if (firstChildRange) {
-    if (length === 1) {
+    if (
+      firstChildRange.parent.type === listType &&
+      firstChildRange.parent.childCount === 1
+    ) {
+      return indentNodeRange(range, tr, listType)
+    } else if (length === 1) {
       return indentRange(firstChildRange, tr, listType)
     } else {
       const firstChild = parent.child(startIndex)
@@ -246,9 +251,8 @@ function indentRange(
 
       return indentNodeRange(furtherRange, tr, listType)
     }
-  } else {
-    return indentNodeRange(range, tr, listType)
   }
+  return indentNodeRange(range, tr, listType)
 }
 
 function indentNodeRange(
