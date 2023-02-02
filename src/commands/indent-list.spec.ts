@@ -6,7 +6,7 @@ describe('indentList', () => {
   const markdown = t.markdown
   const commands = t.editor.commands
 
-  it('can indent a list node', () => {
+  it('can indent a list node and append it to the previous list node', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -16,6 +16,94 @@ describe('indentList', () => {
       markdown`
         - A1
           - A<cursor>2
+      `,
+    )
+  })
+
+  it('can indent a paragraph and wrap it with a new list node', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - A2a
+
+          A2b<cursor>
+      `,
+      markdown`
+        - A1
+
+        - A2a
+
+          - A2b<cursor>
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - A2a
+
+          A2b<cursor>
+
+          A2c
+      `,
+      markdown`
+        - A1
+
+        - A2a
+
+          - A2b<cursor>
+
+          A2c
+      `,
+    )
+  })
+
+  it('can indent a paragraph and append it to the previous sibling list node', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - A2a
+
+          - B1
+
+          A2b<cursor>
+      `,
+      markdown`
+        - A1
+
+        - A2a
+
+          - B1
+
+            A2b<cursor>
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - A2a
+
+          - B1
+
+          A2b<cursor>
+
+          - B2
+      `,
+      markdown`
+        - A1
+
+        - A2a
+
+          - B1
+
+            A2b<cursor>
+
+          - B2
       `,
     )
   })

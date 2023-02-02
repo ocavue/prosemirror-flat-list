@@ -3,7 +3,6 @@ import { Command } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListsRange } from '../utils/list-range'
-import { safeLift } from '../utils/safe-lift'
 import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
@@ -221,6 +220,7 @@ export function createIndentListCommandV4(listType: NodeType): Command {
     const includeLastChild = $to.pos >= lastChildStart
 
     if (includeFirstChild && includeLastChild) {
+      // Indent the whole list
       const { start, end } = listsRange
 
       tr.step(
@@ -238,9 +238,50 @@ export function createIndentListCommandV4(listType: NodeType): Command {
       dispatch?.(tr)
       return true
     } else {
-      // TODO
-      return false
+      // Indent some part of content in the list
+      const contentRange = new NodeRange($from, $to, listsRange.depth + 1)
+
+      if (contentRange.startIndex > 0) {
+        const prevChild = listNode.child(contentRange.startIndex - 1)
+        if (prevChild.type === listType) {
+          // Append the selected content into the prev child list
+
+          const { start, end } = contentRange
+          tr.step(
+            new ReplaceAroundStep(
+              start - 1,
+              end,
+              start,
+              end,
+              new Slice(Fragment.from(listType.create(null)), 1, 0),
+              0,
+              true,
+            ),
+          )
+          dispatch?.(tr)
+          return true
+        } else {
+          // Wrap the selected content with a new list node
+
+          const { start, end } = contentRange
+          tr.step(
+            new ReplaceAroundStep(
+              start,
+              end,
+              start,
+              end,
+              new Slice(Fragment.from(listType.create(null)), 0, 0),
+              1,
+              true,
+            ),
+          )
+          dispatch?.(tr)
+          return true
+        }
+      }
     }
+
+    return false
   }
 
   return autoJoinList(indentListCommand, listType)
