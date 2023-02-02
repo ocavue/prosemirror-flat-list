@@ -108,6 +108,34 @@ describe('indentList', () => {
     )
   })
 
+  it('can only indent selected part when the selection across multiple depth of a nested lists', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1a
+
+          - B1a
+
+            - C1
+
+            B1b<start>
+
+          A1b<end>
+      `,
+      markdown`
+        - A1a
+
+          - B1a
+
+            - C1
+
+              B1b<start>
+
+            A1b<end>
+      `,
+    )
+  })
+
   it.skip('can indent multiple list nodes and append them to the previous list node', () => {
     t.runCommand(
       commands.indentList,

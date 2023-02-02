@@ -1,16 +1,10 @@
-import { DispatchFunction } from '@remirror/pm'
-import {
-  Fragment,
-  NodeRange,
-  NodeType,
-  ResolvedPos,
-  Slice,
-} from '@remirror/pm/model'
+import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { ResolveFn } from 'vite'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListsRange } from '../utils/list-range'
+import { mapPos } from '../utils/map-pos'
+import { zoomInRange } from '../utils/zoom-in-range'
 import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
@@ -215,43 +209,74 @@ export function createIndentListCommandV4(listType: NodeType): Command {
     const listsRange = findListsRange($from, $to, listType)
     if (!listsRange) return false
 
-    // TODO: support this
-
-    if (listsRange.endIndex - listsRange.startIndex === 1) {
-      if (indentSingleListNode(listsRange, tr, listType)) {
-        dispatch?.(tr)
-        return true
-      }
-    } else {
-      if (indentMultipleListNodes(listsRange, tr, listType)) {
-        dispatch?.(tr)
-        return true
-      }
+    if (indentRange(listsRange, tr, listType)) {
+      dispatch?.(tr)
+      return true
     }
+    return false
   }
 
   return autoJoinList(indentListCommand, listType)
 }
 
-function indentSingleListNode(
-  listsRange: NodeRange,
+function indentRange(
+  range: NodeRange,
   tr: Transaction,
   listType: NodeType,
 ): boolean {
-  const listNode = listsRange.parent.child(listsRange.startIndex)
-  const { $from, $to } = listsRange
+  const { parent, depth, $to, startIndex, endIndex, start } = range
+  const length = endIndex - startIndex
 
-  const firstChildEnd =
-    listsRange.start + 1 + (listNode.firstChild?.nodeSize || 0)
-  const includeFirstChild = $from.pos <= firstChildEnd
+  const firstChildRange = zoomInRange(range, startIndex)
+  if (firstChildRange) {
+    if (length === 1) {
+      return indentRange(firstChildRange, tr, listType)
+    } else {
+      const firstChild = parent.child(startIndex)
+      const getFurtherRangeFrom = mapPos(tr, start + firstChild.nodeSize + 1)
+      const getFurtherRangeTo = mapPos(tr, $to.pos)
 
-  const lastChildStart =
-    listsRange.end - 1 - (listNode.lastChild?.nodeSize || 0)
-  const includeLastChild = $to.pos >= lastChildStart
+      indentRange(firstChildRange, tr, listType)
 
-  if (includeFirstChild && includeLastChild) {
-    // Indent the whole list
-    const { start, end } = listsRange
+      const furtherRange = new NodeRange(
+        tr.doc.resolve(getFurtherRangeFrom()),
+        tr.doc.resolve(getFurtherRangeTo()),
+        depth,
+      )
+
+      return indentNodeRange(furtherRange, tr, listType)
+    }
+  } else {
+    return indentNodeRange(range, tr, listType)
+  }
+}
+
+function indentNodeRange(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+): boolean {
+  const { parent, startIndex, start, end } = range
+  const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
+
+  if (prevChild && prevChild.type === listType) {
+    // Append the selected content into the prev child list
+
+    tr.step(
+      new ReplaceAroundStep(
+        start - 1,
+        end,
+        start,
+        end,
+        new Slice(Fragment.from(listType.create(null)), 1, 0),
+        0,
+        true,
+      ),
+    )
+    return true
+  } else {
+    // Wrap the selected content with a new list node
+
     tr.step(
       new ReplaceAroundStep(
         start,
@@ -264,63 +289,5 @@ function indentSingleListNode(
       ),
     )
     return true
-  } else {
-    // Indent some part of content in the list
-    const contentRange = new NodeRange($from, $to, listsRange.depth + 1)
-
-    if (contentRange.startIndex > 0) {
-      const prevChild = listNode.child(contentRange.startIndex - 1)
-      if (prevChild.type === listType) {
-        // Append the selected content into the prev child list
-
-        const { start, end } = contentRange
-        tr.step(
-          new ReplaceAroundStep(
-            start - 1,
-            end,
-            start,
-            end,
-            new Slice(Fragment.from(listType.create(null)), 1, 0),
-            0,
-            true,
-          ),
-        )
-        return true
-      } else {
-        // Wrap the selected content with a new list node
-
-        const { start, end } = contentRange
-        tr.step(
-          new ReplaceAroundStep(
-            start,
-            end,
-            start,
-            end,
-            new Slice(Fragment.from(listType.create(null)), 0, 0),
-            1,
-            true,
-          ),
-        )
-        return true
-      }
-    }
   }
-
-  return false
-}
-
-function indentMultipleListNodes(
-  listsRange: NodeRange,
-  tr: Transaction,
-  listType: NodeType,
-): boolean {
-  const { $from, depth, startIndex, start, parent } = listsRange
-
-  const firstListNodeRange = new NodeRange(
-    $from,
-    tr.doc.resolve(start + parent.child(startIndex).nodeSize - 1),
-    depth,
-  )
-
-  return indentSingleListNode(firstListNodeRange, tr, listType)
 }

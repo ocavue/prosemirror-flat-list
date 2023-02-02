@@ -60,14 +60,9 @@ describe('zoomInRange', () => {
     )
 
     const range2 = zoomInRange(range1, 0)
-    expect(range2.depth).toEqual(1)
-    expect(range2.startIndex).toEqual(0)
-    expect(range2.endIndex).toEqual(1)
-    expect(rangeToString(range2)).toMatchInlineSnapshot(
-      '"<paragraph(\\"A\\")>"',
-    )
+    expect(range2).toEqual(null)
 
-    const range3 = zoomInRange(range1, 1)
+    const range3 = zoomInRange(range1, 1)!
     expect(range3.depth).toEqual(2)
     expect(range3.parent.toString()).toMatchInlineSnapshot(
       '"blockquote(paragraph(\\"B\\"))"',
@@ -78,7 +73,7 @@ describe('zoomInRange', () => {
       '"<paragraph(\\"B\\")>"',
     )
 
-    const range4 = zoomInRange(range1, 2)
+    const range4 = zoomInRange(range1, 2)!
     expect(range4.depth).toEqual(2)
     expect(range4.startIndex).toEqual(0)
     expect(range4.endIndex).toEqual(1)
@@ -87,10 +82,7 @@ describe('zoomInRange', () => {
     )
 
     const range5 = zoomInRange(range4, 0)
-    expect(range5.depth).toEqual(2)
-    expect(rangeToString(range5)).toMatchInlineSnapshot(
-      '"<paragraph(\\"C\\")>"',
-    )
+    expect(range5).toEqual(null)
   })
 })
 
