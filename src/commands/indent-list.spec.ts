@@ -300,6 +300,24 @@ describe('indentList', () => {
           - B3
       `,
     )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+          - B1
+        - A2<start>
+          - B2<end>
+            - C1
+      `,
+      markdown`
+        - A1
+          - B1
+          - A2<start>
+            - B2<end>
+            - C1
+      `,
+    )
   })
 
   it('can keep the indentation of siblings around the indented item', () => {
@@ -388,7 +406,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can handle some complex nested lists', () => {
+  it('can handle some complex nested lists', () => {
     t.runCommand(
       commands.indentList,
       markdown`
