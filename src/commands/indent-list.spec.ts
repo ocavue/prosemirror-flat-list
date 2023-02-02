@@ -18,6 +18,46 @@ describe('indentList', () => {
           - A<cursor>2
       `,
     )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - ## A<cursor>2
+      `,
+      markdown`
+        - A1
+          - ## A<cursor>2
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - > ## A<cursor>2
+      `,
+      markdown`
+        - A1
+          - > ## A<cursor>2
+      `,
+    )
+  })
+
+  it('can indent multiple list nodes and append them to the previous list node', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+        - A2<start>
+        - A3<end>
+      `,
+      markdown`
+        - A1
+          - A2<start>
+          - A3<end>
+      `,
+    )
   })
 
   it('can indent a paragraph and wrap it with a new list node', () => {
@@ -180,7 +220,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can keep the indentation of sub list nodes', () => {
+  it('can keep the indentation of sub list nodes', () => {
     t.runCommand(
       commands.indentList,
       markdown`

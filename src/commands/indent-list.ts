@@ -1,3 +1,4 @@
+import { ProsemirrorNode } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
@@ -228,13 +229,11 @@ function indentRange(
   const length = endIndex - startIndex
 
   const firstChildRange = zoomInRange(range, startIndex)
-  if (firstChildRange) {
-    if (
-      firstChildRange.parent.type === listType &&
-      firstChildRange.parent.childCount === 1
-    ) {
-      return indentNodeRange(range, tr, listType)
-    } else if (length === 1) {
+  if (
+    firstChildRange &&
+    !isListNodeWithSingleChild(firstChildRange.parent, listType)
+  ) {
+    if (length === 1) {
       return indentRange(firstChildRange, tr, listType)
     } else {
       const firstChild = parent.child(startIndex)
@@ -294,4 +293,8 @@ function indentNodeRange(
     )
     return true
   }
+}
+
+function isListNodeWithSingleChild(node: ProsemirrorNode, listType: NodeType) {
+  return node.type === listType && node.childCount <= 1
 }
