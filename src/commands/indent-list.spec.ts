@@ -174,6 +174,44 @@ describe('indentList', () => {
             A1b<end>
       `,
     )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1a
+
+          - B1a
+
+            - C1
+
+            B1b<start>
+
+          - B2
+
+          - B3
+
+          - B4
+
+          A1b<end>
+      `,
+      markdown`
+        - A1a
+
+          - B1a
+
+            - C1
+
+              B1b<start>
+
+            - B2
+
+            - B3
+
+            - B4
+
+            A1b<end>
+      `,
+    )
   })
 
   it('can indent multiple list nodes and append them to the previous list node', () => {

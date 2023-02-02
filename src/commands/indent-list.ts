@@ -226,30 +226,46 @@ function indentRange(
   tr: Transaction,
   listType: NodeType,
 ): boolean {
-  const { parent, depth, $to, startIndex, endIndex, start } = range
+  const { parent, depth, $to, startIndex, endIndex, start, end } = range
   const length = endIndex - startIndex
 
   const firstChildRange = zoomInRange(range, startIndex)
   if (
     firstChildRange &&
-    !isListNodeWithSingleChild(firstChildRange.parent, listType)
+    (length > 1 || !isListNodeWithSingleChild(firstChildRange.parent, listType))
   ) {
     if (length === 1) {
       return indentRange(firstChildRange, tr, listType)
     } else {
       const firstChild = parent.child(startIndex)
-      const getFurtherRangeFrom = mapPos(tr, start + firstChild.nodeSize + 1)
-      const getFurtherRangeTo = mapPos(tr, $to.pos)
+      const lastChild = parent.child(endIndex - 1)
+
+      const getFurtherRangeFrom1 = mapPos(tr, start + firstChild.nodeSize + 1)
+      const getFurtherRangeTo1 = mapPos(tr, end - lastChild.nodeSize - 1)
+
+      const getFurtherRangeFrom2 = mapPos(tr, end - lastChild.nodeSize + 1)
+      const getFurtherRangeTo2 = mapPos(tr, Math.min($to.pos, end - 1))
 
       indentRange(firstChildRange, tr, listType)
 
-      const furtherRange = new NodeRange(
-        tr.doc.resolve(getFurtherRangeFrom()),
-        tr.doc.resolve(getFurtherRangeTo()),
+      if (length >= 3) {
+        const furtherRange1 = new NodeRange(
+          tr.doc.resolve(getFurtherRangeFrom1()),
+          tr.doc.resolve(getFurtherRangeTo1()),
+          depth,
+        )
+
+        indentNodeRange(furtherRange1, tr, listType)
+      }
+
+      const furtherRange2 = new NodeRange(
+        tr.doc.resolve(getFurtherRangeFrom2()),
+        tr.doc.resolve(getFurtherRangeTo2()),
         depth,
       )
 
-      return indentNodeRange(furtherRange, tr, listType)
+      indentRange(furtherRange2, tr, listType)
+      return true
     }
   }
   return indentNodeRange(range, tr, listType)

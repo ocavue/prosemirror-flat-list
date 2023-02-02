@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
 import { autoJoinList2 } from './auto-join-list'
 
