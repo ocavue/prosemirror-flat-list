@@ -216,9 +216,18 @@ export function createIndentListCommandV4(listType: NodeType): Command {
     if (!listsRange) return false
 
     // TODO: support this
-    if (listsRange.endIndex - listsRange.startIndex !== 1) return false
 
-    return indentSingleListNode(listsRange, $from, $to, tr, dispatch, listType)
+    if (listsRange.endIndex - listsRange.startIndex === 1) {
+      if (indentSingleListNode(listsRange, tr, listType)) {
+        dispatch?.(tr)
+        return true
+      }
+    } else {
+      if (indentMultipleListNodes(listsRange, tr, listType)) {
+        dispatch?.(tr)
+        return true
+      }
+    }
   }
 
   return autoJoinList(indentListCommand, listType)
@@ -226,13 +235,11 @@ export function createIndentListCommandV4(listType: NodeType): Command {
 
 function indentSingleListNode(
   listsRange: NodeRange,
-  $from: ResolvedPos,
-  $to: ResolvedPos,
   tr: Transaction,
-  dispatch: DispatchFunction | undefined | null,
   listType: NodeType,
 ): boolean {
   const listNode = listsRange.parent.child(listsRange.startIndex)
+  const { $from, $to } = listsRange
 
   const firstChildEnd =
     listsRange.start + 1 + (listNode.firstChild?.nodeSize || 0)
@@ -245,7 +252,6 @@ function indentSingleListNode(
   if (includeFirstChild && includeLastChild) {
     // Indent the whole list
     const { start, end } = listsRange
-
     tr.step(
       new ReplaceAroundStep(
         start,
@@ -257,8 +263,6 @@ function indentSingleListNode(
         true,
       ),
     )
-
-    dispatch?.(tr)
     return true
   } else {
     // Indent some part of content in the list
@@ -281,7 +285,6 @@ function indentSingleListNode(
             true,
           ),
         )
-        dispatch?.(tr)
         return true
       } else {
         // Wrap the selected content with a new list node
@@ -298,11 +301,26 @@ function indentSingleListNode(
             true,
           ),
         )
-        dispatch?.(tr)
         return true
       }
     }
   }
 
   return false
+}
+
+function indentMultipleListNodes(
+  listsRange: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+): boolean {
+  const { $from, depth, startIndex, start, parent } = listsRange
+
+  const firstListNodeRange = new NodeRange(
+    $from,
+    tr.doc.resolve(start + parent.child(startIndex).nodeSize - 1),
+    depth,
+  )
+
+  return indentSingleListNode(firstListNodeRange, tr, listType)
 }

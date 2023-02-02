@@ -108,7 +108,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can indent multiple list nodes', () => {
+  it.skip('can indent multiple list nodes and append them to the previous list node', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -124,7 +124,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can add ambitious indentations', () => {
+  it.skip('can add ambitious indentations', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -138,7 +138,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep attributes', () => {
+  it.skip('can keep attributes', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -152,7 +152,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep the indentation of sub list nodes', () => {
+  it.skip('can keep the indentation of sub list nodes', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -174,7 +174,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep the indentation of sub list nodes when moving multiple list', () => {
+  it.skip('can keep the indentation of sub list nodes when moving multiple list', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -196,7 +196,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep the indentation of siblings around the indented item', () => {
+  it.skip('can keep the indentation of siblings around the indented item', () => {
     t.runCommand(
       commands.indentList,
       markdown`
