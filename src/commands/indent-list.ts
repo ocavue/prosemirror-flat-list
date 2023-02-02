@@ -1,6 +1,14 @@
-import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
-import { Command } from '@remirror/pm/state'
+import { DispatchFunction } from '@remirror/pm'
+import {
+  Fragment,
+  NodeRange,
+  NodeType,
+  ResolvedPos,
+  Slice,
+} from '@remirror/pm/model'
+import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
+import { ResolveFn } from 'vite'
 import { autoJoinList } from '../utils/auto-join-list'
 import { findListsRange } from '../utils/list-range'
 import { createIndentListCommandV3 } from './dedent-list'
@@ -209,80 +217,92 @@ export function createIndentListCommandV4(listType: NodeType): Command {
 
     // TODO: support this
     if (listsRange.endIndex - listsRange.startIndex !== 1) return false
-    const listNode = listsRange.parent.child(listsRange.startIndex)
 
-    const firstChildEnd =
-      listsRange.start + 1 + (listNode.firstChild?.nodeSize || 0)
-    const includeFirstChild = $from.pos <= firstChildEnd
-
-    const lastChildStart =
-      listsRange.end - 1 - (listNode.lastChild?.nodeSize || 0)
-    const includeLastChild = $to.pos >= lastChildStart
-
-    if (includeFirstChild && includeLastChild) {
-      // Indent the whole list
-      const { start, end } = listsRange
-
-      tr.step(
-        new ReplaceAroundStep(
-          start,
-          end,
-          start,
-          end,
-          new Slice(Fragment.from(listType.create(null)), 0, 0),
-          1,
-          true,
-        ),
-      )
-
-      dispatch?.(tr)
-      return true
-    } else {
-      // Indent some part of content in the list
-      const contentRange = new NodeRange($from, $to, listsRange.depth + 1)
-
-      if (contentRange.startIndex > 0) {
-        const prevChild = listNode.child(contentRange.startIndex - 1)
-        if (prevChild.type === listType) {
-          // Append the selected content into the prev child list
-
-          const { start, end } = contentRange
-          tr.step(
-            new ReplaceAroundStep(
-              start - 1,
-              end,
-              start,
-              end,
-              new Slice(Fragment.from(listType.create(null)), 1, 0),
-              0,
-              true,
-            ),
-          )
-          dispatch?.(tr)
-          return true
-        } else {
-          // Wrap the selected content with a new list node
-
-          const { start, end } = contentRange
-          tr.step(
-            new ReplaceAroundStep(
-              start,
-              end,
-              start,
-              end,
-              new Slice(Fragment.from(listType.create(null)), 0, 0),
-              1,
-              true,
-            ),
-          )
-          dispatch?.(tr)
-          return true
-        }
-      }
-    }
-
-    return false
+    return indentSingleListNode(listsRange, $from, $to, tr, dispatch, listType)
   }
 
   return autoJoinList(indentListCommand, listType)
+}
+
+function indentSingleListNode(
+  listsRange: NodeRange,
+  $from: ResolvedPos,
+  $to: ResolvedPos,
+  tr: Transaction,
+  dispatch: DispatchFunction | undefined | null,
+  listType: NodeType,
+): boolean {
+  const listNode = listsRange.parent.child(listsRange.startIndex)
+
+  const firstChildEnd =
+    listsRange.start + 1 + (listNode.firstChild?.nodeSize || 0)
+  const includeFirstChild = $from.pos <= firstChildEnd
+
+  const lastChildStart =
+    listsRange.end - 1 - (listNode.lastChild?.nodeSize || 0)
+  const includeLastChild = $to.pos >= lastChildStart
+
+  if (includeFirstChild && includeLastChild) {
+    // Indent the whole list
+    const { start, end } = listsRange
+
+    tr.step(
+      new ReplaceAroundStep(
+        start,
+        end,
+        start,
+        end,
+        new Slice(Fragment.from(listType.create(null)), 0, 0),
+        1,
+        true,
+      ),
+    )
+
+    dispatch?.(tr)
+    return true
+  } else {
+    // Indent some part of content in the list
+    const contentRange = new NodeRange($from, $to, listsRange.depth + 1)
+
+    if (contentRange.startIndex > 0) {
+      const prevChild = listNode.child(contentRange.startIndex - 1)
+      if (prevChild.type === listType) {
+        // Append the selected content into the prev child list
+
+        const { start, end } = contentRange
+        tr.step(
+          new ReplaceAroundStep(
+            start - 1,
+            end,
+            start,
+            end,
+            new Slice(Fragment.from(listType.create(null)), 1, 0),
+            0,
+            true,
+          ),
+        )
+        dispatch?.(tr)
+        return true
+      } else {
+        // Wrap the selected content with a new list node
+
+        const { start, end } = contentRange
+        tr.step(
+          new ReplaceAroundStep(
+            start,
+            end,
+            start,
+            end,
+            new Slice(Fragment.from(listType.create(null)), 0, 0),
+            1,
+            true,
+          ),
+        )
+        dispatch?.(tr)
+        return true
+      }
+    }
+  }
+
+  return false
 }
