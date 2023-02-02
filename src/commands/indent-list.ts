@@ -2,7 +2,7 @@ import { ProsemirrorNode } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { autoJoinList } from '../utils/auto-join-list'
+import { autoJoinList, autoJoinList2 } from '../utils/auto-join-list'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
@@ -211,13 +211,14 @@ export function createIndentListCommandV4(listType: NodeType): Command {
     if (!listsRange) return false
 
     if (indentRange(listsRange, tr, listType)) {
+      autoJoinList2(tr, listType)
       dispatch?.(tr)
       return true
     }
     return false
   }
 
-  return autoJoinList(indentListCommand, listType)
+  return indentListCommand
 }
 
 function indentRange(
