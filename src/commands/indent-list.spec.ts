@@ -302,7 +302,7 @@ describe('indentList', () => {
     )
   })
 
-  it.skip('can keep the indentation of siblings around the indented item', () => {
+  it('can keep the indentation of siblings around the indented item', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -317,7 +317,7 @@ describe('indentList', () => {
 
           - A2<cursor>
 
-            A2
+          A2
       `,
     )
 
@@ -337,7 +337,7 @@ describe('indentList', () => {
 
           - A2<cursor>
 
-            A2
+          A2
 
           - B1
       `,
@@ -363,7 +363,7 @@ describe('indentList', () => {
 
           - A2<cursor>
 
-        - A2
+          A2
 
           - B1
       `,
