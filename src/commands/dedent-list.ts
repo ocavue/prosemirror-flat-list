@@ -101,10 +101,8 @@ function splitAndDedentRange(
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
-  if (range2 && range2.depth > depth) {
+  if (range2 && range2.depth >= depth) {
     range2 = new NodeRange(range2.$from, range2.$to, depth)
-  }
-  if (range2) {
     dedentRange(range2, tr, listType, true, undefined)
   }
   return true
