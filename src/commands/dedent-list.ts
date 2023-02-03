@@ -3,6 +3,10 @@ import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction, Selection } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList, autoJoinList2 } from '../utils/auto-join-list'
+import {
+  atEndBlockBoundary,
+  atStartBlockBoundary,
+} from '../utils/block-boundary'
 import { findListContentRange } from '../utils/find-item-content-range'
 import {
   findListsRange,
@@ -12,6 +16,7 @@ import {
 } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
+import { zoomInRange } from '../utils/zoom-in-range'
 import { separateItemRange } from './separate-item-range'
 
 export { createDedentListCommandV4 as createDedentListCommand }
@@ -92,6 +97,33 @@ function dedentRange(
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
+  const { depth, $from, $to } = range
+
+  startBoundary = startBoundary || atStartBlockBoundary($from, depth + 1)
+  endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
+  console.log(`dedentRange: boundary: ${startBoundary} ${endBoundary}`)
+
+  if (!endBoundary) {
+    fixEndBoundary(range, tr, listType)
+
+    const endOfParent = $to.end(depth)
+    range = new NodeRange(
+      tr.doc.resolve($from.pos),
+      tr.doc.resolve(endOfParent),
+      depth,
+    )
+    // return true
+    return dedentNodeRange(range, tr, listType)
+    // const { startIndex, endIndex } = range
+    // if (endIndex - startIndex === 1) {
+    //   const contentRange = zoomInRange(range)
+    //   return contentRange ? dedentRange(contentRange, tr, listType) : false
+    // } else {
+    //   throw new Error('not implementation')
+    //   // return splitAndIndentRange(range, tr, listType, endIndex - 1)
+    // }
+  }
+
   return dedentNodeRange(range, tr, listType)
 }
 
@@ -100,7 +132,56 @@ function dedentNodeRange(
   tr: Transaction,
   listType: NodeType,
 ) {
-  return safeLift(tr, range)
+  return dedentToOuterList(tr, range, listType)
+}
+
+function fixEndBoundary(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+): void {
+  const contentRange = zoomInRange(range)
+  if (contentRange) {
+    const { $to, $from, depth, end, parent, endIndex } = range
+    const endOfParent = $to.end(depth)
+    console.log('fixEndBoundary: deeper')
+    fixEndBoundary(contentRange, tr, listType)
+
+    range = new NodeRange(
+      tr.doc.resolve($from.pos),
+      tr.doc.resolve($to.pos),
+      depth,
+    )
+  }
+
+  const { $to, $from, depth, end, parent, endIndex } = range
+
+  const endOfParent = $to.end(depth)
+
+  console.log(`fixEndBoundary: end:${end} endOfParent:${endOfParent}`)
+  if (end < endOfParent) {
+    if (parent.maybeChild(endIndex - 1)?.type === listType) {
+      console.log('fixEndBoundary: ReplaceAroundStep')
+      // There are siblings after the lifted items, which must become
+      // children of the last item
+      tr.step(
+        new ReplaceAroundStep(
+          end - 1,
+          endOfParent,
+          end,
+          endOfParent,
+          new Slice(Fragment.from(listType.create(null)), 1, 0),
+          0,
+          true,
+        ),
+      )
+      range = new NodeRange(
+        tr.doc.resolve($from.pos),
+        tr.doc.resolve(endOfParent),
+        depth,
+      )
+    }
+  }
 }
 
 /** @internal */
@@ -438,17 +519,20 @@ function dedentToOuterList(
   {
     const { $to, $from, depth, end, parent, endIndex } = range
 
-    const endOfList = $to.end(depth)
-    if (end < endOfList && parent.maybeChild(endIndex - 1)?.type === listType) {
+    const endOfParent = $to.end(depth)
+    if (
+      end < endOfParent &&
+      parent.maybeChild(endIndex - 1)?.type === listType
+    ) {
       console.log('dedentToOuterList: ReplaceAroundStep')
       // There are siblings after the lifted items, which must become
       // children of the last item
       tr.step(
         new ReplaceAroundStep(
           end - 1,
-          endOfList,
+          endOfParent,
           end,
-          endOfList,
+          endOfParent,
           new Slice(Fragment.from(listType.create(null)), 1, 0),
           0,
           true,
@@ -456,7 +540,7 @@ function dedentToOuterList(
       )
       range = new NodeRange(
         tr.doc.resolve($from.pos),
-        tr.doc.resolve(endOfList),
+        tr.doc.resolve(endOfParent),
         depth,
       )
     }
