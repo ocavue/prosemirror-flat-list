@@ -57,7 +57,7 @@ export function getJoinableBoundaries(
 }
 
 /** @internal */
-export function autoJoinList2(tr: Transaction, listType: NodeType): void {
+export function autoJoinList(tr: Transaction, listType: NodeType): void {
   const isListJoinable = (before: ProsemirrorNode, after: ProsemirrorNode) => {
     return (
       before.type === listType &&

@@ -1,5 +1,8 @@
-import { describe, it } from 'vitest'
+import { ProsemirrorNode } from '@remirror/pm'
+import { TaggedProsemirrorNode } from 'jest-remirror'
+import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { createDedentListCommand } from './dedent-list'
 
 describe('dedentList', () => {
   const t = setupTestingEditor()
@@ -308,5 +311,83 @@ describe('dedentList', () => {
           - B4
       `,
     )
+  })
+
+  it('only needs one step for some of the most comment indent action', () => {
+    const countSteps = (
+      doc: TaggedProsemirrorNode,
+      expected: TaggedProsemirrorNode,
+    ) => {
+      t.add(doc)
+      const state = t.view.state
+      const listType = state.schema.nodes['list']
+      const command = createDedentListCommand(listType)
+      let count = -1
+      let actual: ProsemirrorNode | null = null
+      command(state, (tr) => {
+        count = tr.steps.length
+        actual = tr.doc
+      })
+      expect(actual).not.equal(null)
+      expect(actual).toEqualRemirrorDocument(expected)
+      return count
+    }
+
+    expect(
+      countSteps(
+        markdown`
+          - A1
+            - B1<cursor>
+        `,
+        markdown`
+          - A1
+          - B1<cursor>
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          - A1
+          - A2<cursor>
+        `,
+        markdown`
+          - A1
+
+          A2<cursor>
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          # heading
+
+          - A1<cursor>
+        `,
+        markdown`
+          # heading
+
+          A1<cursor>
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          # heading
+
+          - - A1<cursor>
+        `,
+        markdown`
+          # heading
+
+          - A1<cursor>
+        `,
+      ),
+    ).toBe(1)
   })
 })

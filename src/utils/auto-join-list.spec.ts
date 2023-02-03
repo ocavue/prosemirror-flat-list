@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { autoJoinList2 } from './auto-join-list'
+import { autoJoinList } from './auto-join-list'
 
 describe('autoJoinList', () => {
   const t = setupTestingEditor()
@@ -12,7 +12,7 @@ describe('autoJoinList', () => {
         const tr = view.state.tr
         const schema = view.state.schema
         tr.replaceWith(8, 9, schema.text('C'))
-        autoJoinList2(tr, schema.nodes['list'])
+        autoJoinList(tr, schema.nodes['list'])
         view.dispatch(tr)
       },
 

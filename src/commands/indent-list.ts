@@ -1,7 +1,7 @@
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { autoJoinList2 } from '../utils/auto-join-list'
+import { autoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -19,7 +19,7 @@ export function createIndentListCommand(listType: NodeType): Command {
     if (!range) return false
 
     if (indentRange(range, tr, listType)) {
-      autoJoinList2(tr, listType)
+      autoJoinList(tr, listType)
       dispatch?.(tr)
       return true
     }
