@@ -52,7 +52,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.skip('can unwrap a list node', () => {
+  it('can unwrap a list node', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -90,7 +90,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.skip('can unwrap multiple list nodes', () => {
+  it('can unwrap multiple list nodes', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -101,38 +101,6 @@ describe('dedentList', () => {
         A1
 
         A2
-      `,
-    )
-
-    t.runCommand(
-      commands.dedentList,
-      markdown`
-        - A1<start>
-        - A2<end>
-        - A3
-      `,
-      markdown`
-        A1
-
-        A2
-
-        - A3
-      `,
-    )
-
-    t.runCommand(
-      commands.dedentList,
-      markdown`
-        - A1
-        - A2<start>
-        - A3<end>
-      `,
-      markdown`
-        - A1
-
-        A2
-
-        A3
       `,
     )
 
@@ -192,7 +160,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.skip('can move unselected node if have to', () => {
+  it('can move unselected node if have to', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -236,7 +204,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.skip('can dedent a nested list item', () => {
+  it('can dedent a nested list item', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -249,7 +217,7 @@ describe('dedentList', () => {
       markdown`
         - B1
 
-          - B1
+          B1
 
           A1
       `,

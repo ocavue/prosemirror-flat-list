@@ -75,8 +75,7 @@ export function createDedentListCommandV4(listType: NodeType): Command {
     const tr = state.tr
     const { $from, $to } = tr.selection
 
-    const listsRange =
-      findListsRange($from, $to, listType)  
+    const listsRange = findListsRange($from, $to, listType)
     if (!listsRange) return false
 
     if (dedentRange(listsRange, tr, listType)) {
