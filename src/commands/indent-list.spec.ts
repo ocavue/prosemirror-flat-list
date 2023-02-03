@@ -60,7 +60,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can indent a paragraph and wrap it with a new list node', () => {
+  it('should not wrap a paragraph with a new list node when it will bring a new visual bullet', () => {
     t.runCommand(
       commands.indentList,
       markdown`
@@ -74,7 +74,7 @@ describe('indentList', () => {
 
         - A2a
 
-          - A2b<cursor>
+          A2b<cursor>
       `,
     )
 
@@ -93,7 +93,7 @@ describe('indentList', () => {
 
         - A2a
 
-          - A2b<cursor>
+          A2b<cursor>
 
           A2c
       `,
@@ -368,6 +368,8 @@ describe('indentList', () => {
 
         - A2
 
+          - B1
+
           A2<cursor>
 
           A2
@@ -379,7 +381,9 @@ describe('indentList', () => {
 
         - A2
 
-          - A2<cursor>
+          - B1
+
+            A2<cursor>
 
           A2
 

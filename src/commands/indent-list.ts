@@ -7,7 +7,7 @@ import {
   atEndBlockBoundary,
   atStartBlockBoundary,
 } from '../utils/block-boundary'
-import { findListsRange } from '../utils/list-range'
+import { findListsRange, isListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 import { createIndentListCommandV3 } from './dedent-list'
@@ -272,7 +272,10 @@ function indentNodeRange(
       ),
     )
     return true
-  } else {
+  } else if (
+    isListsRange(range, listType) ||
+    (parent.type === listType && startIndex === 0)
+  ) {
     // Wrap the selected content with a new list node
 
     tr.step(
@@ -287,5 +290,7 @@ function indentNodeRange(
       ),
     )
     return true
+  } else {
+    return false
   }
 }
