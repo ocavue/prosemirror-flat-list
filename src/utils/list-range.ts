@@ -41,39 +41,3 @@ export function isListsRange(range: NodeRange, listType: NodeType): boolean {
 
   return true
 }
-
-// function splitListsRange(range: NodeRange) {
-//   const { $from, $to } = range
-//   const { startIndex, endIndex, parent } = range
-//   const { depth } = range
-
-//   const leftOpen = isLeftOpenRange(range)
-//   const rightOpen = isRightOpenRange(range)
-
-//   const leftContentRange = new NodeRange(
-//     $
-//   )
-
-// }
-
-export function isLeftOpenRange(range: NodeRange): false | number {
-  const { $from } = range
-  if ($from.depth > range.depth) {
-    const startIndex = $from.index(range.depth + 1)
-    if (startIndex > 0) {
-      return startIndex
-    }
-  }
-  return false
-}
-
-export function isRightOpenRange(range: NodeRange): false | number {
-  const { $to } = range
-  if ($to.depth > range.depth) {
-    const endIndex = $to.indexAfter(range.depth + 1)
-    if (endIndex < $to.node(range.depth + 1).childCount) {
-      return endIndex
-    }
-  }
-  return false
-}
