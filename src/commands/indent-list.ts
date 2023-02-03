@@ -245,12 +245,13 @@ function indentNodeRange(
   tr: Transaction,
   listType: NodeType,
 ): boolean {
-  const { parent, startIndex, start, end } = range
+  const { parent, startIndex } = range
   const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
 
   // If the previous node before the range is a list node, move the range into
   // the previous list node as its children
   if (prevChild && prevChild.type === listType) {
+    const { start, end } = range
     tr.step(
       new ReplaceAroundStep(
         start - 1,
@@ -265,12 +266,13 @@ function indentNodeRange(
     return true
   }
 
+  // If we can avoid to add a new bullet visually, we can wrap the range with a
+  // new list node.
   if (
     (startIndex === 0 && parent.type === listType) ||
-    isListsRange(range, listType)
+    parent.child(startIndex).type === listType
   ) {
-    // Wrap the selected content with a new list node
-
+    const { start, end } = range
     tr.step(
       new ReplaceAroundStep(
         start,
