@@ -6,8 +6,9 @@ import {
   atEndBlockBoundary,
   atStartBlockBoundary,
 } from '../utils/block-boundary'
-import { findListsRange, isListsRange } from '../utils/list-range'
+import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
+import { zoomInRange } from '../utils/zoom-in-range'
 import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
@@ -168,15 +169,8 @@ function indentRange(
 
   if (!startBoundary) {
     if (length === 1) {
-      return indentRange(
-        new NodeRange(
-          $from,
-          $to.pos < end ? $to : tr.doc.resolve(range.end - 1),
-          depth + 1,
-        ),
-        tr,
-        listType,
-      )
+      const contentRange = zoomInRange(range)
+      return contentRange ? indentRange(contentRange, tr, listType) : false
     } else {
       const splitPos = $from.posAtIndex(startIndex + 1, depth)
 
@@ -205,15 +199,8 @@ function indentRange(
 
   if (!endBoundary) {
     if (length === 1) {
-      return indentRange(
-        new NodeRange(
-          $from.pos > start ? $from : tr.doc.resolve(range.start + 1),
-          $to.pos < end ? $to : tr.doc.resolve(range.end - 1),
-          depth + 1,
-        ),
-        tr,
-        listType,
-      )
+      const contentRange = zoomInRange(range)
+      return contentRange ? indentRange(contentRange, tr, listType) : false
     } else {
       const splitPos = $from.posAtIndex(endIndex - 1, depth)
 
