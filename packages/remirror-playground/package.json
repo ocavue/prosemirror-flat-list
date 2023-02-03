@@ -36,6 +36,7 @@
     "remark-rehype": "^10.1.0",
     "remirror": "^2.0.24",
     "remirror-extension-flat-list": "workspace:*",
+    "prosemirror-flat-list": "workspace:*",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
     "unified": "^10.1.2",

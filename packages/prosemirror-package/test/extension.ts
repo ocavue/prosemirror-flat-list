@@ -13,6 +13,7 @@ import {
 } from '@remirror/core'
 
 import {
+  alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
@@ -22,7 +23,6 @@ import {
   handleListMarkerMouseDown,
   ListDOMSerializer,
   listToDOM,
-  alwaysTrue,
 } from '../src/index'
 
 export class ListExtension extends NodeExtension {
@@ -72,7 +72,7 @@ export class ListExtension extends NodeExtension {
 
   createKeymap(): KeyBindings {
     return {
-      Enter: createSplitListCommand(this.type),
+      Enter: convertCommand(createSplitListCommand(this.type)),
 
       'Shift-Tab': alwaysTrue(
         convertCommand(createDedentListCommand(this.type)),

@@ -1,12 +1,11 @@
-import { CommandFunction } from '@remirror/pm'
 import { NodeType } from '@remirror/pm/model'
+import { Command } from '@remirror/pm/state'
 import { canSplit } from '@remirror/pm/transform'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { enterWithoutLift } from './enter-without-lift'
 
-export function createSplitListCommand(listType: NodeType): CommandFunction {
-  return (props): boolean => {
-    const { tr, dispatch, state } = props
+export function createSplitListCommand(listType: NodeType): Command {
+  const splitListCommand: Command = (state, dispatch, view): boolean => {
     const { selection } = state
     const { $from, $to } = selection
 
@@ -30,13 +29,15 @@ export function createSplitListCommand(listType: NodeType): CommandFunction {
     // ProseMirror `Enter` keybinding but remove the `liftEmptyBlock`
     // command from it.
     if ($from.index(-1) !== 0) {
-      return enterWithoutLift(props)
+      return enterWithoutLift(state, dispatch, view)
     }
 
     // If the parent block is empty, we lift this empty block.
     if ($from.parent.content.size === 0) {
       return false
     }
+
+    const tr = state.tr
 
     tr.delete($from.pos, $to.pos)
 
@@ -66,4 +67,6 @@ export function createSplitListCommand(listType: NodeType): CommandFunction {
     dispatch?.(tr.split($from.pos, 2, typesAfter).scrollIntoView())
     return true
   }
+
+  return splitListCommand
 }

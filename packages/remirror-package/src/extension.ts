@@ -72,7 +72,7 @@ export class ListExtension extends NodeExtension {
 
   createKeymap(): KeyBindings {
     return {
-      Enter: createSplitListCommand(this.type),
+      Enter: convertCommand(createSplitListCommand(this.type)),
 
       'Shift-Tab': alwaysTrue(
         convertCommand(createDedentListCommand(this.type)),

@@ -1,5 +1,5 @@
 import '@remirror/styles/all.css'
-import 'remirror-extension-flat-list/style.css'
+import 'prosemirror-flat-list/style.css'
 
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HardBreakExtension } from '@remirror/extension-hard-break'
