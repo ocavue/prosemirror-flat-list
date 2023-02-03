@@ -1,5 +1,8 @@
-import { describe, it } from 'vitest'
+import { ProsemirrorNode } from '@remirror/pm'
+import { TaggedProsemirrorNode } from 'jest-remirror'
+import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { createIndentListCommand } from './indent-list'
 
 describe('indentList', () => {
   const t = setupTestingEditor()
@@ -472,5 +475,162 @@ describe('indentList', () => {
           - B4
       `,
     )
+  })
+
+  it('only needs one step for some of the most comment indent action', () => {
+    const countSteps = (
+      doc: TaggedProsemirrorNode,
+      expected: TaggedProsemirrorNode,
+    ) => {
+      t.add(doc)
+      const state = t.view.state
+      const listType = state.schema.nodes['list']
+      const command = createIndentListCommand(listType)
+      let count = -1
+      let actual: ProsemirrorNode | null = null
+      command(state, (tr) => {
+        count = tr.steps.length
+        actual = tr.doc
+      })
+      expect(actual).not.equal(null)
+      expect(actual).toEqualRemirrorDocument(expected)
+      return count
+    }
+
+    expect(
+      countSteps(
+        markdown`
+          - A1
+          - A2<cursor>
+        `,
+        markdown`
+          - A1
+            - A2<cursor>
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          - A1
+          - [ ] A2<cursor>
+          - [x] A3
+        `,
+        markdown`
+          - A1
+            - [ ] A2<cursor>
+          - [x] A3
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          1. A1
+          2. <start>A2
+          3. A3<end>
+          4. A4
+        `,
+        markdown`
+          1. A1
+             1. <start>A2
+             2. A3<end>
+          2. A4
+        `,
+      ),
+    ).toBe(1)
+
+    expect(
+      countSteps(
+        markdown`
+          1. A1
+             - B1
+             - <start>B2
+             - B3
+             - B4<end>
+        `,
+        markdown`
+          1. A1
+             - B1
+               - <start>B2
+               - B3
+               - B4<end>
+        `,
+      ),
+    ).toBe(1)
+
+    // For more complex (and less common) cases, more steps is acceptable
+    expect(
+      countSteps(
+        markdown`
+          - A1
+
+            - B1
+
+              - C1
+
+                - D1
+
+                  D1b
+
+                - <start>D2
+
+                C1b
+
+                C1c
+
+            - B2
+
+              - C2
+
+          - A2
+
+          - A3
+
+            - B3
+
+              B3b
+
+            - B4<end>
+
+            A3b
+        `,
+        markdown`
+          - A1
+
+            - B1
+
+              - C1
+
+                - D1
+
+                  D1b
+
+                  - <start>D2
+
+                  C1b
+
+                  C1c
+
+              - B2
+
+                - C2
+
+            - A2
+
+            - A3
+
+              - B3
+
+                B3b
+
+              - B4<end>
+
+            A3b
+        `,
+      ),
+    ).toBeGreaterThan(1)
   })
 })

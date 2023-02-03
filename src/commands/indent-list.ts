@@ -159,69 +159,63 @@ function indentRange(
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
-  const { depth, $from, $to, startIndex, endIndex, start, end } = range
-  const length = endIndex - startIndex
-
-  const from = $from.pos
-  const to = $to.pos
+  const { depth, $from, $to } = range
 
   startBoundary = startBoundary || atStartBlockBoundary($from, depth + 1)
 
   if (!startBoundary) {
-    if (length === 1) {
+    const { startIndex, endIndex } = range
+    if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
       return contentRange ? indentRange(contentRange, tr, listType) : false
     } else {
-      const splitPos = $from.posAtIndex(startIndex + 1, depth)
-
-      const range1 = new NodeRange(
-        $from,
-        tr.doc.resolve(splitPos - 1),
-        depth + 1,
-      )
-      const getRange2From = mapPos(tr, splitPos + 1)
-      const getRange2To = mapPos(tr, to)
-
-      indentRange(range1, tr, listType, undefined, true)
-
-      const range2 = new NodeRange(
-        tr.doc.resolve(getRange2From()),
-        tr.doc.resolve(getRange2To()),
-        depth,
-      )
-
-      indentRange(range2, tr, listType, true, undefined)
-      return true
+      return splitAndIndentRange(range, tr, listType, startIndex + 1)
     }
   }
 
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
   if (!endBoundary) {
-    if (length === 1) {
+    const { startIndex, endIndex } = range
+    if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
       return contentRange ? indentRange(contentRange, tr, listType) : false
     } else {
-      const splitPos = $from.posAtIndex(endIndex - 1, depth)
-
-      const getRange1From = mapPos(tr, from)
-      const getRange1To = mapPos(tr, splitPos - 1)
-
-      const range2 = new NodeRange(tr.doc.resolve(splitPos + 1), $to, depth + 1)
-      indentRange(range2, tr, listType, true, undefined)
-
-      const range1 = new NodeRange(
-        tr.doc.resolve(getRange1From()),
-        tr.doc.resolve(getRange1To()),
-        depth,
-      )
-
-      indentRange(range1, tr, listType, undefined, true)
-      return true
+      return splitAndIndentRange(range, tr, listType, endIndex - 1)
     }
   }
 
   return indentNodeRange(range, tr, listType)
+}
+
+/**
+ * Split a range into two parts, and indent them separately.
+ */
+function splitAndIndentRange(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+  splitIndex: number,
+): boolean {
+  const { $from, $to, depth } = range
+
+  const splitPos = $from.posAtIndex(splitIndex, depth)
+
+  const range1 = $from.blockRange(tr.doc.resolve(splitPos - 1))
+  if (!range1) return false
+
+  const getRange2From = mapPos(tr, splitPos + 1)
+  const getRange2To = mapPos(tr, $to.pos)
+
+  indentRange(range1, tr, listType, undefined, true)
+
+  const range2 = tr.doc
+    .resolve(getRange2From())
+    .blockRange(tr.doc.resolve(getRange2To()))
+
+  range2 && indentRange(range2, tr, listType, true, undefined)
+
+  return true
 }
 
 /**
