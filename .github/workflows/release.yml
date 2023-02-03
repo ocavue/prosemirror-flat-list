@@ -5,21 +5,12 @@ on:
     branches:
       - master
 
-jobs:
-  version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        id: release-please
-        with:
-          release-type: node
-    outputs:
-      release_created: ${{ steps.release-please.outputs.release_created }}
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-  publish:
+jobs:
+  release:
+    name: Release
     runs-on: ubuntu-latest
-    needs: [version]
-    if: ${{ needs.version.outputs.release_created }}
     steps:
       - uses: actions/checkout@v3
 
@@ -28,7 +19,11 @@ jobs:
       - name: Build
         run: nr build
 
-      - name: Publish to NPM
-        run: npm publish
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
