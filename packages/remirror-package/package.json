@@ -6,12 +6,12 @@
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
-  "homepage": "https://github.com/ocavue/remirror-extension-flat-list#readme",
+  "homepage": "https://github.com/ocavue/prosemirror-flat-list#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ocavue/remirror-extension-flat-list.git"
+    "url": "git+https://github.com/ocavue/prosemirror-flat-list.git"
   },
-  "bugs": "https://github.com/ocavue/remirror-extension-flat-list/issues",
+  "bugs": "https://github.com/ocavue/prosemirror-flat-list/issues",
   "keywords": [],
   "sideEffects": false,
   "main": "./dist/index.mjs",

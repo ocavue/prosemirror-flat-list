@@ -7,6 +7,15 @@ function main() {
   document.body.appendChild(root)
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
+      <h1>Remirror Flat List</h1>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/ocavue/prosemirror-flat-list">
+          https://github.com/ocavue/prosemirror-flat-list
+        </a>
+      </p>
+
       <Editor />
     </React.StrictMode>,
   )
