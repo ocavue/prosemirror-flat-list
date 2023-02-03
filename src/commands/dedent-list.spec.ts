@@ -32,6 +32,26 @@ describe('dedentList', () => {
     )
   })
 
+  it('can dedent a paragraph node to outer list', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1a
+
+            B1b<cursor>
+      `,
+      markdown`
+        - A1
+
+          - B1a
+
+          B1b<cursor>
+      `,
+    )
+  })
+
   it.skip('can unwrap a list node', () => {
     t.runCommand(
       commands.dedentList,

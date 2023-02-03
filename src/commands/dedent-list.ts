@@ -97,7 +97,7 @@ function dedentRange(
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
-  const { depth, $from, $to } = range
+  const { depth, $from, $to, startIndex } = range
 
   startBoundary = startBoundary || atStartBlockBoundary($from, depth + 1)
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
@@ -113,7 +113,7 @@ function dedentRange(
       depth,
     )
     // return true
-    return dedentNodeRange(range, tr, listType)
+    return dedentRange(range, tr, listType, undefined, true)
     // const { startIndex, endIndex } = range
     // if (endIndex - startIndex === 1) {
     //   const contentRange = zoomInRange(range)
@@ -124,7 +124,55 @@ function dedentRange(
     // }
   }
 
+  if (!startBoundary) {
+    const { startIndex, endIndex } = range
+    if (endIndex - startIndex === 1) {
+      const contentRange = zoomInRange(range)
+      return contentRange ? dedentRange(contentRange, tr, listType) : false
+    } else {
+      return splitAndDedentRange(range, tr, listType, startIndex + 1)
+    }
+  }
+
+  // if (
+  //   range.startIndex === 0 &&
+  //   range.endIndex === range.parent.childCount &&
+  //   range.parent.type === listType
+  // ) {
+  //   return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, listType)
+  // }
+
   return dedentNodeRange(range, tr, listType)
+}
+
+/**
+ * Split a range into two parts, and dedent them separately.
+ */
+function splitAndDedentRange(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+  splitIndex: number,
+): boolean {
+  const { $from, $to, depth } = range
+
+  const splitPos = $from.posAtIndex(splitIndex, depth)
+
+  const range1 = $from.blockRange(tr.doc.resolve(splitPos - 1))
+  if (!range1) return false
+
+  const getRange2From = mapPos(tr, splitPos + 1)
+  const getRange2To = mapPos(tr, $to.pos)
+
+  dedentRange(range1, tr, listType, undefined, true)
+
+  const range2 = tr.doc
+    .resolve(getRange2From())
+    .blockRange(tr.doc.resolve(getRange2To()))
+
+  range2 && dedentRange(range2, tr, listType, true, undefined)
+
+  return true
 }
 
 function dedentNodeRange(
