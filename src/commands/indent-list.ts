@@ -251,7 +251,7 @@ function indentNodeRange(
   // new list node.
   if (
     (startIndex === 0 && parent.type === listType) ||
-    parent.child(startIndex).type === listType
+    parent.maybeChild(startIndex)?.type === listType
   ) {
     const { start, end } = range
     tr.step(
