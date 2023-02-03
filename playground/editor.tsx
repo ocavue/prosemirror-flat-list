@@ -1,7 +1,6 @@
 import '@remirror/styles/all.css'
 import '../src/style.css'
 
-import { ProsemirrorDevTools } from '@remirror/dev'
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HardBreakExtension } from '@remirror/extension-hard-break'
 import { HeadingExtension } from '@remirror/extension-heading'
@@ -68,7 +67,6 @@ const Editor = (): JSX.Element => {
       <Remirror manager={manager} initialContent={state}>
         <Button />
         <EditorComponent />
-        <ProsemirrorDevTools />
       </Remirror>
     </ThemeProvider>
   )
@@ -99,14 +97,29 @@ const content = html`
       <ul>
         <li>
           <p>B1</p>
+          <ul>
+            <li>
+              <p>C1</p>
+              <p>C1</p>
+            </li>
+          </ul>
+          <p>B1</p>
         </li>
         <li>
           <p>B2</p>
-          <p>B2</p>
+          <ul>
+            <li>
+              <p>C2</p>
+              <p>C2</p>
+            </li>
+          </ul>
           <p>B2</p>
         </li>
+
+        <li>
+          <p>B3</p>
+        </li>
       </ul>
-      <p>A1</p>
     </li>
   </ul>
 
