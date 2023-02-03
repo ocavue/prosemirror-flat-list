@@ -406,6 +406,44 @@ describe('indentList', () => {
     )
   })
 
+  it('can indent a paragraph that not inside a list node', () => {
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+
+        P1<cursor>
+      `,
+      markdown`
+        - A1
+
+          P1<cursor>
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+
+        P1<start>
+
+        P2<end>
+
+        P3
+      `,
+      markdown`
+        - A1
+
+          P1<start>
+
+          P2<end>
+
+        P3
+      `,
+    )
+  })
+
   it('can handle some complex nested lists', () => {
     t.runCommand(
       commands.indentList,
