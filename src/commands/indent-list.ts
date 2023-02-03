@@ -155,21 +155,18 @@ function indentRange(
   range: NodeRange,
   tr: Transaction,
   listType: NodeType,
-
-  includeStartBoundary?: boolean,
+  startBoundary?: boolean,
+  endBoundary?: boolean,
 ): boolean {
-  const { parent, depth, $from, $to, startIndex, endIndex, start, end } = range
+  const { depth, $from, $to, startIndex, endIndex, start, end } = range
   const length = endIndex - startIndex
 
   const from = $from.pos
   const to = $to.pos
 
-  includeStartBoundary =
-    includeStartBoundary || atStartBlockBoundary($from, depth + 1)
+  startBoundary = startBoundary || atStartBlockBoundary($from, depth + 1)
 
-  if (!includeStartBoundary) {
-    console.log('not includeStartBoundary')
-
+  if (!startBoundary) {
     if (length === 1) {
       return indentRange(
         new NodeRange(
@@ -191,7 +188,7 @@ function indentRange(
       const getRange2From = mapPos(tr, splitPos + 1)
       const getRange2To = mapPos(tr, to)
 
-      indentRange(range1, tr, listType)
+      indentRange(range1, tr, listType, undefined, true)
 
       const range2 = new NodeRange(
         tr.doc.resolve(getRange2From()),
@@ -199,14 +196,14 @@ function indentRange(
         depth,
       )
 
-      indentRange(range2, tr, listType)
+      indentRange(range2, tr, listType, true, undefined)
       return true
     }
   }
 
-  if (!atEndBlockBoundary($to, depth + 1)) {
-    console.log('not atEndBlockBoundary')
+  endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
+  if (!endBoundary) {
     if (length === 1) {
       return indentRange(
         new NodeRange(
@@ -224,7 +221,7 @@ function indentRange(
       const getRange1To = mapPos(tr, splitPos - 1)
 
       const range2 = new NodeRange(tr.doc.resolve(splitPos + 1), $to, depth + 1)
-      indentRange(range2, tr, listType)
+      indentRange(range2, tr, listType, true, undefined)
 
       const range1 = new NodeRange(
         tr.doc.resolve(getRange1From()),
@@ -232,14 +229,10 @@ function indentRange(
         depth,
       )
 
-      indentRange(range1, tr, listType)
+      indentRange(range1, tr, listType, undefined, true)
       return true
     }
-
-    return false
   }
-
-  console.log('at boundary')
 
   return indentNodeRange(range, tr, listType)
 }
@@ -255,9 +248,9 @@ function indentNodeRange(
   const { parent, startIndex, start, end } = range
   const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
 
+  // If the previous node before the range is a list node, move the range into
+  // the previous list node as its children
   if (prevChild && prevChild.type === listType) {
-    // Append the selected content into the prev child list
-
     tr.step(
       new ReplaceAroundStep(
         start - 1,
@@ -270,9 +263,11 @@ function indentNodeRange(
       ),
     )
     return true
-  } else if (
-    isListsRange(range, listType) ||
-    (parent.type === listType && startIndex === 0)
+  }
+
+  if (
+    (startIndex === 0 && parent.type === listType) ||
+    isListsRange(range, listType)
   ) {
     // Wrap the selected content with a new list node
 
@@ -288,7 +283,8 @@ function indentNodeRange(
       ),
     )
     return true
-  } else {
-    return false
   }
+
+  // Otherwise we cannot indent
+  return false
 }
