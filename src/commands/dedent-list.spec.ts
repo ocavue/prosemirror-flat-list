@@ -186,6 +186,36 @@ describe('dedentList', () => {
         - B3<end>
       `,
     )
+
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+            - C1<start>
+
+          - B3<end>
+
+            - C2
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+          - C1<start>
+
+        - B3<end>
+
+          - C2
+      `,
+    )
   })
 
   it('can move unselected node if have to', () => {

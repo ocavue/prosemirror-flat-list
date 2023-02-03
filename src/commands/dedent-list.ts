@@ -97,12 +97,16 @@ function splitAndDedentRange(
 
   dedentRange(range1, tr, listType, undefined, true)
 
-  const range2 = tr.doc
+  let range2 = tr.doc
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
-  range2 && dedentRange(range2, tr, listType, true, undefined)
-
+  if (range2 && range2.depth > depth) {
+    range2 = new NodeRange(range2.$from, range2.$to, depth)
+  }
+  if (range2) {
+    dedentRange(range2, tr, listType, true, undefined)
+  }
   return true
 }
 
@@ -112,7 +116,7 @@ function dedentNodeRange(
   listType: NodeType,
 ) {
   if (range.parent.type === listType) {
-    return dedentToOuterList(tr, range, listType)
+    return safeLift(tr, range)
   } else {
     return dedentOutOfList(tr, range)
   }
@@ -161,42 +165,6 @@ function fixEndBoundary(
       ),
     )
   }
-}
-
-function dedentToOuterList(
-  tr: Transaction,
-  range: NodeRange,
-  listType: NodeType,
-): boolean {
-  {
-    const { $to, $from, depth, end, parent, endIndex } = range
-
-    const endOfParent = $to.end(depth)
-    if (
-      end < endOfParent &&
-      parent.maybeChild(endIndex - 1)?.type === listType
-    ) {
-      // There are siblings after the lifted items, which must become
-      // children of the last item
-      tr.step(
-        new ReplaceAroundStep(
-          end - 1,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 1, 0),
-          0,
-          true,
-        ),
-      )
-      range = new NodeRange(
-        tr.doc.resolve($from.pos),
-        tr.doc.resolve(endOfParent),
-        depth,
-      )
-    }
-  }
-  return safeLift(tr, range)
 }
 
 function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
