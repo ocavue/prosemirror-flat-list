@@ -76,7 +76,7 @@ export function createDedentListCommandV4(listType: NodeType): Command {
     const { $from, $to } = tr.selection
 
     const listsRange =
-      findListsRange($from, $to, listType) || $from.blockRange($to)
+      findListsRange($from, $to, listType)  
     if (!listsRange) return false
 
     if (dedentRange(listsRange, tr, listType)) {
@@ -180,7 +180,11 @@ function dedentNodeRange(
   tr: Transaction,
   listType: NodeType,
 ) {
-  return dedentToOuterList(tr, range, listType)
+  if (range.parent.type === listType) {
+    return dedentToOuterList(tr, range, listType)
+  } else {
+    return dedentOutOfList(tr, range)
+  }
 }
 
 function fixEndBoundary(
