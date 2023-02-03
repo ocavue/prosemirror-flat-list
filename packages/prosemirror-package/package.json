@@ -1,5 +1,5 @@
 {
-  "name": "remirror-extension-flat-list",
+  "name": "prosemirror-flat-list",
   "type": "module",
   "version": "0.0.1",
   "description": "",
@@ -36,25 +36,14 @@
     "test": "vitest"
   },
   "dependencies": {
-    "prosemirror-flat-list": "^0.0.1",
-    "@remirror/core": "^2.0.11"
-  },
-  "peerDependencies": {
     "@remirror/pm": "^2.0.3"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.19.0",
+    "@remirror/core": "^2.0.11",
     "@remirror/extension-blockquote": "^2.0.12",
-    "@remirror/extension-hard-break": "^2.0.11",
     "@remirror/extension-heading": "^2.0.11",
-    "@remirror/extension-link": "^2.0.13",
-    "@remirror/pm": "^2.0.3",
-    "@remirror/react": "^2.0.25",
-    "@remirror/styles": "^2.0.3",
     "@types/dedent": "^0.7.0",
     "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
     "@vitest/coverage-c8": "^0.28.3",
     "dedent": "^0.7.0",
     "jest-remirror": "^2.1.3",

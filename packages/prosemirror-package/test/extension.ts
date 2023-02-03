@@ -23,7 +23,7 @@ import {
   ListDOMSerializer,
   listToDOM,
   alwaysTrue,
-} from 'prosemirror-flat-list'
+} from '../src/index'
 
 export class ListExtension extends NodeExtension {
   static disableExtraAttributes = true

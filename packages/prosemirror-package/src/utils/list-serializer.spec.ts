@@ -1,42 +1,18 @@
-import { renderEditor } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
-import { ListExtension } from '../extension'
+import { setupTestingEditor } from '../../test/setup-editor'
 import { ListDOMSerializer } from './list-serializer'
 
-const setup = () => {
-  const extensions = [new ListExtension()]
-  const editor = renderEditor(extensions, {})
+describe('ListDOMSerializer', () => {
   const {
-    view,
-    add,
-    nodes: { doc, p },
-    attributeNodes: { list },
-    manager,
-    schema,
-  } = editor
-
-  const bulletList = list({ type: 'bullet' })
-  const orderedList = list({ type: 'ordered' })
-  const taskList = list({ type: 'task' })
-  const toggleList = list({ type: 'toggle' })
-
-  return {
-    manager,
-    view,
-    schema,
     add,
     doc,
     p,
     bulletList,
     orderedList,
-    taskList,
-    toggleList,
-  }
-}
-
-describe('ListDOMSerializer', () => {
-  const { add, doc, p, bulletList, orderedList, taskList, toggleList, schema } =
-    setup()
+    uncheckedTaskList: taskList,
+    expandedToggleList: toggleList,
+    schema,
+  } = setupTestingEditor()
 
   let editor: ReturnType<typeof add>
 

@@ -20,6 +20,61 @@ importers:
       prettier: 2.8.3
       typescript: 4.9.4
 
+  packages/prosemirror-package:
+    specifiers:
+      '@remirror/core': ^2.0.11
+      '@remirror/extension-blockquote': ^2.0.12
+      '@remirror/extension-heading': ^2.0.11
+      '@remirror/pm': ^2.0.3
+      '@types/dedent': ^0.7.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.28.3
+      dedent: ^0.7.0
+      jest-remirror: ^2.1.3
+      jsdom: ^21.0.0
+      npm-run-all: ^4.1.5
+      postcss: ^8.4.21
+      postcss-nesting: ^10.2.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      rehype-stringify: ^9.0.3
+      remark-gfm: ^3.0.1
+      remark-parse: ^10.0.1
+      remark-rehype: ^10.1.0
+      remirror: ^2.0.24
+      tsup: ^6.5.0
+      typescript: ^4.9.4
+      unified: ^10.1.2
+      vite: ^4.0.4
+      vitest: ^0.27.2
+    dependencies:
+      '@remirror/pm': 2.0.3
+    devDependencies:
+      '@remirror/core': 2.0.11_qfefl7ho6nqe23zdqisxzozsdy
+      '@remirror/extension-blockquote': 2.0.12_qfefl7ho6nqe23zdqisxzozsdy
+      '@remirror/extension-heading': 2.0.11_qfefl7ho6nqe23zdqisxzozsdy
+      '@types/dedent': 0.7.0
+      '@types/node': 18.11.18
+      '@vitest/coverage-c8': 0.28.4_jsdom@21.1.0
+      dedent: 0.7.0
+      jest-remirror: 2.1.3_iujb3kcinvant4x6h4gbuofxzy
+      jsdom: 21.1.0
+      npm-run-all: 4.1.5
+      postcss: 8.4.21
+      postcss-nesting: 10.2.0_postcss@8.4.21
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      rehype-stringify: 9.0.3
+      remark-gfm: 3.0.1
+      remark-parse: 10.0.1
+      remark-rehype: 10.1.0
+      remirror: 2.0.24_qfefl7ho6nqe23zdqisxzozsdy
+      tsup: 6.5.0_k22f457wtryv7dv7ltdlwpdpdm
+      typescript: 4.9.4
+      unified: 10.1.2
+      vite: 4.1.1_@types+node@18.11.18
+      vitest: 0.27.3_jsdom@21.1.0
+
   packages/remirror-package:
     specifiers:
       '@antfu/ni': ^0.19.0
@@ -42,6 +97,7 @@ importers:
       npm-run-all: ^4.1.5
       postcss: ^8.4.21
       postcss-nesting: ^10.2.0
+      prosemirror-flat-list: ^0.0.1
       react: ^18.2.0
       react-dom: ^18.2.0
       rehype-stringify: ^9.0.3
@@ -56,6 +112,7 @@ importers:
       vitest: ^0.27.2
     dependencies:
       '@remirror/core': 2.0.11_qfefl7ho6nqe23zdqisxzozsdy
+      prosemirror-flat-list: link:../prosemirror-package
     devDependencies:
       '@antfu/ni': 0.19.0
       '@remirror/extension-blockquote': 2.0.12_qfefl7ho6nqe23zdqisxzozsdy
