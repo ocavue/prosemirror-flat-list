@@ -5,12 +5,6 @@
     margin-bottom: 0;
     margin-left: 32px;
     margin-bottom: 0;
-
-    outline-color: rgb(255 0 100 / 40%);
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: -1px;
-
     position: relative;
     display: list-item;
     list-style: none;
