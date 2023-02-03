@@ -140,6 +140,22 @@ function fixEndBoundary(
   tr: Transaction,
   listType: NodeType,
 ): void {
+  {
+    const { startIndex, endIndex } = range
+    if (endIndex - startIndex >= 2) {
+      const { $from, $to, depth } = range
+      return fixEndBoundary(
+        new NodeRange(
+          $to.doc.resolve($to.posAtIndex(endIndex - 1, depth)),
+          $to,
+          depth,
+        ),
+        tr,
+        listType,
+      )
+    }
+  }
+
   const contentRange = zoomInRange(range)
   if (contentRange) {
     const { $to, $from, depth, end, parent, endIndex } = range
