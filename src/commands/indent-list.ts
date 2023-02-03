@@ -229,13 +229,93 @@ function indentRange(
   range: NodeRange,
   tr: Transaction,
   listType: NodeType,
+
+  includeStartBoundary?: boolean,
 ): boolean {
   const { parent, depth, $from, $to, startIndex, endIndex, start, end } = range
   const length = endIndex - startIndex
 
-  if (atStartBlockBoundary($from, depth)) {
-    console.log("atStartBlockBoundary")
-  } else {}
+  const from = $from.pos
+  const to = $to.pos
+
+  includeStartBoundary =
+    includeStartBoundary || atStartBlockBoundary($from, depth + 1)
+
+  if (!includeStartBoundary) {
+    console.log('not includeStartBoundary')
+
+    if (length === 1) {
+      return indentRange(
+        new NodeRange(
+          $from,
+          $to.pos < end ? $to : tr.doc.resolve(range.end - 1),
+          depth + 1,
+        ),
+        tr,
+        listType,
+      )
+    } else {
+      const splitPos = $from.posAtIndex(startIndex + 1, depth)
+
+      const range1 = new NodeRange(
+        $from,
+        tr.doc.resolve(splitPos - 1),
+        depth + 1,
+      )
+      const getRange2From = mapPos(tr, splitPos + 1)
+      const getRange2To = mapPos(tr, to)
+
+      indentRange(range1, tr, listType)
+
+      const range2 = new NodeRange(
+        tr.doc.resolve(getRange2From()),
+        tr.doc.resolve(getRange2To()),
+        depth,
+      )
+
+      indentRange(range2, tr, listType)
+      return true
+    }
+  }
+
+  if (!atEndBlockBoundary($to, depth + 1)) {
+    console.log('not atEndBlockBoundary')
+
+    if (length === 1) {
+      return indentRange(
+        new NodeRange(
+          $from.pos > start ? $from : tr.doc.resolve(range.start + 1),
+          $to.pos < end ? $to : tr.doc.resolve(range.end - 1),
+          depth + 1,
+        ),
+        tr,
+        listType,
+      )
+    } else {
+      const splitPos = $from.posAtIndex(endIndex - 1, depth)
+
+      const getRange1From = mapPos(tr, from)
+      const getRange1To = mapPos(tr, splitPos - 1)
+
+      const range2 = new NodeRange(tr.doc.resolve(splitPos + 1), $to, depth + 1)
+      indentRange(range2, tr, listType)
+
+      const range1 = new NodeRange(
+        tr.doc.resolve(getRange1From()),
+        tr.doc.resolve(getRange1To()),
+        depth,
+      )
+
+      indentRange(range1, tr, listType)
+      return true
+    }
+
+    return false
+  }
+
+  console.log('at boundary')
+
+  return indentNodeRange(range, tr, listType)
 
   //   if (atEndBlockBoundary($to, depth)) {
   //     return indentNodeRange(range, tr, listType)
