@@ -1,4 +1,3 @@
-import { ProsemirrorNode } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
@@ -9,7 +8,6 @@ import {
 } from '../utils/block-boundary'
 import { findListsRange, isListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
-import { zoomInRange } from '../utils/zoom-in-range'
 import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
