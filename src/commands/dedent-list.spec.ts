@@ -32,7 +32,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can unwrap a list node', () => {
+  it.skip('can unwrap a list node', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -70,7 +70,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can unwrap multiple list nodes', () => {
+  it.skip('can unwrap multiple list nodes', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -136,7 +136,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.only('can keep siblings after the lifted items at the same position', () => {
+  it('can keep siblings after the lifted items at the same position', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -172,7 +172,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can move unselected node if have to', () => {
+  it.skip('can move unselected node if have to', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -216,7 +216,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can dedent a nested list item', () => {
+  it.skip('can dedent a nested list item', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
