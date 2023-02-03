@@ -133,11 +133,10 @@ export function createIndentListCommandV4(listType: NodeType): Command {
     const tr = state.tr
     const { $from, $to } = tr.selection
 
-    const listsRange =
-      findListsRange($from, $to, listType) || $from.blockRange($to)
-    if (!listsRange) return false
+    const range = findListsRange($from, $to, listType) || $from.blockRange($to)
+    if (!range) return false
 
-    if (indentRange(listsRange, tr, listType)) {
+    if (indentRange(range, tr, listType)) {
       autoJoinList2(tr, listType)
       dispatch?.(tr)
       return true

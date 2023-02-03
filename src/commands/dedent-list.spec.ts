@@ -160,6 +160,34 @@ describe('dedentList', () => {
     )
   })
 
+  it('can only dedent selected part when the selection across multiple depth of a nested lists', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+            - C1<start>
+
+          - B3<end>
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+          - C1<start>
+
+        - B3<end>
+      `,
+    )
+  })
+
   it('can move unselected node if have to', () => {
     t.runCommand(
       commands.dedentList,
@@ -246,7 +274,7 @@ describe('dedentList', () => {
 
         - B3
           - C1<end>
-            - D
+            - D1
           - B4
       `,
     )

@@ -16,10 +16,10 @@ export function createDedentListCommand(listType: NodeType): Command {
     const tr = state.tr
     const { $from, $to } = tr.selection
 
-    const listsRange = findListsRange($from, $to, listType)
-    if (!listsRange) return false
+    const range = findListsRange($from, $to, listType)
+    if (!range) return false
 
-    if (dedentRange(listsRange, tr, listType)) {
+    if (dedentRange(range, tr, listType)) {
       autoJoinList2(tr, listType)
       dispatch?.(tr)
       return true
@@ -65,13 +65,13 @@ function dedentRange(
     return dedentRange(range, tr, listType, undefined, true)
   }
 
-  // if (
-  //   range.startIndex === 0 &&
-  //   range.endIndex === range.parent.childCount &&
-  //   range.parent.type === listType
-  // ) {
-  //   return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, listType)
-  // }
+  if (
+    range.startIndex === 0 &&
+    range.endIndex === range.parent.childCount &&
+    range.parent.type === listType
+  ) {
+    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, listType)
+  }
 
   return dedentNodeRange(range, tr, listType)
 }
@@ -176,7 +176,6 @@ function dedentToOuterList(
       end < endOfParent &&
       parent.maybeChild(endIndex - 1)?.type === listType
     ) {
-      console.log('dedentToOuterList: ReplaceAroundStep')
       // There are siblings after the lifted items, which must become
       // children of the last item
       tr.step(
