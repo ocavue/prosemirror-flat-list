@@ -3,6 +3,10 @@ import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList, autoJoinList2 } from '../utils/auto-join-list'
+import {
+  atEndBlockBoundary,
+  atStartBlockBoundary,
+} from '../utils/block-boundary'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
@@ -226,49 +230,114 @@ function indentRange(
   tr: Transaction,
   listType: NodeType,
 ): boolean {
-  const { parent, depth, $to, startIndex, endIndex, start, end } = range
+  const { parent, depth, $from, $to, startIndex, endIndex, start, end } = range
   const length = endIndex - startIndex
 
-  const firstChildRange = zoomInRange(range, startIndex)
-  if (
-    firstChildRange &&
-    (length > 1 || !isListNodeWithSingleChild(firstChildRange.parent, listType))
-  ) {
-    if (length === 1) {
-      return indentRange(firstChildRange, tr, listType)
-    } else {
-      const firstChild = parent.child(startIndex)
-      const lastChild = parent.child(endIndex - 1)
+  if (atStartBlockBoundary($from, depth)) {
+    console.log("atStartBlockBoundary")
+  } else {}
 
-      const getFurtherRangeFrom1 = mapPos(tr, start + firstChild.nodeSize + 1)
-      const getFurtherRangeTo1 = mapPos(tr, end - lastChild.nodeSize - 1)
+  //   if (atEndBlockBoundary($to, depth)) {
+  //     return indentNodeRange(range, tr, listType)
+  //   } else {
+  //     const range1 = new NodeRange(
+  //       $from,
+  //       tr.doc.resolve($from.posAtIndex(depth, endIndex - 1) - 1),
+  //       depth,
+  //     )
 
-      const getFurtherRangeFrom2 = mapPos(tr, end - lastChild.nodeSize + 1)
-      const getFurtherRangeTo2 = mapPos(tr, Math.min($to.pos, end - 1))
+  //     const range2 = length >= 2 && zoomInRange(range, endIndex - 1)
 
-      indentRange(firstChildRange, tr, listType)
+  //     const getRange2From = range2 && mapPos(tr, range2.$from.pos)
+  //     const getRange2To = range2 && mapPos(tr, range2.$to.pos)
 
-      if (length >= 3) {
-        const furtherRange1 = new NodeRange(
-          tr.doc.resolve(getFurtherRangeFrom1()),
-          tr.doc.resolve(getFurtherRangeTo1()),
-          depth,
-        )
+  //     indentRange(range1, tr, listType)
 
-        indentNodeRange(furtherRange1, tr, listType)
-      }
+  //     const range3 =
+  //       range2 &&
+  //       getRange2From &&
+  //       getRange2To &&
+  //       new NodeRange(
+  //         tr.doc.resolve(getRange2From()),
+  //         tr.doc.resolve(getRange2To()),
+  //         range2.depth,
+  //       )
+  //     range3 && indentRange(range3, tr, listType)
+  //   }
+  // } else {
+  //   const range1 = zoomInRange(range, startIndex)
+  //   console.assert(range1, `range1 does not exist`)
 
-      const furtherRange2 = new NodeRange(
-        tr.doc.resolve(getFurtherRangeFrom2()),
-        tr.doc.resolve(getFurtherRangeTo2()),
-        depth,
-      )
+  //   const range2 =
+  //     length >= 2 &&
+  //     new NodeRange(
+  //       $from,
+  //       tr.doc.resolve($from.posAtIndex(depth, startIndex + 1) + 1),
+  //       depth,
+  //     )
 
-      indentRange(furtherRange2, tr, listType)
-      return true
-    }
-  }
-  return indentNodeRange(range, tr, listType)
+  //   const getRange2From = range2 && mapPos(tr, range2.$from.pos)
+  //   const getRange2To = range2 && mapPos(tr, range2.$to.pos)
+
+  //   range1 && indentRange(range1, tr, listType)
+
+  //   const range3 =
+  //     range2 &&
+  //     getRange2From &&
+  //     getRange2To &&
+  //     new NodeRange(
+  //       tr.doc.resolve(getRange2From()),
+  //       tr.doc.resolve(getRange2To()),
+  //       range2.depth,
+  //     )
+  //   range3 && indentRange(range3, tr, listType)
+  // }
+
+  // const firstChildRange = zoomInRange(range, startIndex)
+  // if (
+  //   firstChildRange &&
+  //   (length > 1 || !isListNodeWithSingleChild(parent, listType))
+  // ) {
+  //   if (length === 1) {
+  //     console.log('[indentRange] 1')
+  //     return indentRange(firstChildRange, tr, listType)
+  //   } else {
+  //     const firstChild = parent.child(startIndex)
+  //     const lastChild = parent.child(endIndex - 1)
+
+  //     const getFurtherRangeFrom1 = mapPos(tr, start + firstChild.nodeSize + 1)
+  //     const getFurtherRangeTo1 = mapPos(tr, end - lastChild.nodeSize - 1)
+
+  //     const getFurtherRangeFrom2 = mapPos(tr, end - lastChild.nodeSize + 1)
+  //     const getFurtherRangeTo2 = mapPos(tr, Math.min($to.pos, end - 1))
+
+  //     console.log('[indentRange] 2')
+  //     indentRange(firstChildRange, tr, listType)
+
+  //     if (length >= 3) {
+  //       const furtherRange1 = new NodeRange(
+  //         tr.doc.resolve(getFurtherRangeFrom1()),
+  //         tr.doc.resolve(getFurtherRangeTo1()),
+  //         depth,
+  //       )
+
+  //       console.log('[indentRange] 3')
+  //       indentNodeRange(furtherRange1, tr, listType)
+  //     }
+
+  //     const furtherRange2 = new NodeRange(
+  //       tr.doc.resolve(getFurtherRangeFrom2()),
+  //       tr.doc.resolve(getFurtherRangeTo2()),
+  //       depth,
+  //     )
+
+  //     console.log('[indentRange] 4')
+  //     indentRange(furtherRange2, tr, listType)
+  //     return true
+  //   }
+  // }
+  // console.log('[indentRange] 5')
+  // return indentNodeRange(range, tr, listType)
 }
 
 function indentNodeRange(

@@ -1,7 +1,14 @@
 import { ResolvedPos } from '@remirror/pm'
 
-export function atStartBoundary($pos: ResolvedPos, depth: number): boolean {
+export function atStartBlockBoundary(
+  $pos: ResolvedPos,
+  depth: number,
+): boolean {
   for (let d = depth; d <= $pos.depth; d++) {
+    if ($pos.node(d).isTextblock) {
+      continue
+    }
+
     const index = $pos.index(d)
     if (index !== 0) {
       return false
@@ -10,8 +17,12 @@ export function atStartBoundary($pos: ResolvedPos, depth: number): boolean {
   return true
 }
 
-export function atEndBoundary($pos: ResolvedPos, depth: number): boolean {
+export function atEndBlockBoundary($pos: ResolvedPos, depth: number): boolean {
   for (let d = depth; d <= $pos.depth; d++) {
+    if ($pos.node(d).isTextblock) {
+      continue
+    }
+
     const index = $pos.index(d)
     if (index !== $pos.node(d).childCount - 1) {
       return false

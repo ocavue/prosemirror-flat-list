@@ -280,7 +280,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep the indentation of sub list nodes when moving multiple list', () => {
+  it.only('can keep the indentation of sub list nodes when moving multiple list', () => {
     t.runCommand(
       commands.indentList,
       markdown`
