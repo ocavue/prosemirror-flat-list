@@ -446,46 +446,59 @@ describe('Enter', () => {
 })
 
 describe('Keymap', () => {
-  const { markdown, editor, runCommand } = setupTestingEditor()
+  const t = setupTestingEditor()
+  const { editor, runCommand } = t
 
   it('can increase the indentation by pressing Tab', () => {
     runCommand(
       () => editor.press('Tab'),
-      markdown`
-        - A1
-        - A2<cursor>
-      `,
-      markdown`
-        - A1
-          - A2<cursor>
-      `,
+      t.doc(
+        //
+        t.list(t.p('A1')),
+        t.list(t.p('A2<cursor>')),
+      ),
+      t.doc(
+        //
+        t.list(
+          t.p('A1'),
+          //
+          t.list(t.p('A2<cursor>')),
+        ),
+      ),
     )
   })
 
   it('can decrease the indentation by pressing Shift-Tab', () => {
     runCommand(
       () => editor.press('Shift-Tab'),
-      markdown`
-        - A1
-          - B2<cursor>
-      `,
-      markdown`
-        - A1
-        - B2<cursor>
-      `,
+      t.doc(
+        //
+        t.list(
+          t.p('A1'),
+          //
+          t.list(t.p('B1<cursor>')),
+        ),
+      ),
+      t.doc(
+        //
+        t.list(t.p('A1')),
+        t.list(t.p('B1<cursor>')),
+      ),
     )
   })
 
   it('can split a list by pressing Enter', () => {
     runCommand(
       () => editor.press('Enter'),
-      markdown`
-        - Foo<cursor>Bar
-      `,
-      markdown`
-        - Foo
-        - Bar
-      `,
+      t.doc(
+        //
+        t.list(t.p('Foo<cursor>Bar')),
+      ),
+      t.doc(
+        //
+        t.list(t.p('Foo')),
+        t.list(t.p('<cursor>Bar')),
+      ),
     )
   })
 })
