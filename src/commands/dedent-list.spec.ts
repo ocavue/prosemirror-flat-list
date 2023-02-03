@@ -136,7 +136,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can keep siblings after the lifted items at the same position', () => {
+  it.only('can keep siblings after the lifted items at the same position', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -144,38 +144,62 @@ describe('dedentList', () => {
 
           - B1
 
-            B1
-
           - B2<start>
 
-            B2
+          - B3
 
-          - B3<end>
+            - C1<end>
 
             B3
 
           - B4
-
-            B4
       `,
       markdown`
         - A1
 
           - B1
 
-            B1
-
         - B2<start>
 
-          B2
+        - B3
+
+          - C1<end>
+
+            B3
+
+          - B4
+      `,
+    )
+  })
+
+  it('can move unselected node if have to', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2<start>
+
+          - B3<end>
+
+            B3
+
+          - B4
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+        - B2<start>
 
         - B3<end>
 
           B3
 
           - B4
-
-            B4
       `,
     )
   })
@@ -192,8 +216,7 @@ describe('dedentList', () => {
     )
   })
 
-  it.only('can dedent a nested list item', () => {
-
+  it('can dedent a nested list item', () => {
     t.runCommand(
       commands.dedentList,
       markdown`

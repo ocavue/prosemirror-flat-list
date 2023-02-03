@@ -2,7 +2,7 @@ import { DispatchFunction, ProsemirrorNode, ResolvedPos } from '@remirror/pm'
 import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
 import { Command, Transaction, Selection } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
-import { autoJoinList } from '../utils/auto-join-list'
+import { autoJoinList, autoJoinList2 } from '../utils/auto-join-list'
 import { findListContentRange } from '../utils/find-item-content-range'
 import {
   findListsRange,
@@ -14,7 +14,7 @@ import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { separateItemRange } from './separate-item-range'
 
-export { createDedentListCommandV3 as createDedentListCommand }
+export { createDedentListCommandV4 as createDedentListCommand }
 
 export function createDedentListCommandV1(listType: NodeType): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
@@ -63,6 +63,44 @@ export function createDedentListCommandV1(listType: NodeType): Command {
   }
 
   return autoJoinList(dedentListCommand, listType)
+}
+
+export function createDedentListCommandV4(listType: NodeType): Command {
+  const dedentListCommand: Command = (state, dispatch): boolean => {
+    const tr = state.tr
+    const { $from, $to } = tr.selection
+
+    const listsRange =
+      findListsRange($from, $to, listType) || $from.blockRange($to)
+    if (!listsRange) return false
+
+    if (dedentRange(listsRange, tr, listType)) {
+      autoJoinList2(tr, listType)
+      dispatch?.(tr)
+      return true
+    }
+    return false
+  }
+
+  return dedentListCommand
+}
+
+function dedentRange(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+  startBoundary?: boolean,
+  endBoundary?: boolean,
+): boolean {
+  return dedentNodeRange(range, tr, listType)
+}
+
+function dedentNodeRange(
+  range: NodeRange,
+  tr: Transaction,
+  listType: NodeType,
+) {
+  return safeLift(tr, range)
 }
 
 /** @internal */
@@ -401,7 +439,7 @@ function dedentToOuterList(
     const { $to, $from, depth, end, parent, endIndex } = range
 
     const endOfList = $to.end(depth)
-    if (end < endOfList && parent.child(endIndex - 1).type === listType) {
+    if (end < endOfList && parent.maybeChild(endIndex - 1)?.type === listType) {
       console.log('dedentToOuterList: ReplaceAroundStep')
       // There are siblings after the lifted items, which must become
       // children of the last item
@@ -423,17 +461,6 @@ function dedentToOuterList(
       )
     }
   }
-
-  {
-    const { $to, $from, depth, end, parent, endIndex, startIndex } = range
-  }
-
-  console.log(
-    'dedentToOuterList: safeLift:',
-    range.parent.toString(),
-    range.startIndex,
-    range.endIndex,
-  )
   return safeLift(tr, range)
 }
 
