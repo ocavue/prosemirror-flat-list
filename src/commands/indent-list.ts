@@ -9,13 +9,9 @@ import {
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
-import { createIndentListCommandV3 } from './dedent-list'
 import { separateItemRange } from './separate-item-range'
 
-export {
-  createIndentListCommandV3,
-  createIndentListCommandV4 as createIndentListCommand,
-}
+export { createIndentListCommandV4 as createIndentListCommand }
 
 export function createIndentListCommandV1(listType: NodeType): Command {
   /*
