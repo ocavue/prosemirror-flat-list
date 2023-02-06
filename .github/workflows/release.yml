@@ -18,7 +18,11 @@ jobs:
 
       - name: Creating .npmrc
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > "$HOME/.npmrc"
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ".npmrc"
+
+      - name: Debug
+        run: |
+          npm whoami
 
       - name: Create Release Pull Request
         id: changesets
@@ -32,12 +36,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug
-        run: |
-          npm whoami
+      # - name: Publish to NPM
+      #   run: pnpm ci:publish
 
-      - name: Publish to NPM
-        run: pnpm ci:publish
-
-      - name: Delete .npmrc
-        run: rm "$HOME/.npmrc"
+      # - name: Delete .npmrc
+      #   run: rm "$HOME/.npmrc"
