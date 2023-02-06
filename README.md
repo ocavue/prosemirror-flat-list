@@ -43,6 +43,10 @@ In addition of bullet and ordere list, this module adds other two kind of lists:
 
 ### Accurate indent and dedent range
 
+![new-dedent](https://user-images.githubusercontent.com/24715727/216982134-4e222d58-033c-4dbf-acfc-132d6264f524.gif)
+
+![old-dedent](https://user-images.githubusercontent.com/24715727/216982142-4fc89391-5dec-426b-bcfb-b0290920f08e.gif)
+
 
 
 ### Arbitrary indentations
