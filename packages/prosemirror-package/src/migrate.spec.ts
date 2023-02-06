@@ -3,9 +3,9 @@ import { HeadingExtension } from '@remirror/extension-heading'
 import { renderEditor } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
 import { ListExtension } from '../test/extension'
-import { migrateDoc } from './migrate'
+import { migrateDocJSON } from './migrate'
 
-describe('migrateDoc', () => {
+describe('migrateDocJSON', () => {
   const extensions = [
     new ListExtension(),
     new BlockquoteExtension(),
@@ -64,7 +64,7 @@ describe('migrateDoc', () => {
       ],
     }
 
-    const output = migrateDoc(input)
+    const output = migrateDocJSON(input)
     checkJSON(output)
     expect(output).toMatchInlineSnapshot(`
       {
