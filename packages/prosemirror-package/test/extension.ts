@@ -1,6 +1,5 @@
 import {
   convertCommand,
-  CreateExtensionPlugin,
   ExtensionTag,
   InputRule,
   KeyBindings,
@@ -15,10 +14,9 @@ import {
   createIndentListCommand,
   createListInputRules,
   createListNodeView,
+  createListPlugin,
   createListSpec,
   createSplitListCommand,
-  handleListMarkerMouseDown,
-  ListDOMSerializer,
 } from '../src/index'
 
 export class ListExtension extends NodeExtension {
@@ -54,23 +52,8 @@ export class ListExtension extends NodeExtension {
     }
   }
 
-  createPlugin(): CreateExtensionPlugin {
-    const schema = this.store.schema
-
-    return {
-      props: {
-        handleDOMEvents: {
-          mousedown: (view, event): boolean => {
-            return handleListMarkerMouseDown(view, event, this.type)
-          },
-        },
-
-        clipboardSerializer: new ListDOMSerializer(
-          ListDOMSerializer.nodesFromSchema(schema),
-          ListDOMSerializer.marksFromSchema(schema),
-        ),
-      },
-    }
+  createExternalPlugins() {
+    return [createListPlugin(this.store.schema, this.type)]
   }
 
   createInputRules(): InputRule[] {
