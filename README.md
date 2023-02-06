@@ -37,6 +37,8 @@ This node type has the following attributes.
 
 ## Features
 
+![task-and-toggle](https://user-images.githubusercontent.com/24715727/216984786-b686a5fe-c9e3-47ae-8b06-6fbdb81200d2.gif)
+
 ### New list type
 
 In addition of bullet and ordere list, this module adds other two kind of lists: `task` and `toggle`.
