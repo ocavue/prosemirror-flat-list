@@ -65,6 +65,15 @@ While we no longer use HTML list tags (`<ul>`, `<ol>`, `<li>`) for rendering, we
 
 ### Input rules
 
+This module provides the following input rules for creating list nodes.
+
+- Type `- ` or `* ` to create a bullet list node.
+- Type `1. ` to create an ordered list node.
+- Type `[ ] ` or `[x] ` to create a task list node.
+- Type `>> ` to create a toggle list node.
+
+You can also use `wrappingListInputRule` to create you own input rules.
+
 ## Migration
 
 `migrateDocJSON` accepts an ProseMirror document JSON object and returns an updated document JSON object. It will replace all the list nodes from [prosemirror-schema-list] or [@remirror/extension-list] with the new `list` node.
