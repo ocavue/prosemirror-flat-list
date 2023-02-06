@@ -7,7 +7,7 @@ function main() {
   document.body.appendChild(root)
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
-      <h1>Remirror Flat List</h1>
+      <h1>ProseMirror Flat List</h1>
 
       <p>
         GitHub:

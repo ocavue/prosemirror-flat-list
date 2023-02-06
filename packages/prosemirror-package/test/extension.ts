@@ -1,15 +1,12 @@
 import {
-  ApplySchemaAttributes,
   convertCommand,
-  CreateExtensionPlugin,
-  DOMOutputSpec,
   ExtensionTag,
   InputRule,
   KeyBindings,
   NodeExtension,
   NodeExtensionSpec,
-  NodeSpecOverride,
   NodeViewMethod,
+  ProsemirrorPlugin,
 } from '@remirror/core'
 
 import {
@@ -18,11 +15,9 @@ import {
   createIndentListCommand,
   createListInputRules,
   createListNodeView,
-  createParseDomRules,
+  createListPlugin,
+  createListSpec,
   createSplitListCommand,
-  handleListMarkerMouseDown,
-  ListDOMSerializer,
-  listToDOM,
 } from '../src/index'
 
 export class ListExtension extends NodeExtension {
@@ -36,33 +31,9 @@ export class ListExtension extends NodeExtension {
     return [ExtensionTag.Block]
   }
 
-  createNodeSpec(
-    extra: ApplySchemaAttributes,
-    override: NodeSpecOverride,
-  ): NodeExtensionSpec {
-    return {
-      content: 'block+',
-      defining: true,
-      attrs: {
-        type: {
-          default: 'bullet',
-        },
-        counter: {
-          default: null,
-        },
-        checked: {
-          default: false,
-        },
-        collapsed: {
-          default: false,
-        },
-      },
-      toDOM: (node): DOMOutputSpec => {
-        return listToDOM(node, false, extra)
-      },
-
-      parseDOM: createParseDomRules(extra, override),
-    }
+  createNodeSpec(): NodeExtensionSpec {
+    // @ts-expect-error: incompatible type
+    return createListSpec()
   }
 
   createNodeViews(): NodeViewMethod {
@@ -82,23 +53,8 @@ export class ListExtension extends NodeExtension {
     }
   }
 
-  createPlugin(): CreateExtensionPlugin {
-    const schema = this.store.schema
-
-    return {
-      props: {
-        handleDOMEvents: {
-          mousedown: (view, event): boolean => {
-            return handleListMarkerMouseDown(view, event, this.type)
-          },
-        },
-
-        clipboardSerializer: new ListDOMSerializer(
-          ListDOMSerializer.nodesFromSchema(schema),
-          ListDOMSerializer.marksFromSchema(schema),
-        ),
-      },
-    }
+  createExternalPlugins(): ProsemirrorPlugin[] {
+    return [createListPlugin(this.store.schema, this.type)]
   }
 
   createInputRules(): InputRule[] {

@@ -1,13 +1,15 @@
 # remirror-extension-flat-list
 
+[![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&label=)](https://www.npmjs.com/package/remirror-extension-flat-list)
+
 ## Install
 
 ```
-npm install remirror-extension-flat-list prosemirror-flat-list
+npm install remirror-extension-flat-list
 # or
-yarn add remirror-extension-flat-list prosemirror-flat-list
+yarn add remirror-extension-flat-list
 # or
-pnpm add remirror-extension-flat-list prosemirror-flat-list
+pnpm add remirror-extension-flat-list
 ```
 
 ## API docs
