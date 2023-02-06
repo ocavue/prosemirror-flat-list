@@ -39,7 +39,7 @@ This node type has the following attributes.
 
 ### New list type
 
-In addition of bullet and ordere list, this module adds other two kind of lists: `task` and `toggle`.
+In addition of bullet and ordere list, this module adds other two kind of lists: `task` and `toggle`. Both of them can be interacted with the mouse.
 
 ### Accurate indent and dedent range
 
