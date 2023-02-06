@@ -16,27 +16,19 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: Creating .npmrc
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ".npmrc"
-
-      - name: Debug
-        run: |
-          npm whoami
-
       - name: Publish to NPM
         run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ".npmrc"
           pnpm ci:publish
+          rm ".npmrc"
 
       - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          # publish: pnpm ci:publish
           commit: "chore: version packages"
           title: "chore: version packages"
           createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
