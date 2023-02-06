@@ -1,10 +1,33 @@
-# remirror-extension-flat-list
+# ProseMirror Flat List
 
 [![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&label=)](https://www.npmjs.com/package/remirror-extension-flat-list)
 
-- Design document: https://reflect.site/g/ocavue2023/flat-list-design-document-5e813c3059344e17b4d71225b55268ef
-- Online demo: https://remirror-extension-flat-list.netlify.app/
+## [Online demo](https://remirror-extension-flat-list.netlify.app/)
+
+## Motivation
+
+This project introduces a new list schema different from the [prosemirror-schema-list].
+
+## Installation and Usage
+
+- If you are using plain [ProseMirror], please check the document of [prosemirror-flat-list].
+- If you are using [Remirror], please check the document of [remirror-extension-flat-list].
+
+## Node Specs
+
+
+## Commands
+
+## Copy and paste
+
+## Migration
 
 ## License
 
 MIT
+
+[ProseMirror]: https://prosemirror.net/
+[prosemirror-schema-list]: https://github.com/ProseMirror/prosemirror-schema-list
+[Remirror]: https://github.com/remirror/remirror
+[prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/prosemirror-package
+[remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-package
