@@ -48,9 +48,10 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
 }
 
 export function createListInputRules(listType: NodeType): InputRule[] {
-  const bulletRegexp = /^\s?([*+-])\s$/
+  const bulletRegexp = /^\s?([*-])\s$/
   const orderedRegexp = /^\s?(\d+)\.\s$/
   const taskRegexp = /^\s?\[([\sXx]?)]\s$/
+  const toggleRegexp = /^\s?>>\s$/
 
   return [
     wrappingListInputRule(bulletRegexp, listType, { type: 'bullet' }),
@@ -59,5 +60,6 @@ export function createListInputRules(listType: NodeType): InputRule[] {
       type: 'task',
       checked: ['x', 'X'].includes(match[1]),
     })),
+    wrappingListInputRule(toggleRegexp, listType, { type: 'toggle' }),
   ]
 }

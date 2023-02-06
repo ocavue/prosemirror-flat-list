@@ -61,6 +61,8 @@ const clipboardSerializer = ListDOMSerializer(
 
 ## Input rules
 
+
+
 ## Migration
 
 `migrateDocJSON` accepts an ProseMirror document JSON object and returns an updated document JSON object. It will replace all the list nodes from [prosemirror-schema-list] or [@remirror/extension-list] with the new `list` node.
