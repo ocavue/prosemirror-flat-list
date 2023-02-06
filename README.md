@@ -44,6 +44,21 @@ Since the first child of a list node can also be a list node, we can have multip
 
 ## Copy and paste
 
+While we no longer use HTML list tags (`<ul>`, `<ol>`, `<li>`) for rendering, we still need to consider them when working with other programs (e.g. copy/paste and drag/drop).
+
+
+
+For coping, I must create a custom clipboardSerializer (https://prosemirror.net/docs/ref/#view.EditorProps.clipboardSerializer) and include `<ul>` and `<ol>` tags in the output. Additionally, I can export some utility functions so that a higher level `DOMSerializer` can be built to transform flat list nodes into HTML list documents.
+
+```ts
+import { ListDOMSerializer } from 'prosemirror-flat-list' // or from 'remirror-extension-flat-list'
+
+const clipboardSerializer = ListDOMSerializer(
+  ListDOMSerializer.nodesFromSchema(schema),
+  ListDOMSerializer.marksFromSchema(schema),
+)
+```
+
 ## Input rules
 
 ## Migration
