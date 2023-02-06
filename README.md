@@ -37,8 +37,9 @@ This node type has the following attributes.
 
 ## Commands
 
-Since the first child of a list node can also be a list node, we can have multiple bullet points on one line. If we hide all the bullets except the last one in one line, we actually allow a list item to have arbitrary indentation level. Facebook's lexical editor uses a similar approach. The GIF below shows what arbitrary indentation looks like.
+Since the first child of a list node can also be a list node, we can have multiple bullet points on one line. If we hide all the bullets except the last one in one line, we actually allow a list item to have arbitrary indentations. 
 
+![arbitrary indentation](https://user-images.githubusercontent.com/24715727/216973979-af271633-62a2-4744-a522-e87b89426f90.gif)
 
 
 ## Copy and paste
