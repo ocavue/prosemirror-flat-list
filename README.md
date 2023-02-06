@@ -35,33 +35,27 @@ This node type has the following attributes.
 - `collapsed`:
   A boolean value to determine the collapse state of a toggle list node.
 
-## Commands
+## Features
 
-Since the first child of a list node can also be a list node, we can have multiple bullet points on one line. If we hide all the bullets except the last one in one line, we actually allow a list item to have arbitrary indentations. 
+### New list type
+
+In addition of bullet and ordere list, this module adds other two kind of lists: `task` and `toggle`.
+
+### Accurate indent and dedent range
+
+
+
+### Arbitrary indentations
+
+Since the first child of a list node can also be a list node, we can have multiple bullet points on one line. If we hide all the bullets except the last one in one line, we actually allow a list item to have arbitrary indentations.
 
 ![arbitrary indentation](https://user-images.githubusercontent.com/24715727/216973979-af271633-62a2-4744-a522-e87b89426f90.gif)
 
-
-## Copy and paste
+### Safe Copy and paste
 
 While we no longer use HTML list tags (`<ul>`, `<ol>`, `<li>`) for rendering, we still need to consider them when working with other programs (e.g. copy/paste and drag/drop).
 
-
-
-For coping, I must create a custom clipboardSerializer (https://prosemirror.net/docs/ref/#view.EditorProps.clipboardSerializer) and include `<ul>` and `<ol>` tags in the output. Additionally, I can export some utility functions so that a higher level `DOMSerializer` can be built to transform flat list nodes into HTML list documents.
-
-```ts
-import { ListDOMSerializer } from 'prosemirror-flat-list' // or from 'remirror-extension-flat-list'
-
-const clipboardSerializer = ListDOMSerializer(
-  ListDOMSerializer.nodesFromSchema(schema),
-  ListDOMSerializer.marksFromSchema(schema),
-)
-```
-
-## Input rules
-
-
+### Input rules
 
 ## Migration
 
