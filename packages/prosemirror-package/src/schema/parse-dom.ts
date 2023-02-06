@@ -69,7 +69,7 @@ export function createParseDomRules(): readonly ParseRule[] {
     },
     {
       tag: 'ol > li',
-      getAttrs: (element) => {
+      getAttrs: (_element) => {
         return {
           type: 'ordered',
           // ...extra.parse(element),
