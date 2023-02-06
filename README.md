@@ -43,11 +43,15 @@ In addition of bullet and ordere list, this module adds other two kind of lists:
 
 ### Accurate indent and dedent range
 
+This module improves the indent and dedent commands (they are called `liftListItem` and `sinkListItem` in [prosemirror-schema-list]). These two commands now will try its best to only move selected part of the document.
+
 ![new-dedent](https://user-images.githubusercontent.com/24715727/216982134-4e222d58-033c-4dbf-acfc-132d6264f524.gif)
+
+> ⬆️ Only selected paragraph are moved when using the new `dedent` command in `prosemirror-flat-list`.
 
 ![old-dedent](https://user-images.githubusercontent.com/24715727/216982142-4fc89391-5dec-426b-bcfb-b0290920f08e.gif)
 
-
+> ⬆️ Unselected paragraph (e.g. "A complex list") is also moved when using the old `sinkListItem` command in `prosemirror-schema-list`.
 
 ### Arbitrary indentations
 
