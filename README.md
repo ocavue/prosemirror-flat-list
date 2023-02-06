@@ -15,7 +15,14 @@ This project introduces a new list schema different from the [prosemirror-schema
 
 ## Node Specs
 
-A new list node type, named `list`. 
+A new list node type, named `list`. All attributes as shown below:
+
+- `type`: The type of the list node. It can be choosed from the following values: `bullet`, `ordered`, `task` or `toggle`. Based on the `type` attribute, the list node will has different appearance and behavoir. Default value is `bullet`. 
+
+  ![Node types](https://user-images.githubusercontent.com/24715727/216966304-c2f9a7f4-fc65-430c-91e8-2eb7aff956fa.png).
+- `counter`: An optional number to determine the number of an ordered list node. 
+- `checked`: A boolean value to determine the checked state of the checkbox for a task list node. 
+- `collapsed`: A boolean value to determine the collapse state of a toggle list node. 
 
 ## Commands
 
