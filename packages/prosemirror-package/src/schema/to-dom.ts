@@ -1,11 +1,10 @@
-import { ApplySchemaAttributes, DOMOutputSpec } from '@remirror/core'
 import { ProsemirrorNode } from '@remirror/pm'
+import { DOMOutputSpec } from '@remirror/pm/model'
 import { ListAttributes } from '../types'
 
 export function listToDOM(
   node: ProsemirrorNode,
   nativeList: boolean,
-  extra?: ApplySchemaAttributes,
 ): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
@@ -44,7 +43,6 @@ export function listToDOM(
       markerType === 'toggle' && attrs.collapsed ? '' : undefined,
     'data-list-disabled':
       markerType === 'toggle' && node.childCount < 2 ? '' : undefined,
-    ...extra?.dom(node),
   }
 
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]

@@ -1,6 +1,6 @@
-import { Transaction } from '@remirror/core'
-import { Attrs, NodeType } from '@remirror/pm/dist-types/model'
 import { InputRule } from '@remirror/pm/inputrules'
+import { Attrs, NodeType } from '@remirror/pm/model'
+import { Transaction } from '@remirror/pm/state'
 import { findWrapping } from '@remirror/pm/transform'
 
 import { ListAttributes } from './types'

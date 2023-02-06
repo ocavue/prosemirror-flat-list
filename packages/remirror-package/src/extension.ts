@@ -1,28 +1,24 @@
 import {
-  ApplySchemaAttributes,
   convertCommand,
   CreateExtensionPlugin,
-  DOMOutputSpec,
   ExtensionTag,
   InputRule,
   KeyBindings,
   NodeExtension,
   NodeExtensionSpec,
-  NodeSpecOverride,
   NodeViewMethod,
 } from '@remirror/core'
 
 import {
+  alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
   createListNodeView,
-  createParseDomRules,
+  createListSpec,
   createSplitListCommand,
   handleListMarkerMouseDown,
   ListDOMSerializer,
-  listToDOM,
-  alwaysTrue,
 } from 'prosemirror-flat-list'
 
 export class ListExtension extends NodeExtension {
@@ -36,33 +32,9 @@ export class ListExtension extends NodeExtension {
     return [ExtensionTag.Block]
   }
 
-  createNodeSpec(
-    extra: ApplySchemaAttributes,
-    override: NodeSpecOverride,
-  ): NodeExtensionSpec {
-    return {
-      content: 'block+',
-      defining: true,
-      attrs: {
-        type: {
-          default: 'bullet',
-        },
-        counter: {
-          default: null,
-        },
-        checked: {
-          default: false,
-        },
-        collapsed: {
-          default: false,
-        },
-      },
-      toDOM: (node): DOMOutputSpec => {
-        return listToDOM(node, false, extra)
-      },
-
-      parseDOM: createParseDomRules(extra, override),
-    }
+  createNodeSpec(): NodeExtensionSpec {
+    // @ts-expect-error: incompatible type
+    return createListSpec()
   }
 
   createNodeViews(): NodeViewMethod {

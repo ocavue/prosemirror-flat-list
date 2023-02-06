@@ -1,12 +1,8 @@
-import { ApplySchemaAttributes, NodeSpecOverride } from '@remirror/core'
 import { ParseRule } from '@remirror/pm/model'
 import { ListAttributes, ListType } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
-export function createParseDomRules(
-  extra: ApplySchemaAttributes,
-  override: NodeSpecOverride,
-): readonly ParseRule[] {
+export function createParseDomRules(): readonly ParseRule[] {
   return [
     {
       tag: 'div[data-list]',
@@ -38,7 +34,7 @@ export function createParseDomRules(
             return {
               type: 'task',
               checked: checkbox.hasAttribute('checked'),
-              ...extra.parse(element),
+              // ...extra.parse(element),
             }
           }
 
@@ -49,7 +45,7 @@ export function createParseDomRules(
             return {
               type: 'task',
               checked: element.hasAttribute('data-checked'),
-              ...extra.parse(element),
+              // ...extra.parse(element),
             }
           }
 
@@ -60,14 +56,14 @@ export function createParseDomRules(
             return {
               type: 'toggle',
               collapsed: element.hasAttribute('data-list-collapsed'),
-              ...extra.parse(element),
+              // ...extra.parse(element),
             }
           }
         }
 
         return {
           type: 'bullet',
-          ...extra.parse(element),
+          // ...extra.parse(element),
         }
       },
     },
@@ -76,10 +72,10 @@ export function createParseDomRules(
       getAttrs: (element) => {
         return {
           type: 'ordered',
-          ...extra.parse(element),
+          // ...extra.parse(element),
         }
       },
     },
-    ...(override.parseDOM ?? []),
+    // ...(override.parseDOM ?? []),
   ]
 }

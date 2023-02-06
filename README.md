@@ -15,10 +15,13 @@ This project introduces a new list schema different from the [prosemirror-schema
 
 ## Node Specs
 
+A new list node type, named `list`. 
 
 ## Commands
 
 ## Copy and paste
+
+## Input rules
 
 ## Migration
 

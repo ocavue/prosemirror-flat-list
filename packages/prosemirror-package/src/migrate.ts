@@ -1,8 +1,7 @@
-import type { RemirrorJSON } from '@remirror/core'
-import type { ListAttributes } from './types'
+import type { ListAttributes, ProsemirrorNodeJSON } from './types'
 
-function migrateNodes(nodes: RemirrorJSON[]): RemirrorJSON[] {
-  const content: RemirrorJSON[] = []
+function migrateNodes(nodes: ProsemirrorNodeJSON[]): ProsemirrorNodeJSON[] {
+  const content: ProsemirrorNodeJSON[] = []
 
   for (const node of nodes) {
     if (node.type === 'bullet_list' || node.type === 'bulletList') {
@@ -25,7 +24,10 @@ function migrateNodes(nodes: RemirrorJSON[]): RemirrorJSON[] {
   return content
 }
 
-function migrateNode(node: RemirrorJSON, attrs?: ListAttributes): RemirrorJSON {
+function migrateNode(
+  node: ProsemirrorNodeJSON,
+  attrs?: ListAttributes,
+): ProsemirrorNodeJSON {
   if (
     node.type === 'list_item' ||
     node.type === 'listItem' ||
@@ -49,6 +51,6 @@ function migrateNode(node: RemirrorJSON, attrs?: ListAttributes): RemirrorJSON {
   }
 }
 
-export function migrateDoc(docJSON: RemirrorJSON): RemirrorJSON {
+export function migrateDoc(docJSON: ProsemirrorNodeJSON): ProsemirrorNodeJSON {
   return migrateNode(docJSON)
 }
