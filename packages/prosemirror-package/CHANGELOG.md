@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.6
+
+### Patch Changes
+
+- c64f5eb: Update documents
+
 ## 0.0.5
 
 ### Patch Changes
