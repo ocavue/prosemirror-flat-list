@@ -1,5 +1,12 @@
 # remirror-extension-flat-list
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [5c72f27]
+  - prosemirror-flat-list@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

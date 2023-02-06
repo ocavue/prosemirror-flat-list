@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.5
+
+### Patch Changes
+
+- 5c72f27: Bump version to test the CI workflow
+
 ## 0.0.4
 
 ### Patch Changes
