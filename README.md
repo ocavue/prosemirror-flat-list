@@ -1,12 +1,12 @@
 # ProseMirror Flat List
 
-[![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&label=)](https://www.npmjs.com/package/remirror-extension-flat-list)
+*Project status: Alpha. API are likely to change. Do not use in production.*
 
 ## [Online demo](https://remirror-extension-flat-list.netlify.app/)
 
 ## Motivation
 
-This project introduces a new list schema different from the [prosemirror-schema-list].
+This project introduces a new list design different from the [prosemirror-schema-list].
 
 ## Installation and Usage
 
