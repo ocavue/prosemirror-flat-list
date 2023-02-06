@@ -37,23 +37,23 @@ This node type has the following attributes.
 
 ## Features
 
-![task-and-toggle](https://user-images.githubusercontent.com/24715727/216984786-b686a5fe-c9e3-47ae-8b06-6fbdb81200d2.gif)
-
 ### New list type
 
 In addition of bullet and ordere list, this module adds other two kind of lists: `task` and `toggle`. Both of them can be interacted with the mouse.
+
+![task-and-toggle](https://user-images.githubusercontent.com/24715727/216984786-b686a5fe-c9e3-47ae-8b06-6fbdb81200d2.gif)
 
 ### Accurate indent and dedent range
 
 This module improves the indent and dedent commands (they are called `liftListItem` and `sinkListItem` in [prosemirror-schema-list]). These two commands now will try its best to only move selected part of the document.
 
+> ⬇ Only selected paragraph are moved when using the new `dedent` command in `prosemirror-flat-list`.
+
 ![new-dedent](https://user-images.githubusercontent.com/24715727/216982134-4e222d58-033c-4dbf-acfc-132d6264f524.gif)
 
-> ⬆️ Only selected paragraph are moved when using the new `dedent` command in `prosemirror-flat-list`.
+> ⬇ Unselected paragraph (e.g. "A complex list") is also moved when using the old `sinkListItem` command in `prosemirror-schema-list`.
 
 ![old-dedent](https://user-images.githubusercontent.com/24715727/216982142-4fc89391-5dec-426b-bcfb-b0290920f08e.gif)
-
-> ⬆️ Unselected paragraph (e.g. "A complex list") is also moved when using the old `sinkListItem` command in `prosemirror-schema-list`.
 
 ### Arbitrary indentations
 
