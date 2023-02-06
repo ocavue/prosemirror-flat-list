@@ -6,7 +6,7 @@
 
 ## Motivation
 
-This project introduces a new list design different from the [prosemirror-schema-list].
+This project introduces a new [ProseMirror] list design different from the [prosemirror-schema-list].
 
 ## Installation and Usage
 
