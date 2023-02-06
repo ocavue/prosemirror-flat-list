@@ -6,6 +6,7 @@ import {
   NodeExtension,
   NodeExtensionSpec,
   NodeViewMethod,
+  ProsemirrorPlugin
 } from '@remirror/core'
 
 import {
@@ -16,7 +17,7 @@ import {
   createListNodeView,
   createListPlugin,
   createListSpec,
-  createSplitListCommand,
+  createSplitListCommand
 } from 'prosemirror-flat-list'
 
 export class ListExtension extends NodeExtension {
@@ -52,7 +53,7 @@ export class ListExtension extends NodeExtension {
     }
   }
 
-  createExternalPlugins() {
+  createExternalPlugins(): ProsemirrorPlugin[] {
     return [createListPlugin(this.store.schema, this.type)]
   }
 
