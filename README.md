@@ -61,9 +61,9 @@ Since the first child of a list node can also be a list node, we can have multip
 
 ![arbitrary indentation](https://user-images.githubusercontent.com/24715727/216973979-af271633-62a2-4744-a522-e87b89426f90.gif)
 
-### Safe Copy and paste
+### Safe copy and paste
 
-While we no longer use HTML list tags (`<ul>`, `<ol>`, `<li>`) for rendering, we still need to consider them when working with other programs (e.g. copy/paste and drag/drop).
+Despite that we no longer use HTML list tags (`<ul>`, `<ol>`, `<li>`) for rendering, this module still supports copy and paste with other programs using the HTML list tags.
 
 ### Input rules
 
