@@ -8,9 +8,9 @@ _Project status: Alpha. Document are not complete and the API are likely to chan
 
 This project introduces a new [ProseMirror] list design different from the [prosemirror-schema-list].
 
-Instead of provding three types of node (`bullet_list`, `ordered_list` and `list_item`), this module provides only one type of node (`list`). The `list` node can have any block node as its children. The first child of a `list` node can be any block type in addition to a paragraph.
+Instead of having three types of node (`bullet_list`, `ordered_list` and `list_item`), this project only provides one node type `list`. This node type can have any block node as its children. Particularly, the first child of a `list` node can be any block type in addition to a paragraph.
 
-The new list node will be rendered as a `<div>` element. It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the list items. This provides a simpler data structure and thus makes it easier to implement some interactions.
+It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the list items. This provides a simpler data structure and thus makes it easier to implement some interactions. The new list node will be rendered as a `<div>` element. 
 
 > ⬇ The HTML structure of the old list nodes in `prosemirror-schema-list`.
 
