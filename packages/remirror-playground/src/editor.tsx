@@ -94,6 +94,9 @@ const ButtonGroup = (): JSX.Element => {
     })
   }
 
+  const moveUp = () => commands.moveList('up')
+  const moveDown = () => commands.moveList('down')
+
   return (
     <>
       <Button onClick={indentList}>Increase list indentation</Button>
@@ -113,6 +116,10 @@ const ButtonGroup = (): JSX.Element => {
       <Button onClick={toggleChecked}>Toggle attribute checked</Button>
 
       <Button onClick={toggleCollapsed}>Toggle attribute collapsed</Button>
+
+      <Button onClick={moveUp}>Move up</Button>
+
+      <Button onClick={moveDown}>Move Down</Button>
     </>
   )
 }

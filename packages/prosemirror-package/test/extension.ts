@@ -18,6 +18,7 @@ import {
   createListNodeView,
   createListPlugin,
   createListSpec,
+  createMoveListCommand,
   createSplitListCommand,
   createWrapInListCommand,
   ListAttributes,
@@ -73,6 +74,10 @@ export class ListExtension extends NodeExtension {
           | ((range: NodeRange) => ListAttributes | null),
       ) => {
         return convertCommand(createWrapInListCommand<ListAttributes>(getAttrs))
+      },
+
+      moveList: (direction: 'up' | 'down') => {
+        return convertCommand(createMoveListCommand(direction))
       },
     } as const
   }
