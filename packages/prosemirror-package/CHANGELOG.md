@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.9
+
+### Patch Changes
+
+- c0c9f83: Indent a collapsed list node will also move its children content
+
 ## 0.0.8
 
 ### Patch Changes
