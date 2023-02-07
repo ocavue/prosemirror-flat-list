@@ -1,7 +1,7 @@
-import { InputRule } from '@remirror/pm/inputrules'
-import { Attrs } from '@remirror/pm/model'
-import { Transaction } from '@remirror/pm/state'
-import { findWrapping } from '@remirror/pm/transform'
+import { InputRule } from 'prosemirror-inputrules'
+import { Attrs } from 'prosemirror-model'
+import { Transaction } from 'prosemirror-state'
+import { findWrapping } from 'prosemirror-transform'
 
 import { ListAttributes } from './types'
 import { getListType } from './utils/get-list-type'

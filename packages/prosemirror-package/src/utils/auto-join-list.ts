@@ -1,6 +1,6 @@
 import { ProsemirrorNode } from '@remirror/core'
-import { Transaction } from '@remirror/pm/state'
-import { canJoin } from '@remirror/pm/transform'
+import { Transaction } from 'prosemirror-state'
+import { canJoin } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
 
 /** @internal */

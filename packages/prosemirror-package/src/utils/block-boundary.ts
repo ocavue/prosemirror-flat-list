@@ -1,4 +1,4 @@
-import { ResolvedPos } from '@remirror/pm'
+import { ResolvedPos } from 'prosemirror-model'
 
 export function atStartBlockBoundary(
   $pos: ResolvedPos,

@@ -1,4 +1,4 @@
-import { ProsemirrorNode } from '@remirror/pm'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { TaggedProsemirrorNode } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'

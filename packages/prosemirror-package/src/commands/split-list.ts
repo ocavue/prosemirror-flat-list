@@ -1,5 +1,5 @@
-import { Command } from '@remirror/pm/state'
-import { canSplit } from '@remirror/pm/transform'
+import { Command } from 'prosemirror-state'
+import { canSplit } from 'prosemirror-transform'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'

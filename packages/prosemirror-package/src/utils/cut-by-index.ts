@@ -1,4 +1,4 @@
-import { Fragment } from '@remirror/pm'
+import { Fragment } from 'prosemirror-model'
 
 export function cutByIndex(
   fragment: Fragment,

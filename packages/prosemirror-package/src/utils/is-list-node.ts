@@ -1,4 +1,4 @@
-import { ProsemirrorNode } from '@remirror/pm'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { isListType } from './is-list-type'
 
 export function isListNode(node: ProsemirrorNode | null | undefined): boolean {

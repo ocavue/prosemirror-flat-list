@@ -1,4 +1,4 @@
-import { NodeRange, ResolvedPos } from '@remirror/pm/model'
+import { NodeRange, ResolvedPos } from 'prosemirror-model'
 import { isListNode } from './is-list-node'
 
 /**

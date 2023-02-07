@@ -1,5 +1,4 @@
-import { ProsemirrorNode } from '@remirror/pm'
-import { DOMOutputSpec } from '@remirror/pm/model'
+import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 import { ListAttributes } from '../types'
 
 export function listToDOM(

@@ -1,5 +1,10 @@
-import type { Fragment, ProsemirrorNode } from '@remirror/pm'
-import { DOMOutputSpec, DOMSerializer, Schema } from '@remirror/pm/model'
+import {
+  DOMOutputSpec,
+  DOMSerializer,
+  Fragment,
+  Node as ProsemirrorNode,
+  Schema,
+} from 'prosemirror-model'
 import { listToDOM } from '../schema/to-dom'
 
 export class ListDOMSerializer extends DOMSerializer {

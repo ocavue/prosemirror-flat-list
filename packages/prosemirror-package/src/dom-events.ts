@@ -1,4 +1,4 @@
-import { EditorView } from '@remirror/pm'
+import { EditorView } from 'prosemirror-view'
 import { ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'
 

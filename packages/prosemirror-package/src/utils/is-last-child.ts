@@ -1,4 +1,4 @@
-import { ResolvedPos } from '@remirror/pm/model'
+import { ResolvedPos } from 'prosemirror-model'
 
 // TODO: this is not used
 

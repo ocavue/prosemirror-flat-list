@@ -1,6 +1,6 @@
-import { NodeRange } from '@remirror/pm/model'
-import { Transaction } from '@remirror/pm/state'
-import { liftTarget } from '@remirror/pm/transform'
+import { NodeRange } from 'prosemirror-model'
+import { Transaction } from 'prosemirror-state'
+import { liftTarget } from 'prosemirror-transform'
 
 export function safeLift(tr: Transaction, range: NodeRange): boolean {
   const target = liftTarget(range)

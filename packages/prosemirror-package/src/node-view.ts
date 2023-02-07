@@ -1,6 +1,6 @@
-import { type ProsemirrorNode } from '@remirror/pm'
-import { DOMSerializer } from '@remirror/pm/model'
-import { type NodeViewConstructor } from '@remirror/pm/view'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
+import { DOMSerializer } from 'prosemirror-model'
+import { type NodeViewConstructor } from 'prosemirror-view'
 
 /**
  * A simple node view that is used to render the list node. It ensures that the

@@ -1,4 +1,8 @@
-import { ProsemirrorNode, Fragment, ResolvedPos } from '@remirror/pm'
+import {
+  Fragment,
+  Node as ProsemirrorNode,
+  ResolvedPos,
+} from 'prosemirror-model'
 
 // Copy from https://github.com/prosemirror/prosemirror-model/blob/1.19.0/src/replace.ts#L88-L95
 export function maxOpenStart(

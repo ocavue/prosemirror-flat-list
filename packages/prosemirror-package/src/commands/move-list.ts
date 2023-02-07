@@ -1,4 +1,4 @@
-import { Command } from '@remirror/pm/state'
+import { Command } from 'prosemirror-state'
 import { cutByIndex } from '../utils/cut-by-index'
 import { findListsRange } from '../utils/list-range'
 

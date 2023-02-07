@@ -8,7 +8,7 @@ import {
   NodeViewMethod,
   ProsemirrorPlugin,
 } from '@remirror/core'
-import { NodeRange } from '@remirror/pm/model'
+import { NodeRange } from 'prosemirror-model'
 
 import {
   alwaysTrue,

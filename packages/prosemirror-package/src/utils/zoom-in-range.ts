@@ -1,4 +1,4 @@
-import { NodeRange } from '@remirror/pm/model'
+import { NodeRange } from 'prosemirror-model'
 
 /**
  * Returns a deeper block range if possible

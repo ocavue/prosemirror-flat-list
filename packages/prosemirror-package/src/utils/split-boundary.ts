@@ -1,4 +1,4 @@
-import { Transaction } from '@remirror/pm'
+import { Transaction } from 'prosemirror-state'
 
 /**
  * Split the node at the given position, and optionally, if `depth` is greater

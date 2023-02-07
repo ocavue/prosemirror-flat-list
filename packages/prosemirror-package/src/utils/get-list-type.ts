@@ -1,4 +1,4 @@
-import { NodeType, Schema } from '@remirror/pm/model'
+import { NodeType, Schema } from 'prosemirror-model'
 import { flatListGroup } from '../schema/spec'
 
 export function getListType(schema: Schema): NodeType {

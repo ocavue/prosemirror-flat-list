@@ -1,5 +1,5 @@
-import { Schema } from '@remirror/pm/model'
-import { Plugin } from '@remirror/pm/state'
+import { Schema } from 'prosemirror-model'
+import { Plugin } from 'prosemirror-state'
 import { handleListMarkerMouseDown } from './dom-events'
 import { ListDOMSerializer } from './utils/list-serializer'
 

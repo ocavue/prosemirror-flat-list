@@ -1,6 +1,6 @@
-import { Fragment, NodeRange, Slice } from '@remirror/pm/model'
-import { Command, Transaction } from '@remirror/pm/state'
-import { ReplaceAroundStep } from '@remirror/pm/transform'
+import { Fragment, NodeRange, Slice } from 'prosemirror-model'
+import { Command, Transaction } from 'prosemirror-state'
+import { ReplaceAroundStep } from 'prosemirror-transform'
 import { autoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,

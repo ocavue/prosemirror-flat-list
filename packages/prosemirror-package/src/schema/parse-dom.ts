@@ -1,4 +1,4 @@
-import { ParseRule } from '@remirror/pm/model'
+import { ParseRule } from 'prosemirror-model'
 import { ListAttributes, ListType } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 

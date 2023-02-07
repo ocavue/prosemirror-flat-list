@@ -3,8 +3,8 @@ import {
   createParagraphNear,
   newlineInCode,
   splitBlock,
-} from '@remirror/pm/commands'
-import { Command } from '@remirror/pm/state'
+} from 'prosemirror-commands'
+import { Command } from 'prosemirror-state'
 
 // This command has the same behavior as the `Enter` keybinding, but without the
 // `liftEmptyBlock` command.

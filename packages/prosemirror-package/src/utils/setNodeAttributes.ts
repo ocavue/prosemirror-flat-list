@@ -1,5 +1,5 @@
-import { Attrs } from '@remirror/pm/model'
-import { Transaction } from '@remirror/pm/state'
+import { Attrs } from 'prosemirror-model'
+import { Transaction } from 'prosemirror-state'
 
 export function setNodeAttributes(
   tr: Transaction,

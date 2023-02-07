@@ -1,4 +1,4 @@
-import { NodeType } from '@remirror/pm/model'
+import { NodeType } from 'prosemirror-model'
 import { getListType } from './get-list-type'
 
 export function isListType(type: NodeType): boolean {

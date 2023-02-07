@@ -1,4 +1,4 @@
-import { NodeSelection, Selection } from '@remirror/pm/state'
+import { NodeSelection, Selection } from 'prosemirror-state'
 
 export function isBlockNodeSelection(selection: Selection): boolean {
   return Boolean((selection as NodeSelection).node?.type?.isBlock)
