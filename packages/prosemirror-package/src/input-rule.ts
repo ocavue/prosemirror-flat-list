@@ -23,7 +23,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
       const oldAttrs: T = listNode.attrs as T
       const newAttrs: T = { ...oldAttrs, ...attrs }
       const needUpdate = Object.keys(newAttrs).some(
-        (key) => newAttrs[key] != oldAttrs[key],
+        (key) => newAttrs[key] !== oldAttrs[key],
       )
 
       if (needUpdate) {

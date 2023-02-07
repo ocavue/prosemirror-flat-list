@@ -9,41 +9,73 @@ import {
   EditorComponent,
   Remirror,
   ThemeProvider,
+  useCommands,
   useRemirror,
 } from '@remirror/react'
 import * as React from 'react'
-import { useEffect } from 'react'
-import { ListExtension } from 'remirror-extension-flat-list'
+import { useEffect, FC, PropsWithChildren } from 'react'
+import {
+  ListAttributes,
+  ListExtension,
+  ListType,
+} from 'remirror-extension-flat-list'
 
-const Button = (): JSX.Element => {
-  // const commands = useCommands();
+const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
+  children,
+  onClick,
+}) => {
+  return (
+    <button
+      onMouseDown={(event) => event.preventDefault()}
+      onClick={() => onClick()}
+    >
+      {children}
+    </button>
+  )
+}
+
+const ButtonGroup = (): JSX.Element => {
+  const commands = useCommands()
+
+  const { indentList, dedentList } = commands
+  const wrapInBulletList = () => commands.wrapInList({ type: 'bullet' })
+  const wrapInOrderedList = () => commands.wrapInList({ type: 'ordered' })
+  const wrapInTaskList = () => commands.wrapInList({ type: 'task' })
+  const wrapInToggleList = () => commands.wrapInList({ type: 'toggle' })
+  const changeListType = () =>
+    commands.wrapInList((range) => {
+      const attrs = range.parent.child(range.startIndex).attrs as ListAttributes
+
+      let type: ListType
+
+      if (attrs.type === 'bullet') {
+        type = 'ordered'
+      } else if (attrs.type === 'ordered') {
+        type = 'task'
+      } else if (attrs.type === 'task') {
+        type = 'toggle'
+      } else {
+        type = 'bullet'
+      }
+
+      return { type }
+    })
 
   return (
     <>
-      {/* <button
-        onMouseDown={(event) => event.preventDefault()}
-        onClick={() => commands.toggleTaskList()}
-      >
-        toggleTaskList
-      </button>
-      <button
-        onMouseDown={(event) => event.preventDefault()}
-        onClick={() => commands.toggleBulletList()}
-      >
-        toggleBulletList
-      </button>
-      <button
-        onMouseDown={(event) => event.preventDefault()}
-        onClick={() => commands.toggleOrderedList()}
-      >
-        toggleOrderedList
-      </button>
-      <button
-        onMouseDown={(event) => event.preventDefault()}
-        onClick={() => commands.liftListItemOutOfList()}
-      >
-        liftListItemOutOfList
-      </button> */}
+      <Button onClick={indentList}>Increase list indentation</Button>
+
+      <Button onClick={dedentList}>Decrease list indentation</Button>
+
+      <Button onClick={wrapInBulletList}>Wrap in bullet list</Button>
+
+      <Button onClick={wrapInOrderedList}>Wrap in ordered list</Button>
+
+      <Button onClick={wrapInTaskList}>Wrap in task list</Button>
+
+      <Button onClick={wrapInToggleList}>Wrap in toggle list</Button>
+
+      <Button onClick={changeListType}>Change list type</Button>
     </>
   )
 }
@@ -64,7 +96,7 @@ const Editor = (): JSX.Element => {
   return (
     <ThemeProvider>
       <Remirror manager={manager} initialContent={state}>
-        <Button />
+        <ButtonGroup />
         <EditorComponent />
       </Remirror>
     </ThemeProvider>

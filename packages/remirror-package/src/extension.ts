@@ -8,6 +8,7 @@ import {
   NodeViewMethod,
   ProsemirrorPlugin,
 } from '@remirror/core'
+import { NodeRange } from '@remirror/pm/model'
 
 import {
   alwaysTrue,
@@ -18,6 +19,8 @@ import {
   createListPlugin,
   createListSpec,
   createSplitListCommand,
+  createWrapInListCommand,
+  ListAttributes,
 } from 'prosemirror-flat-list'
 
 export class ListExtension extends NodeExtension {
@@ -63,6 +66,12 @@ export class ListExtension extends NodeExtension {
     return {
       indentList: () => convertCommand(createIndentListCommand()),
       dedentList: () => convertCommand(createDedentListCommand()),
+
+      wrapInList: (
+        getAttrs: ListAttributes | ((range: NodeRange) => ListAttributes),
+      ) => {
+        return convertCommand(createWrapInListCommand<ListAttributes>(getAttrs))
+      },
     } as const
   }
 }
