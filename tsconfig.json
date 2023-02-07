@@ -4,7 +4,8 @@
     "target": "es2018",
     "module": "esnext",
     "lib": [
-      "esnext", "DOM"
+      "esnext",
+      "DOM"
     ],
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -12,6 +13,13 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "paths": {
+      "prosemirror-flat-list": [
+        "./packages/prosemirror-package/src/index.ts"
+      ],
+      "remirror-extension-flat-list": [
+        "./packages/remirror-package/src/index.ts"
+      ],
+    },
   }
 }
