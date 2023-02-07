@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.8
+
+### Patch Changes
+
+- daeeb10: Remove `@remirror/pm` from the dependencies
+
 ## 0.0.7
 
 ### Patch Changes
