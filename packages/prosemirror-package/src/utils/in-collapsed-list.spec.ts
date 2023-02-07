@@ -10,7 +10,7 @@ describe('inCollapsedList', () => {
     expect(inCollapsedList(t.view.state.selection.$from)).toBe(false)
   })
 
-  it('returns true in visible paragraph', () => {
+  it('returns true in a collapsed list node', () => {
     t.add(
       t.doc(
         t.collapsedToggleList(
@@ -19,18 +19,18 @@ describe('inCollapsedList', () => {
         ),
       ),
     )
-    expect(inCollapsedList(t.view.state.selection.$from)).toBe(false)
+    expect(inCollapsedList(t.view.state.selection.$from)).toBe(true)
   })
 
-  it('returns true in hidden paragraph', () => {
+  it('returns false in a expanded list node', () => {
     t.add(
       t.doc(
-        t.collapsedToggleList(
+        t.expandedToggleList(
           t.p('Visible content'),
-          t.p('Hidden content<cursor>'),
+          t.p('Visible content<cursor>'),
         ),
       ),
     )
-    expect(inCollapsedList(t.view.state.selection.$from)).toBe(true)
+    expect(inCollapsedList(t.view.state.selection.$from)).toBe(false)
   })
 })

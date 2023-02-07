@@ -45,7 +45,7 @@ export function setupTestingEditor() {
   } satisfies ListAttributes)
   const expandedToggleList = list({
     type: 'toggle',
-    collapsed: true,
+    collapsed: false,
   } satisfies ListAttributes)
 
   return {
