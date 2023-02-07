@@ -34,7 +34,7 @@ export function isListsRange(range: NodeRange): boolean {
   const { startIndex, endIndex, parent } = range
 
   for (let i = startIndex; i < endIndex; i++) {
-    if (isListNode(parent.child(i))) {
+    if (!isListNode(parent.child(i))) {
       return false
     }
   }
