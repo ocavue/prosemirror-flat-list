@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { ListAttributes } from '../dist'
 
 import { setupTestingEditor } from '../test/setup-editor'
 
@@ -34,6 +35,20 @@ describe('input rules', () => {
     editor.insertText('1. ')
     expect(editor.state).toEqualRemirrorState(
       t.doc(t.orderedList(t.p('<cursor>'))),
+    )
+  })
+
+  it('can reset the attribute "collapsed" when changing list type', () => {
+    const editor = t.add(t.doc(t.collapsedToggleList(t.p('<cursor>'))))
+    expect((editor.state.doc.child(0).attrs as ListAttributes).collapsed).toBe(
+      true,
+    )
+    editor.insertText('1. ')
+    expect(editor.state).toEqualRemirrorState(
+      t.doc(t.orderedList(t.p('<cursor>'))),
+    )
+    expect((editor.state.doc.child(0).attrs as ListAttributes).collapsed).toBe(
+      false,
     )
   })
 

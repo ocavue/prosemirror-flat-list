@@ -55,12 +55,21 @@ export function createListInputRules(): InputRule[] {
   const toggleRegexp = /^\s?>>\s$/
 
   return [
-    wrappingListInputRule(bulletRegexp, { type: 'bullet' }),
-    wrappingListInputRule(orderedRegexp, { type: 'ordered' }),
-    wrappingListInputRule(taskRegexp, (match) => ({
+    wrappingListInputRule<ListAttributes>(bulletRegexp, {
+      type: 'bullet',
+      collapsed: false,
+    }),
+    wrappingListInputRule<ListAttributes>(orderedRegexp, {
+      type: 'ordered',
+      collapsed: false,
+    }),
+    wrappingListInputRule<ListAttributes>(taskRegexp, (match) => ({
       type: 'task',
       checked: ['x', 'X'].includes(match[1]),
+      collapsed: false,
     })),
-    wrappingListInputRule(toggleRegexp, { type: 'toggle' }),
+    wrappingListInputRule<ListAttributes>(toggleRegexp, {
+      type: 'toggle',
+    }),
   ]
 }
