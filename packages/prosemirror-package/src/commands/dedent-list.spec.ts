@@ -320,8 +320,7 @@ describe('dedentList', () => {
     ) => {
       t.add(doc)
       const state = t.view.state
-      const listType = state.schema.nodes['list']
-      const command = createDedentListCommand(listType)
+      const command = createDedentListCommand()
       let count = -1
       let actual: ProsemirrorNode | null = null
       command(state, (tr) => {

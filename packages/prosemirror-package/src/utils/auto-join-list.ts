@@ -1,7 +1,7 @@
 import { ProsemirrorNode } from '@remirror/core'
-import { NodeType } from '@remirror/pm/model'
 import { Transaction } from '@remirror/pm/state'
 import { canJoin } from '@remirror/pm/transform'
+import { isListNode } from './is-list-node'
 
 /** @internal */
 export function getTransactionRanges(tr: Transaction): number[] {
@@ -57,12 +57,10 @@ export function getJoinableBoundaries(
 }
 
 /** @internal */
-export function autoJoinList(tr: Transaction, listType: NodeType): void {
+export function autoJoinList(tr: Transaction): void {
   const isListJoinable = (before: ProsemirrorNode, after: ProsemirrorNode) => {
     return (
-      before.type === listType &&
-      after.type === listType &&
-      after.firstChild?.type === listType
+      isListNode(before) && isListNode(after) && isListNode(after.firstChild)
     )
   }
 

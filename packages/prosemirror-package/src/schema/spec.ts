@@ -2,9 +2,12 @@ import { DOMOutputSpec, NodeSpec } from '@remirror/pm/model'
 import { createParseDomRules } from './parse-dom'
 import { listToDOM } from './to-dom'
 
+export const flatListGroup = 'flatList'
+
 export function createListSpec(): NodeSpec {
   return {
     content: 'block+',
+    group: flatListGroup,
     defining: true,
     attrs: {
       type: {

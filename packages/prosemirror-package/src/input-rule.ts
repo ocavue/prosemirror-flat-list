@@ -1,13 +1,14 @@
 import { InputRule } from '@remirror/pm/inputrules'
-import { Attrs, NodeType } from '@remirror/pm/model'
+import { Attrs } from '@remirror/pm/model'
 import { Transaction } from '@remirror/pm/state'
 import { findWrapping } from '@remirror/pm/transform'
 
 import { ListAttributes } from './types'
+import { getListType } from './utils/get-list-type'
+import { isListNode } from './utils/is-list-node'
 
 export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   re: RegExp,
-  listType: NodeType,
   getAttrs: T | ((matches: RegExpMatchArray) => T),
 ): InputRule {
   return new InputRule(re, (state, match, start, end): Transaction | null => {
@@ -18,7 +19,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
 
     const $pos = tr.selection.$from
     const listNode = $pos.index(-1) === 0 && $pos.node(-1)
-    if (listNode && listNode.type === listType) {
+    if (listNode && isListNode(listNode)) {
       const oldAttrs: T = listNode.attrs as T
       const newAttrs: T = { ...oldAttrs, ...attrs }
       const needUpdate = Object.keys(newAttrs).some(
@@ -38,7 +39,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
       return null
     }
 
-    const wrapping = findWrapping(range, listType, attrs)
+    const wrapping = findWrapping(range, getListType(state.schema), attrs)
     if (!wrapping) {
       return null
     }
@@ -47,19 +48,19 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   })
 }
 
-export function createListInputRules(listType: NodeType): InputRule[] {
+export function createListInputRules(): InputRule[] {
   const bulletRegexp = /^\s?([*-])\s$/
   const orderedRegexp = /^\s?(\d+)\.\s$/
   const taskRegexp = /^\s?\[([\sXx]?)]\s$/
   const toggleRegexp = /^\s?>>\s$/
 
   return [
-    wrappingListInputRule(bulletRegexp, listType, { type: 'bullet' }),
-    wrappingListInputRule(orderedRegexp, listType, { type: 'ordered' }),
-    wrappingListInputRule(taskRegexp, listType, (match) => ({
+    wrappingListInputRule(bulletRegexp, { type: 'bullet' }),
+    wrappingListInputRule(orderedRegexp, { type: 'ordered' }),
+    wrappingListInputRule(taskRegexp, (match) => ({
       type: 'task',
       checked: ['x', 'X'].includes(match[1]),
     })),
-    wrappingListInputRule(toggleRegexp, listType, { type: 'toggle' }),
+    wrappingListInputRule(toggleRegexp, { type: 'toggle' }),
   ]
 }

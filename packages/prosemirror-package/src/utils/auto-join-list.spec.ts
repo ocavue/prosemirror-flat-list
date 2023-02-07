@@ -12,7 +12,7 @@ describe('autoJoinList', () => {
         const tr = view.state.tr
         const schema = view.state.schema
         tr.replaceWith(8, 9, schema.text('C'))
-        autoJoinList(tr, schema.nodes['list'])
+        autoJoinList(tr)
         view.dispatch(tr)
       },
 

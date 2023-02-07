@@ -484,8 +484,7 @@ describe('indentList', () => {
     ) => {
       t.add(doc)
       const state = t.view.state
-      const listType = state.schema.nodes['list']
-      const command = createIndentListCommand(listType)
+      const command = createIndentListCommand()
       let count = -1
       let actual: ProsemirrorNode | null = null
       command(state, (tr) => {

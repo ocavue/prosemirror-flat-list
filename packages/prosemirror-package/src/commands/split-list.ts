@@ -1,10 +1,11 @@
-import { NodeType } from '@remirror/pm/model'
 import { Command } from '@remirror/pm/state'
 import { canSplit } from '@remirror/pm/transform'
+import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
+import { isListNode } from '../utils/is-list-node'
 import { enterWithoutLift } from './enter-without-lift'
 
-export function createSplitListCommand(listType: NodeType): Command {
+export function createSplitListCommand(): Command {
   const splitListCommand: Command = (state, dispatch, view): boolean => {
     const { selection } = state
     const { $from, $to } = selection
@@ -19,7 +20,7 @@ export function createSplitListCommand(listType: NodeType): Command {
 
     const listNode = $from.node(-1)
 
-    if (!listNode || listNode.type !== listType) {
+    if (!isListNode(listNode)) {
       return false
     }
 
@@ -50,7 +51,7 @@ export function createSplitListCommand(listType: NodeType): Command {
         : undefined
     const typesAfter = [
       {
-        type: listType,
+        type: getListType(state.schema),
         attrs: {
           // We don't want to inherit the list attributes (e.g. checked) except
           // for the list type

@@ -1,10 +1,10 @@
-import { EditorView, NodeType } from '@remirror/pm'
+import { EditorView } from '@remirror/pm'
 import { ListAttributes } from './types'
+import { isListNode } from './utils/is-list-node'
 
 export function handleListMarkerMouseDown(
   view: EditorView,
   event: MouseEvent,
-  listType: NodeType,
 ): boolean {
   const target = event.target as HTMLElement | null
 
@@ -15,7 +15,7 @@ export function handleListMarkerMouseDown(
     const tr = view.state.tr
     const $pos = tr.doc.resolve(pos)
     const list = $pos.parent
-    if (list.type !== listType) {
+    if (isListNode(list)) {
       return false
     }
 

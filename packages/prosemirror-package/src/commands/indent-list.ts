@@ -1,4 +1,4 @@
-import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
+import { Fragment, NodeRange, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
@@ -6,20 +6,22 @@ import {
   atEndBlockBoundary,
   atStartBlockBoundary,
 } from '../utils/block-boundary'
+import { getListType } from '../utils/get-list-type'
+import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-export function createIndentListCommand(listType: NodeType): Command {
+export function createIndentListCommand(): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
     const { $from, $to } = tr.selection
 
-    const range = findListsRange($from, $to, listType) || $from.blockRange($to)
+    const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false
 
-    if (indentRange(range, tr, listType)) {
-      autoJoinList(tr, listType)
+    if (indentRange(range, tr)) {
+      autoJoinList(tr)
       dispatch?.(tr)
       return true
     }
@@ -32,7 +34,6 @@ export function createIndentListCommand(listType: NodeType): Command {
 function indentRange(
   range: NodeRange,
   tr: Transaction,
-  listType: NodeType,
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
@@ -44,9 +45,9 @@ function indentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? indentRange(contentRange, tr, listType) : false
+      return contentRange ? indentRange(contentRange, tr) : false
     } else {
-      return splitAndIndentRange(range, tr, listType, startIndex + 1)
+      return splitAndIndentRange(range, tr, startIndex + 1)
     }
   }
 
@@ -56,13 +57,13 @@ function indentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? indentRange(contentRange, tr, listType) : false
+      return contentRange ? indentRange(contentRange, tr) : false
     } else {
-      return splitAndIndentRange(range, tr, listType, endIndex - 1)
+      return splitAndIndentRange(range, tr, endIndex - 1)
     }
   }
 
-  return indentNodeRange(range, tr, listType)
+  return indentNodeRange(range, tr)
 }
 
 /**
@@ -71,7 +72,6 @@ function indentRange(
 function splitAndIndentRange(
   range: NodeRange,
   tr: Transaction,
-  listType: NodeType,
   splitIndex: number,
 ): boolean {
   const { $from, $to, depth } = range
@@ -84,13 +84,13 @@ function splitAndIndentRange(
   const getRange2From = mapPos(tr, splitPos + 1)
   const getRange2To = mapPos(tr, $to.pos)
 
-  indentRange(range1, tr, listType, undefined, true)
+  indentRange(range1, tr, undefined, true)
 
   const range2 = tr.doc
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
-  range2 && indentRange(range2, tr, listType, true, undefined)
+  range2 && indentRange(range2, tr, true, undefined)
 
   return true
 }
@@ -98,17 +98,14 @@ function splitAndIndentRange(
 /**
  * Increase the indentation of a block range.
  */
-function indentNodeRange(
-  range: NodeRange,
-  tr: Transaction,
-  listType: NodeType,
-): boolean {
+function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
+  const listType = getListType(tr.doc.type.schema)
   const { parent, startIndex } = range
   const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
 
   // If the previous node before the range is a list node, move the range into
   // the previous list node as its children
-  if (prevChild && prevChild.type === listType) {
+  if (prevChild && isListNode(prevChild)) {
     const { start, end } = range
     tr.step(
       new ReplaceAroundStep(
@@ -127,8 +124,8 @@ function indentNodeRange(
   // If we can avoid to add a new bullet visually, we can wrap the range with a
   // new list node.
   if (
-    (startIndex === 0 && parent.type === listType) ||
-    parent.maybeChild(startIndex)?.type === listType
+    (startIndex === 0 && isListNode(parent)) ||
+    isListNode(parent.maybeChild(startIndex))
   ) {
     const { start, end } = range
     tr.step(

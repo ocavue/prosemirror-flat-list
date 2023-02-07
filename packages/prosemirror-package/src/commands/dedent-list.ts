@@ -1,4 +1,4 @@
-import { Fragment, NodeRange, NodeType, Slice } from '@remirror/pm/model'
+import { Fragment, NodeRange, Slice } from '@remirror/pm/model'
 import { Command, Transaction } from '@remirror/pm/state'
 import { ReplaceAroundStep } from '@remirror/pm/transform'
 import { autoJoinList } from '../utils/auto-join-list'
@@ -6,21 +6,23 @@ import {
   atEndBlockBoundary,
   atStartBlockBoundary,
 } from '../utils/block-boundary'
+import { getListType } from '../utils/get-list-type'
+import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-export function createDedentListCommand(listType: NodeType): Command {
+export function createDedentListCommand(): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
     const { $from, $to } = tr.selection
 
-    const range = findListsRange($from, $to, listType)
+    const range = findListsRange($from, $to)
     if (!range) return false
 
-    if (dedentRange(range, tr, listType)) {
-      autoJoinList(tr, listType)
+    if (dedentRange(range, tr)) {
+      autoJoinList(tr)
       dispatch?.(tr)
       return true
     }
@@ -33,7 +35,6 @@ export function createDedentListCommand(listType: NodeType): Command {
 function dedentRange(
   range: NodeRange,
   tr: Transaction,
-  listType: NodeType,
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
@@ -45,34 +46,34 @@ function dedentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? dedentRange(contentRange, tr, listType) : false
+      return contentRange ? dedentRange(contentRange, tr) : false
     } else {
-      return splitAndDedentRange(range, tr, listType, startIndex + 1)
+      return splitAndDedentRange(range, tr, startIndex + 1)
     }
   }
 
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
   if (!endBoundary) {
-    fixEndBoundary(range, tr, listType)
+    fixEndBoundary(range, tr)
     const endOfParent = $to.end(depth)
     range = new NodeRange(
       tr.doc.resolve($from.pos),
       tr.doc.resolve(endOfParent),
       depth,
     )
-    return dedentRange(range, tr, listType, undefined, true)
+    return dedentRange(range, tr, undefined, true)
   }
 
   if (
     range.startIndex === 0 &&
     range.endIndex === range.parent.childCount &&
-    range.parent.type === listType
+    isListNode(range.parent)
   ) {
-    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, listType)
+    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr)
   }
 
-  return dedentNodeRange(range, tr, listType)
+  return dedentNodeRange(range, tr)
 }
 
 /**
@@ -81,7 +82,6 @@ function dedentRange(
 function splitAndDedentRange(
   range: NodeRange,
   tr: Transaction,
-  listType: NodeType,
   splitIndex: number,
 ): boolean {
   const { $from, $to, depth } = range
@@ -94,7 +94,7 @@ function splitAndDedentRange(
   const getRange2From = mapPos(tr, splitPos + 1)
   const getRange2To = mapPos(tr, $to.pos)
 
-  dedentRange(range1, tr, listType, undefined, true)
+  dedentRange(range1, tr, undefined, true)
 
   let range2 = tr.doc
     .resolve(getRange2From())
@@ -102,28 +102,22 @@ function splitAndDedentRange(
 
   if (range2 && range2.depth >= depth) {
     range2 = new NodeRange(range2.$from, range2.$to, depth)
-    dedentRange(range2, tr, listType, true, undefined)
+    dedentRange(range2, tr, true, undefined)
   }
   return true
 }
 
-function dedentNodeRange(
-  range: NodeRange,
-  tr: Transaction,
-  listType: NodeType,
-) {
-  if (range.parent.type === listType) {
+function dedentNodeRange(range: NodeRange, tr: Transaction) {
+  if (isListNode(range.parent)) {
     return safeLift(tr, range)
   } else {
     return dedentOutOfList(tr, range)
   }
 }
 
-function fixEndBoundary(
-  range: NodeRange,
-  tr: Transaction,
-  listType: NodeType,
-): void {
+function fixEndBoundary(range: NodeRange, tr: Transaction): void {
+  const listType = getListType(tr.doc.type.schema)
+
   if (range.endIndex - range.startIndex >= 2) {
     range = new NodeRange(
       range.$to.doc.resolve(
@@ -136,7 +130,7 @@ function fixEndBoundary(
 
   const contentRange = zoomInRange(range)
   if (contentRange) {
-    fixEndBoundary(contentRange, tr, listType)
+    fixEndBoundary(contentRange, tr)
     range = new NodeRange(
       tr.doc.resolve(range.$from.pos),
       tr.doc.resolve(range.$to.pos),
@@ -147,7 +141,7 @@ function fixEndBoundary(
   const { $to, depth, end, parent, endIndex } = range
   const endOfParent = $to.end(depth)
 
-  if (end < endOfParent && parent.maybeChild(endIndex - 1)?.type === listType) {
+  if (end < endOfParent && isListNode(parent.maybeChild(endIndex - 1))) {
     // There are siblings after the lifted items, which must become
     // children of the last item
     tr.step(

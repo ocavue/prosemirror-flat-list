@@ -6,7 +6,7 @@ import {
   NodeExtension,
   NodeExtensionSpec,
   NodeViewMethod,
-  ProsemirrorPlugin
+  ProsemirrorPlugin,
 } from '@remirror/core'
 
 import {
@@ -17,7 +17,7 @@ import {
   createListNodeView,
   createListPlugin,
   createListSpec,
-  createSplitListCommand
+  createSplitListCommand,
 } from 'prosemirror-flat-list'
 
 export class ListExtension extends NodeExtension {
@@ -43,28 +43,26 @@ export class ListExtension extends NodeExtension {
 
   createKeymap(): KeyBindings {
     return {
-      Enter: convertCommand(createSplitListCommand(this.type)),
+      Enter: convertCommand(createSplitListCommand()),
 
-      'Shift-Tab': alwaysTrue(
-        convertCommand(createDedentListCommand(this.type)),
-      ),
+      'Shift-Tab': alwaysTrue(convertCommand(createDedentListCommand())),
 
-      Tab: alwaysTrue(convertCommand(createIndentListCommand(this.type))),
+      Tab: alwaysTrue(convertCommand(createIndentListCommand())),
     }
   }
 
   createExternalPlugins(): ProsemirrorPlugin[] {
-    return [createListPlugin(this.store.schema, this.type)]
+    return [createListPlugin(this.store.schema)]
   }
 
   createInputRules(): InputRule[] {
-    return createListInputRules(this.type)
+    return createListInputRules()
   }
 
   createCommands() {
     return {
-      indentList: () => convertCommand(createIndentListCommand(this.type)),
-      dedentList: () => convertCommand(createDedentListCommand(this.type)),
+      indentList: () => convertCommand(createIndentListCommand()),
+      dedentList: () => convertCommand(createDedentListCommand()),
     } as const
   }
 }

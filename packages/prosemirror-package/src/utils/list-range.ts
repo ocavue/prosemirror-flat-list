@@ -1,4 +1,5 @@
-import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model'
+import { NodeRange, ResolvedPos } from '@remirror/pm/model'
+import { isListNode } from './is-list-node'
 
 /**
  * Returns a minimal block range that includes the given two positions and
@@ -7,16 +8,15 @@ import { NodeRange, NodeType, ResolvedPos } from '@remirror/pm/model'
 export function findListsRange(
   $from: ResolvedPos,
   $to: ResolvedPos,
-  listType: NodeType,
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
-    return findListsRange($to, $from, listType)
+    return findListsRange($to, $from)
   }
 
   let range = $from.blockRange($to)
 
   while (range) {
-    if (isListsRange(range, listType)) {
+    if (isListsRange(range)) {
       return range
     }
 
@@ -30,11 +30,11 @@ export function findListsRange(
   return null
 }
 
-export function isListsRange(range: NodeRange, listType: NodeType): boolean {
+export function isListsRange(range: NodeRange): boolean {
   const { startIndex, endIndex, parent } = range
 
   for (let i = startIndex; i < endIndex; i++) {
-    if (parent.child(i).type !== listType) {
+    if (isListNode(parent.child(i))) {
       return false
     }
   }
