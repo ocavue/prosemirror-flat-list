@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.7
+
+### Patch Changes
+
+- 42e26da: Add command `wrapInList`
+
 ## 0.0.6
 
 ### Patch Changes

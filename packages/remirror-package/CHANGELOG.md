@@ -1,5 +1,13 @@
 # remirror-extension-flat-list
 
+## 0.0.7
+
+### Patch Changes
+
+- 42e26da: Add command `wrapInList`
+- Updated dependencies [42e26da]
+  - prosemirror-flat-list@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
