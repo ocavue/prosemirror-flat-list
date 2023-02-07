@@ -15,7 +15,7 @@ export function handleListMarkerMouseDown(
     const tr = view.state.tr
     const $pos = tr.doc.resolve(pos)
     const list = $pos.parent
-    if (isListNode(list)) {
+    if (!isListNode(list)) {
       return false
     }
 
