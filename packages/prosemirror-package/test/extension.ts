@@ -68,7 +68,9 @@ export class ListExtension extends NodeExtension {
       dedentList: () => convertCommand(createDedentListCommand()),
 
       wrapInList: (
-        getAttrs: ListAttributes | ((range: NodeRange) => ListAttributes),
+        getAttrs:
+          | ListAttributes
+          | ((range: NodeRange) => ListAttributes | null),
       ) => {
         return convertCommand(createWrapInListCommand<ListAttributes>(getAttrs))
       },

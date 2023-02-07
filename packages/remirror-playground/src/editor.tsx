@@ -18,6 +18,7 @@ import {
   ListAttributes,
   ListExtension,
   ListType,
+  isListNode,
 } from 'remirror-extension-flat-list'
 
 const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
@@ -61,6 +62,38 @@ const ButtonGroup = (): JSX.Element => {
       return { type }
     })
 
+  const toggleChecked = () => {
+    commands.wrapInList((range) => {
+      const { parent, startIndex, endIndex } = range
+      if (endIndex - startIndex === 1) {
+        const listNode = parent.child(startIndex)
+        if (isListNode(listNode)) {
+          const attrs = listNode.attrs as ListAttributes
+          if (attrs.type === 'task') {
+            return { checked: !attrs.checked }
+          }
+        }
+      }
+      return null
+    })
+  }
+
+  const toggleCollapsed = () => {
+    commands.wrapInList((range) => {
+      const { parent, startIndex, endIndex } = range
+      if (endIndex - startIndex === 1) {
+        const listNode = parent.child(startIndex)
+        if (isListNode(listNode)) {
+          const attrs = listNode.attrs as ListAttributes
+          if (attrs.type === 'toggle') {
+            return { collapsed: !attrs.collapsed }
+          }
+        }
+      }
+      return null
+    })
+  }
+
   return (
     <>
       <Button onClick={indentList}>Increase list indentation</Button>
@@ -76,6 +109,10 @@ const ButtonGroup = (): JSX.Element => {
       <Button onClick={wrapInToggleList}>Wrap in toggle list</Button>
 
       <Button onClick={changeListType}>Change list type</Button>
+
+      <Button onClick={toggleChecked}>Toggle attribute checked</Button>
+
+      <Button onClick={toggleCollapsed}>Toggle attribute collapsed</Button>
     </>
   )
 }

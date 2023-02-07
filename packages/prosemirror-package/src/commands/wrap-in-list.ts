@@ -7,7 +7,7 @@ import { getListType } from '../utils/get-list-type'
 import { setNodeAttributes } from '../utils/setNodeAttributes'
 
 export function createWrapInListCommand<T extends Attrs = ListAttributes>(
-  getAttrs: T | ((range: NodeRange) => T),
+  getAttrs: T | ((range: NodeRange) => T | null),
 ): Command {
   const wrapInList: Command = (state, dispatch): boolean => {
     const { $from, $to } = state.selection
@@ -25,8 +25,13 @@ export function createWrapInListCommand<T extends Attrs = ListAttributes>(
       range = new NodeRange($from, $to, range.depth - 1)
     }
 
+    const attrs: T | null =
+      typeof getAttrs === 'function' ? getAttrs(range) : getAttrs
+    if (!attrs) {
+      return false
+    }
+
     const { parent, startIndex, endIndex, depth } = range
-    const attrs: T = typeof getAttrs === 'function' ? getAttrs(range) : getAttrs
     const tr = state.tr
     const listType = getListType(state.schema)
 
