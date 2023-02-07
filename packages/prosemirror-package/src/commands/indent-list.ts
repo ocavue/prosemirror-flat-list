@@ -7,6 +7,7 @@ import {
   atStartBlockBoundary,
 } from '../utils/block-boundary'
 import { getListType } from '../utils/get-list-type'
+import { inCollapsedList } from '../utils/in-collapsed-list'
 import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
@@ -53,7 +54,7 @@ function indentRange(
 
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
-  if (!endBoundary) {
+  if (!endBoundary && !inCollapsedList($to)) {
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)

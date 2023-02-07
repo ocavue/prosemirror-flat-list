@@ -1,7 +1,9 @@
-import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { TaggedProsemirrorNode } from 'jest-remirror'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { ListAttributes } from '../types'
+import { setListAttributes } from '../utils/set-list-attributes'
 import { createIndentListCommand } from './indent-list'
 
 describe('indentList', () => {
@@ -279,6 +281,40 @@ describe('indentList', () => {
           - B1
           - B2
           - B3
+      `,
+    )
+  })
+
+  it('can move all collapsed content', () => {
+    t.runCommand(
+      () => {
+        let tr = t.view.state.tr
+        let attrs: ListAttributes = { type: 'toggle', collapsed: true }
+        setListAttributes(tr, t.view.state.selection.from, attrs)
+        t.view.dispatch(tr)
+
+        commands.indentList()
+
+        tr = t.view.state.tr
+        attrs = { type: 'bullet', collapsed: false }
+        setListAttributes(tr, t.view.state.selection.from, attrs)
+        t.view.dispatch(tr)
+      },
+      markdown`
+        - A1
+        - A2
+        - A3<cursor>
+          - B1
+          - B2
+          - B3
+      `,
+      markdown`
+        - A1
+        - A2
+          - A3<cursor>
+            - B1
+            - B2
+            - B3
       `,
     )
   })
