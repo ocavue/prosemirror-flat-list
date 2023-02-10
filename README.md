@@ -4,18 +4,13 @@ _Project status: Alpha. Document are not complete and the API are likely to chan
 
 ## [Online demo](https://remirror-extension-flat-list.netlify.app/)
 
-## Sponsored by
+## Sponsored by [Reflect](https://reflect.app/)
 
-<table style="align:center;">
-  <tr>
-    <td align="center">
-      <a href="https://reflect.app/" rel="nofollow">
-        <img src="https://user-images.githubusercontent.com/2003804/170265087-fb7bf84e-0413-49d5-8a30-15b71bc9055b.png" height="200px" width="200px" style="max-width: 100%;" alt="Reflect logo"><br>
-        <strong style="font-size: 2em">Reflect</strong>
-      </a>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://reflect.app/" rel="nofollow">
+    <img src="https://user-images.githubusercontent.com/2003804/170265087-fb7bf84e-0413-49d5-8a30-15b71bc9055b.png" height="200px" width="200px" style="max-width: 100%;" alt="Reflect logo"><br>
+  </a>
+</p>
 
 ## Motivation
 
