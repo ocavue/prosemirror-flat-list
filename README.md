@@ -4,13 +4,26 @@ _Project status: Alpha. Document are not complete and the API are likely to chan
 
 ## [Online demo](https://remirror-extension-flat-list.netlify.app/)
 
+## Sponsored by
+
+<table style="align:center;">
+  <tr>
+    <td align="center">
+      <a href="https://reflect.app/" rel="nofollow">
+        <img src="https://user-images.githubusercontent.com/2003804/170265087-fb7bf84e-0413-49d5-8a30-15b71bc9055b.png" height="200px" width="200px" style="max-width: 100%;" alt="Reflect logo"><br>
+        <strong style="font-size: 2em">Reflect</strong>
+      </a>
+    </td>
+  </tr>
+</table>
+
 ## Motivation
 
 This project introduces a new [ProseMirror] list design different from the [prosemirror-schema-list].
 
 Instead of having three types of node (`bullet_list`, `ordered_list` and `list_item`), this project only provides one node type `list`. This node type can have any block node as its children. Particularly, the first child of a `list` node can be any block type in addition to a paragraph.
 
-It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the list items. This provides a simpler data structure and thus makes it easier to implement some interactions. The new list node will be rendered as a `<div>` element. 
+It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the list items. This provides a simpler data structure and thus makes it easier to implement some interactions. The new list node will be rendered as a `<div>` element.
 
 > ⬇ The HTML structure of the old list nodes in `prosemirror-schema-list`.
 
