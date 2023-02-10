@@ -1,7 +1,7 @@
 export { createDedentListCommand } from './commands/dedent-list'
 export { createIndentListCommand } from './commands/indent-list'
 export { createMoveListCommand } from './commands/move-list'
-export { createSplitListCommand } from './commands/split-list'
+export { createSplitListCommand, doSplitList } from './commands/split-list'
 export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
   defaultListClickHandler,

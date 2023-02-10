@@ -87,8 +87,13 @@ export function markdownToTaggedDoc(
   t: RemirrorTestChain<any>,
   markdown: string,
 ): TaggedProsemirrorNode {
-  markdown = dedent(markdown).replaceAll('<', '\\<').replaceAll('>', '\\>')
+  markdown = tags.reduce(
+    (str, tag) => str.replaceAll(`<${tag}>`, `\\<${tag}\\>`),
+    dedent(markdown),
+  )
   const html = markdownToHtml(markdown)
   const doc = htmlToProsemirrorNode({ content: html, schema: t.schema })
   return docToTaggedDoc(t, doc)
 }
+
+const tags = ['cursor', 'node', 'start', 'end', 'anchor', 'all', 'gap'] as const

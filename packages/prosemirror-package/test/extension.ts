@@ -79,6 +79,8 @@ export class ListExtension extends NodeExtension {
       moveList: (direction: 'up' | 'down') => {
         return convertCommand(createMoveListCommand(direction))
       },
+
+      splitList: () => convertCommand(createSplitListCommand()),
     } as const
   }
 }
