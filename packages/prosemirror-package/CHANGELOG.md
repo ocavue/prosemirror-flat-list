@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.10
+
+### Patch Changes
+
+- e0bf521: Set the list type correctly when indent a list node
+
 ## 0.0.9
 
 ### Patch Changes
