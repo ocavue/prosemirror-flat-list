@@ -1,6 +1,7 @@
 import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
+import { ListAttributes } from '../../dist'
 import { autoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,
@@ -124,18 +125,22 @@ function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
 
   // If we can avoid to add a new bullet visually, we can wrap the range with a
   // new list node.
-  if (
-    (startIndex === 0 && isListNode(parent)) ||
-    isListNode(parent.maybeChild(startIndex))
-  ) {
+  const isParentListNode = isListNode(parent)
+  const isFirstChildListNode = isListNode(parent.maybeChild(startIndex))
+  if ((startIndex === 0 && isParentListNode) || isFirstChildListNode) {
     const { start, end } = range
+    const listAttrs: ListAttributes | null = isFirstChildListNode
+      ? parent.child(startIndex).attrs
+      : isParentListNode
+      ? parent.attrs
+      : null
     tr.step(
       new ReplaceAroundStep(
         start,
         end,
         start,
         end,
-        new Slice(Fragment.from(listType.create(null)), 0, 0),
+        new Slice(Fragment.from(listType.create(listAttrs)), 0, 0),
         1,
         true,
       ),

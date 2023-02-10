@@ -261,6 +261,40 @@ describe('indentList', () => {
           - [x] A<cursor>2
       `,
     )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        1. A1
+
+        2. A<cursor>2
+
+           - B1
+      `,
+      markdown`
+        1. A1
+
+           1. A<cursor>2
+
+           - B1
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - [x] A1
+          - B1
+        - [x] A<cursor>2
+          1. B2
+      `,
+      markdown`
+        - [x] A1
+          - B1
+          - [x] A<cursor>2
+          1. B2
+      `,
+    )
   })
 
   it('can keep the indentation of sub list nodes', () => {
