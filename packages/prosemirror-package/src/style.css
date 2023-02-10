@@ -67,23 +67,25 @@
       width: 1lh;
     }
 
-    &:not([data-list-collapsed]) > .list-marker::before {
+    & > .list-marker::before {
       content: '\23F7'; /* Black Medium Down-Pointing Triangle */
     }
-    &[data-list-collapsed] > .list-marker::before {
+    &[data-list-collapsable][data-list-collapsed] > .list-marker::before {
       content: '\23F5'; /* Black Medium Right-Pointing Triangle */
     }
 
-    &:not([data-list-disabled]) > .list-marker {
+    &[data-list-collapsable] > .list-marker {
       cursor: pointer;
     }
-    &[data-list-disabled] > .list-marker {
+    &:not([data-list-collapsable]) > .list-marker {
       opacity: 40%;
       pointer-events: none;
     }
 
     /* If collapsed, hide the second and futher children */
-    &[data-list-collapsed] > .list-content > *:nth-child(n + 2) {
+    &[data-list-collapsable][data-list-collapsed]
+      > .list-content
+      > *:nth-child(n + 2) {
       display: none;
     }
   }

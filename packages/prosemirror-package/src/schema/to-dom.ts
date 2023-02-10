@@ -4,49 +4,24 @@ import { ListAttributes } from '../types'
 export function listToDOM(
   node: ProsemirrorNode,
   nativeList: boolean,
+  markerToDOM: MarkerToDOM = defaultMarkerToDOM,
 ): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
-
-  let marker: DOMOutputSpec | null = null
-
-  if (!markerHidden) {
-    switch (attrs.type) {
-      case 'task':
-        // Use a `label` element here so that the area around the checkbox is also checkable.
-        marker = [
-          'label',
-          [
-            'input',
-            { type: 'checkbox', checked: attrs.checked ? '' : undefined },
-          ],
-        ]
-        break
-      case 'toggle':
-        marker = ['span']
-        break
-    }
-  }
-
+  const marker: DOMOutputSpec | null = markerHidden ? null : markerToDOM(attrs)
   const markerType = markerHidden ? undefined : attrs.type || 'bullet'
   const domAttrs = {
     class: 'prosemirror-flat-list',
     'data-list-type': markerType,
-    'data-list-order':
-      markerType === 'ordered' && attrs.order != null
-        ? String(attrs.order)
-        : undefined,
-    'data-list-checked':
-      markerType === 'task' && attrs.checked ? '' : undefined,
-    'data-list-collapsed':
-      markerType === 'toggle' && attrs.collapsed ? '' : undefined,
-    'data-list-disabled':
-      markerType === 'toggle' && node.childCount < 2 ? '' : undefined,
+    'data-list-order': attrs.order != null ? String(attrs.order) : undefined,
+    'data-list-checked': attrs.checked ? '' : undefined,
+    'data-list-collapsed': attrs.collapsed ? '' : undefined,
+    'data-list-collapsable': node.childCount >= 2 ? '' : undefined,
   }
 
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]
 
-  if (marker) {
+  if (marker != null) {
     const markerContainer: DOMOutputSpec = [
       'div',
       {
@@ -71,5 +46,25 @@ export function listToDOM(
           ['li', domAttrs, contentContainer],
         ]
       : ['div', domAttrs, contentContainer]
+  }
+}
+
+export type MarkerToDOM = (attrs: ListAttributes) => DOMOutputSpec | null
+
+export const defaultMarkerToDOM: MarkerToDOM = (attrs) => {
+  switch (attrs.type) {
+    case 'task':
+      // Use a `label` element here so that the area around the checkbox is also checkable.
+      return [
+        'label',
+        [
+          'input',
+          { type: 'checkbox', checked: attrs.checked ? '' : undefined },
+        ],
+      ]
+    case 'toggle':
+      return ['span']
+    default:
+      return null
   }
 }
