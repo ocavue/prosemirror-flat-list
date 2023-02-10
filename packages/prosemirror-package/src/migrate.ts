@@ -1,4 +1,4 @@
-import type { ListAttributes, ProsemirrorNodeJSON } from './types'
+import type { ListType, ProsemirrorNodeJSON } from './types'
 
 function migrateNodes(nodes: ProsemirrorNodeJSON[]): ProsemirrorNodeJSON[] {
   const content: ProsemirrorNodeJSON[] = []
@@ -26,7 +26,7 @@ function migrateNodes(nodes: ProsemirrorNodeJSON[]): ProsemirrorNodeJSON[] {
 
 function migrateNode(
   node: ProsemirrorNodeJSON,
-  attrs?: ListAttributes,
+  { type }: { type?: ListType } = {},
 ): ProsemirrorNodeJSON {
   if (
     node.type === 'list_item' ||
@@ -37,9 +37,9 @@ function migrateNode(
       ...node,
       type: 'list',
       attrs: {
+        collapsed: node.attrs?.closed,
         ...node.attrs,
-        type: 'bullet',
-        ...attrs,
+        type: type ?? 'bullet',
       },
       content: node.content ? migrateNodes(node.content) : undefined,
     }

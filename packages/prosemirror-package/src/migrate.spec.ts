@@ -84,6 +84,7 @@ describe('migrateDocJSON', () => {
           {
             "attrs": {
               "closed": false,
+              "collapsed": false,
               "nested": false,
               "type": "bullet",
             },
