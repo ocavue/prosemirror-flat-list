@@ -1,236 +1,212 @@
+import { chainCommands, pcBaseKeymap } from 'prosemirror-commands'
+import { Command } from 'prosemirror-state'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { createSplitListCommand } from './split-list'
 
 describe('splitList', () => {
-  const { add, doc, p, list, blockquote, editor } = setupTestingEditor()
+  const { add, doc, p, list, blockquote, editor, markdown, runCommand, view } =
+    setupTestingEditor()
+
+  const enterCommand: Command = chainCommands(
+    createSplitListCommand(),
+    pcBaseKeymap['Enter'],
+  )
+
+  const run = () => {
+    enterCommand(view.state, view.dispatch, view)
+  }
 
   it('can split non-empty item', () => {
-    add(
-      doc(
-        //
-        list(p('123')),
-        list(p('456<cursor>')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        list(p('456')),
-        list(p('<cursor>')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+        - 234<cursor>
+
+        paragraph
+      `,
+      markdown`
+        - 123
+        - 234
+        - <cursor>
+
+        paragraph
+      `,
     )
 
-    add(
-      doc(
-        //
-        list(p('123')),
-        list(p('45<cursor>6')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        list(p('45')),
-        list(p('<cursor>6')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+        - 23<cursor>4
+      `,
+      markdown`
+        - 123
+        - 23
+        - <cursor>4
+      `,
     )
 
-    add(
-      doc(
-        //
-        list(p('1<cursor>23')),
-        list(p('456')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('1')),
-        list(p('<cursor>23')),
-        list(p('456')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 1<cursor>23
+        - 234
+      `,
+      markdown`
+        - 1
+        - <cursor>23
+        - 234
+      `,
     )
   })
 
   it('can split non-empty sub item', () => {
-    add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456<cursor>')),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('456')),
-          list(p('<cursor>')),
-        ),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+          - 456<cursor>
+
+        paragraph
+      `,
+      markdown`
+        - 123
+          - 456
+          - <cursor>
+
+        paragraph
+      `,
     )
   })
 
   it('can delete empty item', () => {
-    add(
-      doc(
-        //
-        list(p('123')),
-        list(p('<cursor>')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        p('<cursor>'),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+        - <cursor>
+
+        paragraph
+      `,
+      markdown`
+        - 123
+
+        <cursor>
+
+        paragraph
+      `,
     )
 
-    add(
-      doc(
-        //
-        list(p('123')),
-        list(p('<cursor>')),
-        list(p('456')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('123')),
-        p('<cursor>'),
-        list(p('456')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+        - <cursor>
+        - 456
+      `,
+      markdown`
+        - 123
+
+        <cursor>
+
+        - 456
+      `,
     )
 
-    add(
-      doc(
-        //
-        list(p('<cursor>')),
-        list(p('123')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        p('<cursor>'),
-        list(p('123')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - <cursor>
+        - 123
+      `,
+      markdown`
+        <cursor>
+
+        - 123
+      `,
     )
   })
 
   it('can dedent empty sub item', () => {
-    add(
-      doc(
-        list(
-          //
-          p('123'),
-          list(p('<cursor>')),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          p('<cursor>'),
-        ),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123
+          - <cursor>
+
+        paragraph
+      `,
+      markdown`
+        - 123
+
+          <cursor>
+
+        paragraph
+      `,
     )
   })
 
   it('can delete selected text', () => {
-    add(
-      doc(
-        //
-        list(p('<start>123<end>')),
-        list(p('456')),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        //
-        list(p('')),
-        list(p('<cursor>')),
-        list(p('456')),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - <start>123<end>
+        - 456
+      `,
+      markdown`
+        -
+        - <cusror>
+        - 456
+      `,
     )
   })
 
   it('escapes the item when the cursor is in the first paragraph of the item', () => {
-    add(
-      doc(
-        list(
-          //
-          p('123<cursor>'),
-          p('456'),
-          p('789'),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-        ),
-        list(
-          //
-          p('<cursor>'),
-          p('456'),
-          p('789'),
-        ),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - 123<cursor>
+
+          456
+
+          789
+      `,
+      markdown`
+        - 123
+
+        - <cursor>
+
+          456
+
+          789
+      `,
     )
 
     // Nested list item
-    add(
-      doc(
-        list(
-          p('0'),
-          list(
-            //
-            p('123<cursor>'),
-            p('456'),
-            p('789'),
-          ),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          p('0'),
-          list(
-            //
-            p('123'),
-          ),
-          list(
-            //
-            p('<cursor>'),
-            p('456'),
-            p('789'),
-          ),
-        ),
-      ),
+    runCommand(
+      run,
+      markdown`
+        - Parent
+
+          - 123<cursor>
+
+            456
+
+            789
+      `,
+      markdown`
+        - Parent
+
+          - 123
+
+          - <cursor>
+
+            456
+
+            789
+      `,
     )
   })
 
@@ -396,47 +372,66 @@ describe('splitList', () => {
     )
   })
 
-  describe('extra cases', () => {
-    it("won't effect non-list document", () => {
-      add(
-        doc(
-          //
-          p('1<cursor>23'),
-        ),
-      )
-      editor.press('Enter')
-      expect(editor.state).toEqualRemirrorState(
-        doc(
-          //
-          p('1'),
-          p('23'),
-        ),
-      )
+  it("won't effect non-list document", () => {
+    runCommand(
+      run,
+      markdown`
+        # h1
 
-      add(
-        doc(
+        1<cursor>23
+      `,
+      markdown`
+        # h1
+
+        1
+
+        <cursor>23
+      `,
+    )
+
+    runCommand(
+      run,
+      markdown`
+        # h1
+
+        123
+
+        > 4<cursor>56
+      `,
+      markdown`
+        # h1
+
+        123
+
+        > 4
+        >
+        > <cursor>56
+      `,
+    )
+
+    add(
+      doc(
+        blockquote(
+          p('123'),
           blockquote(
-            p('123'),
-            blockquote(
-              //
-              p('4<cursor>56'),
-            ),
+            //
+            p('4<cursor>56'),
           ),
         ),
-      )
-      editor.press('Enter')
-      expect(editor.state).toEqualRemirrorState(
-        doc(
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        blockquote(
+          p('123'),
           blockquote(
-            p('123'),
-            blockquote(
-              //
-              p('4'),
-              p('<cursor>56'),
-            ),
+            //
+            p('4'),
+            p('<cursor>56'),
           ),
         ),
-      )
-    })
+      ),
+    )
   })
 })
