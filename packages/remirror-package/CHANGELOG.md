@@ -1,5 +1,13 @@
 # remirror-extension-flat-list
 
+## 0.0.13
+
+### Patch Changes
+
+- 223b3ec: Improve Enter keybinding behavior
+- Updated dependencies [223b3ec]
+  - prosemirror-flat-list@0.0.13
+
 ## 0.0.12
 
 ### Patch Changes
