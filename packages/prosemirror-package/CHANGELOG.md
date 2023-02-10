@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.11
+
+### Patch Changes
+
+- 31105ce: Allow custom dom spec and event handler
+
 ## 0.0.10
 
 ### Patch Changes
