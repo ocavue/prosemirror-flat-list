@@ -210,7 +210,7 @@ describe('splitList', () => {
     )
   })
 
-  it('does not escapes the item when the cursor is not in the first paragraph of the item', () => {
+  it('can create new paragraph when the caret is not inside the first child of the list, and caret parent is not empty', () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
@@ -228,18 +228,6 @@ describe('splitList', () => {
           //
           p('123'),
           p('456'),
-          p('<cursor>'),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          p('456'),
-          p(''),
           p('<cursor>'),
         ),
       ),
@@ -268,30 +256,68 @@ describe('splitList', () => {
         ),
       ),
     )
+
+    // Cursor in the last paragraph of the item (nested list item)
+    add(
+      doc(
+        list(
+          p('parent'),
+          list(
+            //
+            p('123'),
+            p('<cursor>456'),
+          ),
+        ),
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        list(
+          p('parent'),
+          list(
+            //
+            p('123'),
+            p(''),
+            p('<cursor>456'),
+          ),
+        ),
+      ),
+    )
+  })
+
+  it('can create new list node when the caret is not inside the first child of the list, and caret parent is empty', () => {
+    add(
+      doc(
+        list(
+          //
+          p('123'),
+          p('<cursor>'),
+        ),
+      ),
+    )
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
         list(
           //
           p('123'),
-          p('456'),
           p(''),
+        ),
+        list(
+          //
           p('<cursor>'),
-          p('789'),
         ),
       ),
     )
 
-    // Cursor in the last paragraph of the item (nested list item)
     add(
       doc(
         list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456<cursor>'),
-          ),
+          //
+          p('123'),
+          p('<cursor>'),
+          p('456'),
         ),
       ),
     )
@@ -299,74 +325,14 @@ describe('splitList', () => {
     expect(editor.state).toEqualRemirrorState(
       doc(
         list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456'),
-            p('<cursor>'),
-          ),
+          //
+          p('123'),
+          p(''),
         ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
         list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456'),
-            p(''),
-            p('<cursor>'),
-          ),
-        ),
-      ),
-    )
-
-    // Cursor in the middle paragraph of the item (nested list item)
-    add(
-      doc(
-        list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456<cursor>'),
-            p('789'),
-          ),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456'),
-            p('<cursor>'),
-            p('789'),
-          ),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          p(),
-          list(
-            //
-            p('123'),
-            p('456'),
-            p(''),
-            p('<cursor>'),
-            p('789'),
-          ),
+          //
+          p('<cursor>'),
+          p('456'),
         ),
       ),
     )
