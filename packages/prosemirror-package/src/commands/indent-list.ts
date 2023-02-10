@@ -1,7 +1,7 @@
 import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
-import { ListAttributes } from '../../dist'
+import { ListAttributes } from '../types'
 import { autoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,
