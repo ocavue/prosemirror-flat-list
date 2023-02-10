@@ -1,13 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { setupTestingEditor, TestingEditor } from '../../test/setup-editor'
+import { setupTestingEditor } from '../../test/setup-editor'
 
-describe('indentList', () => {
-  const { add, doc, p, list, blockquote } = setupTestingEditor()
-
-  let editor: TestingEditor
+describe('splitList', () => {
+  const { add, doc, p, list, blockquote, editor } = setupTestingEditor()
 
   it('can split non-empty item', () => {
-    editor = add(
+    add(
       doc(
         //
         list(p('123')),
@@ -24,7 +22,7 @@ describe('indentList', () => {
       ),
     )
 
-    editor = add(
+    add(
       doc(
         //
         list(p('123')),
@@ -41,7 +39,7 @@ describe('indentList', () => {
       ),
     )
 
-    editor = add(
+    add(
       doc(
         //
         list(p('1<cursor>23')),
@@ -60,7 +58,7 @@ describe('indentList', () => {
   })
 
   it('can split non-empty sub item', () => {
-    editor = add(
+    add(
       doc(
         list(
           //
@@ -83,7 +81,7 @@ describe('indentList', () => {
   })
 
   it('can delete empty item', () => {
-    editor = add(
+    add(
       doc(
         //
         list(p('123')),
@@ -99,7 +97,7 @@ describe('indentList', () => {
       ),
     )
 
-    editor = add(
+    add(
       doc(
         //
         list(p('123')),
@@ -117,7 +115,7 @@ describe('indentList', () => {
       ),
     )
 
-    editor = add(
+    add(
       doc(
         //
         list(p('<cursor>')),
@@ -135,7 +133,7 @@ describe('indentList', () => {
   })
 
   it('can dedent empty sub item', () => {
-    editor = add(
+    add(
       doc(
         list(
           //
@@ -157,7 +155,7 @@ describe('indentList', () => {
   })
 
   it('can delete selected text', () => {
-    editor = add(
+    add(
       doc(
         //
         list(p('<start>123<end>')),
@@ -176,7 +174,7 @@ describe('indentList', () => {
   })
 
   it('escapes the item when the cursor is in the first paragraph of the item', () => {
-    editor = add(
+    add(
       doc(
         list(
           //
@@ -203,7 +201,7 @@ describe('indentList', () => {
     )
 
     // Nested list item
-    editor = add(
+    add(
       doc(
         list(
           p('0'),
@@ -238,7 +236,7 @@ describe('indentList', () => {
 
   it('does not escapes the item when the cursor is not in the first paragraph of the item', () => {
     // Cursor in the last paragraph of the item
-    editor = add(
+    add(
       doc(
         list(
           //
@@ -272,7 +270,7 @@ describe('indentList', () => {
     )
 
     // Cursor in the middle paragraph of the item
-    editor = add(
+    add(
       doc(
         list(
           //
@@ -309,7 +307,7 @@ describe('indentList', () => {
     )
 
     // Cursor in the last paragraph of the item (nested list item)
-    editor = add(
+    add(
       doc(
         list(
           p(),
@@ -352,7 +350,7 @@ describe('indentList', () => {
     )
 
     // Cursor in the middle paragraph of the item (nested list item)
-    editor = add(
+    add(
       doc(
         list(
           p(),
@@ -400,7 +398,7 @@ describe('indentList', () => {
 
   describe('extra cases', () => {
     it("won't effect non-list document", () => {
-      editor = add(
+      add(
         doc(
           //
           p('1<cursor>23'),
@@ -415,7 +413,7 @@ describe('indentList', () => {
         ),
       )
 
-      editor = add(
+      add(
         doc(
           blockquote(
             p('123'),
