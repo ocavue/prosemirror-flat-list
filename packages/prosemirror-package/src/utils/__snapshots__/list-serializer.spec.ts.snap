@@ -82,7 +82,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="task"
     >
       <div
-        class="list-marker"
+        class="list-marker list-marker-click-target"
         contenteditable="false"
       >
         <label>
@@ -104,11 +104,9 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="toggle"
     >
       <div
-        class="list-marker"
+        class="list-marker list-marker-click-target"
         contenteditable="false"
-      >
-        <span />
-      </div>
+      />
       <div
         class="list-content"
       >
@@ -150,7 +148,7 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="task"
     >
       <div
-        class="list-marker"
+        class="list-marker list-marker-click-target"
         contenteditable="false"
       >
         <label>
@@ -172,11 +170,9 @@ exports[`ListDOMSerializer > can serialize list nodes with different types into 
       data-list-type="toggle"
     >
       <div
-        class="list-marker"
+        class="list-marker list-marker-click-target"
         contenteditable="false"
-      >
-        <span />
-      </div>
+      />
       <div
         class="list-content"
       >
