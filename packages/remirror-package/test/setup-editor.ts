@@ -1,8 +1,13 @@
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
+import '@remirror/preset-core'
+import 'jest-prosemirror'
 import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
+import 'prosemirror-flat-list'
 import { ListAttributes } from 'prosemirror-flat-list'
 import { expect } from 'vitest'
 import { ListExtension } from '../src/extension'
+import '@remirror/pm/model'
+import 'prosemirror-model'
 
 export function setupTestingEditor() {
   const extensions = [new ListExtension(), new BlockquoteExtension()]

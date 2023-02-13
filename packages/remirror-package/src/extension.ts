@@ -24,6 +24,7 @@ import {
   ListAttributes,
 } from 'prosemirror-flat-list'
 
+/** @public */
 export class ListExtension extends NodeExtension {
   static disableExtraAttributes = true
 

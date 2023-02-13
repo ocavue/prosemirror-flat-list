@@ -14,6 +14,7 @@ import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 
+/** @public */
 export function createIndentListCommand(): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr

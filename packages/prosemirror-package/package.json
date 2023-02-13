@@ -14,14 +14,14 @@
   "bugs": "https://github.com/ocavue/prosemirror-flat-list/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/prosemirror-flat-list.js",
+  "module": "./dist/prosemirror-flat-list.js",
+  "types": "./dist/prosemirror-flat-list.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "types": "./dist/prosemirror-flat-list.d.ts",
+      "require": "./dist/prosemirror-flat-list.cjs",
+      "import": "./dist/prosemirror-flat-list.js"
     },
     "./style.css": "./dist/style.css",
     "./dist/style.css": "./dist/style.css"
@@ -31,7 +31,10 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "run-s build:tsup build:tsc build:api-extractor",
+    "build:tsup": "tsup",
+    "build:tsc": "tsc -b tsconfig.json",
+    "build:api-extractor": "api-extractor run",
     "prepublishOnly": "nr build",
     "test": "vitest"
   },
@@ -44,14 +47,17 @@
     "prosemirror-view": "^1.30.1"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.34.4",
     "@remirror/core": "^2.0.11",
     "@remirror/extension-blockquote": "^2.0.12",
     "@remirror/extension-heading": "^2.0.11",
     "@remirror/pm": "^2.0.3",
+    "@remirror/preset-core": "^2.0.14",
     "@types/dedent": "^0.7.0",
     "@types/node": "^18.11.18",
     "@vitest/coverage-c8": "^0.28.3",
     "dedent": "^0.7.0",
+    "jest-prosemirror": "^2.1.1",
     "jest-remirror": "^2.1.3",
     "jsdom": "^21.0.0",
     "npm-run-all": "^4.1.5",

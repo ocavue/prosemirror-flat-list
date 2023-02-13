@@ -1,6 +1,7 @@
 import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 import { ListAttributes } from '../types'
 
+/** @public */
 export function listToDOM(
   node: ProsemirrorNode,
   nativeList: boolean,
@@ -51,8 +52,10 @@ export function listToDOM(
   }
 }
 
+/** @public */
 export type MarkerToDOM = (attrs: ListAttributes) => DOMOutputSpec[] | null
 
+/** @public */
 export const defaultMarkerToDOM: MarkerToDOM = (attrs) => {
   switch (attrs.type) {
     case 'task':

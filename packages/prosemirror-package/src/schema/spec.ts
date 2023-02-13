@@ -2,8 +2,10 @@ import { DOMOutputSpec, NodeSpec } from 'prosemirror-model'
 import { createParseDomRules } from './parse-dom'
 import { listToDOM } from './to-dom'
 
+/** @public */
 export const flatListGroup = 'flatList'
 
+/** @public */
 export function createListSpec(): NodeSpec {
   return {
     content: 'block+',

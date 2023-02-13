@@ -1,3 +1,13 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "composite": true,
+    "declarationDir": "dist-types",
+  },
+  "references": [
+    {
+      "path": "../prosemirror-package/tsconfig.json"
+    }
+  ]
 }

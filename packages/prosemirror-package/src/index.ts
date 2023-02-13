@@ -15,7 +15,13 @@ export { createListPlugin } from './plugin'
 export { createParseDomRules } from './schema/parse-dom'
 export { createListSpec, flatListGroup } from './schema/spec'
 export { defaultMarkerToDOM, listToDOM, MarkerToDOM } from './schema/to-dom'
-export type { ListAttributes, ListType } from './types'
+export type {
+  ListType,
+  ListAttributes,
+  Literal,
+  ObjectMark,
+  ProsemirrorNodeJSON,
+} from './types'
 export { alwaysTrue } from './utils/always-true'
 export { getListType } from './utils/get-list-type'
 export { isListNode } from './utils/is-list-node'

@@ -7,6 +7,7 @@ import {
 } from 'prosemirror-model'
 import { listToDOM } from '../schema/to-dom'
 
+/** @public */
 export class ListDOMSerializer extends DOMSerializer {
   static nodesFromSchema(schema: Schema): {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec

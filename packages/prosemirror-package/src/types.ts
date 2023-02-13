@@ -1,5 +1,7 @@
+/** @public */
 export type ListType = 'bullet' | 'ordered' | 'task' | 'toggle'
 
+/** @public */
 export interface ListAttributes {
   type?: ListType
   order?: number | null
@@ -9,6 +11,8 @@ export interface ListAttributes {
 
 /**
  * All the literal types
+ *
+ * @public
  */
 export declare type Literal =
   | string
@@ -21,12 +25,15 @@ export declare type Literal =
 
 /**
  * A JSON representation of a prosemirror Mark.
+ *
+ * @public
  */
 export interface ObjectMark {
   type: string
   attrs?: Record<string, Literal>
 }
 
+/** @public */
 export interface ProsemirrorNodeJSON {
   type: string
   marks?: Array<ObjectMark | string>

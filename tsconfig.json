@@ -13,6 +13,9 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
     "paths": {
       "prosemirror-flat-list": [
         "./packages/prosemirror-package/src/index.ts"
