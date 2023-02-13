@@ -8,7 +8,7 @@ import { Command } from 'prosemirror-state'
 
 /**
  * This command has the same behavior as the `Enter` keybinding from
- * `prosemirror-commands`, but without the liftEmptyBlock` command.
+ * `prosemirror-commands`, but without the `liftEmptyBlock` command.
  *
  * @internal
  */
