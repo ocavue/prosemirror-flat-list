@@ -9,7 +9,7 @@
     "build": "pnpm run -r --stream build",
     "dev": "pnpm run -r --parallel dev",
     "test": "pnpm run -r --stream test run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
