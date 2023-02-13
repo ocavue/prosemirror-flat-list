@@ -31,6 +31,10 @@ export const protectCollapsed: Command = (state, dispatch): boolean => {
       index >= 1
     ) {
       found = true
+      if (!dispatch) {
+        return false
+      }
+
       const $pos = state.doc.resolve(pos)
       tr.setNodeAttribute($pos.before($pos.depth), 'collapsed', false)
     }
