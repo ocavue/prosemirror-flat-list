@@ -1,8 +1,11 @@
+import '@remirror/preset-core'
+import 'jest-prosemirror'
+
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
 import { expect } from 'vitest'
-import { ListExtension } from './extension'
 import { ListAttributes } from '../src/types'
+import { ListExtension } from './extension'
 import { markdownToTaggedDoc } from './markdown'
 
 export function setupTestingEditor() {

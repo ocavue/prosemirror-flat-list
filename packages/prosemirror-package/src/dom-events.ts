@@ -4,6 +4,7 @@ import { ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'
 import { setNodeAttributes } from './utils/set-node-attributes'
 
+/** @public */
 export function handleListMarkerMouseDown(
   view: EditorView,
   event: MouseEvent,
@@ -33,8 +34,10 @@ export function handleListMarkerMouseDown(
   return false
 }
 
+/** @public */
 export type ListClickHandler = (node: ProsemirrorNode) => ListAttributes
 
+/** @internal */
 export const defaultListClickHandler: ListClickHandler = (node) => {
   const attrs = node.attrs as ListAttributes
   if (attrs.type === 'task') {

@@ -51,6 +51,7 @@ function migrateNode(
   }
 }
 
+/** @public */
 export function migrateDocJSON(
   docJSON: ProsemirrorNodeJSON,
 ): ProsemirrorNodeJSON {

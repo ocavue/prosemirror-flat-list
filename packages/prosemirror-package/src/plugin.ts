@@ -3,6 +3,7 @@ import { Plugin } from 'prosemirror-state'
 import { handleListMarkerMouseDown } from './dom-events'
 import { ListDOMSerializer } from './utils/list-serializer'
 
+/** @public */
 export function createListPlugin(schema: Schema): Plugin {
   return new Plugin({
     props: {

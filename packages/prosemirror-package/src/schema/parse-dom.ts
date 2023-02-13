@@ -2,6 +2,7 @@ import { ParseRule } from 'prosemirror-model'
 import { ListAttributes, ListType } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
+/** @public */
 export function createParseDomRules(): readonly ParseRule[] {
   return [
     {

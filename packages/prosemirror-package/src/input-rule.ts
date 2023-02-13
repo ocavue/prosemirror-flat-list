@@ -7,6 +7,7 @@ import { ListAttributes } from './types'
 import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
 
+/** @public */
 export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   re: RegExp,
   getAttrs: T | ((matches: RegExpMatchArray) => T),
@@ -48,6 +49,7 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   })
 }
 
+/** @public */
 export function createListInputRules(): InputRule[] {
   const bulletRegexp = /^\s?([*-])\s$/
   const orderedRegexp = /^\s?(\d+)\.\s$/

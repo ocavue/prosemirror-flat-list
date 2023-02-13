@@ -2,6 +2,7 @@ import { Command } from 'prosemirror-state'
 import { cutByIndex } from '../utils/cut-by-index'
 import { findListsRange } from '../utils/list-range'
 
+/** @public */
 export function createMoveListCommand(direction: 'up' | 'down'): Command {
   const moveList: Command = (state, dispatch): boolean => {
     const { $from, $to } = state.selection

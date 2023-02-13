@@ -5,6 +5,7 @@ import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
 
+/** @public */
 export function createSplitListCommand(): Command {
   const splitListCommand: Command = (state, dispatch): boolean => {
     const { selection } = state

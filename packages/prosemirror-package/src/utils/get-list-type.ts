@@ -1,6 +1,7 @@
 import { NodeType, Schema } from 'prosemirror-model'
 import { flatListGroup } from '../schema/spec'
 
+/** @internal */
 export function getListType(schema: Schema): NodeType {
   let name: string = schema.cached['PROSEMIRROR_FLAT_LIST_LIST_TYPE_NAME']
 

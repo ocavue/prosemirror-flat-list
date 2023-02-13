@@ -6,6 +6,7 @@ import { isListNode } from '../utils/is-list-node'
 import { getListType } from '../utils/get-list-type'
 import { setNodeAttributes } from '../utils/set-node-attributes'
 
+/** @public */
 export function createWrapInListCommand<T extends Attrs = ListAttributes>(
   getAttrs: T | ((range: NodeRange) => T | null),
 ): Command {
