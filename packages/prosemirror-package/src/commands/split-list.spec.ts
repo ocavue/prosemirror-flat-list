@@ -5,8 +5,19 @@ import { setupTestingEditor } from '../../test/setup-editor'
 import { createSplitListCommand } from './split-list'
 
 describe('splitList', () => {
-  const { add, doc, p, list, blockquote, editor, markdown, runCommand, view } =
-    setupTestingEditor()
+  const {
+    add,
+    doc,
+    p,
+    list,
+    blockquote,
+    editor,
+    markdown,
+    runCommand,
+    view,
+    collapsedToggleList,
+    expandedToggleList,
+  } = setupTestingEditor()
 
   const enterCommand: Command = chainCommands(
     createSplitListCommand(),
@@ -325,6 +336,33 @@ describe('splitList', () => {
           p(''),
           p('<cursor>'),
           p('456'),
+        ),
+      ),
+    )
+  })
+
+  it('can skip collapsed content', () => {
+    // Cursor in the last paragraph of the item
+    add(
+      doc(
+        collapsedToggleList(
+          //
+          p('1<start>23<end>'),
+          p('456'),
+        ),
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        collapsedToggleList(
+          //
+          p('1'),
+          p('456'),
+        ),
+        expandedToggleList(
+          //
+          p('<cursor>'),
         ),
       ),
     )

@@ -1,6 +1,7 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Command, EditorState, Transaction } from 'prosemirror-state'
+import { Command, EditorState, Transaction, Selection } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
+import { ListAttributes } from '../types'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
@@ -64,22 +65,35 @@ export function doSplitList(
   dispatch?: (tr: Transaction) => void,
 ): boolean {
   const tr = state.tr
+  const attrs: ListAttributes = listNode.attrs
+
+  tr.delete(tr.selection.from, tr.selection.to)
+
   const { $from, $to } = tr.selection
 
-  tr.delete($from.pos, $to.pos)
+  const atEnd = $to.parentOffset == $to.parent.content.size
+
+  if (atEnd && attrs.collapsed) {
+    if (dispatch) {
+      const pos = $from.after(-1)
+      tr.insert(pos, listNode.type.createAndFill({ type: attrs.type })!)
+      tr.setSelection(Selection.near(tr.doc.resolve(pos)))
+      dispatch(tr)
+    }
+    return true
+  }
 
   // If split the list at the start or at the middle, we want to inherit the
   // current parent type (e.g. heading); otherwise, we want to create a new
   // default block type (typically paragraph)
-  const nextType =
-    $to.pos === $from.end() ? listNode.contentMatchAt(0).defaultType : undefined
+  const nextType = atEnd ? listNode.contentMatchAt(0).defaultType : undefined
   const typesAfter = [
     {
       type: getListType(state.schema),
       attrs: {
-        // We don't want to inherit the list attributes (e.g. checked) except
+        // We don't want to inherit all list attributes (e.g. checked) except
         // for the list type
-        type: listNode.attrs.type,
+        type: attrs.type,
       },
     },
     nextType ? { type: nextType } : null,
