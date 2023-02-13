@@ -1,4 +1,4 @@
-import { ProsemirrorNode } from '@remirror/core'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { EditorView } from 'prosemirror-view'
 import { ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'

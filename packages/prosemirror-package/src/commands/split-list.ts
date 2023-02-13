@@ -1,4 +1,4 @@
-import { ProsemirrorNode } from '@remirror/core'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Command, EditorState, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { getListType } from '../utils/get-list-type'
