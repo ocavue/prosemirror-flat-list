@@ -4,6 +4,7 @@ import { canSplit } from 'prosemirror-transform'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
+import { enterWithoutLift } from './enter-without-lift'
 
 /** @public */
 export function createSplitListCommand(): Command {
@@ -31,24 +32,21 @@ export function createSplitListCommand(): Command {
     const parentEmpty = parent.content.size === 0
 
     // When the cursor is inside the first child of the list:
+    //    If the parent block is empty, delete the list bullet and lift the caret;
+    //    Otherwise split and create a new list node.
+    // When the cursor is inside the second or further children of the list:
+    //    If the parent block is empty, lift the parent block;
+    //    Otherwise split the parent block.
     if (indexInList === 0) {
-      // If the parent is empty, lift delete the list bullet.
       if (parentEmpty) {
         return false
-      }
-      // Otherwise split and create a new list node.
-      else {
+      } else {
         return doSplitList(state, listNode, dispatch)
       }
-    }
-    // When the cursor is not inside the first child of the list
-    else {
-      // If the parent is empty, split the list and create a new list node.
+    } else {
       if (parentEmpty) {
-        return doSplitList(state, listNode, dispatch)
-      }
-      // Otherwise insert a new paragraph node and move the caret in it.
-      else {
+        return enterWithoutLift(state, dispatch)
+      } else {
         return false
       }
     }

@@ -210,7 +210,7 @@ describe('splitList', () => {
     )
   })
 
-  it('can create new paragraph when the caret is not inside the first child of the list, and caret parent is not empty', () => {
+  it('can create new paragraph when the caret is not inside the first child of the list', () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
@@ -284,9 +284,7 @@ describe('splitList', () => {
         ),
       ),
     )
-  })
 
-  it('can create new list node when the caret is not inside the first child of the list, and caret parent is empty', () => {
     add(
       doc(
         list(
@@ -303,9 +301,6 @@ describe('splitList', () => {
           //
           p('123'),
           p(''),
-        ),
-        list(
-          //
           p('<cursor>'),
         ),
       ),
@@ -328,9 +323,6 @@ describe('splitList', () => {
           //
           p('123'),
           p(''),
-        ),
-        list(
-          //
           p('<cursor>'),
           p('456'),
         ),
