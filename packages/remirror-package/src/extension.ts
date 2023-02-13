@@ -22,6 +22,7 @@ import {
   createSplitListCommand,
   createWrapInListCommand,
   ListAttributes,
+  protectCollapsed,
 } from 'prosemirror-flat-list'
 
 /** @public */
@@ -53,6 +54,10 @@ export class ListExtension extends NodeExtension {
       'Shift-Tab': alwaysTrue(convertCommand(createDedentListCommand())),
 
       Tab: alwaysTrue(convertCommand(createIndentListCommand())),
+
+      Delete: convertCommand(protectCollapsed),
+
+      Backspace: convertCommand(protectCollapsed),
     }
   }
 
@@ -82,6 +87,8 @@ export class ListExtension extends NodeExtension {
       },
 
       splitList: () => convertCommand(createSplitListCommand()),
+
+      protectCollapsed: () => convertCommand(protectCollapsed),
     } as const
   }
 }

@@ -1,11 +1,13 @@
+import { chainCommands } from 'prosemirror-commands'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Command, EditorState, Transaction, Selection } from 'prosemirror-state'
+import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
 import { enterWithoutLift } from './enter-without-lift'
+import { protectCollapsed } from './protect-collapsed'
 
 /** @public */
 export function createSplitListCommand(): Command {
@@ -53,7 +55,7 @@ export function createSplitListCommand(): Command {
     }
   }
 
-  return splitListCommand
+  return chainCommands(protectCollapsed, splitListCommand)
 }
 
 /**
