@@ -6,9 +6,12 @@ import {
 } from 'prosemirror-commands'
 import { Command } from 'prosemirror-state'
 
-// This command has the same behavior as the `Enter` keybinding, but without the
-// `liftEmptyBlock` command.
-
+/**
+ * This command has the same behavior as the `Enter` keybinding from
+ * `prosemirror-commands`, but without the `liftEmptyBlock` command.
+ *
+ * @internal
+ */
 export const enterWithoutLift: Command = chainCommands(
   newlineInCode,
   createParagraphNear,

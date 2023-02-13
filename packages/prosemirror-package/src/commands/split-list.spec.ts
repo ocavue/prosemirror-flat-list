@@ -5,8 +5,19 @@ import { setupTestingEditor } from '../../test/setup-editor'
 import { createSplitListCommand } from './split-list'
 
 describe('splitList', () => {
-  const { add, doc, p, list, blockquote, editor, markdown, runCommand, view } =
-    setupTestingEditor()
+  const {
+    add,
+    doc,
+    p,
+    list,
+    blockquote,
+    editor,
+    markdown,
+    runCommand,
+    view,
+    collapsedToggleList,
+    expandedToggleList,
+  } = setupTestingEditor()
 
   const enterCommand: Command = chainCommands(
     createSplitListCommand(),
@@ -210,7 +221,7 @@ describe('splitList', () => {
     )
   })
 
-  it('can create new paragraph when the caret is not inside the first child of the list, and caret parent is not empty', () => {
+  it('can create new paragraph when the caret is not inside the first child of the list', () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
@@ -284,39 +295,59 @@ describe('splitList', () => {
         ),
       ),
     )
+
+    add(
+      doc(
+        list(
+          //
+          p('123'),
+          p('<cursor>'),
+        ),
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        list(
+          //
+          p('123'),
+          p(''),
+          p('<cursor>'),
+        ),
+      ),
+    )
+
+    add(
+      doc(
+        list(
+          //
+          p('123'),
+          p('<cursor>'),
+          p('456'),
+        ),
+      ),
+    )
+    editor.press('Enter')
+    expect(editor.state).toEqualRemirrorState(
+      doc(
+        list(
+          //
+          p('123'),
+          p(''),
+          p('<cursor>'),
+          p('456'),
+        ),
+      ),
+    )
   })
 
-  it('can create new list node when the caret is not inside the first child of the list, and caret parent is empty', () => {
+  it('can skip collapsed content', () => {
+    // Cursor in the last paragraph of the item
     add(
       doc(
-        list(
+        collapsedToggleList(
           //
-          p('123'),
-          p('<cursor>'),
-        ),
-      ),
-    )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
-      doc(
-        list(
-          //
-          p('123'),
-          p(''),
-        ),
-        list(
-          //
-          p('<cursor>'),
-        ),
-      ),
-    )
-
-    add(
-      doc(
-        list(
-          //
-          p('123'),
-          p('<cursor>'),
+          p('1<start>23<end>'),
           p('456'),
         ),
       ),
@@ -324,15 +355,14 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        collapsedToggleList(
           //
-          p('123'),
-          p(''),
+          p('1'),
+          p('456'),
         ),
-        list(
+        expandedToggleList(
           //
           p('<cursor>'),
-          p('456'),
         ),
       ),
     )
