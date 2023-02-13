@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.14
+
+### Patch Changes
+
+- 2b63218: Improve key bindings
+
 ## 0.0.13
 
 ### Patch Changes
