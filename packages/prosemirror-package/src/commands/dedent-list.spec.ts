@@ -216,7 +216,7 @@ describe('dedentList', () => {
 
         - B3<end>
 
-          - C2
+          - - C2
       `,
     )
   })
@@ -246,7 +246,7 @@ describe('dedentList', () => {
 
         - B3<end>
 
-          B3
+          - B3
 
           - B4
       `,
@@ -278,14 +278,14 @@ describe('dedentList', () => {
       markdown`
         - B1
 
-          B1
+          - B1
 
           A1
       `,
     )
   })
 
-  it.only('can keep the indentation of child list', () => {
+  it('can keep the indentation of child list', () => {
     t.runCommand(
       commands.dedentList,
       // markdown`
@@ -373,7 +373,7 @@ describe('dedentList', () => {
 
         - B3
           - C1<end>
-            - D1
+            - - D1
           - B4
       `,
     )
