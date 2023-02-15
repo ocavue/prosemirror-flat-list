@@ -1,6 +1,6 @@
 import { ProsemirrorNode } from '@remirror/core'
 import { Transaction } from 'prosemirror-state'
-import { canJoin } from 'prosemirror-transform'
+import { canJoin, canSplit } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
 
 /** @internal */
@@ -25,9 +25,10 @@ export function getJoinableBoundaries(
   positions: number[],
   doc: ProsemirrorNode,
   isJoinable: (nodeA: ProsemirrorNode, nodeB: ProsemirrorNode) => boolean,
-): number[] {
+): [number[], number[]] {
   const boundaries = new Set<number>()
   const joinable: number[] = []
+  const splitable: number[] = []
 
   for (const pos of positions) {
     const $pos = doc.resolve(pos)
@@ -47,32 +48,70 @@ export function getJoinableBoundaries(
       const after = parent.maybeChild(index)
       if (!after) continue
 
-      if (before.type === after.type && isJoinable(before, after)) {
+      // if (boundary === 13) {
+      //   debugger
+      // }
+
+      if (isListSplitable(before, after, index - 1, parent)) {
+        splitable.push(boundary)
+      } else if (before.type === after.type && isJoinable(before, after)) {
         joinable.push(boundary)
       }
     }
   }
 
-  return joinable
+  console.log('joinable:', joinable)
+  return [joinable, splitable]
+}
+
+function isListJoinable(
+  before: ProsemirrorNode,
+  after: ProsemirrorNode,
+): boolean {
+  return isListNode(before) && isListNode(after) && isListNode(after.firstChild)
+}
+
+function isListSplitable(
+  before: ProsemirrorNode,
+  after: ProsemirrorNode,
+  indexBefore: number,
+  parent: ProsemirrorNode,
+): boolean {
+  return (
+    indexBefore === 0 &&
+    isListNode(parent) &&
+    isListNode(before) &&
+    !isListNode(after)
+  )
 }
 
 /** @internal */
 export function autoJoinList(tr: Transaction): void {
-  const isListJoinable = (before: ProsemirrorNode, after: ProsemirrorNode) => {
-    return (
-      isListNode(before) && isListNode(after) && isListNode(after.firstChild)
-    )
-  }
-
   const positions = getTransactionRanges(tr)
-  const joinable = getJoinableBoundaries(positions, tr.doc, isListJoinable)
+  console.log('positions:', positions)
+  const [joinable, splitable] = getJoinableBoundaries(
+    positions,
+    tr.doc,
+    isListJoinable,
+  )
 
   // Sort in the descending order
-  joinable.sort((a, b) => b - a)
 
-  for (const pos of joinable) {
-    if (canJoin(tr.doc, pos)) {
-      tr.join(pos)
+  if (splitable.length) {
+    splitable.sort((a, b) => b - a)
+
+    for (const pos of splitable) {
+      if (canSplit(tr.doc, pos)) {
+        tr.split(pos)
+      }
+    }
+  } else {
+    joinable.sort((a, b) => b - a)
+
+    for (const pos of joinable) {
+      if (canJoin(tr.doc, pos)) {
+        tr.join(pos)
+      }
     }
   }
 }
