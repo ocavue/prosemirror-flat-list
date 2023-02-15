@@ -62,7 +62,7 @@ describe('moveList', () => {
 
   it('can move down and dedent list nodes to parent list', () => {
     t.runCommand(
-      moveUp,
+      moveDown,
       markdown`
         - A1
         - A2
