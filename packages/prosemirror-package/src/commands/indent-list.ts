@@ -24,8 +24,10 @@ export function createIndentListCommand(): Command {
     if (!range) return false
 
     if (indentRange(range, tr)) {
-      autoJoinList(tr)
-      dispatch?.(tr)
+      if (dispatch) {
+        autoJoinList(tr)
+        dispatch(tr)
+      }
       return true
     }
     return false

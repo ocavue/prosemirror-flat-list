@@ -23,8 +23,10 @@ export function createDedentListCommand(): Command {
     if (!range) return false
 
     if (dedentRange(range, tr)) {
-      autoJoinList(tr)
-      dispatch?.(tr)
+      if (dispatch) {
+        autoJoinList(tr)
+        dispatch(tr)
+      }
       return true
     }
     return false
