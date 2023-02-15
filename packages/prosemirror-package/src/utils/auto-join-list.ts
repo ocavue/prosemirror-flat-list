@@ -4,20 +4,26 @@ import { canJoin, canSplit } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
 
 /** @internal */
-export function getTransactionRanges(tr: Transaction): number[] {
+export function* getTransactionRanges(
+  tr: Transaction,
+): Generator<number[], never> {
   const ranges: number[] = []
+  let i = 0
 
-  for (const map of tr.mapping.maps) {
-    for (let i = 0; i < ranges.length; i++) {
-      ranges[i] = map.map(ranges[i])
+  while (true) {
+    for (; i < tr.mapping.maps.length; i++) {
+      const map = tr.mapping.maps[i]
+      for (let j = 0; j < ranges.length; j++) {
+        ranges[j] = map.map(ranges[j])
+      }
+
+      map.forEach((_oldStart, _oldEnd, newStart, newEnd) =>
+        ranges.push(newStart, newEnd),
+      )
     }
 
-    map.forEach((_oldStart, _oldEnd, newStart, newEnd) =>
-      ranges.push(newStart, newEnd),
-    )
+    yield ranges
   }
-
-  return ranges
 }
 
 /** @internal */
@@ -57,7 +63,9 @@ export function getJoinableBoundaries(
       }
     }
   }
-  return joinable
+
+  // Sort in the descending order
+  return joinable.sort((a, b) => b - a)
 }
 
 function isListJoinable(
@@ -86,14 +94,13 @@ function isListSplitable(
 
 /** @internal */
 export function autoJoinList(tr: Transaction): void {
+  const ranges = getTransactionRanges(tr)
+
   const joinable = getJoinableBoundaries(
-    getTransactionRanges(tr),
+    ranges.next().value,
     tr.doc,
     isListJoinable,
   )
-
-  // Sort in the descending order
-  joinable.sort((a, b) => b - a)
 
   for (const pos of joinable) {
     if (canJoin(tr.doc, pos)) {
@@ -102,12 +109,10 @@ export function autoJoinList(tr: Transaction): void {
   }
 
   const splitable = getJoinableBoundaries(
-    getTransactionRanges(tr),
+    ranges.next().value,
     tr.doc,
     isListSplitable,
   )
-
-  joinable.sort((a, b) => b - a)
 
   for (const pos of splitable) {
     if (canSplit(tr.doc, pos)) {
