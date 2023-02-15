@@ -1,5 +1,13 @@
 # prosemirror-flat-list
 
+## 0.0.15
+
+### Patch Changes
+
+- 6ba7d30: Fix a bug when indent a list node with multiple paragraphs
+- 454605a: Don't dedent unselected list children
+- 623c066: Fix an issue that causes list node cannot move up
+
 ## 0.0.14
 
 ### Patch Changes
