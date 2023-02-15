@@ -27,10 +27,10 @@ export function* getTransactionRanges(
 }
 
 /** @internal */
-export function getJoinableBoundaries(
+export function findBoundaries(
   positions: number[],
   doc: ProsemirrorNode,
-  isJoinable: (
+  prediction: (
     before: ProsemirrorNode,
     after: ProsemirrorNode,
     parent: ProsemirrorNode,
@@ -58,7 +58,7 @@ export function getJoinableBoundaries(
       const after = parent.maybeChild(index)
       if (!after) continue
 
-      if (isJoinable(before, after, parent, index)) {
+      if (prediction(before, after, parent, index)) {
         joinable.push(boundary)
       }
     }
@@ -96,11 +96,7 @@ function isListSplitable(
 export function autoJoinList(tr: Transaction): void {
   const ranges = getTransactionRanges(tr)
 
-  const joinable = getJoinableBoundaries(
-    ranges.next().value,
-    tr.doc,
-    isListJoinable,
-  )
+  const joinable = findBoundaries(ranges.next().value, tr.doc, isListJoinable)
 
   for (const pos of joinable) {
     if (canJoin(tr.doc, pos)) {
@@ -108,11 +104,7 @@ export function autoJoinList(tr: Transaction): void {
     }
   }
 
-  const splitable = getJoinableBoundaries(
-    ranges.next().value,
-    tr.doc,
-    isListSplitable,
-  )
+  const splitable = findBoundaries(ranges.next().value, tr.doc, isListSplitable)
 
   for (const pos of splitable) {
     if (canSplit(tr.doc, pos)) {
