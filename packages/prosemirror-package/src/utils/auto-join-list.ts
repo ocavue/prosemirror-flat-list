@@ -1,30 +1,41 @@
 import { ProsemirrorNode } from '@remirror/core'
 import { Transaction } from 'prosemirror-state'
-import { canJoin } from 'prosemirror-transform'
+import { canJoin, canSplit } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
 
 /** @internal */
-export function getTransactionRanges(tr: Transaction): number[] {
+export function* getTransactionRanges(
+  tr: Transaction,
+): Generator<number[], never> {
   const ranges: number[] = []
+  let i = 0
 
-  for (const map of tr.mapping.maps) {
-    for (let i = 0; i < ranges.length; i++) {
-      ranges[i] = map.map(ranges[i])
+  while (true) {
+    for (; i < tr.mapping.maps.length; i++) {
+      const map = tr.mapping.maps[i]
+      for (let j = 0; j < ranges.length; j++) {
+        ranges[j] = map.map(ranges[j])
+      }
+
+      map.forEach((_oldStart, _oldEnd, newStart, newEnd) =>
+        ranges.push(newStart, newEnd),
+      )
     }
 
-    map.forEach((_oldStart, _oldEnd, newStart, newEnd) =>
-      ranges.push(newStart, newEnd),
-    )
+    yield ranges
   }
-
-  return ranges
 }
 
 /** @internal */
-export function getJoinableBoundaries(
+export function findBoundaries(
   positions: number[],
   doc: ProsemirrorNode,
-  isJoinable: (nodeA: ProsemirrorNode, nodeB: ProsemirrorNode) => boolean,
+  prediction: (
+    before: ProsemirrorNode,
+    after: ProsemirrorNode,
+    parent: ProsemirrorNode,
+    index: number,
+  ) => boolean,
 ): number[] {
   const boundaries = new Set<number>()
   const joinable: number[] = []
@@ -47,32 +58,57 @@ export function getJoinableBoundaries(
       const after = parent.maybeChild(index)
       if (!after) continue
 
-      if (before.type === after.type && isJoinable(before, after)) {
+      if (prediction(before, after, parent, index)) {
         joinable.push(boundary)
       }
     }
   }
 
-  return joinable
+  // Sort in the descending order
+  return joinable.sort((a, b) => b - a)
+}
+
+function isListJoinable(
+  before: ProsemirrorNode,
+  after: ProsemirrorNode,
+): boolean {
+  return isListNode(before) && isListNode(after) && isListNode(after.firstChild)
+}
+
+function isListSplitable(
+  before: ProsemirrorNode,
+  after: ProsemirrorNode,
+  parent: ProsemirrorNode,
+  index: number,
+): boolean {
+  if (
+    index === 1 &&
+    isListNode(parent) &&
+    isListNode(before) &&
+    !isListNode(after)
+  ) {
+    return true
+  }
+  return false
 }
 
 /** @internal */
 export function autoJoinList(tr: Transaction): void {
-  const isListJoinable = (before: ProsemirrorNode, after: ProsemirrorNode) => {
-    return (
-      isListNode(before) && isListNode(after) && isListNode(after.firstChild)
-    )
-  }
+  const ranges = getTransactionRanges(tr)
 
-  const positions = getTransactionRanges(tr)
-  const joinable = getJoinableBoundaries(positions, tr.doc, isListJoinable)
-
-  // Sort in the descending order
-  joinable.sort((a, b) => b - a)
+  const joinable = findBoundaries(ranges.next().value, tr.doc, isListJoinable)
 
   for (const pos of joinable) {
     if (canJoin(tr.doc, pos)) {
       tr.join(pos)
+    }
+  }
+
+  const splitable = findBoundaries(ranges.next().value, tr.doc, isListSplitable)
+
+  for (const pos of splitable) {
+    if (canSplit(tr.doc, pos)) {
+      tr.split(pos)
     }
   }
 }
