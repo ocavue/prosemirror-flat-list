@@ -235,6 +235,8 @@ describe('dedentList', () => {
 
             B3
 
+            B3
+
           - B4
       `,
       markdown`
@@ -248,12 +250,14 @@ describe('dedentList', () => {
 
           - B3
 
+            B3
+
           - B4
       `,
     )
   })
 
-  it('can keep the indentation of child list', () => {
+  it('can keep the indentation of sub list', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
