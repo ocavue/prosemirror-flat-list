@@ -235,16 +235,38 @@ describe('indentList', () => {
     )
   })
 
-  it('can add ambitious indentations', () => {
+  it.only('can add ambitious indentations', () => {
     t.runCommand(
       commands.indentList,
       markdown`
         - A1
-          - A<cursor>2
+          - B<cursor>2
       `,
       markdown`
         - A1
-          - - A<cursor>2
+          - - B<cursor>2
+      `,
+    )
+
+    t.runCommand(
+      commands.indentList,
+      markdown`
+        - A1
+
+          - B<cursor>2a
+
+            B2b
+
+            B2c
+      `,
+      markdown`
+        - A1
+
+          - - B<cursor>2a
+
+          - B2b
+
+            B2c
       `,
     )
   })
