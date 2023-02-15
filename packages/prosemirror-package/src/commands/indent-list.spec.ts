@@ -247,7 +247,9 @@ describe('indentList', () => {
           - - B<cursor>2
       `,
     )
+  })
 
+  it('can split the list when necessary', () => {
     t.runCommand(
       commands.indentList,
       markdown`
