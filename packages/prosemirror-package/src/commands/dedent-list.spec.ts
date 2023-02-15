@@ -216,12 +216,12 @@ describe('dedentList', () => {
 
         - B3<end>
 
-          - C2
+          - - C2
       `,
     )
   })
 
-  it('can move unselected node if have to', () => {
+  it('can wrap unselected paragraphs with a list node if necessary', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -232,6 +232,8 @@ describe('dedentList', () => {
           - B2<start>
 
           - B3<end>
+
+            B3
 
             B3
 
@@ -246,9 +248,45 @@ describe('dedentList', () => {
 
         - B3<end>
 
-          B3
+          - B3
+
+            B3
 
           - B4
+      `,
+    )
+  })
+
+  it('can keep the indentation of sub list', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1<cursor>
+
+            - C1
+      `,
+      markdown`
+        - A1
+
+        - B1<cursor>
+
+          - - C1
+      `,
+    )
+
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1<cursor>
+
+          - B1
+      `,
+      markdown`
+        A1<cursor>
+
+        - - B1
       `,
     )
   })
@@ -278,7 +316,7 @@ describe('dedentList', () => {
       markdown`
         - B1
 
-          B1
+          - B1
 
           A1
       `,
@@ -307,7 +345,7 @@ describe('dedentList', () => {
 
         - B3
           - C1<end>
-            - D1
+            - - D1
           - B4
       `,
     )

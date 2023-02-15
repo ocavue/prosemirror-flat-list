@@ -142,20 +142,34 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
   const { $to, depth, end, parent, endIndex } = range
   const endOfParent = $to.end(depth)
 
-  if (end < endOfParent && isListNode(parent.maybeChild(endIndex - 1))) {
+  if (end < endOfParent) {
     // There are siblings after the lifted items, which must become
     // children of the last item
-    tr.step(
-      new ReplaceAroundStep(
-        end - 1,
-        endOfParent,
-        end,
-        endOfParent,
-        new Slice(Fragment.from(listType.create(null)), 1, 0),
-        0,
-        true,
-      ),
-    )
+    if (isListNode(parent.maybeChild(endIndex - 1))) {
+      tr.step(
+        new ReplaceAroundStep(
+          end - 1,
+          endOfParent,
+          end,
+          endOfParent,
+          new Slice(Fragment.from(listType.create(null)), 1, 0),
+          0,
+          true,
+        ),
+      )
+    } else {
+      tr.step(
+        new ReplaceAroundStep(
+          end,
+          endOfParent,
+          end,
+          endOfParent,
+          new Slice(Fragment.from(listType.create(null)), 0, 0),
+          1,
+          true,
+        ),
+      )
+    }
   }
 }
 
