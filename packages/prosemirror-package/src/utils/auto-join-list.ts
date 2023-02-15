@@ -24,11 +24,9 @@ export function getTransactionRanges(tr: Transaction): number[] {
 export function getJoinableBoundaries(
   positions: number[],
   doc: ProsemirrorNode,
-  isJoinable: (nodeA: ProsemirrorNode, nodeB: ProsemirrorNode) => boolean,
-): [number[], number[]] {
+): Array<[number, boolean]> {
   const boundaries = new Set<number>()
-  const joinable: number[] = []
-  const splitable: number[] = []
+  const joinable: Array<[number, boolean]> = []
 
   for (const pos of positions) {
     const $pos = doc.resolve(pos)
@@ -48,20 +46,14 @@ export function getJoinableBoundaries(
       const after = parent.maybeChild(index)
       if (!after) continue
 
-      // if (boundary === 13) {
-      //   debugger
-      // }
-
-      if (isListSplitable(before, after, index - 1, parent)) {
-        splitable.push(boundary)
-      } else if (before.type === after.type && isJoinable(before, after)) {
-        joinable.push(boundary)
+      if (isListSplitable(index, before, after, parent)) {
+        joinable.push([boundary, false])
+      } else if (isListJoinable(before, after)) {
+        joinable.push([boundary, true])
       }
     }
   }
-
-  console.log('joinable:', joinable)
-  return [joinable, splitable]
+  return joinable
 }
 
 function isListJoinable(
@@ -72,13 +64,13 @@ function isListJoinable(
 }
 
 function isListSplitable(
+  index: number,
   before: ProsemirrorNode,
   after: ProsemirrorNode,
-  indexBefore: number,
   parent: ProsemirrorNode,
 ): boolean {
   return (
-    indexBefore === 0 &&
+    index === 1 &&
     isListNode(parent) &&
     isListNode(before) &&
     !isListNode(after)
@@ -88,30 +80,16 @@ function isListSplitable(
 /** @internal */
 export function autoJoinList(tr: Transaction): void {
   const positions = getTransactionRanges(tr)
-  console.log('positions:', positions)
-  const [joinable, splitable] = getJoinableBoundaries(
-    positions,
-    tr.doc,
-    isListJoinable,
-  )
+  const joinable = getJoinableBoundaries(positions, tr.doc)
 
   // Sort in the descending order
+  joinable.sort((a, b) => b[0] - a[0])
 
-  if (splitable.length) {
-    splitable.sort((a, b) => b - a)
-
-    for (const pos of splitable) {
-      if (canSplit(tr.doc, pos)) {
-        tr.split(pos)
-      }
-    }
-  } else {
-    joinable.sort((a, b) => b - a)
-
-    for (const pos of joinable) {
-      if (canJoin(tr.doc, pos)) {
-        tr.join(pos)
-      }
+  for (const [pos, join] of joinable) {
+    if (join && canJoin(tr.doc, pos)) {
+      tr.join(pos)
+    } else if (!join && canSplit(tr.doc, pos)) {
+      tr.split(pos)
     }
   }
 }
