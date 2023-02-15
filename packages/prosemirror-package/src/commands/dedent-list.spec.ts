@@ -285,6 +285,40 @@ describe('dedentList', () => {
     )
   })
 
+  it('can keep the indentation of child list', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1
+
+          - B1<cursor>
+
+            - C1
+      `,
+      markdown`
+        - A1
+
+        - B1<cursor>
+
+          - - C1
+      `,
+    )
+
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - A1<cursor>
+
+          - B1
+      `,
+      markdown`
+        A1<cursor>
+
+        - - B1
+      `,
+    )
+  })
+
   it('can handle some complex nested lists', () => {
     t.runCommand(
       commands.dedentList,
