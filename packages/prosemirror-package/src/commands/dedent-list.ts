@@ -110,13 +110,6 @@ function splitAndDedentRange(
 
 function dedentNodeRange(range: NodeRange, tr: Transaction) {
   if (isListNode(range.parent)) {
-    console.log('lift', range.start, range.end, range.$from.pos, range.$to.pos)
-    const range2 = new NodeRange(
-      tr.selection.$from,
-      tr.selection.$to,
-      range.depth + 1,
-    )
-    console.log('lift2', range2.start, range2.end)
     return safeLift(tr, range)
   } else {
     return dedentOutOfList(tr, range)
@@ -124,7 +117,6 @@ function dedentNodeRange(range: NodeRange, tr: Transaction) {
 }
 
 function fixEndBoundary(range: NodeRange, tr: Transaction): void {
-  console.log('fixEndBoundary', range.start, range.end)
   const listType = getListType(tr.doc.type.schema)
 
   if (range.endIndex - range.startIndex >= 2) {
@@ -149,11 +141,6 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
 
   const { $to, depth, end, parent, endIndex } = range
   const endOfParent = $to.end(depth)
-
-  console.log('parent:', parent.toString())
-  console.log('end:', end)
-  console.log('endOfParent:', endOfParent)
-  console.log('endIndex:', endIndex)
 
   if (end < endOfParent) {
     // There are siblings after the lifted items, which must become
@@ -217,9 +204,6 @@ function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
   ) {
     return false
   }
-
-  console.log('start:', start)
-  console.log('end:', end)
 
   tr.step(
     new ReplaceAroundStep(
