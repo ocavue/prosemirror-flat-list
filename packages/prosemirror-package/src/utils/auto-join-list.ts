@@ -24,9 +24,15 @@ export function getTransactionRanges(tr: Transaction): number[] {
 export function getJoinableBoundaries(
   positions: number[],
   doc: ProsemirrorNode,
-): Array<[number, boolean]> {
+  isJoinable: (
+    before: ProsemirrorNode,
+    after: ProsemirrorNode,
+    parent: ProsemirrorNode,
+    index: number,
+  ) => boolean,
+): number[] {
   const boundaries = new Set<number>()
-  const joinable: Array<[number, boolean]> = []
+  const joinable: number[] = []
 
   for (const pos of positions) {
     const $pos = doc.resolve(pos)
@@ -46,10 +52,8 @@ export function getJoinableBoundaries(
       const after = parent.maybeChild(index)
       if (!after) continue
 
-      if (isListSplitable(index, before, after, parent)) {
-        joinable.push([boundary, false])
-      } else if (isListJoinable(before, after)) {
-        joinable.push([boundary, true])
+      if (isJoinable(before, after, parent, index)) {
+        joinable.push(boundary)
       }
     }
   }
@@ -64,31 +68,49 @@ function isListJoinable(
 }
 
 function isListSplitable(
-  index: number,
   before: ProsemirrorNode,
   after: ProsemirrorNode,
   parent: ProsemirrorNode,
+  index: number,
 ): boolean {
-  return (
+  if (
     index === 1 &&
     isListNode(parent) &&
     isListNode(before) &&
     !isListNode(after)
-  )
+  ) {
+    return true
+  }
+  return false
 }
 
 /** @internal */
 export function autoJoinList(tr: Transaction): void {
-  const positions = getTransactionRanges(tr)
-  const joinable = getJoinableBoundaries(positions, tr.doc)
+  const joinable = getJoinableBoundaries(
+    getTransactionRanges(tr),
+    tr.doc,
+    isListJoinable,
+  )
 
   // Sort in the descending order
-  joinable.sort((a, b) => b[0] - a[0])
+  joinable.sort((a, b) => b - a)
 
-  for (const [pos, join] of joinable) {
-    if (join && canJoin(tr.doc, pos)) {
+  for (const pos of joinable) {
+    if (canJoin(tr.doc, pos)) {
       tr.join(pos)
-    } else if (!join && canSplit(tr.doc, pos)) {
+    }
+  }
+
+  const splitable = getJoinableBoundaries(
+    getTransactionRanges(tr),
+    tr.doc,
+    isListSplitable,
+  )
+
+  joinable.sort((a, b) => b - a)
+
+  for (const pos of splitable) {
+    if (canSplit(tr.doc, pos)) {
       tr.split(pos)
     }
   }

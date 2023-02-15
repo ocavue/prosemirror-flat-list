@@ -235,7 +235,7 @@ describe('indentList', () => {
     )
   })
 
-  it.only('can add ambitious indentations', () => {
+  it('can add ambitious indentations', () => {
     t.runCommand(
       commands.indentList,
       markdown`
