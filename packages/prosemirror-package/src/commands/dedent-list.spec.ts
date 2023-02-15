@@ -221,7 +221,7 @@ describe('dedentList', () => {
     )
   })
 
-  it('can move unselected node if have to', () => {
+  it('can wrap unselected paragraphs with a list node if necessary', () => {
     t.runCommand(
       commands.dedentList,
       markdown`
@@ -249,38 +249,6 @@ describe('dedentList', () => {
           - B3
 
           - B4
-      `,
-    )
-  })
-
-  it('do nothing when not inside a list', () => {
-    t.runCommand(
-      commands.dedentList,
-      markdown`
-        Hello<cursor>
-      `,
-      markdown`
-        Hello<cursor>
-      `,
-    )
-  })
-
-  it('can dedent a nested list item', () => {
-    t.runCommand(
-      commands.dedentList,
-      markdown`
-        - - B1<cursor>
-
-            B1
-
-          A1
-      `,
-      markdown`
-        - B1
-
-          - B1
-
-          A1
       `,
     )
   })
@@ -315,6 +283,38 @@ describe('dedentList', () => {
         A1<cursor>
 
         - - B1
+      `,
+    )
+  })
+
+  it('do nothing when not inside a list', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        Hello<cursor>
+      `,
+      markdown`
+        Hello<cursor>
+      `,
+    )
+  })
+
+  it('can dedent a nested list item', () => {
+    t.runCommand(
+      commands.dedentList,
+      markdown`
+        - - B1<cursor>
+
+            B1
+
+          A1
+      `,
+      markdown`
+        - B1
+
+          - B1
+
+          A1
       `,
     )
   })
