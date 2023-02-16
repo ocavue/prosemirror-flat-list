@@ -6,12 +6,12 @@
   "packageManager": "pnpm@7.27.0",
   "scripts": {
     "lint": "eslint .",
-    "build": "pnpm run -r --stream build",
-    "dev": "pnpm run -r --parallel dev",
-    "docs": "typedoc",
-    "test": "pnpm run -r --stream test run",
+    "build": "nr -r --stream build",
+    "dev": "nr -r --parallel dev",
+    "api": "typedoc",
+    "test": "nr -r --stream test run",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm build && pnpm docs",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && nr build && nr api",
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
