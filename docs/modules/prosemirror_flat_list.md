@@ -11,6 +11,7 @@
 ### Interfaces
 
 - [ListAttributes](../interfaces/prosemirror_flat_list.ListAttributes.md)
+- [ListToDOMProps](../interfaces/prosemirror_flat_list.ListToDOMProps.md)
 - [ObjectMark](../interfaces/prosemirror_flat_list.ObjectMark.md)
 - [ProsemirrorNodeJSON](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md)
 
@@ -141,21 +142,26 @@ ___
 
 ### createDedentListCommand
 
-▸ **createDedentListCommand**(): `Command`
+▸ **createDedentListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Returns a command function that decreases the indentation of selected list nodes.
 
 #### Returns
 
-`Command`
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 ___
 
 ### createIndentListCommand
 
-▸ **createIndentListCommand**(): `Command`
+▸ **createIndentListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Returns a command function that increases the indentation of selected list
+nodes.
 
 #### Returns
 
-`Command`
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 ___
 
@@ -220,7 +226,9 @@ ___
 
 ### createMoveListCommand
 
-▸ **createMoveListCommand**(`direction`): `Command`
+▸ **createMoveListCommand**(`direction`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Returns a command function that moves up or down selected list nodes.
 
 #### Parameters
 
@@ -230,7 +238,7 @@ ___
 
 #### Returns
 
-`Command`
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 ___
 
@@ -246,17 +254,22 @@ ___
 
 ### createSplitListCommand
 
-▸ **createSplitListCommand**(): `Command`
+▸ **createSplitListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Returns a command that split the current list node.
 
 #### Returns
 
-`Command`
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 ___
 
 ### createWrapInListCommand
 
-▸ **createWrapInListCommand**<`T`\>(`getAttrs`): `Command`
+▸ **createWrapInListCommand**<`T`\>(`getAttrs`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Returns a command function that wraps the selection in a list with the given
+type an attributes.
 
 #### Type parameters
 
@@ -272,7 +285,7 @@ ___
 
 #### Returns
 
-`Command`
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 ___
 
@@ -415,15 +428,13 @@ ___
 
 ### listToDOM
 
-▸ **listToDOM**(`node`, `nativeList`, `markerToDOM?`): `DOMOutputSpec`
+▸ **listToDOM**(`«destructured»`): `DOMOutputSpec`
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `node` | `Node` | `undefined` |
-| `nativeList` | `boolean` | `undefined` |
-| `markerToDOM` | [`MarkerToDOM`](prosemirror_flat_list.md#markertodom) | `defaultMarkerToDOM` |
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | [`ListToDOMProps`](../interfaces/prosemirror_flat_list.ListToDOMProps.md) |
 
 #### Returns
 

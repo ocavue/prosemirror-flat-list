@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.16
+
+### Patch Changes
+
+- 08b3bb7: Support custom counter number
+
 ## 0.0.15
 
 ### Patch Changes
