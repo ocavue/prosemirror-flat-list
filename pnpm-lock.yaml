@@ -43,7 +43,7 @@ importers:
       jsdom: ^21.0.0
       npm-run-all: ^4.1.5
       postcss: ^8.4.21
-      postcss-nesting: ^10.2.0
+      postcss-nesting: ^11.2.1
       prosemirror-flat-list: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -76,7 +76,7 @@ importers:
       jsdom: 21.1.0
       npm-run-all: 4.1.5
       postcss: 8.4.21
-      postcss-nesting: 10.2.0_postcss@8.4.21
+      postcss-nesting: 11.2.1_postcss@8.4.21
       prosemirror-flat-list: link:../../packages/prosemirror-package
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -109,7 +109,7 @@ importers:
       jsdom: ^21.1.0
       npm-run-all: ^4.1.5
       postcss: ^8.4.21
-      postcss-nesting: ^10.2.0
+      postcss-nesting: ^11.2.1
       prosemirror-commands: ^1.5.0
       prosemirror-inputrules: ^1.2.0
       prosemirror-model: ^1.19.0
@@ -151,7 +151,7 @@ importers:
       jsdom: 21.1.0
       npm-run-all: 4.1.5
       postcss: 8.4.21
-      postcss-nesting: 10.2.0_postcss@8.4.21
+      postcss-nesting: 11.2.1_postcss@8.4.21
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       rehype-stringify: 9.0.3
@@ -189,7 +189,7 @@ importers:
       jsdom: ^21.1.0
       npm-run-all: ^4.1.5
       postcss: ^8.4.21
-      postcss-nesting: ^10.2.0
+      postcss-nesting: ^11.2.1
       prosemirror-flat-list: ^0.0.15
       prosemirror-model: ^1.19.0
       react: ^18.2.0
@@ -229,7 +229,7 @@ importers:
       jsdom: 21.1.0
       npm-run-all: 4.1.5
       postcss: 8.4.21
-      postcss-nesting: 10.2.0_postcss@8.4.21
+      postcss-nesting: 11.2.1_postcss@8.4.21
       prosemirror-model: 1.19.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -7120,11 +7120,11 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /postcss-nesting/10.2.0_postcss@8.4.21:
-    resolution: {integrity: sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==}
-    engines: {node: ^12 || ^14 || >=16}
+  /postcss-nesting/11.2.1_postcss@8.4.21:
+    resolution: {integrity: sha512-E6Jq74Jo/PbRAtZioON54NPhUNJYxVWhwxbweYl1vAoBYuGlDIts5yhtKiZFLvkvwT73e/9nFrW3oMqAtgG+GQ==}
+    engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss: ^8.2
+      postcss: ^8.4
     dependencies:
       '@csstools/selector-specificity': 2.1.1_wajs5nedgkikc5pcuwett7legi
       postcss: 8.4.21

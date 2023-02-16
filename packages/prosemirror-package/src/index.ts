@@ -2,9 +2,9 @@ export { createDedentListCommand } from './commands/dedent-list'
 export { enterWithoutLift } from './commands/enter-without-lift'
 export { createIndentListCommand } from './commands/indent-list'
 export { createMoveListCommand } from './commands/move-list'
+export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
 export { createWrapInListCommand } from './commands/wrap-in-list'
-export { protectCollapsed } from './commands/protect-collapsed'
 export {
   defaultListClickHandler,
   handleListMarkerMouseDown,
@@ -16,7 +16,12 @@ export { createListNodeView } from './node-view'
 export { createListPlugin } from './plugin'
 export { createParseDomRules } from './schema/parse-dom'
 export { createListSpec, flatListGroup } from './schema/spec'
-export { defaultMarkerToDOM, listToDOM, MarkerToDOM } from './schema/to-dom'
+export {
+  defaultMarkerToDOM,
+  listToDOM,
+  ListToDOMProps,
+  MarkerToDOM,
+} from './schema/to-dom'
 export type {
   ListAttributes,
   ListType,

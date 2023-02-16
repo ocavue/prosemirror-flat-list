@@ -13,7 +13,7 @@ export class ListDOMSerializer extends DOMSerializer {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec
   } {
     const nodes = DOMSerializer.nodesFromSchema(schema)
-    return { ...nodes, list: (node) => listToDOM(node, true) }
+    return { ...nodes, list: (node) => listToDOM({ node, nativeList: true }) }
   }
 
   serializeFragment(

@@ -2,11 +2,18 @@ import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 import { ListAttributes } from '../types'
 
 /** @public */
-export function listToDOM(
-  node: ProsemirrorNode,
-  nativeList: boolean,
-  markerToDOM: MarkerToDOM = defaultMarkerToDOM,
-): DOMOutputSpec {
+export interface ListToDOMProps {
+  node: ProsemirrorNode
+  nativeList?: boolean
+  markerToDOM?: MarkerToDOM
+}
+
+/** @public */
+export function listToDOM({
+  node,
+  nativeList = false,
+  markerToDOM = defaultMarkerToDOM,
+}: ListToDOMProps): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
   const marker: DOMOutputSpec[] | null = markerHidden
@@ -20,6 +27,11 @@ export function listToDOM(
     'data-list-checked': attrs.checked ? '' : undefined,
     'data-list-collapsed': attrs.collapsed ? '' : undefined,
     'data-list-collapsable': node.childCount >= 2 ? '' : undefined,
+
+    style:
+      attrs.order != null
+        ? `counter-set: prosemirror-flat-list-counter ${attrs.order};`
+        : undefined,
   }
 
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]
@@ -55,7 +67,7 @@ export function listToDOM(
 /** @public */
 export type MarkerToDOM = (attrs: ListAttributes) => DOMOutputSpec[] | null
 
-/** @public */
+/** @internal */
 export const defaultMarkerToDOM: MarkerToDOM = (attrs) => {
   switch (attrs.type) {
     case 'task':
