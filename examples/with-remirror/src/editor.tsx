@@ -13,12 +13,12 @@ import {
   useRemirror,
 } from '@remirror/react'
 import * as React from 'react'
-import { useEffect, FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren, useEffect } from 'react'
 import {
+  isListNode,
   ListAttributes,
   ListExtension,
   ListType,
-  isListNode,
 } from 'remirror-extension-flat-list'
 
 const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
@@ -301,6 +301,13 @@ const content = html`
       </ul>
     </li>
   </ul>
+
+  <h2>Ordered list with custom counter number</h2>
+
+  <ol>
+    <li data-list-order="42">The counter number should be 42</li>
+    <li>The counter number should be 43</li>
+  </ol>
 `
 
 export { Editor }

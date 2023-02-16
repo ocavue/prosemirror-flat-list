@@ -23,7 +23,7 @@ export function createParseDomRules(): readonly ParseRule[] {
     },
     {
       tag: 'ul > li',
-      getAttrs: (element) => {
+      getAttrs: (element): ListAttributes => {
         if (typeof element !== 'string') {
           const checkbox = element.firstChild as HTMLElement | null
 
@@ -70,10 +70,16 @@ export function createParseDomRules(): readonly ParseRule[] {
     },
     {
       tag: 'ol > li',
-      getAttrs: (_element) => {
+      getAttrs: (element): ListAttributes => {
+        if (typeof element === 'string') {
+          return {
+            type: 'ordered',
+          }
+        }
+
         return {
           type: 'ordered',
-          // ...extra.parse(element),
+          order: parseInteger(element.getAttribute('data-list-order')),
         }
       },
     },

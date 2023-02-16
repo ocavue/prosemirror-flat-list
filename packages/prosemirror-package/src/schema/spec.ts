@@ -15,7 +15,7 @@ export function createListSpec(): NodeSpec {
       type: {
         default: 'bullet',
       },
-      counter: {
+      order: {
         default: null,
       },
       checked: {
@@ -26,7 +26,7 @@ export function createListSpec(): NodeSpec {
       },
     },
     toDOM: (node): DOMOutputSpec => {
-      return listToDOM(node, false)
+      return listToDOM({ node })
     },
 
     parseDOM: createParseDomRules(),
