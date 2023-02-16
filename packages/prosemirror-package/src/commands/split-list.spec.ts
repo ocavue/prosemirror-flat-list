@@ -9,7 +9,7 @@ describe('splitList', () => {
     add,
     doc,
     p,
-    list,
+    bulletList,
     blockquote,
     editor,
     markdown,
@@ -225,7 +225,7 @@ describe('splitList', () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('456<cursor>'),
@@ -235,7 +235,7 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('456'),
@@ -247,7 +247,7 @@ describe('splitList', () => {
     // Cursor in the middle paragraph of the item
     add(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('456<cursor>'),
@@ -258,7 +258,7 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('456'),
@@ -271,9 +271,9 @@ describe('splitList', () => {
     // Cursor in the last paragraph of the item (nested list item)
     add(
       doc(
-        list(
+        bulletList(
           p('parent'),
-          list(
+          bulletList(
             //
             p('123'),
             p('<cursor>456'),
@@ -284,9 +284,9 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        bulletList(
           p('parent'),
-          list(
+          bulletList(
             //
             p('123'),
             p(''),
@@ -298,7 +298,7 @@ describe('splitList', () => {
 
     add(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('<cursor>'),
@@ -308,7 +308,7 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p(''),
@@ -319,7 +319,7 @@ describe('splitList', () => {
 
     add(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p('<cursor>'),
@@ -330,7 +330,7 @@ describe('splitList', () => {
     editor.press('Enter')
     expect(editor.state).toEqualRemirrorState(
       doc(
-        list(
+        bulletList(
           //
           p('123'),
           p(''),

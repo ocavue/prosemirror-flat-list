@@ -57,8 +57,6 @@ export function setupTestingEditor() {
     hardBreak,
     blockquote,
 
-    // TODO: remove list
-    list: bulletList,
     bulletList,
     orderedList,
     checkedTaskList,

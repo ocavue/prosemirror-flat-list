@@ -18,15 +18,15 @@ describe('autoJoinList', () => {
 
       t.doc(
         /*0*/
-        t.list(
+        t.bulletList(
           /*1*/
           t.p(/*2*/ 'A' /*3*/),
           /*4*/
         ),
         /*5*/
-        t.list(
+        t.bulletList(
           /*6*/
-          t.list(
+          t.bulletList(
             /*7*/
             t.p(/*8*/ 'B' /*9*/),
             /*10*/
@@ -35,9 +35,9 @@ describe('autoJoinList', () => {
       ),
 
       t.doc(
-        t.list(
+        t.bulletList(
           t.p('A'),
-          t.list(
+          t.bulletList(
             //
             t.p('C'),
           ),

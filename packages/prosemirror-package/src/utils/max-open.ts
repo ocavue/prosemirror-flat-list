@@ -1,8 +1,4 @@
-import {
-  Fragment,
-  Node as ProsemirrorNode,
-  ResolvedPos,
-} from 'prosemirror-model'
+import { Fragment, Node as ProsemirrorNode } from 'prosemirror-model'
 
 // Copy from https://github.com/prosemirror/prosemirror-model/blob/1.19.0/src/replace.ts#L88-L95
 export function maxOpenStart(
@@ -34,35 +30,4 @@ export function maxOpenEnd(
     openEnd++
   }
   return openEnd
-}
-
-// TODO: not used
-export function equalMaxOpenStart(
-  $a: ResolvedPos,
-  $b: ResolvedPos,
-  openIsolating = true,
-) {
-  return (
-    $a.pos + maxOpenStart($a.parent, openIsolating) ===
-    $b.pos + maxOpenStart($b.parent, openIsolating)
-  )
-}
-
-// TODO: not used
-export function equalMaxOpenEnd(
-  $a: ResolvedPos,
-  $b: ResolvedPos,
-  openIsolating = true,
-) {
-  const nodeBeforeA = $a.nodeBefore
-  const nodeBeforeB = $b.nodeBefore
-
-  if (!nodeBeforeA || !nodeBeforeB) {
-    return false
-  }
-
-  const maxOpenEndA = maxOpenEnd(nodeBeforeA, openIsolating)
-  const maxOpenEndB = maxOpenEnd(nodeBeforeB, openIsolating)
-
-  return $a.pos - maxOpenEndA === $b.pos - maxOpenEndB
 }

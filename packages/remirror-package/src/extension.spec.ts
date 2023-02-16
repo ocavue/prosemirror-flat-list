@@ -11,15 +11,15 @@ describe('Keymap', () => {
       () => editor.press('Tab'),
       t.doc(
         //
-        t.list(t.p('A1')),
-        t.list(t.p('A2<cursor>')),
+        t.bulletList(t.p('A1')),
+        t.bulletList(t.p('A2<cursor>')),
       ),
       t.doc(
         //
-        t.list(
+        t.bulletList(
           t.p('A1'),
           //
-          t.list(t.p('A2<cursor>')),
+          t.bulletList(t.p('A2<cursor>')),
         ),
       ),
     )
@@ -30,16 +30,16 @@ describe('Keymap', () => {
       () => editor.press('Shift-Tab'),
       t.doc(
         //
-        t.list(
+        t.bulletList(
           t.p('A1'),
           //
-          t.list(t.p('B1<cursor>')),
+          t.bulletList(t.p('B1<cursor>')),
         ),
       ),
       t.doc(
         //
-        t.list(t.p('A1')),
-        t.list(t.p('B1<cursor>')),
+        t.bulletList(t.p('A1')),
+        t.bulletList(t.p('B1<cursor>')),
       ),
     )
   })
@@ -49,12 +49,12 @@ describe('Keymap', () => {
       () => editor.press('Enter'),
       t.doc(
         //
-        t.list(t.p('Foo<cursor>Bar')),
+        t.bulletList(t.p('Foo<cursor>Bar')),
       ),
       t.doc(
         //
-        t.list(t.p('Foo')),
-        t.list(t.p('<cursor>Bar')),
+        t.bulletList(t.p('Foo')),
+        t.bulletList(t.p('<cursor>Bar')),
       ),
     )
   })

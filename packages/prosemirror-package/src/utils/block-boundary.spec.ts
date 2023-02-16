@@ -7,7 +7,7 @@ describe('boundary', () => {
 
   const doc = t.doc(
     /*0*/
-    t.list(
+    t.bulletList(
       /*1*/
       t.p(/*2*/ 'A1' /*4*/),
       /*5*/
@@ -15,9 +15,9 @@ describe('boundary', () => {
       /*9*/
     ),
     /*10*/
-    t.list(
+    t.bulletList(
       /*11*/
-      t.list(
+      t.bulletList(
         /*12*/
         t.p(/*13*/ 'B1' /*15*/),
         /*16*/
