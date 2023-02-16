@@ -1,0 +1,28 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPointStrategy": "packages",
+    "entryPoints": [
+        "./packages/prosemirror-package",
+        "./packages/remirror-package",
+    ],
+    "plugin": [
+        "typedoc-plugin-markdown"
+    ],
+    "out": "docs",
+    "githubPages": false,
+    "disableSources": true,
+    "externalSymbolLinkMappings": {
+        "prosemirror-view": {
+            "EditorView": "https://prosemirror.net/docs/ref/#view.EditorView"
+        }
+    },
+    "validation": true,
+    "visibilityFilters": {
+        "protected": false,
+        "private": false,
+        "inherited": false,
+        "external": false,
+        "@alpha": false,
+        "@beta": false
+    }
+}
