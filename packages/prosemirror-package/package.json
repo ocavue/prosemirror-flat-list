@@ -75,5 +75,8 @@
     "unified": "^10.1.2",
     "vite": "^4.1.1",
     "vitest": "^0.28.5"
+  },
+  "typedoc": {
+    "entryPoint": "./src/index.ts"
   }
 }
