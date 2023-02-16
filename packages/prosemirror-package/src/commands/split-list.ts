@@ -9,7 +9,11 @@ import { isListNode } from '../utils/is-list-node'
 import { enterWithoutLift } from './enter-without-lift'
 import { protectCollapsed } from './protect-collapsed'
 
-/** @public */
+/**
+ * Returns a command that split the current list node.
+ *
+ * @public
+ */
 export function createSplitListCommand(): Command {
   const splitListCommand: Command = (state, dispatch): boolean => {
     const { selection } = state

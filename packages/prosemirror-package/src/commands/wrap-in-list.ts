@@ -1,12 +1,17 @@
-import { findWrapping } from 'prosemirror-transform'
 import { Attrs, NodeRange } from 'prosemirror-model'
 import { Command } from 'prosemirror-state'
+import { findWrapping } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
-import { isListNode } from '../utils/is-list-node'
 import { getListType } from '../utils/get-list-type'
+import { isListNode } from '../utils/is-list-node'
 import { setNodeAttributes } from '../utils/set-node-attributes'
 
-/** @public */
+/**
+ * Returns a command function that wraps the selection in a list with the given
+ * type an attributes.
+ *
+ * @public
+ */
 export function createWrapInListCommand<T extends Attrs = ListAttributes>(
   getAttrs: T | ((range: NodeRange) => T | null),
 ): Command {

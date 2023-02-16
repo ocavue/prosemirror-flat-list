@@ -13,7 +13,11 @@ import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-/** @public */
+/**
+ * Returns a command function that decreases the indentation of selected list nodes.
+ *
+ * @public
+ */
 export function createDedentListCommand(): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr

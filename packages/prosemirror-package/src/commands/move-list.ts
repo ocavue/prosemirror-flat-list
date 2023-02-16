@@ -5,7 +5,11 @@ import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { safeLift } from '../utils/safe-lift'
 
-/** @public */
+/**
+ * Returns a command function that moves up or down selected list nodes.
+ *
+ * @public
+ */
 export function createMoveListCommand(direction: 'up' | 'down'): Command {
   const moveList: Command = (state, dispatch): boolean => {
     const tr = state.tr

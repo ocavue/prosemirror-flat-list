@@ -14,7 +14,12 @@ import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-/** @public */
+/**
+ * Returns a command function that increases the indentation of selected list
+ * nodes.
+ *
+ * @public
+ */
 export function createIndentListCommand(): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
