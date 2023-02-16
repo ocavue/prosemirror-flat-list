@@ -11,7 +11,7 @@
     "docs": "typedoc",
     "test": "pnpm run -r --stream test run",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm docs",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm build && pnpm docs",
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
