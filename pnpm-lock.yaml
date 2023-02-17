@@ -33,16 +33,16 @@ importers:
       '@remirror/pm': ^2.0.3
       '@remirror/react': ^2.0.25
       '@remirror/styles': ^2.0.3
-      '@types/node': ^18.11.18
-      '@types/react': ^18.0.27
-      '@types/react-dom': ^18.0.10
+      '@types/node': ^18.13.0
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
       prosemirror-flat-list: '*'
       react: ^18.2.0
       react-dom: ^18.2.0
       remirror: ^2.0.24
       remirror-extension-flat-list: '*'
-      typescript: ^4.9.4
-      vite: ^4.0.4
+      typescript: ^4.9.5
+      vite: ^4.1.1
     devDependencies:
       '@remirror/extension-blockquote': 2.0.12_7geceafbgjtzcvqgffirms7vzy
       '@remirror/extension-hard-break': 2.0.11_7geceafbgjtzcvqgffirms7vzy
@@ -93,7 +93,7 @@ importers:
       remark-parse: ^10.0.1
       remark-rehype: ^10.1.0
       remirror: ^2.0.24
-      tsup: ^6.6.2
+      tsup: ^6.6.3
       typescript: ^4.9.5
       unified: ^10.1.2
       vite: ^4.1.1
@@ -151,7 +151,7 @@ importers:
       '@types/dedent': ^0.7.0
       '@types/node': ^18.13.0
       '@types/react': ^18.0.28
-      '@types/react-dom': ^18.0.10
+      '@types/react-dom': ^18.0.11
       '@vitest/coverage-c8': ^0.28.5
       dedent: ^0.7.0
       jest-prosemirror: ^2.1.1
@@ -169,7 +169,7 @@ importers:
       remark-parse: ^10.0.1
       remark-rehype: ^10.1.0
       remirror: ^2.0.24
-      tsup: ^6.6.2
+      tsup: ^6.6.3
       typescript: ^4.9.5
       unified: ^10.1.2
       vite: ^4.1.1
