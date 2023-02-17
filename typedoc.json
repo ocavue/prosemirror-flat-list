@@ -19,6 +19,7 @@
             "Command": "https://prosemirror.net/docs/ref/#state.Command"
         }
     },
+    "excludeExternals": true,
     "validation": true,
     "visibilityFilters": {
         "protected": false,

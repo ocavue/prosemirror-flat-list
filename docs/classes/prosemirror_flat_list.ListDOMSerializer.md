@@ -16,19 +16,10 @@
 
 - [constructor](prosemirror_flat_list.ListDOMSerializer.md#constructor)
 
-### Properties
-
-- [marks](prosemirror_flat_list.ListDOMSerializer.md#marks)
-- [nodes](prosemirror_flat_list.ListDOMSerializer.md#nodes)
-
 ### Methods
 
 - [serializeFragment](prosemirror_flat_list.ListDOMSerializer.md#serializefragment)
-- [serializeNode](prosemirror_flat_list.ListDOMSerializer.md#serializenode)
-- [fromSchema](prosemirror_flat_list.ListDOMSerializer.md#fromschema)
-- [marksFromSchema](prosemirror_flat_list.ListDOMSerializer.md#marksfromschema)
 - [nodesFromSchema](prosemirror_flat_list.ListDOMSerializer.md#nodesfromschema)
-- [renderSpec](prosemirror_flat_list.ListDOMSerializer.md#renderspec)
 
 ## Constructors
 
@@ -55,38 +46,6 @@ should not be serialized.
 
 DOMSerializer.constructor
 
-## Properties
-
-### marks
-
-• `Readonly` **marks**: `Object`
-
-The mark serialization functions.
-
-#### Index signature
-
-▪ [mark: `string`]: (`mark`: `Mark`, `inline`: `boolean`) => `DOMOutputSpec`
-
-#### Inherited from
-
-DOMSerializer.marks
-
-___
-
-### nodes
-
-• `Readonly` **nodes**: `Object`
-
-The node serialization functions.
-
-#### Index signature
-
-▪ [node: `string`]: (`node`: `Node`) => `DOMOutputSpec`
-
-#### Inherited from
-
-DOMSerializer.nodes
-
 ## Methods
 
 ### serializeFragment
@@ -112,79 +71,6 @@ DOMSerializer.serializeFragment
 
 ___
 
-### serializeNode
-
-▸ **serializeNode**(`node`, `options?`): `Node`
-
-Serialize this node to a DOM node. This can be useful when you
-need to serialize a part of a document, as opposed to the whole
-document. To serialize a whole document, use
-[`serializeFragment`](https://prosemirror.net/docs/ref/#model.DOMSerializer.serializeFragment) on
-its [content](https://prosemirror.net/docs/ref/#model.Node.content).
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `Node` |
-| `options?` | `Object` |
-| `options.document?` | `Document` |
-
-#### Returns
-
-`Node`
-
-#### Inherited from
-
-DOMSerializer.serializeNode
-
-___
-
-### fromSchema
-
-▸ `Static` **fromSchema**(`schema`): `DOMSerializer`
-
-Build a serializer using the [`toDOM`](https://prosemirror.net/docs/ref/#model.NodeSpec.toDOM)
-properties in a schema's node and mark specs.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
-
-#### Returns
-
-`DOMSerializer`
-
-#### Inherited from
-
-DOMSerializer.fromSchema
-
-___
-
-### marksFromSchema
-
-▸ `Static` **marksFromSchema**(`schema`): `Object`
-
-Gather the serializers in a schema's mark specs into an object.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
-
-#### Returns
-
-`Object`
-
-#### Inherited from
-
-DOMSerializer.marksFromSchema
-
-___
-
 ### nodesFromSchema
 
 ▸ `Static` **nodesFromSchema**(`schema`): `Object`
@@ -202,34 +88,3 @@ ___
 #### Overrides
 
 DOMSerializer.nodesFromSchema
-
-___
-
-### renderSpec
-
-▸ `Static` **renderSpec**(`doc`, `structure`, `xmlNS?`): `Object`
-
-Render an [output spec](https://prosemirror.net/docs/ref/#model.DOMOutputSpec) to a DOM node. If
-the spec has a hole (zero) in it, `contentDOM` will point at the
-node with the hole.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `doc` | `Document` |
-| `structure` | `DOMOutputSpec` |
-| `xmlNS?` | ``null`` \| `string` |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `contentDOM?` | `HTMLElement` |
-| `dom` | `Node` |
-
-#### Inherited from
-
-DOMSerializer.renderSpec
