@@ -11,6 +11,7 @@ import {
 import { NodeRange } from 'prosemirror-model'
 
 import {
+  alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
@@ -51,8 +52,8 @@ export class ListExtension extends NodeExtension {
     for (const [key, command] of Object.entries(listKeymap)) {
       bindings[key] = convertCommand(command)
     }
-    bindings['Tab'] = bindings['Mod-]']
-    bindings['Shift-Tab'] = bindings['Mod-[']
+    bindings['Tab'] = alwaysTrue(bindings['Mod-]'])
+    bindings['Shift-Tab'] = alwaysTrue(bindings['Mod-['])
     return bindings
   }
 

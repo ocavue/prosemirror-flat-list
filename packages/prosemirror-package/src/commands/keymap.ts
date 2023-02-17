@@ -6,7 +6,6 @@ import {
   selectNodeBackward,
   selectNodeForward,
 } from 'prosemirror-commands'
-import { alwaysTrue } from '../utils/always-true'
 import { createDedentListCommand } from './dedent-list'
 import { createIndentListCommand } from './indent-list'
 import { protectCollapsed } from './protect-collapsed'
@@ -42,9 +41,9 @@ const backspaceCommand = chainCommands(
 export const listKeymap = {
   Enter: createSplitListCommand(),
 
-  'Mod-[': alwaysTrue(createDedentListCommand()),
+  'Mod-[': createDedentListCommand(),
 
-  'Mod-]': alwaysTrue(createIndentListCommand()),
+  'Mod-]': createIndentListCommand(),
 
   Delete: deleteCommand,
 
