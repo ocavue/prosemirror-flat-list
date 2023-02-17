@@ -12,7 +12,7 @@ describe('indentList', () => {
   const commands = t.editor.commands
 
   it('can indent a list node and append it to the previous list node', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -24,7 +24,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -36,7 +36,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -50,7 +50,7 @@ describe('indentList', () => {
   })
 
   it('can indent multiple list nodes and append them to the previous list node', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -66,7 +66,7 @@ describe('indentList', () => {
   })
 
   it('should not wrap a paragraph with a new list node when it will bring a new visual bullet', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -83,7 +83,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -106,7 +106,7 @@ describe('indentList', () => {
   })
 
   it('can indent a paragraph and append it to the previous sibling list node', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -127,7 +127,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -154,7 +154,7 @@ describe('indentList', () => {
   })
 
   it('can only indent selected part when the selection across multiple depth of a nested lists', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1a
@@ -180,7 +180,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1a
@@ -220,7 +220,7 @@ describe('indentList', () => {
   })
 
   it('can indent multiple list nodes and append them to the previous list node', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -236,7 +236,7 @@ describe('indentList', () => {
   })
 
   it('can add ambitious indentations', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -250,7 +250,7 @@ describe('indentList', () => {
   })
 
   it('can split the list when necessary', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -274,7 +274,7 @@ describe('indentList', () => {
   })
 
   it('can keep attributes', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - [ ] A1
@@ -286,7 +286,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         1. A1
@@ -304,7 +304,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - [x] A1
@@ -322,7 +322,7 @@ describe('indentList', () => {
   })
 
   it('can keep the indentation of sub list nodes', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -344,7 +344,7 @@ describe('indentList', () => {
   })
 
   it('can move all collapsed content', () => {
-    t.runCommand(
+    t.apply(
       () => {
         let tr = t.view.state.tr
         let attrs: ListAttributes = { type: 'toggle', collapsed: true }
@@ -378,7 +378,7 @@ describe('indentList', () => {
   })
 
   it('can keep the indentation of sub list nodes when moving multiple list', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -398,7 +398,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -418,7 +418,7 @@ describe('indentList', () => {
   })
 
   it('can keep the indentation of siblings around the indented item', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -436,7 +436,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -458,7 +458,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -488,7 +488,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -508,7 +508,7 @@ describe('indentList', () => {
   })
 
   it('can indent a paragraph that not inside a list node', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -522,7 +522,7 @@ describe('indentList', () => {
       `,
     )
 
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1
@@ -546,7 +546,7 @@ describe('indentList', () => {
   })
 
   it('can handle some complex nested lists', () => {
-    t.runCommand(
+    t.apply(
       commands.indentList,
       markdown`
         - A1

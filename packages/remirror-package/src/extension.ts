@@ -22,6 +22,7 @@ import {
   createSplitListCommand,
   createWrapInListCommand,
   ListAttributes,
+  listKeymap,
   protectCollapsed,
 } from 'prosemirror-flat-list'
 
@@ -48,17 +49,13 @@ export class ListExtension extends NodeExtension {
   }
 
   createKeymap(): KeyBindings {
-    return {
-      Enter: convertCommand(createSplitListCommand()),
-
-      'Shift-Tab': alwaysTrue(convertCommand(createDedentListCommand())),
-
-      Tab: alwaysTrue(convertCommand(createIndentListCommand())),
-
-      Delete: convertCommand(protectCollapsed),
-
-      Backspace: convertCommand(protectCollapsed),
+    const bindings: KeyBindings = {}
+    for (const [key, command] of Object.entries(listKeymap)) {
+      bindings[key] = convertCommand(command)
     }
+    bindings['Tab'] = alwaysTrue(bindings['Mod-]'])
+    bindings['Shift-Tab'] = alwaysTrue(bindings['Mod-['])
+    return bindings
   }
 
   createExternalPlugins(): ProsemirrorPlugin[] {

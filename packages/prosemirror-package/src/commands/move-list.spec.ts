@@ -9,7 +9,7 @@ describe('moveList', () => {
   const moveDown = () => commands.moveList('down')
 
   it('can move up list nodes', () => {
-    t.runCommand(
+    t.apply(
       moveUp,
       markdown`
         - A1
@@ -25,7 +25,7 @@ describe('moveList', () => {
   })
 
   it('can move up and dedent list nodes to parent list', () => {
-    t.runCommand(
+    t.apply(
       moveUp,
       markdown`
         - A1
@@ -45,7 +45,7 @@ describe('moveList', () => {
   })
 
   it('can move down list nodes', () => {
-    t.runCommand(
+    t.apply(
       moveDown,
       markdown`
         - A1<start>
@@ -61,7 +61,7 @@ describe('moveList', () => {
   })
 
   it('can move down and dedent list nodes to parent list', () => {
-    t.runCommand(
+    t.apply(
       moveDown,
       markdown`
         - A1

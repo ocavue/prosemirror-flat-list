@@ -4,10 +4,10 @@ import { setupTestingEditor } from '../test/setup-editor'
 
 describe('Keymap', () => {
   const t = setupTestingEditor()
-  const { editor, runCommand } = t
+  const { editor, apply } = t
 
   it('can increase the indentation by pressing Tab', () => {
-    runCommand(
+    apply(
       () => editor.press('Tab'),
       t.doc(
         //
@@ -26,7 +26,7 @@ describe('Keymap', () => {
   })
 
   it('can decrease the indentation by pressing Shift-Tab', () => {
-    runCommand(
+    apply(
       () => editor.press('Shift-Tab'),
       t.doc(
         //
@@ -45,7 +45,7 @@ describe('Keymap', () => {
   })
 
   it('can split a list by pressing Enter', () => {
-    runCommand(
+    apply(
       () => editor.press('Enter'),
       t.doc(
         //

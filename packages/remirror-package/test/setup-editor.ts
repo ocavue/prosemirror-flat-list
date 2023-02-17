@@ -21,7 +21,7 @@ export function setupTestingEditor() {
     schema,
   } = editor
 
-  const runCommand = (
+  const apply = (
     action: () => void,
     before: TaggedProsemirrorNode,
     after: TaggedProsemirrorNode,
@@ -49,7 +49,7 @@ export function setupTestingEditor() {
     view,
     schema,
     add,
-    runCommand,
+    apply,
     editor,
 
     doc,

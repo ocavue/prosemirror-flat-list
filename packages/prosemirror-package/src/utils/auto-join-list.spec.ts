@@ -6,7 +6,7 @@ describe('autoJoinList', () => {
   const t = setupTestingEditor()
 
   it('should join two lists', () => {
-    t.runCommand(
+    t.apply(
       () => {
         const view = t.view
         const tr = view.state.tr
