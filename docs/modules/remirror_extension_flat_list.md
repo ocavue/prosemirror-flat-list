@@ -26,6 +26,7 @@
 ### Variables
 
 - [flatListGroup](remirror_extension_flat_list.md#flatlistgroup)
+- [listKeymap](remirror_extension_flat_list.md#listkeymap)
 
 ### Functions
 
@@ -112,6 +113,32 @@ ___
 ### flatListGroup
 
 • `Const` **flatListGroup**: ``"flatList"``
+
+___
+
+### listKeymap
+
+• `Const` **listKeymap**: `Object`
+
+Returns an object containing the keymap for the list commands.
+
+- `Enter`: Split current list item or create a new paragraph.
+- `Mod-[`: Decrease indentation.
+- `Mod-]`: Increase indentation.
+- `Delete`: Expand selected collapsed content, or fall back to the usually delete command.
+- `Backspace`: Expand selected collapsed content, or fall back to the usually Backspace command.
+
+Notice that `Delete` and `Backspace` use [`joinTextblockForward`](https://prosemirror.net/docs/ref/#commands.joinTextblockForward) and [`joinTextblockBackward`](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward) under the hood, which have slightly different behavior than the default [`joinForward`](https://prosemirror.net/docs/ref/#commands.joinForward) and [`joinBackward`](https://prosemirror.net/docs/ref/#commands.joinBackward) commands in the `prosemirror-commands` package.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `Backspace` | `Command` |
+| `Delete` | `Command` |
+| `Enter` | `Command` |
+| `Mod-[` | `Command` |
+| `Mod-]` | `Command` |
 
 ## Functions
 

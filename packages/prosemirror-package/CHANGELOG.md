@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.17
+
+### Patch Changes
+
+- e03c5db: Pressing Backspace won't delete a list marker unexpectedly
+
 ## 0.0.16
 
 ### Patch Changes
