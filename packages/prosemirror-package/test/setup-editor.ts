@@ -28,7 +28,7 @@ export function setupTestingEditor() {
     return markdownToTaggedDoc(editor, markdown)
   }
 
-  const runCommand = (
+  const apply = (
     action: () => void,
     before: TaggedProsemirrorNode,
     after: TaggedProsemirrorNode,
@@ -57,7 +57,7 @@ export function setupTestingEditor() {
     schema,
     add,
     markdown,
-    runCommand,
+    apply,
     editor,
 
     doc,

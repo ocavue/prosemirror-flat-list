@@ -11,7 +11,7 @@ describe('wrapInList', () => {
   const wrapInTaskList = () => commands.wrapInList({ type: 'task' })
 
   it('can wrap a paragraph node to a list node', () => {
-    t.runCommand(
+    t.apply(
       wrapInBulletList,
       markdown`
         P1
@@ -27,7 +27,7 @@ describe('wrapInList', () => {
   })
 
   it('can wrap multiple paragraph nodes to list nodes', () => {
-    t.runCommand(
+    t.apply(
       wrapInTaskList,
       markdown`
         P1
@@ -46,7 +46,7 @@ describe('wrapInList', () => {
   })
 
   it('can change the type of an existing list node', () => {
-    t.runCommand(
+    t.apply(
       wrapInOrderedList,
       markdown`
         - P1
@@ -62,7 +62,7 @@ describe('wrapInList', () => {
   })
 
   it('can change the type of multiple existing list nodes', () => {
-    t.runCommand(
+    t.apply(
       wrapInTaskList,
       markdown`
         - P1

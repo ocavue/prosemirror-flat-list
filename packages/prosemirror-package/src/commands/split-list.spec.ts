@@ -13,7 +13,7 @@ describe('splitList', () => {
     blockquote,
     editor,
     markdown,
-    runCommand,
+    apply,
     view,
     collapsedToggleList,
     expandedToggleList,
@@ -29,7 +29,7 @@ describe('splitList', () => {
   }
 
   it('can split non-empty item', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -46,7 +46,7 @@ describe('splitList', () => {
       `,
     )
 
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -59,7 +59,7 @@ describe('splitList', () => {
       `,
     )
 
-    runCommand(
+    apply(
       run,
       markdown`
         - 1<cursor>23
@@ -74,7 +74,7 @@ describe('splitList', () => {
   })
 
   it('can split non-empty sub item', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -93,7 +93,7 @@ describe('splitList', () => {
   })
 
   it('can delete empty item', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -110,7 +110,7 @@ describe('splitList', () => {
       `,
     )
 
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -126,7 +126,7 @@ describe('splitList', () => {
       `,
     )
 
-    runCommand(
+    apply(
       run,
       markdown`
         - <cursor>
@@ -141,7 +141,7 @@ describe('splitList', () => {
   })
 
   it('can dedent empty sub item', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - 123
@@ -160,7 +160,7 @@ describe('splitList', () => {
   })
 
   it('can delete selected text', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - <start>123<end>
@@ -175,7 +175,7 @@ describe('splitList', () => {
   })
 
   it('escapes the item when the cursor is in the first paragraph of the item', () => {
-    runCommand(
+    apply(
       run,
       markdown`
         - 123<cursor>
@@ -196,7 +196,7 @@ describe('splitList', () => {
     )
 
     // Nested list item
-    runCommand(
+    apply(
       run,
       markdown`
         - Parent
@@ -369,7 +369,7 @@ describe('splitList', () => {
   })
 
   it("won't effect non-list document", () => {
-    runCommand(
+    apply(
       run,
       markdown`
         # h1
@@ -385,7 +385,7 @@ describe('splitList', () => {
       `,
     )
 
-    runCommand(
+    apply(
       run,
       markdown`
         # h1

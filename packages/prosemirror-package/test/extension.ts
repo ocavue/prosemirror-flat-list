@@ -11,7 +11,6 @@ import {
 import { NodeRange } from 'prosemirror-model'
 
 import {
-  alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
@@ -22,6 +21,7 @@ import {
   createSplitListCommand,
   createWrapInListCommand,
   ListAttributes,
+  listKeymap,
   protectCollapsed,
 } from '../src/index'
 
@@ -47,17 +47,13 @@ export class ListExtension extends NodeExtension {
   }
 
   createKeymap(): KeyBindings {
-    return {
-      Enter: convertCommand(createSplitListCommand()),
-
-      'Shift-Tab': alwaysTrue(convertCommand(createDedentListCommand())),
-
-      Tab: alwaysTrue(convertCommand(createIndentListCommand())),
-
-      Delete: convertCommand(protectCollapsed),
-
-      Backspace: convertCommand(protectCollapsed),
+    const bindings: KeyBindings = {}
+    for (const [key, command] of Object.entries(listKeymap)) {
+      bindings[key] = convertCommand(command)
     }
+    bindings['Tab'] = bindings['Mod-]']
+    bindings['Shift-Tab'] = bindings['Mod-[']
+    return bindings
   }
 
   createExternalPlugins(): ProsemirrorPlugin[] {
