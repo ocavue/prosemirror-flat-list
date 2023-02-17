@@ -60,9 +60,13 @@ describe('dedentList', () => {
       commands.dedentList,
       markdown`
         - A1<cursor>
+
+        paragraph
       `,
       markdown`
         A1<cursor>
+
+        paragraph
       `,
     )
 
