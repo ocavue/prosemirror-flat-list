@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.19
+
+### Patch Changes
+
+- 2fc801a: Export `findListsRange`
+
 ## 0.0.18
 
 ### Patch Changes
