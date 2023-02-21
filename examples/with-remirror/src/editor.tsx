@@ -14,12 +14,9 @@ import {
 } from '@remirror/react'
 import * as React from 'react'
 import { FC, PropsWithChildren, useEffect } from 'react'
-import {
-  isListNode,
-  ListAttributes,
-  ListExtension,
-  ListType,
-} from 'remirror-extension-flat-list'
+
+import { isListNode, ListAttributes, ListType } from 'prosemirror-flat-list'
+import { ListExtension } from 'remirror-extension-flat-list'
 
 const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
   children,

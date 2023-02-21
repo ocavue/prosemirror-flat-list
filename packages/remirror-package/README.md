@@ -5,11 +5,11 @@
 ## Install
 
 ```
-npm install remirror-extension-flat-list
+npm install remirror-extension-flat-list prosemirror-flat-list
 # or
-yarn add remirror-extension-flat-list
+yarn add remirror-extension-flat-list prosemirror-flat-list
 # or
-pnpm add remirror-extension-flat-list
+pnpm add remirror-extension-flat-list prosemirror-flat-list
 ```
 
 ## API docs
