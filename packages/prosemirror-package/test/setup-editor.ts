@@ -14,7 +14,7 @@ export function setupTestingEditor() {
   const {
     view,
     add,
-    nodes: { doc, p, hardBreak, blockquote },
+    nodes: { doc, p, blockquote },
     attributeNodes: { list },
     manager,
     schema,
@@ -62,7 +62,6 @@ export function setupTestingEditor() {
 
     doc,
     p,
-    hardBreak,
     blockquote,
 
     bulletList,

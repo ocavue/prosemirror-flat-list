@@ -31,7 +31,7 @@ export class ListExtension extends NodeExtension {
   static disableExtraAttributes = true
 
   get name() {
-    return 'list'
+    return 'list' as const
   }
 
   createTags() {
