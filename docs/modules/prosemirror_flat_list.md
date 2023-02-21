@@ -44,6 +44,7 @@
 - [defaultMarkerToDOM](prosemirror_flat_list.md#defaultmarkertodom)
 - [doSplitList](prosemirror_flat_list.md#dosplitlist)
 - [enterWithoutLift](prosemirror_flat_list.md#enterwithoutlift)
+- [findListsRange](prosemirror_flat_list.md#findlistsrange)
 - [getListType](prosemirror_flat_list.md#getlisttype)
 - [handleListMarkerMouseDown](prosemirror_flat_list.md#handlelistmarkermousedown)
 - [isListNode](prosemirror_flat_list.md#islistnode)
@@ -384,6 +385,26 @@ This command has the same behavior as the `Enter` keybinding from
 #### Returns
 
 `boolean`
+
+___
+
+### findListsRange
+
+▸ **findListsRange**(`$from`, `$to`): `NodeRange` \| ``null``
+
+Returns a minimal block range that includes the given two positions and
+represents one or multiple sibling list nodes.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `$from` | `ResolvedPos` |
+| `$to` | `ResolvedPos` |
+
+#### Returns
+
+`NodeRange` \| ``null``
 
 ___
 
