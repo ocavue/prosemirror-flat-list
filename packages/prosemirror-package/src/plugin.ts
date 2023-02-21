@@ -13,10 +13,7 @@ export function createListPlugin(schema: Schema): Plugin {
         },
       },
 
-      clipboardSerializer: new ListDOMSerializer(
-        ListDOMSerializer.nodesFromSchema(schema),
-        ListDOMSerializer.marksFromSchema(schema),
-      ),
+      clipboardSerializer: ListDOMSerializer.fromSchema(schema),
     },
   })
 }

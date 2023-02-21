@@ -16,6 +16,16 @@ export class ListDOMSerializer extends DOMSerializer {
     return { ...nodes, list: (node) => listToDOM({ node, nativeList: true }) }
   }
 
+  static fromSchema(schema: Schema): ListDOMSerializer {
+    return (
+      (schema.cached.listDomSerializer as ListDOMSerializer) ||
+      (schema.cached.listDomSerializer = new ListDOMSerializer(
+        this.nodesFromSchema(schema),
+        this.marksFromSchema(schema),
+      ))
+    )
+  }
+
   serializeFragment(
     fragment: Fragment,
     options?: { document?: Document },

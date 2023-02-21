@@ -19,13 +19,9 @@ describe('ListDOMSerializer', () => {
   it('can serialize list nodes into <ul>', () => {
     editor = add(doc(bulletList(p('A')), bulletList(p('B'))))
 
-    const serializer = new ListDOMSerializer(
-      ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema),
-    )
+    const serializer = ListDOMSerializer.fromSchema(schema)
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
-
     expect(serialized.querySelectorAll('UL').length).toBe(1)
     expect(serialized.querySelectorAll('OL').length).toBe(0)
     expect(serialized.querySelectorAll('UL > LI').length).toBe(2)
@@ -35,10 +31,7 @@ describe('ListDOMSerializer', () => {
   it('can serialize list nodes into <ol>', () => {
     editor = add(doc(orderedList(p('A')), orderedList(p('B'))))
 
-    const serializer = new ListDOMSerializer(
-      ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema),
-    )
+    const serializer = ListDOMSerializer.fromSchema(schema)
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 
@@ -63,10 +56,7 @@ describe('ListDOMSerializer', () => {
       ),
     )
 
-    const serializer = new ListDOMSerializer(
-      ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema),
-    )
+    const serializer = ListDOMSerializer.fromSchema(schema)
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 
@@ -85,10 +75,7 @@ describe('ListDOMSerializer', () => {
       ),
     )
 
-    const serializer = new ListDOMSerializer(
-      ListDOMSerializer.nodesFromSchema(schema),
-      ListDOMSerializer.marksFromSchema(schema),
-    )
+    const serializer = ListDOMSerializer.fromSchema(schema)
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 

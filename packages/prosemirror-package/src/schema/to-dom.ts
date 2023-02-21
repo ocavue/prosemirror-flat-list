@@ -16,9 +16,8 @@ export function listToDOM({
 }: ListToDOMProps): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
-  const marker: DOMOutputSpec[] | null = markerHidden
-    ? null
-    : markerToDOM(attrs)
+  const marker: DOMOutputSpec[] | null =
+    markerHidden || nativeList ? null : markerToDOM(attrs)
   const markerType = markerHidden ? undefined : attrs.type || 'bullet'
   const domAttrs = {
     class: 'prosemirror-flat-list',
@@ -48,19 +47,11 @@ export function listToDOM({
       ...marker,
     ]
 
-    return nativeList
-      ? [
-          attrs.type === 'ordered' ? 'ol' : 'ul',
-          ['li', domAttrs, markerContainer, contentContainer],
-        ]
-      : ['div', domAttrs, markerContainer, contentContainer]
+    return ['div', domAttrs, markerContainer, contentContainer]
+  } else if (!nativeList) {
+    return ['div', domAttrs, contentContainer]
   } else {
-    return nativeList
-      ? [
-          attrs.type === 'ordered' ? 'ol' : 'ul',
-          ['li', domAttrs, contentContainer],
-        ]
-      : ['div', domAttrs, contentContainer]
+    return [attrs.type === 'ordered' ? 'ol' : 'ul', ['li', domAttrs, 0]]
   }
 }
 
