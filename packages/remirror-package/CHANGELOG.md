@@ -1,5 +1,11 @@
 # remirror-extension-flat-list
 
+## 0.0.18
+
+### Patch Changes
+
+- 0134a6a: Don't re-export from 'prosemirror-flat-list'
+
 ## 0.0.17
 
 ### Patch Changes
