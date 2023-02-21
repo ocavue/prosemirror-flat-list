@@ -19,6 +19,7 @@
 ### Methods
 
 - [serializeFragment](prosemirror_flat_list.ListDOMSerializer.md#serializefragment)
+- [fromSchema](prosemirror_flat_list.ListDOMSerializer.md#fromschema)
 - [nodesFromSchema](prosemirror_flat_list.ListDOMSerializer.md#nodesfromschema)
 
 ## Constructors
@@ -68,6 +69,26 @@ DOMSerializer.constructor
 #### Overrides
 
 DOMSerializer.serializeFragment
+
+___
+
+### fromSchema
+
+▸ `Static` **fromSchema**(`schema`): [`ListDOMSerializer`](prosemirror_flat_list.ListDOMSerializer.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `schema` | `Schema`<`any`, `any`\> |
+
+#### Returns
+
+[`ListDOMSerializer`](prosemirror_flat_list.ListDOMSerializer.md)
+
+#### Overrides
+
+DOMSerializer.fromSchema
 
 ___
 

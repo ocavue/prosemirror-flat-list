@@ -1,5 +1,12 @@
 # prosemirror-flat-list
 
+## 0.0.20
+
+### Patch Changes
+
+- 51d6698: Refactor `listToDOM`
+- 8ea26af: Improve clipboard serializer
+
 ## 0.0.19
 
 ### Patch Changes
