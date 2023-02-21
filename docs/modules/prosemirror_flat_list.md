@@ -471,7 +471,11 @@ ___
 
 ### migrateDocJSON
 
-▸ **migrateDocJSON**(`docJSON`): [`ProsemirrorNodeJSON`](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md)
+▸ **migrateDocJSON**(`docJSON`): [`ProsemirrorNodeJSON`](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md) \| ``null``
+
+Migrate a ProseMirror document JSON object from the old list structure to the
+new. A new document JSON object is returned if the document is updated,
+otherwise `null` is returned.
 
 #### Parameters
 
@@ -481,7 +485,7 @@ ___
 
 #### Returns
 
-[`ProsemirrorNodeJSON`](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md)
+[`ProsemirrorNodeJSON`](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md) \| ``null``
 
 ___
 

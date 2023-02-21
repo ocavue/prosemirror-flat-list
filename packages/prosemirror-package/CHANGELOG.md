@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.18
+
+### Patch Changes
+
+- 617c350: `migrateDocJSON` now returns `null` if not updated is applied.
+
 ## 0.0.17
 
 ### Patch Changes
