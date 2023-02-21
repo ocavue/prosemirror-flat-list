@@ -20,7 +20,6 @@
 - [ListClickHandler](prosemirror_flat_list.md#listclickhandler)
 - [ListType](prosemirror_flat_list.md#listtype)
 - [Literal](prosemirror_flat_list.md#literal)
-- [MarkerToDOM](prosemirror_flat_list.md#markertodom)
 
 ### Variables
 
@@ -40,8 +39,9 @@
 - [createParseDomRules](prosemirror_flat_list.md#createparsedomrules)
 - [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
+- [defaultAttributesGetter](prosemirror_flat_list.md#defaultattributesgetter)
 - [defaultListClickHandler](prosemirror_flat_list.md#defaultlistclickhandler)
-- [defaultMarkerToDOM](prosemirror_flat_list.md#defaultmarkertodom)
+- [defaultMarkerGetter](prosemirror_flat_list.md#defaultmarkergetter)
 - [doSplitList](prosemirror_flat_list.md#dosplitlist)
 - [enterWithoutLift](prosemirror_flat_list.md#enterwithoutlift)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
@@ -49,6 +49,7 @@
 - [handleListMarkerMouseDown](prosemirror_flat_list.md#handlelistmarkermousedown)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
+- [joinListElements](prosemirror_flat_list.md#joinlistelements)
 - [listToDOM](prosemirror_flat_list.md#listtodom)
 - [migrateDocJSON](prosemirror_flat_list.md#migratedocjson)
 - [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
@@ -87,26 +88,6 @@ ___
 Ƭ **Literal**: `string` \| `number` \| `boolean` \| `undefined` \| ``null`` \| `void` \| `object`
 
 All the literal types
-
-___
-
-### MarkerToDOM
-
-Ƭ **MarkerToDOM**: (`attrs`: [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)) => `DOMOutputSpec`[] \| ``null``
-
-#### Type declaration
-
-▸ (`attrs`): `DOMOutputSpec`[] \| ``null``
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `attrs` | [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
-
-##### Returns
-
-`DOMOutputSpec`[] \| ``null``
 
 ## Variables
 
@@ -317,6 +298,32 @@ type an attributes.
 
 ___
 
+### defaultAttributesGetter
+
+▸ **defaultAttributesGetter**(`node`): `Object`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `node` | `Node` |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `class` | `string` |
+| `data-list-checked` | `undefined` \| `string` |
+| `data-list-collapsable` | `undefined` \| `string` |
+| `data-list-collapsed` | `undefined` \| `string` |
+| `data-list-order` | `undefined` \| `string` |
+| `data-list-type` | `undefined` \| [`ListType`](prosemirror_flat_list.md#listtype) |
+| `style` | `undefined` \| `string` |
+
+___
+
 ### defaultListClickHandler
 
 ▸ **defaultListClickHandler**(`node`): [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
@@ -333,19 +340,19 @@ ___
 
 ___
 
-### defaultMarkerToDOM
+### defaultMarkerGetter
 
-▸ **defaultMarkerToDOM**(`attrs`): ``null`` \| `DOMOutputSpec`[]
+▸ **defaultMarkerGetter**(`node`): `DOMOutputSpec`[] \| ``null``
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `attrs` | [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
+| `node` | `Node` |
 
 #### Returns
 
-``null`` \| `DOMOutputSpec`[]
+`DOMOutputSpec`[] \| ``null``
 
 ___
 
@@ -471,6 +478,30 @@ ___
 #### Returns
 
 `boolean`
+
+___
+
+### joinListElements
+
+▸ **joinListElements**<`T`\>(`parent`): `T`
+
+Merge adjacent <ul> elements or adjacent <ol> elements into a single list element.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Element` \| `DocumentFragment` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `parent` | `T` |
+
+#### Returns
+
+`T`
 
 ___
 
