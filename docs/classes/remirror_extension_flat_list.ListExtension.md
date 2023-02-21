@@ -64,11 +64,11 @@ NodeExtension.disableExtraAttributes
 
 ### name
 
-• `get` **name**(): `string`
+• `get` **name**(): ``"list"``
 
 #### Returns
 
-`string`
+``"list"``
 
 #### Overrides
 
