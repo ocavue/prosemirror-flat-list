@@ -91,7 +91,7 @@ NodeExtension.name
 | `moveList` | (`direction`: ``"up"`` \| ``"down"``) => `CommandFunction`<`object`\> |
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |
-| `wrapInList` | (`getAttrs`: [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md) \| (`range`: `NodeRange`) => ``null`` \| [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md)) => `CommandFunction`<`object`\> |
+| `wrapInList` | (`getAttrs`: `ListAttributes` \| (`range`: `NodeRange`) => ``null`` \| `ListAttributes`) => `CommandFunction`<`object`\> |
 
 #### Overrides
 
