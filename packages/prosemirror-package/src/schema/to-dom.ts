@@ -3,36 +3,43 @@ import { ListAttributes } from '../types'
 
 /** @public */
 export interface ListToDOMProps {
+  /**
+   * The list node to be rendered.
+   */
   node: ProsemirrorNode
+
+  /**
+   * If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.
+   * You might want to use {@link joinListElements} to join the list elements
+   * later.
+   *
+   * @defaultValue false
+   */
   nativeList?: boolean
-  markerToDOM?: MarkerToDOM
+
+  /**
+   * An optional function to get the content inside `<div class="list-marker">`.
+   * If this function returns `null`, the marker will be hidden.
+   */
+  getMarker?: (node: ProsemirrorNode) => DOMOutputSpec[] | null
+
+  /**
+   * An optional function to get the attributes added to HTML element.
+   */
+  getAttributes?: (node: ProsemirrorNode) => Record<string, string | undefined>
 }
 
 /** @public */
 export function listToDOM({
   node,
   nativeList = false,
-  markerToDOM = defaultMarkerToDOM,
+  getMarker = defaultMarkerGetter,
+  getAttributes = defaultAttributesGetter,
 }: ListToDOMProps): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
-  const marker: DOMOutputSpec[] | null =
-    markerHidden || nativeList ? null : markerToDOM(attrs)
-  const markerType = markerHidden ? undefined : attrs.type || 'bullet'
-  const domAttrs = {
-    class: 'prosemirror-flat-list',
-    'data-list-type': markerType,
-    'data-list-order': attrs.order != null ? String(attrs.order) : undefined,
-    'data-list-checked': attrs.checked ? '' : undefined,
-    'data-list-collapsed': attrs.collapsed ? '' : undefined,
-    'data-list-collapsable': node.childCount >= 2 ? '' : undefined,
-
-    style:
-      attrs.order != null
-        ? `counter-set: prosemirror-flat-list-counter ${attrs.order};`
-        : undefined,
-  }
-
+  const marker = markerHidden || nativeList ? null : getMarker(node)
+  const domAttrs = getAttributes(node)
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]
 
   if (marker) {
@@ -55,11 +62,11 @@ export function listToDOM({
   }
 }
 
-/** @public */
-export type MarkerToDOM = (attrs: ListAttributes) => DOMOutputSpec[] | null
-
 /** @internal */
-export const defaultMarkerToDOM: MarkerToDOM = (attrs) => {
+export function defaultMarkerGetter(
+  node: ProsemirrorNode,
+): DOMOutputSpec[] | null {
+  const attrs = node.attrs as ListAttributes
   switch (attrs.type) {
     case 'task':
       // Use a `label` element here so that the area around the checkbox is also checkable.
@@ -77,4 +84,25 @@ export const defaultMarkerToDOM: MarkerToDOM = (attrs) => {
     default:
       return null
   }
+}
+
+/** @internal */
+export function defaultAttributesGetter(node: ProsemirrorNode) {
+  const attrs = node.attrs as ListAttributes
+  const markerHidden = node.firstChild?.type === node.type
+  const markerType = markerHidden ? undefined : attrs.type || 'bullet'
+  const domAttrs = {
+    class: 'prosemirror-flat-list',
+    'data-list-type': markerType,
+    'data-list-order': attrs.order != null ? String(attrs.order) : undefined,
+    'data-list-checked': attrs.checked ? '' : undefined,
+    'data-list-collapsed': attrs.collapsed ? '' : undefined,
+    'data-list-collapsable': node.childCount >= 2 ? '' : undefined,
+    style:
+      attrs.order != null
+        ? `counter-set: prosemirror-flat-list-counter ${attrs.order};`
+        : undefined,
+  }
+
+  return domAttrs
 }

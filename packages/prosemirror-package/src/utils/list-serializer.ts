@@ -39,7 +39,7 @@ export class ListDOMSerializer extends DOMSerializer {
 /**
  * Merge adjacent <ul> elements or adjacent <ol> elements into a single list element.
  *
- * @internal
+ * @public
  */
 export function joinListElements<T extends Element | DocumentFragment>(
   parent: T,

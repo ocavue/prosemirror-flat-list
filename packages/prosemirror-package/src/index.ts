@@ -18,10 +18,10 @@ export { createListPlugin } from './plugin'
 export { createParseDomRules } from './schema/parse-dom'
 export { createListSpec, flatListGroup } from './schema/spec'
 export {
-  defaultMarkerToDOM,
+  defaultAttributesGetter,
+  defaultMarkerGetter,
   listToDOM,
   ListToDOMProps,
-  MarkerToDOM,
 } from './schema/to-dom'
 export type {
   ListAttributes,
@@ -35,4 +35,4 @@ export { getListType } from './utils/get-list-type'
 export { isListNode } from './utils/is-list-node'
 export { isListType } from './utils/is-list-type'
 export { findListsRange } from './utils/list-range'
-export { ListDOMSerializer } from './utils/list-serializer'
+export { joinListElements, ListDOMSerializer } from './utils/list-serializer'
