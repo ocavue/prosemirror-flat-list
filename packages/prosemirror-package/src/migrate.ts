@@ -1,59 +1,75 @@
 import type { ListType, ProsemirrorNodeJSON } from './types'
 
-function migrateNodes(nodes: ProsemirrorNodeJSON[]): ProsemirrorNodeJSON[] {
+function migrateNodes(
+  nodes: ProsemirrorNodeJSON[],
+): [ProsemirrorNodeJSON[], boolean] {
   const content: ProsemirrorNodeJSON[] = []
+  let updated = false
 
   for (const node of nodes) {
     if (node.type === 'bullet_list' || node.type === 'bulletList') {
+      updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'bullet' }))
+        content.push(migrateNode(child, { type: 'bullet' })[0])
       }
     } else if (node.type === 'ordered_list' || node.type === 'orderedList') {
+      updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'ordered' }))
+        content.push(migrateNode(child, { type: 'ordered' })[0])
       }
     } else if (node.type === 'task_list' || node.type === 'taskList') {
+      updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'task' }))
+        content.push(migrateNode(child, { type: 'task' })[0])
       }
     } else {
       content.push(node)
     }
   }
 
-  return content
+  return [content, updated]
 }
 
 function migrateNode(
   node: ProsemirrorNodeJSON,
   { type }: { type?: ListType } = {},
-): ProsemirrorNodeJSON {
+): [ProsemirrorNodeJSON, boolean] {
   if (
     node.type === 'list_item' ||
     node.type === 'listItem' ||
     node.type === 'taskListItem'
   ) {
-    return {
-      ...node,
-      type: 'list',
-      attrs: {
-        collapsed: node.attrs?.closed,
-        ...node.attrs,
-        type: type ?? 'bullet',
+    return [
+      {
+        ...node,
+        type: 'list',
+        attrs: {
+          collapsed: node.attrs?.closed,
+          ...node.attrs,
+          type: type ?? 'bullet',
+        },
+        content: node.content ? migrateNodes(node.content)[0] : undefined,
       },
-      content: node.content ? migrateNodes(node.content) : undefined,
-    }
-  }
-
-  return {
-    ...node,
-    content: node.content ? migrateNodes(node.content) : undefined,
+      true,
+    ]
+  } else if (node.content) {
+    const [content, updated] = migrateNodes(node.content)
+    return [{ ...node, content }, updated]
+  } else {
+    return [node, false]
   }
 }
 
-/** @public */
+/**
+ * Migrate a ProseMirror document JSON object from the old list structure to the
+ * new. A new document JSON object is returned if the document is updated,
+ * otherwise `null` is returned.
+ *
+ * @public
+ */
 export function migrateDocJSON(
   docJSON: ProsemirrorNodeJSON,
-): ProsemirrorNodeJSON {
-  return migrateNode(docJSON)
+): ProsemirrorNodeJSON | null {
+  const [migrated, updated] = migrateNode(docJSON)
+  return updated ? migrated : null
 }

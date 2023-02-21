@@ -108,5 +108,8 @@ describe('migrateDocJSON', () => {
         "type": "doc",
       }
     `)
+
+    const output2 = migrateDocJSON(output!)
+    expect(output2).toBe(null)
   })
 })
