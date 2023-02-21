@@ -4,6 +4,8 @@ import { isListNode } from './is-list-node'
 /**
  * Returns a minimal block range that includes the given two positions and
  * represents one or multiple sibling list nodes.
+ *
+ * @public
  */
 export function findListsRange(
   $from: ResolvedPos,
