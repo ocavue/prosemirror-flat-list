@@ -1,3 +1,4 @@
+// https://typedoc.org/guides/options/
 {
     "$schema": "https://typedoc.org/schema.json",
     "entryPointStrategy": "packages",
@@ -20,6 +21,7 @@
         }
     },
     "excludeExternals": true,
+    "excludeInternal": true,
     "validation": true,
     "visibilityFilters": {
         "protected": false,

@@ -39,13 +39,7 @@
 - [createParseDomRules](prosemirror_flat_list.md#createparsedomrules)
 - [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
-- [defaultAttributesGetter](prosemirror_flat_list.md#defaultattributesgetter)
-- [defaultListClickHandler](prosemirror_flat_list.md#defaultlistclickhandler)
-- [defaultMarkerGetter](prosemirror_flat_list.md#defaultmarkergetter)
-- [doSplitList](prosemirror_flat_list.md#dosplitlist)
-- [enterWithoutLift](prosemirror_flat_list.md#enterwithoutlift)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
-- [getListType](prosemirror_flat_list.md#getlisttype)
 - [handleListMarkerMouseDown](prosemirror_flat_list.md#handlelistmarkermousedown)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
@@ -298,103 +292,6 @@ type an attributes.
 
 ___
 
-### defaultAttributesGetter
-
-▸ **defaultAttributesGetter**(`node`): `Object`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `Node` |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `class` | `string` |
-| `data-list-checked` | `undefined` \| `string` |
-| `data-list-collapsable` | `undefined` \| `string` |
-| `data-list-collapsed` | `undefined` \| `string` |
-| `data-list-order` | `undefined` \| `string` |
-| `data-list-type` | `undefined` \| [`ListType`](prosemirror_flat_list.md#listtype) |
-| `style` | `undefined` \| `string` |
-
-___
-
-### defaultListClickHandler
-
-▸ **defaultListClickHandler**(`node`): [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `Node` |
-
-#### Returns
-
-[`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
-
-___
-
-### defaultMarkerGetter
-
-▸ **defaultMarkerGetter**(`node`): `DOMOutputSpec`[] \| ``null``
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `Node` |
-
-#### Returns
-
-`DOMOutputSpec`[] \| ``null``
-
-___
-
-### doSplitList
-
-▸ **doSplitList**(`state`, `listNode`, `dispatch?`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `state` | `EditorState` |
-| `listNode` | `Node` |
-| `dispatch?` | (`tr`: `Transaction`) => `void` |
-
-#### Returns
-
-`boolean`
-
-___
-
-### enterWithoutLift
-
-▸ **enterWithoutLift**(`state`, `dispatch?`, `view?`): `boolean`
-
-This command has the same behavior as the `Enter` keybinding from
-`prosemirror-commands`, but without the `liftEmptyBlock` command.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `state` | `EditorState` |
-| `dispatch?` | (`tr`: `Transaction`) => `void` |
-| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
-
-#### Returns
-
-`boolean`
-
-___
-
 ### findListsRange
 
 ▸ **findListsRange**(`$from`, `$to`): `NodeRange` \| ``null``
@@ -412,22 +309,6 @@ represents one or multiple sibling list nodes.
 #### Returns
 
 `NodeRange` \| ``null``
-
-___
-
-### getListType
-
-▸ **getListType**(`schema`): `NodeType`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
-
-#### Returns
-
-`NodeType`
 
 ___
 
