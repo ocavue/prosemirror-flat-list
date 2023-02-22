@@ -1,5 +1,12 @@
 # prosemirror-flat-list
 
+## 0.0.23
+
+### Patch Changes
+
+- 7f83064: Add `rangeToString`
+- 9fa6f80: Export `isListsRange`
+
 ## 0.0.22
 
 ### Patch Changes

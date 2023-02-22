@@ -249,6 +249,8 @@ ___
 
 ▸ **createParseDomRules**(): readonly `ParseRule`[]
 
+Returns a set of rules for parsing HTML into ProseMirror list nodes.
+
 #### Returns
 
 readonly `ParseRule`[]
@@ -294,17 +296,17 @@ ___
 
 ### findListsRange
 
-▸ **findListsRange**(`$from`, `$to`): `NodeRange` \| ``null``
+▸ **findListsRange**(`$from`, `$to?`): `NodeRange` \| ``null``
 
 Returns a minimal block range that includes the given two positions and
 represents one or multiple sibling list nodes.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `$from` | `ResolvedPos` |
-| `$to` | `ResolvedPos` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `$from` | `ResolvedPos` | `undefined` |
+| `$to` | `ResolvedPos` | `$from` |
 
 #### Returns
 
@@ -389,6 +391,8 @@ ___
 ### listToDOM
 
 ▸ **listToDOM**(`«destructured»`): `DOMOutputSpec`
+
+Renders a list node to DOM output spec.
 
 #### Parameters
 
