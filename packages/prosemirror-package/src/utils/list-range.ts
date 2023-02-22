@@ -9,7 +9,7 @@ import { isListNode } from './is-list-node'
  */
 export function findListsRange(
   $from: ResolvedPos,
-  $to: ResolvedPos,
+  $to: ResolvedPos = $from,
 ): NodeRange | null {
   if ($to.pos < $from.pos) {
     return findListsRange($to, $from)
