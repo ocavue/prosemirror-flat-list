@@ -2,7 +2,11 @@ import { ParseRule } from 'prosemirror-model'
 import { ListAttributes, ListType } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
-/** @public */
+/**
+ * Returns a set of rules for parsing HTML into ProseMirror list nodes.
+ *
+ * @public
+ */
 export function createParseDomRules(): readonly ParseRule[] {
   return [
     {
@@ -35,7 +39,6 @@ export function createParseDomRules(): readonly ParseRule[] {
             return {
               type: 'task',
               checked: checkbox.hasAttribute('checked'),
-              // ...extra.parse(element),
             }
           }
 
@@ -46,7 +49,6 @@ export function createParseDomRules(): readonly ParseRule[] {
             return {
               type: 'task',
               checked: element.hasAttribute('data-checked'),
-              // ...extra.parse(element),
             }
           }
 
@@ -57,14 +59,12 @@ export function createParseDomRules(): readonly ParseRule[] {
             return {
               type: 'toggle',
               collapsed: element.hasAttribute('data-list-collapsed'),
-              // ...extra.parse(element),
             }
           }
         }
 
         return {
           type: 'bullet',
-          // ...extra.parse(element),
         }
       },
     },
@@ -83,6 +83,5 @@ export function createParseDomRules(): readonly ParseRule[] {
         }
       },
     },
-    // ...(override.parseDOM ?? []),
   ]
 }

@@ -29,7 +29,10 @@ export interface ListToDOMProps {
   getAttributes?: (node: ProsemirrorNode) => Record<string, string | undefined>
 }
 
-/** @public */
+/**
+ * Renders a list node to DOM output spec.
+ *
+ * @public */
 export function listToDOM({
   node,
   nativeList = false,
