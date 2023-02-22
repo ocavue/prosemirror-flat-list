@@ -11,17 +11,17 @@ export interface ListToDOMProps {
   /**
    * If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.
    * You might want to use {@link joinListElements} to join the list elements
-   * later.
+   * afterward.
    *
    * @defaultValue false
    */
   nativeList?: boolean
 
   /**
-   * An optional function to get the content inside `<div class="list-marker">`.
-   * If this function returns `null`, the marker will be hidden.
+   * An optional function to get elements inside `<div class="list-marker">`.
+   * Return `null` to hide the marker.
    */
-  getMarker?: (node: ProsemirrorNode) => DOMOutputSpec[] | null
+  getMarkers?: (node: ProsemirrorNode) => DOMOutputSpec[] | null
 
   /**
    * An optional function to get the attributes added to HTML element.
@@ -33,32 +33,38 @@ export interface ListToDOMProps {
 export function listToDOM({
   node,
   nativeList = false,
-  getMarker = defaultMarkerGetter,
+  getMarkers = defaultMarkerGetter,
   getAttributes = defaultAttributesGetter,
 }: ListToDOMProps): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
-  const marker = markerHidden || nativeList ? null : getMarker(node)
+  const markers = markerHidden ? null : getMarkers(node)
   const domAttrs = getAttributes(node)
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]
+  const markerContainer: DOMOutputSpec | null = markers && [
+    'div',
+    {
+      class: 'list-marker list-marker-click-target',
+      // Set `contenteditable` to `false` so that the cursor won't be
+      // moved into the mark container when clicking on it.
+      contenteditable: 'false',
+    },
+    ...markers,
+  ]
 
-  if (marker) {
-    const markerContainer: DOMOutputSpec = [
-      'div',
-      {
-        class: 'list-marker list-marker-click-target',
-        // Set `contenteditable` to `false` so that the cursor won't be
-        // moved into the mark container when clicking on it.
-        contenteditable: 'false',
-      },
-      ...marker,
-    ]
-
-    return ['div', domAttrs, markerContainer, contentContainer]
-  } else if (!nativeList) {
-    return ['div', domAttrs, contentContainer]
+  if (nativeList) {
+    const listTag = attrs.type === 'ordered' ? 'ol' : 'ul'
+    if (markerContainer) {
+      return [listTag, ['li', domAttrs, markerContainer, contentContainer]]
+    } else {
+      return [listTag, ['li', domAttrs, 0]]
+    }
   } else {
-    return [attrs.type === 'ordered' ? 'ol' : 'ul', ['li', domAttrs, 0]]
+    if (markerContainer) {
+      return ['div', domAttrs, markerContainer, contentContainer]
+    } else {
+      return ['div', domAttrs, contentContainer]
+    }
   }
 }
 
