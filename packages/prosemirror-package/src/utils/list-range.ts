@@ -32,6 +32,7 @@ export function findListsRange(
   return null
 }
 
+/** @internal */
 export function isListsRange(range: NodeRange): boolean {
   const { startIndex, endIndex, parent } = range
 
