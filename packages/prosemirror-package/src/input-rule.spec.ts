@@ -30,6 +30,14 @@ describe('input rules', () => {
     )
   })
 
+  it('can turn a paragraph into an ordered list with a custom order counter', () => {
+    const editor = t.add(t.doc(t.p('<cursor>')))
+    editor.insertText('99. ')
+    expect(editor.state).toEqualRemirrorState(
+      t.doc(t.ordered99List(t.p('<cursor>'))),
+    )
+  })
+
   it('can change list type', () => {
     const editor = t.add(t.doc(t.uncheckedTaskList(t.p('<cursor>'))))
     editor.insertText('1. ')

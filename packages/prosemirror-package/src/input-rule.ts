@@ -6,6 +6,7 @@ import { findWrapping } from 'prosemirror-transform'
 import { ListAttributes } from './types'
 import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
+import { parseInteger } from './utils/parse-integer'
 
 /** @public */
 export function wrappingListInputRule<T extends Attrs = ListAttributes>(
@@ -61,15 +62,21 @@ export function createListInputRules(): InputRule[] {
       type: 'bullet',
       collapsed: false,
     }),
-    wrappingListInputRule<ListAttributes>(orderedRegexp, {
-      type: 'ordered',
-      collapsed: false,
+    wrappingListInputRule<ListAttributes>(orderedRegexp, (match) => {
+      const order = parseInteger(match[1])
+      return {
+        type: 'ordered',
+        collapsed: false,
+        order: order != null && order >= 2 ? order : null,
+      }
     }),
-    wrappingListInputRule<ListAttributes>(taskRegexp, (match) => ({
-      type: 'task',
-      checked: ['x', 'X'].includes(match[1]),
-      collapsed: false,
-    })),
+    wrappingListInputRule<ListAttributes>(taskRegexp, (match) => {
+      return {
+        type: 'task',
+        checked: ['x', 'X'].includes(match[1]),
+        collapsed: false,
+      }
+    }),
     wrappingListInputRule<ListAttributes>(toggleRegexp, {
       type: 'toggle',
     }),

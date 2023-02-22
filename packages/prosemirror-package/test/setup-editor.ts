@@ -40,6 +40,7 @@ export function setupTestingEditor() {
 
   const bulletList = list({ type: 'bullet' })
   const orderedList = list({ type: 'ordered' })
+  const ordered99List = list({ type: 'ordered', order: 99 })
   const checkedTaskList = list({ type: 'task', checked: true })
   const uncheckedTaskList = list({ type: 'task', checked: false })
   const collapsedToggleList = list({
@@ -70,6 +71,7 @@ export function setupTestingEditor() {
     uncheckedTaskList,
     collapsedToggleList,
     expandedToggleList,
+    ordered99List,
   }
 }
 

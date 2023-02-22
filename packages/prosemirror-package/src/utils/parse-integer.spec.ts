@@ -6,6 +6,7 @@ describe('parseInteger', () => {
     expect(parseInteger('0')).toBe(0)
     expect(parseInteger('1')).toBe(1)
     expect(parseInteger('-10')).toBe(-10)
+    expect(parseInteger('999')).toBe(999)
   })
 
   it('can parse float string', () => {
@@ -13,6 +14,7 @@ describe('parseInteger', () => {
     expect(parseInteger('1.9')).toBe(1)
     expect(parseInteger('-1.1')).toBe(-1)
     expect(parseInteger('-1.9')).toBe(-1)
+    expect(parseInteger('-999.9')).toBe(-999)
   })
 
   it('can parse non number', () => {
