@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.22
+
+### Patch Changes
+
+- c309e82: Parse custom ordered list counter number in input rules
+
 ## 0.0.21
 
 ### Patch Changes
