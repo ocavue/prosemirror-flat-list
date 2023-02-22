@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.21
+
+### Patch Changes
+
+- 7d4908b: Tweak the API
+
 ## 0.0.20
 
 ### Patch Changes

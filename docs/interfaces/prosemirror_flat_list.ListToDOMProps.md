@@ -9,7 +9,7 @@
 ### Properties
 
 - [getAttributes](prosemirror_flat_list.ListToDOMProps.md#getattributes)
-- [getMarker](prosemirror_flat_list.ListToDOMProps.md#getmarker)
+- [getMarkers](prosemirror_flat_list.ListToDOMProps.md#getmarkers)
 - [nativeList](prosemirror_flat_list.ListToDOMProps.md#nativelist)
 - [node](prosemirror_flat_list.ListToDOMProps.md#node)
 
@@ -37,16 +37,16 @@ An optional function to get the attributes added to HTML element.
 
 ___
 
-### getMarker
+### getMarkers
 
-• `Optional` **getMarker**: (`node`: `Node`) => ``null`` \| `DOMOutputSpec`[]
+• `Optional` **getMarkers**: (`node`: `Node`) => ``null`` \| `DOMOutputSpec`[]
 
 #### Type declaration
 
 ▸ (`node`): ``null`` \| `DOMOutputSpec`[]
 
-An optional function to get the content inside `<div class="list-marker">`.
-If this function returns `null`, the marker will be hidden.
+An optional function to get elements inside `<div class="list-marker">`.
+Return `null` to hide the marker.
 
 ##### Parameters
 
@@ -66,7 +66,7 @@ ___
 
 If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.
 You might want to use [joinListElements](../modules/prosemirror_flat_list.md#joinlistelements) to join the list elements
-later.
+afterward.
 
 **`Default Value`**
 
