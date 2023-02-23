@@ -67,13 +67,13 @@ It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the l
 
 The node type `list` has the following attributes.
 
-- `type`:
-  A string representing the type of the list node. It can be chose from the
+- `kind`:
+  A string representing the kind of the list node. It can be chose from the
   following values: `bullet`, `ordered`, `task` or `toggle`. Based on the
-  `type` attribute, the list node will has different appearance and behavior.
+  `kind` attribute, the list node will has different appearance and behavior.
   The default value is `bullet`.
 
-  ![Node types](https://user-images.githubusercontent.com/24715727/216966304-c2f9a7f4-fc65-430c-91e8-2eb7aff956fa.png).
+  ![Node kinds](https://user-images.githubusercontent.com/24715727/216966304-c2f9a7f4-fc65-430c-91e8-2eb7aff956fa.png).
 
 - `counter`:
   An optional number to determine the number of an ordered list node.
