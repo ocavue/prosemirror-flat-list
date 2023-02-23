@@ -1,4 +1,4 @@
-[prosemirror-flat-list-monorepo](../README.md) / [Modules](../modules.md) / prosemirror-flat-list
+[prosemirror-flat-list-monorepo](../README.md) / prosemirror-flat-list
 
 # Module: prosemirror-flat-list
 
@@ -18,7 +18,7 @@
 ### Type Aliases
 
 - [ListClickHandler](prosemirror_flat_list.md#listclickhandler)
-- [ListType](prosemirror_flat_list.md#listtype)
+- [ListKind](prosemirror_flat_list.md#listkind)
 - [Literal](prosemirror_flat_list.md#literal)
 
 ### Variables
@@ -71,9 +71,9 @@
 
 ___
 
-### ListType
+### ListKind
 
-Ƭ **ListType**: ``"bullet"`` \| ``"ordered"`` \| ``"task"`` \| ``"toggle"``
+Ƭ **ListKind**: ``"bullet"`` \| ``"ordered"`` \| ``"task"`` \| ``"toggle"``
 
 ___
 

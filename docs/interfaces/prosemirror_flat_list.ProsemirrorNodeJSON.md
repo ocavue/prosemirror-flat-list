@@ -1,4 +1,4 @@
-[prosemirror-flat-list-monorepo](../README.md) / [Modules](../modules.md) / [prosemirror-flat-list](../modules/prosemirror_flat_list.md) / ProsemirrorNodeJSON
+[prosemirror-flat-list-monorepo](../README.md) / [prosemirror-flat-list](../modules/prosemirror_flat_list.md) / ProsemirrorNodeJSON
 
 # Interface: ProsemirrorNodeJSON
 

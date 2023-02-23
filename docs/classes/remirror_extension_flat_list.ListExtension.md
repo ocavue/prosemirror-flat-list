@@ -1,4 +1,4 @@
-[prosemirror-flat-list-monorepo](../README.md) / [Modules](../modules.md) / [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md) / ListExtension
+[prosemirror-flat-list-monorepo](../README.md) / [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md) / ListExtension
 
 # Class: ListExtension
 
