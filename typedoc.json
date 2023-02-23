@@ -20,6 +20,7 @@
             "Command": "https://prosemirror.net/docs/ref/#state.Command"
         }
     },
+    "readme": "none",
     "excludeExternals": true,
     "excludeInternal": true,
     "validation": true,
