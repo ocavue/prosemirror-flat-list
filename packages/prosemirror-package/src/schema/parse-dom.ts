@@ -1,5 +1,5 @@
 import { ParseRule } from 'prosemirror-model'
-import { ListAttributes, ListType } from '../types'
+import { ListAttributes, ListKind } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
 /**
@@ -17,8 +17,8 @@ export function createParseDomRules(): readonly ParseRule[] {
         }
 
         return {
-          type: (element.getAttribute('data-list-type') ||
-            'bullet') as ListType,
+          kind: (element.getAttribute('data-list-kind') ||
+            'bullet') as ListKind,
           order: parseInteger(element.getAttribute('data-list-order')),
           checked: element.hasAttribute('data-list-checked'),
           collapsed: element.hasAttribute('data-list-collapsed'),
@@ -37,34 +37,34 @@ export function createParseDomRules(): readonly ParseRule[] {
             checkbox.getAttribute('type') === 'checkbox'
           ) {
             return {
-              type: 'task',
+              kind: 'task',
               checked: checkbox.hasAttribute('checked'),
             }
           }
 
           if (
             element.hasAttribute('data-task-list-item') ||
-            element.getAttribute('data-list-type') === 'task'
+            element.getAttribute('data-list-kind') === 'task'
           ) {
             return {
-              type: 'task',
+              kind: 'task',
               checked: element.hasAttribute('data-checked'),
             }
           }
 
           if (
             element.hasAttribute('data-toggle-list-item') ||
-            element.getAttribute('data-list-type') === 'toggle'
+            element.getAttribute('data-list-kind') === 'toggle'
           ) {
             return {
-              type: 'toggle',
+              kind: 'toggle',
               collapsed: element.hasAttribute('data-list-collapsed'),
             }
           }
         }
 
         return {
-          type: 'bullet',
+          kind: 'bullet',
         }
       },
     },
@@ -73,12 +73,12 @@ export function createParseDomRules(): readonly ParseRule[] {
       getAttrs: (element): ListAttributes => {
         if (typeof element === 'string') {
           return {
-            type: 'ordered',
+            kind: 'ordered',
           }
         }
 
         return {
-          type: 'ordered',
+          kind: 'ordered',
           order: parseInteger(element.getAttribute('data-list-order')),
         }
       },

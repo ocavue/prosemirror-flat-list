@@ -12,7 +12,7 @@ export function createListSpec(): NodeSpec {
     group: flatListGroup,
     defining: true,
     attrs: {
-      type: {
+      kind: {
         default: 'bullet',
       },
       order: {

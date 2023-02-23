@@ -347,14 +347,14 @@ describe('indentList', () => {
     t.apply(
       () => {
         let tr = t.view.state.tr
-        let attrs: ListAttributes = { type: 'toggle', collapsed: true }
+        let attrs: ListAttributes = { kind: 'toggle', collapsed: true }
         setListAttributes(tr, t.view.state.selection.from, attrs)
         t.view.dispatch(tr)
 
         commands.indentList()
 
         tr = t.view.state.tr
-        attrs = { type: 'bullet', collapsed: false }
+        attrs = { kind: 'bullet', collapsed: false }
         setListAttributes(tr, t.view.state.selection.from, attrs)
         t.view.dispatch(tr)
       },

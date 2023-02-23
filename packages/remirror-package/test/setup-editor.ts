@@ -36,11 +36,11 @@ export function setupTestingEditor() {
   const checkedTaskList = list({ type: 'task', checked: true })
   const uncheckedTaskList = list({ type: 'task', checked: false })
   const collapsedToggleList = list({
-    type: 'toggle',
+    kind: 'toggle',
     collapsed: true,
   } satisfies ListAttributes)
   const expandedToggleList = list({
-    type: 'toggle',
+    kind: 'toggle',
     collapsed: true,
   } satisfies ListAttributes)
 

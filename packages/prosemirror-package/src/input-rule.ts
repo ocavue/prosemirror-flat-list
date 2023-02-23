@@ -59,26 +59,26 @@ export function createListInputRules(): InputRule[] {
 
   return [
     wrappingListInputRule<ListAttributes>(bulletRegexp, {
-      type: 'bullet',
+      kind: 'bullet',
       collapsed: false,
     }),
     wrappingListInputRule<ListAttributes>(orderedRegexp, (match) => {
       const order = parseInteger(match[1])
       return {
-        type: 'ordered',
+        kind: 'ordered',
         collapsed: false,
         order: order != null && order >= 2 ? order : null,
       }
     }),
     wrappingListInputRule<ListAttributes>(taskRegexp, (match) => {
       return {
-        type: 'task',
+        kind: 'task',
         checked: ['x', 'X'].includes(match[1]),
         collapsed: false,
       }
     }),
     wrappingListInputRule<ListAttributes>(toggleRegexp, {
-      type: 'toggle',
+      kind: 'toggle',
     }),
   ]
 }

@@ -15,7 +15,7 @@ import {
 import * as React from 'react'
 import { FC, PropsWithChildren, useEffect } from 'react'
 
-import { isListNode, ListAttributes, ListType } from 'prosemirror-flat-list'
+import { isListNode, ListAttributes, ListKind } from 'prosemirror-flat-list'
 import { ListExtension } from 'remirror-extension-flat-list'
 
 const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
@@ -36,27 +36,27 @@ const ButtonGroup = (): JSX.Element => {
   const commands = useCommands()
 
   const { indentList, dedentList } = commands
-  const wrapInBulletList = () => commands.wrapInList({ type: 'bullet' })
-  const wrapInOrderedList = () => commands.wrapInList({ type: 'ordered' })
-  const wrapInTaskList = () => commands.wrapInList({ type: 'task' })
-  const wrapInToggleList = () => commands.wrapInList({ type: 'toggle' })
-  const changeListType = () =>
+  const wrapInBulletList = () => commands.wrapInList({ kind: 'bullet' })
+  const wrapInOrderedList = () => commands.wrapInList({ kind: 'ordered' })
+  const wrapInTaskList = () => commands.wrapInList({ kind: 'task' })
+  const wrapInToggleList = () => commands.wrapInList({ kind: 'toggle' })
+  const changeListKind = () =>
     commands.wrapInList((range) => {
       const attrs = range.parent.child(range.startIndex).attrs as ListAttributes
 
-      let type: ListType
+      let kind: ListKind
 
-      if (attrs.type === 'bullet') {
-        type = 'ordered'
-      } else if (attrs.type === 'ordered') {
-        type = 'task'
-      } else if (attrs.type === 'task') {
-        type = 'toggle'
+      if (attrs.kind === 'bullet') {
+        kind = 'ordered'
+      } else if (attrs.kind === 'ordered') {
+        kind = 'task'
+      } else if (attrs.kind === 'task') {
+        kind = 'toggle'
       } else {
-        type = 'bullet'
+        kind = 'bullet'
       }
 
-      return { type }
+      return { kind: kind }
     })
 
   const toggleChecked = () => {
@@ -66,7 +66,7 @@ const ButtonGroup = (): JSX.Element => {
         const listNode = parent.child(startIndex)
         if (isListNode(listNode)) {
           const attrs = listNode.attrs as ListAttributes
-          if (attrs.type === 'task') {
+          if (attrs.kind === 'task') {
             return { checked: !attrs.checked }
           }
         }
@@ -82,7 +82,7 @@ const ButtonGroup = (): JSX.Element => {
         const listNode = parent.child(startIndex)
         if (isListNode(listNode)) {
           const attrs = listNode.attrs as ListAttributes
-          if (attrs.type === 'toggle') {
+          if (attrs.kind === 'toggle') {
             return { collapsed: !attrs.collapsed }
           }
         }
@@ -108,7 +108,7 @@ const ButtonGroup = (): JSX.Element => {
 
       <Button onClick={wrapInToggleList}>Wrap in toggle list</Button>
 
-      <Button onClick={changeListType}>Change list type</Button>
+      <Button onClick={changeListKind}>Change list kind</Button>
 
       <Button onClick={toggleChecked}>Toggle attribute checked</Button>
 

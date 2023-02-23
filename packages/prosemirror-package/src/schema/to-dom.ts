@@ -56,7 +56,7 @@ export function listToDOM({
   ]
 
   if (nativeList) {
-    const listTag = attrs.type === 'ordered' ? 'ol' : 'ul'
+    const listTag = attrs.kind === 'ordered' ? 'ol' : 'ul'
     if (markerContainer) {
       return [listTag, ['li', domAttrs, markerContainer, contentContainer]]
     } else {
@@ -76,7 +76,7 @@ export function defaultMarkerGetter(
   node: ProsemirrorNode,
 ): DOMOutputSpec[] | null {
   const attrs = node.attrs as ListAttributes
-  switch (attrs.type) {
+  switch (attrs.kind) {
     case 'task':
       // Use a `label` element here so that the area around the checkbox is also checkable.
       return [
@@ -99,10 +99,10 @@ export function defaultMarkerGetter(
 export function defaultAttributesGetter(node: ProsemirrorNode) {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
-  const markerType = markerHidden ? undefined : attrs.type || 'bullet'
+  const markerType = markerHidden ? undefined : attrs.kind || 'bullet'
   const domAttrs = {
     class: 'prosemirror-flat-list',
-    'data-list-type': markerType,
+    'data-list-kind': markerType,
     'data-list-order': attrs.order != null ? String(attrs.order) : undefined,
     'data-list-checked': attrs.checked ? '' : undefined,
     'data-list-collapsed': attrs.collapsed ? '' : undefined,

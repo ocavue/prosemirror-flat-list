@@ -1,9 +1,9 @@
 /** @public */
-export type ListType = 'bullet' | 'ordered' | 'task' | 'toggle'
+export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
 /** @public */
 export interface ListAttributes {
-  type?: ListType
+  kind?: ListKind
   order?: number | null
   checked?: boolean
   collapsed?: boolean

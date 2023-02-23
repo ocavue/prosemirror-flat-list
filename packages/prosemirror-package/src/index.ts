@@ -25,7 +25,7 @@ export {
 } from './schema/to-dom'
 export type {
   ListAttributes,
-  ListType,
+  ListKind,
   Literal,
   ObjectMark,
   ProsemirrorNodeJSON,
