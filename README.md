@@ -44,15 +44,15 @@ It's "flat" because it doesn't need the `<ul>` and `<ol>` elements to wrap the l
 > ⬇ The HTML structure of the new list node in `prosemirror-flat-list`.
 
 ```HTML
-<div class="prosemirror-flat-list" data-list-type="bullet">
+<div class="prosemirror-flat-list" data-list-kind="bullet">
   <p>Item A</p>
 </div>
-<div class="prosemirror-flat-list" data-list-type="bullet">
+<div class="prosemirror-flat-list" data-list-kind="bullet">
   <p>Item B</p>
-  <div class="prosemirror-flat-list" data-list-type="ordered">
+  <div class="prosemirror-flat-list" data-list-kind="ordered">
     <p>Sub Item C</p>
   </div>
-  <div class="prosemirror-flat-list" data-list-type="ordered">
+  <div class="prosemirror-flat-list" data-list-kind="ordered">
     <p>Sub Item D</p>
   </div>
 </div>

@@ -6,9 +6,9 @@ describe('wrapInList', () => {
   const markdown = t.markdown
   const commands = t.editor.commands
 
-  const wrapInBulletList = () => commands.wrapInList({ type: 'bullet' })
-  const wrapInOrderedList = () => commands.wrapInList({ type: 'ordered' })
-  const wrapInTaskList = () => commands.wrapInList({ type: 'task' })
+  const wrapInBulletList = () => commands.wrapInList({ kind: 'bullet' })
+  const wrapInOrderedList = () => commands.wrapInList({ kind: 'ordered' })
+  const wrapInTaskList = () => commands.wrapInList({ kind: 'task' })
 
   it('can wrap a paragraph node to a list node', () => {
     t.apply(

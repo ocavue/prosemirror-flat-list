@@ -82,7 +82,12 @@ export function doSplitList(
   if (atEnd && attrs.collapsed) {
     if (dispatch) {
       const pos = $from.after(-1)
-      tr.insert(pos, listNode.type.createAndFill({ type: attrs.type })!)
+      tr.insert(
+        pos,
+        listNode.type.createAndFill({
+          kind: attrs.kind,
+        } satisfies ListAttributes)!,
+      )
       tr.setSelection(Selection.near(tr.doc.resolve(pos)))
       dispatch(tr)
     }
@@ -98,9 +103,9 @@ export function doSplitList(
       type: getListType(state.schema),
       attrs: {
         // We don't want to inherit all list attributes (e.g. checked) except
-        // for the list type
-        type: attrs.type,
-      },
+        // for the list kind
+        kind: attrs.kind,
+      } satisfies ListAttributes,
     },
     nextType ? { type: nextType } : null,
   ]

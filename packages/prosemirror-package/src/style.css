@@ -25,11 +25,11 @@
     }
   }
 
-  &[data-list-type='bullet'] {
+  &[data-list-kind='bullet'] {
     list-style: disc;
   }
 
-  &[data-list-type='ordered'] {
+  &[data-list-kind='ordered'] {
     counter-reset: prosemirror-flat-list-counter;
     counter-increment: prosemirror-flat-list-counter;
     & + & {
@@ -43,7 +43,7 @@
     }
   }
 
-  &[data-list-type='task'] {
+  &[data-list-kind='task'] {
     & > .list-marker {
       position: absolute;
       right: 100%;
@@ -58,7 +58,7 @@
     }
   }
 
-  &[data-list-type='toggle'] {
+  &[data-list-kind='toggle'] {
     & > .list-marker {
       position: absolute;
       right: 100%;

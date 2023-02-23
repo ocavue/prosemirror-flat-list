@@ -40,9 +40,9 @@ export type ListClickHandler = (node: ProsemirrorNode) => ListAttributes
 /** @internal */
 export const defaultListClickHandler: ListClickHandler = (node) => {
   const attrs = node.attrs as ListAttributes
-  if (attrs.type === 'task') {
+  if (attrs.kind === 'task') {
     return { ...attrs, checked: !attrs.checked }
-  } else if (attrs.type === 'toggle') {
+  } else if (attrs.kind === 'toggle') {
     return { ...attrs, collapsed: !attrs.collapsed }
   } else {
     return attrs

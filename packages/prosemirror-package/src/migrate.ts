@@ -1,4 +1,4 @@
-import type { ListType, ProsemirrorNodeJSON } from './types'
+import type { ListAttributes, ListKind, ProsemirrorNodeJSON } from './types'
 
 function migrateNodes(
   nodes: ProsemirrorNodeJSON[],
@@ -10,17 +10,17 @@ function migrateNodes(
     if (node.type === 'bullet_list' || node.type === 'bulletList') {
       updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'bullet' })[0])
+        content.push(migrateNode(child, { kind: 'bullet' })[0])
       }
     } else if (node.type === 'ordered_list' || node.type === 'orderedList') {
       updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'ordered' })[0])
+        content.push(migrateNode(child, { kind: 'ordered' })[0])
       }
     } else if (node.type === 'task_list' || node.type === 'taskList') {
       updated = true
       for (const child of node.content ?? []) {
-        content.push(migrateNode(child, { type: 'task' })[0])
+        content.push(migrateNode(child, { kind: 'task' })[0])
       }
     } else {
       content.push(node)
@@ -32,7 +32,7 @@ function migrateNodes(
 
 function migrateNode(
   node: ProsemirrorNodeJSON,
-  { type }: { type?: ListType } = {},
+  { kind }: { kind?: ListKind } = {},
 ): [ProsemirrorNodeJSON, boolean] {
   if (
     node.type === 'list_item' ||
@@ -44,10 +44,10 @@ function migrateNode(
         ...node,
         type: 'list',
         attrs: {
-          collapsed: node.attrs?.closed,
+          collapsed: Boolean(node.attrs?.closed),
           ...node.attrs,
-          type: type ?? 'bullet',
-        },
+          kind: kind ?? 'bullet',
+        } satisfies ListAttributes,
         content: node.content ? migrateNodes(node.content)[0] : undefined,
       },
       true,

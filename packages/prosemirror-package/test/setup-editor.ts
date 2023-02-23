@@ -38,17 +38,17 @@ export function setupTestingEditor() {
     expect(editor.state).toEqualRemirrorState(after)
   }
 
-  const bulletList = list({ type: 'bullet' })
-  const orderedList = list({ type: 'ordered' })
-  const ordered99List = list({ type: 'ordered', order: 99 })
-  const checkedTaskList = list({ type: 'task', checked: true })
-  const uncheckedTaskList = list({ type: 'task', checked: false })
+  const bulletList = list({ kind: 'bullet' })
+  const orderedList = list({ kind: 'ordered' })
+  const ordered99List = list({ kind: 'ordered', order: 99 })
+  const checkedTaskList = list({ kind: 'task', checked: true })
+  const uncheckedTaskList = list({ kind: 'task', checked: false })
   const collapsedToggleList = list({
-    type: 'toggle',
+    kind: 'toggle',
     collapsed: true,
   } satisfies ListAttributes)
   const expandedToggleList = list({
-    type: 'toggle',
+    kind: 'toggle',
     collapsed: false,
   } satisfies ListAttributes)
 
