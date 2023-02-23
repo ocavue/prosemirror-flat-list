@@ -1,4 +1,4 @@
-[prosemirror-flat-list-monorepo](../README.md) / [Modules](../modules.md) / remirror-extension-flat-list
+[prosemirror-flat-list-monorepo](../README.md) / remirror-extension-flat-list
 
 # Module: remirror-extension-flat-list
 

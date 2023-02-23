@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.24
+
+### Patch Changes
+
+- 89a8add: Rename "type" to "kind"
+
 ## 0.0.23
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-[prosemirror-flat-list-monorepo](../README.md) / [Modules](../modules.md) / [prosemirror-flat-list](../modules/prosemirror_flat_list.md) / ListAttributes
+[prosemirror-flat-list-monorepo](../README.md) / [prosemirror-flat-list](../modules/prosemirror_flat_list.md) / ListAttributes
 
 # Interface: ListAttributes
 
@@ -10,8 +10,8 @@
 
 - [checked](prosemirror_flat_list.ListAttributes.md#checked)
 - [collapsed](prosemirror_flat_list.ListAttributes.md#collapsed)
+- [kind](prosemirror_flat_list.ListAttributes.md#kind)
 - [order](prosemirror_flat_list.ListAttributes.md#order)
-- [type](prosemirror_flat_list.ListAttributes.md#type)
 
 ## Properties
 
@@ -27,12 +27,12 @@ ___
 
 ___
 
-### order
+### kind
 
-• `Optional` **order**: ``null`` \| `number`
+• `Optional` **kind**: [`ListKind`](../modules/prosemirror_flat_list.md#listkind)
 
 ___
 
-### type
+### order
 
-• `Optional` **type**: [`ListType`](../modules/prosemirror_flat_list.md#listtype)
+• `Optional` **order**: ``null`` \| `number`
