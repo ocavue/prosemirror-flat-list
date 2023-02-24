@@ -13,15 +13,35 @@ import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
 
+/** @public */
+export interface DedentListProps {
+  /**
+   * A optional from position to indent.
+   *
+   * @defaultValue `state.selection.from`
+   */
+  from?: number
+
+  /**
+   * A optional to position to indent.
+   *
+   * @defaultValue `state.selection.to`
+   */
+  to?: number
+}
+
 /**
  * Returns a command function that decreases the indentation of selected list nodes.
  *
  * @public
  */
-export function createDedentListCommand(): Command {
+export function createDedentListCommand(props?: DedentListProps): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    const { $from, $to } = tr.selection
+
+    // prettier-ignore
+    const $from = props?.from == null ? tr.selection.$from : tr.doc.resolve(props.from)
+    const $to = props?.to == null ? tr.selection.$to : tr.doc.resolve(props.to)
 
     const range = findListsRange($from, $to)
     if (!range) return false

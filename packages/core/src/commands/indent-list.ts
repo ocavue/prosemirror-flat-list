@@ -14,16 +14,36 @@ import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 
+/** @public */
+export interface IndentListProps {
+  /**
+   * A optional from position to indent.
+   *
+   * @defaultValue `state.selection.from`
+   */
+  from?: number
+
+  /**
+   * A optional to position to indent.
+   *
+   * @defaultValue `state.selection.to`
+   */
+  to?: number
+}
+
 /**
  * Returns a command function that increases the indentation of selected list
  * nodes.
  *
  * @public
  */
-export function createIndentListCommand(): Command {
+export function createIndentListCommand(props?: IndentListProps): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    const { $from, $to } = tr.selection
+
+    // prettier-ignore
+    const $from = props?.from == null ? tr.selection.$from : tr.doc.resolve(props.from)
+    const $to = props?.to == null ? tr.selection.$to : tr.doc.resolve(props.to)
 
     const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false

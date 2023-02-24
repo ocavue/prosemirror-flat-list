@@ -300,9 +300,13 @@ describe('dedentList', () => {
       commands.dedentList,
       markdown`
         Hello<cursor>
+
+        paragraph
       `,
       markdown`
         Hello<cursor>
+
+        paragraph
       `,
     )
   })
@@ -324,6 +328,46 @@ describe('dedentList', () => {
 
           A1
       `,
+    )
+  })
+
+  it('can accept custom positions', () => {
+    t.apply(
+      () => commands.dedentList({ from: 13, to: 17 }),
+      t.doc(
+        /*0*/
+        t.bulletList(/*1*/ t.p('A1') /*5*/),
+        /*6*/
+        t.bulletList(/*7*/ t.p('A2<cursor>') /*11*/),
+        /*12*/
+        t.bulletList(/*13*/ t.p('A3') /*17*/),
+        /*18*/
+      ),
+      t.doc(
+        //
+        t.bulletList(t.p('A1')),
+        t.bulletList(t.p('A2')),
+        t.p('A3'),
+      ),
+    )
+
+    t.apply(
+      () => commands.dedentList({ from: 10, to: 14 }),
+      t.doc(
+        /*0*/
+        t.bulletList(/*1*/ t.p('A1') /*5*/),
+        /*6*/
+        t.bulletList(/*7*/ t.p('A2<cursor>') /*11*/),
+        /*12*/
+        t.bulletList(/*13*/ t.p('A3') /*17*/),
+        /*18*/
+      ),
+      t.doc(
+        //
+        t.bulletList(t.p('A1')),
+        t.p('A2'),
+        t.p('A3'),
+      ),
     )
   })
 

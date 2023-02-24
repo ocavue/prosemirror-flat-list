@@ -21,6 +21,8 @@ import {
   createMoveListCommand,
   createSplitListCommand,
   createWrapInListCommand,
+  DedentListProps,
+  IndentListProps,
   ListAttributes,
   listKeymap,
   protectCollapsed,
@@ -67,8 +69,12 @@ export class ListExtension extends NodeExtension {
 
   createCommands() {
     return {
-      indentList: () => convertCommand(createIndentListCommand()),
-      dedentList: () => convertCommand(createDedentListCommand()),
+      indentList: (props?: IndentListProps) => {
+        return convertCommand(createIndentListCommand(props))
+      },
+      dedentList: (props?: DedentListProps) => {
+        return convertCommand(createDedentListCommand(props))
+      },
 
       wrapInList: (
         getAttrs:

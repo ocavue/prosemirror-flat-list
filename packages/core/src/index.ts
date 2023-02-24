@@ -1,6 +1,12 @@
-export { createDedentListCommand } from './commands/dedent-list'
+export {
+  createDedentListCommand,
+  type DedentListProps,
+} from './commands/dedent-list'
 export { enterWithoutLift } from './commands/enter-without-lift'
-export { createIndentListCommand } from './commands/indent-list'
+export {
+  createIndentListCommand,
+  type IndentListProps,
+} from './commands/indent-list'
 export { listKeymap } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
 export { protectCollapsed } from './commands/protect-collapsed'
