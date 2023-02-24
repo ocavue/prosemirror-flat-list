@@ -11,6 +11,10 @@ export { listKeymap } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
 export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
+export {
+  createToggleCollapsedCommand,
+  ToggleCollapsedProps,
+} from './commands/toggle-collapsed'
 export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
   defaultListClickHandler,

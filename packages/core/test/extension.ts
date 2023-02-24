@@ -20,12 +20,14 @@ import {
   createListSpec,
   createMoveListCommand,
   createSplitListCommand,
+  createToggleCollapsedCommand,
   createWrapInListCommand,
   DedentListProps,
   IndentListProps,
   ListAttributes,
   listKeymap,
   protectCollapsed,
+  ToggleCollapsedProps,
 } from '../src/index'
 
 export class ListExtension extends NodeExtension {
@@ -91,6 +93,10 @@ export class ListExtension extends NodeExtension {
       splitList: () => convertCommand(createSplitListCommand()),
 
       protectCollapsed: () => convertCommand(protectCollapsed),
+
+      toggleCollapsed: (props?: ToggleCollapsedProps) => {
+        return convertCommand(createToggleCollapsedCommand(props))
+      },
     } as const
   }
 }
