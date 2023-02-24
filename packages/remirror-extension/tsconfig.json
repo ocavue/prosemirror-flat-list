@@ -8,7 +8,7 @@
   },
   "references": [
     {
-      "path": "../prosemirror-package/tsconfig.json"
+      "path": "../core/tsconfig.json"
     }
   ]
 }

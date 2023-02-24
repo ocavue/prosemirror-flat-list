@@ -18,10 +18,10 @@
     "declarationMap": true,
     "paths": {
       "prosemirror-flat-list": [
-        "./packages/prosemirror-package/src/index.ts"
+        "./packages/core/src/index.ts"
       ],
       "remirror-extension-flat-list": [
-        "./packages/remirror-package/src/index.ts"
+        "./packages/remirror-extension/src/index.ts"
       ],
     },
   }

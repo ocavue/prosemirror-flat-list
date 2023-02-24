@@ -54,15 +54,15 @@ importers:
       '@types/node': 18.13.0
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
-      prosemirror-flat-list: link:../../packages/prosemirror-package
+      prosemirror-flat-list: link:../../packages/core
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       remirror: 2.0.24_7geceafbgjtzcvqgffirms7vzy
-      remirror-extension-flat-list: link:../../packages/remirror-package
+      remirror-extension-flat-list: link:../../packages/remirror-extension
       typescript: 4.9.5
       vite: 4.1.1_@types+node@18.13.0
 
-  packages/prosemirror-package:
+  packages/core:
     specifiers:
       '@microsoft/api-extractor': ^7.34.4
       '@remirror/core': ^2.0.11
@@ -137,7 +137,7 @@ importers:
       vite: 4.1.1_@types+node@18.13.0
       vitest: 0.28.5_jsdom@21.1.0
 
-  packages/remirror-package:
+  packages/remirror-extension:
     specifiers:
       '@antfu/ni': ^0.20.0
       '@microsoft/api-extractor': ^7.34.4
@@ -179,7 +179,7 @@ importers:
       vitest: ^0.28.5
     dependencies:
       '@remirror/core': 2.0.11_5az4i7dhfckk5bmn3xgs26cyvi
-      prosemirror-flat-list: link:../prosemirror-package
+      prosemirror-flat-list: link:../core
     devDependencies:
       '@antfu/ni': 0.20.0
       '@microsoft/api-extractor': 7.34.4_@types+node@18.13.0

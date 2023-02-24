@@ -3,8 +3,8 @@
     "$schema": "https://typedoc.org/schema.json",
     "entryPointStrategy": "packages",
     "entryPoints": [
-        "./packages/prosemirror-package",
-        "./packages/remirror-package",
+        "./packages/core",
+        "./packages/remirror-extension",
     ],
     "plugin": [
         "typedoc-plugin-markdown"
