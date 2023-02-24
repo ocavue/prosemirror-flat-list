@@ -10,6 +10,8 @@
 
 ### Interfaces
 
+- [DedentListProps](../interfaces/prosemirror_flat_list.DedentListProps.md)
+- [IndentListProps](../interfaces/prosemirror_flat_list.IndentListProps.md)
 - [ListAttributes](../interfaces/prosemirror_flat_list.ListAttributes.md)
 - [ListToDOMProps](../interfaces/prosemirror_flat_list.ListToDOMProps.md)
 - [ObjectMark](../interfaces/prosemirror_flat_list.ObjectMark.md)
@@ -145,9 +147,15 @@ ___
 
 ### createDedentListCommand
 
-▸ **createDedentListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+▸ **createDedentListCommand**(`props?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 Returns a command function that decreases the indentation of selected list nodes.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props?` | [`DedentListProps`](../interfaces/prosemirror_flat_list.DedentListProps.md) |
 
 #### Returns
 
@@ -157,10 +165,16 @@ ___
 
 ### createIndentListCommand
 
-▸ **createIndentListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+▸ **createIndentListCommand**(`props?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 Returns a command function that increases the indentation of selected list
 nodes.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props?` | [`IndentListProps`](../interfaces/prosemirror_flat_list.IndentListProps.md) |
 
 #### Returns
 
