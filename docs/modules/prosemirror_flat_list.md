@@ -16,6 +16,7 @@
 - [ListToDOMProps](../interfaces/prosemirror_flat_list.ListToDOMProps.md)
 - [ObjectMark](../interfaces/prosemirror_flat_list.ObjectMark.md)
 - [ProsemirrorNodeJSON](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md)
+- [ToggleCollapsedProps](../interfaces/prosemirror_flat_list.ToggleCollapsedProps.md)
 
 ### Type Aliases
 
@@ -40,6 +41,7 @@
 - [createMoveListCommand](prosemirror_flat_list.md#createmovelistcommand)
 - [createParseDomRules](prosemirror_flat_list.md#createparsedomrules)
 - [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
+- [createToggleCollapsedCommand](prosemirror_flat_list.md#createtogglecollapsedcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
 - [handleListMarkerMouseDown](prosemirror_flat_list.md#handlelistmarkermousedown)
@@ -276,6 +278,24 @@ ___
 ▸ **createSplitListCommand**(): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 Returns a command that split the current list node.
+
+#### Returns
+
+[`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+___
+
+### createToggleCollapsedCommand
+
+▸ **createToggleCollapsedCommand**(`«destructured»?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+
+Return a command function that toggle the `collapsed` attribute of the list node.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | [`ToggleCollapsedProps`](../interfaces/prosemirror_flat_list.ToggleCollapsedProps.md) |
 
 #### Returns
 
