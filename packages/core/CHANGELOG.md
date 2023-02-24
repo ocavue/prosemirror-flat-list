@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.26
+
+### Patch Changes
+
+- 888f2b4: Add command `toggleCollapsed`.
+
 ## 0.0.25
 
 ### Patch Changes
