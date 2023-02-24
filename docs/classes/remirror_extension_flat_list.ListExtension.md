@@ -86,8 +86,8 @@ NodeExtension.name
 
 | Name | Type |
 | :------ | :------ |
-| `dedentList` | () => `CommandFunction`<`object`\> |
-| `indentList` | () => `CommandFunction`<`object`\> |
+| `dedentList` | (`props?`: `DedentListProps`) => `CommandFunction`<`object`\> |
+| `indentList` | (`props?`: `IndentListProps`) => `CommandFunction`<`object`\> |
 | `moveList` | (`direction`: ``"up"`` \| ``"down"``) => `CommandFunction`<`object`\> |
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |

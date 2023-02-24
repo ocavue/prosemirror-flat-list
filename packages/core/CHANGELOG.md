@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.25
+
+### Patch Changes
+
+- 0743189: Allow to indent or dedent unselected list nodes
+
 ## 0.0.24
 
 ### Patch Changes
