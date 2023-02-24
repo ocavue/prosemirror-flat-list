@@ -2,17 +2,22 @@
   "name": "remirror-extension-flat-list",
   "type": "module",
   "version": "0.0.25",
-  "description": "",
+  "description": "A Remirror extension based on prosemirror-flat-list",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/prosemirror-flat-list#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ocavue/prosemirror-flat-list.git"
+    "url": "https://github.com/ocavue/prosemirror-flat-list.git",
+    "directory": "packages/remirror-extension"
   },
   "bugs": "https://github.com/ocavue/prosemirror-flat-list/issues",
-  "keywords": [],
+  "keywords": [
+    "ProseMirror",
+    "Remirror",
+    "list"
+  ],
   "sideEffects": false,
   "main": "./dist/remirror-extension-flat-list.js",
   "module": "./dist/remirror-extension-flat-list.js",

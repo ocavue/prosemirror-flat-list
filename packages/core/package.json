@@ -2,17 +2,21 @@
   "name": "prosemirror-flat-list",
   "type": "module",
   "version": "0.0.24",
-  "description": "",
+  "description": "Powerful list support for ProseMirror",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/prosemirror-flat-list#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ocavue/prosemirror-flat-list.git"
+    "url": "https://github.com/ocavue/prosemirror-flat-list.git",
+    "directory": "packages/core"
   },
   "bugs": "https://github.com/ocavue/prosemirror-flat-list/issues",
-  "keywords": [],
+  "keywords": [
+    "ProseMirror",
+    "list"
+  ],
   "sideEffects": false,
   "main": "./dist/prosemirror-flat-list.js",
   "module": "./dist/prosemirror-flat-list.js",
