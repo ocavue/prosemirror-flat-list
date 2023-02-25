@@ -37,6 +37,7 @@
 - [createListSpec](prosemirror_flat_list.md#createlistspec)
 - [createMoveListCommand](prosemirror_flat_list.md#createmovelistcommand)
 - [createParseDomRules](prosemirror_flat_list.md#createparsedomrules)
+- [createSafariInputMethodWorkaroundPlugin](prosemirror_flat_list.md#createsafariinputmethodworkaroundplugin)
 - [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
 - [createToggleCollapsedCommand](prosemirror_flat_list.md#createtogglecollapsedcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
@@ -265,6 +266,21 @@ Returns a set of rules for parsing HTML into ProseMirror list nodes.
 #### Returns
 
 readonly `ParseRule`[]
+
+___
+
+### createSafariInputMethodWorkaroundPlugin
+
+▸ **createSafariInputMethodWorkaroundPlugin**(): `Plugin`
+
+Return a plugin as a workaround for a bug in Safari that causes the composition
+based IME to remove the empty HTML element with CSS `position: relative`.
+
+See also https://github.com/ProseMirror/prosemirror/issues/934
+
+#### Returns
+
+`Plugin`
 
 ___
 
