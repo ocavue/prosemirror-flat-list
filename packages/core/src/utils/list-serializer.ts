@@ -7,7 +7,12 @@ import {
 } from 'prosemirror-model'
 import { listToDOM } from '../schema/to-dom'
 
-/** @public */
+/**
+ * A custom DOM serializer class that can serialize flat list nodes into native
+ * HTML list elements (i.e. `<ul>` and `<ol>`).
+ *
+ * @public
+ */
 export class ListDOMSerializer extends DOMSerializer {
   static nodesFromSchema(schema: Schema): {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec

@@ -2,6 +2,9 @@
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).ListDOMSerializer
 
+A custom DOM serializer class that can serialize flat list nodes into native
+HTML list elements (i.e. `<ul>` and `<ol>`).
+
 ## Hierarchy
 
 - `DOMSerializer`

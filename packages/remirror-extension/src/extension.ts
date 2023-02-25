@@ -30,7 +30,11 @@ import {
   ToggleCollapsedProps,
 } from 'prosemirror-flat-list'
 
-/** @public */
+/**
+ * A Remirror extension for creating lists. It's a simple wrapper around the API from `prosemirror-flat-list`.
+ *
+ * @public
+ */
 export class ListExtension extends NodeExtension {
   static disableExtraAttributes = true
 

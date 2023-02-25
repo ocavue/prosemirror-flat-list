@@ -18,7 +18,6 @@
 
 ### Type Aliases
 
-- [ListClickHandler](prosemirror_flat_list.md#listclickhandler)
 - [ListKind](prosemirror_flat_list.md#listkind)
 - [Literal](prosemirror_flat_list.md#literal)
 
@@ -42,7 +41,6 @@
 - [createToggleCollapsedCommand](prosemirror_flat_list.md#createtogglecollapsedcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
-- [handleListMarkerMouseDown](prosemirror_flat_list.md#handlelistmarkermousedown)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
 - [joinListElements](prosemirror_flat_list.md#joinlistelements)
@@ -53,29 +51,11 @@
 
 ## Type Aliases
 
-### ListClickHandler
-
-Ƭ **ListClickHandler**: (`node`: `ProsemirrorNode`) => [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
-
-#### Type declaration
-
-▸ (`node`): [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `ProsemirrorNode` |
-
-##### Returns
-
-[`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md)
-
-___
-
 ### ListKind
 
 Ƭ **ListKind**: ``"bullet"`` \| ``"ordered"`` \| ``"task"`` \| ``"toggle"``
+
+All default list node kinds.
 
 ___
 
@@ -90,6 +70,8 @@ All the literal types
 ### flatListGroup
 
 • `Const` **flatListGroup**: ``"flatList"``
+
+The default group name for list nodes.
 
 ___
 
@@ -343,24 +325,6 @@ represents one or multiple sibling list nodes.
 #### Returns
 
 `NodeRange` \| ``null``
-
-___
-
-### handleListMarkerMouseDown
-
-▸ **handleListMarkerMouseDown**(`view`, `event`, `onListClick?`): `boolean`
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `view` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) | `undefined` |
-| `event` | `MouseEvent` | `undefined` |
-| `onListClick` | [`ListClickHandler`](prosemirror_flat_list.md#listclickhandler) | `defaultListClickHandler` |
-
-#### Returns
-
-`boolean`
 
 ___
 

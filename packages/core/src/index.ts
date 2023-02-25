@@ -19,7 +19,6 @@ export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
   defaultListClickHandler,
   handleListMarkerMouseDown,
-  ListClickHandler,
 } from './dom-events'
 export { createListInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'

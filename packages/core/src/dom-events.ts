@@ -4,7 +4,7 @@ import { ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'
 import { setNodeAttributes } from './utils/set-node-attributes'
 
-/** @public */
+/** @internal */
 export function handleListMarkerMouseDown(
   view: EditorView,
   event: MouseEvent,
@@ -34,7 +34,7 @@ export function handleListMarkerMouseDown(
   return false
 }
 
-/** @public */
+/** @internal */
 export type ListClickHandler = (node: ProsemirrorNode) => ListAttributes
 
 /** @internal */

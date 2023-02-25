@@ -1,4 +1,8 @@
-/** @public */
+/**
+ * All default list node kinds.
+ *
+ * @public
+ */
 export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
 /** @public */

@@ -2,6 +2,8 @@
 
 [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).ListExtension
 
+A Remirror extension for creating lists. It's a simple wrapper around the API from `prosemirror-flat-list`.
+
 ## Hierarchy
 
 - `NodeExtension`
@@ -84,13 +86,13 @@ NodeExtension.name
 
 | Name | Type |
 | :------ | :------ |
-| `dedentList` | (`props?`: `DedentListProps`) => `CommandFunction`<`object`\> |
-| `indentList` | (`props?`: `IndentListProps`) => `CommandFunction`<`object`\> |
+| `dedentList` | (`props?`: [`DedentListProps`](../interfaces/remirror_extension_flat_list.DedentListProps.md)) => `CommandFunction`<`object`\> |
+| `indentList` | (`props?`: [`IndentListProps`](../interfaces/remirror_extension_flat_list.IndentListProps.md)) => `CommandFunction`<`object`\> |
 | `moveList` | (`direction`: ``"up"`` \| ``"down"``) => `CommandFunction`<`object`\> |
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |
-| `toggleCollapsed` | (`props?`: `ToggleCollapsedProps`) => `CommandFunction`<`object`\> |
-| `wrapInList` | (`getAttrs`: `ListAttributes` \| (`range`: `NodeRange`) => ``null`` \| `ListAttributes`) => `CommandFunction`<`object`\> |
+| `toggleCollapsed` | (`props?`: [`ToggleCollapsedProps`](../interfaces/remirror_extension_flat_list.ToggleCollapsedProps.md)) => `CommandFunction`<`object`\> |
+| `wrapInList` | (`getAttrs`: [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md) \| (`range`: `NodeRange`) => ``null`` \| [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md)) => `CommandFunction`<`object`\> |
 
 #### Overrides
 

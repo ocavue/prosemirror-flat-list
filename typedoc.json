@@ -23,7 +23,23 @@
     "readme": "none",
     "excludeExternals": true,
     "excludeInternal": true,
-    "validation": true,
+    "validation": {
+        "notExported": true,
+        "invalidLink": true,
+        "notDocumented": true,
+    },
+    "requiredToBeDocumented": [
+        "Enum",
+        "EnumMember",
+        "Variable",
+        // "Function",
+        "Class",
+        // "Interface",
+        // "Property",
+        // "Method",
+        // "Accessor",
+        "TypeAlias"
+    ],
     "visibilityFilters": {
         "protected": false,
         "private": false,
@@ -32,6 +48,7 @@
         "@alpha": false,
         "@beta": false
     },
+    "treatWarningsAsErrors": true,
     // https://www.npmjs.com/package/typedoc-plugin-markdown
     "hideBreadcrumbs": true,
 }

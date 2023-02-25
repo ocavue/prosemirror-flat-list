@@ -50,7 +50,9 @@ export function wrappingListInputRule<T extends Attrs = ListAttributes>(
   })
 }
 
-/** @public */
+/**
+ * @public
+ */
 export function createListInputRules(): InputRule[] {
   const bulletRegexp = /^\s?([*-])\s$/
   const orderedRegexp = /^\s?(\d+)\.\s$/

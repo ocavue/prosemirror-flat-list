@@ -2,7 +2,11 @@ import { DOMOutputSpec, NodeSpec } from 'prosemirror-model'
 import { createParseDomRules } from './parse-dom'
 import { listToDOM } from './to-dom'
 
-/** @public */
+/**
+ * The default group name for list nodes.
+ *
+ * @public
+ */
 export const flatListGroup = 'flatList'
 
 /** @public */
