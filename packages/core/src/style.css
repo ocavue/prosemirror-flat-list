@@ -5,10 +5,9 @@
     margin-bottom: 0;
     margin-left: 32px;
     margin-bottom: 0;
+    position: relative;
     display: list-item;
     list-style: none;
-
-    /* Note: we cannot add "position: relative;" here because of a Safari bug: https://github.com/ocavue/prosemirror-flat-list/issues/50 */
   }
 
   &.ProseMirror-selectednode {
@@ -38,7 +37,7 @@
     }
     &::before {
       position: absolute;
-      transform: translateX(-100%);
+      right: 100%;
       font-variant-numeric: tabular-nums;
       content: counter(prosemirror-flat-list-counter, decimal) '. ';
     }
@@ -47,7 +46,7 @@
   &[data-list-kind='task'] {
     & > .list-marker {
       position: absolute;
-      transform: translateX(-100%);
+      right: 100%;
       text-align: center;
       width: 1.5em;
       width: 1lh;
@@ -62,7 +61,7 @@
   &[data-list-kind='toggle'] {
     & > .list-marker {
       position: absolute;
-      transform: translateX(-100%);
+      right: 100%;
       text-align: center;
       width: 1.5em;
       width: 1lh;
