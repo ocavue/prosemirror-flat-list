@@ -1,5 +1,13 @@
 # remirror-extension-flat-list
 
+## 0.0.27
+
+### Patch Changes
+
+- 91129fa: Rename some API
+- Updated dependencies [91129fa]
+  - prosemirror-flat-list@0.0.27
+
 ## 0.0.26
 
 ### Patch Changes

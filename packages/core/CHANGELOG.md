@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.0.27
+
+### Patch Changes
+
+- 91129fa: Rename some API
+
 ## 0.0.26
 
 ### Patch Changes
