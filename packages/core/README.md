@@ -1,6 +1,6 @@
 # prosemirror-flat-list
 
-[![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&label=)](https://www.npmjs.com/package/prosemirror-flat-list)
+[![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&label=prosemirror-flat-list&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)
 
 ## Install
 
