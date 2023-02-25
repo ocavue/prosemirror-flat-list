@@ -1,5 +1,3 @@
-[prosemirror-flat-list-monorepo](../README.md) / [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md) / ListExtension
-
 # Class: ListExtension
 
 [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).ListExtension
@@ -91,6 +89,7 @@ NodeExtension.name
 | `moveList` | (`direction`: ``"up"`` \| ``"down"``) => `CommandFunction`<`object`\> |
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |
+| `toggleCollapsed` | (`props?`: `ToggleCollapsedProps`) => `CommandFunction`<`object`\> |
 | `wrapInList` | (`getAttrs`: `ListAttributes` \| (`range`: `NodeRange`) => ``null`` \| `ListAttributes`) => `CommandFunction`<`object`\> |
 
 #### Overrides

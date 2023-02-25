@@ -31,5 +31,7 @@
         "external": false,
         "@alpha": false,
         "@beta": false
-    }
+    },
+    // https://www.npmjs.com/package/typedoc-plugin-markdown
+    "hideBreadcrumbs": true,
 }

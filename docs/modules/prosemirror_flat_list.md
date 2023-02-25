@@ -1,5 +1,3 @@
-[prosemirror-flat-list-monorepo](../README.md) / prosemirror-flat-list
-
 # Module: prosemirror-flat-list
 
 ## Table of contents

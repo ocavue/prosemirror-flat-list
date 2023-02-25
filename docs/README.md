@@ -1,5 +1,3 @@
-prosemirror-flat-list-monorepo
-
 # prosemirror-flat-list-monorepo
 
 ## Table of contents

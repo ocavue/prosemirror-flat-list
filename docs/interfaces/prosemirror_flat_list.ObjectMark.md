@@ -1,5 +1,3 @@
-[prosemirror-flat-list-monorepo](../README.md) / [prosemirror-flat-list](../modules/prosemirror_flat_list.md) / ObjectMark
-
 # Interface: ObjectMark
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).ObjectMark
