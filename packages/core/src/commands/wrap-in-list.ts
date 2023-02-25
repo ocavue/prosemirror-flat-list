@@ -13,6 +13,12 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  * @public
  */
 export function createWrapInListCommand<T extends Attrs = ListAttributes>(
+  /** The list node attributes or a callback function to take the current
+   * selection block range and return list node attributes. If this callback
+   * function returns null, the command won't do anything.
+   *
+   * @public
+   */
   getAttrs: T | ((range: NodeRange) => T | null),
 ): Command {
   const wrapInList: Command = (state, dispatch): boolean => {

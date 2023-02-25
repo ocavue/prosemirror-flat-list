@@ -298,9 +298,9 @@ type an attributes.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `getAttrs` | `T` \| (`range`: `NodeRange`) => ``null`` \| `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `getAttrs` | `T` \| (`range`: `NodeRange`) => ``null`` \| `T` | The list node attributes or a callback function to take the current selection block range and return list node attributes. If this callback function returns null, the command won't do anything. |
 
 #### Returns
 
