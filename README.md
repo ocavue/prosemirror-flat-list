@@ -1,7 +1,5 @@
 # ProseMirror Flat List
 
-_Project status: Alpha. Document are not complete and the API are likely to change. Do not use in production._
-
 ## [Online demo](https://remirror-extension-flat-list.netlify.app/)
 
 ## Sponsored by [Reflect](https://reflect.app/)
