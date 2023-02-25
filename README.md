@@ -1,5 +1,8 @@
 # ProseMirror Flat List
 
+[![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&label=prosemirror-flat-list&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list) [![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&label=remirror-extension-flat-list&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list)
+
+
 ## [Online demo](https://remirror-extension-flat-list.netlify.app/)
 
 ## Sponsored by [Reflect](https://reflect.app/)
