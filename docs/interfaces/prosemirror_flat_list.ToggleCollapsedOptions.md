@@ -1,13 +1,13 @@
-# Interface: ToggleCollapsedProps
+# Interface: ToggleCollapsedOptions
 
-[prosemirror-flat-list](../modules/prosemirror_flat_list.md).ToggleCollapsedProps
+[prosemirror-flat-list](../modules/prosemirror_flat_list.md).ToggleCollapsedOptions
 
 ## Table of contents
 
 ### Properties
 
-- [collapsed](prosemirror_flat_list.ToggleCollapsedProps.md#collapsed)
-- [isToggleable](prosemirror_flat_list.ToggleCollapsedProps.md#istoggleable)
+- [collapsed](prosemirror_flat_list.ToggleCollapsedOptions.md#collapsed)
+- [isToggleable](prosemirror_flat_list.ToggleCollapsedOptions.md#istoggleable)
 
 ## Properties
 

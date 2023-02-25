@@ -1,15 +1,13 @@
-# Interface: DedentListProps
+# Interface: DedentListOptions
 
-[remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).DedentListProps
-
-Pro
+[prosemirror-flat-list](../modules/prosemirror_flat_list.md).DedentListOptions
 
 ## Table of contents
 
 ### Properties
 
-- [from](remirror_extension_flat_list.DedentListProps.md#from)
-- [to](remirror_extension_flat_list.DedentListProps.md#to)
+- [from](prosemirror_flat_list.DedentListOptions.md#from)
+- [to](prosemirror_flat_list.DedentListOptions.md#to)
 
 ## Properties
 

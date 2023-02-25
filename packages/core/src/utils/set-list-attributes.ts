@@ -1,10 +1,9 @@
-import { Attrs } from 'prosemirror-model'
 import { Transaction } from 'prosemirror-state'
 import { ListAttributes } from '../types'
 import { isListNode } from './is-list-node'
 import { setNodeAttributes } from './set-node-attributes'
 
-export function setListAttributes<T extends Attrs = ListAttributes>(
+export function setListAttributes<T extends ListAttributes = ListAttributes>(
   tr: Transaction,
   pos: number,
   attrs: T,

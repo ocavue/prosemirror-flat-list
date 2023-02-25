@@ -1,13 +1,13 @@
-# Interface: IndentListProps
+# Interface: IndentListOptions
 
-[prosemirror-flat-list](../modules/prosemirror_flat_list.md).IndentListProps
+[prosemirror-flat-list](../modules/prosemirror_flat_list.md).IndentListOptions
 
 ## Table of contents
 
 ### Properties
 
-- [from](prosemirror_flat_list.IndentListProps.md#from)
-- [to](prosemirror_flat_list.IndentListProps.md#to)
+- [from](prosemirror_flat_list.IndentListOptions.md#from)
+- [to](prosemirror_flat_list.IndentListOptions.md#to)
 
 ## Properties
 

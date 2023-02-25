@@ -1,13 +1,13 @@
-# Interface: ToggleCollapsedProps
+# Interface: ToggleCollapsedOptions
 
-[remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).ToggleCollapsedProps
+[remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).ToggleCollapsedOptions
 
 ## Table of contents
 
 ### Properties
 
-- [collapsed](remirror_extension_flat_list.ToggleCollapsedProps.md#collapsed)
-- [isToggleable](remirror_extension_flat_list.ToggleCollapsedProps.md#istoggleable)
+- [collapsed](remirror_extension_flat_list.ToggleCollapsedOptions.md#collapsed)
+- [isToggleable](remirror_extension_flat_list.ToggleCollapsedOptions.md#istoggleable)
 
 ## Properties
 

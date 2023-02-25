@@ -8,10 +8,10 @@
 
 ### Interfaces
 
-- [DedentListProps](../interfaces/remirror_extension_flat_list.DedentListProps.md)
-- [IndentListProps](../interfaces/remirror_extension_flat_list.IndentListProps.md)
+- [DedentListOptions](../interfaces/remirror_extension_flat_list.DedentListOptions.md)
+- [IndentListOptions](../interfaces/remirror_extension_flat_list.IndentListOptions.md)
 - [ListAttributes](../interfaces/remirror_extension_flat_list.ListAttributes.md)
-- [ToggleCollapsedProps](../interfaces/remirror_extension_flat_list.ToggleCollapsedProps.md)
+- [ToggleCollapsedOptions](../interfaces/remirror_extension_flat_list.ToggleCollapsedOptions.md)
 
 ### Type Aliases
 

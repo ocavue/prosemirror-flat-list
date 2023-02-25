@@ -9,7 +9,11 @@ import { listToDOM } from './to-dom'
  */
 export const flatListGroup = 'flatList'
 
-/** @public */
+/**
+ * Return the spec for list node.
+ *
+ *  @public
+ */
 export function createListSpec(): NodeSpec {
   return {
     content: 'block+',

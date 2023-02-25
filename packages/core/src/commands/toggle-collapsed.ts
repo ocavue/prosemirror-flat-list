@@ -3,8 +3,10 @@ import { Command } from 'prosemirror-state'
 import { ListAttributes } from '../types'
 import { isListNode } from '../utils/is-list-node'
 
-/** @public */
-export interface ToggleCollapsedProps {
+/**
+ * @public
+ */
+export interface ToggleCollapsedOptions {
   /**
    * If this value exists, the command will set the `collapsed` attribute to
    * this value instead of toggle it.
@@ -26,7 +28,7 @@ export interface ToggleCollapsedProps {
 export function createToggleCollapsedCommand({
   collapsed = undefined,
   isToggleable = defaultIsToggleable,
-}: ToggleCollapsedProps = {}): Command {
+}: ToggleCollapsedOptions = {}): Command {
   const toggleCollapsed: Command = (state, dispatch) => {
     const { $from } = state.selection
 

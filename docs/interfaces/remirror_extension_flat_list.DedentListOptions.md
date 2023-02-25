@@ -1,13 +1,13 @@
-# Interface: IndentListProps
+# Interface: DedentListOptions
 
-[remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).IndentListProps
+[remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).DedentListOptions
 
 ## Table of contents
 
 ### Properties
 
-- [from](remirror_extension_flat_list.IndentListProps.md#from)
-- [to](remirror_extension_flat_list.IndentListProps.md#to)
+- [from](remirror_extension_flat_list.DedentListOptions.md#from)
+- [to](remirror_extension_flat_list.DedentListOptions.md#to)
 
 ## Properties
 

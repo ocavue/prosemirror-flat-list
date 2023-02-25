@@ -1,11 +1,11 @@
 export {
   createDedentListCommand,
-  type DedentListProps,
+  type DedentListOptions,
 } from './commands/dedent-list'
 export { enterWithoutLift } from './commands/enter-without-lift'
 export {
   createIndentListCommand,
-  type IndentListProps,
+  type IndentListOptions,
 } from './commands/indent-list'
 export { listKeymap } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
@@ -13,7 +13,7 @@ export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
 export {
   createToggleCollapsedCommand,
-  ToggleCollapsedProps,
+  ToggleCollapsedOptions,
 } from './commands/toggle-collapsed'
 export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
@@ -31,7 +31,7 @@ export {
   defaultAttributesGetter,
   defaultMarkerGetter,
   listToDOM,
-  ListToDOMProps,
+  ListToDOMOptions,
 } from './schema/to-dom'
 export type {
   ListAttributes,

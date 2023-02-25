@@ -1,15 +1,15 @@
-# Interface: ListToDOMProps
+# Interface: ListToDOMOptions
 
-[prosemirror-flat-list](../modules/prosemirror_flat_list.md).ListToDOMProps
+[prosemirror-flat-list](../modules/prosemirror_flat_list.md).ListToDOMOptions
 
 ## Table of contents
 
 ### Properties
 
-- [getAttributes](prosemirror_flat_list.ListToDOMProps.md#getattributes)
-- [getMarkers](prosemirror_flat_list.ListToDOMProps.md#getmarkers)
-- [nativeList](prosemirror_flat_list.ListToDOMProps.md#nativelist)
-- [node](prosemirror_flat_list.ListToDOMProps.md#node)
+- [getAttributes](prosemirror_flat_list.ListToDOMOptions.md#getattributes)
+- [getMarkers](prosemirror_flat_list.ListToDOMOptions.md#getmarkers)
+- [nativeList](prosemirror_flat_list.ListToDOMOptions.md#nativelist)
+- [node](prosemirror_flat_list.ListToDOMOptions.md#node)
 
 ## Properties
 

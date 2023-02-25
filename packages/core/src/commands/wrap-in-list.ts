@@ -1,4 +1,4 @@
-import { Attrs, NodeRange } from 'prosemirror-model'
+import { NodeRange } from 'prosemirror-model'
 import { Command } from 'prosemirror-state'
 import { findWrapping } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
@@ -12,7 +12,9 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  *
  * @public
  */
-export function createWrapInListCommand<T extends Attrs = ListAttributes>(
+export function createWrapInListCommand<
+  T extends ListAttributes = ListAttributes,
+>(
   /** The list node attributes or a callback function to take the current
    * selection block range and return list node attributes. If this callback
    * function returns null, the command won't do anything.

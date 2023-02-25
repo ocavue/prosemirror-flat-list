@@ -14,8 +14,10 @@ import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-/** @public */
-export interface IndentListProps {
+/**
+ * @public
+ */
+export interface IndentListOptions {
   /**
    * A optional from position to indent.
    *
@@ -37,13 +39,14 @@ export interface IndentListProps {
  *
  * @public
  */
-export function createIndentListCommand(props?: IndentListProps): Command {
+export function createIndentListCommand(options?: IndentListOptions): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
 
-    // prettier-ignore
-    const $from = props?.from == null ? tr.selection.$from : tr.doc.resolve(props.from)
-    const $to = props?.to == null ? tr.selection.$to : tr.doc.resolve(props.to)
+    const $from =
+      options?.from == null ? tr.selection.$from : tr.doc.resolve(options.from)
+    const $to =
+      options?.to == null ? tr.selection.$to : tr.doc.resolve(options.to)
 
     const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false

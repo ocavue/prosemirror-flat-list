@@ -13,8 +13,10 @@ import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
 
-/** @public */
-export interface DedentListProps {
+/**
+ * @public
+ */
+export interface DedentListOptions {
   /**
    * A optional from position to indent.
    *
@@ -35,13 +37,14 @@ export interface DedentListProps {
  *
  * @public
  */
-export function createDedentListCommand(props?: DedentListProps): Command {
+export function createDedentListCommand(options?: DedentListOptions): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {
     const tr = state.tr
 
-    // prettier-ignore
-    const $from = props?.from == null ? tr.selection.$from : tr.doc.resolve(props.from)
-    const $to = props?.to == null ? tr.selection.$to : tr.doc.resolve(props.to)
+    const $from =
+      options?.from == null ? tr.selection.$from : tr.doc.resolve(options.from)
+    const $to =
+      options?.to == null ? tr.selection.$to : tr.doc.resolve(options.to)
 
     const range = findListsRange($from, $to)
     if (!range) return false

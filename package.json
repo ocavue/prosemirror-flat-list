@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "build": "nr -r --stream build",
     "dev": "nr -r --parallel dev",
-    "api": "typedoc",
+    "api": "nr -r --stream build:tsc && typedoc",
     "test": "nr -r --stream test run",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile && nr build && nr api",

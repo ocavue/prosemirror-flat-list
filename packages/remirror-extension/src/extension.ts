@@ -5,29 +5,27 @@ import {
   KeyBindings,
   NodeExtension,
   NodeExtensionSpec,
-  NodeViewMethod,
   ProsemirrorPlugin,
 } from '@remirror/core'
 import { NodeRange } from '@remirror/pm/model'
+import { createListPlugin } from 'prosemirror-flat-list'
 
 import {
   alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
-  createListNodeView,
-  createListPlugin,
   createListSpec,
   createMoveListCommand,
   createSplitListCommand,
   createToggleCollapsedCommand,
   createWrapInListCommand,
-  DedentListProps,
-  IndentListProps,
+  DedentListOptions,
+  IndentListOptions,
   ListAttributes,
   listKeymap,
   protectCollapsed,
-  ToggleCollapsedProps,
+  ToggleCollapsedOptions,
 } from 'prosemirror-flat-list'
 
 /**
@@ -51,11 +49,6 @@ export class ListExtension extends NodeExtension {
     return createListSpec()
   }
 
-  createNodeViews(): NodeViewMethod {
-    // @ts-expect-error: TODO: this need to be fixed on the remirror side
-    return createListNodeView
-  }
-
   createKeymap(): KeyBindings {
     const bindings: KeyBindings = {}
     for (const [key, command] of Object.entries(listKeymap)) {
@@ -76,10 +69,10 @@ export class ListExtension extends NodeExtension {
 
   createCommands() {
     return {
-      indentList: (props?: IndentListProps) => {
+      indentList: (props?: IndentListOptions) => {
         return convertCommand(createIndentListCommand(props))
       },
-      dedentList: (props?: DedentListProps) => {
+      dedentList: (props?: DedentListOptions) => {
         return convertCommand(createDedentListCommand(props))
       },
 
@@ -99,7 +92,7 @@ export class ListExtension extends NodeExtension {
 
       protectCollapsed: () => convertCommand(protectCollapsed),
 
-      toggleCollapsed: (props?: ToggleCollapsedProps) => {
+      toggleCollapsed: (props?: ToggleCollapsedOptions) => {
         return convertCommand(createToggleCollapsedCommand(props))
       },
     } as const

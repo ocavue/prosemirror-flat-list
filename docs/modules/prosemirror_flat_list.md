@@ -8,13 +8,13 @@
 
 ### Interfaces
 
-- [DedentListProps](../interfaces/prosemirror_flat_list.DedentListProps.md)
-- [IndentListProps](../interfaces/prosemirror_flat_list.IndentListProps.md)
+- [DedentListOptions](../interfaces/prosemirror_flat_list.DedentListOptions.md)
+- [IndentListOptions](../interfaces/prosemirror_flat_list.IndentListOptions.md)
 - [ListAttributes](../interfaces/prosemirror_flat_list.ListAttributes.md)
-- [ListToDOMProps](../interfaces/prosemirror_flat_list.ListToDOMProps.md)
+- [ListToDOMOptions](../interfaces/prosemirror_flat_list.ListToDOMOptions.md)
 - [ObjectMark](../interfaces/prosemirror_flat_list.ObjectMark.md)
 - [ProsemirrorNodeJSON](../interfaces/prosemirror_flat_list.ProsemirrorNodeJSON.md)
-- [ToggleCollapsedProps](../interfaces/prosemirror_flat_list.ToggleCollapsedProps.md)
+- [ToggleCollapsedOptions](../interfaces/prosemirror_flat_list.ToggleCollapsedOptions.md)
 
 ### Type Aliases
 
@@ -129,7 +129,7 @@ ___
 
 ### createDedentListCommand
 
-▸ **createDedentListCommand**(`props?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+▸ **createDedentListCommand**(`options?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 Returns a command function that decreases the indentation of selected list nodes.
 
@@ -137,7 +137,7 @@ Returns a command function that decreases the indentation of selected list nodes
 
 | Name | Type |
 | :------ | :------ |
-| `props?` | [`DedentListProps`](../interfaces/prosemirror_flat_list.DedentListProps.md) |
+| `options?` | [`DedentListOptions`](../interfaces/prosemirror_flat_list.DedentListOptions.md) |
 
 #### Returns
 
@@ -147,7 +147,7 @@ ___
 
 ### createIndentListCommand
 
-▸ **createIndentListCommand**(`props?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
+▸ **createIndentListCommand**(`options?`): [`Command`]( https://prosemirror.net/docs/ref/#state.Command )
 
 Returns a command function that increases the indentation of selected list
 nodes.
@@ -156,7 +156,7 @@ nodes.
 
 | Name | Type |
 | :------ | :------ |
-| `props?` | [`IndentListProps`](../interfaces/prosemirror_flat_list.IndentListProps.md) |
+| `options?` | [`IndentListOptions`](../interfaces/prosemirror_flat_list.IndentListOptions.md) |
 
 #### Returns
 
@@ -167,6 +167,8 @@ ___
 ### createListInputRules
 
 ▸ **createListInputRules**(): `InputRule`[]
+
+Return all input rules for lists.
 
 #### Returns
 
@@ -201,6 +203,17 @@ ___
 
 ▸ **createListPlugin**(`schema`): `Plugin`
 
+Return a ProseMirror plugin for list.
+
+**`Remarks`**
+
+This plugin is responsible for the following:
+
+1. Handling DOM events for clicking on list markers.
+2. Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`)
+   to clipboard. See [ListDOMSerializer](../classes/prosemirror_flat_list.ListDOMSerializer.md).
+3. Create a custom node view for list nodes. See [createListNodeView](prosemirror_flat_list.md#createlistnodeview).
+
 #### Parameters
 
 | Name | Type |
@@ -216,6 +229,8 @@ ___
 ### createListSpec
 
 ▸ **createListSpec**(): `NodeSpec`
+
+Return the spec for list node.
 
 #### Returns
 
@@ -275,7 +290,7 @@ Return a command function that toggle the `collapsed` attribute of the list node
 
 | Name | Type |
 | :------ | :------ |
-| `«destructured»` | [`ToggleCollapsedProps`](../interfaces/prosemirror_flat_list.ToggleCollapsedProps.md) |
+| `«destructured»` | [`ToggleCollapsedOptions`](../interfaces/prosemirror_flat_list.ToggleCollapsedOptions.md) |
 
 #### Returns
 
@@ -294,7 +309,7 @@ type an attributes.
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends `Attrs` = [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
+| `T` | extends [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) = [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
 
 #### Parameters
 
@@ -394,7 +409,7 @@ Renders a list node to DOM output spec.
 
 | Name | Type |
 | :------ | :------ |
-| `«destructured»` | [`ListToDOMProps`](../interfaces/prosemirror_flat_list.ListToDOMProps.md) |
+| `«destructured»` | [`ListToDOMOptions`](../interfaces/prosemirror_flat_list.ListToDOMOptions.md) |
 
 #### Returns
 
@@ -452,19 +467,22 @@ ___
 
 ### wrappingListInputRule
 
-▸ **wrappingListInputRule**<`T`\>(`re`, `getAttrs`): `InputRule`
+▸ **wrappingListInputRule**<`T`\>(`regexp`, `getAttrs`): `InputRule`
+
+Build an input rule for automatically wrapping a textblock into a list node
+when a given string is typed.
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends `Attrs` = [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
+| `T` | extends [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) = [`ListAttributes`](../interfaces/prosemirror_flat_list.ListAttributes.md) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `re` | `RegExp` |
+| `regexp` | `RegExp` |
 | `getAttrs` | `T` \| (`matches`: `RegExpMatchArray`) => `T` |
 
 #### Returns

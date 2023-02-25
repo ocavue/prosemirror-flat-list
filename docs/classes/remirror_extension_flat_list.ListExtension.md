@@ -31,7 +31,6 @@ A Remirror extension for creating lists. It's a simple wrapper around the API fr
 - [createInputRules](remirror_extension_flat_list.ListExtension.md#createinputrules)
 - [createKeymap](remirror_extension_flat_list.ListExtension.md#createkeymap)
 - [createNodeSpec](remirror_extension_flat_list.ListExtension.md#createnodespec)
-- [createNodeViews](remirror_extension_flat_list.ListExtension.md#createnodeviews)
 - [createTags](remirror_extension_flat_list.ListExtension.md#createtags)
 
 ## Constructors
@@ -86,12 +85,12 @@ NodeExtension.name
 
 | Name | Type |
 | :------ | :------ |
-| `dedentList` | (`props?`: [`DedentListProps`](../interfaces/remirror_extension_flat_list.DedentListProps.md)) => `CommandFunction`<`object`\> |
-| `indentList` | (`props?`: [`IndentListProps`](../interfaces/remirror_extension_flat_list.IndentListProps.md)) => `CommandFunction`<`object`\> |
+| `dedentList` | (`props?`: [`DedentListOptions`](../interfaces/remirror_extension_flat_list.DedentListOptions.md)) => `CommandFunction`<`object`\> |
+| `indentList` | (`props?`: [`IndentListOptions`](../interfaces/remirror_extension_flat_list.IndentListOptions.md)) => `CommandFunction`<`object`\> |
 | `moveList` | (`direction`: ``"up"`` \| ``"down"``) => `CommandFunction`<`object`\> |
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |
-| `toggleCollapsed` | (`props?`: [`ToggleCollapsedProps`](../interfaces/remirror_extension_flat_list.ToggleCollapsedProps.md)) => `CommandFunction`<`object`\> |
+| `toggleCollapsed` | (`props?`: [`ToggleCollapsedOptions`](../interfaces/remirror_extension_flat_list.ToggleCollapsedOptions.md)) => `CommandFunction`<`object`\> |
 | `wrapInList` | (`getAttrs`: [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md) \| (`range`: `NodeRange`) => ``null`` \| [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md)) => `CommandFunction`<`object`\> |
 
 #### Overrides
@@ -153,20 +152,6 @@ ___
 #### Overrides
 
 NodeExtension.createNodeSpec
-
-___
-
-### createNodeViews
-
-▸ **createNodeViews**(): `NodeViewMethod`<`NodeView`\>
-
-#### Returns
-
-`NodeViewMethod`<`NodeView`\>
-
-#### Overrides
-
-NodeExtension.createNodeViews
 
 ___
 

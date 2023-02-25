@@ -2,7 +2,7 @@ import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 import { ListAttributes } from '../types'
 
 /** @public */
-export interface ListToDOMProps {
+export interface ListToDOMOptions {
   /**
    * The list node to be rendered.
    */
@@ -38,7 +38,7 @@ export function listToDOM({
   nativeList = false,
   getMarkers = defaultMarkerGetter,
   getAttributes = defaultAttributesGetter,
-}: ListToDOMProps): DOMOutputSpec {
+}: ListToDOMOptions): DOMOutputSpec {
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
   const markers = markerHidden ? null : getMarkers(node)

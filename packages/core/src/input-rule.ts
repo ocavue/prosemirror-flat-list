@@ -8,49 +8,58 @@ import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
 import { parseInteger } from './utils/parse-integer'
 
-/** @public */
-export function wrappingListInputRule<T extends Attrs = ListAttributes>(
-  re: RegExp,
-  getAttrs: T | ((matches: RegExpMatchArray) => T),
-): InputRule {
-  return new InputRule(re, (state, match, start, end): Transaction | null => {
-    const tr = state.tr
-    tr.deleteRange(start, end)
+/**
+ * Build an input rule for automatically wrapping a textblock into a list node
+ * when a given string is typed.
+ *
+ * @public
+ */
+export function wrappingListInputRule<
+  T extends ListAttributes = ListAttributes,
+>(regexp: RegExp, getAttrs: T | ((matches: RegExpMatchArray) => T)): InputRule {
+  return new InputRule(
+    regexp,
+    (state, match, start, end): Transaction | null => {
+      const tr = state.tr
+      tr.deleteRange(start, end)
 
-    const attrs = typeof getAttrs === 'function' ? getAttrs(match) : getAttrs
+      const attrs = typeof getAttrs === 'function' ? getAttrs(match) : getAttrs
 
-    const $pos = tr.selection.$from
-    const listNode = $pos.index(-1) === 0 && $pos.node(-1)
-    if (listNode && isListNode(listNode)) {
-      const oldAttrs: T = listNode.attrs as T
-      const newAttrs: T = { ...oldAttrs, ...attrs }
-      const needUpdate = Object.keys(newAttrs).some(
-        (key) => newAttrs[key] !== oldAttrs[key],
-      )
+      const $pos = tr.selection.$from
+      const listNode = $pos.index(-1) === 0 && $pos.node(-1)
+      if (listNode && isListNode(listNode)) {
+        const oldAttrs: Attrs = listNode.attrs as ListAttributes
+        const newAttrs: Attrs = { ...oldAttrs, ...attrs }
+        const needUpdate = Object.keys(newAttrs).some(
+          (key) => newAttrs[key] !== oldAttrs[key],
+        )
 
-      if (needUpdate) {
-        return tr.setNodeMarkup($pos.before(-1), undefined, newAttrs)
-      } else {
+        if (needUpdate) {
+          return tr.setNodeMarkup($pos.before(-1), undefined, newAttrs)
+        } else {
+          return null
+        }
+      }
+
+      const $start = tr.doc.resolve(start)
+      const range = $start.blockRange()
+      if (!range) {
         return null
       }
-    }
 
-    const $start = tr.doc.resolve(start)
-    const range = $start.blockRange()
-    if (!range) {
-      return null
-    }
+      const wrapping = findWrapping(range, getListType(state.schema), attrs)
+      if (!wrapping) {
+        return null
+      }
 
-    const wrapping = findWrapping(range, getListType(state.schema), attrs)
-    if (!wrapping) {
-      return null
-    }
-
-    return tr.wrap(range, wrapping)
-  })
+      return tr.wrap(range, wrapping)
+    },
+  )
 }
 
 /**
+ * Return all input rules for lists.
+ *
  * @public
  */
 export function createListInputRules(): InputRule[] {

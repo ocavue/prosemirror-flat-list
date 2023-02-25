@@ -5,11 +5,15 @@ import { isListNode } from './utils/is-list-node'
 import { setNodeAttributes } from './utils/set-node-attributes'
 
 /** @internal */
-export function handleListMarkerMouseDown(
-  view: EditorView,
-  event: MouseEvent,
-  onListClick: ListClickHandler = defaultListClickHandler,
-): boolean {
+export function handleListMarkerMouseDown({
+  view,
+  event,
+  onListClick = defaultListClickHandler,
+}: {
+  view: EditorView
+  event: MouseEvent
+  onListClick?: ListClickHandler
+}): boolean {
   const target = event.target as HTMLElement | null
 
   if (target?.classList.contains('list-marker-click-target')) {
