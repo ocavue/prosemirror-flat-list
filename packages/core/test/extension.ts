@@ -8,7 +8,6 @@ import {
   ProsemirrorPlugin,
 } from '@remirror/core'
 import { NodeRange } from 'prosemirror-model'
-
 import {
   alwaysTrue,
   createDedentListCommand,
@@ -17,6 +16,7 @@ import {
   createListPlugin,
   createListSpec,
   createMoveListCommand,
+  createSafariInputMethodWorkaroundPlugin,
   createSplitListCommand,
   createToggleCollapsedCommand,
   createWrapInListCommand,
@@ -55,7 +55,10 @@ export class ListExtension extends NodeExtension {
   }
 
   createExternalPlugins(): ProsemirrorPlugin[] {
-    return [createListPlugin(this.store.schema)]
+    return [
+      createListPlugin(this.store.schema),
+      createSafariInputMethodWorkaroundPlugin(),
+    ]
   }
 
   createInputRules(): InputRule[] {

@@ -24,7 +24,10 @@ export {
 export { createListInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
-export { createListPlugin } from './plugin'
+export {
+  createListPlugin,
+  createSafariInputMethodWorkaroundPlugin,
+} from './plugin'
 export { createParseDomRules } from './schema/parse-dom'
 export { createListSpec, flatListGroup } from './schema/spec'
 export {
