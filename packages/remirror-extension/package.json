@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@remirror/core": "^2.0.11",
-    "prosemirror-flat-list": "^0.1.0"
+    "prosemirror-flat-list": "^0.1.2"
   },
   "peerDependencies": {
     "@remirror/pm": "^2.0.3"
@@ -62,10 +62,10 @@
     "@remirror/react": "^2.0.25",
     "@remirror/styles": "^2.0.3",
     "@types/dedent": "^0.7.0",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@vitest/coverage-c8": "^0.28.5",
+    "@vitest/coverage-c8": "^0.29.1",
     "dedent": "^0.7.0",
     "execa": "^7.0.0",
     "jest-prosemirror": "^2.1.1",
@@ -85,8 +85,8 @@
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
     "unified": "^10.1.2",
-    "vite": "^4.1.1",
-    "vitest": "^0.28.5"
+    "vite": "^4.1.4",
+    "vitest": "^0.29.1"
   },
   "typedoc": {
     "entryPoint": "./src/index.ts"
