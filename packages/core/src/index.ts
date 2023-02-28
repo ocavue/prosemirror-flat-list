@@ -13,13 +13,13 @@ export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
 export {
   createToggleCollapsedCommand,
-  ToggleCollapsedOptions,
+  type ToggleCollapsedOptions,
 } from './commands/toggle-collapsed'
 export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
   defaultListClickHandler,
   handleListMarkerMouseDown,
-  ListClickHandler,
+  type ListClickHandler,
 } from './dom-events'
 export { createListInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'
@@ -34,7 +34,7 @@ export {
   defaultAttributesGetter,
   defaultMarkerGetter,
   listToDOM,
-  ListToDOMOptions,
+  type ListToDOMOptions,
 } from './schema/to-dom'
 export type {
   ListAttributes,
