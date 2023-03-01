@@ -43,6 +43,7 @@
 - [createToggleCollapsedCommand](prosemirror_flat_list.md#createtogglecollapsedcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
 - [deleteCommand](prosemirror_flat_list.md#deletecommand)
+- [enterCommand](prosemirror_flat_list.md#entercommand)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
@@ -85,11 +86,11 @@ ___
 
 Returns an object containing the keymap for the list commands.
 
-- `Enter`: Split current list item or create a new paragraph. See [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand).
-- `Mod-[`: Decrease indentation. See [createDedentListCommand](prosemirror_flat_list.md#creatededentlistcommand).
-- `Mod-]`: Increase indentation. See [createIndentListCommand](prosemirror_flat_list.md#createindentlistcommand).
+- `Enter`: See [enterCommand](prosemirror_flat_list.md#entercommand).
 - `Backspace`: See [backspaceCommand](prosemirror_flat_list.md#backspacecommand).
 - `Delete`: See [deleteCommand](prosemirror_flat_list.md#deletecommand).
+- `Mod-[`: Decrease indentation. See [createDedentListCommand](prosemirror_flat_list.md#creatededentlistcommand).
+- `Mod-]`: Increase indentation. See [createIndentListCommand](prosemirror_flat_list.md#createindentlistcommand).
 
 #### Type declaration
 
@@ -376,6 +377,29 @@ Keybinding for `Delete`. It's chained with following commands:
 - [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
 - [joinTextblockForward](https://prosemirror.net/docs/ref/#commands.joinTextblockForward)
 - [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
+
+#### Returns
+
+`boolean`
+
+___
+
+### enterCommand
+
+▸ **enterCommand**(`state`, `dispatch?`, `view?`): `boolean`
+
+Keybinding for `Enter`. It's chained with following commands:
+
+- [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
+- [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
 
 #### Parameters
 
