@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.1.4
+
+### Patch Changes
+
+- 92f6d3d: Improve the keybinding for `Enter`.
+
 ## 0.1.3
 
 ### Patch Changes
