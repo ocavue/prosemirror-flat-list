@@ -45,17 +45,26 @@ export function createSplitListCommand(): Command {
 
     // When the cursor is inside the first child of the list:
     //    If the parent block is empty, dedent the list;
-    //    Otherwise split and create a new list node.
+    //    otherwise split and create a new list node.
     // When the cursor is inside the second or further children of the list:
     //    Create a new paragraph.
     if (indexInList === 0) {
       if (parentEmpty) {
+        const $listEnd = state.doc.resolve($from.end(listDepth))
+
+        const listParentDepth = listDepth - 1
+        const listParent = $from.node(listParentDepth)
+        const indexInListParent = $from.index(listParentDepth)
+        const isLastChildInListParent =
+          indexInListParent === listParent.childCount - 1
+
+        // If the list is the last child of the list parent, we want to dedent
+        // the whole list; otherwise, we only want to dedent the list content
+        // (and thus unwrap these content from the list node)
+        const range = isLastChildInListParent
+          ? new NodeRange($from, $listEnd, listParentDepth)
+          : new NodeRange($from, $listEnd, listDepth)
         const tr = state.tr
-        const range = new NodeRange(
-          $from,
-          tr.doc.resolve($from.end(listDepth)),
-          listDepth - 1,
-        )
         if (range && dedentNodeRange(range, tr)) {
           dispatch?.(tr)
           return true
