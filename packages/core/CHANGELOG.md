@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.1.3
+
+### Patch Changes
+
+- 1e1c5b9: Improve the keybinding for `Backspace`. Add a new command `joinListBackward`.
+
 ## 0.1.2
 
 ### Patch Changes
