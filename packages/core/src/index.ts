@@ -7,7 +7,8 @@ export {
   createIndentListCommand,
   type IndentListOptions,
 } from './commands/indent-list'
-export { listKeymap } from './commands/keymap'
+export { joinListBackward } from './commands/join-list-backward'
+export { listKeymap, backspaceCommand, deleteCommand } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
 export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
