@@ -29,6 +29,7 @@
 ### Functions
 
 - [alwaysTrue](prosemirror_flat_list.md#alwaystrue)
+- [backspaceCommand](prosemirror_flat_list.md#backspacecommand)
 - [createDedentListCommand](prosemirror_flat_list.md#creatededentlistcommand)
 - [createIndentListCommand](prosemirror_flat_list.md#createindentlistcommand)
 - [createListInputRules](prosemirror_flat_list.md#createlistinputrules)
@@ -41,9 +42,11 @@
 - [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand)
 - [createToggleCollapsedCommand](prosemirror_flat_list.md#createtogglecollapsedcommand)
 - [createWrapInListCommand](prosemirror_flat_list.md#createwrapinlistcommand)
+- [deleteCommand](prosemirror_flat_list.md#deletecommand)
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
+- [joinListBackward](prosemirror_flat_list.md#joinlistbackward)
 - [joinListElements](prosemirror_flat_list.md#joinlistelements)
 - [listToDOM](prosemirror_flat_list.md#listtodom)
 - [migrateDocJSON](prosemirror_flat_list.md#migratedocjson)
@@ -82,13 +85,11 @@ ___
 
 Returns an object containing the keymap for the list commands.
 
-- `Enter`: Split current list item or create a new paragraph.
-- `Mod-[`: Decrease indentation.
-- `Mod-]`: Increase indentation.
-- `Delete`: Expand selected collapsed content, or fall back to the usually delete command.
-- `Backspace`: Expand selected collapsed content, or fall back to the usually Backspace command.
-
-Notice that `Delete` and `Backspace` use [`joinTextblockForward`](https://prosemirror.net/docs/ref/#commands.joinTextblockForward) and [`joinTextblockBackward`](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward) under the hood, which have slightly different behavior than the default [`joinForward`](https://prosemirror.net/docs/ref/#commands.joinForward) and [`joinBackward`](https://prosemirror.net/docs/ref/#commands.joinBackward) commands in the `prosemirror-commands` package.
+- `Enter`: Split current list item or create a new paragraph. See [createSplitListCommand](prosemirror_flat_list.md#createsplitlistcommand).
+- `Mod-[`: Decrease indentation. See [createDedentListCommand](prosemirror_flat_list.md#creatededentlistcommand).
+- `Mod-]`: Increase indentation. See [createIndentListCommand](prosemirror_flat_list.md#createindentlistcommand).
+- `Backspace`: See [backspaceCommand](prosemirror_flat_list.md#backspacecommand).
+- `Delete`: See [deleteCommand](prosemirror_flat_list.md#deletecommand).
 
 #### Type declaration
 
@@ -125,6 +126,32 @@ if the keybinding command returns `false`
 #### Returns
 
 `T`
+
+___
+
+### backspaceCommand
+
+▸ **backspaceCommand**(`state`, `dispatch?`, `view?`): `boolean`
+
+Keybinding for `Backspace`. It's chained with following commands:
+
+- [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
+- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+- [joinListBackward](prosemirror_flat_list.md#joinlistbackward)
+- [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
+- [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
+
+#### Returns
+
+`boolean`
 
 ___
 
@@ -339,6 +366,31 @@ type an attributes.
 
 ___
 
+### deleteCommand
+
+▸ **deleteCommand**(`state`, `dispatch?`, `view?`): `boolean`
+
+Keybinding for `Delete`. It's chained with following commands:
+
+- [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
+- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+- [joinTextblockForward](https://prosemirror.net/docs/ref/#commands.joinTextblockForward)
+- [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
+
+#### Returns
+
+`boolean`
+
+___
+
 ### findListsRange
 
 ▸ **findListsRange**(`$from`, `$to?`): `NodeRange` \| ``null``
@@ -384,6 +436,28 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `type` | `NodeType` |
+
+#### Returns
+
+`boolean`
+
+___
+
+### joinListBackward
+
+▸ **joinListBackward**(`state`, `dispatch?`, `view?`): `boolean`
+
+If the text cursor is at the start of the first child of a list node, lift
+all content inside the list. If the text cursor is at the start of the last
+child of a list node, lift this child.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 #### Returns
 

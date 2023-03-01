@@ -8,33 +8,54 @@ import {
 } from 'prosemirror-commands'
 import { createDedentListCommand } from './dedent-list'
 import { createIndentListCommand } from './indent-list'
+import { joinListBackward } from './join-list-backward'
 import { protectCollapsed } from './protect-collapsed'
 import { createSplitListCommand } from './split-list'
 
-const deleteCommand = chainCommands(
+/**
+ * Keybinding for `Backspace`. It's chained with following commands:
+ *
+ * - {@link protectCollapsed}
+ * - [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+ * - {@link joinListBackward}
+ * - [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
+ * - [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
+ *
+ * @public
+ */
+export const backspaceCommand = chainCommands(
+  protectCollapsed,
+  deleteSelection,
+  joinListBackward,
+  joinTextblockBackward,
+  selectNodeBackward,
+)
+
+/**
+ * Keybinding for `Delete`. It's chained with following commands:
+ *
+ * - {@link protectCollapsed}
+ * - [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+ * - [joinTextblockForward](https://prosemirror.net/docs/ref/#commands.joinTextblockForward)
+ * - [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
+ *
+ * @public
+ */
+export const deleteCommand = chainCommands(
   protectCollapsed,
   deleteSelection,
   joinTextblockForward,
   selectNodeForward,
 )
 
-const backspaceCommand = chainCommands(
-  protectCollapsed,
-  deleteSelection,
-  joinTextblockBackward,
-  selectNodeBackward,
-)
-
 /**
  * Returns an object containing the keymap for the list commands.
  *
- * - `Enter`: Split current list item or create a new paragraph.
- * - `Mod-[`: Decrease indentation.
- * - `Mod-]`: Increase indentation.
- * - `Delete`: Expand selected collapsed content, or fall back to the usually delete command.
- * - `Backspace`: Expand selected collapsed content, or fall back to the usually Backspace command.
- *
- * Notice that `Delete` and `Backspace` use [`joinTextblockForward`](https://prosemirror.net/docs/ref/#commands.joinTextblockForward) and [`joinTextblockBackward`](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward) under the hood, which have slightly different behavior than the default [`joinForward`](https://prosemirror.net/docs/ref/#commands.joinForward) and [`joinBackward`](https://prosemirror.net/docs/ref/#commands.joinBackward) commands in the `prosemirror-commands` package.
+ * - `Enter`: Split current list item or create a new paragraph. See {@link createSplitListCommand}.
+ * - `Mod-[`: Decrease indentation. See {@link createDedentListCommand}.
+ * - `Mod-]`: Increase indentation. See {@link createIndentListCommand}.
+ * - `Backspace`: See {@link backspaceCommand}.
+ * - `Delete`: See {@link deleteCommand}.
  *
  * @public
  */
@@ -45,7 +66,7 @@ export const listKeymap = {
 
   'Mod-]': createIndentListCommand(),
 
-  Delete: deleteCommand,
-
   Backspace: backspaceCommand,
+
+  Delete: deleteCommand,
 }
