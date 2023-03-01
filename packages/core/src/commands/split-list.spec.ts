@@ -105,22 +105,20 @@ describe('splitList', () => {
       `,
     )
 
-    // aaa
-
     apply(
       run,
-      doc(
-        //
-        bulletList(p('A1')),
-        bulletList(p('<cursor>')),
-        bulletList(p('A3')),
-      ),
-      doc(
-        //
-        bulletList(p('A1')),
-        p('<cursor>'),
-        bulletList(p('A3')),
-      ),
+      markdown`
+        - 123
+        - <cursor>
+        - 456
+      `,
+      markdown`
+        - 123
+
+        <cursor>
+
+        - 456
+      `,
     )
 
     apply(
