@@ -1,8 +1,7 @@
 import { chainCommands, pcBaseKeymap } from 'prosemirror-commands'
-import { Command } from 'prosemirror-state'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { createSplitListCommand } from './split-list'
+import { listKeymap } from './keymap'
 
 describe('splitList', () => {
   const {
@@ -19,13 +18,9 @@ describe('splitList', () => {
     expandedToggleList,
   } = setupTestingEditor()
 
-  const enterCommand: Command = chainCommands(
-    createSplitListCommand(),
-    pcBaseKeymap['Enter'],
-  )
-
   const run = () => {
-    enterCommand(view.state, view.dispatch, view)
+    const command = chainCommands(listKeymap['Enter'], pcBaseKeymap['Enter'])
+    command(view.state, view.dispatch, view)
   }
 
   it('can split non-empty item', () => {
@@ -110,20 +105,22 @@ describe('splitList', () => {
       `,
     )
 
+    // aaa
+
     apply(
       run,
-      markdown`
-        - 123
-        - <cursor>
-        - 456
-      `,
-      markdown`
-        - 123
-
-        <cursor>
-
-        - 456
-      `,
+      doc(
+        //
+        bulletList(p('A1')),
+        bulletList(p('<cursor>')),
+        bulletList(p('A3')),
+      ),
+      doc(
+        //
+        bulletList(p('A1')),
+        p('<cursor>'),
+        bulletList(p('A3')),
+      ),
     )
 
     apply(
@@ -144,15 +141,16 @@ describe('splitList', () => {
     apply(
       run,
       markdown`
-        - 123
+        - A1
+
           - <cursor>
 
         paragraph
       `,
       markdown`
-        - 123
+        - A1
 
-          <cursor>
+        - <cursor>
 
         paragraph
       `,

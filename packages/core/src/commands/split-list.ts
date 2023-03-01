@@ -2,6 +2,7 @@ import { Node as ProsemirrorNode, NodeRange } from 'prosemirror-model'
 import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
+import { withAutoJoinList } from '../utils/auto-join-list'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
@@ -52,7 +53,7 @@ export function createSplitListCommand(): Command {
         const tr = state.tr
         const range = new NodeRange(
           $from,
-          tr.doc.resolve($from.end(listDepth - 1)),
+          tr.doc.resolve($from.end(listDepth)),
           listDepth - 1,
         )
         if (range && dedentNodeRange(range, tr)) {
@@ -72,7 +73,7 @@ export function createSplitListCommand(): Command {
     }
   }
 
-  return splitListCommand
+  return withAutoJoinList(splitListCommand)
 }
 
 /**
