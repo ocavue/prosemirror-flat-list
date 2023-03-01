@@ -137,7 +137,7 @@ describe('splitList', () => {
     )
   })
 
-  it('can dedent empty sub item', () => {
+  it('can dedent the last empty sub item', () => {
     apply(
       run,
       markdown`
@@ -149,6 +149,28 @@ describe('splitList', () => {
       `,
       markdown`
         - A1
+
+        - <cursor>
+
+        paragraph
+      `,
+    )
+
+    apply(
+      run,
+      markdown`
+        - A1
+
+          - B1
+
+          - <cursor>
+
+        paragraph
+      `,
+      markdown`
+        - A1
+
+          - B1
 
         - <cursor>
 
