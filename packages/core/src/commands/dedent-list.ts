@@ -137,7 +137,7 @@ function splitAndDedentRange(
   return true
 }
 
-function dedentNodeRange(range: NodeRange, tr: Transaction) {
+export function dedentNodeRange(range: NodeRange, tr: Transaction) {
   if (isListNode(range.parent)) {
     return safeLift(tr, range)
   } else {

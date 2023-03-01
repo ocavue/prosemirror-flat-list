@@ -1,13 +1,12 @@
-import { chainCommands } from 'prosemirror-commands'
-import { Node as ProsemirrorNode } from 'prosemirror-model'
+import { Node as ProsemirrorNode, NodeRange } from 'prosemirror-model'
 import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
+import { dedentNodeRange } from './dedent-list'
 import { enterWithoutLift } from './enter-without-lift'
-import { protectCollapsed } from './protect-collapsed'
 
 /**
  * Returns a command that split the current list node.
@@ -27,7 +26,12 @@ export function createSplitListCommand(): Command {
       return false
     }
 
-    const listNode = $from.node(-1)
+    if ($from.depth < 2) {
+      return false
+    }
+
+    const listDepth = $from.depth - 1
+    const listNode = $from.node(listDepth)
 
     if (!isListNode(listNode)) {
       return false
@@ -35,17 +39,26 @@ export function createSplitListCommand(): Command {
 
     const parent = $from.parent
 
-    const indexInList = $from.index(-1)
+    const indexInList = $from.index(listDepth)
     const parentEmpty = parent.content.size === 0
 
     // When the cursor is inside the first child of the list:
-    //    If the parent block is empty, delete the list bullet and lift the caret;
+    //    If the parent block is empty, dedent the list;
     //    Otherwise split and create a new list node.
     // When the cursor is inside the second or further children of the list:
-    //    If the parent block is empty, lift the parent block;
-    //    Otherwise split the parent block.
+    //    Create a new paragraph.
     if (indexInList === 0) {
       if (parentEmpty) {
+        const tr = state.tr
+        const range = new NodeRange(
+          $from,
+          tr.doc.resolve($from.end(listDepth - 1)),
+          listDepth - 1,
+        )
+        if (range && dedentNodeRange(range, tr)) {
+          dispatch?.(tr)
+          return true
+        }
         return false
       } else {
         return doSplitList(state, listNode, dispatch)
@@ -59,7 +72,7 @@ export function createSplitListCommand(): Command {
     }
   }
 
-  return chainCommands(protectCollapsed, splitListCommand)
+  return splitListCommand
 }
 
 /**
