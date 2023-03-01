@@ -1,5 +1,5 @@
 import { ProsemirrorNode } from '@remirror/core'
-import { Transaction } from 'prosemirror-state'
+import { Command, Transaction } from 'prosemirror-state'
 import { canJoin, canSplit } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
 
@@ -93,7 +93,7 @@ function isListSplitable(
 }
 
 /** @internal */
-export function autoJoinList(tr: Transaction): void {
+export function autoJoinList(tr: Transaction): Transaction {
   const ranges = getTransactionRanges(tr)
 
   const joinable = findBoundaries(ranges.next().value, tr.doc, isListJoinable)
@@ -111,4 +111,18 @@ export function autoJoinList(tr: Transaction): void {
       tr.split(pos)
     }
   }
+
+  return tr
+}
+
+/** @internal */
+export function withAutoJoinList(command: Command): Command {
+  const commandWithAutoJoinList: Command = (state, dispatch, view) => {
+    return command(
+      state,
+      dispatch && ((tr: Transaction) => dispatch(autoJoinList(tr))),
+      view,
+    )
+  }
+  return commandWithAutoJoinList
 }

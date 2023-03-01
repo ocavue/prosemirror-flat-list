@@ -1,5 +1,5 @@
 import { Command, Transaction } from 'prosemirror-state'
-import { autoJoinList } from '../utils/auto-join-list'
+import { withAutoJoinList } from '../utils/auto-join-list'
 import { cutByIndex } from '../utils/cut-by-index'
 import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
@@ -14,16 +14,13 @@ export function createMoveListCommand(direction: 'up' | 'down'): Command {
   const moveList: Command = (state, dispatch): boolean => {
     const tr = state.tr
     if (doMoveList(state.tr, direction, true, !!dispatch)) {
-      if (dispatch) {
-        autoJoinList(tr)
-        dispatch(tr)
-      }
+      dispatch?.(tr)
       return true
     }
     return false
   }
 
-  return moveList
+  return withAutoJoinList(moveList)
 }
 
 /** @internal */

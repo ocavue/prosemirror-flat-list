@@ -1,7 +1,7 @@
 import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
-import { autoJoinList } from '../utils/auto-join-list'
+import { withAutoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -50,16 +50,13 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     if (!range) return false
 
     if (dedentRange(range, tr)) {
-      if (dispatch) {
-        autoJoinList(tr)
-        dispatch(tr)
-      }
+      dispatch?.(tr)
       return true
     }
     return false
   }
 
-  return dedentListCommand
+  return withAutoJoinList(dedentListCommand)
 }
 
 function dedentRange(
@@ -137,7 +134,7 @@ function splitAndDedentRange(
   return true
 }
 
-function dedentNodeRange(range: NodeRange, tr: Transaction) {
+export function dedentNodeRange(range: NodeRange, tr: Transaction) {
   if (isListNode(range.parent)) {
     return safeLift(tr, range)
   } else {

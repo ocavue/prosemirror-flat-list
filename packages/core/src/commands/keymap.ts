@@ -13,6 +13,19 @@ import { protectCollapsed } from './protect-collapsed'
 import { createSplitListCommand } from './split-list'
 
 /**
+ * Keybinding for `Enter`. It's chained with following commands:
+ *
+ * - {@link protectCollapsed}
+ * - {@link createSplitListCommand}
+ *
+ * @public
+ */
+export const enterCommand = chainCommands(
+  protectCollapsed,
+  createSplitListCommand(),
+)
+
+/**
  * Keybinding for `Backspace`. It's chained with following commands:
  *
  * - {@link protectCollapsed}
@@ -51,22 +64,22 @@ export const deleteCommand = chainCommands(
 /**
  * Returns an object containing the keymap for the list commands.
  *
- * - `Enter`: Split current list item or create a new paragraph. See {@link createSplitListCommand}.
- * - `Mod-[`: Decrease indentation. See {@link createDedentListCommand}.
- * - `Mod-]`: Increase indentation. See {@link createIndentListCommand}.
+ * - `Enter`: See {@link enterCommand}.
  * - `Backspace`: See {@link backspaceCommand}.
  * - `Delete`: See {@link deleteCommand}.
+ * - `Mod-[`: Decrease indentation. See {@link createDedentListCommand}.
+ * - `Mod-]`: Increase indentation. See {@link createIndentListCommand}.
  *
  * @public
  */
 export const listKeymap = {
-  Enter: createSplitListCommand(),
-
-  'Mod-[': createDedentListCommand(),
-
-  'Mod-]': createIndentListCommand(),
+  Enter: enterCommand,
 
   Backspace: backspaceCommand,
 
   Delete: deleteCommand,
+
+  'Mod-[': createDedentListCommand(),
+
+  'Mod-]': createIndentListCommand(),
 }

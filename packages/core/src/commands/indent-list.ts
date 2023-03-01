@@ -2,7 +2,7 @@ import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
-import { autoJoinList } from '../utils/auto-join-list'
+import { withAutoJoinList } from '../utils/auto-join-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -52,16 +52,13 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     if (!range) return false
 
     if (indentRange(range, tr)) {
-      if (dispatch) {
-        autoJoinList(tr)
-        dispatch(tr)
-      }
+      dispatch?.(tr)
       return true
     }
     return false
   }
 
-  return indentListCommand
+  return withAutoJoinList(indentListCommand)
 }
 
 function indentRange(
