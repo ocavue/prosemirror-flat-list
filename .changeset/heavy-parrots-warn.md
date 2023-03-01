@@ -2,4 +2,4 @@
 'prosemirror-flat-list': patch
 ---
 
-Improve the keybinding for `Backspace`. Export a new command `joinListBackward`. 
+Improve the keybinding for `Backspace`. Add a new command `joinListBackward`. 
