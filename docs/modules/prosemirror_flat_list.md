@@ -475,7 +475,7 @@ Merge adjacent <ul> elements or adjacent <ol> elements into a single list elemen
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends `Element` \| `DocumentFragment` |
+| `T` | extends [`Element`]( https://developer.mozilla.org/en-US/docs/Web/API/Element ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment ) |
 
 #### Parameters
 
@@ -572,7 +572,7 @@ when a given string is typed.
 
 | Name | Type |
 | :------ | :------ |
-| `regexp` | `RegExp` |
+| `regexp` | [`RegExp`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp ) |
 | `getAttrs` | `T` \| (`matches`: `RegExpMatchArray`) => `T` |
 
 #### Returns

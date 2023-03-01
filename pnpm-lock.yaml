@@ -12,6 +12,7 @@ importers:
       prettier: ^2.8.4
       typedoc: ^0.23.26
       typedoc-plugin-markdown: ^3.14.0
+      typedoc-plugin-mdn-links: ^2.0.2
       typescript: ^4.9.5
     devDependencies:
       '@antfu/ni': 0.20.0
@@ -22,6 +23,7 @@ importers:
       prettier: 2.8.4
       typedoc: 0.23.26_typescript@4.9.5
       typedoc-plugin-markdown: 3.14.0_typedoc@0.23.26
+      typedoc-plugin-mdn-links: 2.0.2_typedoc@0.23.26
       typescript: 4.9.5
 
   examples/with-remirror:
@@ -10103,6 +10105,14 @@ packages:
       typedoc: '>=0.23.0'
     dependencies:
       handlebars: 4.7.7
+      typedoc: 0.23.26_typescript@4.9.5
+    dev: true
+
+  /typedoc-plugin-mdn-links/2.0.2_typedoc@0.23.26:
+    resolution: {integrity: sha512-Fzjvfsj3rxvmZNqWRvq9JTGBkOkrPp0kBtvJCJ4U5Jm14OF1KoRErtmwgVQcPLA5Xs8h5I/W4uZBaL8SDHsgxQ==}
+    peerDependencies:
+      typedoc: 0.22.x || 0.23.x
+    dependencies:
       typedoc: 0.23.26_typescript@4.9.5
     dev: true
 

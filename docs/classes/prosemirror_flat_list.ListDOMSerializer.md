@@ -52,7 +52,7 @@ DOMSerializer.constructor
 
 ### serializeFragment
 
-▸ **serializeFragment**(`fragment`, `options?`, `target?`): `HTMLElement` \| `DocumentFragment`
+▸ **serializeFragment**(`fragment`, `options?`, `target?`): [`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment )
 
 #### Parameters
 
@@ -60,12 +60,12 @@ DOMSerializer.constructor
 | :------ | :------ |
 | `fragment` | `Fragment` |
 | `options?` | `Object` |
-| `options.document?` | `Document` |
-| `target?` | `HTMLElement` \| `DocumentFragment` |
+| `options.document?` | [`Document`]( https://developer.mozilla.org/en-US/docs/Web/API/Document ) |
+| `target?` | [`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment ) |
 
 #### Returns
 
-`HTMLElement` \| `DocumentFragment`
+[`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment )
 
 #### Overrides
 
