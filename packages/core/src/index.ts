@@ -30,6 +30,7 @@ export {
 } from './dom-events'
 export { createListInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'
+export { createListNodeView } from './node-view'
 export {
   createListClipboardPlugin,
   createListEventPlugin,
