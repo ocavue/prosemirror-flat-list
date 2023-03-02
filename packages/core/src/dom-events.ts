@@ -1,5 +1,6 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { EditorView } from 'prosemirror-view'
+import { setSafeSelection } from './commands/set-safe-selection'
 import { ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'
 import { setNodeAttributes } from './utils/set-node-attributes'
@@ -30,7 +31,7 @@ export function handleListMarkerMouseDown({
     const listPos = $pos.before($pos.depth)
     const attrs = onListClick(list)
     if (setNodeAttributes(tr, listPos, list.attrs, attrs)) {
-      view.dispatch(tr)
+      view.dispatch(setSafeSelection(tr))
     }
     return true
   }

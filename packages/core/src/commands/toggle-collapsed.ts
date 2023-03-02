@@ -2,6 +2,7 @@ import { ProsemirrorNode } from '@remirror/core'
 import { Command } from 'prosemirror-state'
 import { ListAttributes } from '../types'
 import { isListNode } from '../utils/is-list-node'
+import { setSafeSelection } from './set-safe-selection'
 
 /**
  * @public
@@ -35,15 +36,13 @@ export function createToggleCollapsedCommand({
     for (let depth = $from.depth; depth >= 0; depth--) {
       const node = $from.node(depth)
       if (isListNode(node) && isToggleable(node)) {
-        const pos = $from.before(depth)
-        const attrs = node.attrs as ListAttributes
-        dispatch?.(
-          state.tr.setNodeAttribute(
-            pos,
-            'collapsed',
-            collapsed ?? !attrs.collapsed,
-          ),
-        )
+        if (dispatch) {
+          const pos = $from.before(depth)
+          const attrs = node.attrs as ListAttributes
+          const tr = state.tr
+          tr.setNodeAttribute(pos, 'collapsed', collapsed ?? !attrs.collapsed)
+          dispatch(setSafeSelection(tr))
+        }
         return true
       }
     }

@@ -9,12 +9,13 @@ export {
 } from './commands/indent-list'
 export { joinListBackward } from './commands/join-list-backward'
 export {
-  listKeymap,
   backspaceCommand,
   deleteCommand,
   enterCommand,
+  listKeymap,
 } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
+export { setSafeSelection } from './commands/set-safe-selection'
 export { protectCollapsed } from './commands/protect-collapsed'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
 export {
@@ -51,6 +52,7 @@ export type {
 } from './types'
 export { alwaysTrue } from './utils/always-true'
 export { getListType } from './utils/get-list-type'
+export { isCollapsedListNode } from './utils/is-collapsed-list-node'
 export { isListNode } from './utils/is-list-node'
 export { isListType } from './utils/is-list-type'
 export { findListsRange, isListsRange } from './utils/list-range'
