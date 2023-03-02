@@ -13,10 +13,9 @@ import {
   createDedentListCommand,
   createIndentListCommand,
   createListInputRules,
-  createListPlugin,
+  createListPlugins,
   createListSpec,
   createMoveListCommand,
-  createSafariInputMethodWorkaroundPlugin,
   createSplitListCommand,
   createToggleCollapsedCommand,
   createWrapInListCommand,
@@ -55,10 +54,7 @@ export class ListExtension extends NodeExtension {
   }
 
   createExternalPlugins(): ProsemirrorPlugin[] {
-    return [
-      createListPlugin(this.store.schema),
-      createSafariInputMethodWorkaroundPlugin(),
-    ]
+    return createListPlugins({ schema: this.store.schema })
   }
 
   createInputRules(): InputRule[] {
