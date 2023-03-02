@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.1.5
+
+### Patch Changes
+
+- 22fd935: When collapsing a list node, make sure that the selection cursor won't stay inside hidden nodes.
+
 ## 0.1.4
 
 ### Patch Changes
