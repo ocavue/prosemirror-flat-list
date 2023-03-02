@@ -1,6 +1,7 @@
 import { Schema } from 'prosemirror-model'
 import { Plugin } from 'prosemirror-state'
 import { createListClipboardPlugin } from './clipboard'
+import { createListEventPlugin } from './event'
 import { createListRenderingPlugin } from './rendering'
 import { createSafariInputMethodWorkaroundPlugin } from './safari-workaround'
 
@@ -12,6 +13,7 @@ import { createSafariInputMethodWorkaroundPlugin } from './safari-workaround'
  * The plugins are shown below. You can pick and choose which plugins you want
  * to use if you want to customize some behavior.
  *
+ * - {@link createListEventPlugin}
  * - {@link createListRenderingPlugin}
  * - {@link createListClipboardPlugin}
  * - {@link createSafariInputMethodWorkaroundPlugin}
@@ -20,6 +22,7 @@ import { createSafariInputMethodWorkaroundPlugin } from './safari-workaround'
  */
 export function createListPlugins({ schema }: { schema: Schema }): Plugin[] {
   return [
+    createListEventPlugin(),
     createListRenderingPlugin(),
     createListClipboardPlugin(schema),
     createSafariInputMethodWorkaroundPlugin(),
@@ -27,6 +30,7 @@ export function createListPlugins({ schema }: { schema: Schema }): Plugin[] {
 }
 
 export {
+  createListEventPlugin,
   createListClipboardPlugin,
   createListRenderingPlugin,
   createSafariInputMethodWorkaroundPlugin,

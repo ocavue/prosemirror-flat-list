@@ -33,6 +33,7 @@ export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
 export {
   createListClipboardPlugin,
+  createListEventPlugin,
   createListPlugins,
   createListRenderingPlugin,
   createSafariInputMethodWorkaroundPlugin,
