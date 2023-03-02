@@ -116,12 +116,12 @@ function fixList(tr: Transaction): Transaction {
 
 /** @internal */
 export function withAutoFixList(command: Command): Command {
-  const commandWithAutoJoinList: Command = (state, dispatch, view) => {
+  const wrappedCommand: Command = (state, dispatch, view) => {
     return command(
       state,
       dispatch && ((tr: Transaction) => dispatch(fixList(tr))),
       view,
     )
   }
-  return commandWithAutoJoinList
+  return wrappedCommand
 }
