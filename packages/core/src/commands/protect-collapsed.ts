@@ -1,6 +1,5 @@
 import { Command } from 'prosemirror-state'
-import { ListAttributes } from '../types'
-import { isListNode } from '../utils/is-list-node'
+import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
 
 /**
  * This command will protect the collapsed items from being deleted.
@@ -24,12 +23,7 @@ export const protectCollapsed: Command = (state, dispatch): boolean => {
     if (found && !dispatch) {
       return false
     }
-    if (
-      parent &&
-      isListNode(parent) &&
-      (parent.attrs as ListAttributes).collapsed &&
-      index >= 1
-    ) {
+    if (parent && isCollapsedListNode(parent) && index >= 1) {
       found = true
       if (!dispatch) {
         return false

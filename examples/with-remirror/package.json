@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@7.26.1",
   "scripts": {
-    "dev": "vite --force",
+    "dev": "vite --force --open",
     "build": "vite build"
   },
   "devDependencies": {
