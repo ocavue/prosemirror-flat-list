@@ -12,6 +12,6 @@ yarn add remirror-extension-flat-list prosemirror-flat-list
 pnpm add remirror-extension-flat-list prosemirror-flat-list
 ```
 
-## API docs
+## [API Documentation](https://github.com/ocavue/prosemirror-flat-list/blob/master/docs/modules/remirror_extension_flat_list.md)
 
-For all public API, please see the [API docs](https://github.com/ocavue/prosemirror-flat-list/blob/master/docs/modules/remirror_extension_flat_list.md)
+## [Changelog](https://github.com/ocavue/prosemirror-flat-list/blob/master/packages/remirror-extension/CHANGELOG.md)
