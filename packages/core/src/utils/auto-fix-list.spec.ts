@@ -1,20 +1,20 @@
+import { Command } from 'prosemirror-state'
 import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { autoJoinList } from './auto-join-list'
+import { withAutoFixList } from './auto-fix-list'
 
 describe('autoJoinList', () => {
   const t = setupTestingEditor()
 
   it('should join two lists', () => {
-    t.apply(
-      () => {
-        const view = t.view
-        const tr = view.state.tr
-        const schema = view.state.schema
-        tr.replaceWith(8, 9, schema.text('C'))
-        autoJoinList(tr)
-        view.dispatch(tr)
-      },
+    const command: Command = withAutoFixList((state, dispatch) => {
+      const schema = state.schema
+      dispatch?.(state.tr.replaceWith(8, 9, schema.text('C')))
+      return true
+    })
+
+    t.applyCommand(
+      command,
 
       t.doc(
         /*0*/

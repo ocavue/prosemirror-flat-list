@@ -7,6 +7,7 @@ import { expect } from 'vitest'
 import { ListAttributes } from '../src/types'
 import { ListExtension } from './extension'
 import { markdownToTaggedDoc } from './markdown'
+import { Command } from 'prosemirror-state'
 
 export function setupTestingEditor() {
   const extensions = [new ListExtension(), new BlockquoteExtension()]
@@ -38,6 +39,20 @@ export function setupTestingEditor() {
     expect(editor.state).toEqualRemirrorState(after)
   }
 
+  const applyCommand = (
+    command: Command,
+    before: TaggedProsemirrorNode,
+    after: TaggedProsemirrorNode | null,
+  ) => {
+    add(before)
+    const result = command(view.state, view.dispatch, view)
+    if (!after) {
+      expect(result).toBe(false)
+    } else {
+      expect(editor.state).toEqualRemirrorState(after)
+    }
+  }
+
   const bulletList = list({ kind: 'bullet' })
   const orderedList = list({ kind: 'ordered' })
   const ordered99List = list({ kind: 'ordered', order: 99 })
@@ -59,6 +74,7 @@ export function setupTestingEditor() {
     add,
     markdown,
     apply,
+    applyCommand,
     editor,
 
     doc,

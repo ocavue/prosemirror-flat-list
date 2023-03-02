@@ -92,8 +92,7 @@ function isListSplitable(
   return false
 }
 
-/** @internal */
-export function autoJoinList(tr: Transaction): Transaction {
+function fixList(tr: Transaction): Transaction {
   const ranges = getTransactionRanges(tr)
 
   const joinable = findBoundaries(ranges.next().value, tr.doc, isListJoinable)
@@ -116,11 +115,11 @@ export function autoJoinList(tr: Transaction): Transaction {
 }
 
 /** @internal */
-export function withAutoJoinList(command: Command): Command {
+export function withAutoFixList(command: Command): Command {
   const commandWithAutoJoinList: Command = (state, dispatch, view) => {
     return command(
       state,
-      dispatch && ((tr: Transaction) => dispatch(autoJoinList(tr))),
+      dispatch && ((tr: Transaction) => dispatch(fixList(tr))),
       view,
     )
   }

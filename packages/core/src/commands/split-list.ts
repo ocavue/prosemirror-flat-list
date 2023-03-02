@@ -2,7 +2,7 @@ import { Node as ProsemirrorNode, NodeRange } from 'prosemirror-model'
 import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
-import { withAutoJoinList } from '../utils/auto-join-list'
+import { withAutoFixList } from '../utils/auto-fix-list'
 import { getListType } from '../utils/get-list-type'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
@@ -82,7 +82,7 @@ export function createSplitListCommand(): Command {
     }
   }
 
-  return withAutoJoinList(splitListCommand)
+  return withAutoFixList(splitListCommand)
 }
 
 /**

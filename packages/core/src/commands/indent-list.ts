@@ -2,7 +2,7 @@ import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
-import { withAutoJoinList } from '../utils/auto-join-list'
+import { withAutoFixList } from '../utils/auto-fix-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -58,7 +58,7 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     return false
   }
 
-  return withAutoJoinList(indentListCommand)
+  return withAutoFixList(indentListCommand)
 }
 
 function indentRange(

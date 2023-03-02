@@ -1,5 +1,5 @@
 import { Command, Transaction } from 'prosemirror-state'
-import { withAutoJoinList } from '../utils/auto-join-list'
+import { withAutoFixList } from '../utils/auto-fix-list'
 import { cutByIndex } from '../utils/cut-by-index'
 import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
@@ -20,7 +20,7 @@ export function createMoveListCommand(direction: 'up' | 'down'): Command {
     return false
   }
 
-  return withAutoJoinList(moveList)
+  return withAutoFixList(moveList)
 }
 
 /** @internal */
