@@ -55,7 +55,7 @@ describe('toggleCollapsed', () => {
     t.apply(
       toggleCollapsed,
       t.doc(t.expandedToggleList(t.p('A1'), t.orderedList(t.p('B1<cursor>')))),
-      t.doc(t.collapsedToggleList(t.p('A1'), t.orderedList(t.p('B1<cursor>')))),
+      t.doc(t.collapsedToggleList(t.p('A1<cursor>'), t.orderedList(t.p('B1')))),
     )
   })
 })
