@@ -12,7 +12,7 @@ import { safeLift } from '../utils/safe-lift'
  *
  * @public
  */
-export const joinListBackward: Command = (state, dispatch, view) => {
+export const joinListUp: Command = (state, dispatch, view) => {
   const $cursor = atTextblockStart(state, view)
   if (!$cursor) return false
 
@@ -70,3 +70,12 @@ function liftParent(
     dispatch(tr)
   }
 }
+
+/**
+ * An alias to {@link joinListUp}
+ *
+ * @deprecated use joinListUp instead
+ *
+ * @public
+ */
+export const joinListBackward = joinListUp

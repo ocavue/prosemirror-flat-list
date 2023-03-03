@@ -9,7 +9,7 @@ import {
 import { createDedentListCommand } from './dedent-list'
 import { createIndentListCommand } from './indent-list'
 import { joinCollapsedListBackward } from './join-collapsed-backward'
-import { joinListBackward } from './join-list-backward'
+import { joinListUp } from './join-list-up'
 import { protectCollapsed } from './protect-collapsed'
 import { createSplitListCommand } from './split-list'
 
@@ -31,7 +31,7 @@ export const enterCommand = chainCommands(
  *
  * - {@link protectCollapsed}
  * - [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
- * - {@link joinListBackward}
+ * - {@link joinListUp}
  * - {@link joinCollapsedListBackward}
  * - [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
  * - [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
@@ -41,7 +41,7 @@ export const enterCommand = chainCommands(
 export const backspaceCommand = chainCommands(
   protectCollapsed,
   deleteSelection,
-  joinListBackward,
+  joinListUp,
   joinCollapsedListBackward,
   joinTextblockBackward,
   selectNodeBackward,

@@ -8,7 +8,7 @@ export {
   type IndentListOptions,
 } from './commands/indent-list'
 export { joinCollapsedListBackward } from './commands/join-collapsed-backward'
-export { joinListBackward } from './commands/join-list-backward'
+export { joinListBackward, joinListUp } from './commands/join-list-up'
 export {
   backspaceCommand,
   deleteCommand,
