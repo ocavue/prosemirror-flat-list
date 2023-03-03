@@ -32,9 +32,12 @@
 - [backspaceCommand](prosemirror_flat_list.md#backspacecommand)
 - [createDedentListCommand](prosemirror_flat_list.md#creatededentlistcommand)
 - [createIndentListCommand](prosemirror_flat_list.md#createindentlistcommand)
+- [createListClipboardPlugin](prosemirror_flat_list.md#createlistclipboardplugin)
+- [createListEventPlugin](prosemirror_flat_list.md#createlisteventplugin)
 - [createListInputRules](prosemirror_flat_list.md#createlistinputrules)
 - [createListNodeView](prosemirror_flat_list.md#createlistnodeview)
-- [createListPlugin](prosemirror_flat_list.md#createlistplugin)
+- [createListPlugins](prosemirror_flat_list.md#createlistplugins)
+- [createListRenderingPlugin](prosemirror_flat_list.md#createlistrenderingplugin)
 - [createListSpec](prosemirror_flat_list.md#createlistspec)
 - [createMoveListCommand](prosemirror_flat_list.md#createmovelistcommand)
 - [createParseDomRules](prosemirror_flat_list.md#createparsedomrules)
@@ -193,6 +196,37 @@ nodes.
 
 ___
 
+### createListClipboardPlugin
+
+▸ **createListClipboardPlugin**(`schema`): `Plugin`
+
+Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
+clipboard. See [ListDOMSerializer](../classes/prosemirror_flat_list.ListDOMSerializer.md).
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `schema` | `Schema`<`any`, `any`\> |
+
+#### Returns
+
+`Plugin`
+
+___
+
+### createListEventPlugin
+
+▸ **createListEventPlugin**(): `Plugin`
+
+Handle DOM events for list.
+
+#### Returns
+
+`Plugin`
+
+___
+
 ### createListInputRules
 
 ▸ **createListInputRules**(): `InputRule`[]
@@ -228,26 +262,38 @@ list node get updated when its marker styling should changes.
 
 ___
 
-### createListPlugin
+### createListPlugins
 
-▸ **createListPlugin**(`schema`): `Plugin`
+▸ **createListPlugins**(`«destructured»`): `Plugin`[]
 
-Return a ProseMirror plugin for list.
+This function returns an array of plugins that are required for list to work.
 
-**`Remarks`**
+The plugins are shown below. You can pick and choose which plugins you want
+to use if you want to customize some behavior.
 
-This plugin is responsible for the following:
-
-1. Handling DOM events for clicking on list markers.
-2. Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`)
-   to clipboard. See [ListDOMSerializer](../classes/prosemirror_flat_list.ListDOMSerializer.md).
-3. Create a custom node view for list nodes. See [createListNodeView](prosemirror_flat_list.md#createlistnodeview).
+- [createListEventPlugin](prosemirror_flat_list.md#createlisteventplugin)
+- [createListRenderingPlugin](prosemirror_flat_list.md#createlistrenderingplugin)
+- [createListClipboardPlugin](prosemirror_flat_list.md#createlistclipboardplugin)
+- [createSafariInputMethodWorkaroundPlugin](prosemirror_flat_list.md#createsafariinputmethodworkaroundplugin)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
+| `«destructured»` | `Object` |
+| › `schema` | `Schema`<`any`, `any`\> |
+
+#### Returns
+
+`Plugin`[]
+
+___
+
+### createListRenderingPlugin
+
+▸ **createListRenderingPlugin**(): `Plugin`
+
+Handle the list node rendering.
 
 #### Returns
 
