@@ -1,17 +1,17 @@
 import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { createWrapInListCommand } from './wrap-in-list'
 
 describe('wrapInList', () => {
   const t = setupTestingEditor()
   const markdown = t.markdown
-  const commands = t.editor.commands
 
-  const wrapInBulletList = () => commands.wrapInList({ kind: 'bullet' })
-  const wrapInOrderedList = () => commands.wrapInList({ kind: 'ordered' })
-  const wrapInTaskList = () => commands.wrapInList({ kind: 'task' })
+  const wrapInBulletList = createWrapInListCommand({ kind: 'bullet' })
+  const wrapInOrderedList = createWrapInListCommand({ kind: 'ordered' })
+  const wrapInTaskList = createWrapInListCommand({ kind: 'task' })
 
   it('can wrap a paragraph node to a list node', () => {
-    t.apply(
+    t.applyCommand(
       wrapInBulletList,
       markdown`
         P1
@@ -27,7 +27,7 @@ describe('wrapInList', () => {
   })
 
   it('can wrap multiple paragraph nodes to list nodes', () => {
-    t.apply(
+    t.applyCommand(
       wrapInTaskList,
       markdown`
         P1
@@ -46,7 +46,7 @@ describe('wrapInList', () => {
   })
 
   it('can change the type of an existing list node', () => {
-    t.apply(
+    t.applyCommand(
       wrapInOrderedList,
       markdown`
         - P1
@@ -62,7 +62,7 @@ describe('wrapInList', () => {
   })
 
   it('can change the type of multiple existing list nodes', () => {
-    t.apply(
+    t.applyCommand(
       wrapInTaskList,
       markdown`
         - P1

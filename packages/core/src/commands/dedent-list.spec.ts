@@ -7,11 +7,10 @@ import { createDedentListCommand } from './dedent-list'
 describe('dedentList', () => {
   const t = setupTestingEditor()
   const markdown = t.markdown
-  const commands = t.editor.commands
 
   it('can dedent a list node to outer list', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
           - B<cursor>1
@@ -22,8 +21,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - - <cursor>B1
         - A1
@@ -36,8 +35,8 @@ describe('dedentList', () => {
   })
 
   it('can dedent a paragraph node to outer list', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -56,8 +55,8 @@ describe('dedentList', () => {
   })
 
   it('can unwrap a list node', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1<cursor>
 
@@ -70,8 +69,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1<cursor>
         - A2
@@ -83,8 +82,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
         - A2<cursor>
@@ -98,8 +97,8 @@ describe('dedentList', () => {
   })
 
   it('can unwrap multiple list nodes', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1<start>
         - A2<end>
@@ -111,8 +110,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
         - A2<start>
@@ -132,8 +131,8 @@ describe('dedentList', () => {
   })
 
   it('can keep siblings after the lifted items at the same position', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -168,8 +167,8 @@ describe('dedentList', () => {
   })
 
   it('can only dedent selected part when the selection across multiple depth of a nested lists', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -194,8 +193,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -226,8 +225,8 @@ describe('dedentList', () => {
   })
 
   it('can wrap unselected paragraphs with a list node if necessary', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -262,8 +261,8 @@ describe('dedentList', () => {
   })
 
   it('can keep the indentation of sub list', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
 
@@ -280,8 +279,8 @@ describe('dedentList', () => {
       `,
     )
 
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1<cursor>
 
@@ -296,8 +295,8 @@ describe('dedentList', () => {
   })
 
   it('do nothing when not inside a list', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         Hello<cursor>
 
@@ -312,8 +311,8 @@ describe('dedentList', () => {
   })
 
   it('can dedent a nested list item', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - - B1<cursor>
 
@@ -332,8 +331,8 @@ describe('dedentList', () => {
   })
 
   it('can accept custom positions', () => {
-    t.apply(
-      () => commands.dedentList({ from: 13, to: 17 }),
+    t.applyCommand(
+      createDedentListCommand({ from: 13, to: 17 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -351,8 +350,8 @@ describe('dedentList', () => {
       ),
     )
 
-    t.apply(
-      () => commands.dedentList({ from: 10, to: 14 }),
+    t.applyCommand(
+      createDedentListCommand({ from: 10, to: 14 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -372,8 +371,8 @@ describe('dedentList', () => {
   })
 
   it('can handle some complex nested lists', () => {
-    t.apply(
-      commands.dedentList,
+    t.applyCommand(
+      createDedentListCommand(),
       markdown`
         - A1
           - B1

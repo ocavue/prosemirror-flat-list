@@ -1,7 +1,5 @@
-import { chainCommands, pcBaseKeymap } from 'prosemirror-commands'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { listKeymap } from './keymap'
 
 describe('splitList', () => {
   const {
@@ -13,14 +11,12 @@ describe('splitList', () => {
     editor,
     markdown,
     apply,
-    view,
     collapsedToggleList,
     expandedToggleList,
   } = setupTestingEditor()
 
   const run = () => {
-    const command = chainCommands(listKeymap['Enter'], pcBaseKeymap['Enter'])
-    command(view.state, view.dispatch, view)
+    editor.press('Enter')
   }
 
   it('can split non-empty item', () => {
