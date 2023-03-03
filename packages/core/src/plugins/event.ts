@@ -2,7 +2,7 @@ import { Plugin } from 'prosemirror-state'
 import { handleListMarkerMouseDown } from '../dom-events'
 
 /**
- * Handle the DOM events for list
+ * Handle DOM events for list.
  *
  * @public
  */
