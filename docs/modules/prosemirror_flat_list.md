@@ -50,8 +50,10 @@
 - [findListsRange](prosemirror_flat_list.md#findlistsrange)
 - [isListNode](prosemirror_flat_list.md#islistnode)
 - [isListType](prosemirror_flat_list.md#islisttype)
+- [joinCollapsedListBackward](prosemirror_flat_list.md#joincollapsedlistbackward)
 - [joinListBackward](prosemirror_flat_list.md#joinlistbackward)
 - [joinListElements](prosemirror_flat_list.md#joinlistelements)
+- [joinListUp](prosemirror_flat_list.md#joinlistup)
 - [listToDOM](prosemirror_flat_list.md#listtodom)
 - [migrateDocJSON](prosemirror_flat_list.md#migratedocjson)
 - [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
@@ -141,7 +143,8 @@ Keybinding for `Backspace`. It's chained with following commands:
 
 - [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
 - [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
-- [joinListBackward](prosemirror_flat_list.md#joinlistbackward)
+- [joinListUp](prosemirror_flat_list.md#joinlistup)
+- [joinCollapsedListBackward](prosemirror_flat_list.md#joincollapsedlistbackward)
 - [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
 - [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
 
@@ -513,13 +516,37 @@ ___
 
 ___
 
+### joinCollapsedListBackward
+
+▸ **joinCollapsedListBackward**(`state`, `dispatch?`, `view?`): `boolean`
+
+If the selection is empty and at the start of a block, and there is a
+collapsed list node right before the cursor, move current block and append it
+to the first child of the collapsed list node (i.e. skip the hidden content).
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
+
+#### Returns
+
+`boolean`
+
+___
+
 ### joinListBackward
 
 ▸ **joinListBackward**(`state`, `dispatch?`, `view?`): `boolean`
 
-If the text cursor is at the start of the first child of a list node, lift
-all content inside the list. If the text cursor is at the start of the last
-child of a list node, lift this child.
+An alias to [joinListUp](prosemirror_flat_list.md#joinlistup)
+
+**`Deprecated`**
+
+use joinListUp instead
 
 #### Parameters
 
@@ -556,6 +583,28 @@ Merge adjacent <ul> elements or adjacent <ol> elements into a single list elemen
 #### Returns
 
 `T`
+
+___
+
+### joinListUp
+
+▸ **joinListUp**(`state`, `dispatch?`, `view?`): `boolean`
+
+If the text cursor is at the start of the first child of a list node, lift
+all content inside the list. If the text cursor is at the start of the last
+child of a list node, lift this child.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | `EditorState` |
+| `dispatch?` | (`tr`: `Transaction`) => `void` |
+| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
+
+#### Returns
+
+`boolean`
 
 ___
 
