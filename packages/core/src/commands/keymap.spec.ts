@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { backspaceCommand } from './keymap'
 
 describe('Keymap', () => {
   const t = setupTestingEditor()
@@ -7,8 +8,8 @@ describe('Keymap', () => {
 
   describe('Backspace', () => {
     it('should delete the empty paragraph between two list nodes', () => {
-      t.apply(
-        () => t.editor.press('Backspace'),
+      t.applyCommand(
+        backspaceCommand,
         t.doc(
           t.bulletList(t.p('A1')),
           t.p('<cursor>'),
