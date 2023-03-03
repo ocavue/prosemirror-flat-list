@@ -29,16 +29,6 @@ export function setupTestingEditor() {
     return markdownToTaggedDoc(editor, markdown)
   }
 
-  const apply = (
-    action: () => void,
-    before: TaggedProsemirrorNode,
-    after: TaggedProsemirrorNode,
-  ) => {
-    add(before)
-    action()
-    expect(editor.state).toEqualRemirrorState(after)
-  }
-
   const applyCommand = (
     command: Command,
     before: TaggedProsemirrorNode,
@@ -73,7 +63,6 @@ export function setupTestingEditor() {
     schema,
     add,
     markdown,
-    apply,
     applyCommand,
     editor,
 
