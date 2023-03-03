@@ -8,7 +8,6 @@ import {
   ProsemirrorPlugin,
 } from '@remirror/core'
 import {
-  alwaysTrue,
   createListInputRules,
   createListPlugins,
   createListSpec,
@@ -36,8 +35,6 @@ export class ListExtension extends NodeExtension {
     for (const [key, command] of Object.entries(listKeymap)) {
       bindings[key] = convertCommand(command)
     }
-    bindings['Tab'] = alwaysTrue(bindings['Mod-]'])
-    bindings['Shift-Tab'] = alwaysTrue(bindings['Mod-['])
     return bindings
   }
 
@@ -47,17 +44,5 @@ export class ListExtension extends NodeExtension {
 
   createInputRules(): InputRule[] {
     return createListInputRules()
-  }
-
-  createCommands() {
-    return {} as const
-  }
-}
-
-declare global {
-  namespace Remirror {
-    interface AllExtensions {
-      list: ListExtension
-    }
   }
 }
