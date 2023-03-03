@@ -2,18 +2,17 @@ import { TaggedProsemirrorNode } from 'jest-remirror'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { ListAttributes } from '../types'
-import { setListAttributes } from '../utils/set-list-attributes'
 import { createIndentListCommand } from './indent-list'
 
 describe('indentList', () => {
   const t = setupTestingEditor()
   const markdown = t.markdown
-  const commands = t.editor.commands
+
+  const indentList = createIndentListCommand()
 
   it('can indent a list node and append it to the previous list node', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A<cursor>2
@@ -24,8 +23,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - ## A<cursor>2
@@ -36,8 +35,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - > ## A<cursor>2
@@ -50,8 +49,8 @@ describe('indentList', () => {
   })
 
   it('can indent multiple list nodes and append them to the previous list node', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2<start>
@@ -66,8 +65,8 @@ describe('indentList', () => {
   })
 
   it('should not wrap a paragraph with a new list node when it will bring a new visual bullet', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2a
@@ -83,8 +82,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2a
@@ -106,8 +105,8 @@ describe('indentList', () => {
   })
 
   it('can indent a paragraph and append it to the previous sibling list node', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2a
@@ -127,8 +126,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2a
@@ -154,8 +153,8 @@ describe('indentList', () => {
   })
 
   it('can only indent selected part when the selection across multiple depth of a nested lists', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1a
 
@@ -180,8 +179,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1a
 
@@ -220,8 +219,8 @@ describe('indentList', () => {
   })
 
   it('can indent multiple list nodes and append them to the previous list node', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A<start>2
@@ -236,8 +235,8 @@ describe('indentList', () => {
   })
 
   it('can add ambitious indentations', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
           - B<cursor>2
@@ -250,8 +249,8 @@ describe('indentList', () => {
   })
 
   it('can split the list when necessary', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -274,8 +273,8 @@ describe('indentList', () => {
   })
 
   it('can keep attributes', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - [ ] A1
         - [x] A<cursor>2
@@ -286,8 +285,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         1. A1
 
@@ -304,8 +303,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - [x] A1
           - B1
@@ -322,8 +321,8 @@ describe('indentList', () => {
   })
 
   it('can keep the indentation of sub list nodes', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - A2
@@ -344,42 +343,36 @@ describe('indentList', () => {
   })
 
   it('can move all collapsed content', () => {
-    t.apply(
-      () => {
-        let tr = t.view.state.tr
-        let attrs: ListAttributes = { kind: 'toggle', collapsed: true }
-        setListAttributes(tr, t.view.state.selection.from, attrs)
-        t.view.dispatch(tr)
-
-        commands.indentList()
-
-        tr = t.view.state.tr
-        attrs = { kind: 'bullet', collapsed: false }
-        setListAttributes(tr, t.view.state.selection.from, attrs)
-        t.view.dispatch(tr)
-      },
-      markdown`
-        - A1
-        - A2
-        - A3<cursor>
-          - B1
-          - B2
-          - B3
-      `,
-      markdown`
-        - A1
-        - A2
-          - A3<cursor>
-            - B1
-            - B2
-            - B3
-      `,
+    t.applyCommand(
+      indentList,
+      t.doc(
+        t.bulletList(t.p('A1')),
+        t.bulletList(t.p('A2')),
+        t.collapsedToggleList(
+          t.p('A3<cursor>'),
+          t.bulletList(t.p('B1')),
+          t.bulletList(t.p('B2')),
+          t.bulletList(t.p('B3')),
+        ),
+      ),
+      t.doc(
+        t.bulletList(t.p('A1')),
+        t.bulletList(
+          t.p('A2'),
+          t.collapsedToggleList(
+            t.p('A3<cursor>'),
+            t.bulletList(t.p('B1')),
+            t.bulletList(t.p('B2')),
+            t.bulletList(t.p('B3')),
+          ),
+        ),
+      ),
     )
   })
 
   it('can keep the indentation of sub list nodes when moving multiple list', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
         - <start>A2
@@ -398,8 +391,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
           - B1
@@ -418,8 +411,8 @@ describe('indentList', () => {
   })
 
   it('can keep the indentation of siblings around the indented item', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -436,8 +429,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -458,8 +451,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -488,8 +481,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -508,8 +501,8 @@ describe('indentList', () => {
   })
 
   it('can indent a paragraph that not inside a list node', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -522,8 +515,8 @@ describe('indentList', () => {
       `,
     )
 
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
 
@@ -546,8 +539,8 @@ describe('indentList', () => {
   })
 
   it('can accept custom positions', () => {
-    t.apply(
-      () => commands.indentList({ from: 13, to: 17 }),
+    t.applyCommand(
+      createIndentListCommand({ from: 13, to: 17 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -563,8 +556,8 @@ describe('indentList', () => {
       ),
     )
 
-    t.apply(
-      () => commands.indentList({ from: 10, to: 17 }),
+    t.applyCommand(
+      createIndentListCommand({ from: 10, to: 17 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -585,8 +578,8 @@ describe('indentList', () => {
   })
 
   it('can handle some complex nested lists', () => {
-    t.apply(
-      commands.indentList,
+    t.applyCommand(
+      indentList,
       markdown`
         - A1
           - B1
