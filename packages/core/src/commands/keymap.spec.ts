@@ -162,5 +162,45 @@ describe('Keymap', () => {
       t.editor.press('Backspace')
       expect(t.editor.state).toEqualRemirrorState(doc3)
     })
+
+    it('can skip collapsed content', () => {
+      t.applyCommand(
+        backspaceCommand,
+        t.doc(
+          t.collapsedToggleList(
+            //
+            t.p('A1'),
+            t.bulletList(t.p('B1')),
+          ),
+          t.p('<cursor>A2'),
+        ),
+        t.doc(
+          t.collapsedToggleList(
+            //
+            t.p('A1<cursor>A2'),
+            t.bulletList(t.p('B1')),
+          ),
+        ),
+      )
+
+      t.applyCommand(
+        backspaceCommand,
+        t.doc(
+          t.collapsedToggleList(
+            //
+            t.p('A1'),
+            t.bulletList(t.p('B1')),
+          ),
+          t.blockquote(t.p('<cursor>A2')),
+        ),
+        t.doc(
+          t.collapsedToggleList(
+            //
+            t.p('A1<cursor>A2'),
+            t.bulletList(t.p('B1')),
+          ),
+        ),
+      )
+    })
   })
 })
