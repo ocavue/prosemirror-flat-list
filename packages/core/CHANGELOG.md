@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.2.0
+
+### Minor Changes
+
+- a933aca: Add `createListPlugins` and remove `createListPlugin`. `createListPlugins` will return an array of plugins.
+
 ## 0.1.5
 
 ### Patch Changes
