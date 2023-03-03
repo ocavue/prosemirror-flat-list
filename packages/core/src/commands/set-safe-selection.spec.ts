@@ -1,18 +1,20 @@
+import { Command } from 'prosemirror-state'
 import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
 import { setSafeSelection } from './set-safe-selection'
 
 describe('setSafeSelection', () => {
-  const { doc, p, view, collapsedToggleList, expandedToggleList, apply } =
+  const { doc, p, collapsedToggleList, expandedToggleList, applyCommand } =
     setupTestingEditor()
 
-  const run = () => {
-    view.dispatch(setSafeSelection(view.state.tr))
+  const command: Command = (state, dispatch) => {
+    dispatch?.(setSafeSelection(state.tr))
+    return true
   }
 
   it('can move cursor outside of collapsed content', () => {
-    apply(
-      run,
+    applyCommand(
+      command,
       doc(
         collapsedToggleList(
           //
@@ -31,8 +33,8 @@ describe('setSafeSelection', () => {
   })
 
   it('does not change if the cursor is visible ', () => {
-    apply(
-      run,
+    applyCommand(
+      command,
       doc(
         collapsedToggleList(
           //
@@ -51,8 +53,8 @@ describe('setSafeSelection', () => {
   })
 
   it('can handle from position', () => {
-    apply(
-      run,
+    applyCommand(
+      command,
       doc(
         collapsedToggleList(
           //
@@ -81,8 +83,8 @@ describe('setSafeSelection', () => {
   })
 
   it('can handle to position', () => {
-    apply(
-      run,
+    applyCommand(
+      command,
       doc(
         expandedToggleList(
           //

@@ -1,7 +1,6 @@
-import { chainCommands, pcBaseKeymap } from 'prosemirror-commands'
 import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
-import { listKeymap } from './keymap'
+import { enterCommand } from './keymap'
 
 describe('splitList', () => {
   const {
@@ -12,20 +11,14 @@ describe('splitList', () => {
     blockquote,
     editor,
     markdown,
-    apply,
-    view,
+    applyCommand,
     collapsedToggleList,
     expandedToggleList,
   } = setupTestingEditor()
 
-  const run = () => {
-    const command = chainCommands(listKeymap['Enter'], pcBaseKeymap['Enter'])
-    command(view.state, view.dispatch, view)
-  }
-
   it('can split non-empty item', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123
         - 234<cursor>
@@ -41,8 +34,8 @@ describe('splitList', () => {
       `,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123
         - 23<cursor>4
@@ -54,8 +47,8 @@ describe('splitList', () => {
       `,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 1<cursor>23
         - 234
@@ -69,8 +62,8 @@ describe('splitList', () => {
   })
 
   it('can split non-empty sub item', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123
           - 456<cursor>
@@ -88,8 +81,8 @@ describe('splitList', () => {
   })
 
   it('can delete empty item', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123
         - <cursor>
@@ -105,8 +98,8 @@ describe('splitList', () => {
       `,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123
         - <cursor>
@@ -121,8 +114,8 @@ describe('splitList', () => {
       `,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - <cursor>
         - 123
@@ -136,8 +129,8 @@ describe('splitList', () => {
   })
 
   it('can dedent the last empty sub item', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - A1
 
@@ -154,8 +147,8 @@ describe('splitList', () => {
       `,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - A1
 
@@ -178,8 +171,8 @@ describe('splitList', () => {
   })
 
   it('can delete selected text', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - <start>123<end>
         - 456
@@ -193,8 +186,8 @@ describe('splitList', () => {
   })
 
   it('escapes the item when the cursor is in the first paragraph of the item', () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - 123<cursor>
 
@@ -214,8 +207,8 @@ describe('splitList', () => {
     )
 
     // Nested list item
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         - Parent
 
@@ -387,24 +380,18 @@ describe('splitList', () => {
   })
 
   it("won't effect non-list document", () => {
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         # h1
 
         1<cursor>23
       `,
-      markdown`
-        # h1
-
-        1
-
-        <cursor>23
-      `,
+      null,
     )
 
-    apply(
-      run,
+    applyCommand(
+      enterCommand,
       markdown`
         # h1
 
@@ -412,15 +399,7 @@ describe('splitList', () => {
 
         > 4<cursor>56
       `,
-      markdown`
-        # h1
-
-        123
-
-        > 4
-        >
-        > <cursor>56
-      `,
+      null,
     )
 
     add(

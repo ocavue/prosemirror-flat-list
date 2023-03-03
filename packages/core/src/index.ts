@@ -15,8 +15,8 @@ export {
   listKeymap,
 } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
-export { setSafeSelection } from './commands/set-safe-selection'
 export { protectCollapsed } from './commands/protect-collapsed'
+export { setSafeSelection } from './commands/set-safe-selection'
 export { createSplitListCommand, doSplitList } from './commands/split-list'
 export {
   createToggleCollapsedCommand,
@@ -32,9 +32,12 @@ export { createListInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
 export {
-  createListPlugin,
+  createListClipboardPlugin,
+  createListEventPlugin,
+  createListPlugins,
+  createListRenderingPlugin,
   createSafariInputMethodWorkaroundPlugin,
-} from './plugin'
+} from './plugins'
 export { createParseDomRules } from './schema/parse-dom'
 export { createListSpec, flatListGroup } from './schema/spec'
 export {
