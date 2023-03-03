@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.2.1
+
+### Patch Changes
+
+- 9cd4bbd: Adjust the Backspace behavior when there is a collapsed list node before the cursor. Now the current block will join into the first child of the list node.
+
 ## 0.2.0
 
 ### Minor Changes
