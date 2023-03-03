@@ -13,7 +13,7 @@ import { safeLift } from '../utils/safe-lift'
 export function createMoveListCommand(direction: 'up' | 'down'): Command {
   const moveList: Command = (state, dispatch): boolean => {
     const tr = state.tr
-    if (doMoveList(state.tr, direction, true, !!dispatch)) {
+    if (doMoveList(tr, direction, true, !!dispatch)) {
       dispatch?.(tr)
       return true
     }

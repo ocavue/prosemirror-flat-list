@@ -1,15 +1,15 @@
 import { describe, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
+import { createMoveListCommand } from './move-list'
 
 describe('moveList', () => {
   const t = setupTestingEditor()
   const markdown = t.markdown
-  const commands = t.editor.commands
-  const moveUp = () => commands.moveList('up')
-  const moveDown = () => commands.moveList('down')
+  const moveUp = createMoveListCommand('up')
+  const moveDown = createMoveListCommand('down')
 
   it('can move up list nodes', () => {
-    t.apply(
+    t.applyCommand(
       moveUp,
       markdown`
         - A1
@@ -25,7 +25,7 @@ describe('moveList', () => {
   })
 
   it('can move up and dedent list nodes to parent list', () => {
-    t.apply(
+    t.applyCommand(
       moveUp,
       markdown`
         - A1
@@ -45,7 +45,7 @@ describe('moveList', () => {
   })
 
   it('can move down list nodes', () => {
-    t.apply(
+    t.applyCommand(
       moveDown,
       markdown`
         - A1<start>
@@ -61,7 +61,7 @@ describe('moveList', () => {
   })
 
   it('can move down and dedent list nodes to parent list', () => {
-    t.apply(
+    t.applyCommand(
       moveDown,
       markdown`
         - A1

@@ -7,24 +7,12 @@ import {
   NodeExtensionSpec,
   ProsemirrorPlugin,
 } from '@remirror/core'
-import { NodeRange } from 'prosemirror-model'
 import {
   alwaysTrue,
-  createDedentListCommand,
-  createIndentListCommand,
   createListInputRules,
   createListPlugins,
   createListSpec,
-  createMoveListCommand,
-  createSplitListCommand,
-  createToggleCollapsedCommand,
-  createWrapInListCommand,
-  DedentListOptions,
-  IndentListOptions,
-  ListAttributes,
   listKeymap,
-  protectCollapsed,
-  ToggleCollapsedOptions,
 } from '../src/index'
 
 export class ListExtension extends NodeExtension {
@@ -62,34 +50,7 @@ export class ListExtension extends NodeExtension {
   }
 
   createCommands() {
-    return {
-      indentList: (props?: IndentListOptions) => {
-        return convertCommand(createIndentListCommand(props))
-      },
-      dedentList: (props?: DedentListOptions) => {
-        return convertCommand(createDedentListCommand(props))
-      },
-
-      wrapInList: (
-        getAttrs:
-          | ListAttributes
-          | ((range: NodeRange) => ListAttributes | null),
-      ) => {
-        return convertCommand(createWrapInListCommand<ListAttributes>(getAttrs))
-      },
-
-      moveList: (direction: 'up' | 'down') => {
-        return convertCommand(createMoveListCommand(direction))
-      },
-
-      splitList: () => convertCommand(createSplitListCommand()),
-
-      protectCollapsed: () => convertCommand(protectCollapsed),
-
-      toggleCollapsed: (props?: ToggleCollapsedOptions) => {
-        return convertCommand(createToggleCollapsedCommand(props))
-      },
-    } as const
+    return {} as const
   }
 }
 
