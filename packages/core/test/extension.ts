@@ -8,7 +8,7 @@ import {
   ProsemirrorPlugin,
 } from '@remirror/core'
 import {
-  createListInputRules,
+  listInputRules,
   createListPlugins,
   createListSpec,
   listKeymap,
@@ -43,6 +43,6 @@ export class ListExtension extends NodeExtension {
   }
 
   createInputRules(): InputRule[] {
-    return createListInputRules()
+    return listInputRules
   }
 }

@@ -9,10 +9,8 @@ import {
 } from '@remirror/core'
 import { NodeRange } from '@remirror/pm/model'
 import {
-  alwaysTrue,
   createDedentListCommand,
   createIndentListCommand,
-  createListInputRules,
   createListPlugins,
   createListSpec,
   createMoveListCommand,
@@ -22,6 +20,7 @@ import {
   DedentListOptions,
   IndentListOptions,
   ListAttributes,
+  listInputRules,
   listKeymap,
   protectCollapsed,
   ToggleCollapsedOptions,
@@ -63,7 +62,7 @@ export class ListExtension extends NodeExtension {
   }
 
   createInputRules(): InputRule[] {
-    return createListInputRules()
+    return listInputRules
   }
 
   createCommands() {
@@ -96,6 +95,20 @@ export class ListExtension extends NodeExtension {
       },
     } as const
   }
+}
+
+/**
+ * Wrap the giving command function so that it always returns `true`. This is
+ * useful when we want pressing `Tab` and `Shift-Tab` won't blur the editor even
+ * if the keybinding command returns `false`
+ *
+ * @public
+ */
+export function alwaysTrue<T extends (...args: any[]) => boolean>(func: T): T {
+  return ((...args) => {
+    func(...args)
+    return true
+  }) as T
 }
 
 declare global {

@@ -35,7 +35,7 @@ export interface DedentListOptions {
 /**
  * Returns a command function that decreases the indentation of selected list nodes.
  *
- * @public
+ * @public @group Commands
  */
 export function createDedentListCommand(options?: DedentListOptions): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {

@@ -37,7 +37,7 @@ export interface IndentListOptions {
  * Returns a command function that increases the indentation of selected list
  * nodes.
  *
- * @public
+ * @public @group Commands
  */
 export function createIndentListCommand(options?: IndentListOptions): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {

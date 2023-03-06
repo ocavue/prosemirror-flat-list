@@ -6,7 +6,7 @@ A Remirror extension for creating lists. It's a simple wrapper around the API fr
 
 ## Hierarchy
 
-- `NodeExtension`
+- [`NodeExtension`]( https://remirror.io/docs/api/core/#class-nodeextension )
 
   ↳ **`ListExtension`**
 
@@ -91,7 +91,7 @@ NodeExtension.name
 | `protectCollapsed` | () => `CommandFunction`<`object`\> |
 | `splitList` | () => `CommandFunction`<`object`\> |
 | `toggleCollapsed` | (`props?`: [`ToggleCollapsedOptions`](../interfaces/remirror_extension_flat_list.ToggleCollapsedOptions.md)) => `CommandFunction`<`object`\> |
-| `wrapInList` | (`getAttrs`: [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md) \| (`range`: `NodeRange`) => ``null`` \| [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md)) => `CommandFunction`<`object`\> |
+| `wrapInList` | (`getAttrs`: [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md) \| (`range`: [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange )) => ``null`` \| [`ListAttributes`](../interfaces/remirror_extension_flat_list.ListAttributes.md)) => `CommandFunction`<`object`\> |
 
 #### Overrides
 
@@ -101,11 +101,11 @@ ___
 
 ### createExternalPlugins
 
-▸ **createExternalPlugins**(): `Plugin`<`any`\>[]
+▸ **createExternalPlugins**(): [`Plugin`]( https://prosemirror.net/docs/ref/#state.Plugin )<`any`\>[]
 
 #### Returns
 
-`Plugin`<`any`\>[]
+[`Plugin`]( https://prosemirror.net/docs/ref/#state.Plugin )<`any`\>[]
 
 #### Overrides
 
@@ -115,11 +115,11 @@ ___
 
 ### createInputRules
 
-▸ **createInputRules**(): `InputRule`[]
+▸ **createInputRules**(): [`InputRule`]( https://prosemirror.net/docs/ref/#inputrules.InputRule )[]
 
 #### Returns
 
-`InputRule`[]
+[`InputRule`]( https://prosemirror.net/docs/ref/#inputrules.InputRule )[]
 
 #### Overrides
 

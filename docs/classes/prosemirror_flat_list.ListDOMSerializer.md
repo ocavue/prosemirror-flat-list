@@ -7,7 +7,7 @@ HTML list elements (i.e. `<ul>` and `<ol>`).
 
 ## Hierarchy
 
-- `DOMSerializer`
+- [`DOMSerializer`]( https://prosemirror.net/docs/ref/#model.DOMSerializer )
 
   ↳ **`ListDOMSerializer`**
 
@@ -58,7 +58,7 @@ DOMSerializer.constructor
 
 | Name | Type |
 | :------ | :------ |
-| `fragment` | `Fragment` |
+| `fragment` | [`Fragment`]( https://prosemirror.net/docs/ref/#model.Fragment ) |
 | `options?` | `Object` |
 | `options.document?` | [`Document`]( https://developer.mozilla.org/en-US/docs/Web/API/Document ) |
 | `target?` | [`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment ) |
@@ -81,7 +81,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
+| `schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )<`any`, `any`\> |
 
 #### Returns
 
@@ -101,7 +101,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `schema` | `Schema`<`any`, `any`\> |
+| `schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )<`any`, `any`\> |
 
 #### Returns
 

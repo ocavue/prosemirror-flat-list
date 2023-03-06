@@ -13,11 +13,11 @@
 - [ListAttributes](../interfaces/remirror_extension_flat_list.ListAttributes.md)
 - [ToggleCollapsedOptions](../interfaces/remirror_extension_flat_list.ToggleCollapsedOptions.md)
 
-### Type Aliases
+### Schema
 
 - [ListKind](remirror_extension_flat_list.md#listkind)
 
-## Type Aliases
+## Schema
 
 ### ListKind
 

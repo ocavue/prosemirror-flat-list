@@ -6,7 +6,7 @@ import { type NodeViewConstructor } from 'prosemirror-view'
  * A simple node view that is used to render the list node. It ensures that the
  * list node get updated when its marker styling should changes.
  *
- * @public
+ * @public @group Plugins
  */
 export const createListNodeView: NodeViewConstructor = (node) => {
   let prevNode = node

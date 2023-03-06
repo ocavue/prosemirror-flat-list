@@ -12,7 +12,8 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  * instead. Therefore the user can clearly know what content he is trying to
  * delete.
  *
- * @public
+ * @public @group Commands
+ *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {
   const tr = state.tr

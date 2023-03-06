@@ -10,7 +10,7 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  * Returns a command function that wraps the selection in a list with the given
  * type an attributes.
  *
- * @public
+ * @public @group Commands
  */
 export function createWrapInListCommand<
   T extends ListAttributes = ListAttributes,

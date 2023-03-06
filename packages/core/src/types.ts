@@ -1,7 +1,9 @@
+import type { Attrs } from 'prosemirror-model'
+
 /**
  * All default list node kinds.
  *
- * @public
+ * @public @group Schema
  */
 export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
@@ -13,35 +15,11 @@ export interface ListAttributes {
   collapsed?: boolean
 }
 
-/**
- * All the literal types
- *
- * @public
- */
-export declare type Literal =
-  | string
-  | number
-  | boolean
-  | undefined
-  | null
-  | void
-  | object
-
-/**
- * A JSON representation of a prosemirror Mark.
- *
- * @public
- */
-export interface ObjectMark {
-  type: string
-  attrs?: Record<string, Literal>
-}
-
 /** @public */
 export interface ProsemirrorNodeJSON {
   type: string
-  marks?: Array<ObjectMark | string>
+  marks?: Array<{ type: string; attrs?: Attrs } | string>
   text?: string
   content?: ProsemirrorNodeJSON[]
-  attrs?: Record<string, Literal>
+  attrs?: Attrs
 }

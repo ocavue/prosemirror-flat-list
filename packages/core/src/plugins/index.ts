@@ -16,7 +16,7 @@ import { createSafariInputMethodWorkaroundPlugin } from './safari-workaround'
  * - {@link createListClipboardPlugin}
  * - {@link createSafariInputMethodWorkaroundPlugin}
  *
- * @public
+ * @public @group Plugins
  */
 export function createListPlugins({ schema }: { schema: Schema }): Plugin[] {
   return [
