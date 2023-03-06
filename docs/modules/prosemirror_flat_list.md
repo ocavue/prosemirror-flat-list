@@ -47,7 +47,6 @@
 - [deleteCommand](prosemirror_flat_list.md#deletecommand)
 - [enterCommand](prosemirror_flat_list.md#entercommand)
 - [joinCollapsedListBackward](prosemirror_flat_list.md#joincollapsedlistbackward)
-- [joinListBackward](prosemirror_flat_list.md#joinlistbackward)
 - [joinListUp](prosemirror_flat_list.md#joinlistup)
 - [protectCollapsed](prosemirror_flat_list.md#protectcollapsed)
 
@@ -482,30 +481,6 @@ ___
 If the selection is empty and at the start of a block, and there is a
 collapsed list node right before the cursor, move current block and append it
 to the first child of the collapsed list node (i.e. skip the hidden content).
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch?` | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
-| `view?` | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
-
-#### Returns
-
-`boolean`
-
-___
-
-### joinListBackward
-
-▸ **joinListBackward**(`state`, `dispatch?`, `view?`): `boolean`
-
-An alias to [joinListUp](prosemirror_flat_list.md#joinlistup)
-
-**`Deprecated`**
-
-use joinListUp instead
 
 #### Parameters
 
