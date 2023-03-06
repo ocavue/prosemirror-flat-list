@@ -8,7 +8,7 @@ import {
 } from '../utils/block-boundary'
 import { getListType } from '../utils/get-list-type'
 import { isListNode } from '../utils/is-list-node'
-import { findListsRange } from '../utils/list-range'
+import { findListsRange, isListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
@@ -137,8 +137,10 @@ function splitAndDedentRange(
 export function dedentNodeRange(range: NodeRange, tr: Transaction) {
   if (isListNode(range.parent)) {
     return safeLift(tr, range)
-  } else {
+  } else if (isListsRange(range)) {
     return dedentOutOfList(tr, range)
+  } else {
+    return safeLift(tr, range)
   }
 }
 

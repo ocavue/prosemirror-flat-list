@@ -5,7 +5,7 @@ import { parseInteger } from '../utils/parse-integer'
 /**
  * Returns a set of rules for parsing HTML into ProseMirror list nodes.
  *
- * @public @group Schema 
+ * @public @group Schema
  */
 export function createParseDomRules(): readonly ParseRule[] {
   return [
