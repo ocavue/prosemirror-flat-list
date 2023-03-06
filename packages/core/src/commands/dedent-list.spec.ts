@@ -330,6 +330,22 @@ describe('dedentList', () => {
     )
   })
 
+  it('can dedent a blockquote inside a list', () => {
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - > A1
+          >
+          > A2<cursor>
+      `,
+      markdown`
+        - > A1
+
+          A2<cursor>
+      `,
+    )
+  })
+
   it('can accept custom positions', () => {
     t.applyCommand(
       createDedentListCommand({ from: 13, to: 17 }),
@@ -394,6 +410,64 @@ describe('dedentList', () => {
           - C1<end>
             - - D1
           - B4
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+            - C1
+
+              - D1
+
+                D1<start>
+
+        - A2
+
+          - B3
+
+            - C2
+
+              C2
+
+              - D2<end>
+
+              C2
+
+            - C3
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+          - B2
+
+            - C1
+
+              - D1
+
+              D1<start>
+
+        A2
+
+        - B3
+
+          - C2
+
+            C2
+
+            - D2<end>
+
+              C2
+
+            - C3
       `,
     )
   })
