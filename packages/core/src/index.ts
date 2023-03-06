@@ -8,7 +8,7 @@ export {
   type IndentListOptions,
 } from './commands/indent-list'
 export { joinCollapsedListBackward } from './commands/join-collapsed-backward'
-export { joinListBackward, joinListUp } from './commands/join-list-up'
+export { joinListUp } from './commands/join-list-up'
 export {
   backspaceCommand,
   deleteCommand,
@@ -29,7 +29,7 @@ export {
   handleListMarkerMouseDown,
   type ListClickHandler,
 } from './dom-events'
-export { createListInputRules, wrappingListInputRule } from './input-rule'
+export { listInputRules, wrappingListInputRule } from './input-rule'
 export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
 export {
@@ -47,14 +47,7 @@ export {
   listToDOM,
   type ListToDOMOptions,
 } from './schema/to-dom'
-export type {
-  ListAttributes,
-  ListKind,
-  Literal,
-  ObjectMark,
-  ProsemirrorNodeJSON,
-} from './types'
-export { alwaysTrue } from './utils/always-true'
+export type { ListAttributes, ListKind, ProsemirrorNodeJSON } from './types'
 export { getListType } from './utils/get-list-type'
 export { isCollapsedListNode } from './utils/is-collapsed-list-node'
 export { isListNode } from './utils/is-list-node'

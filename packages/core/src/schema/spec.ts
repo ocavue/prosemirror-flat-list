@@ -5,14 +5,14 @@ import { listToDOM } from './to-dom'
 /**
  * The default group name for list nodes.
  *
- * @public
+ * @public @group Schema
  */
 export const flatListGroup = 'flatList'
 
 /**
  * Return the spec for list node.
  *
- *  @public
+ *  @public @group Schema
  */
 export function createListSpec(): NodeSpec {
   return {

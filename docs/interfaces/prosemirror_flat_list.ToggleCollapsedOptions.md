@@ -22,7 +22,7 @@ ___
 
 ### isToggleable
 
-• `Optional` **isToggleable**: (`node`: `Node`) => `boolean`
+• `Optional` **isToggleable**: (`node`: [`Node`]( https://prosemirror.net/docs/ref/#model.Node )) => `boolean`
 
 #### Type declaration
 
@@ -35,7 +35,7 @@ node can toggle its `collapsed` attribute.
 
 | Name | Type |
 | :------ | :------ |
-| `node` | `Node` |
+| `node` | [`Node`]( https://prosemirror.net/docs/ref/#model.Node ) |
 
 ##### Returns
 

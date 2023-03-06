@@ -8,25 +8,16 @@
     ],
     "plugin": [
         "typedoc-plugin-markdown",
-        "typedoc-plugin-mdn-links"
+        "typedoc-plugin-mdn-links",
+        "typedoc-plugin-external-package-links",
     ],
     "out": "docs",
     "githubPages": false,
     "disableSources": true,
     "externalSymbolLinkMappings": {
-        "prosemirror-view": {
-            "EditorView": "https://prosemirror.net/docs/ref/#view.EditorView"
+        "@remirror/core": {
+            "NodeExtension": "https://remirror.io/docs/api/core/#class-nodeextension"
         },
-        "prosemirror-state": {
-            "Command": "https://prosemirror.net/docs/ref/#state.Command"
-        },
-        "prosemirror-commands": {
-            "deleteSelection": "https://prosemirror.net/docs/ref/#commands.deleteSelection",
-            "joinTextblockBackward": "https://prosemirror.net/docs/ref/#commands.joinTextblockBackward",
-            "selectNodeBackward": "https://prosemirror.net/docs/ref/#commands.selectNodeBackward",
-            "joinTextblockForward": "https://prosemirror.net/docs/ref/#commands.joinTextblockForward",
-            "selectNodeForward": "https://prosemirror.net/docs/ref/#commands.selectNodeForward",
-        }
     },
     "readme": "none",
     "excludeExternals": true,

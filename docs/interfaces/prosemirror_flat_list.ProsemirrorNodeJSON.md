@@ -16,7 +16,7 @@
 
 ### attrs
 
-• `Optional` **attrs**: `Record`<`string`, [`Literal`](../modules/prosemirror_flat_list.md#literal)\>
+• `Optional` **attrs**: [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs )
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 ### marks
 
-• `Optional` **marks**: (`string` \| [`ObjectMark`](prosemirror_flat_list.ObjectMark.md))[]
+• `Optional` **marks**: (`string` \| { `attrs?`: [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) ; `type`: `string`  })[]
 
 ___
 

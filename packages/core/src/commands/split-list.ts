@@ -12,7 +12,8 @@ import { enterWithoutLift } from './enter-without-lift'
 /**
  * Returns a command that split the current list node.
  *
- * @public
+ * @public @group Commands
+ *
  */
 export function createSplitListCommand(): Command {
   const splitListCommand: Command = (state, dispatch): boolean => {

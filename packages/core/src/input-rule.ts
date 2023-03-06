@@ -12,7 +12,7 @@ import { parseInteger } from './utils/parse-integer'
  * Build an input rule for automatically wrapping a textblock into a list node
  * when a given string is typed.
  *
- * @public
+ * @public @group Input Rules
  */
 export function wrappingListInputRule<
   T extends ListAttributes = ListAttributes,
@@ -58,38 +58,31 @@ export function wrappingListInputRule<
 }
 
 /**
- * Return all input rules for lists.
+ * All input rules for lists.
  *
- * @public
+ * @public @group Input Rules
  */
-export function createListInputRules(): InputRule[] {
-  const bulletRegexp = /^\s?([*-])\s$/
-  const orderedRegexp = /^\s?(\d+)\.\s$/
-  const taskRegexp = /^\s?\[([\sXx]?)]\s$/
-  const toggleRegexp = /^\s?>>\s$/
-
-  return [
-    wrappingListInputRule<ListAttributes>(bulletRegexp, {
-      kind: 'bullet',
+export const listInputRules: InputRule[] = [
+  wrappingListInputRule<ListAttributes>(/^\s?([*-])\s$/, {
+    kind: 'bullet',
+    collapsed: false,
+  }),
+  wrappingListInputRule<ListAttributes>(/^\s?(\d+)\.\s$/, (match) => {
+    const order = parseInteger(match[1])
+    return {
+      kind: 'ordered',
       collapsed: false,
-    }),
-    wrappingListInputRule<ListAttributes>(orderedRegexp, (match) => {
-      const order = parseInteger(match[1])
-      return {
-        kind: 'ordered',
-        collapsed: false,
-        order: order != null && order >= 2 ? order : null,
-      }
-    }),
-    wrappingListInputRule<ListAttributes>(taskRegexp, (match) => {
-      return {
-        kind: 'task',
-        checked: ['x', 'X'].includes(match[1]),
-        collapsed: false,
-      }
-    }),
-    wrappingListInputRule<ListAttributes>(toggleRegexp, {
-      kind: 'toggle',
-    }),
-  ]
-}
+      order: order != null && order >= 2 ? order : null,
+    }
+  }),
+  wrappingListInputRule<ListAttributes>(/^\s?\[([\sXx]?)]\s$/, (match) => {
+    return {
+      kind: 'task',
+      checked: ['x', 'X'].includes(match[1]),
+      collapsed: false,
+    }
+  }),
+  wrappingListInputRule<ListAttributes>(/^\s?>>\s$/, {
+    kind: 'toggle',
+  }),
+]

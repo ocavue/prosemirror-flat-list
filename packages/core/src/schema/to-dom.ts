@@ -32,7 +32,8 @@ export interface ListToDOMOptions {
 /**
  * Renders a list node to DOM output spec.
  *
- * @public */
+ * @public @group Schema
+ */
 export function listToDOM({
   node,
   nativeList = false,

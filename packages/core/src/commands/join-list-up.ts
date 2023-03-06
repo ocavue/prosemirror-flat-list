@@ -10,7 +10,7 @@ import { safeLift } from '../utils/safe-lift'
  * all content inside the list. If the text cursor is at the start of the last
  * child of a list node, lift this child.
  *
- * @public
+ * @public @group Commands
  */
 export const joinListUp: Command = (state, dispatch, view) => {
   const $cursor = atTextblockStart(state, view)
@@ -70,12 +70,3 @@ function liftParent(
     dispatch(tr)
   }
 }
-
-/**
- * An alias to {@link joinListUp}
- *
- * @deprecated use joinListUp instead
- *
- * @public
- */
-export const joinListBackward = joinListUp

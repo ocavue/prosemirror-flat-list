@@ -22,9 +22,9 @@ export interface ToggleCollapsedOptions {
 }
 
 /**
- * @public
- *
  * Return a command function that toggle the `collapsed` attribute of the list node.
+ *
+ * @public @group Commands
  */
 export function createToggleCollapsedCommand({
   collapsed = undefined,

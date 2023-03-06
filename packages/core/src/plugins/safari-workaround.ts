@@ -8,7 +8,7 @@ import * as browser from '../utils/browser'
  *
  * See also https://github.com/ProseMirror/prosemirror/issues/934
  *
- * @public
+ * @public @group Plugins
  */
 export function createSafariInputMethodWorkaroundPlugin(): Plugin {
   let view: EditorView | null = null
