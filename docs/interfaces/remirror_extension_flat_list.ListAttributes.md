@@ -1,4 +1,4 @@
-# Interface: ListAttributes
+# ListAttributes
 
 [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).ListAttributes
 

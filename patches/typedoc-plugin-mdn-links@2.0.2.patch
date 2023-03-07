@@ -1,0 +1,18 @@
+diff --git a/dist/index.js b/dist/index.js
+index 839f76c61fa6c6b2b55451eb8aaff86aa5f854e3..9b91decef300dcc5d746e7772c08a3086b3fb28a 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -8,7 +8,12 @@ const globalObjects_1 = require("./globalObjects");
+ const webaudio_1 = require("./webaudio");
+ function load(app) {
+     const failed = new Set();
+-    app.renderer.addUnknownSymbolResolver("typescript", (name) => {
++    app.converter.addUnknownSymbolResolver((declaration) => {
++        if (declaration.moduleSource !== "typescript")
++            return;
++        const name = declaration.symbolReference?.path?.[0].path;
++        if (!name)
++            return;
+         const result = (0, globalObjects_1.resolveGlobalName)(name) ??
+             (0, dom_1.resolveDomName)(name) ??
+             (0, css_1.resolveCssName)(name) ??

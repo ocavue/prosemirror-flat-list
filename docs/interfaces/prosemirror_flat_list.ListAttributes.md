@@ -1,4 +1,4 @@
-# Interface: ListAttributes
+# ListAttributes
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).ListAttributes
 

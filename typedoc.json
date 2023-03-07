@@ -1,53 +1,12 @@
 // https://typedoc.org/guides/options/
 {
     "$schema": "https://typedoc.org/schema.json",
+    "extends": [
+        "./config/typedoc-base.json"
+    ],
     "entryPointStrategy": "packages",
     "entryPoints": [
         "./packages/core",
         "./packages/remirror-extension",
     ],
-    "plugin": [
-        "typedoc-plugin-markdown",
-        "typedoc-plugin-mdn-links",
-        "typedoc-plugin-external-package-links",
-    ],
-    "out": "docs",
-    "githubPages": false,
-    "disableSources": true,
-    "externalSymbolLinkMappings": {
-        "@remirror/core": {
-            "NodeExtension": "https://remirror.io/docs/api/core/#class-nodeextension"
-        },
-    },
-    "readme": "none",
-    "excludeExternals": true,
-    "excludeInternal": true,
-    "validation": {
-        "notExported": true,
-        "invalidLink": true,
-        "notDocumented": true,
-    },
-    "requiredToBeDocumented": [
-        "Enum",
-        "EnumMember",
-        "Variable",
-        // "Function",
-        "Class",
-        // "Interface",
-        // "Property",
-        // "Method",
-        // "Accessor",
-        "TypeAlias"
-    ],
-    "visibilityFilters": {
-        "protected": false,
-        "private": false,
-        "inherited": false,
-        "external": false,
-        "@alpha": false,
-        "@beta": false
-    },
-    "treatWarningsAsErrors": true,
-    // https://www.npmjs.com/package/typedoc-plugin-markdown
-    "hideBreadcrumbs": true,
 }
