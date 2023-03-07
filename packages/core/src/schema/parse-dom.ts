@@ -48,7 +48,9 @@ export function createParseDomRules(): readonly ParseRule[] {
           ) {
             return {
               kind: 'task',
-              checked: element.hasAttribute('data-list-checked'),
+              checked:
+                element.hasAttribute('data-list-checked') ||
+                element.hasAttribute('data-checked'),
             }
           }
 
