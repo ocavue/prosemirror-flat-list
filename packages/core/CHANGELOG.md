@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.1
+
+### Patch Changes
+
+- 737299f: If the cursor is inside the second paragraph of a list node, `wrapInList` will convert this paragraph into a list node.
+
 ## 0.3.0
 
 ### Minor Changes
