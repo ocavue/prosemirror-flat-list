@@ -1,5 +1,13 @@
 # prosemirror-flat-list
 
+## 0.3.2
+
+### Patch Changes
+
+- 80e0a19: When the cursor is at the beginning of a checked list node, pressing Enter
+  should create a unchecked list node above the cursor.
+- ad81337: Fix a bug that causes checked state cannot be parsed.
+
 ## 0.3.1
 
 ### Patch Changes
