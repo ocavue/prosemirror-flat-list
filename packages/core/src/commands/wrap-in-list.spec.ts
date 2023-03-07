@@ -78,4 +78,68 @@ describe('wrapInList', () => {
       `,
     )
   })
+
+  it('can keep the type of a list node with multiple paragraphs', () => {
+    t.applyCommand(
+      wrapInBulletList,
+      markdown`
+        - P1<cursor>
+
+          P2
+
+          P3
+
+          P4
+      `,
+      markdown`
+        - P1<cursor>
+
+          P2
+
+          P3
+
+          P4
+      `,
+    )
+  })
+
+  it('can wrap a paragraph inside a list node to a sub-list node', () => {
+    t.applyCommand(
+      wrapInBulletList,
+      markdown`
+        - P1
+
+          P2<cursor>
+
+          P3
+      `,
+      markdown`
+        - P1
+
+          - P2<cursor>
+
+          P3
+      `,
+    )
+  })
+
+  it('can wrap multiple paragraphs inside a list node to a sub-list node', () => {
+    t.applyCommand(
+      wrapInBulletList,
+      markdown`
+        - P1
+
+          P2<start>
+
+          P3<end>
+      `,
+      markdown`
+        - P1
+
+          - P2<start>
+
+          - P3<end>
+      `,
+    )
+  })
 })

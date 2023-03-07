@@ -34,7 +34,8 @@ export function createWrapInListCommand<
     if (
       rangeAllowInlineContent(range) &&
       isListNode(range.parent) &&
-      range.depth > 0
+      range.depth > 0 &&
+      range.startIndex === 0
     ) {
       range = new NodeRange($from, $to, range.depth - 1)
     }
