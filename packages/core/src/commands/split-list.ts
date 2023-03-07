@@ -3,7 +3,7 @@ import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 import { ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
-import { getListType } from '../utils/get-list-type'
+import { createAndFill } from '../utils/create-and-fill'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
 import { dedentNodeRange } from './dedent-list'
@@ -95,25 +95,35 @@ export function doSplitList(
   dispatch?: (tr: Transaction) => void,
 ): boolean {
   const tr = state.tr
+  const listType = listNode.type
   const attrs: ListAttributes = listNode.attrs
+  // For the new list node, we don't want to inherit any list attribute (For example: `checked`) other than `kind`
+  const newAttrs: ListAttributes = { kind: attrs.kind }
 
   tr.delete(tr.selection.from, tr.selection.to)
 
   const { $from, $to } = tr.selection
 
-  const atEnd = $to.parentOffset == $to.parent.content.size
+  const { parentOffset } = $to
+
+  const atStart = parentOffset == 0
+  const atEnd = parentOffset == $to.parent.content.size
+
+  if (atStart) {
+    if (dispatch) {
+      const pos = $from.before(-1)
+      tr.insert(pos, createAndFill(listType, newAttrs))
+      dispatch(tr.scrollIntoView())
+    }
+    return true
+  }
 
   if (atEnd && attrs.collapsed) {
     if (dispatch) {
       const pos = $from.after(-1)
-      tr.insert(
-        pos,
-        listNode.type.createAndFill({
-          kind: attrs.kind,
-        } satisfies ListAttributes)!,
-      )
+      tr.insert(pos, createAndFill(listType, newAttrs))
       tr.setSelection(Selection.near(tr.doc.resolve(pos)))
-      dispatch(tr)
+      dispatch(tr.scrollIntoView())
     }
     return true
   }
@@ -123,14 +133,7 @@ export function doSplitList(
   // default block type (typically paragraph)
   const nextType = atEnd ? listNode.contentMatchAt(0).defaultType : undefined
   const typesAfter = [
-    {
-      type: getListType(state.schema),
-      attrs: {
-        // We don't want to inherit all list attributes (e.g. checked) except
-        // for the list kind
-        kind: attrs.kind,
-      } satisfies ListAttributes,
-    },
+    { type: listType, attrs: newAttrs },
     nextType ? { type: nextType } : null,
   ]
 
