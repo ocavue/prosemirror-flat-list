@@ -1,5 +1,17 @@
 # prosemirror-flat-list
 
+## 0.3.0
+
+### Minor Changes
+
+- fc99feb: Remove the `alwaysTrue` util function.
+- fc99feb: Replace `createListInputRules` with `listInputRules`.
+- fc99feb: Rename `joinListBackward` to `joinListUp`.
+
+### Patch Changes
+
+- a7c0ad3: Fix a bug that causes a runtime error when dedent blockquote.
+
 ## 0.2.1
 
 ### Patch Changes
