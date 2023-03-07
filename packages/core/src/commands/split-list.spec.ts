@@ -14,6 +14,8 @@ describe('splitList', () => {
     applyCommand,
     collapsedToggleList,
     expandedToggleList,
+    checkedTaskList,
+    uncheckedTaskList,
   } = setupTestingEditor()
 
   it('can split non-empty item', () => {
@@ -182,6 +184,53 @@ describe('splitList', () => {
         - <cusror>
         - 456
       `,
+    )
+  })
+
+  it('can set attributes correctly', () => {
+    applyCommand(
+      enterCommand,
+      doc(
+        checkedTaskList(p('<cursor>A1')),
+        uncheckedTaskList(p('A2')),
+        uncheckedTaskList(p('A3')),
+      ),
+      doc(
+        uncheckedTaskList(p('')),
+        checkedTaskList(p('<cursor>A1')),
+        uncheckedTaskList(p('A2')),
+        uncheckedTaskList(p('A3')),
+      ),
+    )
+
+    applyCommand(
+      enterCommand,
+      doc(
+        uncheckedTaskList(p('A1')),
+        checkedTaskList(p('A2<cursor>')),
+        uncheckedTaskList(p('A3')),
+      ),
+      doc(
+        uncheckedTaskList(p('A1')),
+        checkedTaskList(p('A2')),
+        uncheckedTaskList(p('<cursor>')),
+        uncheckedTaskList(p('A3')),
+      ),
+    )
+
+    applyCommand(
+      enterCommand,
+      doc(
+        uncheckedTaskList(p('A1')),
+        checkedTaskList(p('A<cursor>2')),
+        uncheckedTaskList(p('A3')),
+      ),
+      doc(
+        uncheckedTaskList(p('A1')),
+        checkedTaskList(p('A')),
+        uncheckedTaskList(p('<cursor>2')),
+        uncheckedTaskList(p('A3')),
+      ),
     )
   })
 
