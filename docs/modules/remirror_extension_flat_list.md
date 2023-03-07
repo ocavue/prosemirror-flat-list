@@ -1,4 +1,4 @@
-# Module: remirror-extension-flat-list
+# remirror-extension-flat-list
 
 ## Table of contents
 

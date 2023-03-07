@@ -1,4 +1,4 @@
-# Class: ListDOMSerializer
+# ListDOMSerializer
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).ListDOMSerializer
 

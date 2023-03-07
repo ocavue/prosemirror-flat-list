@@ -1,4 +1,4 @@
-# Interface: IndentListOptions
+# IndentListOptions
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).IndentListOptions
 

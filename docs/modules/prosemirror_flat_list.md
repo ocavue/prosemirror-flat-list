@@ -1,4 +1,4 @@
-# Module: prosemirror-flat-list
+# prosemirror-flat-list
 
 ## Table of contents
 

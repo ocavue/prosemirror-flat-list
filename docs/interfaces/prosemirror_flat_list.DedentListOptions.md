@@ -1,4 +1,4 @@
-# Interface: DedentListOptions
+# DedentListOptions
 
 [prosemirror-flat-list](../modules/prosemirror_flat_list.md).DedentListOptions
 

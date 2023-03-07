@@ -1,4 +1,4 @@
-# Interface: DedentListOptions
+# DedentListOptions
 
 [remirror-extension-flat-list](../modules/remirror_extension_flat_list.md).DedentListOptions
 
