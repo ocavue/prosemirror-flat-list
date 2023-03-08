@@ -1,0 +1,34 @@
+{
+    "guide": {
+        "title": "Guide",
+        "type": "page",
+        "theme": {
+            "breadcrumb": true,
+            "footer": true,
+            "sidebar": true,
+            "toc": true,
+            "pagination": false
+        }
+    },
+    "docs": {
+        "title": "API Reference",
+        "type": "page",
+        "theme": {
+            "breadcrumb": false,
+            "footer": true,
+            "sidebar": true,
+            "toc": true,
+            "pagination": false
+        }
+    },
+    "index": {
+        "display": "hidden",
+        "theme": {
+            "breadcrumb": false,
+            "footer": true,
+            "sidebar": false,
+            "toc": false,
+            "pagination": false
+        }
+    }
+}

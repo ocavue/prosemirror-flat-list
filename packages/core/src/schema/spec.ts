@@ -17,7 +17,7 @@ export const flatListGroup = 'flatList'
 export function createListSpec(): NodeSpec {
   return {
     content: 'block+',
-    group: flatListGroup,
+    group: `${flatListGroup} block`,
     defining: true,
     attrs: {
       kind: {

@@ -1,10 +1,6 @@
-import '@remirror/styles/all.css'
+import 'remirror/styles/all.css'
 import 'prosemirror-flat-list/style.css'
 
-import { BlockquoteExtension } from '@remirror/extension-blockquote'
-import { HardBreakExtension } from '@remirror/extension-hard-break'
-import { HeadingExtension } from '@remirror/extension-heading'
-import { LinkExtension } from '@remirror/extension-link'
 import {
   EditorComponent,
   Remirror,
@@ -12,8 +8,13 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
-import * as React from 'react'
-import { FC, PropsWithChildren, useEffect } from 'react'
+import React, { FC, PropsWithChildren, useEffect } from 'react'
+import {
+  BlockquoteExtension,
+  HardBreakExtension,
+  HeadingExtension,
+  LinkExtension,
+} from 'remirror/extensions'
 
 import { isListNode, ListAttributes, ListKind } from 'prosemirror-flat-list'
 import { ListExtension } from 'remirror-extension-flat-list'

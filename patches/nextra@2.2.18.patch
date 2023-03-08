@@ -1,0 +1,38 @@
+diff --git a/dist/catch-all.js b/dist/catch-all.js
+index ece5d43f0eb51b161f8b0e608dac7fc01d6ad2c9..41cf364cca0a8f2a8a351f1ecaac04336b27290f 100644
+--- a/dist/catch-all.js
++++ b/dist/catch-all.js
+@@ -32,7 +32,7 @@ module.exports = __toCommonJS(catch_all_exports);
+ 
+ // src/constants.ts
+ var import_node_path = __toESM(require("path"));
+-var MARKDOWN_EXTENSION_REGEX = /\.mdx?$/;
++var MARKDOWN_EXTENSION_REGEX = /\.mdx?(?:(?=[#?])|$)/;
+ var IS_PRODUCTION = process.env.NODE_ENV === "production";
+ var CWD = process.cwd();
+ var PUBLIC_DIR = import_node_path.default.join(CWD, "public");
+diff --git a/dist/constants.mjs b/dist/constants.mjs
+index 08e79c466fb47e22c02f61b54e6d820be2d1d4c5..61720ab8e5420b27a15c342eb378c017362affd6 100644
+--- a/dist/constants.mjs
++++ b/dist/constants.mjs
+@@ -1,6 +1,6 @@
+ // src/constants.ts
+ import path from "path";
+-var MARKDOWN_EXTENSION_REGEX = /\.mdx?$/;
++var MARKDOWN_EXTENSION_REGEX = /\.mdx?(?:(?=[#?])|$)/;
+ var IS_PRODUCTION = process.env.NODE_ENV === "production";
+ var LOCALE_REGEX = /\.([a-z]{2}(-[A-Z]{2})?)$/;
+ var DEFAULT_LOCALE = "en-US";
+diff --git a/dist/index.js b/dist/index.js
+index ef15041aa77aceda76e22e9e411ffc1776c63fb8..4fde771d64cd79959860bdbb3f46a77bcba92407 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -66,7 +66,7 @@ var import_slash = __toESM(require("slash"));
+ 
+ // src/constants.ts
+ var import_node_path = __toESM(require("path"));
+-var MARKDOWN_EXTENSION_REGEX = /\.mdx?$/;
++var MARKDOWN_EXTENSION_REGEX = /\.mdx?(?:(?=[#?])|$)/;
+ var IS_PRODUCTION = process.env.NODE_ENV === "production";
+ var LOCALE_REGEX = /\.([a-z]{2}(-[A-Z]{2})?)$/;
+ var DEFAULT_LOCALE = "en-US";
