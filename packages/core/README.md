@@ -1,17 +1,9 @@
 # prosemirror-flat-list
 
-[![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&label=prosemirror-flat-list&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)
+[![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)
 
-## Install
+## [User guide](https://prosemirror-flat-list.netlify.app/guide/prosemirror-guide)
 
-```
-npm install prosemirror-flat-list
-# or
-yarn add prosemirror-flat-list
-# or
-pnpm add prosemirror-flat-list
-```
-
-## [API Documentation](https://github.com/ocavue/prosemirror-flat-list/blob/master/docs/modules/prosemirror_flat_list.md)
+## [API Reference](https://prosemirror-flat-list.netlify.app/docs/modules/prosemirror_flat_list)
 
 ## [Changelog](https://github.com/ocavue/prosemirror-flat-list/blob/master/packages/core/CHANGELOG.md)

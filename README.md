@@ -30,5 +30,5 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 [prosemirror-schema-list]: https://github.com/ProseMirror/prosemirror-schema-list
 [@remirror/extension-list]: https://www.npmjs.com/package/@remirror/extension-list
 [Remirror]: https://github.com/remirror/remirror
-[prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/prosemirror-package
-[remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-package
+[prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/core
+[remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-extension

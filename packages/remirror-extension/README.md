@@ -1,17 +1,9 @@
 # remirror-extension-flat-list
 
-[![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&label=remirror-extension-flat-list&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list)
+[![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list)
 
-## Install
+## [User guide](https://prosemirror-flat-list.netlify.app/guide/remirror-guide)
 
-```
-npm install remirror-extension-flat-list prosemirror-flat-list
-# or
-yarn add remirror-extension-flat-list prosemirror-flat-list
-# or
-pnpm add remirror-extension-flat-list prosemirror-flat-list
-```
-
-## [API Documentation](https://github.com/ocavue/prosemirror-flat-list/blob/master/docs/modules/remirror_extension_flat_list.md)
+## [API Reference](https://prosemirror-flat-list.netlify.app/docs/modules/remirror_extension_flat_list)
 
 ## [Changelog](https://github.com/ocavue/prosemirror-flat-list/blob/master/packages/remirror-extension/CHANGELOG.md)
