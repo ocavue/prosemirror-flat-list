@@ -8,8 +8,8 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 
 ## Packages
 
-| Package                          | Version                                                                                                                                                                |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Package                        | Version                                                                                                                                                                |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [prosemirror-flat-list]        | [![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)               |
 | [remirror-extension-flat-list] | [![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list) |
 
@@ -32,3 +32,4 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 [Remirror]: https://github.com/remirror/remirror
 [prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/core
 [remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-extension
+[MIT]: https://github.com/ocavue/prosemirror-flat-list/blob/master/LICENSE
