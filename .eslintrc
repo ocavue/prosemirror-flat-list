@@ -3,5 +3,16 @@
   "rules": {
     "@typescript-eslint/no-namespace": "off",
     "no-console": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.md/*.js",
+        "**/*.md/*.ts"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }
