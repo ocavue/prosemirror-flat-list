@@ -246,6 +246,14 @@ importers:
 
   website:
     specifiers:
+      '@remirror/core': ^2.0.11
+      '@remirror/extension-blockquote': ^2.0.12
+      '@remirror/extension-hard-break': ^2.0.11
+      '@remirror/extension-heading': ^2.0.11
+      '@remirror/extension-link': ^2.0.13
+      '@remirror/pm': ^2.0.3
+      '@remirror/react': ^2.0.25
+      '@remirror/styles': ^2.0.3
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       next: ^13.2.3
@@ -260,6 +268,14 @@ importers:
       typedoc-plugin-markdown: ^3.14.0
       typedoc-plugin-mdn-links: ^2.0.2
     devDependencies:
+      '@remirror/core': 2.0.11_qo5y6s55lfnvhs63oigvollrgq
+      '@remirror/extension-blockquote': 2.0.12_qo5y6s55lfnvhs63oigvollrgq
+      '@remirror/extension-hard-break': 2.0.11_qo5y6s55lfnvhs63oigvollrgq
+      '@remirror/extension-heading': 2.0.11_qo5y6s55lfnvhs63oigvollrgq
+      '@remirror/extension-link': 2.0.13_qo5y6s55lfnvhs63oigvollrgq
+      '@remirror/pm': 2.0.3
+      '@remirror/react': 2.0.25_dyxrymz2hifxmfax5xpqo3jmei
+      '@remirror/styles': 2.0.3_pmekkgnqduwlme35zpnqhenc34
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y

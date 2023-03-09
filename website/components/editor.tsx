@@ -1,0 +1,145 @@
+import '@remirror/styles/all.css'
+import 'prosemirror-flat-list/style.css'
+
+import {
+  EditorComponent,
+  Remirror,
+  ThemeProvider,
+  useRemirror,
+} from '@remirror/react'
+import React from 'react'
+
+import { BlockquoteExtension } from '@remirror/extension-blockquote'
+import { HardBreakExtension } from '@remirror/extension-hard-break'
+import { HeadingExtension } from '@remirror/extension-heading'
+import { LinkExtension } from '@remirror/extension-link'
+
+import { ListExtension } from 'remirror-extension-flat-list'
+
+const Editor: React.FC = () => {
+  const { manager, state } = useRemirror({ extensions, content })
+
+  return (
+    <ThemeProvider>
+      <Remirror manager={manager} initialContent={state} autoFocus={true}>
+        <EditorComponent />
+      </Remirror>
+    </ThemeProvider>
+  )
+}
+
+const extensions = () => [
+  new ListExtension(),
+  new HeadingExtension(),
+  new LinkExtension(),
+  new HardBreakExtension(),
+  new BlockquoteExtension(),
+]
+
+const content = {
+  type: 'doc',
+  content: [
+    {
+      type: 'list',
+      attrs: {
+        kind: 'bullet',
+        order: null,
+        checked: false,
+        collapsed: false,
+      },
+      content: [
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Bullet list',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'list',
+      attrs: {
+        kind: 'ordered',
+        order: null,
+        checked: false,
+        collapsed: false,
+      },
+      content: [
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Ordered list',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'list',
+      attrs: {
+        kind: 'task',
+        order: null,
+        checked: true,
+        collapsed: false,
+      },
+      content: [
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Task list',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'list',
+      attrs: {
+        kind: 'toggle',
+        order: null,
+        checked: false,
+        collapsed: true,
+      },
+      content: [
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Toggle list',
+            },
+          ],
+        },
+        {
+          type: 'list',
+          attrs: {
+            kind: 'bullet',
+            order: null,
+            checked: false,
+            collapsed: false,
+          },
+          content: [
+            {
+              type: 'paragraph',
+              content: [
+                {
+                  type: 'text',
+                  text: 'sub list',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+
+export { Editor }
