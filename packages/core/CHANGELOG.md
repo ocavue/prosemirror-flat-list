@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.3
+
+### Patch Changes
+
+- 3e03b69: Improve parse dom rules for task list.
+
 ## 0.3.2
 
 ### Patch Changes
