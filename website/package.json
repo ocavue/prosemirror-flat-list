@@ -1,0 +1,35 @@
+{
+  "name": "prosemirror-flat-list-website",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nr build:typedoc && next --port 3301",
+    "build": "nr build:typedoc && next build && next export -o dist",
+    "build:typedoc": "nr -w api && typedoc"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "@remirror/core": "^2.0.11",
+    "@remirror/extension-blockquote": "^2.0.12",
+    "@remirror/extension-hard-break": "^2.0.11",
+    "@remirror/extension-heading": "^2.0.11",
+    "@remirror/extension-link": "^2.0.13",
+    "@remirror/pm": "^2.0.3",
+    "@remirror/react": "^2.0.25",
+    "@remirror/styles": "^2.0.3",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "next": "^13.2.4",
+    "nextra": "^2.2.19",
+    "nextra-theme-docs": "^2.2.19",
+    "prosemirror-flat-list": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remirror-extension-flat-list": "*",
+    "typedoc": "^0.24.0-beta.2",
+    "typedoc-plugin-external-package-links": "^0.1.0",
+    "typedoc-plugin-markdown": "^3.14.0",
+    "typedoc-plugin-mdn-links": "^3.0.3"
+  }
+}

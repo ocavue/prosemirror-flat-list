@@ -42,6 +42,10 @@
         "@beta": false
     },
     "treatWarningsAsErrors": true,
+    "cleanOutputDir": false,
+
     // https://www.npmjs.com/package/typedoc-plugin-markdown
     "hideBreadcrumbs": true,
+    "hideInPageTOC": true,
+    "hideMembersSymbol": true,
 }

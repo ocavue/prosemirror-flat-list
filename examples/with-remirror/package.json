@@ -3,29 +3,24 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@7.26.1",
   "scripts": {
-    "dev": "vite --force --open",
+    "dev": "vite --port 3302 --force --open ",
     "build": "vite build"
   },
-  "devDependencies": {
-    "@remirror/extension-blockquote": "^2.0.12",
-    "@remirror/extension-hard-break": "^2.0.11",
-    "@remirror/extension-heading": "^2.0.11",
-    "@remirror/extension-link": "^2.0.13",
+  "dependencies": {
     "@remirror/pm": "^2.0.3",
     "@remirror/react": "^2.0.25",
-    "@remirror/styles": "^2.0.3",
-    "@types/node": "^18.13.0",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.2.0",
     "prosemirror-flat-list": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remirror": "^2.0.24",
-    "remirror-extension-flat-list": "*",
+    "remirror-extension-flat-list": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.2.0",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.4"
   }
 }

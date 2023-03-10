@@ -1,0 +1,23 @@
+{
+    "modules": {
+        "type": "page",
+        "title": "Modules"
+    },
+    "interfaces": {
+        "type": "page",
+        "display": "hidden",
+        "theme": {
+            "sidebar": false
+        }
+    },
+    "classes": {
+        "type": "page",
+        "display": "hidden",
+        "theme": {
+            "sidebar": false
+        }
+    },
+    "README": {
+        "display": "hidden"
+    }
+}
