@@ -28,11 +28,5 @@
     "extends": [
       "github>ocavue/config-renovate"
     ]
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "typedoc-plugin-mdn-links@2.0.2": "patches/typedoc-plugin-mdn-links@2.0.2.patch",
-      "nextra@2.2.18": "patches/nextra@2.2.18.patch"
-    }
   }
 }
