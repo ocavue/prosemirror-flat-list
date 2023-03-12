@@ -164,6 +164,28 @@ describe('dedentList', () => {
           - B4
       `,
     )
+
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A1
+
+          - B1
+
+          - B2<cursor>
+
+          A1
+      `,
+      markdown`
+        - A1
+
+          - B1
+
+        - B2<cursor>
+
+          A1
+      `,
+    )
   })
 
   it('can only dedent selected part when the selection across multiple depth of a nested lists', () => {

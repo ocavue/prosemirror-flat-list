@@ -10,6 +10,22 @@ import { parseInteger } from '../utils/parse-integer'
 export function createParseDomRules(): readonly ParseRule[] {
   return [
     {
+      tag: 'div[data-list-kind]',
+      getAttrs: (element): ListAttributes => {
+        if (typeof element === 'string') {
+          return {}
+        }
+
+        return {
+          kind: (element.getAttribute('data-list-kind') ||
+            'bullet') as ListKind,
+          order: parseInteger(element.getAttribute('data-list-order')),
+          checked: element.hasAttribute('data-list-checked'),
+          collapsed: element.hasAttribute('data-list-collapsed'),
+        }
+      },
+    },
+    {
       tag: 'div[data-list]',
       getAttrs: (element): ListAttributes => {
         if (typeof element === 'string') {

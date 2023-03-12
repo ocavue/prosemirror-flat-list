@@ -136,17 +136,76 @@ function splitAndDedentRange(
 
 export function dedentNodeRange(range: NodeRange, tr: Transaction) {
   if (isListNode(range.parent)) {
-    return safeLift(tr, range)
+    return safeLiftRange(tr, range)
   } else if (isListsRange(range)) {
     return dedentOutOfList(tr, range)
   } else {
-    return safeLift(tr, range)
+    return safeLiftRange(tr, range)
   }
 }
 
-function fixEndBoundary(range: NodeRange, tr: Transaction): void {
-  const listType = getListType(tr.doc.type.schema)
+function safeLiftRange(tr: Transaction, range: NodeRange): boolean {
+  if (moveRangeSiblings(tr, range)) {
+    const $from = tr.doc.resolve(range.$from.pos)
+    const $to = tr.doc.resolve(range.$to.pos)
+    range = new NodeRange($from, $to, range.depth)
+  }
+  return safeLift(tr, range)
+}
 
+function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
+  const listType = getListType(tr.doc.type.schema)
+  const { $to, depth, end, parent, endIndex } = range
+  const endOfParent = $to.end(depth)
+
+  if (end < endOfParent) {
+    // There are siblings after the lifted items, which must become
+    // children of the last item
+    const lastChild = parent.maybeChild(endIndex - 1)
+    if (!lastChild) return false
+
+    const canAppend =
+      endIndex < parent.childCount &&
+      lastChild.canReplace(
+        lastChild.childCount,
+        lastChild.childCount,
+        parent.content,
+        endIndex,
+        parent.childCount,
+      )
+
+    if (canAppend) {
+      tr.step(
+        new ReplaceAroundStep(
+          end - 1,
+          endOfParent,
+          end,
+          endOfParent,
+          new Slice(Fragment.from(listType.create(null)), 1, 0),
+          0,
+          true,
+        ),
+      )
+      return true
+    } else {
+      tr.step(
+        new ReplaceAroundStep(
+          end,
+          endOfParent,
+          end,
+          endOfParent,
+          new Slice(Fragment.from(listType.create(null)), 0, 0),
+          1,
+          true,
+        ),
+      )
+      return true
+    }
+  }
+  return false
+}
+
+function fixEndBoundary(range: NodeRange, tr: Transaction): void {
   if (range.endIndex - range.startIndex >= 2) {
     range = new NodeRange(
       range.$to.doc.resolve(
@@ -167,38 +226,7 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
     )
   }
 
-  const { $to, depth, end, parent, endIndex } = range
-  const endOfParent = $to.end(depth)
-
-  if (end < endOfParent) {
-    // There are siblings after the lifted items, which must become
-    // children of the last item
-    if (isListNode(parent.maybeChild(endIndex - 1))) {
-      tr.step(
-        new ReplaceAroundStep(
-          end - 1,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 1, 0),
-          0,
-          true,
-        ),
-      )
-    } else {
-      tr.step(
-        new ReplaceAroundStep(
-          end,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 0, 0),
-          1,
-          true,
-        ),
-      )
-    }
-  }
+  moveRangeSiblings(tr, range)
 }
 
 function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
