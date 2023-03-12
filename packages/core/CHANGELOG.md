@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.4
+
+### Patch Changes
+
+- ca92161: Fix a bug in `dedentCommand` that causes an extra bullet will be added.
+
 ## 0.3.3
 
 ### Patch Changes
