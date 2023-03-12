@@ -9,7 +9,6 @@
     "build:typedoc": "nr -w api && typedoc"
   },
   "devDependencies": {
-    "typescript": "^4.9.5",
     "@remirror/core": "^2.0.11",
     "@remirror/extension-blockquote": "^2.0.12",
     "@remirror/extension-hard-break": "^2.0.11",
@@ -30,6 +29,7 @@
     "typedoc": "^0.24.0-beta.2",
     "typedoc-plugin-external-package-links": "^0.1.0",
     "typedoc-plugin-markdown": "^3.14.0",
-    "typedoc-plugin-mdn-links": "^3.0.3"
+    "typedoc-plugin-mdn-links": "^3.0.3",
+    "typescript": "^4.9.5"
   }
 }

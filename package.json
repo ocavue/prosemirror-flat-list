@@ -5,23 +5,25 @@
   "private": true,
   "packageManager": "pnpm@7.29.0",
   "scripts": {
-    "lint": "eslint .",
     "build": "nr -r --stream --sequential build",
     "dev": "nr -r --parallel dev",
-    "api": "nr -r --stream build:tsc",
     "test": "nr -r --stream test run",
+    "api": "nr -r --stream build:tsc",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile && nr build && nr api",
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
     "@antfu/ni": "^0.20.0",
-    "typedoc": "^0.24.0-beta.2",
     "@changesets/cli": "^2.26.0",
     "@ocavue/eslint-config": "^0.4.7",
     "eslint": "^8.35.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4",
+    "typedoc": "^0.24.0-beta.2",
     "typescript": "^4.9.5"
   },
   "renovate": {
