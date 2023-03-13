@@ -4,6 +4,6 @@
 
 ## [User guide](https://prosemirror-flat-list.netlify.app/guide/remirror-guide)
 
-## [API Reference](https://prosemirror-flat-list.netlify.app/docs/modules/remirror_extension_flat_list)
+## [API Reference](https://prosemirror-flat-list.netlify.app/docs/remirror_extension_flat_list)
 
 ## [Changelog](https://github.com/ocavue/prosemirror-flat-list/blob/master/packages/remirror-extension/CHANGELOG.md)
