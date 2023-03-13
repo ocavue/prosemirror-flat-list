@@ -47,5 +47,4 @@
     // https://www.npmjs.com/package/typedoc-plugin-markdown
     "hideBreadcrumbs": true,
     "hideInPageTOC": true,
-    "hideMembersSymbol": true,
 }

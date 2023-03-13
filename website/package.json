@@ -28,7 +28,7 @@
     "remirror-extension-flat-list": "*",
     "typedoc": "^0.24.0-beta.3",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^3.14.0",
+    "typedoc-plugin-markdown": "^4.0.0-next.3",
     "typedoc-plugin-mdn-links": "^3.0.3",
     "typescript": "^4.9.5"
   }
