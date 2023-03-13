@@ -1,23 +1,11 @@
 {
-    "modules": {
-        "type": "page",
-        "title": "Modules"
-    },
-    "interfaces": {
-        "type": "page",
-        "display": "hidden",
-        "theme": {
-            "sidebar": false
-        }
-    },
-    "classes": {
-        "type": "page",
-        "display": "hidden",
-        "theme": {
-            "sidebar": false
-        }
-    },
     "README": {
         "display": "hidden"
+    },
+    "prosemirror_flat_list": {
+        "title": "prosemirror-flat-list"
+    },
+    "remirror_extension_flat_list": {
+        "title": "remirror-extension-flat-list"
     }
 }
