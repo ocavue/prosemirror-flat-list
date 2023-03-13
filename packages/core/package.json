@@ -82,6 +82,8 @@
     "vitest": "^0.29.2"
   },
   "typedocOptions": {
-    "entryPoints": ["src/index.ts"]
+    "entryPoints": [
+      "src/index.ts"
+    ]
   }
 }
