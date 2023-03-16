@@ -1,6 +1,3 @@
-import '@remirror/styles/all.css'
-import 'prosemirror-flat-list/style.css'
-
 import {
   EditorComponent,
   Remirror,
