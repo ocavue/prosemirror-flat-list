@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.5
+
+### Patch Changes
+
+- 747bd73: Fix a bug that causes `wrapInList` to crash when the text cursor is right before an atom block node
+
 ## 0.3.4
 
 ### Patch Changes
