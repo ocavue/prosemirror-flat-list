@@ -60,9 +60,11 @@ export function createWrapInListCommand<
         const beforeNode = $from.posAtIndex(i, depth)
         const afterNode = $from.posAtIndex(i + 1, depth)
 
-        const isolating = node.type.spec.isolating
-        const nodeStart = isolating ? beforeNode + 1 : beforeNode
-        const nodeEnd = isolating ? afterNode - 1 : afterNode
+        let nodeStart = beforeNode + 1
+        let nodeEnd = afterNode - 1
+        if (nodeStart > nodeEnd) {
+          ;[nodeStart, nodeEnd] = [nodeEnd, nodeStart]
+        }
 
         const range = new NodeRange(
           tr.doc.resolve(nodeStart),
