@@ -1,4 +1,5 @@
-import { describe, it } from 'vitest'
+import { Selection } from 'prosemirror-state'
+import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
 import { createWrapInListCommand } from './wrap-in-list'
 
@@ -141,5 +142,20 @@ describe('wrapInList', () => {
           - P3<end>
       `,
     )
+  })
+
+  it('should handle block node without content', () => {
+    const doc1 = t.doc(/*0*/ t.p() /*2*/, t.horizontalRule() /*3*/)
+    const doc2 = t.doc(t.p(), t.bulletList(t.horizontalRule()))
+
+    t.add(doc1)
+    const view = t.view
+    const selection = Selection.atEnd(view.state.doc)
+    expect(selection.from).toBe(2)
+    view.dispatch(view.state.tr.setSelection(selection))
+
+    wrapInBulletList(view.state, view.dispatch, view)
+
+    expect(view.state.doc).toEqualRemirrorDocument(doc2)
   })
 })

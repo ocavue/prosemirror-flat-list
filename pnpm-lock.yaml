@@ -86,6 +86,7 @@ importers:
       '@remirror/core': ^2.0.12
       '@remirror/extension-blockquote': ^2.0.13
       '@remirror/extension-heading': ^2.0.12
+      '@remirror/extension-horizontal-rule': ^2.0.12
       '@remirror/pm': ^2.0.4
       '@remirror/preset-core': ^2.0.15
       '@types/dedent': ^0.7.0
@@ -129,6 +130,7 @@ importers:
       '@remirror/core': 2.0.12_xd6dd3o55dpiq5gjosmjexrdnm
       '@remirror/extension-blockquote': 2.0.13_xd6dd3o55dpiq5gjosmjexrdnm
       '@remirror/extension-heading': 2.0.12_xd6dd3o55dpiq5gjosmjexrdnm
+      '@remirror/extension-horizontal-rule': 2.0.12_xd6dd3o55dpiq5gjosmjexrdnm
       '@remirror/pm': 2.0.4
       '@remirror/preset-core': 2.0.15_xd6dd3o55dpiq5gjosmjexrdnm
       '@types/dedent': 0.7.0

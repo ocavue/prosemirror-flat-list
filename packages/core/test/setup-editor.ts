@@ -2,20 +2,27 @@ import '@remirror/preset-core'
 import 'jest-prosemirror'
 
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
+import { HeadingExtension } from '@remirror/extension-heading'
+import { HorizontalRuleExtension } from '@remirror/extension-horizontal-rule'
 import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
+import { Command } from 'prosemirror-state'
 import { expect } from 'vitest'
 import { ListAttributes } from '../src/types'
 import { ListExtension } from './extension'
 import { markdownToTaggedDoc } from './markdown'
-import { Command } from 'prosemirror-state'
 
 export function setupTestingEditor() {
-  const extensions = [new ListExtension(), new BlockquoteExtension()]
+  const extensions = [
+    new ListExtension(),
+    new BlockquoteExtension(),
+    new HorizontalRuleExtension(),
+    new HeadingExtension(),
+  ]
   const editor = renderEditor(extensions, {})
   const {
     view,
     add,
-    nodes: { doc, p, blockquote },
+    nodes: { doc, p, blockquote, horizontalRule },
     attributeNodes: { list },
     manager,
     schema,
@@ -69,6 +76,7 @@ export function setupTestingEditor() {
     doc,
     p,
     blockquote,
+    horizontalRule,
 
     bulletList,
     orderedList,

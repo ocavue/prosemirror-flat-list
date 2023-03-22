@@ -57,11 +57,21 @@ export function createWrapInListCommand<
         const newAttrs: T = { ...oldAttrs, ...attrs }
         setNodeAttributes(tr, $from.posAtIndex(i, depth), oldAttrs, newAttrs)
       } else {
+        const beforeNode = $from.posAtIndex(i, depth)
+        const afterNode = $from.posAtIndex(i + 1, depth)
+
+        let nodeStart = beforeNode + 1
+        let nodeEnd = afterNode - 1
+        if (nodeStart > nodeEnd) {
+          ;[nodeStart, nodeEnd] = [nodeEnd, nodeStart]
+        }
+
         const range = new NodeRange(
-          tr.doc.resolve($from.posAtIndex(i, depth) + 1),
-          tr.doc.resolve($from.posAtIndex(i + 1, depth) - 1),
+          tr.doc.resolve(nodeStart),
+          tr.doc.resolve(nodeEnd),
           depth,
         )
+
         const wrapping = findWrapping(range, listType, attrs)
         if (wrapping) {
           tr.wrap(range, wrapping)
