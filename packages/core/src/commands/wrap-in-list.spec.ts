@@ -145,16 +145,17 @@ describe('wrapInList', () => {
   })
 
   it('should handle block node without content', () => {
-    const doc1 = t.doc(t.p(), t.horizontalRule())
+    const doc1 = t.doc(/*0*/ t.p() /*2*/, t.horizontalRule() /*3*/)
     const doc2 = t.doc(t.p(), t.bulletList(t.horizontalRule()))
 
     t.add(doc1)
     const view = t.view
     const selection = Selection.atEnd(view.state.doc)
+    expect(selection.from).toBe(2)
     view.dispatch(view.state.tr.setSelection(selection))
 
     wrapInBulletList(view.state, view.dispatch, view)
 
-    expect(view.state.doc).toEqualRemirrorState(doc2)
+    expect(view.state.doc).toEqualRemirrorDocument(doc2)
   })
 })
