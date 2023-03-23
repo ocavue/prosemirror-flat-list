@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.6
+
+### Patch Changes
+
+- 25ddceb: Fix a bug that causes pasting a deeply nested list will bring too many indentations
+
 ## 0.3.5
 
 ### Patch Changes
