@@ -3,7 +3,8 @@ import { createParseDomRules } from './parse-dom'
 import { listToDOM } from './to-dom'
 
 /**
- * The default group name for list nodes. This is used to find the list node type from the schema.
+ * The default group name for list nodes. This is used to find the list node
+ * type from the schema.
  *
  * @internal Schema
  */
