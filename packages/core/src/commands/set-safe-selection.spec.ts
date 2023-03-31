@@ -4,8 +4,14 @@ import { setupTestingEditor } from '../../test/setup-editor'
 import { setSafeSelection } from './set-safe-selection'
 
 describe('setSafeSelection', () => {
-  const { doc, p, collapsedToggleList, expandedToggleList, applyCommand } =
-    setupTestingEditor()
+  const {
+    doc,
+    p,
+    collapsedToggleList,
+    expandedToggleList,
+    bulletList,
+    applyCommand,
+  } = setupTestingEditor()
 
   const command: Command = (state, dispatch) => {
     dispatch?.(setSafeSelection(state.tr))
@@ -27,6 +33,38 @@ describe('setSafeSelection', () => {
           //
           p('123<cursor>'),
           p('456'),
+        ),
+      ),
+    )
+  })
+
+  it('can move cursor outside of collapsed and deep sub list', () => {
+    applyCommand(
+      command,
+      doc(
+        bulletList(
+          bulletList(
+            bulletList(
+              collapsedToggleList(
+                //
+                p('123'),
+                p('45<cursor>6'),
+              ),
+            ),
+          ),
+        ),
+      ),
+      doc(
+        bulletList(
+          bulletList(
+            bulletList(
+              collapsedToggleList(
+                //
+                p('123<cursor>'),
+                p('456'),
+              ),
+            ),
+          ),
         ),
       ),
     )
