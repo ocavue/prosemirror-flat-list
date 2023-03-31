@@ -8,7 +8,7 @@ function moveOutOfCollapsed(
 ): Selection | null {
   for (let depth = minDepth; depth <= $pos.depth; depth++) {
     if (isCollapsedListNode($pos.node(depth)) && $pos.index(depth) >= 1) {
-      const before = $pos.posAtIndex(depth, 1)
+      const before = $pos.posAtIndex(1, depth)
       const $before = $pos.doc.resolve(before)
       return TextSelection.near($before, -1)
     }
