@@ -1,5 +1,12 @@
 # prosemirror-flat-list
 
+## 0.3.7
+
+### Patch Changes
+
+- 9e0a758: Fix a runtime crash when clicking the toggle mark in a deep list
+- a45842a: Mark `flatListGroup` as an internal API
+
 ## 0.3.6
 
 ### Patch Changes
