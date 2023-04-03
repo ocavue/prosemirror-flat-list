@@ -1,5 +1,6 @@
 import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 import { ListAttributes } from '../types'
+import * as browser from '../utils/browser'
 
 /** @public */
 export interface ListToDOMOptions {
@@ -110,7 +111,10 @@ export function defaultAttributesGetter(node: ProsemirrorNode) {
     'data-list-collapsable': node.childCount >= 2 ? '' : undefined,
     style:
       attrs.order != null
-        ? `counter-set: prosemirror-flat-list-counter ${attrs.order};`
+        ? // Safari (at least version <= 16.5) doesn't support `counter-set`
+          browser.safari
+          ? `counter-reset: prosemirror-flat-list-counter; counter-increment: prosemirror-flat-list-counter ${attrs.order};`
+          : `counter-set: prosemirror-flat-list-counter ${attrs.order};`
         : undefined,
   }
 
