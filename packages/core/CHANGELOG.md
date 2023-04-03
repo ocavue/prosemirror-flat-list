@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.8
+
+### Patch Changes
+
+- 0233699: Fix the custom counter for Safari
+
 ## 0.3.7
 
 ### Patch Changes
