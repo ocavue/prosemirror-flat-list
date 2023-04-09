@@ -59,8 +59,8 @@
     "@remirror/pm": "^2.0.4",
     "@remirror/preset-core": "^2.0.15",
     "@types/dedent": "^0.7.0",
-    "@types/node": "^18.15.10",
-    "@vitest/coverage-c8": "^0.29.7",
+    "@types/node": "^18.15.11",
+    "@vitest/coverage-c8": "^0.29.8",
     "dedent": "^0.7.0",
     "execa": "^7.1.1",
     "jest-prosemirror": "^2.1.2",
@@ -77,10 +77,10 @@
     "remark-rehype": "^10.1.0",
     "remirror": "^2.0.26",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.3",
+    "typescript": "^5.0.4",
     "unified": "^10.1.2",
     "vite": "^4.2.1",
-    "vitest": "^0.29.7"
+    "vitest": "^0.29.8"
   },
   "typedocOptions": {
     "entryPoints": [
