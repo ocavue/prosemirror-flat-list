@@ -31,5 +31,8 @@
       "github>ocavue/config-renovate"
     ],
     "dependencyDashboard": true
+  },
+  "resolutions": {
+    "typedoc": "0.24.0-beta.7"
   }
 }
