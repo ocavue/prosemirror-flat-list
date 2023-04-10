@@ -23,16 +23,19 @@
     "eslint": "^8.38.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.7",
-    "typedoc": "^0.24.1",
+    "typedoc": "0.24.0-beta.7",
     "typescript": "^5.0.4"
   },
   "renovate": {
     "extends": [
       "github>ocavue/config-renovate"
     ],
+    "ignoreDeps": [
+      "typedoc",
+      "vitest",
+      "@vitest/coverage-c8"
+    ],
     "dependencyDashboard": true
   },
-  "resolutions": {
-    "typedoc": "0.24.0-beta.7"
-  }
+  "resolutions": {}
 }
