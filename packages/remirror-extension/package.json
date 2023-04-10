@@ -63,7 +63,7 @@
     "@remirror/styles": "^2.0.4",
     "@types/dedent": "^0.7.0",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.34",
     "@types/react-dom": "^18.0.11",
     "@vitest/coverage-c8": "^0.29.8",
     "dedent": "^0.7.0",
