@@ -30,10 +30,7 @@
     "extends": [
       "github>ocavue/config-renovate"
     ],
-    "ignoreDeps": [
-      "vitest",
-      "@vitest/coverage-c8"
-    ],
+    "ignoreDeps": [],
     "dependencyDashboard": true
   },
   "resolutions": {}
