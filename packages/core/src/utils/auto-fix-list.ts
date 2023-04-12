@@ -1,7 +1,8 @@
 import { ProsemirrorNode } from '@remirror/core'
-import { Command, Transaction } from 'prosemirror-state'
+import { Transaction } from 'prosemirror-state'
 import { canJoin, canSplit } from 'prosemirror-transform'
 import { isListNode } from './is-list-node'
+import { patchCommand } from './patch-command'
 
 /** @internal */
 export function* getTransactionRanges(
@@ -115,13 +116,4 @@ function fixList(tr: Transaction): Transaction {
 }
 
 /** @internal */
-export function withAutoFixList(command: Command): Command {
-  const wrappedCommand: Command = (state, dispatch, view) => {
-    return command(
-      state,
-      dispatch && ((tr: Transaction) => dispatch(fixList(tr))),
-      view,
-    )
-  }
-  return wrappedCommand
-}
+export const withAutoFixList = patchCommand(fixList)

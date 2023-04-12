@@ -12,6 +12,7 @@ import { findListsRange, isListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { safeLift } from '../utils/safe-lift'
 import { zoomInRange } from '../utils/zoom-in-range'
+import { withVisibleSelection } from './set-safe-selection'
 
 /**
  * @public
@@ -56,7 +57,7 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     return false
   }
 
-  return withAutoFixList(dedentListCommand)
+  return withVisibleSelection(withAutoFixList(dedentListCommand))
 }
 
 function dedentRange(

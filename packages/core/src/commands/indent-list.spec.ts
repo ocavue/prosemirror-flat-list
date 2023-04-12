@@ -370,6 +370,30 @@ describe('indentList', () => {
     )
   })
 
+  it('can expand a collapsed list node if something is indent into it', () => {
+    t.applyCommand(
+      indentList,
+      t.doc(
+        t.collapsedToggleList(
+          t.p('A1'),
+          t.bulletList(t.p('B1')),
+          t.bulletList(t.p('B2')),
+          t.bulletList(t.p('B3')),
+        ),
+        t.p('<cursor>'),
+      ),
+      t.doc(
+        t.expandedToggleList(
+          t.p('A1'),
+          t.bulletList(t.p('B1')),
+          t.bulletList(t.p('B2')),
+          t.bulletList(t.p('B3')),
+          t.p('<cursor>'),
+        ),
+      ),
+    )
+  })
+
   it('can keep the indentation of sub list nodes when moving multiple list', () => {
     t.applyCommand(
       indentList,
