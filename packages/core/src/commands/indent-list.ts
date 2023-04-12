@@ -13,6 +13,7 @@ import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
+import { withVisibleSelection } from './set-safe-selection'
 
 /**
  * @public
@@ -58,7 +59,7 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     return false
   }
 
-  return withAutoFixList(indentListCommand)
+  return withVisibleSelection(withAutoFixList(indentListCommand))
 }
 
 function indentRange(
