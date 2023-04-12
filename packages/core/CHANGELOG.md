@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.9
+
+### Patch Changes
+
+- 8e939fa: Expand a collapsed list if something is indented into it
+
 ## 0.3.8
 
 ### Patch Changes
