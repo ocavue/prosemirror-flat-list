@@ -95,7 +95,7 @@ const listInputRulePlugin = inputRules({ rules: listInputRules })
 
 ## Other plugins
 
-Use `createListPlugins` to create other plugins. You can view its [reference](../docs/prosemirror_flat_list.md#createlistplugins) to see what plugins it creates.
+Use `createListPlugins` to create other plugins. You can view its [reference](../docs/prosemirror-flat-list.md#createlistplugins) to see what plugins it creates.
 
 ```ts
 import { createListPlugins } from 'prosemirror-flat-list'
@@ -105,7 +105,7 @@ const listPlugins = createListPlugins({ schema })
 
 ## Commands
 
-`prosemirror-flat-list` provides a variety of commands to manipulate the list node type. Please view the [reference](../docs/prosemirror_flat_list.md#commands) to see what commands it provides.
+`prosemirror-flat-list` provides a variety of commands to manipulate the list node type. Please view the [reference](../docs/prosemirror-flat-list.md#commands) to see what commands it provides.
 
 ## Example
 
