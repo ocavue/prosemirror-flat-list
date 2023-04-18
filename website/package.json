@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "nr build:typedoc && next --port 3301",
-    "build": "nr build:typedoc && next build && next export -o dist",
+    "build": "nr build:typedoc && next build",
     "build:typedoc": "nr -w api && typedoc"
   },
   "devDependencies": {
