@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "nr build:typedoc && next --port 3301",
-    "build": "nr build:typedoc && next build && next export -o dist",
+    "build": "nr build:typedoc && next build",
     "build:typedoc": "nr -w api && typedoc"
   },
   "devDependencies": {
@@ -17,18 +17,18 @@
     "@remirror/pm": "^2.0.4",
     "@remirror/react": "^2.0.27",
     "@remirror/styles": "^2.0.4",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "next": "^13.3.0",
-    "nextra": "^2.3.0",
-    "nextra-theme-docs": "^2.3.0",
+    "nextra": "^2.4.0",
+    "nextra-theme-docs": "^2.4.0",
     "prosemirror-flat-list": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remirror-extension-flat-list": "*",
-    "typedoc": "^0.24.1",
+    "typedoc": "^0.24.4",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^4.0.0-next.4",
+    "typedoc-plugin-markdown": "^4.0.0-next.6",
     "typedoc-plugin-mdn-links": "^3.0.3",
     "typescript": "^5.0.4"
   }

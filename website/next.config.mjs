@@ -12,6 +12,8 @@ const config = {
   images: {
     unoptimized: true,
   },
+  output: 'export',
+  distDir: 'dist',
 }
 
 export default withNextra(config)
