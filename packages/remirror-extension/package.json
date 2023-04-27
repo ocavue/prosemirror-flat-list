@@ -44,23 +44,23 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@remirror/core": "^2.0.12",
+    "@remirror/core": "^2.0.14",
     "prosemirror-flat-list": "^0.3.9"
   },
   "peerDependencies": {
-    "@remirror/pm": "^2.0.4"
+    "@remirror/pm": "^2.0.5"
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.3",
     "@microsoft/api-extractor": "^7.34.4",
-    "@remirror/extension-blockquote": "^2.0.13",
-    "@remirror/extension-hard-break": "^2.0.12",
-    "@remirror/extension-heading": "^2.0.12",
-    "@remirror/extension-link": "^2.0.14",
-    "@remirror/pm": "^2.0.4",
-    "@remirror/preset-core": "^2.0.15",
-    "@remirror/react": "^2.0.27",
-    "@remirror/styles": "^2.0.4",
+    "@remirror/extension-blockquote": "^2.0.14",
+    "@remirror/extension-hard-break": "^2.0.13",
+    "@remirror/extension-heading": "^2.0.13",
+    "@remirror/extension-link": "^2.0.15",
+    "@remirror/pm": "^2.0.5",
+    "@remirror/preset-core": "^2.0.16",
+    "@remirror/react": "^2.0.28",
+    "@remirror/styles": "^2.0.5",
     "@types/dedent": "^0.7.0",
     "@types/node": "^18.16.0",
     "@types/react": "^18.0.38",
@@ -69,7 +69,7 @@
     "dedent": "^0.7.0",
     "execa": "^7.1.1",
     "jest-prosemirror": "^2.1.2",
-    "jest-remirror": "^2.1.4",
+    "jest-remirror": "^2.1.5",
     "jsdom": "^21.1.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.23",
@@ -81,7 +81,7 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "remirror": "^2.0.26",
+    "remirror": "^2.0.29",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "unified": "^10.1.2",
