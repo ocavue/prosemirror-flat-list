@@ -399,8 +399,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       typedoc-plugin-markdown:
-        specifier: ^4.0.0-next.8
-        version: 4.0.0-next.8(prettier@2.8.8)(typedoc@0.24.6)
+        specifier: ^4.0.0-next.10
+        version: 4.0.0-next.10(prettier@2.8.8)(typedoc@0.24.6)
       typedoc-plugin-mdn-links:
         specifier: ^3.0.3
         version: 3.0.3(typedoc@0.24.6)
@@ -9410,8 +9410,8 @@ packages:
     resolution: {integrity: sha512-1fnFUjCTBnfBgkirFnTaNBEHpestaxQNKDBkws8nKQdqVoEzd24+omrwMTdSAhyC0a24bNbEEiCBAgLzzWu4lA==}
     dev: true
 
-  /typedoc-plugin-markdown@4.0.0-next.8(prettier@2.8.8)(typedoc@0.24.6):
-    resolution: {integrity: sha512-wghUp2HFlM6yr8R8ccI3TzmVa/OLHxwQ6BMYvAjjm5txztQKil7/VwIivK+2gSmpJeqDAfN4BwrQq1+8mhI5xA==}
+  /typedoc-plugin-markdown@4.0.0-next.10(prettier@2.8.8)(typedoc@0.24.6):
+    resolution: {integrity: sha512-nLCX4MPKdkPTqcrhchayP4a3twjZophtd4tYrhuI08fbLvfPVJO7WQqckTOL5eE9VtYUfPM/SdGuIejS15smwg==}
     peerDependencies:
       prettier: '>=1.8.0'
       typedoc: '>=0.24.0'
