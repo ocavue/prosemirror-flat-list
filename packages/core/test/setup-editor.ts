@@ -1,4 +1,5 @@
 import '@remirror/preset-core'
+import '@remirror/pm'
 import 'jest-prosemirror'
 
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
