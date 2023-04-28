@@ -9,7 +9,7 @@
     "build:typedoc": "nr -w api && typedoc"
   },
   "devDependencies": {
-    "@remirror/core": "^2.0.14",
+    "@remirror/core": "^2.0.16",
     "@remirror/extension-blockquote": "^2.0.14",
     "@remirror/extension-hard-break": "^2.0.13",
     "@remirror/extension-heading": "^2.0.13",
