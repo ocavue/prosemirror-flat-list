@@ -48,7 +48,7 @@
     "prosemirror-model": "^1.19.0",
     "prosemirror-state": "^1.4.2",
     "prosemirror-transform": "^1.7.1",
-    "prosemirror-view": "^1.30.2"
+    "prosemirror-view": "^1.31.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.34.4",
