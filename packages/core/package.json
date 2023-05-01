@@ -51,7 +51,7 @@
     "prosemirror-view": "^1.31.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.34.4",
+    "@microsoft/api-extractor": "^7.34.6",
     "@remirror/core": "^2.0.16",
     "@remirror/extension-blockquote": "^2.0.14",
     "@remirror/extension-heading": "^2.0.13",
@@ -59,7 +59,7 @@
     "@remirror/pm": "^2.0.5",
     "@remirror/preset-core": "^2.0.16",
     "@types/dedent": "^0.7.0",
-    "@types/node": "^18.16.0",
+    "@types/node": "^18.16.3",
     "@vitest/coverage-c8": "^0.30.1",
     "dedent": "^0.7.0",
     "execa": "^7.1.1",
@@ -79,7 +79,7 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "unified": "^10.1.2",
-    "vite": "^4.3.1",
+    "vite": "^4.3.3",
     "vitest": "^0.30.1"
   },
   "typedocOptions": {
