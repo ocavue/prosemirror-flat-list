@@ -33,5 +33,7 @@
     "ignoreDeps": [],
     "dependencyDashboard": true
   },
-  "resolutions": {}
+  "resolutions": {
+    "jsdom@<22": "21.1.1"
+  }
 }
