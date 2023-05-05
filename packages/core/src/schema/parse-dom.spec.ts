@@ -74,7 +74,7 @@ describe('createParseDomRules', () => {
       t.doc(
         t.bulletList(t.p('A1')),
         t.bulletList(t.p('A2')),
-        t.orderedList(
+        t.bulletList(
           //
           t.orderedList(t.p('B1')),
           t.orderedList(t.p('B2')),

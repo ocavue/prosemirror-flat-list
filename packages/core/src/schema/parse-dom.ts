@@ -105,14 +105,9 @@ export function createParseDomRules(): readonly ParseRule[] {
       // This rule is for handling nested lists copied from Dropbox Paper. It's
       // technically invalid HTML structure.
       tag: ':is(ul, ol) > :is(ul, ol)',
-      getAttrs: (element): ListAttributes => {
-        const ul =
-          typeof element === 'string'
-            ? element.toUpperCase() === 'UL'
-            : element.nodeName === 'UL'
-
+      getAttrs: (): ListAttributes => {
         return {
-          kind: ul ? 'bullet' : 'ordered',
+          kind: 'bullet',
         }
       },
     },
