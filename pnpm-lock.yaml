@@ -1,6 +1,7 @@
 lockfileVersion: '6.0'
 
 overrides:
+  typedoc-plugin-markdown: 4.0.0-next.7
   jsdom@<22: 21.1.1
 
 importers:
@@ -402,8 +403,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       typedoc-plugin-markdown:
-        specifier: ^4.0.0-next.10
-        version: 4.0.0-next.10(prettier@2.8.8)(typedoc@0.24.6)
+        specifier: 4.0.0-next.7
+        version: 4.0.0-next.7(prettier@2.8.8)(typedoc@0.24.6)
       typedoc-plugin-mdn-links:
         specifier: ^3.0.3
         version: 3.0.3(typedoc@0.24.6)
@@ -8996,6 +8997,15 @@ packages:
     resolution: {integrity: sha512-QHsz8GgQIGKlRi24yFc6a6lN69Idnx634w49ay6+jA5yFh7a1UY+4Rp6HPx/L/1zcEDPEij8cIsiqR6bQsE5VQ==}
     dev: true
 
+  /shiki@0.14.1:
+    resolution: {integrity: sha512-+Jz4nBkCBe0mEDqo1eKRcCdjRtrCjozmcbTUjbPTX7OOJfEbTZzlUWlZtGe3Gb5oV1/jnojhG//YZc3rs9zSEw==}
+    dependencies:
+      ansi-sequence-parser: 1.1.0
+      jsonc-parser: 3.2.0
+      vscode-oniguruma: 1.7.0
+      vscode-textmate: 8.0.0
+    dev: true
+
   /shiki@0.14.2:
     resolution: {integrity: sha512-ltSZlSLOuSY0M0Y75KA+ieRaZ0Trf5Wl3gutE7jzLuIcWxLp5i/uEnLoQWNvgKXQ5OMpGkJnVMRLAuzjc0LJ2A==}
     dependencies:
@@ -9651,8 +9661,8 @@ packages:
     resolution: {integrity: sha512-1fnFUjCTBnfBgkirFnTaNBEHpestaxQNKDBkws8nKQdqVoEzd24+omrwMTdSAhyC0a24bNbEEiCBAgLzzWu4lA==}
     dev: true
 
-  /typedoc-plugin-markdown@4.0.0-next.10(prettier@2.8.8)(typedoc@0.24.6):
-    resolution: {integrity: sha512-nLCX4MPKdkPTqcrhchayP4a3twjZophtd4tYrhuI08fbLvfPVJO7WQqckTOL5eE9VtYUfPM/SdGuIejS15smwg==}
+  /typedoc-plugin-markdown@4.0.0-next.7(prettier@2.8.8)(typedoc@0.24.6):
+    resolution: {integrity: sha512-fB3T1nWBo40DKwCXGQ4149RWmL7oRNPSuU2EsMycahEgc1hQ4AjIVPdPk6pcoZePMYO1wqBNdtE+WDmq9fZGpw==}
     peerDependencies:
       prettier: '>=1.8.0'
       typedoc: '>=0.24.0'
@@ -9679,7 +9689,7 @@ packages:
       lunr: 2.3.9
       marked: 4.3.0
       minimatch: 9.0.0
-      shiki: 0.14.2
+      shiki: 0.14.1
       typescript: 5.0.4
     dev: true
 

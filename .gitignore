@@ -1,4 +1,3 @@
-website/pages/docs/**/*.md
 .next 
 .cache
 .DS_Store
