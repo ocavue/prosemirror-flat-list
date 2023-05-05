@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.11
+
+### Patch Changes
+
+- 7522b08: Parse checkbox inside a span or label
+
 ## 0.3.10
 
 ### Patch Changes
