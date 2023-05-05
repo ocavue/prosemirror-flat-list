@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.10
+
+### Patch Changes
+
+- 5632801: Parse invalid nested list html copied from Dropbox Paper
+
 ## 0.3.9
 
 ### Patch Changes
