@@ -82,4 +82,44 @@ describe('createParseDomRules', () => {
       ),
     )
   })
+
+  it('can parse checkbox', () => {
+    const content = /*html*/ `
+      <ul>
+        <li><input type="checkbox" checked><span>A1</span></li>
+      </ul>
+    `
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
+
+  it('can parse checkbox in label', () => {
+    const content = /*html*/ `
+      <ul>
+        <li><label><input type="checkbox" checked>A1</label></li>
+      </ul>
+    `
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
+
+  it('can parse checkbox in span', () => {
+    const content = /*html*/ `
+      <ul>
+        <li><span><input type="checkbox" checked>A1</span></li>
+      </ul>
+    `
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
+
+  it('can parse checkbox in span and label', () => {
+    const content = /*html*/ `
+      <ul>
+        <li><span><label><input type="checkbox" checked>A1</label></span></li>
+      </ul>
+    `
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
 })
