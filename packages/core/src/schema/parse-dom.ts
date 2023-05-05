@@ -45,7 +45,14 @@ export function createParseDomRules(): readonly ParseRule[] {
       tag: 'ul > li',
       getAttrs: (element): ListAttributes => {
         if (typeof element !== 'string') {
-          const checkbox = element.firstChild as HTMLElement | null
+          let checkbox = element.firstChild as HTMLElement | null
+
+          for (let i = 0; i < 3 && checkbox; i++) {
+            if (['INPUT', 'UL', 'OL', 'LI'].includes(checkbox.nodeName)) {
+              break
+            }
+            checkbox = checkbox.firstChild as HTMLElement | null
+          }
 
           if (
             checkbox &&
