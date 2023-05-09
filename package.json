@@ -34,8 +34,5 @@
     "ignoreDeps": [],
     "dependencyDashboard": true
   },
-  "resolutions": {
-    "typedoc-plugin-markdown": "4.0.0-next.10",
-    "jsdom@<22": "21.1.1"
-  }
+  "resolutions": {}
 }
