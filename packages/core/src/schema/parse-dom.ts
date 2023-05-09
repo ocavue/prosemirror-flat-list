@@ -86,6 +86,20 @@ export function createParseDomRules(): readonly ParseRule[] {
               collapsed: element.hasAttribute('data-list-collapsed'),
             }
           }
+
+          if (element.firstChild?.nodeType === 3 /* document.TEXT_NODE */) {
+            const textContent = element.firstChild.textContent
+            if (textContent && textContent.match(/^\[[\s|x]\]\s{1,2}/)) {
+              element.firstChild.textContent = textContent.replace(
+                /^\[[\s|x]\]\s{1,2}/,
+                '',
+              )
+              return {
+                kind: 'task',
+                checked: textContent.startsWith('[x]'),
+              }
+            }
+          }
         }
 
         return {
