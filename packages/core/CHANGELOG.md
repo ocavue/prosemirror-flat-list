@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.12
+
+### Patch Changes
+
+- 2250b64: Parse TODO copied from Notion
+
 ## 0.3.11
 
 ### Patch Changes
