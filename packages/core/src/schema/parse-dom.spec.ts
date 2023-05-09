@@ -122,4 +122,21 @@ describe('createParseDomRules', () => {
     const node = htmlToProsemirrorNode({ schema, content })
     expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
   })
+
+  it('can parse TODO copied from Notion', () => {
+    const content = /*html*/ `
+      <meta charset='utf-8'>
+      <ul>
+      <li>[ ]  Unchecked</li>
+      <li>[x]  Checked</li>
+      </ul>
+    `
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(
+      t.doc(
+        t.uncheckedTaskList(t.p('Unchecked')),
+        t.checkedTaskList(t.p('Checked')),
+      ),
+    )
+  })
 })
