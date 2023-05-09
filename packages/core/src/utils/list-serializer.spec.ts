@@ -22,9 +22,9 @@ describe('ListDOMSerializer', () => {
     const serializer = ListDOMSerializer.fromSchema(schema)
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
-    expect(serialized.querySelectorAll('UL').length).toBe(1)
-    expect(serialized.querySelectorAll('OL').length).toBe(0)
-    expect(serialized.querySelectorAll('UL > LI').length).toBe(2)
+    expect(serialized.querySelectorAll('ul').length).toBe(1)
+    expect(serialized.querySelectorAll('ol').length).toBe(0)
+    expect(serialized.querySelectorAll('ul > li').length).toBe(2)
     expect(serialized).toMatchSnapshot()
   })
 
@@ -35,9 +35,9 @@ describe('ListDOMSerializer', () => {
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 
-    expect(serialized.querySelectorAll('UL').length).toBe(0)
-    expect(serialized.querySelectorAll('OL').length).toBe(1)
-    expect(serialized.querySelectorAll('OL > LI').length).toBe(2)
+    expect(serialized.querySelectorAll('ul').length).toBe(0)
+    expect(serialized.querySelectorAll('ol').length).toBe(1)
+    expect(serialized.querySelectorAll('ol > li').length).toBe(2)
     expect(serialized).toMatchSnapshot()
   })
 
@@ -60,10 +60,10 @@ describe('ListDOMSerializer', () => {
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 
-    expect(serialized.querySelectorAll('UL').length).toBe(2)
-    expect(serialized.querySelectorAll('OL').length).toBe(1)
-    expect(serialized.querySelectorAll('UL > LI').length).toBe(6)
-    expect(serialized.querySelectorAll('OL > LI').length).toBe(1)
+    expect(serialized.querySelectorAll('ul').length).toBe(2)
+    expect(serialized.querySelectorAll('ol').length).toBe(1)
+    expect(serialized.querySelectorAll('ul > li').length).toBe(6)
+    expect(serialized.querySelectorAll('ol > li').length).toBe(1)
     expect(serialized).toMatchSnapshot()
   })
 
@@ -79,10 +79,10 @@ describe('ListDOMSerializer', () => {
 
     const serialized = serializer.serializeFragment(editor.state.doc.content)
 
-    expect(serialized.querySelectorAll('UL').length).toBe(1)
-    expect(serialized.querySelectorAll('OL').length).toBe(2)
-    expect(serialized.querySelectorAll('UL > LI').length).toBe(2)
-    expect(serialized.querySelectorAll('OL > LI').length).toBe(4)
+    expect(serialized.querySelectorAll('ul').length).toBe(1)
+    expect(serialized.querySelectorAll('ol').length).toBe(2)
+    expect(serialized.querySelectorAll('ul > li').length).toBe(2)
+    expect(serialized.querySelectorAll('ol > li').length).toBe(4)
     expect(serialized).toMatchSnapshot()
   })
 })
