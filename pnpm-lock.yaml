@@ -32,6 +32,9 @@ importers:
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
+      vitest:
+        specifier: ^0.31.0
+        version: 0.31.0(jsdom@21.1.1)
 
   examples/with-prosemirror:
     dependencies:
