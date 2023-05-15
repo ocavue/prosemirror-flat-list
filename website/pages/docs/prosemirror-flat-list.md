@@ -6,25 +6,10 @@
 
 #### Properties
 
-##### from
-
-> `optional` **from**: `number`
-
-A optional from position to indent.
-
-###### Default Value
-
-`state.selection.from`
-
-##### to
-
-> `optional` **to**: `number`
-
-A optional to position to indent.
-
-###### Default Value
-
-`state.selection.to`
+| Property | Type     | Description                                                                                      |
+| :------- | :------- | :----------------------------------------------------------------------------------------------- |
+| from?    | `number` | A optional from position to indent.<br /><br />`Default Value`<br /><br />`state.selection.from` |
+| to?      | `number` | A optional to position to indent.<br /><br />`Default Value`<br /><br />`state.selection.to`     |
 
 ---
 
@@ -32,25 +17,10 @@ A optional to position to indent.
 
 #### Properties
 
-##### from
-
-> `optional` **from**: `number`
-
-A optional from position to indent.
-
-###### Default Value
-
-`state.selection.from`
-
-##### to
-
-> `optional` **to**: `number`
-
-A optional to position to indent.
-
-###### Default Value
-
-`state.selection.to`
+| Property | Type     | Description                                                                                      |
+| :------- | :------- | :----------------------------------------------------------------------------------------------- |
+| from?    | `number` | A optional from position to indent.<br /><br />`Default Value`<br /><br />`state.selection.from` |
+| to?      | `number` | A optional to position to indent.<br /><br />`Default Value`<br /><br />`state.selection.to`     |
 
 ---
 
@@ -58,21 +28,12 @@ A optional to position to indent.
 
 #### Properties
 
-##### checked
-
-> `optional` **checked**: `boolean`
-
-##### collapsed
-
-> `optional` **collapsed**: `boolean`
-
-##### kind
-
-> `optional` **kind**: [`ListKind`](prosemirror-flat-list.md#listkind)
-
-##### order
-
-> `optional` **order**: `null` \| `number`
+| Property   | Type                            |
+| :--------- | :------------------------------ |
+| checked?   | `boolean`                       |
+| collapsed? | `boolean`                       |
+| kind?      | [`ListKind`](index.md#listkind) |
+| order?     | `null` \| `number`              |
 
 ---
 
@@ -80,64 +41,12 @@ A optional to position to indent.
 
 #### Properties
 
-##### getAttributes
-
-> `optional` **getAttributes**: `Function`
-
-###### Type declaration
-
-An optional function to get the attributes added to HTML element.
-
-> (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)): `Record`\<`string`, `undefined` \| `string`\>
-
-####### Parameters
-
-| Parameter | Type                                                   |
-| :-------- | :----------------------------------------------------- |
-| node      | [`Node`](https://prosemirror.net/docs/ref/#model.Node) |
-
-####### Returns
-
-`Record`\<`string`, `undefined` \| `string`\>
-
-##### getMarkers
-
-> `optional` **getMarkers**: `Function`
-
-###### Type declaration
-
-An optional function to get elements inside `<div class="list-marker">`.
-Return `null` to hide the marker.
-
-> (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)): `null` \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[]
-
-####### Parameters
-
-| Parameter | Type                                                   |
-| :-------- | :----------------------------------------------------- |
-| node      | [`Node`](https://prosemirror.net/docs/ref/#model.Node) |
-
-####### Returns
-
-`null` \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[]
-
-##### nativeList
-
-> `optional` **nativeList**: `boolean`
-
-If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.
-You might want to use [joinListElements](prosemirror-flat-list.md#joinlistelements) to join the list elements
-afterward.
-
-###### Default Value
-
-false
-
-##### node
-
-> **node**: [`Node`](https://prosemirror.net/docs/ref/#model.Node)
-
-The list node to be rendered.
+| Property       | Type                                                                                                                                                   | Description                                                                                                                                                                                                                               |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| getAttributes? | (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `Record`\<`string`, `undefined` \| `string`\>                                        | An optional function to get the attributes added to HTML element.                                                                                                                                                                         |
+| getMarkers?    | (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `null` \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[] | An optional function to get elements inside `<div class="list-marker">`.<br />Return `null` to hide the marker.                                                                                                                           |
+| nativeList?    | `boolean`                                                                                                                                              | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.<br />You might want to use [joinListElements](index.md#joinlistelements) to join the list elements<br />afterward.<br /><br />`Default Value`<br /><br />false |
+| node           | [`Node`](https://prosemirror.net/docs/ref/#model.Node)                                                                                                 | The list node to be rendered.                                                                                                                                                                                                             |
 
 ---
 
@@ -145,26 +54,13 @@ The list node to be rendered.
 
 #### Properties
 
-##### attrs
-
-> `optional` **attrs**: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs)
-
-##### content
-
-> `optional` **content**: [`ProsemirrorNodeJSON`](prosemirror-flat-list.md#prosemirrornodejson)[]
-
-##### marks
-
-> `optional` **marks**: (`string` \| \{attrs: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs);
-> type: `string`;})[]
-
-##### text
-
-> `optional` **text**: `string`
-
-##### type
-
-> **type**: `string`
+| Property | Type                                                                                                |
+| :------- | :-------------------------------------------------------------------------------------------------- |
+| attrs?   | [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs)                                            |
+| content? | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[]                                             |
+| marks?   | (`string` \| \{attrs: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs); type: `string`;})[] |
+| text?    | `string`                                                                                            |
+| type     | `string`                                                                                            |
 
 ---
 
@@ -172,33 +68,10 @@ The list node to be rendered.
 
 #### Properties
 
-##### collapsed
-
-> `optional` **collapsed**: `boolean`
-
-If this value exists, the command will set the `collapsed` attribute to
-this value instead of toggle it.
-
-##### isToggleable
-
-> `optional` **isToggleable**: `Function`
-
-###### Type declaration
-
-An optional function to accept a list node and return whether or not this
-node can toggle its `collapsed` attribute.
-
-> (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)): `boolean`
-
-####### Parameters
-
-| Parameter | Type                                                   |
-| :-------- | :----------------------------------------------------- |
-| node      | [`Node`](https://prosemirror.net/docs/ref/#model.Node) |
-
-####### Returns
-
-`boolean`
+| Property      | Type                                                                        | Description                                                                                                               |
+| :------------ | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| collapsed?    | `boolean`                                                                   | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it.             |
+| isToggleable? | (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ---
 
@@ -206,10 +79,10 @@ node can toggle its `collapsed` attribute.
 
 ### findListsRange()
 
+> **findListsRange**($from: [`ResolvedPos`]( https://prosemirror.net/docs/ref/#model.ResolvedPos ), $to: [`ResolvedPos`]( https://prosemirror.net/docs/ref/#model.ResolvedPos ) = `$from`): [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange ) \| `null`
+
 Returns a minimal block range that includes the given two positions and
 represents one or multiple sibling list nodes.
-
-> **findListsRange**($from: [`ResolvedPos`]( https://prosemirror.net/docs/ref/#model.ResolvedPos ), $to: [`ResolvedPos`]( https://prosemirror.net/docs/ref/#model.ResolvedPos ) = `$from`): [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange ) \| `null`
 
 #### Parameters
 
@@ -258,9 +131,9 @@ represents one or multiple sibling list nodes.
 
 ### joinListElements()
 
-Merge adjacent <ul> elements or adjacent <ol> elements into a single list element.
-
 > **joinListElements**\<T\>(parent: `T`): `T`
+
+Merge adjacent \<ul\> elements or adjacent \<ol\> elements into a single list element.
 
 #### Type parameters
 
@@ -282,21 +155,21 @@ Merge adjacent <ul> elements or adjacent <ol> elements into a single list elemen
 
 ### migrateDocJSON()
 
+> **migrateDocJSON**(docJSON: [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)): [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson) \| `null`
+
 Migrate a ProseMirror document JSON object from the old list structure to the
 new. A new document JSON object is returned if the document is updated,
 otherwise `null` is returned.
 
-> **migrateDocJSON**(docJSON: [`ProsemirrorNodeJSON`](prosemirror-flat-list.md#prosemirrornodejson)): [`ProsemirrorNodeJSON`](prosemirror-flat-list.md#prosemirrornodejson) \| `null`
-
 #### Parameters
 
-| Parameter | Type                                                                  |
-| :-------- | :-------------------------------------------------------------------- |
-| docJSON   | [`ProsemirrorNodeJSON`](prosemirror-flat-list.md#prosemirrornodejson) |
+| Parameter | Type                                                  |
+| :-------- | :---------------------------------------------------- |
+| docJSON   | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson) |
 
 #### Returns
 
-[`ProsemirrorNodeJSON`](prosemirror-flat-list.md#prosemirrornodejson) \| `null`
+[`ProsemirrorNodeJSON`](index.md#prosemirrornodejson) \| `null`
 
 ---
 
@@ -308,49 +181,47 @@ otherwise `null` is returned.
 
 Returns an object containing the keymap for the list commands.
 
-- `Enter`: See [enterCommand](prosemirror-flat-list.md#entercommand).
-- `Backspace`: See [backspaceCommand](prosemirror-flat-list.md#backspacecommand).
-- `Delete`: See [deleteCommand](prosemirror-flat-list.md#deletecommand).
-- `Mod-[`: Decrease indentation. See [createDedentListCommand](prosemirror-flat-list.md#creatededentlistcommand).
-- `Mod-]`: Increase indentation. See [createIndentListCommand](prosemirror-flat-list.md#createindentlistcommand).
+- `Enter`: See [enterCommand](index.md#entercommand).
+- `Backspace`: See [backspaceCommand](index.md#backspacecommand).
+- `Delete`: See [deleteCommand](index.md#deletecommand).
+- `Mod-[`: Decrease indentation. See [createDedentListCommand](index.md#creatededentlistcommand).
+- `Mod-]`: Increase indentation. See [createIndentListCommand](index.md#createindentlistcommand).
 
 #### Type declaration
 
-> **Backspace**: [`Command`](https://prosemirror.net/docs/ref/#state.Command) = `backspaceCommand`
->
-> **Delete**: [`Command`](https://prosemirror.net/docs/ref/#state.Command) = `deleteCommand`
->
-> **Enter**: [`Command`](https://prosemirror.net/docs/ref/#state.Command) = `enterCommand`
->
-> **Mod-[**: [`Command`](https://prosemirror.net/docs/ref/#state.Command)
->
-> **Mod-]**: [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+| Member    | Type                                                         |
+| :-------- | :----------------------------------------------------------- |
+| Backspace | [`Command`](https://prosemirror.net/docs/ref/#state.Command) |
+| Delete    | [`Command`](https://prosemirror.net/docs/ref/#state.Command) |
+| Enter     | [`Command`](https://prosemirror.net/docs/ref/#state.Command) |
+| Mod-[     | [`Command`](https://prosemirror.net/docs/ref/#state.Command) |
+| Mod-]     | [`Command`](https://prosemirror.net/docs/ref/#state.Command) |
 
 ---
 
 ### backspaceCommand()
-
-Keybinding for `Backspace`. It's chained with following commands:
-
-- [protectCollapsed](prosemirror-flat-list.md#protectcollapsed)
-- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
-- [joinListUp](prosemirror-flat-list.md#joinlistup)
-- [joinCollapsedListBackward](prosemirror-flat-list.md#joincollapsedlistbackward)
-- [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
-- [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
 
 > **backspaceCommand**(
 > state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
 > dispatch?: `Function`,
 > view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
+Keybinding for `Backspace`. It's chained with following commands:
+
+- [protectCollapsed](index.md#protectcollapsed)
+- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+- [joinListUp](index.md#joinlistup)
+- [joinCollapsedListBackward](index.md#joincollapsedlistbackward)
+- [joinTextblockBackward](https://prosemirror.net/docs/ref/#commands.joinTextblockBackward)
+- [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
+
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -360,15 +231,15 @@ Keybinding for `Backspace`. It's chained with following commands:
 
 ### createDedentListCommand()
 
-Returns a command function that decreases the indentation of selected list nodes.
+> **createDedentListCommand**(options?: [`DedentListOptions`](index.md#dedentlistoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
 
-> **createDedentListCommand**(options?: [`DedentListOptions`](prosemirror-flat-list.md#dedentlistoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+Returns a command function that decreases the indentation of selected list nodes.
 
 #### Parameters
 
-| Parameter | Type                                                              |
-| :-------- | :---------------------------------------------------------------- |
-| options?  | [`DedentListOptions`](prosemirror-flat-list.md#dedentlistoptions) |
+| Parameter | Type                                              |
+| :-------- | :------------------------------------------------ |
+| options?  | [`DedentListOptions`](index.md#dedentlistoptions) |
 
 #### Returns
 
@@ -378,16 +249,16 @@ Returns a command function that decreases the indentation of selected list nodes
 
 ### createIndentListCommand()
 
+> **createIndentListCommand**(options?: [`IndentListOptions`](index.md#indentlistoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
 Returns a command function that increases the indentation of selected list
 nodes.
 
-> **createIndentListCommand**(options?: [`IndentListOptions`](prosemirror-flat-list.md#indentlistoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
-
 #### Parameters
 
-| Parameter | Type                                                              |
-| :-------- | :---------------------------------------------------------------- |
-| options?  | [`IndentListOptions`](prosemirror-flat-list.md#indentlistoptions) |
+| Parameter | Type                                              |
+| :-------- | :------------------------------------------------ |
+| options?  | [`IndentListOptions`](index.md#indentlistoptions) |
 
 #### Returns
 
@@ -397,9 +268,9 @@ nodes.
 
 ### createMoveListCommand()
 
-Returns a command function that moves up or down selected list nodes.
-
 > **createMoveListCommand**(direction: "up" \| "down"): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command function that moves up or down selected list nodes.
 
 #### Parameters
 
@@ -415,9 +286,9 @@ Returns a command function that moves up or down selected list nodes.
 
 ### createSplitListCommand()
 
-Returns a command that split the current list node.
-
 > **createSplitListCommand**(): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command that split the current list node.
 
 #### Returns
 
@@ -427,15 +298,15 @@ Returns a command that split the current list node.
 
 ### createToggleCollapsedCommand()
 
-Return a command function that toggle the `collapsed` attribute of the list node.
+> **createToggleCollapsedCommand**(\_\_namedParameters: [`ToggleCollapsedOptions`](index.md#togglecollapsedoptions) = `{}`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
 
-> **createToggleCollapsedCommand**(\_\_namedParameters: [`ToggleCollapsedOptions`](prosemirror-flat-list.md#togglecollapsedoptions) = `{}`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+Return a command function that toggle the `collapsed` attribute of the list node.
 
 #### Parameters
 
-| Parameter           | Type                                                                        |
-| :------------------ | :-------------------------------------------------------------------------- |
-| \_\_namedParameters | [`ToggleCollapsedOptions`](prosemirror-flat-list.md#togglecollapsedoptions) |
+| Parameter           | Type                                                        |
+| :------------------ | :---------------------------------------------------------- |
+| \_\_namedParameters | [`ToggleCollapsedOptions`](index.md#togglecollapsedoptions) |
 
 #### Returns
 
@@ -445,22 +316,22 @@ Return a command function that toggle the `collapsed` attribute of the list node
 
 ### createWrapInListCommand()
 
+> **createWrapInListCommand**\<T\>(getAttrs: `T` \| (range: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| `T`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
 Returns a command function that wraps the selection in a list with the given
 type an attributes.
 
-> **createWrapInListCommand**\<T\>(getAttrs: `T` \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| `T`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
-
 #### Type parameters
 
-| Parameter                                                               | Default                                                     |
-| :---------------------------------------------------------------------- | :---------------------------------------------------------- |
-| T _extends_ [`ListAttributes`](prosemirror-flat-list.md#listattributes) | [`ListAttributes`](prosemirror-flat-list.md#listattributes) |
+| Parameter                                               | Default                                     |
+| :------------------------------------------------------ | :------------------------------------------ |
+| T _extends_ [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
 #### Parameters
 
-| Parameter | Type                                                                                                | Description                                                                                                                                                                                                 |
-| :-------- | :-------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| getAttrs  | `T` \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. If this callback<br />function returns null, the command won't do anything. |
+| Parameter | Type                                                                                              | Description                                                                                                                                                                                                 |
+| :-------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| getAttrs  | `T` \| (range: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. If this callback<br />function returns null, the command won't do anything. |
 
 #### Returns
 
@@ -470,25 +341,25 @@ type an attributes.
 
 ### deleteCommand()
 
-Keybinding for `Delete`. It's chained with following commands:
-
-- [protectCollapsed](prosemirror-flat-list.md#protectcollapsed)
-- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
-- [joinTextblockForward](https://prosemirror.net/docs/ref/#commands.joinTextblockForward)
-- [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
-
 > **deleteCommand**(
 > state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
 > dispatch?: `Function`,
 > view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
+Keybinding for `Delete`. It's chained with following commands:
+
+- [protectCollapsed](index.md#protectcollapsed)
+- [deleteSelection](https://prosemirror.net/docs/ref/#commands.deleteSelection)
+- [joinTextblockForward](https://prosemirror.net/docs/ref/#commands.joinTextblockForward)
+- [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
+
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -498,23 +369,23 @@ Keybinding for `Delete`. It's chained with following commands:
 
 ### enterCommand()
 
-Keybinding for `Enter`. It's chained with following commands:
-
-- [protectCollapsed](prosemirror-flat-list.md#protectcollapsed)
-- [createSplitListCommand](prosemirror-flat-list.md#createsplitlistcommand)
-
 > **enterCommand**(
 > state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
 > dispatch?: `Function`,
 > view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
+Keybinding for `Enter`. It's chained with following commands:
+
+- [protectCollapsed](index.md#protectcollapsed)
+- [createSplitListCommand](index.md#createsplitlistcommand)
+
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -524,22 +395,22 @@ Keybinding for `Enter`. It's chained with following commands:
 
 ### joinCollapsedListBackward()
 
-If the selection is empty and at the start of a block, and there is a
-collapsed list node right before the cursor, move current block and append it
-to the first child of the collapsed list node (i.e. skip the hidden content).
-
 > **joinCollapsedListBackward**(
 > state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
 > dispatch?: `Function`,
 > view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
+If the selection is empty and at the start of a block, and there is a
+collapsed list node right before the cursor, move current block and append it
+to the first child of the collapsed list node (i.e. skip the hidden content).
+
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -549,22 +420,22 @@ to the first child of the collapsed list node (i.e. skip the hidden content).
 
 ### joinListUp()
 
-If the text cursor is at the start of the first child of a list node, lift
-all content inside the list. If the text cursor is at the start of the last
-child of a list node, lift this child.
-
 > **joinListUp**(
 > state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
 > dispatch?: `Function`,
 > view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
+If the text cursor is at the start of the first child of a list node, lift
+all content inside the list. If the text cursor is at the start of the last
+child of a list node, lift this child.
+
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -573,6 +444,11 @@ child of a list node, lift this child.
 ---
 
 ### protectCollapsed()
+
+> **protectCollapsed**(
+> state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
+> dispatch?: `Function`,
+> view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
 
 This command will protect the collapsed items from being deleted.
 
@@ -584,18 +460,13 @@ In such case, we will stop the delete action and expand the collapsed items
 instead. Therefore the user can clearly know what content he is trying to
 delete.
 
-> **protectCollapsed**(
-> state: [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState),
-> dispatch?: `Function`,
-> view?: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)): `boolean`
-
 #### Parameters
 
-| Parameter | Type                                                                                   |
-| :-------- | :------------------------------------------------------------------------------------- |
-| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                   |
-| dispatch? | (`tr`: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
-| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                      |
+| Parameter | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| state     | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)                 |
+| dispatch? | (tr: [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)) => `void` |
+| view?     | [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView)                    |
 
 #### Returns
 
@@ -615,23 +486,23 @@ All input rules for lists.
 
 ### wrappingListInputRule()
 
+> **wrappingListInputRule**\<T\>(regexp: [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), getAttrs: `T` \| (matches: `RegExpMatchArray`) => `T`): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)
+
 Build an input rule for automatically wrapping a textblock into a list node
 when a given string is typed.
 
-> **wrappingListInputRule**\<T\>(regexp: [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), getAttrs: `T` \| (`matches`: `RegExpMatchArray`) => `T`): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)
-
 #### Type parameters
 
-| Parameter                                                               | Default                                                     |
-| :---------------------------------------------------------------------- | :---------------------------------------------------------- |
-| T _extends_ [`ListAttributes`](prosemirror-flat-list.md#listattributes) | [`ListAttributes`](prosemirror-flat-list.md#listattributes) |
+| Parameter                                               | Default                                     |
+| :------------------------------------------------------ | :------------------------------------------ |
+| T _extends_ [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
 #### Parameters
 
 | Parameter | Type                                                                                                |
 | :-------- | :-------------------------------------------------------------------------------------------------- |
 | regexp    | [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) |
-| getAttrs  | `T` \| (`matches`: `RegExpMatchArray`) => `T`                                                       |
+| getAttrs  | `T` \| (matches: `RegExpMatchArray`) => `T`                                                         |
 
 #### Returns
 
@@ -646,13 +517,11 @@ when a given string is typed.
 A custom DOM serializer class that can serialize flat list nodes into native
 HTML list elements (i.e. `<ul>` and `<ol>`).
 
-#### Hierarchy
-
-- [`DOMSerializer`](https://prosemirror.net/docs/ref/#model.DOMSerializer).**ListDOMSerializer**
-
 #### Constructors
 
-#### constructor()
+##### constructor()
+
+> **new ListDOMSerializer**(nodes: `object`, marks: `object`): [`ListDOMSerializer`](index.md#listdomserializer)
 
 Create a serializer. `nodes` should map node names to functions
 that take a node and return a description of the corresponding
@@ -662,20 +531,18 @@ inline content (for typical use, it'll always be inline). A mark
 serializer may be `null` to indicate that marks of that type
 should not be serialized.
 
-> **new ListDOMSerializer**(nodes: `object`, marks: `object`): [`ListDOMSerializer`](prosemirror-flat-list.md#listdomserializer)
-
-##### Parameters
+###### Parameters
 
 | Parameter | Type | Description                       |
 | :-------- | :--- | :-------------------------------- |
 | nodes     | \{}  | The node serialization functions. |
 | marks     | \{}  | The mark serialization functions. |
 
-##### Returns
+###### Returns
 
-[`ListDOMSerializer`](prosemirror-flat-list.md#listdomserializer)
+[`ListDOMSerializer`](index.md#listdomserializer)
 
-##### Inherited from
+###### Inherited from
 
 DOMSerializer.constructor
 
@@ -706,7 +573,7 @@ DOMSerializer.serializeFragment
 
 ##### fromSchema()
 
-> `Static` **fromSchema**(schema: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\>): [`ListDOMSerializer`](prosemirror-flat-list.md#listdomserializer)
+> `Static` **fromSchema**(schema: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\>): [`ListDOMSerializer`](index.md#listdomserializer)
 
 ###### Parameters
 
@@ -716,7 +583,7 @@ DOMSerializer.serializeFragment
 
 ###### Returns
 
-[`ListDOMSerializer`](prosemirror-flat-list.md#listdomserializer)
+[`ListDOMSerializer`](index.md#listdomserializer)
 
 ###### Overrides
 
@@ -744,10 +611,10 @@ DOMSerializer.nodesFromSchema
 
 ### createListClipboardPlugin()
 
-Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
-clipboard. See [ListDOMSerializer](prosemirror-flat-list.md#listdomserializer).
-
 > **createListClipboardPlugin**(schema: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\>): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
+
+Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
+clipboard. See [ListDOMSerializer](index.md#listdomserializer).
 
 #### Parameters
 
@@ -763,9 +630,9 @@ clipboard. See [ListDOMSerializer](prosemirror-flat-list.md#listdomserializer).
 
 ### createListEventPlugin()
 
-Handle DOM events for list.
-
 > **createListEventPlugin**(): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
+
+Handle DOM events for list.
 
 #### Returns
 
@@ -775,15 +642,15 @@ Handle DOM events for list.
 
 ### createListNodeView()
 
-A simple node view that is used to render the list node. It ensures that the
-list node get updated when its marker styling should changes.
-
 > **createListNodeView**(
 > node: [`Node`](https://prosemirror.net/docs/ref/#model.Node),
 > view: [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView),
 > getPos: `Function`,
 > decorations: _readonly_ [`Decoration`](https://prosemirror.net/docs/ref/#view.Decoration)[],
 > innerDecorations: [`DecorationSource`](https://prosemirror.net/docs/ref/#view.DecorationSource)): [`NodeView`](https://prosemirror.net/docs/ref/#view.NodeView)
+
+A simple node view that is used to render the list node. It ensures that the
+list node get updated when its marker styling should changes.
 
 #### Parameters
 
@@ -803,17 +670,17 @@ list node get updated when its marker styling should changes.
 
 ### createListPlugins()
 
+> **createListPlugins**(\_\_namedParameters: `object`): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)[]
+
 This function returns an array of plugins that are required for list to work.
 
 The plugins are shown below. You can pick and choose which plugins you want
 to use if you want to customize some behavior.
 
-- [createListEventPlugin](prosemirror-flat-list.md#createlisteventplugin)
-- [createListRenderingPlugin](prosemirror-flat-list.md#createlistrenderingplugin)
-- [createListClipboardPlugin](prosemirror-flat-list.md#createlistclipboardplugin)
-- [createSafariInputMethodWorkaroundPlugin](prosemirror-flat-list.md#createsafariinputmethodworkaroundplugin)
-
-> **createListPlugins**(\_\_namedParameters: `object`): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)[]
+- [createListEventPlugin](index.md#createlisteventplugin)
+- [createListRenderingPlugin](index.md#createlistrenderingplugin)
+- [createListClipboardPlugin](index.md#createlistclipboardplugin)
+- [createSafariInputMethodWorkaroundPlugin](index.md#createsafariinputmethodworkaroundplugin)
 
 #### Parameters
 
@@ -829,9 +696,9 @@ to use if you want to customize some behavior.
 
 ### createListRenderingPlugin()
 
-Handle the list node rendering.
-
 > **createListRenderingPlugin**(): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
+
+Handle the list node rendering.
 
 #### Returns
 
@@ -841,12 +708,12 @@ Handle the list node rendering.
 
 ### createSafariInputMethodWorkaroundPlugin()
 
+> **createSafariInputMethodWorkaroundPlugin**(): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
+
 Return a plugin as a workaround for a bug in Safari that causes the composition
 based IME to remove the empty HTML element with CSS `position: relative`.
 
 See also https://github.com/ProseMirror/prosemirror/issues/934
-
-> **createSafariInputMethodWorkaroundPlugin**(): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
 
 #### Returns
 
@@ -866,9 +733,9 @@ All default list node kinds.
 
 ### createListSpec()
 
-Return the spec for list node.
-
 > **createListSpec**(): [`NodeSpec`](https://prosemirror.net/docs/ref/#model.NodeSpec)
+
+Return the spec for list node.
 
 #### Returns
 
@@ -878,9 +745,9 @@ Return the spec for list node.
 
 ### createParseDomRules()
 
-Returns a set of rules for parsing HTML into ProseMirror list nodes.
-
 > **createParseDomRules**(): _readonly_ [`ParseRule`](https://prosemirror.net/docs/ref/#model.ParseRule)[]
+
+Returns a set of rules for parsing HTML into ProseMirror list nodes.
 
 #### Returns
 
@@ -890,15 +757,15 @@ _readonly_ [`ParseRule`](https://prosemirror.net/docs/ref/#model.ParseRule)[]
 
 ### listToDOM()
 
-Renders a list node to DOM output spec.
+> **listToDOM**(\_\_namedParameters: [`ListToDOMOptions`](index.md#listtodomoptions)): [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)
 
-> **listToDOM**(\_\_namedParameters: [`ListToDOMOptions`](prosemirror-flat-list.md#listtodomoptions)): [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)
+Renders a list node to DOM output spec.
 
 #### Parameters
 
-| Parameter           | Type                                                            |
-| :------------------ | :-------------------------------------------------------------- |
-| \_\_namedParameters | [`ListToDOMOptions`](prosemirror-flat-list.md#listtodomoptions) |
+| Parameter           | Type                                            |
+| :------------------ | :---------------------------------------------- |
+| \_\_namedParameters | [`ListToDOMOptions`](index.md#listtodomoptions) |
 
 #### Returns
 

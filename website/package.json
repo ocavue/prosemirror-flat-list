@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nr build:typedoc && next --port 3301",
     "build": "nr build:typedoc && next build",
-    "build:typedoc": "nr -w api && typedoc"
+    "build:typedoc": "nr -w api && typedoc && mv ./pages/docs/remirror-extension-flat-list/index.md ./pages/docs/remirror-extension-flat-list.md && mv ./pages/docs/prosemirror-flat-list/index.md ./pages/docs/prosemirror-flat-list.md"
   },
   "devDependencies": {
     "@remirror/core": "^2.0.16",
@@ -19,16 +19,16 @@
     "@remirror/styles": "^2.0.5",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
-    "next": "^13.4.1",
-    "nextra": "^2.5.0",
-    "nextra-theme-docs": "^2.5.0",
+    "next": "^13.4.2",
+    "nextra": "^2.5.2",
+    "nextra-theme-docs": "^2.5.2",
     "prosemirror-flat-list": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remirror-extension-flat-list": "*",
     "typedoc": "^0.24.7",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^4.0.0-next.10",
+    "typedoc-plugin-markdown": "^4.0.0-next.11",
     "typedoc-plugin-mdn-links": "^3.0.3",
     "typescript": "^5.0.4"
   }

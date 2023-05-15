@@ -47,5 +47,11 @@
     // https://www.npmjs.com/package/typedoc-plugin-markdown
     "hideBreadcrumbs": true,
     "hideInPageTOC": true,
-    "kindsWithOwnFile": "none",
+    "hidePageHeader": true,
+    "hideKindTag": true,
+    "hideHierarchy": true,
+    "typeDeclarationFormat": "table",
+    "enumMembersFormat": "table",
+    "propertiesFormat": "table",
+    "outputFileStrategy": "modules"
 }

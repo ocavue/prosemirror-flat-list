@@ -48,10 +48,10 @@
     "prosemirror-model": "^1.19.0",
     "prosemirror-state": "^1.4.2",
     "prosemirror-transform": "^1.7.1",
-    "prosemirror-view": "^1.31.1"
+    "prosemirror-view": "^1.31.2"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.34.8",
+    "@microsoft/api-extractor": "^7.34.9",
     "@remirror/core": "^2.0.16",
     "@remirror/extension-blockquote": "^2.0.14",
     "@remirror/extension-heading": "^2.0.13",
@@ -59,7 +59,7 @@
     "@remirror/pm": "^2.0.5",
     "@remirror/preset-core": "^2.0.16",
     "@types/dedent": "^0.7.0",
-    "@types/node": "^18.16.5",
+    "@types/node": "^18.16.9",
     "@vitest/coverage-c8": "^0.31.0",
     "dedent": "^0.7.0",
     "execa": "^7.1.1",
