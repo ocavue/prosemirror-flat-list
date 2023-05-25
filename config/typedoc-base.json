@@ -44,7 +44,10 @@
     "treatWarningsAsErrors": true,
     "cleanOutputDir": false,
 
-    // https://www.npmjs.com/package/typedoc-plugin-markdown
+    // https://www.npmjs.com/package/typedoc-plugin-markdown/v/next
+    "flattenOutputFiles": true,
+    "skipIndexPage": true,
+    "entryFileName": "index.md",
     "hideBreadcrumbs": true,
     "hideInPageTOC": true,
     "hidePageHeader": true,
