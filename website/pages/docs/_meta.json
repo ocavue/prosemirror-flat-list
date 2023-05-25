@@ -2,10 +2,7 @@
     "README": {
         "display": "hidden"
     },
-    "prosemirror-flat-list": {
-        "title": "prosemirror-flat-list"
-    },
-    "remirror-extension-flat-list": {
-        "title": "remirror-extension-flat-list"
+    "index": {
+        "display": "hidden"
     }
 }

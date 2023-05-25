@@ -1,5 +1,14 @@
 # prosemirror-flat-list
 
+## Modules
+
+- [DedentListOptions](index.md#dedentlistoptions)
+- [IndentListOptions](index.md#indentlistoptions)
+- [ListAttributes](index.md#listattributes)
+- [ListToDOMOptions](index.md#listtodomoptions)
+- [ProsemirrorNodeJSON](index.md#prosemirrornodejson)
+- [ToggleCollapsedOptions](index.md#togglecollapsedoptions)
+
 ## Interfaces
 
 ### DedentListOptions
