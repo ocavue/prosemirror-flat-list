@@ -18,7 +18,7 @@ export function handleListMarkerMouseDown({
 }): boolean {
   const target = event.target as HTMLElement | null
 
-  if (target?.classList.contains('list-marker-click-target')) {
+  if (target?.closest('.list-marker-click-target')) {
     event.preventDefault()
 
     const pos = view.posAtDOM(target, -10, -10)
