@@ -1,6 +1,7 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { DOMSerializer } from 'prosemirror-model'
 import { type NodeViewConstructor } from 'prosemirror-view'
+import * as browser from './utils/browser'
 
 /**
  * A simple node view that is used to render the list node. It ensures that the
@@ -15,6 +16,15 @@ export const createListNodeView: NodeViewConstructor = (node) => {
 
   const spec = node.type.spec.toDOM!(node)
   const { dom, contentDOM } = DOMSerializer.renderSpec(document, spec)
+
+  // iOS Safari will jump the text selection around with a toggle list since the element is empty,
+  // and adding an empty span as a child to the click target prevents that behavior
+  // See https://github.com/ocavue/prosemirror-flat-list/issues/89
+  if (browser.safari && node.attrs.kind === 'toggle') {
+    ;(dom as HTMLElement)
+      .querySelector('.list-marker-click-target')
+      ?.appendChild(document.createElement('span'))
+  }
 
   const update = (node: ProsemirrorNode): boolean => {
     if (!node.sameMarkup(prevNode)) return false
