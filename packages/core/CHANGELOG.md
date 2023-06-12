@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.13
+
+### Patch Changes
+
+- 9bae343: Prevent iOS from bouncing the text selection around when toggling a list or a task item.
+
 ## 0.3.12
 
 ### Patch Changes
