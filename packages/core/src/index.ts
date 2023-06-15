@@ -39,8 +39,8 @@ export {
   createListRenderingPlugin,
   createSafariInputMethodWorkaroundPlugin,
 } from './plugins'
+export { createListSpec, flatListGroup } from './schema/node-spec'
 export { createParseDomRules } from './schema/parse-dom'
-export { createListSpec, flatListGroup } from './schema/spec'
 export {
   defaultAttributesGetter,
   defaultMarkerGetter,
@@ -53,7 +53,7 @@ export { isCollapsedListNode } from './utils/is-collapsed-list-node'
 export { isListNode } from './utils/is-list-node'
 export { isListType } from './utils/is-list-type'
 export { findListsRange, isListsRange } from './utils/list-range'
-export { joinListElements, ListDOMSerializer } from './utils/list-serializer'
+export { ListDOMSerializer, joinListElements } from './utils/list-serializer'
 export { parseInteger } from './utils/parse-integer'
 export { rangeToString } from './utils/range-to-string'
 export { unwrapListSlice } from './utils/unwrap-list-slice'

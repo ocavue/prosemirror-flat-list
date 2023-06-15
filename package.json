@@ -25,7 +25,7 @@
     "prettier": "^2.8.8",
     "typedoc": "^0.24.8",
     "typescript": "^5.0.4",
-    "vitest": "^0.31.1"
+    "vitest": "^0.32.0"
   },
   "renovate": {
     "extends": [
