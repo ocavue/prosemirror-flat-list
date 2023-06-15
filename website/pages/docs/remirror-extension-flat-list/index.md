@@ -14,13 +14,13 @@ A Remirror extension for creating lists. It's a simple wrapper around the API fr
 
 ##### constructor()
 
-> **new ListExtension**(...args: [options?: ConditionalPick\<EmptyShape, StaticAnnotation\> & Partial\<ConditionalPick\<PickPartial\<EmptyShape\>, StaticAnnotation\>\> & GetDynamic\<EmptyShape\> & BaseExtensionOptions]): [`ListExtension`](index.md#listextension)
+> **new ListExtension**(...`args`): [`ListExtension`](index.md#listextension)
 
 ###### Parameters
 
-| Parameter | Type                                                                                                                                                                                      |
-| :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ...args   | [options?: ConditionalPick\<EmptyShape, StaticAnnotation\> & Partial\<ConditionalPick\<PickPartial\<EmptyShape\>, StaticAnnotation\>\> & GetDynamic\<EmptyShape\> & BaseExtensionOptions] |
+| Parameter | Type                                                                                                                                                                                                            |
+| :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ...`args` | [`ConditionalPick`\< `EmptyShape`, `StaticAnnotation` \> & `Partial`\< `ConditionalPick`\< `PickPartial`\< `EmptyShape` \>, `StaticAnnotation` \> \> & `GetDynamic`\< `EmptyShape` \> & `BaseExtensionOptions`] |
 
 ###### Returns
 
@@ -32,15 +32,15 @@ NodeExtension.constructor
 
 #### Properties
 
-| Property                        | Type      |
-| :------------------------------ | :-------- |
-| `static` disableExtraAttributes | `boolean` |
+| Property                          | Type      |
+| :-------------------------------- | :-------- |
+| `static` `disableExtraAttributes` | `boolean` |
 
 #### Accessors
 
 ##### name
 
-> get **name()**: "list"
+> `get` name(): `"list"`
 
 ###### Overrides
 
@@ -54,21 +54,21 @@ NodeExtension.name
 
 ###### Returns
 
-`object`
-
-| Member                      | Type                                                                                                                                                                                                                           |
-| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `readonly` dedentList       | (props?: [`DedentListOptions`](index.md#dedentlistoptions)) => `CommandFunction`\<`object`\>                                                                                                                                   |
-| `readonly` indentList       | (props?: [`IndentListOptions`](index.md#indentlistoptions)) => `CommandFunction`\<`object`\>                                                                                                                                   |
-| `readonly` moveList         | (direction: "up" \| "down") => `CommandFunction`\<`object`\>                                                                                                                                                                   |
-| `readonly` protectCollapsed | () => `CommandFunction`\<`object`\>                                                                                                                                                                                            |
-| `readonly` splitList        | () => `CommandFunction`\<`object`\>                                                                                                                                                                                            |
-| `readonly` toggleCollapsed  | (props?: [`ToggleCollapsedOptions`](index.md#togglecollapsedoptions)) => `CommandFunction`\<`object`\>                                                                                                                         |
-| `readonly` wrapInList       | (getAttrs: [`ListAttributes`](index.md#listattributes) \| (range: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| [`ListAttributes`](index.md#listattributes)) => `CommandFunction`\<`object`\> |
+| Member                        | Type                                             |
+| :---------------------------- | :----------------------------------------------- |
+| `readonly` `dedentList`       | (`props`?) => `CommandFunction`\< `object` \>    |
+| `readonly` `indentList`       | (`props`?) => `CommandFunction`\< `object` \>    |
+| `readonly` `moveList`         | (`direction`) => `CommandFunction`\< `object` \> |
+| `readonly` `protectCollapsed` | () => `CommandFunction`\< `object` \>            |
+| `readonly` `splitList`        | () => `CommandFunction`\< `object` \>            |
+| `readonly` `toggleCollapsed`  | (`props`?) => `CommandFunction`\< `object` \>    |
+| `readonly` `wrapInList`       | (`getAttrs`) => `CommandFunction`\< `object` \>  |
 
 ###### Overrides
 
 NodeExtension.createCommands
+
+---
 
 ##### createExternalPlugins()
 
@@ -82,6 +82,8 @@ NodeExtension.createCommands
 
 NodeExtension.createExternalPlugins
 
+---
+
 ##### createInputRules()
 
 > **createInputRules**(): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]
@@ -93,6 +95,8 @@ NodeExtension.createExternalPlugins
 ###### Overrides
 
 NodeExtension.createInputRules
+
+---
 
 ##### createKeymap()
 
@@ -106,6 +110,8 @@ NodeExtension.createInputRules
 
 NodeExtension.createKeymap
 
+---
+
 ##### createNodeSpec()
 
 > **createNodeSpec**(): `NodeExtensionSpec`
@@ -118,19 +124,19 @@ NodeExtension.createKeymap
 
 NodeExtension.createNodeSpec
 
+---
+
 ##### createTags()
 
-> **createTags**(): "block"[]
+> **createTags**(): `"block"`[]
 
 ###### Returns
 
-"block"[]
+`"block"`[]
 
 ###### Overrides
 
 NodeExtension.createTags
-
----
 
 ## Interfaces
 
@@ -138,10 +144,10 @@ NodeExtension.createTags
 
 #### Properties
 
-| Property | Type     | Description                                                                                      |
-| :------- | :------- | :----------------------------------------------------------------------------------------------- |
-| from?    | `number` | A optional from position to indent.<br /><br />`Default Value`<br /><br />`state.selection.from` |
-| to?      | `number` | A optional to position to indent.<br /><br />`Default Value`<br /><br />`state.selection.to`     |
+| Property | Type     | Description                                                                                        |
+| :------- | :------- | :------------------------------------------------------------------------------------------------- |
+| `from`?  | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to`?    | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to`     |
 
 ---
 
@@ -149,10 +155,10 @@ NodeExtension.createTags
 
 #### Properties
 
-| Property | Type     | Description                                                                                      |
-| :------- | :------- | :----------------------------------------------------------------------------------------------- |
-| from?    | `number` | A optional from position to indent.<br /><br />`Default Value`<br /><br />`state.selection.from` |
-| to?      | `number` | A optional to position to indent.<br /><br />`Default Value`<br /><br />`state.selection.to`     |
+| Property | Type     | Description                                                                                        |
+| :------- | :------- | :------------------------------------------------------------------------------------------------- |
+| `from`?  | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to`?    | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to`     |
 
 ---
 
@@ -160,12 +166,12 @@ NodeExtension.createTags
 
 #### Properties
 
-| Property   | Type                            |
-| :--------- | :------------------------------ |
-| checked?   | `boolean`                       |
-| collapsed? | `boolean`                       |
-| kind?      | [`ListKind`](index.md#listkind) |
-| order?     | `null` \| `number`              |
+| Property     | Type                            |
+| :----------- | :------------------------------ |
+| `checked`?   | `boolean`                       |
+| `collapsed`? | `boolean`                       |
+| `kind`?      | [`ListKind`](index.md#listkind) |
+| `order`?     | `null` \| `number`              |
 
 ---
 
@@ -173,19 +179,19 @@ NodeExtension.createTags
 
 #### Properties
 
-| Property      | Type                                                                        | Description                                                                                                               |
-| :------------ | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| collapsed?    | `boolean`                                                                   | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it.             |
-| isToggleable? | (node: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
-
----
+| Property        | Type                  | Description                                                                                                               |
+| :-------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `collapsed`?    | `boolean`             | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it.             |
+| `isToggleable`? | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ## Schema
 
 ### ListKind
 
-> **ListKind**: "bullet" \| "ordered" \| "task" \| "toggle"
+> **ListKind**: `"bullet"` \| `"ordered"` \| `"task"` \| `"toggle"`
 
 All default list node kinds.
 
 ---
+
+Generated using [TypeDoc](https://typedoc.org/) and [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown)

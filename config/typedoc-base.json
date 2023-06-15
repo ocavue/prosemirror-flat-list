@@ -51,7 +51,7 @@
     "hideBreadcrumbs": true,
     "hideInPageTOC": true,
     "hidePageHeader": true,
-    "hideKindTag": true,
+    "hideKindPrefix": true,
     "hideHierarchy": true,
     "typeDeclarationFormat": "table",
     "enumMembersFormat": "table",
