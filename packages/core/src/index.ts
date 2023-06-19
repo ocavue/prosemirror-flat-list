@@ -30,7 +30,8 @@ export {
   type ListClickHandler,
 } from './dom-events'
 export { listInputRules, wrappingListInputRule } from './input-rule'
-export { migrateDocJSON } from './migrate'
+export { migrateDocJSON } from './migrate-pm-json'
+export { migrateDoc } from './migrate-pm-doc'
 export { createListNodeView } from './node-view'
 export {
   createListClipboardPlugin,

@@ -160,6 +160,29 @@ Merge adjacent <ul> elements or adjacent \<ol\> elements into a single list elem
 
 ---
 
+### migrateDoc()
+
+> **migrateDoc**(`state`, `__namedParameters` = `{}`): [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction) \| `null`
+
+Migrate a ProseMirror document from the old list structure to the
+new list structure. A Transaction is returned if the document would be updated,
+otherwise `null` is returned.
+
+#### Parameters
+
+| Parameter                    | Type                                                                       |
+| :--------------------------- | :------------------------------------------------------------------------- |
+| `state`                      | [`EditorState`](https://prosemirror.net/docs/ref/#state.EditorState)       |
+| `__namedParameters`          | `object`                                                                   |
+| `__namedParameters.newNode`? | `string` \| [`NodeSpec`](https://prosemirror.net/docs/ref/#model.NodeSpec) |
+| `__namedParameters.tr`?      | [`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction)       |
+
+#### Returns
+
+[`Transaction`](https://prosemirror.net/docs/ref/#state.Transaction) \| `null`
+
+---
+
 ### migrateDocJSON()
 
 > **migrateDocJSON**(`docJSON`): [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson) \| `null`

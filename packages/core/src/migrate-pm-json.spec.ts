@@ -3,7 +3,7 @@ import { HeadingExtension } from '@remirror/extension-heading'
 import { renderEditor } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
 import { ListExtension } from '../test/extension'
-import { migrateDocJSON } from './migrate'
+import { migrateDocJSON } from './migrate-pm-json'
 
 describe('migrateDocJSON', () => {
   const extensions = [
