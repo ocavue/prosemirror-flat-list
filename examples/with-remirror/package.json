@@ -17,7 +17,7 @@
     "remirror-extension-flat-list": "*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.13",
+    "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "typescript": "^5.1.3",
