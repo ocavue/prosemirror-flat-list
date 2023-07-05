@@ -30,16 +30,32 @@
   }
 
   &[data-list-kind='ordered'] {
-    counter-reset: prosemirror-flat-list-counter;
-    counter-increment: prosemirror-flat-list-counter;
-    & + & {
-      counter-reset: none;
-    }
     &::before {
       position: absolute;
       right: 100%;
       font-variant-numeric: tabular-nums;
       content: counter(prosemirror-flat-list-counter, decimal) '. ';
+    }
+
+    /* 
+    Firefox has different CSS Counter implemetation compare to Chrome and Safari, so
+    we need to apply different CSS rules for Firefox.  
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1841791
+    */
+
+    /* CSS rules for Firefox */
+    @supports (-moz-appearance: none) {
+      contain: style;
+      counter-increment: prosemirror-flat-list-counter;
+    }
+
+    /* CSS rules for Chrome and Safari */
+    @supports not (-moz-appearance: none) {
+      counter-reset: prosemirror-flat-list-counter;
+      counter-increment: prosemirror-flat-list-counter;
+      & + & {
+        counter-reset: none;
+      }
     }
   }
 
@@ -51,7 +67,8 @@
       width: 1.5em;
       width: 1lh;
 
-      &, & * {
+      &,
+      & * {
         cursor: pointer;
       }
     }
