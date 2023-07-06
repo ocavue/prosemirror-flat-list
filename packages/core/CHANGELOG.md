@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.14
+
+### Patch Changes
+
+- 5a4bcda: Render ordered list counter correctly on Firefox.
+
 ## 0.3.13
 
 ### Patch Changes

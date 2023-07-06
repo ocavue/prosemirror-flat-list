@@ -1,7 +1,7 @@
 {
   "name": "prosemirror-flat-list",
   "type": "module",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Powerful list support for ProseMirror",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
