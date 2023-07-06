@@ -1,60 +1,60 @@
 // https://typedoc.org/guides/options/
 {
-    "$schema": "https://typedoc.org/schema.json",
-    "plugin": [
-        "typedoc-plugin-markdown",
-        "typedoc-plugin-mdn-links",
-        "typedoc-plugin-external-package-links",
-    ],
-    "githubPages": false,
-    "disableSources": true,
-    "externalSymbolLinkMappings": {
-        "@remirror/core": {
-            "NodeExtension": "https://remirror.io/docs/api/core/#class-nodeextension"
-        },
-    },
-    "readme": "none",
-    "excludeExternals": true,
-    "excludeInternal": true,
-    "validation": {
-        "notExported": true,
-        "invalidLink": true,
-        "notDocumented": true,
-    },
-    "requiredToBeDocumented": [
-        "Enum",
-        "EnumMember",
-        "Variable",
-        // "Function",
-        "Class",
-        // "Interface",
-        // "Property",
-        // "Method",
-        // "Accessor",
-        "TypeAlias"
-    ],
-    "visibilityFilters": {
-        "protected": false,
-        "private": false,
-        "inherited": false,
-        "external": false,
-        "@alpha": false,
-        "@beta": false
-    },
-    "treatWarningsAsErrors": true,
-    "cleanOutputDir": false,
+  "$schema": "https://typedoc.org/schema.json",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-mdn-links",
+    "typedoc-plugin-external-package-links"
+  ],
+  "githubPages": false,
+  "disableSources": true,
+  "externalSymbolLinkMappings": {
+    "@remirror/core": {
+      "NodeExtension": "https://remirror.io/docs/api/core/#class-nodeextension"
+    }
+  },
+  "readme": "none",
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "requiredToBeDocumented": [
+    "Enum",
+    "EnumMember",
+    "Variable",
+    // "Function",
+    "Class",
+    // "Interface",
+    // "Property",
+    // "Method",
+    // "Accessor",
+    "TypeAlias"
+  ],
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": false,
+    "external": false,
+    "@alpha": false,
+    "@beta": false
+  },
+  "treatWarningsAsErrors": true,
+  "cleanOutputDir": false,
 
-    // https://www.npmjs.com/package/typedoc-plugin-markdown/v/next
-    "flattenOutputFiles": true,
-    "skipIndexPage": true,
-    "entryFileName": "index.md",
-    "hideBreadcrumbs": true,
-    "hideInPageTOC": true,
-    "hidePageHeader": true,
-    "hideKindPrefix": true,
-    "hideHierarchy": true,
-    "typeDeclarationFormat": "table",
-    "enumMembersFormat": "table",
-    "propertiesFormat": "table",
-    "outputFileStrategy": "modules"
+  // https://www.npmjs.com/package/typedoc-plugin-markdown/v/next
+  "flattenOutputFiles": true,
+  "skipIndexPage": true,
+  "entryFileName": "index.md",
+  "hideBreadcrumbs": true,
+  "hideInPageTOC": true,
+  "hidePageHeader": true,
+  "hideKindPrefix": true,
+  "hideHierarchy": true,
+  "typeDeclarationFormat": "table",
+  "enumMembersFormat": "table",
+  "propertiesFormat": "table",
+  "outputFileStrategy": "modules"
 }

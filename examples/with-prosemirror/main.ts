@@ -14,7 +14,6 @@ import { schema as basicSchema } from 'prosemirror-schema-basic'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 
-
 const schema = new Schema({
   nodes: basicSchema.spec.nodes.append({ list: createListSpec() }),
   marks: basicSchema.spec.marks,

@@ -1,4 +1,3 @@
-
 import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HardBreakExtension } from '@remirror/extension-hard-break'
 import { HeadingExtension } from '@remirror/extension-heading'
@@ -24,14 +23,14 @@ const Editor: React.FC = () => {
   )
 }
 
-function extensions () {
+function extensions() {
   return [
-  new ListExtension(),
-  new HeadingExtension(),
-  new LinkExtension(),
-  new HardBreakExtension(),
-  new BlockquoteExtension(),
-]
+    new ListExtension(),
+    new HeadingExtension(),
+    new LinkExtension(),
+    new HardBreakExtension(),
+    new BlockquoteExtension(),
+  ]
 }
 
 const content = {

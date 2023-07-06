@@ -1,8 +1,8 @@
 {
-    "prosemirror-guide": {
-        "title": "ProseMirror Guide"
-    },
-    "remirror-guide": {
-        "title": "Remirror Guide"
-    }
+  "prosemirror-guide": {
+    "title": "ProseMirror Guide"
+  },
+  "remirror-guide": {
+    "title": "Remirror Guide"
+  }
 }

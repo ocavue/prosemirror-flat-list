@@ -32,7 +32,7 @@ const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
   )
 }
 
-function ButtonGroup (): JSX.Element {
+function ButtonGroup(): JSX.Element {
   const commands = useCommands()
 
   const { indentList, dedentList } = commands
@@ -121,7 +121,7 @@ function ButtonGroup (): JSX.Element {
   )
 }
 
-function Editor (): JSX.Element {
+function Editor(): JSX.Element {
   const { manager, state } = useRemirror({
     extensions,
     content,
@@ -144,18 +144,18 @@ function Editor (): JSX.Element {
   )
 }
 
-function extensions () {
+function extensions() {
   return [
-  new ListExtension(),
-  new HeadingExtension(),
-  new LinkExtension(),
-  /**
-   * `HardBreakExtension` allows us to create a newline inside paragraphs.
-   *  e.g. in a list item
-   */
-  new HardBreakExtension(),
-  new BlockquoteExtension(),
-]
+    new ListExtension(),
+    new HeadingExtension(),
+    new LinkExtension(),
+    /**
+     * `HardBreakExtension` allows us to create a newline inside paragraphs.
+     *  e.g. in a list item
+     */
+    new HardBreakExtension(),
+    new BlockquoteExtension(),
+  ]
 }
 
 const html = String.raw // Just for better editor support
