@@ -1,5 +1,6 @@
 import { Schema } from 'prosemirror-model'
 import { Plugin } from 'prosemirror-state'
+
 import { createListClipboardPlugin } from './clipboard'
 import { createListEventPlugin } from './event'
 import { createListRenderingPlugin } from './rendering'

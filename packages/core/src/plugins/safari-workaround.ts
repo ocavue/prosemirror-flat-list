@@ -1,5 +1,6 @@
 import { Plugin } from 'prosemirror-state'
 import { Decoration, DecorationSet, EditorView } from 'prosemirror-view'
+
 import * as browser from '../utils/browser'
 
 /**

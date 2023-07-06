@@ -1,4 +1,5 @@
 import { Plugin } from 'prosemirror-state'
+
 import { handleListMarkerMouseDown } from '../dom-events'
 
 /**

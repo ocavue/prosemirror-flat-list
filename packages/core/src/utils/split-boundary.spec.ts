@@ -1,6 +1,8 @@
 import { TaggedProsemirrorNode } from 'jest-remirror'
 import { describe, expect, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { splitBoundary } from './split-boundary'
 
 describe('splitBoundary', () => {

@@ -1,4 +1,5 @@
 import { Slice } from 'prosemirror-model'
+
 import { isListNode } from './is-list-node'
 
 /**

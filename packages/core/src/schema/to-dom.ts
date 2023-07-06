@@ -1,4 +1,5 @@
 import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
+
 import { ListAttributes } from '../types'
 import * as browser from '../utils/browser'
 

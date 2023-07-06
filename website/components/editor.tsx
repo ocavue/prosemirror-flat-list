@@ -1,3 +1,8 @@
+
+import { BlockquoteExtension } from '@remirror/extension-blockquote'
+import { HardBreakExtension } from '@remirror/extension-hard-break'
+import { HeadingExtension } from '@remirror/extension-heading'
+import { LinkExtension } from '@remirror/extension-link'
 import {
   EditorComponent,
   Remirror,
@@ -5,12 +10,6 @@ import {
   useRemirror,
 } from '@remirror/react'
 import React from 'react'
-
-import { BlockquoteExtension } from '@remirror/extension-blockquote'
-import { HardBreakExtension } from '@remirror/extension-hard-break'
-import { HeadingExtension } from '@remirror/extension-heading'
-import { LinkExtension } from '@remirror/extension-link'
-
 import { ListExtension } from 'remirror-extension-flat-list'
 
 const Editor: React.FC = () => {
@@ -25,13 +24,15 @@ const Editor: React.FC = () => {
   )
 }
 
-const extensions = () => [
+function extensions () {
+  return [
   new ListExtension(),
   new HeadingExtension(),
   new LinkExtension(),
   new HardBreakExtension(),
   new BlockquoteExtension(),
 ]
+}
 
 const content = {
   type: 'doc',

@@ -1,4 +1,5 @@
 import { NodeRange, ResolvedPos } from 'prosemirror-model'
+
 import { isListNode } from './is-list-node'
 
 /**

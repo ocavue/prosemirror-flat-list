@@ -1,7 +1,9 @@
 import { ProsemirrorNode } from '@remirror/core'
 import { Command } from 'prosemirror-state'
+
 import { ListAttributes } from '../types'
 import { isListNode } from '../utils/is-list-node'
+
 import { setSafeSelection } from './set-safe-selection'
 
 /**

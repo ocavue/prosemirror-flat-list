@@ -1,11 +1,13 @@
 import { Node as ProsemirrorNode, NodeRange } from 'prosemirror-model'
 import { Command, EditorState, Selection, Transaction } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
+
 import { ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
 import { createAndFill } from '../utils/create-and-fill'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
+
 import { dedentNodeRange } from './dedent-list'
 import { enterWithoutLift } from './enter-without-lift'
 

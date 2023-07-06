@@ -1,6 +1,12 @@
 import './style.css'
 
 import { exampleSetup } from 'prosemirror-example-setup'
+import {
+  createListPlugins,
+  createListSpec,
+  listInputRules,
+  listKeymap,
+} from 'prosemirror-flat-list'
 import { inputRules } from 'prosemirror-inputrules'
 import { keymap } from 'prosemirror-keymap'
 import { DOMParser, Schema } from 'prosemirror-model'
@@ -8,12 +14,6 @@ import { schema as basicSchema } from 'prosemirror-schema-basic'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 
-import {
-  createListPlugins,
-  createListSpec,
-  listInputRules,
-  listKeymap,
-} from 'prosemirror-flat-list'
 
 const schema = new Schema({
   nodes: basicSchema.spec.nodes.append({ list: createListSpec() }),

@@ -1,4 +1,5 @@
 import { ParseRule } from 'prosemirror-model'
+
 import { ListAttributes, ListKind } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
@@ -89,9 +90,9 @@ export function createParseDomRules(): readonly ParseRule[] {
 
           if (element.firstChild?.nodeType === 3 /* document.TEXT_NODE */) {
             const textContent = element.firstChild.textContent
-            if (textContent && textContent.match(/^\[[\s|x]\]\s{1,2}/)) {
+            if (textContent && /^\[[\sx|]]\s{1,2}/.test(textContent)) {
               element.firstChild.textContent = textContent.replace(
-                /^\[[\s|x]\]\s{1,2}/,
+                /^\[[\sx|]]\s{1,2}/,
                 '',
               )
               return {

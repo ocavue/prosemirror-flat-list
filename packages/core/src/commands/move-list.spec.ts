@@ -1,5 +1,7 @@
 import { describe, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { createMoveListCommand } from './move-list'
 
 describe('moveList', () => {

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+
 import { markdownToTaggedDoc } from './markdown'
 import { setupTestingEditor } from './setup-editor'
 

@@ -1,5 +1,7 @@
 import { ResolvedPos } from 'prosemirror-model'
+
 import { ListAttributes } from '../types'
+
 import { isListNode } from './is-list-node'
 
 export function inCollapsedList($pos: ResolvedPos): boolean {

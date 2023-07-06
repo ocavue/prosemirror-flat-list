@@ -1,4 +1,5 @@
 import { Command, Transaction } from 'prosemirror-state'
+
 import { withAutoFixList } from '../utils/auto-fix-list'
 import { cutByIndex } from '../utils/cut-by-index'
 import { isListNode } from '../utils/is-list-node'

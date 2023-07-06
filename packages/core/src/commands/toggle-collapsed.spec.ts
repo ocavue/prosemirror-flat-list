@@ -1,5 +1,7 @@
 import { describe, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { createToggleCollapsedCommand } from './toggle-collapsed'
 
 describe('toggleCollapsed', () => {

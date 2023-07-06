@@ -1,6 +1,7 @@
 import { NodeRange } from 'prosemirror-model'
 import { Command } from 'prosemirror-state'
 import { findWrapping } from 'prosemirror-transform'
+
 import { ListAttributes } from '../types'
 import { getListType } from '../utils/get-list-type'
 import { isListNode } from '../utils/is-list-node'

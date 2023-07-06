@@ -1,6 +1,8 @@
 import { Command } from 'prosemirror-state'
 import { describe, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { withAutoFixList } from './auto-fix-list'
 
 describe('autoJoinList', () => {
