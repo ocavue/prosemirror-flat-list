@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@remirror/pm": "^2.0.6",
-    "@remirror/react": "^2.0.29",
+    "@remirror/react": "^2.0.31",
     "prosemirror-flat-list": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remirror": "^2.0.32",
+    "remirror": "^2.0.33",
     "remirror-extension-flat-list": "*"
   },
   "devDependencies": {
