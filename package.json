@@ -11,7 +11,7 @@
     "api": "nr -r --stream build:tsc",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "lint": "eslint .",
-    "fix": "eslint . --fix",
+    "fix": "eslint --fix . && prettier --write .",
     "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile && nr build && nr api",
     "ci:publish": "pnpm publish -r --no-git-checks"
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.21.4",
     "@changesets/cli": "^2.26.2",
-    "@ocavue/eslint-config": "^0.4.7",
+    "@ocavue/eslint-config": "^1.2.1",
     "eslint": "^8.44.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
