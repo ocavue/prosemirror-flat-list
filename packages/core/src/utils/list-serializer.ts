@@ -5,6 +5,7 @@ import {
   Node as ProsemirrorNode,
   Schema,
 } from 'prosemirror-model'
+
 import { listToDOM } from '../schema/to-dom'
 
 /**

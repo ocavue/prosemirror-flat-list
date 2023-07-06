@@ -7,6 +7,7 @@ import {
   NodeExtensionSpec,
   ProsemirrorPlugin,
 } from '@remirror/core'
+
 import {
   listInputRules,
   createListPlugins,

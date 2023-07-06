@@ -1,6 +1,7 @@
 import { ProsemirrorNode } from '@remirror/core'
 import { Transaction } from 'prosemirror-state'
 import { canJoin, canSplit } from 'prosemirror-transform'
+
 import { isListNode } from './is-list-node'
 import { patchCommand } from './patch-command'
 

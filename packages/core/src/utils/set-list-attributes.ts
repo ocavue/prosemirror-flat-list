@@ -1,5 +1,7 @@
 import { Transaction } from 'prosemirror-state'
+
 import { ListAttributes } from '../types'
+
 import { isListNode } from './is-list-node'
 import { setNodeAttributes } from './set-node-attributes'
 

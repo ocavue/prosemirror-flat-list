@@ -1,6 +1,8 @@
 import { Selection } from 'prosemirror-state'
 import { describe, expect, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { createWrapInListCommand } from './wrap-in-list'
 
 describe('wrapInList', () => {

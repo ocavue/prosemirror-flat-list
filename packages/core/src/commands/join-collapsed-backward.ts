@@ -1,8 +1,10 @@
 import { ResolvedPos } from 'prosemirror-model'
 import { Command, TextSelection } from 'prosemirror-state'
+
 import { ListAttributes } from '../types'
 import { atTextblockStart } from '../utils/at-textblock-start'
 import { isListNode } from '../utils/is-list-node'
+
 import { joinTextblocksAround } from './join-textblocks-around'
 
 /**

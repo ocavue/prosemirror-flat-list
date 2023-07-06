@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
+
 import { setupTestingEditor } from '../../test/setup-editor'
+
 import { enterCommand } from './keymap'
 
 describe('splitList', () => {

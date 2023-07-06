@@ -1,13 +1,8 @@
 // https://typedoc.org/guides/options/
 {
-    "$schema": "https://typedoc.org/schema.json",
-    "extends": [
-        "../config/typedoc-base.json"
-    ],
-    "entryPointStrategy": "packages",
-    "entryPoints": [
-        "../packages/core",
-        "../packages/remirror-extension",
-    ],
-    "out": "pages/docs"
+  "$schema": "https://typedoc.org/schema.json",
+  "extends": ["../config/typedoc-base.json"],
+  "entryPointStrategy": "packages",
+  "entryPoints": ["../packages/core", "../packages/remirror-extension"],
+  "out": "pages/docs"
 }

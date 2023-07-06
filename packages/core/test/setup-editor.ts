@@ -8,7 +8,9 @@ import { HorizontalRuleExtension } from '@remirror/extension-horizontal-rule'
 import { renderEditor, TaggedProsemirrorNode } from 'jest-remirror'
 import { Command } from 'prosemirror-state'
 import { expect } from 'vitest'
+
 import { ListAttributes } from '../src/types'
+
 import { ListExtension } from './extension'
 import { markdownToTaggedDoc } from './markdown'
 

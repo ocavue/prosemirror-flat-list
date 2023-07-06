@@ -1,4 +1,5 @@
 import { NodeType } from 'prosemirror-model'
+
 import { getListType } from './get-list-type'
 
 /** @public */

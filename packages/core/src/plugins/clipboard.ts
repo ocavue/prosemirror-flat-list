@@ -1,5 +1,6 @@
 import { Schema } from 'prosemirror-model'
 import { Plugin } from 'prosemirror-state'
+
 import { ListDOMSerializer } from '../utils/list-serializer'
 import { unwrapListSlice } from '../utils/unwrap-list-slice'
 

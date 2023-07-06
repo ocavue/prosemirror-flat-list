@@ -112,6 +112,7 @@ export function alwaysTrue<T extends (...args: any[]) => boolean>(func: T): T {
 }
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Remirror {
     interface AllExtensions {
       list: ListExtension

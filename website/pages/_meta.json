@@ -1,44 +1,44 @@
 {
-    "guide": {
-        "title": "Guide",
-        "type": "page",
-        "theme": {
-            "breadcrumb": true,
-            "footer": true,
-            "sidebar": true,
-            "toc": true,
-            "pagination": false
-        }
-    },
-    "docs": {
-        "title": "API Reference",
-        "type": "menu",
-        "items": {
-            "about": {
-                "title": "prosemirror-flat-list",
-                "href": "/docs/prosemirror-flat-list"
-            },
-            "contact": {
-                "title": "remirror-extension-flat-list",
-                "href": "/docs/remirror-extension-flat-list"
-            }
-        },
-        "theme": {
-            "breadcrumb": false,
-            "footer": true,
-            "sidebar": false,
-            "toc": true,
-            "pagination": false
-        }
-    },
-    "index": {
-        "display": "hidden",
-        "theme": {
-            "breadcrumb": false,
-            "footer": true,
-            "sidebar": false,
-            "toc": false,
-            "pagination": false
-        }
+  "guide": {
+    "title": "Guide",
+    "type": "page",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": false
     }
+  },
+  "docs": {
+    "title": "API Reference",
+    "type": "menu",
+    "items": {
+      "about": {
+        "title": "prosemirror-flat-list",
+        "href": "/docs/prosemirror-flat-list"
+      },
+      "contact": {
+        "title": "remirror-extension-flat-list",
+        "href": "/docs/remirror-extension-flat-list"
+      }
+    },
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": true,
+      "pagination": false
+    }
+  },
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    }
+  }
 }

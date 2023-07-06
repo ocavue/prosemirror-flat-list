@@ -1,6 +1,7 @@
 import { Fragment, NodeRange, Slice } from 'prosemirror-model'
 import { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
+
 import { ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
 import {
@@ -13,6 +14,7 @@ import { isListNode } from '../utils/is-list-node'
 import { findListsRange } from '../utils/list-range'
 import { mapPos } from '../utils/map-pos'
 import { zoomInRange } from '../utils/zoom-in-range'
+
 import { withVisibleSelection } from './set-safe-selection'
 
 /**

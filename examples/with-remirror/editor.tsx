@@ -8,6 +8,7 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
+import { isListNode, ListAttributes, ListKind } from 'prosemirror-flat-list'
 import React, { FC, PropsWithChildren, useEffect } from 'react'
 import {
   BlockquoteExtension,
@@ -15,8 +16,6 @@ import {
   HeadingExtension,
   LinkExtension,
 } from 'remirror/extensions'
-
-import { isListNode, ListAttributes, ListKind } from 'prosemirror-flat-list'
 import { ListExtension } from 'remirror-extension-flat-list'
 
 const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
@@ -33,7 +32,7 @@ const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
   )
 }
 
-const ButtonGroup = (): JSX.Element => {
+function ButtonGroup(): JSX.Element {
   const commands = useCommands()
 
   const { indentList, dedentList } = commands
@@ -122,7 +121,7 @@ const ButtonGroup = (): JSX.Element => {
   )
 }
 
-const Editor = (): JSX.Element => {
+function Editor(): JSX.Element {
   const { manager, state } = useRemirror({
     extensions,
     content,
@@ -145,17 +144,19 @@ const Editor = (): JSX.Element => {
   )
 }
 
-const extensions = () => [
-  new ListExtension(),
-  new HeadingExtension(),
-  new LinkExtension(),
-  /**
-   * `HardBreakExtension` allows us to create a newline inside paragraphs.
-   *  e.g. in a list item
-   */
-  new HardBreakExtension(),
-  new BlockquoteExtension(),
-]
+function extensions() {
+  return [
+    new ListExtension(),
+    new HeadingExtension(),
+    new LinkExtension(),
+    /**
+     * `HardBreakExtension` allows us to create a newline inside paragraphs.
+     *  e.g. in a list item
+     */
+    new HardBreakExtension(),
+    new BlockquoteExtension(),
+  ]
+}
 
 const html = String.raw // Just for better editor support
 

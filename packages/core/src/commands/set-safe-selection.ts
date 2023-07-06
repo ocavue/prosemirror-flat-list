@@ -1,5 +1,6 @@
 import { ResolvedPos } from 'prosemirror-model'
 import { Selection, TextSelection, Transaction } from 'prosemirror-state'
+
 import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
 import { patchCommand } from '../utils/patch-command'
 import { setListAttributes } from '../utils/set-list-attributes'
