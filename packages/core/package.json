@@ -76,7 +76,7 @@
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
     "remirror": "^2.0.32",
-    "tsup": "^6.7.0",
+    "tsup": "^7.0.0",
     "typescript": "^5.1.6",
     "unified": "^10.1.2",
     "vite": "^4.3.9",
