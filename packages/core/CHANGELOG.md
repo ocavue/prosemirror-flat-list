@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.3.15
+
+### Patch Changes
+
+- eacfe4f: Improve the `splitListCommand` for `NodeSelection`. If the current selection is a node selection, and this node is directly inside a parent list node, pressing Enter will create a new list node below.
+
 ## 0.3.14
 
 ### Patch Changes
