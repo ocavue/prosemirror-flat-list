@@ -1,5 +1,5 @@
-import 'remirror/styles/all.css'
 import 'prosemirror-flat-list/style.css'
+import 'remirror/styles/all.css'
 
 import {
   EditorComponent,
@@ -8,13 +8,20 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
-import { isListNode, ListAttributes, ListKind } from 'prosemirror-flat-list'
+import { ListAttributes, ListKind, isListNode } from 'prosemirror-flat-list'
 import React, { FC, PropsWithChildren, useEffect } from 'react'
+import {
+  ApplySchemaAttributes,
+  ExtensionTag,
+  NodeExtension,
+  NodeExtensionSpec,
+} from 'remirror'
 import {
   BlockquoteExtension,
   HardBreakExtension,
   HeadingExtension,
   LinkExtension,
+  HorizontalRuleExtension,
 } from 'remirror/extensions'
 import { ListExtension } from 'remirror-extension-flat-list'
 
@@ -32,7 +39,7 @@ const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
   )
 }
 
-function ButtonGroup(): JSX.Element {
+function ButtonGroup() {
   const commands = useCommands()
 
   const { indentList, dedentList } = commands
@@ -121,7 +128,7 @@ function ButtonGroup(): JSX.Element {
   )
 }
 
-function Editor(): JSX.Element {
+function Editor() {
   const { manager, state } = useRemirror({
     extensions,
     content,
@@ -132,7 +139,7 @@ function Editor(): JSX.Element {
     const view = manager.view
     // @ts-expect-error this is for debugging
     window._view = view
-  }, [])
+  }, [manager.view])
 
   return (
     <ThemeProvider>
@@ -149,13 +156,52 @@ function extensions() {
     new ListExtension(),
     new HeadingExtension(),
     new LinkExtension(),
+    new HorizontalRuleExtension(),
     /**
      * `HardBreakExtension` allows us to create a newline inside paragraphs.
      *  e.g. in a list item
      */
     new HardBreakExtension(),
     new BlockquoteExtension(),
+    new AtomBlockNodeExtension(),
   ]
+}
+
+class AtomBlockNodeExtension extends NodeExtension {
+  get name() {
+    return 'tweet' as const
+  }
+
+  createTags() {
+    return [ExtensionTag.Block]
+  }
+
+  createNodeSpec(extra: ApplySchemaAttributes): NodeExtensionSpec {
+    return {
+      attrs: {
+        ...extra.defaults(),
+      },
+      selectable: true,
+      draggable: true,
+      atom: true,
+      content: '',
+      parseDOM: [
+        {
+          tag: 'div[data-atom-block-node]',
+        },
+      ],
+      toDOM: () => {
+        return [
+          'div',
+          {
+            'data-atom-block-node': '',
+            style: 'padding: 16px; background-color: pink',
+          },
+          'Atom block node',
+        ]
+      },
+    }
+  }
 }
 
 const html = String.raw // Just for better editor support
@@ -307,6 +353,17 @@ const content = html`
     <li data-list-order="42">The counter number should be 42</li>
     <li>The counter number should be 43</li>
   </ol>
+
+  <ul>
+    <li>
+      <p>List with atom block node</p>
+      <ul>
+        <li>
+          <div data-atom-block-node></div>
+        </li>
+      </ul>
+    </li>
+  </ul>
 `
 
 export { Editor }

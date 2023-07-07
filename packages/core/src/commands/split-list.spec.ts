@@ -1,3 +1,4 @@
+import { NodeSelection } from 'prosemirror-state'
 import { describe, expect, it } from 'vitest'
 
 import { setupTestingEditor } from '../../test/setup-editor'
@@ -476,6 +477,44 @@ describe('splitList', () => {
           ),
         ),
       ),
+    )
+  })
+
+  it('can split list node for a block node selection', () => {
+    add(
+      markdown`
+        # h1
+
+        1. ***
+      `,
+    )
+
+    let hrPos = -1
+    editor.doc.descendants((node, pos) => {
+      if (node.type.name === 'horizontalRule') {
+        hrPos = pos
+      }
+    })
+
+    expect(hrPos > -1).toBe(true)
+    const nodeSelection = NodeSelection.create(editor.state.doc, hrPos)
+    editor.view.dispatch(editor.view.state.tr.setSelection(nodeSelection))
+    expect(editor.view.state.selection.toJSON()).toMatchInlineSnapshot(`
+      {
+        "anchor": 5,
+        "type": "node",
+      }
+    `)
+
+    editor.press('Enter')
+
+    expect(editor.state).toEqualRemirrorState(
+      markdown`
+        # h1
+
+        1. ***
+        2. <cursor>
+      `,
     )
   })
 })
