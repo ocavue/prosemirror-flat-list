@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.6.6",
+  "packageManager": "pnpm@8.6.9",
   "scripts": {
     "build": "nr -r --stream --sequential build",
     "dev": "nr -r --parallel dev",
@@ -17,15 +17,15 @@
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.21.4",
+    "@antfu/ni": "^0.21.5",
     "@changesets/cli": "^2.26.2",
     "@ocavue/eslint-config": "^1.2.1",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
     "typedoc": "^0.24.8",
     "typescript": "^5.1.6",
-    "vitest": "^0.32.4"
+    "vitest": "^0.33.0"
   },
   "renovate": {
     "extends": [
