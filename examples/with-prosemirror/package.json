@@ -14,13 +14,13 @@
     "prosemirror-inputrules": "^1.2.1",
     "prosemirror-keymap": "^1.2.2",
     "prosemirror-menu": "^1.2.2",
-    "prosemirror-model": "^1.19.2",
+    "prosemirror-model": "^1.19.3",
     "prosemirror-schema-basic": "^1.2.2",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-view": "^1.31.5"
+    "prosemirror-view": "^1.31.6"
   },
   "devDependencies": {
     "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "vite": "^4.4.5"
   }
 }
