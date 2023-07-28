@@ -16,7 +16,7 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
 export function createWrapInListCommand<
   T extends ListAttributes = ListAttributes,
 >(
-  /** 
+  /**
    * The list node attributes or a callback function to take the current
    * selection block range and return list node attributes. If this callback
    * function returns null, the command won't do anything.

@@ -39,11 +39,9 @@ export function setupTestingEditor() {
     return markdownToTaggedDoc(editor, markdown)
   }
 
-const dispatchCommand = (
-  command:  Command,
-) => {
-  return command(view.state, view.dispatch.bind(view), view)
-}
+  const dispatchCommand = (command: Command) => {
+    return command(view.state, view.dispatch.bind(view), view)
+  }
 
   const applyCommand = (
     command: Command,
@@ -78,7 +76,8 @@ const dispatchCommand = (
     view,
     schema,
     add,
-    markdown,dispatchCommand,
+    markdown,
+    dispatchCommand,
     applyCommand,
     editor,
 
