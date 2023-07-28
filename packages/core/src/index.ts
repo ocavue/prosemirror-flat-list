@@ -24,7 +24,10 @@ export {
   type ToggleCollapsedOptions,
 } from './commands/toggle-collapsed'
 export { createToggleListCommand } from './commands/toggle-list'
-export { createUnwrapListCommand } from './commands/unwrap-list'
+export {
+  createUnwrapListCommand,
+  type UnwrapListOptions,
+} from './commands/unwrap-list'
 export { createWrapInListCommand } from './commands/wrap-in-list'
 export {
   defaultListClickHandler,
