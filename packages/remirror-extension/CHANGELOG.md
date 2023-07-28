@@ -1,5 +1,16 @@
 # remirror-extension-flat-list
 
+## 0.2.0
+
+### Minor Changes
+
+- b5f2400: Add two command creators: `createToggleListCommand` and `createUnwrapListCommand`.
+
+### Patch Changes
+
+- Updated dependencies [b5f2400]
+  - prosemirror-flat-list@0.4.0
+
 ## 0.1.3
 
 ### Patch Changes
