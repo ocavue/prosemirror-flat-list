@@ -7,6 +7,9 @@ import { safeLiftFromTo } from '../utils/safe-lift'
 
 import { dedentOutOfList } from './dedent-list'
 
+/**
+ * Returns a command function that unwraps the list around the selection. 
+ */
 export function createUnwrapListCommand(): Command {
   const unwrapList: Command = (state, dispatch) => {
     const selection = state.selection

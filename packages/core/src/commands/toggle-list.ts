@@ -7,12 +7,16 @@ import { ListAttributes } from '../types'
 import { createUnwrapListCommand } from './unwrap-list'
 import { createWrapInListCommand } from './wrap-in-list'
 
+/**
+ * Returns a command function that wraps the selection in a list with the given
+ * type an attributes or unwrap the list around the selection. 
+ */
 export function createToggleListCommand<
   T extends ListAttributes = ListAttributes,
 >(
-  /** The list node attributes or a callback function to take the current
-   * selection block range and return list node attributes. If this callback
-   * function returns null, the command won't do anything.
+  /** 
+   * The list node attributes or a callback function to take the current
+   * selection block range and return list node attributes.
    *
    * @public
    */
