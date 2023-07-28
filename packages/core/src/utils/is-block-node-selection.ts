@@ -1,5 +1,9 @@
 import { NodeSelection, Selection } from 'prosemirror-state'
 
-export function isBlockNodeSelection(selection: Selection): boolean {
-  return Boolean((selection as NodeSelection).node?.type?.isBlock)
+import { isNodeSelection } from './is-node-selection'
+
+export function isBlockNodeSelection(
+  selection: Selection,
+): selection is NodeSelection {
+  return isNodeSelection(selection) && selection.node.type.isBlock
 }

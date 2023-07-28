@@ -1,4 +1,3 @@
-import { isTextSelection } from '@remirror/core'
 import { chainCommands } from 'prosemirror-commands'
 import {
   Fragment,
@@ -9,7 +8,6 @@ import {
 import {
   Command,
   EditorState,
-  NodeSelection,
   Selection,
   TextSelection,
   Transaction,
@@ -21,6 +19,7 @@ import { withAutoFixList } from '../utils/auto-fix-list'
 import { createAndFill } from '../utils/create-and-fill'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'
 import { isListNode } from '../utils/is-list-node'
+import { isTextSelection } from '../utils/is-text-selection'
 
 import { dedentNodeRange } from './dedent-list'
 import { enterWithoutLift } from './enter-without-lift'
@@ -47,7 +46,7 @@ const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {
     return false
   }
 
-  const selection = state.selection as NodeSelection
+  const selection = state.selection
   const { $to, node } = selection
   const parent = $to.parent
 

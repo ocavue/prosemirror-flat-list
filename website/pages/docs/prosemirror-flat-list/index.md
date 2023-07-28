@@ -8,6 +8,7 @@
 - [ListToDOMOptions](index.md#listtodomoptions)
 - [ProsemirrorNodeJSON](index.md#prosemirrornodejson)
 - [ToggleCollapsedOptions](index.md#togglecollapsedoptions)
+- [UnwrapListOptions](index.md#unwraplistoptions)
 
 ## Interfaces
 
@@ -82,7 +83,61 @@
 | `collapsed`?    | `boolean`             | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it.             |
 | `isToggleable`? | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
+---
+
+### UnwrapListOptions
+
+#### Properties
+
+| Property | Type     | Description                                      |
+| :------- | :------- | :----------------------------------------------- |
+| `kind`?  | `string` | If given, only this kind of list will be unwrap. |
+
 ## Functions
+
+### createToggleListCommand()
+
+> **createToggleListCommand**\<`T`\>(`attrs`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command function that wraps the selection in a list with the given
+type an attributes, or change the list kind if the selection is already in
+another kind of list, or unwrap the selected list if otherwise.
+
+#### Type parameters
+
+| Parameter                                                 | Default                                     |
+| :-------------------------------------------------------- | :------------------------------------------ |
+| `T` _extends_ [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
+
+#### Parameters
+
+| Parameter | Type | Description                         |
+| :-------- | :--- | :---------------------------------- |
+| `attrs`   | `T`  | The list node attributes to toggle. |
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+---
+
+### createUnwrapListCommand()
+
+> **createUnwrapListCommand**(`options`?): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command function that unwraps the list around the selection.
+
+#### Parameters
+
+| Parameter  | Type                                              |
+| :--------- | :------------------------------------------------ |
+| `options`? | [`UnwrapListOptions`](index.md#unwraplistoptions) |
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+---
 
 ### findListsRange()
 
