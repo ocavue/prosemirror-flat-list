@@ -1,4 +1,5 @@
 import { NodeSelection, Selection } from 'prosemirror-state'
+
 import { isNodeSelection } from './is-node-selection'
 
 export function isBlockNodeSelection(
