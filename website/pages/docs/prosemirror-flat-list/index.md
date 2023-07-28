@@ -84,6 +84,44 @@
 
 ## Functions
 
+### createToggleListCommand()
+
+> **createToggleListCommand**\<`T`\>(`getAttrs`): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command function that wraps the selection in a list with the given
+type an attributes, or change the list kind if the selection is already in
+another kind of list, or unwrap the selected list if otherwise.
+
+#### Type parameters
+
+| Parameter                                                 | Default                                     |
+| :-------------------------------------------------------- | :------------------------------------------ |
+| `T` _extends_ [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
+
+#### Parameters
+
+| Parameter  | Type                    | Description                                                                                                                     |
+| :--------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| `getAttrs` | `T` \| (`range`) => `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. |
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+---
+
+### createUnwrapListCommand()
+
+> **createUnwrapListCommand**(): [`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+Returns a command function that unwraps the list around the selection.
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+---
+
 ### findListsRange()
 
 > **findListsRange**(`$from`, `$to` = `$from`): [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange) \| `null`

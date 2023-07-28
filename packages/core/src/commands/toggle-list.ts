@@ -1,5 +1,4 @@
 import { chainCommands } from 'prosemirror-commands'
-import { NodeRange } from 'prosemirror-model'
 import { Command } from 'prosemirror-state'
 
 import { ListAttributes } from '../types'
@@ -11,21 +10,20 @@ import { createWrapInListCommand } from './wrap-in-list'
  * Returns a command function that wraps the selection in a list with the given
  * type an attributes, or change the list kind if the selection is already in
  * another kind of list, or unwrap the selected list if otherwise.
- * 
+ *
  * @public
  */
 export function createToggleListCommand<
   T extends ListAttributes = ListAttributes,
 >(
   /**
-   * The list node attributes or a callback function to take the current
-   * selection block range and return list node attributes.
+   * The list node attributes to toggle.
    *
    * @public
    */
-  getAttrs: T | ((range: NodeRange) => T),
+  attrs: T,
 ): Command {
-  const unwrapList = createUnwrapListCommand()
-  const wrapInList = createWrapInListCommand(getAttrs)
+  const unwrapList = createUnwrapListCommand({ kind: attrs.kind })
+  const wrapInList = createWrapInListCommand(attrs)
   return chainCommands(unwrapList, wrapInList)
 }
