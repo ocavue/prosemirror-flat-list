@@ -232,7 +232,7 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
   moveRangeSiblings(tr, range)
 }
 
-function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
+export function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
   const { startIndex, endIndex, parent } = range
 
   const getRangeStart = mapPos(tr, range.start)

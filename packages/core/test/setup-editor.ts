@@ -39,13 +39,19 @@ export function setupTestingEditor() {
     return markdownToTaggedDoc(editor, markdown)
   }
 
+const dispatchCommand = (
+  command:  Command,
+) => {
+  return command(view.state, view.dispatch.bind(view), view)
+}
+
   const applyCommand = (
     command: Command,
     before: TaggedProsemirrorNode,
     after: TaggedProsemirrorNode | null,
   ) => {
     add(before)
-    const result = command(view.state, view.dispatch, view)
+    const result = dispatchCommand(command)
     if (!after) {
       expect(result).toBe(false)
     } else {
@@ -72,7 +78,7 @@ export function setupTestingEditor() {
     view,
     schema,
     add,
-    markdown,
+    markdown,dispatchCommand,
     applyCommand,
     editor,
 
