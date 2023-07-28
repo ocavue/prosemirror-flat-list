@@ -16,6 +16,8 @@ import {
   createMoveListCommand,
   createSplitListCommand,
   createToggleCollapsedCommand,
+  createToggleListCommand,
+  createUnwrapListCommand,
   createWrapInListCommand,
   DedentListOptions,
   IndentListOptions,
@@ -24,6 +26,7 @@ import {
   listKeymap,
   protectCollapsed,
   ToggleCollapsedOptions,
+  UnwrapListOptions,
 } from 'prosemirror-flat-list'
 
 /**
@@ -74,6 +77,10 @@ export class ListExtension extends NodeExtension {
         return convertCommand(createDedentListCommand(props))
       },
 
+      unwrapList: (options?: UnwrapListOptions) => {
+        return convertCommand(createUnwrapListCommand(options))
+      },
+
       wrapInList: (
         getAttrs:
           | ListAttributes
@@ -92,6 +99,10 @@ export class ListExtension extends NodeExtension {
 
       toggleCollapsed: (props?: ToggleCollapsedOptions) => {
         return convertCommand(createToggleCollapsedCommand(props))
+      },
+
+      toggleList: (attrs: ListAttributes) => {
+        return convertCommand(createToggleListCommand(attrs))
       },
     } as const
   }

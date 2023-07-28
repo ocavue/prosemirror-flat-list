@@ -98,6 +98,14 @@ function ButtonGroup() {
     })
   }
 
+  const toggleList = (kind: ListKind) => {
+    commands.toggleList({ kind })
+  }
+
+  const toggleBulletList = () => toggleList('bullet')
+  const toggleOrderedList = () => toggleList('ordered')
+  const toggleTaskList = () => toggleList('task')
+
   const moveUp = () => commands.moveList('up')
   const moveDown = () => commands.moveList('down')
 
@@ -120,6 +128,12 @@ function ButtonGroup() {
       <Button onClick={toggleChecked}>Toggle attribute checked</Button>
 
       <Button onClick={toggleCollapsed}>Toggle attribute collapsed</Button>
+
+      <Button onClick={toggleBulletList}>Toggle bullet list</Button>
+
+      <Button onClick={toggleOrderedList}>Toggle ordered list</Button>
+
+      <Button onClick={toggleTaskList}>Toggle task list</Button>
 
       <Button onClick={moveUp}>Move up</Button>
 

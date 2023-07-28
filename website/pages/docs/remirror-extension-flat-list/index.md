@@ -62,6 +62,8 @@ NodeExtension.name
 | `readonly` `protectCollapsed` | () => `CommandFunction`\< `object` \>            |
 | `readonly` `splitList`        | () => `CommandFunction`\< `object` \>            |
 | `readonly` `toggleCollapsed`  | (`props`?) => `CommandFunction`\< `object` \>    |
+| `readonly` `toggleList`       | (`attrs`) => `CommandFunction`\< `object` \>     |
+| `readonly` `unwrapList`       | (`options`?) => `CommandFunction`\< `object` \>  |
 | `readonly` `wrapInList`       | (`getAttrs`) => `CommandFunction`\< `object` \>  |
 
 ###### Overrides
