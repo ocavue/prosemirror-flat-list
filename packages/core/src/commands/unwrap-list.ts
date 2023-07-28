@@ -9,6 +9,8 @@ import { dedentOutOfList } from './dedent-list'
 
 /**
  * Returns a command function that unwraps the list around the selection.
+ *
+ * @public
  */
 export function createUnwrapListCommand(): Command {
   const unwrapList: Command = (state, dispatch) => {
