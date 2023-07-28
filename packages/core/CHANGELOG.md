@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.0
+
+### Minor Changes
+
+- b5f2400: Add two command creators: `createToggleListCommand` and `createUnwrapListCommand`.
+
 ## 0.3.15
 
 ### Patch Changes
