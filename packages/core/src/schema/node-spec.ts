@@ -20,7 +20,8 @@ export function createListSpec(): NodeSpec {
   return {
     content: 'block+',
     group: `${flatListGroup} block`,
-    defining: true,
+    definingForContent: true,
+    definingAsContext: false,
     attrs: {
       kind: {
         default: 'bullet',
