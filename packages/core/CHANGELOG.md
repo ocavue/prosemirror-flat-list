@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.1
+
+### Patch Changes
+
+- 64c656e: Keep the checkbox state when pasting task lists into an empty bullet list.
+
 ## 0.4.0
 
 ### Minor Changes
