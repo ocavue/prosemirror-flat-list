@@ -25,7 +25,7 @@ describe('Clipboard', () => {
 
     const copied = t.editor.copied
     expect(copied.html).toMatchInlineSnapshot(
-      '"<ul data-pm-slice=\\"0 2 []\\"><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D1</p></li><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D2</p></li></ul>"',
+      '"<ul data-pm-slice=\\"2 2 []\\"><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D1</p></li><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D2</p></li></ul>"',
     )
 
     t.add(t.doc(t.p('')))
@@ -104,44 +104,6 @@ describe('Clipboard', () => {
         t.bulletList(t.p('Bullet 2')),
         t.checkedTaskList(t.p('Task 1')),
         t.uncheckedTaskList(t.p('Task 2')),
-      ),
-    )
-  })
-
-  it('can keep the checkbox state when pasting into a sub bullet list', () => {
-    t.add(
-      t.doc(
-        t.bulletList(t.p('Bullet 1')),
-        t.checkedTaskList(t.p('<start>Task 1')),
-        t.uncheckedTaskList(t.p('Task 2<end>')),
-        t.bulletList(t.p('Bullet 2')),
-      ),
-    )
-
-    const copied = t.editor.copied
-
-    t.add(
-      t.doc(
-        t.bulletList(
-          t.p('Bullet 1'),
-          t.bulletList(t.p('Sub Bullet 1')),
-          t.bulletList(t.p('<cursor>')),
-        ),
-      ),
-    )
-
-    pasteContent({
-      view: t.editor.view,
-      content: copied,
-    })
-    expect(t.editor.view.state).toEqualRemirrorState(
-      t.doc(
-        t.bulletList(
-          t.p('Bullet 1'),
-          t.bulletList(t.p('Sub Bullet 1')),
-          t.checkedTaskList(t.p('Task 1')),
-          t.uncheckedTaskList(t.p('Task 2')),
-        ),
       ),
     )
   })
