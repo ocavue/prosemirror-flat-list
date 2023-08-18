@@ -3,8 +3,9 @@ import { Slice } from 'prosemirror-model'
 import { isListNode } from './is-list-node'
 
 /**
- * Reduce the open depth of a slice if it only contains a single list node. This
- * will improve the copy/paste experience.
+ * Reduce the open depth of a slice if it only contains a single list node. When
+ * copying some text from a deep nested list node, we don't want to paste the
+ * entire list structure into the document later.
  *
  * @internal
  */
