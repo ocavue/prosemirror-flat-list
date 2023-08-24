@@ -34,10 +34,5 @@
     "ignoreDeps": [],
     "dependencyDashboard": true
   },
-  "resolutions": {},
-  "pnpm": {
-    "patchedDependencies": {
-      "prosemirror-transform@1.7.4": "patches/prosemirror-transform@1.7.4.patch"
-    }
-  }
+  "resolutions": {}
 }
