@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.2
+
+### Patch Changes
+
+- b7846a4: Keep the checkbox state when pasting task lists into an empty nested bullet list.
+
 ## 0.4.1
 
 ### Patch Changes
