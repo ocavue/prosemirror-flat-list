@@ -1,6 +1,6 @@
-import { ProsemirrorNode } from '@remirror/core'
 import { Command } from 'prosemirror-state'
 
+import { ProsemirrorNode } from '../types'
 import { ListAttributes } from '../types'
 import { isListNode } from '../utils/is-list-node'
 

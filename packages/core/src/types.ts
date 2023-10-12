@@ -1,4 +1,4 @@
-import type { Attrs } from 'prosemirror-model'
+import type { Attrs, Node } from 'prosemirror-model'
 
 /**
  * All default list node kinds.
@@ -23,3 +23,5 @@ export interface ProsemirrorNodeJSON {
   content?: ProsemirrorNodeJSON[]
   attrs?: Attrs
 }
+
+export type { Node as ProsemirrorNode }
