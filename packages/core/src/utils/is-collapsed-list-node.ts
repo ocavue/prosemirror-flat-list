@@ -1,6 +1,4 @@
-import { ProsemirrorNode } from '@remirror/core'
-
-import { ListAttributes } from '../types'
+import { ListAttributes, ProsemirrorNode } from '../types'
 
 import { isListNode } from './is-list-node'
 

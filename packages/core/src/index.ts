@@ -52,7 +52,12 @@ export {
   listToDOM,
   type ListToDOMOptions,
 } from './schema/to-dom'
-export type { ListAttributes, ListKind, ProsemirrorNodeJSON } from './types'
+export type {
+  ListAttributes,
+  ListKind,
+  ProsemirrorNode,
+  ProsemirrorNodeJSON,
+} from './types'
 export { getListType } from './utils/get-list-type'
 export { isCollapsedListNode } from './utils/is-collapsed-list-node'
 export { isListNode } from './utils/is-list-node'

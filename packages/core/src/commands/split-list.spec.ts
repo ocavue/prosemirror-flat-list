@@ -514,7 +514,6 @@ describe('splitList', () => {
 
         1. ***
         2. <cursor>
-
       `,
     )
   })
