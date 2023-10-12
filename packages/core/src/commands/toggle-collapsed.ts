@@ -1,7 +1,6 @@
 import { Command } from 'prosemirror-state'
 
-import { ProsemirrorNode } from '../types'
-import { ListAttributes } from '../types'
+import { ListAttributes, ProsemirrorNode } from '../types'
 import { isListNode } from '../utils/is-list-node'
 
 import { setSafeSelection } from './set-safe-selection'
