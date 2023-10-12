@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.3
+
+### Patch Changes
+
+- a94173d: Fix TypeScript declaration `ProsemirrorNode`.
+
 ## 0.4.2
 
 ### Patch Changes
