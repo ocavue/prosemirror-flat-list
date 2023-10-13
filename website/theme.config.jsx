@@ -1,6 +1,6 @@
 // @ts-check
 
-import React from 'react';
+import React from 'react'
 
 /**
  * @type {import('nextra-theme-docs').DocsThemeConfig}
@@ -26,5 +26,4 @@ const config = {
   gitTimestamp: () => null,
 }
 
-
-export default config 
+export default config

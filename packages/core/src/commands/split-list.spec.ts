@@ -513,7 +513,7 @@ describe('splitList', () => {
         # h1
 
         1. ***
-        2. <cursor>
+        2. <cursor>\n
       `,
     )
   })
