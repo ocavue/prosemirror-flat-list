@@ -1,4 +1,11 @@
-export default {
+// @ts-check
+
+import React from 'react';
+
+/**
+ * @type {import('nextra-theme-docs').DocsThemeConfig}
+ */
+const config = {
   logo: <strong>ProseMirror Flat List</strong>,
   project: {
     link: 'https://github.com/ocavue/prosemirror-flat-list',
@@ -18,3 +25,6 @@ export default {
   },
   gitTimestamp: () => null,
 }
+
+
+export default config 
