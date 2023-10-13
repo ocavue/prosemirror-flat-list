@@ -70,7 +70,7 @@ jobs:
         run: nr build
 
       - name: Deploy to Netlify (https://remirror-extension-flat-list.netlify.app/)
-        uses: nwtgck/actions-netlify@v2.0
+        uses: nwtgck/actions-netlify@v2.1
         with:
           publish-dir: './examples/with-remirror/dist'
           production-branch: master
@@ -86,7 +86,7 @@ jobs:
         timeout-minutes: 5
 
       - name: Deploy to Netlify (https://prosemirror-flat-list.netlify.app/)
-        uses: nwtgck/actions-netlify@v2.0
+        uses: nwtgck/actions-netlify@v2.1
         with:
           publish-dir: './website/dist'
           production-branch: master

@@ -47,11 +47,11 @@
     "prosemirror-inputrules": "^1.2.1",
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-transform": "^1.7.5",
-    "prosemirror-view": "^1.31.7"
+    "prosemirror-transform": "^1.8.0",
+    "prosemirror-view": "^1.32.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.36.4",
+    "@microsoft/api-extractor": "^7.38.0",
     "@remirror/core": "^2.0.19",
     "@remirror/extension-blockquote": "^2.0.14",
     "@remirror/extension-heading": "^2.0.14",
@@ -59,8 +59,8 @@
     "@remirror/pm": "^2.0.8",
     "@remirror/preset-core": "^2.0.16",
     "@types/dedent": "^0.7.0",
-    "@types/node": "^18.17.4",
-    "@vitest/coverage-v8": "^0.34.1",
+    "@types/node": "^18.18.5",
+    "@vitest/coverage-v8": "^0.34.6",
     "dedent": "^1.5.1",
     "execa": "^8.0.1",
     "jest-prosemirror": "^2.1.5",
@@ -71,16 +71,16 @@
     "postcss-nesting": "^11.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rehype-stringify": "^9.0.3",
+    "rehype-stringify": "^9.0.4",
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
     "remirror": "^2.0.36",
     "tsup": "^7.2.0",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "unified": "^10.1.2",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.1"
+    "vite": "^4.4.11",
+    "vitest": "^0.34.6"
   },
   "typedocOptions": {
     "entryPoints": [
