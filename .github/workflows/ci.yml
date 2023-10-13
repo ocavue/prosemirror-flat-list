@@ -17,6 +17,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - name: Emit .d.ts files
+        run: nr --filter prosemirror-flat-list build
+          
       - name: Lint
         run: nr lint
 
