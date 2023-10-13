@@ -1,199 +1,178 @@
 # remirror-extension-flat-list
 
-## Modules
-
-- [ListExtension](index.md#listextension)
-
-## Classes
-
-### ListExtension
+## ListExtension
 
 A Remirror extension for creating lists. It's a simple wrapper around the API from `prosemirror-flat-list`.
 
-#### Constructors
+### Extends
 
-##### constructor()
+- [`NodeExtension`]( https://remirror.io/docs/api/core/#class-nodeextension )
 
-> **new ListExtension**(...`args`): [`ListExtension`](index.md#listextension)
+### Constructors
 
-###### Parameters
+#### new ListExtension(args)
 
-| Parameter | Type                                                                                                                                                                                                            |
-| :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ...`args` | [`ConditionalPick`\< `EmptyShape`, `StaticAnnotation` \> & `Partial`\< `ConditionalPick`\< `PickPartial`\< `EmptyShape` \>, `StaticAnnotation` \> \> & `GetDynamic`\< `EmptyShape` \> & `BaseExtensionOptions`] |
+```ts
+new ListExtension(...args): ListExtension
+```
 
-###### Returns
+##### Parameters
 
-[`ListExtension`](index.md#listextension)
+| Parameter | Type |
+| :------ | :------ |
+| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & `Partial`\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
 
-###### Inherited from
+##### Inherited from
 
 NodeExtension.constructor
 
-#### Properties
+### Properties
 
-| Property                          | Type      |
-| :-------------------------------- | :-------- |
-| `static` `disableExtraAttributes` | `boolean` |
+| Modifier | Property | Type | Description | Inheritance |
+| :------ | :------ | :------ | :------ | :------ |
+| `static` | `disableExtraAttributes` | `boolean` | - | NodeExtension.disableExtraAttributes |
 
-#### Accessors
+### Accessors
 
-##### name
+#### name
 
-> `get` name(): `"list"`
+```ts
+get name(): "list"
+```
 
-###### Overrides
+### Methods
 
-NodeExtension.name
+#### createCommands()
 
-#### Methods
+```ts
+createCommands(): object
+```
 
-##### createCommands()
+##### Returns
 
-> **createCommands**(): `object`
+> | Member | Type | Description |
+> | :------ | :------ | :------ |
+> | `dedentList` | (`props`?) => `CommandFunction`\<`object`\> | - |
+> | `indentList` | (`props`?) => `CommandFunction`\<`object`\> | - |
+> | `moveList` | (`direction`) => `CommandFunction`\<`object`\> | - |
+> | `protectCollapsed` | () => `CommandFunction`\<`object`\> | - |
+> | `splitList` | () => `CommandFunction`\<`object`\> | - |
+> | `toggleCollapsed` | (`props`?) => `CommandFunction`\<`object`\> | - |
+> | `toggleList` | (`attrs`) => `CommandFunction`\<`object`\> | - |
+> | `unwrapList` | (`options`?) => `CommandFunction`\<`object`\> | - |
+> | `wrapInList` | (`getAttrs`) => `CommandFunction`\<`object`\> | - |
+>
 
-###### Returns
-
-| Member                        | Type                                             |
-| :---------------------------- | :----------------------------------------------- |
-| `readonly` `dedentList`       | (`props`?) => `CommandFunction`\< `object` \>    |
-| `readonly` `indentList`       | (`props`?) => `CommandFunction`\< `object` \>    |
-| `readonly` `moveList`         | (`direction`) => `CommandFunction`\< `object` \> |
-| `readonly` `protectCollapsed` | () => `CommandFunction`\< `object` \>            |
-| `readonly` `splitList`        | () => `CommandFunction`\< `object` \>            |
-| `readonly` `toggleCollapsed`  | (`props`?) => `CommandFunction`\< `object` \>    |
-| `readonly` `toggleList`       | (`attrs`) => `CommandFunction`\< `object` \>     |
-| `readonly` `unwrapList`       | (`options`?) => `CommandFunction`\< `object` \>  |
-| `readonly` `wrapInList`       | (`getAttrs`) => `CommandFunction`\< `object` \>  |
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createCommands
 
----
+#### createExternalPlugins()
 
-##### createExternalPlugins()
+```ts
+createExternalPlugins(): ProsemirrorPlugin[]
+```
 
-> **createExternalPlugins**(): `ProsemirrorPlugin`[]
-
-###### Returns
-
-`ProsemirrorPlugin`[]
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createExternalPlugins
 
----
+#### createInputRules()
 
-##### createInputRules()
+```ts
+createInputRules(): InputRule[]
+```
 
-> **createInputRules**(): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]
-
-###### Returns
-
-[`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createInputRules
 
----
+#### createKeymap()
 
-##### createKeymap()
+```ts
+createKeymap(): KeyBindings
+```
 
-> **createKeymap**(): `KeyBindings`
-
-###### Returns
-
-`KeyBindings`
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createKeymap
 
----
+#### createNodeSpec()
 
-##### createNodeSpec()
+```ts
+createNodeSpec(): NodeExtensionSpec
+```
 
-> **createNodeSpec**(): `NodeExtensionSpec`
-
-###### Returns
-
-`NodeExtensionSpec`
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createNodeSpec
 
----
+#### createTags()
 
-##### createTags()
+```ts
+createTags(): "block"[]
+```
 
-> **createTags**(): `"block"`[]
-
-###### Returns
-
-`"block"`[]
-
-###### Overrides
+##### Overrides
 
 NodeExtension.createTags
 
-## Interfaces
+***
 
-### DedentListOptions
+## DedentListOptions
 
-#### Properties
+### Properties
 
-| Property | Type     | Description                                                                                        |
-| :------- | :------- | :------------------------------------------------------------------------------------------------- |
-| `from`?  | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`?    | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to`     |
+| Property | Type | Description |
+| :------ | :------ | :------ |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
 
----
+***
 
-### IndentListOptions
+## IndentListOptions
 
-#### Properties
+### Properties
 
-| Property | Type     | Description                                                                                        |
-| :------- | :------- | :------------------------------------------------------------------------------------------------- |
-| `from`?  | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`?    | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to`     |
+| Property | Type | Description |
+| :------ | :------ | :------ |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
 
----
+***
 
-### ListAttributes
+## ListAttributes
 
-#### Properties
+### Properties
 
-| Property     | Type                            |
-| :----------- | :------------------------------ |
-| `checked`?   | `boolean`                       |
-| `collapsed`? | `boolean`                       |
-| `kind`?      | [`ListKind`](index.md#listkind) |
-| `order`?     | `null` \| `number`              |
+| Property | Type | Description |
+| :------ | :------ | :------ |
+| `checked?` | `boolean` | - |
+| `collapsed?` | `boolean` | - |
+| `kind?` | [`ListKind`](index.md#listkind) | - |
+| `order?` | `null` \| `number` | - |
 
----
+***
 
-### ToggleCollapsedOptions
+## ToggleCollapsedOptions
 
-#### Properties
+### Properties
 
-| Property        | Type                  | Description                                                                                                               |
-| :-------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `collapsed`?    | `boolean`             | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it.             |
-| `isToggleable`? | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
+| Property | Type | Description |
+| :------ | :------ | :------ |
+| `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
+| `isToggleable?` | (`node`) => `boolean` | - |
 
-## Schema
+***
 
-### ListKind
+## ListKind
 
-> **ListKind**: `"bullet"` \| `"ordered"` \| `"task"` \| `"toggle"`
+```ts
+type ListKind: "bullet" | "ordered" | "task" | "toggle";
+```
 
 All default list node kinds.
 
----
+***
 
-Generated using [TypeDoc](https://typedoc.org/) and [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown)
+Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

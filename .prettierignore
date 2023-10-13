@@ -2,6 +2,7 @@ yarn.lock
 pnpm-lock.yaml
 package-lock.json
 CHANGELOG.md
+website/pages/docs/**/*.md
 
 .next 
 .cache

@@ -27,8 +27,8 @@ importers:
         specifier: ^2.8.8
         version: 2.8.8
       typedoc:
-        specifier: ^0.24.8
-        version: 0.24.8(typescript@5.1.6)
+        specifier: ^0.25.2
+        version: 0.25.2(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -400,17 +400,17 @@ importers:
         specifier: '*'
         version: link:../packages/remirror-extension
       typedoc:
-        specifier: ^0.24.8
-        version: 0.24.8(typescript@5.1.6)
+        specifier: ^0.25.2
+        version: 0.25.2(typescript@5.1.6)
       typedoc-plugin-external-package-links:
         specifier: ^0.1.0
         version: 0.1.0
       typedoc-plugin-markdown:
-        specifier: ^4.0.0-next.17
-        version: 4.0.0-next.17(prettier@2.8.8)(typedoc@0.24.8)
+        specifier: ^4.0.0-next.23
+        version: 4.0.0-next.23(typedoc@0.25.2)
       typedoc-plugin-mdn-links:
-        specifier: ^3.0.3
-        version: 3.0.3(typedoc@0.24.8)
+        specifier: ^3.1.0
+        version: 3.1.0(typedoc@0.25.2)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -7991,8 +7991,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch@9.0.0:
-    resolution: {integrity: sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==}
+  /minimatch@9.0.3:
+    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
@@ -10217,34 +10217,32 @@ packages:
     resolution: {integrity: sha512-1fnFUjCTBnfBgkirFnTaNBEHpestaxQNKDBkws8nKQdqVoEzd24+omrwMTdSAhyC0a24bNbEEiCBAgLzzWu4lA==}
     dev: true
 
-  /typedoc-plugin-markdown@4.0.0-next.17(prettier@2.8.8)(typedoc@0.24.8):
-    resolution: {integrity: sha512-hzIoOt81PTkO50m+QJAo4B4tnsmp5sfv7kQfPOx/ZKRLODoa3buQzo2k6/sHGahUeKIyzHtqoiEFzB6Bl4nHQQ==}
+  /typedoc-plugin-markdown@4.0.0-next.23(typedoc@0.25.2):
+    resolution: {integrity: sha512-bKD0LnrQxUTbuDRiJfCWYLlzyERuskWldJ5eWKKuNY38xBOyBhSN8P+vD5KxlJoAifTOm76MK58sNrl4wgOoWg==}
     peerDependencies:
-      prettier: '>=1.8.0'
-      typedoc: '>=0.24.0'
+      typedoc: '>=0.25.0'
     dependencies:
-      prettier: 2.8.8
-      typedoc: 0.24.8(typescript@5.1.6)
+      typedoc: 0.25.2(typescript@5.1.6)
     dev: true
 
-  /typedoc-plugin-mdn-links@3.0.3(typedoc@0.24.8):
-    resolution: {integrity: sha512-NXhIpwQnsg7BcyMCHVqj3tUK+DL4g3Bt96JbFl4APzTGFkA+iM6GfZ/fn3TAqJ8O0CXG5R9BfWxolw1m1omNuQ==}
+  /typedoc-plugin-mdn-links@3.1.0(typedoc@0.25.2):
+    resolution: {integrity: sha512-4uwnkvywPFV3UVx7WXpIWTHJdXH1rlE2e4a1WsSwCFYKqJxgTmyapv3ZxJtbSl1dvnb6jmuMNSqKEPz77Gs2OA==}
     peerDependencies:
-      typedoc: '>= 0.23.14 || 0.24.x'
+      typedoc: '>= 0.23.14 || 0.24.x || 0.25.x'
     dependencies:
-      typedoc: 0.24.8(typescript@5.1.6)
+      typedoc: 0.25.2(typescript@5.1.6)
     dev: true
 
-  /typedoc@0.24.8(typescript@5.1.6):
-    resolution: {integrity: sha512-ahJ6Cpcvxwaxfu4KtjA8qZNqS43wYt6JL27wYiIgl1vd38WW/KWX11YuAeZhuz9v+ttrutSsgK+XO1CjL1kA3w==}
-    engines: {node: '>= 14.14'}
+  /typedoc@0.25.2(typescript@5.1.6):
+    resolution: {integrity: sha512-286F7BeATBiWe/qC4PCOCKlSTwfnsLbC/4cZ68oGBbvAqb9vV33quEOXx7q176OXotD+JdEerdQ1OZGJ818lnA==}
+    engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x
     dependencies:
       lunr: 2.3.9
       marked: 4.3.0
-      minimatch: 9.0.0
+      minimatch: 9.0.3
       shiki: 0.14.2
       typescript: 5.1.6
     dev: true

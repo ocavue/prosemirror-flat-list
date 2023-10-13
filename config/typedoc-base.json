@@ -44,17 +44,17 @@
   "treatWarningsAsErrors": true,
   "cleanOutputDir": false,
 
-  // https://www.npmjs.com/package/typedoc-plugin-markdown/v/next
-  "flattenOutputFiles": true,
-  "skipIndexPage": true,
-  "entryFileName": "index.md",
+  // https://github.com/tgreyuk/typedoc-plugin-markdown/tree/next/packages/typedoc-plugin-markdown#readme
   "hideBreadcrumbs": true,
   "hideInPageTOC": true,
   "hidePageHeader": true,
-  "hideKindPrefix": true,
-  "hideHierarchy": true,
+  "titleTemplate": "{name}",
+  "entryFileName": "index.md",
+  "useCodeBlocks": true,
+  "excludeGroups": true,
   "typeDeclarationFormat": "table",
   "enumMembersFormat": "table",
   "propertiesFormat": "table",
+  "parametersFormat": "table",
   "outputFileStrategy": "modules"
 }
