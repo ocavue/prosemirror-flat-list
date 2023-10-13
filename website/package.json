@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nr build:typedoc && next --port 3301",
     "build": "nr build:typedoc && next build",
-    "build:typedoc": "nr -w api && typedoc"
+    "build:typedoc": "nr -w api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
   },
   "devDependencies": {
     "@remirror/core": "^2.0.19",
@@ -26,10 +26,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remirror-extension-flat-list": "*",
-    "typedoc": "^0.24.8",
+    "typedoc": "^0.25.2",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^4.0.0-next.17",
-    "typedoc-plugin-mdn-links": "^3.0.3",
+    "typedoc-plugin-markdown": "^4.0.0-next.23",
+    "typedoc-plugin-mdn-links": "^3.1.0",
     "typescript": "^5.1.6"
   }
 }
