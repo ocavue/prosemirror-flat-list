@@ -8,7 +8,7 @@ import { createWrapInListCommand } from './wrap-in-list'
 
 /**
  * Returns a command function that wraps the selection in a list with the given
- * type an attributes, or change the list kind if the selection is already in
+ * type and attributes, or change the list kind if the selection is already in
  * another kind of list, or unwrap the selected list if otherwise.
  *
  * @public

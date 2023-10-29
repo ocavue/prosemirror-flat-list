@@ -9,7 +9,7 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
 
 /**
  * Returns a command function that wraps the selection in a list with the given
- * type an attributes.
+ * type and attributes.
  *
  * @public @group Commands
  */
