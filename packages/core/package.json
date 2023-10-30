@@ -48,7 +48,7 @@
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
-    "prosemirror-view": "^1.32.1"
+    "prosemirror-view": "^1.32.2"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.38.0",
@@ -58,8 +58,8 @@
     "@remirror/extension-horizontal-rule": "^2.0.13",
     "@remirror/pm": "^2.0.8",
     "@remirror/preset-core": "^2.0.16",
-    "@types/dedent": "^0.7.0",
-    "@types/node": "^18.18.5",
+    "@types/dedent": "^0.7.1",
+    "@types/node": "^18.18.7",
     "@vitest/coverage-v8": "^0.34.6",
     "dedent": "^1.5.1",
     "execa": "^8.0.1",
@@ -79,7 +79,7 @@
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "unified": "^10.1.2",
-    "vite": "^4.4.11",
+    "vite": "^4.5.0",
     "vitest": "^0.34.6"
   },
   "typedocOptions": {
