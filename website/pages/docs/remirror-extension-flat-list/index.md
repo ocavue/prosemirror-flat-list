@@ -22,6 +22,10 @@ new ListExtension(...args): ListExtension
 | :------ | :------ |
 | ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & `Partial`\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
 
+##### Returns
+
+[`ListExtension`](index.md#listextension)
+
 ##### Inherited from
 
 NodeExtension.constructor
@@ -40,6 +44,10 @@ NodeExtension.constructor
 get name(): "list"
 ```
 
+##### Returns
+
+`"list"`
+
 ### Methods
 
 #### createCommands()
@@ -49,6 +57,8 @@ createCommands(): object
 ```
 
 ##### Returns
+
+`object`
 
 > | Member | Type | Description |
 > | :------ | :------ | :------ |
@@ -73,6 +83,10 @@ NodeExtension.createCommands
 createExternalPlugins(): ProsemirrorPlugin[]
 ```
 
+##### Returns
+
+`ProsemirrorPlugin`[]
+
 ##### Overrides
 
 NodeExtension.createExternalPlugins
@@ -82,6 +96,10 @@ NodeExtension.createExternalPlugins
 ```ts
 createInputRules(): InputRule[]
 ```
+
+##### Returns
+
+[`InputRule`]( https://prosemirror.net/docs/ref/#inputrules.InputRule )[]
 
 ##### Overrides
 
@@ -93,6 +111,10 @@ NodeExtension.createInputRules
 createKeymap(): KeyBindings
 ```
 
+##### Returns
+
+`KeyBindings`
+
 ##### Overrides
 
 NodeExtension.createKeymap
@@ -103,6 +125,10 @@ NodeExtension.createKeymap
 createNodeSpec(): NodeExtensionSpec
 ```
 
+##### Returns
+
+`NodeExtensionSpec`
+
 ##### Overrides
 
 NodeExtension.createNodeSpec
@@ -112,6 +138,10 @@ NodeExtension.createNodeSpec
 ```ts
 createTags(): "block"[]
 ```
+
+##### Returns
+
+`"block"`[]
 
 ##### Overrides
 
@@ -125,8 +155,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
 
 ***
 
@@ -136,8 +166,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
+| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
 
 ***
 
@@ -147,10 +177,10 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `checked?` | `boolean` | - |
-| `collapsed?` | `boolean` | - |
-| `kind?` | [`ListKind`](index.md#listkind) | - |
-| `order?` | `null` \| `number` | - |
+| `checked`? | `boolean` | - |
+| `collapsed`? | `boolean` | - |
+| `kind`? | [`ListKind`](index.md#listkind) | - |
+| `order`? | `null` \| `number` | - |
 
 ***
 
@@ -160,8 +190,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable?` | (`node`) => `boolean` | - |
+| `collapsed`? | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
+| `isToggleable`? | (`node`) => `boolean` | - |
 
 ***
 
