@@ -50,10 +50,27 @@
     counter-increment: prosemirror-flat-list-counter;
 
     /* 
-    Reset the counter for the first child of the list.
+    Reset the counter for the first list node in the sequence.
     */
-    :not(&) + & {
+    :is(&:first-child, :not(&) + &) {
+      background-color: green;
       counter-reset: prosemirror-flat-list-counter;
+
+      /* 
+      If the first list node has a custom order number, set the counter to that value.
+      */
+      &[data-list-order] {
+        counter-set: prosemirror-flat-list-counter
+          var(--prosemirror-flat-list-order);
+
+        /* 
+        Safari (at least version <= 17.1) doesn't support `counter-set` 
+        */
+        @supports not (counter-set: prosemirror-flat-list-counter 1) {
+          counter-increment: prosemirror-flat-list-counter
+            var(--prosemirror-flat-list-order);
+        }
+      }
     }
   }
 
