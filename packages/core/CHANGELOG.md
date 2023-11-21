@@ -1,5 +1,12 @@
 # prosemirror-flat-list
 
+## 0.4.4
+
+### Patch Changes
+
+- c9e911a: Fix a bug where the ordered list counter number might be incorrectly affected by sub-lists in Chrome.
+- ea9b368: Fix some incorrect ordered list counter numbers in Firefox.
+
 ## 0.4.3
 
 ### Patch Changes
