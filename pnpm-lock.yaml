@@ -194,8 +194,8 @@ importers:
         specifier: ^8.4.31
         version: 8.4.31
       postcss-nesting:
-        specifier: ^11.3.0
-        version: 11.3.0(postcss@8.4.31)
+        specifier: ^12.0.1
+        version: 12.0.1(postcss@8.4.31)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -309,8 +309,8 @@ importers:
         specifier: ^8.4.31
         version: 8.4.31
       postcss-nesting:
-        specifier: ^11.3.0
-        version: 11.3.0(postcss@8.4.31)
+        specifier: ^12.0.1
+        version: 12.0.1(postcss@8.4.31)
       prosemirror-model:
         specifier: ^1.19.3
         version: 1.19.3
@@ -855,13 +855,13 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@csstools/selector-specificity@2.2.0(postcss-selector-parser@6.0.11):
-    resolution: {integrity: sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==}
+  /@csstools/selector-specificity@3.0.0(postcss-selector-parser@6.0.13):
+    resolution: {integrity: sha512-hBI9tfBtuPIi885ZsZ32IMEU/5nlZH/KOVYJCOh7gyMxaVLGmLedYqFN6Ui1LXkI8JlC8IsuC0rF0btcRZKd5g==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss-selector-parser: ^6.0.10
+      postcss-selector-parser: ^6.0.13
     dependencies:
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /@emotion/babel-plugin@11.11.0:
@@ -8806,19 +8806,19 @@ packages:
       yaml: 2.3.1
     dev: true
 
-  /postcss-nesting@11.3.0(postcss@8.4.31):
-    resolution: {integrity: sha512-JlS10AQm/RzyrUGgl5irVkAlZYTJ99mNueUl+Qab+TcHhVedLiylWVkKBhRale+rS9yWIJK48JVzQlq3LcSdeA==}
+  /postcss-nesting@12.0.1(postcss@8.4.31):
+    resolution: {integrity: sha512-6LCqCWP9pqwXw/njMvNK0hGY44Fxc4B2EsGbn6xDcxbNRzP8GYoxT7yabVVMLrX3quqOJ9hg2jYMsnkedOf8pA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/selector-specificity': 2.2.0(postcss-selector-parser@6.0.11)
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
       postcss: 8.4.31
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
-  /postcss-selector-parser@6.0.11:
-    resolution: {integrity: sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g==}
+  /postcss-selector-parser@6.0.13:
+    resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
     engines: {node: '>=4'}
     dependencies:
       cssesc: 3.0.0
