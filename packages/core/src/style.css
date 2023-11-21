@@ -52,7 +52,8 @@
     /* 
     Reset the counter for the first list node in the sequence.
     */
-    :is(&:first-child, :not(&) + &) {
+    &:first-child,
+    :not(&) + & {
       counter-reset: prosemirror-flat-list-counter;
 
       /* 
