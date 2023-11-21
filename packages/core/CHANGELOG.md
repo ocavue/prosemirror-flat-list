@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.5
+
+### Patch Changes
+
+- 7d227f8: Only allow the first ordered list node in the sequence to have a custom counter number.
+
 ## 0.4.4
 
 ### Patch Changes
