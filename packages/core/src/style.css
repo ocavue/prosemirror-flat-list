@@ -53,7 +53,6 @@
     Reset the counter for the first list node in the sequence.
     */
     :is(&:first-child, :not(&) + &) {
-      background-color: green;
       counter-reset: prosemirror-flat-list-counter;
 
       /* 
