@@ -59,7 +59,7 @@
     "@remirror/pm": "^2.0.8",
     "@remirror/preset-core": "^2.0.16",
     "@types/dedent": "^0.7.1",
-    "@types/node": "^18.18.8",
+    "@types/node": "^20.8.10",
     "@vitest/coverage-v8": "^0.34.6",
     "dedent": "^1.5.1",
     "execa": "^8.0.1",
