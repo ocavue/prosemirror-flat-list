@@ -84,7 +84,7 @@ function docToTaggedDoc(
 }
 
 export function markdownToTaggedDoc(
-  t: RemirrorTestChain<AnyExtension>,
+  t: RemirrorTestChain<any>,
   markdown: string,
 ): TaggedProsemirrorNode {
   markdown = tags.reduce(
