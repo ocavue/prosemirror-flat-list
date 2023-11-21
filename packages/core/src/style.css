@@ -60,8 +60,10 @@
       If the first list node has a custom order number, set the counter to that value.
       */
       &[data-list-order] {
-        counter-set: prosemirror-flat-list-counter
-          var(--prosemirror-flat-list-order);
+        @supports (counter-set: prosemirror-flat-list-counter 1) {
+          counter-set: prosemirror-flat-list-counter
+            var(--prosemirror-flat-list-order);
+        }
 
         /* 
         Safari (at least version <= 17.1) doesn't support `counter-set` 
