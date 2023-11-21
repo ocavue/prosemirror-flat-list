@@ -47,25 +47,13 @@
       content: counter(prosemirror-flat-list-counter, decimal) '. ';
     }
 
+    counter-increment: prosemirror-flat-list-counter;
+
     /* 
-    Firefox has different CSS Counter implementation compare to Chrome and Safari, so
-    we need to apply different CSS rules for Firefox.  
-    https://bugzilla.mozilla.org/show_bug.cgi?id=1841791
+    Reset the counter for the first child of the list.
     */
-
-    /* CSS rules for Firefox */
-    @supports (-moz-appearance: none) {
-      contain: style;
-      counter-increment: prosemirror-flat-list-counter;
-    }
-
-    /* CSS rules for Chrome and Safari */
-    @supports not (-moz-appearance: none) {
+    :not(&) + & {
       counter-reset: prosemirror-flat-list-counter;
-      counter-increment: prosemirror-flat-list-counter;
-      & + & {
-        counter-reset: none;
-      }
     }
   }
 
