@@ -15,7 +15,7 @@ import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import { unified, type Processor } from 'unified'
+import { unified } from 'unified'
 
 function createProcessor() {
   return unified()
@@ -25,7 +25,7 @@ function createProcessor() {
     .use(rehypeStringify)
 }
 
-let processor: Processor | null = null
+let processor: ReturnType< typeof  createProcessor> | null = null 
 
 function markdownToHtml(markdown: string): string {
   if (!processor) {
