@@ -30,6 +30,16 @@
   }
 
   &[data-list-kind='ordered'] {
+    /*
+    Ensure that the counters in children don't escape, so that the sub lists
+    won't affect the counter of the parent list.
+
+    See also https://github.com/ocavue/prosemirror-flat-list/issues/23
+    */
+    & > * {
+      contain: style;
+    }
+
     &::before {
       position: absolute;
       right: 100%;
@@ -38,7 +48,7 @@
     }
 
     /* 
-    Firefox has different CSS Counter implemetation compare to Chrome and Safari, so
+    Firefox has different CSS Counter implementation compare to Chrome and Safari, so
     we need to apply different CSS rules for Firefox.  
     https://bugzilla.mozilla.org/show_bug.cgi?id=1841791
     */
