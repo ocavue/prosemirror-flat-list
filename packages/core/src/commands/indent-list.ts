@@ -163,8 +163,8 @@ function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
     const listAttrs: ListAttributes | null = isFirstChildListNode
       ? parent.child(startIndex).attrs
       : isParentListNode
-      ? parent.attrs
-      : null
+        ? parent.attrs
+        : null
     tr.step(
       new ReplaceAroundStep(
         start,

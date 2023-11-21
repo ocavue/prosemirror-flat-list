@@ -481,13 +481,11 @@ describe('splitList', () => {
   })
 
   it('can split list node for a block node selection', () => {
-    add(
-      markdown`
-        # h1
+    add(markdown`
+      # h1
 
-        1. ***
-      `,
-    )
+      1. ***
+    `)
 
     let hrPos = -1
     editor.doc.descendants((node, pos) => {
@@ -508,13 +506,11 @@ describe('splitList', () => {
 
     editor.press('Enter')
 
-    expect(editor.state).toEqualRemirrorState(
-      markdown`
-        # h1
+    expect(editor.state).toEqualRemirrorState(markdown`
+      # h1
 
-        1. ***
-        2. <cursor>\n
-      `,
-    )
+      1. ***
+      2. <cursor>\n
+    `)
   })
 })
