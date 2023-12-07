@@ -23,7 +23,7 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 
   [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-remirror)
 
-- Custom ordered list so that it can be collapsable
+- Custom collapsable ordered list node
 
   [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-collapsable-ordered-list)
 
