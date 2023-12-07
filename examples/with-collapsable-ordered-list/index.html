@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>prosemirror-flat-list demo</title>
+</head>
+
+<body>
+  <div id="editor"></div>
+  <div id="content" style="display: none">
+    <ol>
+      <li>Parent ordered list node
+
+        <ol>
+          <li>Sub ordered list node</li>
+          <li>Sub ordered list node</li>
+        </ol>
+      </li>
+
+      <li>Parent ordered list node (This is not collapsable because it doesn't have any sub list)</li>
+      </li>
+    </ol>
+  </div>
+
+  <script type="module" src="main.ts"></script>
+</body>
+
+</html>

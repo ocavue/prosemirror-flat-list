@@ -41,6 +41,46 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6(jsdom@22.1.0)
 
+  examples/with-collapsable-ordered-list:
+    dependencies:
+      prosemirror-example-setup:
+        specifier: ^1.2.2
+        version: 1.2.2
+      prosemirror-flat-list:
+        specifier: '*'
+        version: link:../../packages/core
+      prosemirror-gapcursor:
+        specifier: ^1.3.2
+        version: 1.3.2
+      prosemirror-inputrules:
+        specifier: ^1.2.1
+        version: 1.2.1
+      prosemirror-keymap:
+        specifier: ^1.2.2
+        version: 1.2.2
+      prosemirror-menu:
+        specifier: ^1.2.4
+        version: 1.2.4
+      prosemirror-model:
+        specifier: ^1.19.3
+        version: 1.19.3
+      prosemirror-schema-basic:
+        specifier: ^1.2.2
+        version: 1.2.2
+      prosemirror-state:
+        specifier: ^1.4.3
+        version: 1.4.3
+      prosemirror-view:
+        specifier: ^1.32.3
+        version: 1.32.3
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vite:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/node@20.9.3)
+
   examples/with-prosemirror:
     dependencies:
       prosemirror-example-setup:
