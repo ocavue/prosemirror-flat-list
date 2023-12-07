@@ -23,7 +23,9 @@ export function handleListMarkerMouseDown({
     event.preventDefault()
 
     const pos = view.posAtDOM(target, -10, -10)
-    return handleMouseDown(pos, onListClick)(view.state, view.dispatch)
+    return handleMouseDown(pos, onListClick)(view.state, (tr) =>
+      view.dispatch(tr),
+    )
   }
 
   return false

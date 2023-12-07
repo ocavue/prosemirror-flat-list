@@ -13,6 +13,20 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 | [prosemirror-flat-list]        | [![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)               |
 | [remirror-extension-flat-list] | [![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list) |
 
+## Examples
+
+- Example with [ProseMirror]
+
+  [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-prosemirror)
+
+- Example with [Remirror]
+
+  [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-remirror)
+
+- Custom collapsable ordered list node
+
+  [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-collapsable-ordered-list)
+
 ## Sponsored by [Reflect](https://reflect.app/)
 
 <p align="center">

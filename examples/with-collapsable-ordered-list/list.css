@@ -1,0 +1,33 @@
+.prosemirror-flat-list {
+  &[data-list-kind='ordered'] {
+    & > .list-marker {
+      position: absolute;
+      right: 100%;
+      text-align: center;
+      width: 1.5em;
+      width: 1lh;
+      left: -2.3em;
+    }
+
+    & > .list-marker::before {
+      content: '\23F7'; /* Black Medium Down-Pointing Triangle */
+    }
+    &[data-list-collapsable][data-list-collapsed] > .list-marker::before {
+      content: '\23F5'; /* Black Medium Right-Pointing Triangle */
+    }
+
+    &[data-list-collapsable] > .list-marker {
+      cursor: pointer;
+    }
+    &:not([data-list-collapsable]) > .list-marker {
+      display: none;
+    }
+
+    /* If collapsed, hide the second and futher children */
+    &[data-list-collapsable][data-list-collapsed]
+      > .list-content
+      > *:nth-child(n + 2) {
+      display: none;
+    }
+  }
+}

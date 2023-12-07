@@ -25,7 +25,7 @@ function createProcessor() {
     .use(rehypeStringify)
 }
 
-let processor: ReturnType< typeof  createProcessor> | null = null 
+let processor: ReturnType<typeof createProcessor> | null = null
 
 function markdownToHtml(markdown: string): string {
   if (!processor) {
