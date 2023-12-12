@@ -66,7 +66,7 @@
         }
 
         /* 
-        Safari (at least version <= 17.1) doesn't support `counter-set` 
+        Safari older than version 17.2 doesn't support `counter-set` 
         */
         @supports not (counter-set: prosemirror-flat-list-counter 1) {
           counter-increment: prosemirror-flat-list-counter
