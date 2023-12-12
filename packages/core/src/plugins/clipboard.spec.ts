@@ -25,7 +25,7 @@ describe('Clipboard', () => {
 
     const copied = t.editor.copied
     expect(copied.html).toMatchInlineSnapshot(
-      '"<ul data-pm-slice=\\"2 2 []\\"><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D1</p></li><li class=\\"prosemirror-flat-list\\" data-list-kind=\\"bullet\\"><p>D2</p></li></ul>"',
+      `"<ul data-pm-slice="2 2 []"><li class="prosemirror-flat-list" data-list-kind="bullet"><p>D1</p></li><li class="prosemirror-flat-list" data-list-kind="bullet"><p>D2</p></li></ul>"`,
     )
 
     t.add(t.doc(t.p('')))
@@ -62,7 +62,7 @@ describe('Clipboard', () => {
 
     const copied = t.editor.copied
     expect(copied.html).toMatchInlineSnapshot(
-      '"<p data-pm-slice=\\"1 1 []\\">D1</p>"',
+      `"<p data-pm-slice="1 1 []">D1</p>"`,
     )
 
     t.add(t.doc(t.p('')))
