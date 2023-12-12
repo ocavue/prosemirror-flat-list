@@ -156,7 +156,7 @@ describe('wrapInList', () => {
     expect(selection.from).toBe(2)
     view.dispatch(view.state.tr.setSelection(selection))
 
-    wrapInBulletList(view.state, view.dispatch, view)
+    wrapInBulletList(view.state, view.dispatch.bind(view), view)
 
     expect(view.state.doc).toEqualRemirrorDocument(doc2)
   })
