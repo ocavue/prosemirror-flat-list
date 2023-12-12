@@ -12,7 +12,7 @@ describe('markdownToTaggedDoc', () => {
     `
     const output = markdownToTaggedDoc(t.editor, input)
     expect(output.toString()).toMatchInlineSnapshot(
-      '"doc(list(paragraph(\\"A1\\")), list(paragraph(\\"A2\\")))"',
+      `"doc(list(paragraph("A1")), list(paragraph("A2")))"`,
     )
   })
 
