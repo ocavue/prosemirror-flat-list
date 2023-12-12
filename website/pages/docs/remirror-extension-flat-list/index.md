@@ -20,7 +20,7 @@ new ListExtension(...args): ListExtension
 
 | Parameter | Type |
 | :------ | :------ |
-| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & `Partial`\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
+| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype )\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
 
 ##### Returns
 
@@ -28,13 +28,13 @@ new ListExtension(...args): ListExtension
 
 ##### Inherited from
 
-NodeExtension.constructor
+`NodeExtension.constructor`
 
 ### Properties
 
 | Modifier | Property | Type | Description | Inheritance |
 | :------ | :------ | :------ | :------ | :------ |
-| `static` | `disableExtraAttributes` | `boolean` | - | NodeExtension.disableExtraAttributes |
+| `static` | `disableExtraAttributes` | `boolean` | - | `NodeExtension.disableExtraAttributes` |
 
 ### Accessors
 
@@ -53,12 +53,12 @@ get name(): "list"
 #### createCommands()
 
 ```ts
-createCommands(): object
+createCommands(): Object
 ```
 
 ##### Returns
 
-`object`
+`Object`
 
 > | Member | Type | Description |
 > | :------ | :------ | :------ |
@@ -75,7 +75,7 @@ createCommands(): object
 
 ##### Overrides
 
-NodeExtension.createCommands
+`NodeExtension.createCommands`
 
 #### createExternalPlugins()
 
@@ -89,7 +89,7 @@ createExternalPlugins(): ProsemirrorPlugin[]
 
 ##### Overrides
 
-NodeExtension.createExternalPlugins
+`NodeExtension.createExternalPlugins`
 
 #### createInputRules()
 
@@ -103,7 +103,7 @@ createInputRules(): InputRule[]
 
 ##### Overrides
 
-NodeExtension.createInputRules
+`NodeExtension.createInputRules`
 
 #### createKeymap()
 
@@ -117,7 +117,7 @@ createKeymap(): KeyBindings
 
 ##### Overrides
 
-NodeExtension.createKeymap
+`NodeExtension.createKeymap`
 
 #### createNodeSpec()
 
@@ -131,7 +131,7 @@ createNodeSpec(): NodeExtensionSpec
 
 ##### Overrides
 
-NodeExtension.createNodeSpec
+`NodeExtension.createNodeSpec`
 
 #### createTags()
 
@@ -145,7 +145,7 @@ createTags(): "block"[]
 
 ##### Overrides
 
-NodeExtension.createTags
+`NodeExtension.createTags`
 
 ***
 
@@ -155,8 +155,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br />`state.selection.to` |
 
 ***
 
@@ -166,8 +166,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br />`state.selection.to` |
 
 ***
 
@@ -177,10 +177,10 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `checked`? | `boolean` | - |
-| `collapsed`? | `boolean` | - |
-| `kind`? | [`ListKind`](index.md#listkind) | - |
-| `order`? | `null` \| `number` | - |
+| `checked?` | `boolean` | - |
+| `collapsed?` | `boolean` | - |
+| `kind?` | [`ListKind`](index.md#listkind) | - |
+| `order?` | `null` \| `number` | - |
 
 ***
 
@@ -190,8 +190,8 @@ NodeExtension.createTags
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `collapsed`? | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable`? | (`node`) => `boolean` | - |
+| `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
+| `isToggleable?` | (`node`) => `boolean` | - |
 
 ***
 

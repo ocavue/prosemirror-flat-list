@@ -17,19 +17,19 @@
     "@remirror/pm": "^2.0.8",
     "@remirror/react": "^2.0.35",
     "@remirror/styles": "^2.0.7",
-    "@types/react": "^18.2.34",
-    "@types/react-dom": "^18.2.14",
-    "next": "^14.0.2",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "next": "^14.0.4",
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",
     "prosemirror-flat-list": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remirror-extension-flat-list": "*",
-    "typedoc": "^0.25.3",
+    "typedoc": "^0.25.4",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^4.0.0-next.25",
-    "typedoc-plugin-mdn-links": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typedoc-plugin-markdown": "^4.0.0-next.36",
+    "typedoc-plugin-mdn-links": "^3.1.7",
+    "typescript": "^5.3.3"
   }
 }
