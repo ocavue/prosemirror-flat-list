@@ -29,8 +29,8 @@ should not be serialized.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `nodes` | `object` | The node serialization functions. |
-| `marks` | `object` | The mark serialization functions. |
+| `nodes` | `Object` | The node serialization functions. |
+| `marks` | `Object` | The mark serialization functions. |
 
 ##### Returns
 
@@ -38,7 +38,7 @@ should not be serialized.
 
 ##### Inherited from
 
-DOMSerializer.constructor
+`DOMSerializer.constructor`
 
 ### Methods
 
@@ -56,17 +56,17 @@ serializeFragment(
 | Parameter | Type |
 | :------ | :------ |
 | `fragment` | [`Fragment`]( https://prosemirror.net/docs/ref/#model.Fragment ) |
-| `options`? | `object` |
-| `options.document`? | [`Document`]( https://developer.mozilla.org/en-US/docs/Web/API/Document ) |
-| `target`? | [`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment ) |
+| `options`? | `Object` |
+| `options.document`? | [`Document`]( https://developer.mozilla.org/docs/Web/API/Document ) |
+| `target`? | [`HTMLElement`]( https://developer.mozilla.org/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment ) |
 
 ##### Returns
 
-[`HTMLElement`]( https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment )
+[`HTMLElement`]( https://developer.mozilla.org/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment )
 
 ##### Overrides
 
-DOMSerializer.serializeFragment
+`DOMSerializer.serializeFragment`
 
 #### fromSchema()
 
@@ -86,12 +86,12 @@ static fromSchema(schema): ListDOMSerializer
 
 ##### Overrides
 
-DOMSerializer.fromSchema
+`DOMSerializer.fromSchema`
 
 #### nodesFromSchema()
 
 ```ts
-static nodesFromSchema(schema): object
+static nodesFromSchema(schema): Object
 ```
 
 ##### Parameters
@@ -102,11 +102,11 @@ static nodesFromSchema(schema): object
 
 ##### Returns
 
-`object`
+`Object`
 
 ##### Overrides
 
-DOMSerializer.nodesFromSchema
+`DOMSerializer.nodesFromSchema`
 
 ***
 
@@ -116,8 +116,8 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br />`state.selection.to` |
 
 ***
 
@@ -127,8 +127,8 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `from`? | `number` | A optional from position to indent.<br /><br />**Default Value**<br /><br />`state.selection.from` |
-| `to`? | `number` | A optional to position to indent.<br /><br />**Default Value**<br /><br />`state.selection.to` |
+| `from?` | `number` | A optional from position to indent.<br /><br />**Default Value**<br />`state.selection.from` |
+| `to?` | `number` | A optional to position to indent.<br /><br />**Default Value**<br />`state.selection.to` |
 
 ***
 
@@ -138,10 +138,10 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `checked`? | `boolean` | - |
-| `collapsed`? | `boolean` | - |
-| `kind`? | [`ListKind`](index.md#listkind) | - |
-| `order`? | `null` \| `number` | - |
+| `checked?` | `boolean` | - |
+| `collapsed?` | `boolean` | - |
+| `kind?` | [`ListKind`](index.md#listkind) | - |
+| `order?` | `null` \| `number` | - |
 
 ***
 
@@ -151,9 +151,9 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `getAttributes`? | (`node`) => `Record`\<`string`, `undefined` \| `string`\> | - |
-| `getMarkers`? | (`node`) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | - |
-| `nativeList`? | `boolean` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.<br />You might want to use [joinListElements](index.md#joinlistelements) to join the list elements<br />afterward.<br /><br />**Default Value**<br /><br />` false ` |
+| `getAttributes?` | (`node`) => [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )\<`string`, `undefined` \| `string`\> | - |
+| `getMarkers?` | (`node`) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | - |
+| `nativeList?` | `boolean` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.<br />You might want to use [joinListElements](index.md#joinlistelements) to join the list elements<br />afterward.<br /><br />**Default Value**<br />` false ` |
 | `node` | [`Node`]( https://prosemirror.net/docs/ref/#model.Node ) | The list node to be rendered. |
 
 ***
@@ -164,10 +164,10 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `attrs`? | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) | - |
-| `content`? | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] | - |
-| `marks`? | (`string` \| `object`)[] | - |
-| `text`? | `string` | - |
+| `attrs?` | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) | - |
+| `content?` | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] | - |
+| `marks?` | (`string` \| `Object`)[] | - |
+| `text?` | `string` | - |
 | `type` | `string` | - |
 
 ***
@@ -178,8 +178,8 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `collapsed`? | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable`? | (`node`) => `boolean` | - |
+| `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
+| `isToggleable?` | (`node`) => `boolean` | - |
 
 ***
 
@@ -189,7 +189,7 @@ DOMSerializer.nodesFromSchema
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `kind`? | `string` | If given, only this kind of list will be unwrap. |
+| `kind?` | `string` | If given, only this kind of list will be unwrap. |
 
 ***
 
@@ -216,7 +216,7 @@ All input rules for lists.
 ## listKeymap
 
 ```ts
-const listKeymap: object;
+const listKeymap: Object;
 ```
 
 Returns an object containing the keymap for the list commands.
@@ -397,7 +397,7 @@ to use if you want to customize some behavior.
 
 | Parameter | Type |
 | :------ | :------ |
-| `__namedParameters` | `object` |
+| `__namedParameters` | `Object` |
 | `__namedParameters.schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )\<`any`, `any`\> |
 
 ### Returns
@@ -531,7 +531,7 @@ another kind of list, or unwrap the selected list if otherwise.
 
 ### Type parameters
 
-| Parameter | Default |
+| Parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -578,7 +578,7 @@ type and attributes.
 
 ### Type parameters
 
-| Parameter | Default |
+| Parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -749,7 +749,7 @@ Merge adjacent <ul> elements or adjacent `<ol>`  elements into a single list ele
 
 | Parameter |
 | :------ |
-| `T` extends [`Element`]( https://developer.mozilla.org/en-US/docs/Web/API/Element ) \| [`DocumentFragment`]( https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment ) |
+| `T` extends [`Element`]( https://developer.mozilla.org/docs/Web/API/Element ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment ) |
 
 ### Parameters
 
@@ -876,7 +876,7 @@ when a given string is typed.
 
 ### Type parameters
 
-| Parameter | Default |
+| Parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -884,7 +884,7 @@ when a given string is typed.
 
 | Parameter | Type |
 | :------ | :------ |
-| `regexp` | [`RegExp`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp ) |
+| `regexp` | [`RegExp`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp ) |
 | `getAttrs` | `T` \| (`matches`) => `T` |
 
 ### Returns
