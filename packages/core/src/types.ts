@@ -9,7 +9,7 @@ export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
 /** @public */
 export interface ListAttributes {
-  kind?: ListKind
+  kind?: string
   order?: number | null
   checked?: boolean
   collapsed?: boolean
