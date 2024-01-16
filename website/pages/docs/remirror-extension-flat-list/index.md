@@ -179,7 +179,7 @@ createTags(): "block"[]
 | :------ | :------ | :------ |
 | `checked?` | `boolean` | - |
 | `collapsed?` | `boolean` | - |
-| `kind?` | [`ListKind`](index.md#listkind) | - |
+| `kind?` | `string` | - |
 | `order?` | `null` \| `number` | - |
 
 ***
@@ -191,7 +191,7 @@ createTags(): "block"[]
 | Property | Type | Description |
 | :------ | :------ | :------ |
 | `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable?` | (`node`) => `boolean` | - |
+| `isToggleable?` | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ***
 
