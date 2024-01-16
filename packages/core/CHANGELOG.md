@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.4.6
+
+### Patch Changes
+
+- 6c37fd6: Update `ListAttributes.kind` type to `string`. This will make it easier to extend new kind of list.
+
 ## 0.4.5
 
 ### Patch Changes

@@ -140,7 +140,7 @@ static nodesFromSchema(schema): Object
 | :------ | :------ | :------ |
 | `checked?` | `boolean` | - |
 | `collapsed?` | `boolean` | - |
-| `kind?` | [`ListKind`](index.md#listkind) | - |
+| `kind?` | `string` | - |
 | `order?` | `null` \| `number` | - |
 
 ***
@@ -151,8 +151,8 @@ static nodesFromSchema(schema): Object
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `getAttributes?` | (`node`) => [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )\<`string`, `undefined` \| `string`\> | - |
-| `getMarkers?` | (`node`) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | - |
+| `getAttributes?` | (`node`) => [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )\<`string`, `undefined` \| `string`\> | An optional function to get the attributes added to HTML element. |
+| `getMarkers?` | (`node`) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | An optional function to get elements inside `<div class="list-marker">`.<br />Return `null` to hide the marker. |
 | `nativeList?` | `boolean` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.<br />You might want to use [joinListElements](index.md#joinlistelements) to join the list elements<br />afterward.<br /><br />**Default Value**<br />` false ` |
 | `node` | [`Node`]( https://prosemirror.net/docs/ref/#model.Node ) | The list node to be rendered. |
 
@@ -179,7 +179,7 @@ static nodesFromSchema(schema): Object
 | Property | Type | Description |
 | :------ | :------ | :------ |
 | `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable?` | (`node`) => `boolean` | - |
+| `isToggleable?` | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ***
 
