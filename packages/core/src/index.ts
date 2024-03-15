@@ -34,7 +34,11 @@ export {
   handleListMarkerMouseDown,
   type ListClickHandler,
 } from './dom-events'
-export { listInputRules, wrappingListInputRule } from './input-rule'
+export {
+  listInputRules,
+  wrappingListInputRule,
+  type ListInputRuleAttributesGetter,
+} from './input-rule'
 export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
 export {
