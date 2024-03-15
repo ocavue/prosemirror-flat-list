@@ -3,10 +3,30 @@ import { Attrs } from 'prosemirror-model'
 import { Transaction } from 'prosemirror-state'
 import { findWrapping } from 'prosemirror-transform'
 
-import { ListAttributes } from './types'
+import { ListAttributes } from 'prosemirror-flat-list'
+
 import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
 import { parseInteger } from './utils/parse-integer'
+
+/**
+ * A callback function to get the attributes for a list input rule.
+ *
+ * @public @group Input Rules
+ */
+export type ListInputRuleAttributesGetter<
+  T extends ListAttributes = ListAttributes,
+> = (options: {
+  /**
+   * The match result of the regular expression.
+   */
+  match: RegExpMatchArray
+
+  /**
+   * The previous attributes of the existing list node, if it exists.
+   */
+  attributes?: T
+}) => T
 
 /**
  * Build an input rule for automatically wrapping a textblock into a list node
@@ -16,28 +36,33 @@ import { parseInteger } from './utils/parse-integer'
  */
 export function wrappingListInputRule<
   T extends ListAttributes = ListAttributes,
->(regexp: RegExp, getAttrs: T | ((matches: RegExpMatchArray) => T)): InputRule {
+>(regexp: RegExp, getAttrs: T | ListInputRuleAttributesGetter<T>): InputRule {
   return new InputRule(
     regexp,
     (state, match, start, end): Transaction | null => {
       const tr = state.tr
       tr.deleteRange(start, end)
 
-      const attrs = typeof getAttrs === 'function' ? getAttrs(match) : getAttrs
-
       const $pos = tr.selection.$from
       const listNode = $pos.index(-1) === 0 && $pos.node(-1)
       if (listNode && isListNode(listNode)) {
         const oldAttrs: Attrs = listNode.attrs as ListAttributes
-        const newAttrs: Attrs = { ...oldAttrs, ...attrs }
-        const needUpdate = Object.keys(newAttrs).some(
-          (key) => newAttrs[key] !== oldAttrs[key],
-        )
+        const newAttrs: Attrs =
+          typeof getAttrs === 'function'
+            ? getAttrs({ match, attributes: oldAttrs as T })
+            : getAttrs
 
-        if (needUpdate) {
-          return tr.setNodeMarkup($pos.before(-1), undefined, newAttrs)
-        } else {
+        const entries = Object.entries(newAttrs).filter(([key, value]) => {
+          return oldAttrs[key] !== value
+        })
+        if (entries.length === 0) {
           return null
+        } else {
+          const pos = $pos.before(-1)
+          for (const [key, value] of entries) {
+            tr.setNodeAttribute(pos, key, value)
+          }
+          return tr
         }
       }
 
@@ -47,7 +72,9 @@ export function wrappingListInputRule<
         return null
       }
 
-      const wrapping = findWrapping(range, getListType(state.schema), attrs)
+      const newAttrs: Attrs =
+        typeof getAttrs === 'function' ? getAttrs({ match }) : getAttrs
+      const wrapping = findWrapping(range, getListType(state.schema), newAttrs)
       if (!wrapping) {
         return null
       }
@@ -67,7 +94,7 @@ export const listInputRules: InputRule[] = [
     kind: 'bullet',
     collapsed: false,
   }),
-  wrappingListInputRule<ListAttributes>(/^\s?(\d+)\.\s$/, (match) => {
+  wrappingListInputRule<ListAttributes>(/^\s?(\d+)\.\s$/, ({ match }) => {
     const order = parseInteger(match[1])
     return {
       kind: 'ordered',
@@ -75,7 +102,7 @@ export const listInputRules: InputRule[] = [
       order: order != null && order >= 2 ? order : null,
     }
   }),
-  wrappingListInputRule<ListAttributes>(/^\s?\[([\sXx]?)]\s$/, (match) => {
+  wrappingListInputRule<ListAttributes>(/^\s?\[([\sXx]?)]\s$/, ({ match }) => {
     return {
       kind: 'task',
       checked: ['x', 'X'].includes(match[1]),
