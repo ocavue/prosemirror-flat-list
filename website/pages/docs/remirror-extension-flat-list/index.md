@@ -53,7 +53,17 @@ get name(): "list"
 #### createCommands()
 
 ```ts
-createCommands(): Object
+createCommands(): {
+  dedentList: (props?) => CommandFunction<object>;
+  indentList: (props?) => CommandFunction<object>;
+  moveList: (direction) => CommandFunction<object>;
+  protectCollapsed: () => CommandFunction<object>;
+  splitList: () => CommandFunction<object>;
+  toggleCollapsed: (props?) => CommandFunction<object>;
+  toggleList: (attrs) => CommandFunction<object>;
+  unwrapList: (options?) => CommandFunction<object>;
+  wrapInList: (getAttrs) => CommandFunction<object>;
+}
 ```
 
 ##### Returns
