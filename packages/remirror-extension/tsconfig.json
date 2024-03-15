@@ -4,11 +4,11 @@
     "rootDir": ".",
     "composite": true,
     "declarationDir": "dist-types",
-    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo",
   },
   "references": [
     {
-      "path": "../core/tsconfig.json"
-    }
-  ]
+      "path": "../core/tsconfig.json",
+    },
+  ],
 }

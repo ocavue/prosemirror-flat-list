@@ -17,8 +17,8 @@
     "paths": {
       "prosemirror-flat-list": ["./packages/core/src/index.ts"],
       "remirror-extension-flat-list": [
-        "./packages/remirror-extension/src/index.ts"
-      ]
-    }
-  }
+        "./packages/remirror-extension/src/index.ts",
+      ],
+    },
+  },
 }
