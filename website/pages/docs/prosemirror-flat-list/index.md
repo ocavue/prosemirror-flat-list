@@ -78,7 +78,7 @@ static fromSchema(schema): ListDOMSerializer
 
 | Parameter | Type |
 | :------ | :------ |
-| `schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )\<`any`, `any`\> |
+| `schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ##### Returns
 
@@ -98,7 +98,7 @@ static nodesFromSchema(schema): Object
 
 | Parameter | Type |
 | :------ | :------ |
-| `schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )\<`any`, `any`\> |
+| `schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ##### Returns
 
@@ -136,12 +136,12 @@ static nodesFromSchema(schema): Object
 
 ### Properties
 
-| Property | Type | Description |
-| :------ | :------ | :------ |
-| `checked?` | `boolean` | - |
-| `collapsed?` | `boolean` | - |
-| `kind?` | `string` | - |
-| `order?` | `null` \| `number` | - |
+| Property | Type |
+| :------ | :------ |
+| `checked?` | `boolean` |
+| `collapsed?` | `boolean` |
+| `kind?` | `string` |
+| `order?` | `null` \| `number` |
 
 ***
 
@@ -151,8 +151,8 @@ static nodesFromSchema(schema): Object
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `getAttributes?` | (`node`) => [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )\<`string`, `undefined` \| `string`\> | An optional function to get the attributes added to HTML element. |
-| `getMarkers?` | (`node`) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | An optional function to get elements inside `<div class="list-marker">`.<br />Return `null` to hide the marker. |
+| `getAttributes?` | (`node`: [`Node`]( https://prosemirror.net/docs/ref/#model.Node )) => [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `undefined` \| `string`\> | An optional function to get the attributes added to HTML element. |
+| `getMarkers?` | (`node`: [`Node`]( https://prosemirror.net/docs/ref/#model.Node )) => `null` \| [`DOMOutputSpec`]( https://prosemirror.net/docs/ref/#model.DOMOutputSpec )[] | An optional function to get elements inside `<div class="list-marker">`.<br />Return `null` to hide the marker. |
 | `nativeList?` | `boolean` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element.<br />You might want to use [joinListElements](index.md#joinlistelements) to join the list elements<br />afterward.<br /><br />**Default Value**<br />` false ` |
 | `node` | [`Node`]( https://prosemirror.net/docs/ref/#model.Node ) | The list node to be rendered. |
 
@@ -162,13 +162,13 @@ static nodesFromSchema(schema): Object
 
 ### Properties
 
-| Property | Type | Description |
-| :------ | :------ | :------ |
-| `attrs?` | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) | - |
-| `content?` | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] | - |
-| `marks?` | (`string` \| `Object`)[] | - |
-| `text?` | `string` | - |
-| `type` | `string` | - |
+| Property | Type |
+| :------ | :------ |
+| `attrs?` | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) |
+| `content?` | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] |
+| `marks?` | (`string` \| `Object`)[] |
+| `text?` | `string` |
+| `type` | `string` |
 
 ***
 
@@ -179,7 +179,7 @@ static nodesFromSchema(schema): Object
 | Property | Type | Description |
 | :------ | :------ | :------ |
 | `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable?` | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
+| `isToggleable?` | (`node`: [`Node`]( https://prosemirror.net/docs/ref/#model.Node )) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ***
 
@@ -242,7 +242,7 @@ Returns an object containing the keymap for the list commands.
 ## backspaceCommand()
 
 ```ts
-backspaceCommand(
+function backspaceCommand(
    state, 
    dispatch?, 
    view?): boolean
@@ -274,7 +274,7 @@ Keybinding for `Backspace`. It's chained with following commands:
 ## createDedentListCommand()
 
 ```ts
-createDedentListCommand(options?): Command
+function createDedentListCommand(options?): Command
 ```
 
 Returns a command function that decreases the indentation of selected list nodes.
@@ -294,7 +294,7 @@ Returns a command function that decreases the indentation of selected list nodes
 ## createIndentListCommand()
 
 ```ts
-createIndentListCommand(options?): Command
+function createIndentListCommand(options?): Command
 ```
 
 Returns a command function that increases the indentation of selected list
@@ -315,7 +315,7 @@ nodes.
 ## createListClipboardPlugin()
 
 ```ts
-createListClipboardPlugin(schema): Plugin
+function createListClipboardPlugin(schema): Plugin
 ```
 
 Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
@@ -325,7 +325,7 @@ clipboard. See [ListDOMSerializer](index.md#listdomserializer).
 
 | Parameter | Type |
 | :------ | :------ |
-| `schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )\<`any`, `any`\> |
+| `schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ### Returns
 
@@ -336,7 +336,7 @@ clipboard. See [ListDOMSerializer](index.md#listdomserializer).
 ## createListEventPlugin()
 
 ```ts
-createListEventPlugin(): Plugin
+function createListEventPlugin(): Plugin
 ```
 
 Handle DOM events for list.
@@ -350,7 +350,7 @@ Handle DOM events for list.
 ## createListNodeView()
 
 ```ts
-createListNodeView(
+function createListNodeView(
    node, 
    view, 
    getPos, 
@@ -380,7 +380,7 @@ list node get updated when its marker styling should changes.
 ## createListPlugins()
 
 ```ts
-createListPlugins(__namedParameters): Plugin[]
+function createListPlugins(__namedParameters): Plugin[]
 ```
 
 This function returns an array of plugins that are required for list to work.
@@ -398,7 +398,7 @@ to use if you want to customize some behavior.
 | Parameter | Type |
 | :------ | :------ |
 | `__namedParameters` | `Object` |
-| `__namedParameters.schema` | [`Schema`]( https://prosemirror.net/docs/ref/#model.Schema )\<`any`, `any`\> |
+| `__namedParameters.schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ### Returns
 
@@ -409,7 +409,7 @@ to use if you want to customize some behavior.
 ## createListRenderingPlugin()
 
 ```ts
-createListRenderingPlugin(): Plugin
+function createListRenderingPlugin(): Plugin
 ```
 
 Handle the list node rendering.
@@ -423,7 +423,7 @@ Handle the list node rendering.
 ## createListSpec()
 
 ```ts
-createListSpec(): NodeSpec
+function createListSpec(): NodeSpec
 ```
 
 Return the spec for list node.
@@ -437,7 +437,7 @@ Return the spec for list node.
 ## createMoveListCommand()
 
 ```ts
-createMoveListCommand(direction): Command
+function createMoveListCommand(direction): Command
 ```
 
 Returns a command function that moves up or down selected list nodes.
@@ -457,7 +457,7 @@ Returns a command function that moves up or down selected list nodes.
 ## createParseDomRules()
 
 ```ts
-createParseDomRules(): readonly ParseRule[]
+function createParseDomRules(): readonly ParseRule[]
 ```
 
 Returns a set of rules for parsing HTML into ProseMirror list nodes.
@@ -471,7 +471,7 @@ readonly [`ParseRule`]( https://prosemirror.net/docs/ref/#model.ParseRule )[]
 ## createSafariInputMethodWorkaroundPlugin()
 
 ```ts
-createSafariInputMethodWorkaroundPlugin(): Plugin
+function createSafariInputMethodWorkaroundPlugin(): Plugin
 ```
 
 Return a plugin as a workaround for a bug in Safari that causes the composition
@@ -488,7 +488,7 @@ See also https://github.com/ProseMirror/prosemirror/issues/934
 ## createSplitListCommand()
 
 ```ts
-createSplitListCommand(): Command
+function createSplitListCommand(): Command
 ```
 
 Returns a command that split the current list node.
@@ -502,7 +502,7 @@ Returns a command that split the current list node.
 ## createToggleCollapsedCommand()
 
 ```ts
-createToggleCollapsedCommand(__namedParameters): Command
+function createToggleCollapsedCommand(__namedParameters): Command
 ```
 
 Return a command function that toggle the `collapsed` attribute of the list node.
@@ -522,7 +522,7 @@ Return a command function that toggle the `collapsed` attribute of the list node
 ## createToggleListCommand()
 
 ```ts
-createToggleListCommand<T>(attrs): Command
+function createToggleListCommand<T>(attrs): Command
 ```
 
 Returns a command function that wraps the selection in a list with the given
@@ -531,7 +531,7 @@ another kind of list, or unwrap the selected list if otherwise.
 
 ### Type parameters
 
-| Parameter | Value |
+| Type parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -550,7 +550,7 @@ another kind of list, or unwrap the selected list if otherwise.
 ## createUnwrapListCommand()
 
 ```ts
-createUnwrapListCommand(options?): Command
+function createUnwrapListCommand(options?): Command
 ```
 
 Returns a command function that unwraps the list around the selection.
@@ -570,7 +570,7 @@ Returns a command function that unwraps the list around the selection.
 ## createWrapInListCommand()
 
 ```ts
-createWrapInListCommand<T>(getAttrs): Command
+function createWrapInListCommand<T>(getAttrs): Command
 ```
 
 Returns a command function that wraps the selection in a list with the given
@@ -578,7 +578,7 @@ type and attributes.
 
 ### Type parameters
 
-| Parameter | Value |
+| Type parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -597,7 +597,7 @@ type and attributes.
 ## deleteCommand()
 
 ```ts
-deleteCommand(
+function deleteCommand(
    state, 
    dispatch?, 
    view?): boolean
@@ -627,7 +627,7 @@ Keybinding for `Delete`. It's chained with following commands:
 ## enterCommand()
 
 ```ts
-enterCommand(
+function enterCommand(
    state, 
    dispatch?, 
    view?): boolean
@@ -655,7 +655,7 @@ Keybinding for `Enter`. It's chained with following commands:
 ## findListsRange()
 
 ```ts
-findListsRange($from, $to): NodeRange | null
+function findListsRange($from, $to): NodeRange | null
 ```
 
 Returns a minimal block range that includes the given two positions and
@@ -677,7 +677,7 @@ represents one or multiple sibling list nodes.
 ## isListNode()
 
 ```ts
-isListNode(node): boolean
+function isListNode(node): boolean
 ```
 
 ### Parameters
@@ -695,7 +695,7 @@ isListNode(node): boolean
 ## isListType()
 
 ```ts
-isListType(type): boolean
+function isListType(type): boolean
 ```
 
 ### Parameters
@@ -713,7 +713,7 @@ isListType(type): boolean
 ## joinCollapsedListBackward()
 
 ```ts
-joinCollapsedListBackward(
+function joinCollapsedListBackward(
    state, 
    dispatch?, 
    view?): boolean
@@ -740,14 +740,14 @@ to the first child of the collapsed list node (i.e. skip the hidden content).
 ## joinListElements()
 
 ```ts
-joinListElements<T>(parent): T
+function joinListElements<T>(parent): T
 ```
 
-Merge adjacent <ul> elements or adjacent `<ol>`  elements into a single list element.
+Merge adjacent <ul> elements or adjacent `<ol>` elements into a single list element.
 
 ### Type parameters
 
-| Parameter |
+| Type parameter |
 | :------ |
 | `T` extends [`Element`]( https://developer.mozilla.org/docs/Web/API/Element ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment ) |
 
@@ -766,7 +766,7 @@ Merge adjacent <ul> elements or adjacent `<ol>`  elements into a single list ele
 ## joinListUp()
 
 ```ts
-joinListUp(
+function joinListUp(
    state, 
    dispatch?, 
    view?): boolean
@@ -793,7 +793,7 @@ child of a list node, lift this child.
 ## listToDOM()
 
 ```ts
-listToDOM(__namedParameters): DOMOutputSpec
+function listToDOM(__namedParameters): DOMOutputSpec
 ```
 
 Renders a list node to DOM output spec.
@@ -813,7 +813,7 @@ Renders a list node to DOM output spec.
 ## migrateDocJSON()
 
 ```ts
-migrateDocJSON(docJSON): ProsemirrorNodeJSON | null
+function migrateDocJSON(docJSON): ProsemirrorNodeJSON | null
 ```
 
 Migrate a ProseMirror document JSON object from the old list structure to the
@@ -835,7 +835,7 @@ otherwise `null` is returned.
 ## protectCollapsed()
 
 ```ts
-protectCollapsed(
+function protectCollapsed(
    state, 
    dispatch?, 
    view?): boolean
@@ -868,7 +868,7 @@ delete.
 ## wrappingListInputRule()
 
 ```ts
-wrappingListInputRule<T>(regexp, getAttrs): InputRule
+function wrappingListInputRule<T>(regexp, getAttrs): InputRule
 ```
 
 Build an input rule for automatically wrapping a textblock into a list node
@@ -876,7 +876,7 @@ when a given string is typed.
 
 ### Type parameters
 
-| Parameter | Value |
+| Type parameter | Value |
 | :------ | :------ |
 | `T` extends [`ListAttributes`](index.md#listattributes) | [`ListAttributes`](index.md#listattributes) |
 
@@ -890,7 +890,3 @@ when a given string is typed.
 ### Returns
 
 [`InputRule`]( https://prosemirror.net/docs/ref/#inputrules.InputRule )
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

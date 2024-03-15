@@ -20,7 +20,7 @@ new ListExtension(...args): ListExtension
 
 | Parameter | Type |
 | :------ | :------ |
-| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype )\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
+| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
 
 ##### Returns
 
@@ -32,9 +32,9 @@ new ListExtension(...args): ListExtension
 
 ### Properties
 
-| Modifier | Property | Type | Description | Inheritance |
-| :------ | :------ | :------ | :------ | :------ |
-| `static` | `disableExtraAttributes` | `boolean` | - | `NodeExtension.disableExtraAttributes` |
+| Property | Modifier | Type | Overrides |
+| :------ | :------ | :------ | :------ |
+| `disableExtraAttributes` | `static` | `boolean` | `NodeExtension.disableExtraAttributes` |
 
 ### Accessors
 
@@ -175,12 +175,12 @@ createTags(): "block"[]
 
 ### Properties
 
-| Property | Type | Description |
-| :------ | :------ | :------ |
-| `checked?` | `boolean` | - |
-| `collapsed?` | `boolean` | - |
-| `kind?` | `string` | - |
-| `order?` | `null` \| `number` | - |
+| Property | Type |
+| :------ | :------ |
+| `checked?` | `boolean` |
+| `collapsed?` | `boolean` |
+| `kind?` | `string` |
+| `order?` | `null` \| `number` |
 
 ***
 
@@ -191,7 +191,7 @@ createTags(): "block"[]
 | Property | Type | Description |
 | :------ | :------ | :------ |
 | `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to<br />this value instead of toggle it. |
-| `isToggleable?` | (`node`) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
+| `isToggleable?` | (`node`: [`Node`]( https://prosemirror.net/docs/ref/#model.Node )) => `boolean` | An optional function to accept a list node and return whether or not this<br />node can toggle its `collapsed` attribute. |
 
 ***
 
@@ -202,7 +202,3 @@ type ListKind: "bullet" | "ordered" | "task" | "toggle";
 ```
 
 All default list node kinds.
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
