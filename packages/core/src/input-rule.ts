@@ -3,8 +3,7 @@ import { Attrs } from 'prosemirror-model'
 import { Transaction } from 'prosemirror-state'
 import { findWrapping } from 'prosemirror-transform'
 
-import { ListAttributes } from 'prosemirror-flat-list'
-
+import { ListAttributes } from './types'
 import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
 import { parseInteger } from './utils/parse-integer'
