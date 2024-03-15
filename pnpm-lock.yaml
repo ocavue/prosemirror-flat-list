@@ -279,7 +279,7 @@ importers:
         specifier: ^2.0.19
         version: 2.0.19(@remirror/pm@2.0.8)(@types/node@20.11.14)(jsdom@23.2.0)
       prosemirror-flat-list:
-        specifier: ^0.4.6
+        specifier: ^0.5.0
         version: link:../core
     devDependencies:
       '@antfu/ni':
