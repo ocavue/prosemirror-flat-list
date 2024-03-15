@@ -29,8 +29,8 @@ should not be serialized.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `nodes` | `Object` | The node serialization functions. |
-| `marks` | `Object` | The mark serialization functions. |
+| `nodes` | \{} | The node serialization functions. |
+| `marks` | \{} | The mark serialization functions. |
 
 ##### Returns
 
@@ -56,7 +56,7 @@ serializeFragment(
 | Parameter | Type |
 | :------ | :------ |
 | `fragment` | [`Fragment`]( https://prosemirror.net/docs/ref/#model.Fragment ) |
-| `options`? | `Object` |
+| `options`? | \{   `document`: [`Document`]( https://developer.mozilla.org/docs/Web/API/Document );   } |
 | `options.document`? | [`Document`]( https://developer.mozilla.org/docs/Web/API/Document ) |
 | `target`? | [`HTMLElement`]( https://developer.mozilla.org/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment ) |
 
@@ -91,7 +91,7 @@ static fromSchema(schema): ListDOMSerializer
 #### nodesFromSchema()
 
 ```ts
-static nodesFromSchema(schema): Object
+static nodesFromSchema(schema): {}
 ```
 
 ##### Parameters
@@ -166,7 +166,7 @@ static nodesFromSchema(schema): Object
 | :------ | :------ |
 | `attrs?` | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) |
 | `content?` | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] |
-| `marks?` | (`string` \| `Object`)[] |
+| `marks?` | (`string` \| \{   `attrs`: [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs );   `type`: `string`;   })[] |
 | `text?` | `string` |
 | `type` | `string` |
 
@@ -211,7 +211,7 @@ A callback function to get the attributes for a list input rule.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `options` | `Object` | - |
+| `options` | \{   `attributes`: `T`;   `match`: `RegExpMatchArray`;   } | - |
 | `options.attributes`? | `T` | The previous attributes of the existing list node, if it exists. |
 | `options.match` | `RegExpMatchArray` | The match result of the regular expression. |
 
@@ -244,7 +244,13 @@ All input rules for lists.
 ## listKeymap
 
 ```ts
-const listKeymap: Object;
+const listKeymap: {
+  Backspace: Command;
+  Delete: Command;
+  Enter: Command;
+  Mod-[: Command;
+  Mod-]: Command;
+};
 ```
 
 Returns an object containing the keymap for the list commands.
@@ -425,7 +431,7 @@ to use if you want to customize some behavior.
 
 | Parameter | Type |
 | :------ | :------ |
-| `__namedParameters` | `Object` |
+| `__namedParameters` | \{   `schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\>;   } |
 | `__namedParameters.schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ### Returns
