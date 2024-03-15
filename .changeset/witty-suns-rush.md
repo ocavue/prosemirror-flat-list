@@ -1,12 +1,12 @@
 ---
-"prosemirror-flat-list": minor
+'prosemirror-flat-list': minor
 ---
 
 The second parameter of the `wrappingListInputRule` now should accept an object. Here is an example of how to migrate your existing input rules:
 
 ```diff
 const myTaskListInputRule = wrappingListInputRule(
-  /^\s?\[([\sXx]?)]\s$/, 
+  /^\s?\[([\sXx]?)]\s$/,
 - (match) => {
 + ({ match }) => {
     return {
