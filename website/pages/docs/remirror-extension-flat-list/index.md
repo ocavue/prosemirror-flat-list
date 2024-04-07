@@ -13,7 +13,7 @@ A Remirror extension for creating lists. It's a simple wrapper around the API fr
 #### new ListExtension(args)
 
 ```ts
-new ListExtension(...args): ListExtension
+new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Partial<ConditionalPick<PickPartial<EmptyShape>, StaticAnnotation>> & GetDynamic<EmptyShape> & BaseExtensionOptions]): ListExtension
 ```
 
 ##### Parameters
@@ -54,34 +54,45 @@ get name(): "list"
 
 ```ts
 createCommands(): {
-  dedentList: (props?) => CommandFunction<object>;
-  indentList: (props?) => CommandFunction<object>;
-  moveList: (direction) => CommandFunction<object>;
+  dedentList: (props?: DedentListOptions) => CommandFunction<object>;
+  indentList: (props?: IndentListOptions) => CommandFunction<object>;
+  moveList: (direction: "up" | "down") => CommandFunction<object>;
   protectCollapsed: () => CommandFunction<object>;
   splitList: () => CommandFunction<object>;
-  toggleCollapsed: (props?) => CommandFunction<object>;
-  toggleList: (attrs) => CommandFunction<object>;
-  unwrapList: (options?) => CommandFunction<object>;
-  wrapInList: (getAttrs) => CommandFunction<object>;
+  toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
+  toggleList: (attrs: ListAttributes) => CommandFunction<object>;
+  unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
+  wrapInList: (getAttrs: ListAttributes | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
 }
 ```
 
 ##### Returns
 
-`Object`
+```ts
+{
+  dedentList: (props?: DedentListOptions) => CommandFunction<object>;
+  indentList: (props?: IndentListOptions) => CommandFunction<object>;
+  moveList: (direction: "up" | "down") => CommandFunction<object>;
+  protectCollapsed: () => CommandFunction<object>;
+  splitList: () => CommandFunction<object>;
+  toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
+  toggleList: (attrs: ListAttributes) => CommandFunction<object>;
+  unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
+  wrapInList: (getAttrs: ListAttributes | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
+}
+```
 
-> | Member | Type | Description |
-> | :------ | :------ | :------ |
-> | `dedentList` | (`props`?) => `CommandFunction`\<`object`\> | - |
-> | `indentList` | (`props`?) => `CommandFunction`\<`object`\> | - |
-> | `moveList` | (`direction`) => `CommandFunction`\<`object`\> | - |
-> | `protectCollapsed` | () => `CommandFunction`\<`object`\> | - |
-> | `splitList` | () => `CommandFunction`\<`object`\> | - |
-> | `toggleCollapsed` | (`props`?) => `CommandFunction`\<`object`\> | - |
-> | `toggleList` | (`attrs`) => `CommandFunction`\<`object`\> | - |
-> | `unwrapList` | (`options`?) => `CommandFunction`\<`object`\> | - |
-> | `wrapInList` | (`getAttrs`) => `CommandFunction`\<`object`\> | - |
->
+| Member | Type | Value |
+| :------ | :------ | :------ |
+| `dedentList` | (`props`?: [`DedentListOptions`](index.md#dedentlistoptions)) => `CommandFunction`\<`object`\> | - |
+| `indentList` | (`props`?: [`IndentListOptions`](index.md#indentlistoptions)) => `CommandFunction`\<`object`\> | - |
+| `moveList` | (`direction`: `"up"` \| `"down"`) => `CommandFunction`\<`object`\> | - |
+| `protectCollapsed` | () => `CommandFunction`\<`object`\> | - |
+| `splitList` | () => `CommandFunction`\<`object`\> | - |
+| `toggleCollapsed` | (`props`?: [`ToggleCollapsedOptions`](index.md#togglecollapsedoptions)) => `CommandFunction`\<`object`\> | - |
+| `toggleList` | (`attrs`: [`ListAttributes`](index.md#listattributes)) => `CommandFunction`\<`object`\> | - |
+| `unwrapList` | (`options`?: [`UnwrapListOptions`](../prosemirror-flat-list/index.md#unwraplistoptions)) => `CommandFunction`\<`object`\> | - |
+| `wrapInList` | (`getAttrs`: [`ListAttributes`](index.md#listattributes) \| (`range`: [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange )) => `null` \| [`ListAttributes`](index.md#listattributes)) => `CommandFunction`\<`object`\> | - |
 
 ##### Overrides
 

@@ -14,7 +14,7 @@ HTML list elements (i.e. `<ul>` and `<ol>`).
 #### new ListDOMSerializer(nodes, marks)
 
 ```ts
-new ListDOMSerializer(nodes, marks): ListDOMSerializer
+new ListDOMSerializer(nodes: {}, marks: {}): ListDOMSerializer
 ```
 
 Create a serializer. `nodes` should map node names to functions
@@ -29,8 +29,8 @@ should not be serialized.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `nodes` | \{} | The node serialization functions. |
-| `marks` | \{} | The mark serialization functions. |
+| `nodes` | `object` | The node serialization functions. |
+| `marks` | `object` | The mark serialization functions. |
 
 ##### Returns
 
@@ -46,9 +46,11 @@ should not be serialized.
 
 ```ts
 serializeFragment(
-   fragment, 
-   options?, 
-   target?): HTMLElement | DocumentFragment
+   fragment: Fragment, 
+   options?: {
+  document: Document;
+  }, 
+   target?: HTMLElement | DocumentFragment): HTMLElement | DocumentFragment
 ```
 
 ##### Parameters
@@ -56,7 +58,7 @@ serializeFragment(
 | Parameter | Type |
 | :------ | :------ |
 | `fragment` | [`Fragment`]( https://prosemirror.net/docs/ref/#model.Fragment ) |
-| `options`? | \{   `document`: [`Document`]( https://developer.mozilla.org/docs/Web/API/Document );   } |
+| `options`? | `object` |
 | `options.document`? | [`Document`]( https://developer.mozilla.org/docs/Web/API/Document ) |
 | `target`? | [`HTMLElement`]( https://developer.mozilla.org/docs/Web/API/HTMLElement ) \| [`DocumentFragment`]( https://developer.mozilla.org/docs/Web/API/DocumentFragment ) |
 
@@ -71,7 +73,7 @@ serializeFragment(
 #### fromSchema()
 
 ```ts
-static fromSchema(schema): ListDOMSerializer
+static fromSchema(schema: Schema<any, any>): ListDOMSerializer
 ```
 
 ##### Parameters
@@ -91,7 +93,7 @@ static fromSchema(schema): ListDOMSerializer
 #### nodesFromSchema()
 
 ```ts
-static nodesFromSchema(schema): {}
+static nodesFromSchema(schema: Schema<any, any>): {}
 ```
 
 ##### Parameters
@@ -102,7 +104,9 @@ static nodesFromSchema(schema): {}
 
 ##### Returns
 
-`Object`
+```ts
+{}
+```
 
 ##### Overrides
 
@@ -166,7 +170,7 @@ static nodesFromSchema(schema): {}
 | :------ | :------ |
 | `attrs?` | [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ) |
 | `content?` | [`ProsemirrorNodeJSON`](index.md#prosemirrornodejson)[] |
-| `marks?` | (`string` \| \{   `attrs`: [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs );   `type`: `string`;   })[] |
+| `marks?` | (`string` \| \{ `attrs`: [`Attrs`]( https://prosemirror.net/docs/ref/#model.Attrs ); `type`: `string`; })[] |
 | `text?` | `string` |
 | `type` | `string` |
 
@@ -193,10 +197,13 @@ static nodesFromSchema(schema): {}
 
 ***
 
-## ListInputRuleAttributesGetter\<T\>
+## ListInputRuleAttributesGetter()\<T\>
 
 ```ts
-type ListInputRuleAttributesGetter<T>: (options) => T;
+type ListInputRuleAttributesGetter<T>: (options: {
+  attributes: T;
+  match: RegExpMatchArray;
+  }) => T;
 ```
 
 A callback function to get the attributes for a list input rule.
@@ -211,7 +218,7 @@ A callback function to get the attributes for a list input rule.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `options` | \{   `attributes`: `T`;   `match`: `RegExpMatchArray`;   } | - |
+| `options` | `object` | - |
 | `options.attributes`? | `T` | The previous attributes of the existing list node, if it exists. |
 | `options.match` | `RegExpMatchArray` | The match result of the regular expression. |
 
@@ -245,9 +252,9 @@ All input rules for lists.
 
 ```ts
 const listKeymap: {
-  Backspace: Command;
-  Delete: Command;
-  Enter: Command;
+  Backspace: backspaceCommand;
+  Delete: deleteCommand;
+  Enter: enterCommand;
   Mod-[: Command;
   Mod-]: Command;
 };
@@ -263,11 +270,11 @@ Returns an object containing the keymap for the list commands.
 
 ### Type declaration
 
-| Member | Type | Description |
+| Member | Type | Value |
 | :------ | :------ | :------ |
-| `Backspace` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | - |
-| `Delete` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | - |
-| `Enter` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | - |
+| `Backspace` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | backspaceCommand |
+| `Delete` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | deleteCommand |
+| `Enter` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | enterCommand |
 | `Mod-[` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | - |
 | `Mod-]` | [`Command`]( https://prosemirror.net/docs/ref/#state.Command ) | - |
 
@@ -276,10 +283,10 @@ Returns an object containing the keymap for the list commands.
 ## backspaceCommand()
 
 ```ts
-function backspaceCommand(
-   state, 
-   dispatch?, 
-   view?): boolean
+backspaceCommand(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 Keybinding for `Backspace`. It's chained with following commands:
@@ -296,7 +303,7 @@ Keybinding for `Backspace`. It's chained with following commands:
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -308,7 +315,7 @@ Keybinding for `Backspace`. It's chained with following commands:
 ## createDedentListCommand()
 
 ```ts
-function createDedentListCommand(options?): Command
+createDedentListCommand(options?: DedentListOptions): Command
 ```
 
 Returns a command function that decreases the indentation of selected list nodes.
@@ -328,7 +335,7 @@ Returns a command function that decreases the indentation of selected list nodes
 ## createIndentListCommand()
 
 ```ts
-function createIndentListCommand(options?): Command
+createIndentListCommand(options?: IndentListOptions): Command
 ```
 
 Returns a command function that increases the indentation of selected list
@@ -349,7 +356,7 @@ nodes.
 ## createListClipboardPlugin()
 
 ```ts
-function createListClipboardPlugin(schema): Plugin
+createListClipboardPlugin(schema: Schema<any, any>): Plugin
 ```
 
 Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
@@ -370,7 +377,7 @@ clipboard. See [ListDOMSerializer](index.md#listdomserializer).
 ## createListEventPlugin()
 
 ```ts
-function createListEventPlugin(): Plugin
+createListEventPlugin(): Plugin
 ```
 
 Handle DOM events for list.
@@ -384,12 +391,12 @@ Handle DOM events for list.
 ## createListNodeView()
 
 ```ts
-function createListNodeView(
-   node, 
-   view, 
-   getPos, 
-   decorations, 
-   innerDecorations): NodeView
+createListNodeView(
+   node: Node, 
+   view: EditorView, 
+   getPos: () => undefined | number, 
+   decorations: readonly Decoration[], 
+   innerDecorations: DecorationSource): NodeView
 ```
 
 A simple node view that is used to render the list node. It ensures that the
@@ -414,7 +421,9 @@ list node get updated when its marker styling should changes.
 ## createListPlugins()
 
 ```ts
-function createListPlugins(__namedParameters): Plugin[]
+createListPlugins(__namedParameters: {
+  schema: Schema<any, any>;
+  }): Plugin[]
 ```
 
 This function returns an array of plugins that are required for list to work.
@@ -431,7 +440,7 @@ to use if you want to customize some behavior.
 
 | Parameter | Type |
 | :------ | :------ |
-| `__namedParameters` | \{   `schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\>;   } |
+| `__namedParameters` | `object` |
 | `__namedParameters.schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema)\<`any`, `any`\> |
 
 ### Returns
@@ -443,7 +452,7 @@ to use if you want to customize some behavior.
 ## createListRenderingPlugin()
 
 ```ts
-function createListRenderingPlugin(): Plugin
+createListRenderingPlugin(): Plugin
 ```
 
 Handle the list node rendering.
@@ -457,7 +466,7 @@ Handle the list node rendering.
 ## createListSpec()
 
 ```ts
-function createListSpec(): NodeSpec
+createListSpec(): NodeSpec
 ```
 
 Return the spec for list node.
@@ -471,7 +480,7 @@ Return the spec for list node.
 ## createMoveListCommand()
 
 ```ts
-function createMoveListCommand(direction): Command
+createMoveListCommand(direction: "up" | "down"): Command
 ```
 
 Returns a command function that moves up or down selected list nodes.
@@ -491,7 +500,7 @@ Returns a command function that moves up or down selected list nodes.
 ## createParseDomRules()
 
 ```ts
-function createParseDomRules(): readonly ParseRule[]
+createParseDomRules(): readonly ParseRule[]
 ```
 
 Returns a set of rules for parsing HTML into ProseMirror list nodes.
@@ -505,7 +514,7 @@ readonly [`ParseRule`]( https://prosemirror.net/docs/ref/#model.ParseRule )[]
 ## createSafariInputMethodWorkaroundPlugin()
 
 ```ts
-function createSafariInputMethodWorkaroundPlugin(): Plugin
+createSafariInputMethodWorkaroundPlugin(): Plugin
 ```
 
 Return a plugin as a workaround for a bug in Safari that causes the composition
@@ -522,7 +531,7 @@ See also https://github.com/ProseMirror/prosemirror/issues/934
 ## createSplitListCommand()
 
 ```ts
-function createSplitListCommand(): Command
+createSplitListCommand(): Command
 ```
 
 Returns a command that split the current list node.
@@ -536,7 +545,7 @@ Returns a command that split the current list node.
 ## createToggleCollapsedCommand()
 
 ```ts
-function createToggleCollapsedCommand(__namedParameters): Command
+createToggleCollapsedCommand(__namedParameters: ToggleCollapsedOptions): Command
 ```
 
 Return a command function that toggle the `collapsed` attribute of the list node.
@@ -556,7 +565,7 @@ Return a command function that toggle the `collapsed` attribute of the list node
 ## createToggleListCommand()
 
 ```ts
-function createToggleListCommand<T>(attrs): Command
+createToggleListCommand<T>(attrs: T): Command
 ```
 
 Returns a command function that wraps the selection in a list with the given
@@ -584,7 +593,7 @@ another kind of list, or unwrap the selected list if otherwise.
 ## createUnwrapListCommand()
 
 ```ts
-function createUnwrapListCommand(options?): Command
+createUnwrapListCommand(options?: UnwrapListOptions): Command
 ```
 
 Returns a command function that unwraps the list around the selection.
@@ -604,7 +613,7 @@ Returns a command function that unwraps the list around the selection.
 ## createWrapInListCommand()
 
 ```ts
-function createWrapInListCommand<T>(getAttrs): Command
+createWrapInListCommand<T>(getAttrs: T | (range: NodeRange) => null | T): Command
 ```
 
 Returns a command function that wraps the selection in a list with the given
@@ -620,7 +629,7 @@ type and attributes.
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `getAttrs` | `T` \| (`range`) => `null` \| `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. If this callback<br />function returns null, the command won't do anything. |
+| `getAttrs` | `T` \| (`range`: [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange )) => `null` \| `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. If this callback<br />function returns null, the command won't do anything. |
 
 ### Returns
 
@@ -631,10 +640,10 @@ type and attributes.
 ## deleteCommand()
 
 ```ts
-function deleteCommand(
-   state, 
-   dispatch?, 
-   view?): boolean
+deleteCommand(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 Keybinding for `Delete`. It's chained with following commands:
@@ -649,7 +658,7 @@ Keybinding for `Delete`. It's chained with following commands:
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -661,10 +670,10 @@ Keybinding for `Delete`. It's chained with following commands:
 ## enterCommand()
 
 ```ts
-function enterCommand(
-   state, 
-   dispatch?, 
-   view?): boolean
+enterCommand(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 Keybinding for `Enter`. It's chained with following commands:
@@ -677,7 +686,7 @@ Keybinding for `Enter`. It's chained with following commands:
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -689,7 +698,7 @@ Keybinding for `Enter`. It's chained with following commands:
 ## findListsRange()
 
 ```ts
-function findListsRange($from, $to): NodeRange | null
+findListsRange($from: ResolvedPos, $to: ResolvedPos): NodeRange | null
 ```
 
 Returns a minimal block range that includes the given two positions and
@@ -711,7 +720,7 @@ represents one or multiple sibling list nodes.
 ## isListNode()
 
 ```ts
-function isListNode(node): boolean
+isListNode(node: undefined | null | Node): boolean
 ```
 
 ### Parameters
@@ -729,7 +738,7 @@ function isListNode(node): boolean
 ## isListType()
 
 ```ts
-function isListType(type): boolean
+isListType(type: NodeType): boolean
 ```
 
 ### Parameters
@@ -747,10 +756,10 @@ function isListType(type): boolean
 ## joinCollapsedListBackward()
 
 ```ts
-function joinCollapsedListBackward(
-   state, 
-   dispatch?, 
-   view?): boolean
+joinCollapsedListBackward(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 If the selection is empty and at the start of a block, and there is a
@@ -762,7 +771,7 @@ to the first child of the collapsed list node (i.e. skip the hidden content).
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -774,7 +783,7 @@ to the first child of the collapsed list node (i.e. skip the hidden content).
 ## joinListElements()
 
 ```ts
-function joinListElements<T>(parent): T
+joinListElements<T>(parent: T): T
 ```
 
 Merge adjacent <ul> elements or adjacent `<ol>` elements into a single list element.
@@ -800,10 +809,10 @@ Merge adjacent <ul> elements or adjacent `<ol>` elements into a single list elem
 ## joinListUp()
 
 ```ts
-function joinListUp(
-   state, 
-   dispatch?, 
-   view?): boolean
+joinListUp(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 If the text cursor is at the start of the first child of a list node, lift
@@ -815,7 +824,7 @@ child of a list node, lift this child.
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -827,7 +836,7 @@ child of a list node, lift this child.
 ## listToDOM()
 
 ```ts
-function listToDOM(__namedParameters): DOMOutputSpec
+listToDOM(__namedParameters: ListToDOMOptions): DOMOutputSpec
 ```
 
 Renders a list node to DOM output spec.
@@ -847,7 +856,7 @@ Renders a list node to DOM output spec.
 ## migrateDocJSON()
 
 ```ts
-function migrateDocJSON(docJSON): ProsemirrorNodeJSON | null
+migrateDocJSON(docJSON: ProsemirrorNodeJSON): ProsemirrorNodeJSON | null
 ```
 
 Migrate a ProseMirror document JSON object from the old list structure to the
@@ -869,10 +878,10 @@ otherwise `null` is returned.
 ## protectCollapsed()
 
 ```ts
-function protectCollapsed(
-   state, 
-   dispatch?, 
-   view?): boolean
+protectCollapsed(
+   state: EditorState, 
+   dispatch?: (tr: Transaction) => void, 
+   view?: EditorView): boolean
 ```
 
 This command will protect the collapsed items from being deleted.
@@ -890,7 +899,7 @@ delete.
 | Parameter | Type |
 | :------ | :------ |
 | `state` | [`EditorState`]( https://prosemirror.net/docs/ref/#state.EditorState ) |
-| `dispatch`? | (`tr`) => `void` |
+| `dispatch`? | (`tr`: [`Transaction`]( https://prosemirror.net/docs/ref/#state.Transaction )) => `void` |
 | `view`? | [`EditorView`]( https://prosemirror.net/docs/ref/#view.EditorView ) |
 
 ### Returns
@@ -902,7 +911,7 @@ delete.
 ## wrappingListInputRule()
 
 ```ts
-function wrappingListInputRule<T>(regexp, getAttrs): InputRule
+wrappingListInputRule<T>(regexp: RegExp, getAttrs: T | ListInputRuleAttributesGetter<T>): InputRule
 ```
 
 Build an input rule for automatically wrapping a textblock into a list node
