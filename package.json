@@ -36,8 +36,5 @@
   },
   "resolutions": {},
   "pnpm": {
-    "patchedDependencies": {
-      "nextra-theme-docs@2.13.2": "patches/nextra-theme-docs@2.13.2.patch"
-    }
   }
 }
