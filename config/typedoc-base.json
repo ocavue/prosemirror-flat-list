@@ -44,8 +44,9 @@
   "treatWarningsAsErrors": true,
   "cleanOutputDir": false,
 
-  // https://typedoc-plugin-markdown.org/options
+  // https://typedoc-plugin-markdown.org/docs/options
   "expandObjects": true,
+  "expandParameters": true,
   "hideBreadcrumbs": true,
   "hideInPageTOC": true,
   "hidePageHeader": true,
