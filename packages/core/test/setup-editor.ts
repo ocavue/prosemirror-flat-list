@@ -18,8 +18,8 @@ export function setupTestingEditor() {
   const extensions = [
     new ListExtension(),
     new BlockquoteExtension(),
-    new HorizontalRuleExtension(),
-    new HeadingExtension(),
+    new HorizontalRuleExtension({}),
+    new HeadingExtension({}),
   ]
   const editor = renderEditor(extensions, {})
   const {

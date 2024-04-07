@@ -168,9 +168,9 @@ function Editor() {
 function extensions() {
   return [
     new ListExtension(),
-    new HeadingExtension(),
-    new LinkExtension(),
-    new HorizontalRuleExtension(),
+    new HeadingExtension({}),
+    new LinkExtension({}),
+    new HorizontalRuleExtension({}),
     /**
      * `HardBreakExtension` allows us to create a newline inside paragraphs.
      *  e.g. in a list item

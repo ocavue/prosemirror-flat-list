@@ -11,7 +11,7 @@ describe('migrateDocJSON', () => {
   const extensions = [
     new ListExtension(),
     new BlockquoteExtension(),
-    new HeadingExtension(),
+    new HeadingExtension({}),
   ]
   const editor = renderEditor(extensions, {})
   const schema = editor.schema
