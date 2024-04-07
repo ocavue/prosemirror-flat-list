@@ -26,9 +26,9 @@ const Editor: React.FC = () => {
 function extensions() {
   return [
     new ListExtension(),
-    new HeadingExtension(),
-    new LinkExtension(),
-    new HardBreakExtension(),
+    new HeadingExtension({}),
+    new LinkExtension({}),
+    new HardBreakExtension({}),
     new BlockquoteExtension(),
   ]
 }
