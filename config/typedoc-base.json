@@ -46,8 +46,7 @@
 
   // https://typedoc-plugin-markdown.org/docs/options
   "expandObjects": true,
-  "expandParameters": true, 
-  
+  "expandParameters": true,
   "hideBreadcrumbs": true,
   "hideInPageTOC": true,
   "hidePageHeader": true,
