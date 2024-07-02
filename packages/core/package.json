@@ -46,6 +46,7 @@
     "prosemirror-commands": "^1.5.2",
     "prosemirror-inputrules": "^1.4.0",
     "prosemirror-model": "^1.19.4",
+    "prosemirror-safari-ime-span": "^1.0.1",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.33.3"
