@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.1
+
+### Patch Changes
+
+- 7b8a04d: Move `createSafariInputMethodWorkaroundPlugin` into a separate package `prosemirror-safari-ime-span`.
+
 ## 0.5.0
 
 ### Minor Changes
