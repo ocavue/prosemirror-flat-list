@@ -8,6 +8,17 @@ import { isListNode } from '../utils/is-list-node'
 import { setNodeAttributes } from '../utils/set-node-attributes'
 
 /**
+ * The list node attributes or a callback function to take the current
+ * selection block range and return list node attributes. If this callback
+ * function returns null, the command won't do anything.
+ *
+ * @public
+ */
+export type WrapInListGetAttrs<T extends ListAttributes> =
+  | T
+  | ((range: NodeRange) => T | null)
+
+/**
  * Returns a command function that wraps the selection in a list with the given
  * type and attributes.
  *
@@ -15,16 +26,7 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  */
 export function createWrapInListCommand<
   T extends ListAttributes = ListAttributes,
->(
-  /**
-   * The list node attributes or a callback function to take the current
-   * selection block range and return list node attributes. If this callback
-   * function returns null, the command won't do anything.
-   *
-   * @public
-   */
-  getAttrs: T | ((range: NodeRange) => T | null),
-): Command {
+>(getAttrs: WrapInListGetAttrs<T>): Command {
   const wrapInList: Command = (state, dispatch): boolean => {
     const { $from, $to } = state.selection
 
