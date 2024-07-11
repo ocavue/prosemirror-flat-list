@@ -238,6 +238,24 @@ All default list node kinds.
 
 ***
 
+## WrapInListGetAttrs\<T\>
+
+```ts
+type WrapInListGetAttrs<T>: T | (range: NodeRange) => T | null;
+```
+
+The list node attributes or a callback function to take the current
+selection block range and return list node attributes. If this callback
+function returns null, the command won't do anything.
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` extends [`ListAttributes`](index.md#listattributes) |
+
+***
+
 ## listInputRules
 
 ```ts
@@ -613,7 +631,7 @@ Returns a command function that unwraps the list around the selection.
 ## createWrapInListCommand()
 
 ```ts
-createWrapInListCommand<T>(getAttrs: T | (range: NodeRange) => null | T): Command
+createWrapInListCommand<T>(getAttrs: WrapInListGetAttrs<T>): Command
 ```
 
 Returns a command function that wraps the selection in a list with the given
@@ -627,9 +645,9 @@ type and attributes.
 
 ### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `getAttrs` | `T` \| (`range`: [`NodeRange`]( https://prosemirror.net/docs/ref/#model.NodeRange )) => `null` \| `T` | The list node attributes or a callback function to take the current<br />selection block range and return list node attributes. If this callback<br />function returns null, the command won't do anything. |
+| Parameter | Type |
+| :------ | :------ |
+| `getAttrs` | [`WrapInListGetAttrs`](index.md#wrapinlistgetattrst)\<`T`\> |
 
 ### Returns
 
