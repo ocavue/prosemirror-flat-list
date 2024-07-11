@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.2
+
+### Patch Changes
+
+- 6eb51ad: Export type `WrapInListGetAttrs`.
+
 ## 0.5.1
 
 ### Patch Changes
