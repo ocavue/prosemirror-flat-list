@@ -28,7 +28,10 @@ export {
   createUnwrapListCommand,
   type UnwrapListOptions,
 } from './commands/unwrap-list'
-export { createWrapInListCommand } from './commands/wrap-in-list'
+export {
+  createWrapInListCommand,
+  type WrapInListGetAttrs,
+} from './commands/wrap-in-list'
 export {
   defaultListClickHandler,
   handleListMarkerMouseDown,
