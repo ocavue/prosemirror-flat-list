@@ -1,4 +1,4 @@
-import { ParseRule } from 'prosemirror-model'
+import { TagParseRule } from 'prosemirror-model'
 
 import { ListAttributes, ListKind } from '../types'
 import { parseInteger } from '../utils/parse-integer'
@@ -8,7 +8,7 @@ import { parseInteger } from '../utils/parse-integer'
  *
  * @public @group Schema
  */
-export function createParseDomRules(): readonly ParseRule[] {
+export function createParseDomRules(): readonly TagParseRule[] {
   return [
     {
       tag: 'div[data-list-kind]',
