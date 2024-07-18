@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@remirror/core": "^2.0.19",
-    "prosemirror-flat-list": "^0.5.0"
+    "prosemirror-flat-list": "^0.5.2"
   },
   "peerDependencies": {
     "@remirror/pm": "^2.0.5"
@@ -68,13 +68,13 @@
     "@vitest/coverage-v8": "^1.4.0",
     "dedent": "^1.5.1",
     "execa": "^9.2.0",
-    "jest-prosemirror": "^2.1.5",
+    "jest-prosemirror": "^2.1.6",
     "jest-remirror": "^2.1.5",
     "jsdom": "^24.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "postcss-nesting": "^12.1.1",
-    "prosemirror-model": "^1.19.4",
+    "prosemirror-model": "^1.22.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-stringify": "^10.0.0",
