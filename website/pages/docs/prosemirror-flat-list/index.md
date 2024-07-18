@@ -518,14 +518,14 @@ Returns a command function that moves up or down selected list nodes.
 ## createParseDomRules()
 
 ```ts
-createParseDomRules(): readonly ParseRule[]
+createParseDomRules(): readonly TagParseRule[]
 ```
 
 Returns a set of rules for parsing HTML into ProseMirror list nodes.
 
 ### Returns
 
-readonly [`ParseRule`]( https://prosemirror.net/docs/ref/#model.ParseRule )[]
+readonly [`TagParseRule`]( https://prosemirror.net/docs/ref/#model.TagParseRule )[]
 
 ***
 

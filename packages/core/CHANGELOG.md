@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.3
+
+### Patch Changes
+
+- d544598: Update ProseMirror packages.
+
 ## 0.5.2
 
 ### Patch Changes
