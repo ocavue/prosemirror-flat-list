@@ -8,19 +8,19 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@remirror/pm": "^2.0.8",
+    "@remirror/pm": "^2.0.9",
     "@remirror/react": "^2.0.35",
     "prosemirror-flat-list": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remirror": "^2.0.39",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remirror": "^2.0.40",
     "remirror-extension-flat-list": "*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.24",
-    "@vitejs/plugin-react-swc": "^3.6.0",
-    "typescript": "^5.4.4",
-    "vite": "^5.1.6"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4"
   }
 }
