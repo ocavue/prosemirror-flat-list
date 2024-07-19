@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.4
+
+### Patch Changes
+
+- e038952: Update ProseMirror dependencies.
+
 ## 0.5.3
 
 ### Patch Changes
