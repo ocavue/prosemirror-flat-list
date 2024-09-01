@@ -11,7 +11,5 @@
       "path": "../core/tsconfig.json"
     }
   ],
-  "include": [
-    "."
-  ]
+  "include": ["."]
 }

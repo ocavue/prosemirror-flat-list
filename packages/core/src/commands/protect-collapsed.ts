@@ -1,4 +1,4 @@
-import type {  Command } from 'prosemirror-state'
+import type { Command } from 'prosemirror-state'
 
 import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
 

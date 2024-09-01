@@ -1,4 +1,7 @@
-import { type DOMOutputSpec, type Node as ProsemirrorNode } from 'prosemirror-model'
+import {
+  type DOMOutputSpec,
+  type Node as ProsemirrorNode,
+} from 'prosemirror-model'
 
 import { type ListAttributes } from '../types'
 

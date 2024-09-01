@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@remirror/react'
-import React  from 'react'
+import React from 'react'
 
 export const EditorPlaceholder: React.FC = () => {
   return (

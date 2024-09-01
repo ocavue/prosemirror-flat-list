@@ -8,7 +8,11 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
-import { type ListAttributes, type ListKind, isListNode } from 'prosemirror-flat-list'
+import {
+  type ListAttributes,
+  type ListKind,
+  isListNode,
+} from 'prosemirror-flat-list'
 import React, { type FC, type PropsWithChildren, useEffect } from 'react'
 import {
   type ApplySchemaAttributes,

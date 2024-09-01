@@ -6,7 +6,5 @@
     "declarationDir": "dist-types",
     "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
   },
-  "include": [
-    "."
-  ]
+  "include": ["."]
 }
