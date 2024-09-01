@@ -1,9 +1,9 @@
 import {
-  DOMOutputSpec,
+  type DOMOutputSpec,
   DOMSerializer,
-  Fragment,
-  Node as ProsemirrorNode,
-  Schema,
+  type Fragment,
+  type Node as ProsemirrorNode,
+  type Schema,
 } from 'prosemirror-model'
 
 import { listToDOM } from '../schema/to-dom'

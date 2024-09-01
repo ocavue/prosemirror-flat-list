@@ -1,15 +1,15 @@
 import {
-  AnyExtension,
-  Fragment,
+  type AnyExtension,
+  type Fragment,
   htmlToProsemirrorNode,
   isProsemirrorNode,
-  ProsemirrorNode,
+  type ProsemirrorNode,
 } from '@remirror/core'
 import dedent from 'dedent'
 import {
-  RemirrorTestChain,
-  TaggedContentWithText,
-  TaggedProsemirrorNode,
+  type RemirrorTestChain,
+  type TaggedContentWithText,
+  type TaggedProsemirrorNode,
 } from 'jest-remirror'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'

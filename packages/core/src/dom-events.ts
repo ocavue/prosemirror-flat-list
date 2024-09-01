@@ -1,9 +1,9 @@
-import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Command } from 'prosemirror-state'
-import { EditorView } from 'prosemirror-view'
+import { type Node as ProsemirrorNode } from 'prosemirror-model'
+import { type Command } from 'prosemirror-state'
+import { type EditorView } from 'prosemirror-view'
 
 import { withSafeSelection } from './commands/set-safe-selection'
-import { ListAttributes } from './types'
+import { type ListAttributes } from './types'
 import { isListNode } from './utils/is-list-node'
 import { setNodeAttributes } from './utils/set-node-attributes'
 

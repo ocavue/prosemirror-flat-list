@@ -1,11 +1,11 @@
 import {
   convertCommand,
   ExtensionTag,
-  InputRule,
-  KeyBindings,
+  type InputRule,
+  type KeyBindings,
   NodeExtension,
-  NodeExtensionSpec,
-  ProsemirrorPlugin,
+  type NodeExtensionSpec,
+  type ProsemirrorPlugin,
 } from '@remirror/core'
 
 import {

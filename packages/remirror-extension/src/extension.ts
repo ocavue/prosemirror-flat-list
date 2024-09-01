@@ -1,13 +1,13 @@
 import {
   convertCommand,
   ExtensionTag,
-  InputRule,
-  KeyBindings,
+  type InputRule,
+  type KeyBindings,
   NodeExtension,
-  NodeExtensionSpec,
-  ProsemirrorPlugin,
+  type NodeExtensionSpec,
+  type ProsemirrorPlugin,
 } from '@remirror/core'
-import { NodeRange } from '@remirror/pm/model'
+import { type NodeRange } from '@remirror/pm/model'
 import {
   createDedentListCommand,
   createIndentListCommand,
@@ -19,14 +19,14 @@ import {
   createToggleListCommand,
   createUnwrapListCommand,
   createWrapInListCommand,
-  DedentListOptions,
-  IndentListOptions,
-  ListAttributes,
+  type DedentListOptions,
+  type IndentListOptions,
+  type ListAttributes,
   listInputRules,
   listKeymap,
   protectCollapsed,
-  ToggleCollapsedOptions,
-  UnwrapListOptions,
+  type ToggleCollapsedOptions,
+  type UnwrapListOptions,
 } from 'prosemirror-flat-list'
 
 /**

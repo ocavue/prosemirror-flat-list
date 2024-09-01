@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 
-import { ResolvedPos, Slice } from 'prosemirror-model'
-import { TextSelection, Transaction } from 'prosemirror-state'
+import { type ResolvedPos, Slice } from 'prosemirror-model'
+import { TextSelection, type Transaction } from 'prosemirror-state'
 import { replaceStep, ReplaceStep } from 'prosemirror-transform'
 
 // prettier-ignore

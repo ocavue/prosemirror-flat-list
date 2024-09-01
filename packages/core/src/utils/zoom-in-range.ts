@@ -1,4 +1,4 @@
-import { NodeRange } from 'prosemirror-model'
+import { type NodeRange } from 'prosemirror-model'
 
 /**
  * Returns a deeper block range if possible

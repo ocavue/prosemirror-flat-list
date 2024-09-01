@@ -8,13 +8,13 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
-import { ListAttributes, ListKind, isListNode } from 'prosemirror-flat-list'
-import React, { FC, PropsWithChildren, useEffect } from 'react'
+import { type ListAttributes, type ListKind, isListNode } from 'prosemirror-flat-list'
+import React, { type FC, type PropsWithChildren, useEffect } from 'react'
 import {
-  ApplySchemaAttributes,
+  type ApplySchemaAttributes,
   ExtensionTag,
   NodeExtension,
-  NodeExtensionSpec,
+  type NodeExtensionSpec,
 } from 'remirror'
 import {
   BlockquoteExtension,

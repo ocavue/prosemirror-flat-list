@@ -1,6 +1,6 @@
-import { TagParseRule } from 'prosemirror-model'
+import { type TagParseRule } from 'prosemirror-model'
 
-import { ListAttributes, ListKind } from '../types'
+import { type ListAttributes, type ListKind } from '../types'
 import { parseInteger } from '../utils/parse-integer'
 
 /**

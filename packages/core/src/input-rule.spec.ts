@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { setupTestingEditor } from '../test/setup-editor'
 
-import { ListAttributes } from './types'
+import { type ListAttributes } from './types'
 
 describe('input rules', () => {
   const t = setupTestingEditor()
