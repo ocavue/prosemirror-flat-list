@@ -123,8 +123,9 @@ function splitAndIndentRange(
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
-  range2 && indentRange(range2, tr, true, undefined)
-
+  if (range2) {
+    indentRange(range2, tr, true, undefined)
+  }
   return true
 }
 

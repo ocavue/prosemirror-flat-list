@@ -5,5 +5,8 @@
     "composite": true,
     "declarationDir": "dist-types",
     "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
-  }
+  },
+  "include": [
+    "."
+  ]
 }
