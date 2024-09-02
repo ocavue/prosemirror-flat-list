@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "es2018",
+        "module": "esnext",
+        "lib": [
+            "esnext",
+            "DOM"
+        ],
+        "isolatedModules": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowJs": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "declarationMap": true,
+        "composite": true,
+        "outDir": "temp",
+    },
+    "include": [
+        "."
+    ]
+}
