@@ -1,5 +1,4 @@
-import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { DOMSerializer } from 'prosemirror-model'
+import { type Node as ProsemirrorNode, DOMSerializer } from 'prosemirror-model'
 import { type NodeViewConstructor } from 'prosemirror-view'
 
 import * as browser from './utils/browser'

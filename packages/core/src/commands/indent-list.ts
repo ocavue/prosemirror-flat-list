@@ -1,8 +1,8 @@
-import { Fragment, NodeRange, Slice } from 'prosemirror-model'
-import { Command, Transaction } from 'prosemirror-state'
+import { Fragment, type NodeRange, Slice } from 'prosemirror-model'
+import { type Command, type Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 
-import { ListAttributes } from '../types'
+import { type ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
 import {
   atEndBlockBoundary,
@@ -123,8 +123,9 @@ function splitAndIndentRange(
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
-  range2 && indentRange(range2, tr, true, undefined)
-
+  if (range2) {
+    indentRange(range2, tr, true, undefined)
+  }
   return true
 }
 

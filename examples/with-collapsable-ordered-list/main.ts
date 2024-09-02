@@ -2,9 +2,9 @@ import './style.css'
 
 import { exampleSetup } from 'prosemirror-example-setup'
 import {
-  ListAttributes,
-  ListToDOMOptions,
-  ProsemirrorNode,
+  type ListAttributes,
+  type ListToDOMOptions,
+  type ProsemirrorNode,
   createListClipboardPlugin,
   createListRenderingPlugin,
   createListSpec,

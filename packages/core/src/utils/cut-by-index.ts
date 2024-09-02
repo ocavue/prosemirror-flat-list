@@ -1,4 +1,4 @@
-import { Fragment } from 'prosemirror-model'
+import { type Fragment } from 'prosemirror-model'
 
 export function cutByIndex(
   fragment: Fragment,

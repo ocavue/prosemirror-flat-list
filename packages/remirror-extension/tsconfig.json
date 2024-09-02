@@ -9,6 +9,7 @@
   "references": [
     {
       "path": "../core/tsconfig.json"
-    }
-  ]
+    },
+  ],
+  "include": ["./*.ts", "./*.cjs", "./*.mjs", "./src", "./test"]
 }

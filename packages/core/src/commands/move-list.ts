@@ -1,4 +1,4 @@
-import { Command, Transaction } from 'prosemirror-state'
+import { type Command, type Transaction } from 'prosemirror-state'
 
 import { withAutoFixList } from '../utils/auto-fix-list'
 import { cutByIndex } from '../utils/cut-by-index'

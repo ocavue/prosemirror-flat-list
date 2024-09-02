@@ -1,4 +1,4 @@
-import { NodeType, Schema } from 'prosemirror-model'
+import { type NodeType, type Schema } from 'prosemirror-model'
 
 import { flatListGroup } from '../schema/node-spec'
 

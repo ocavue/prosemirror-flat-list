@@ -2,19 +2,19 @@ import { chainCommands } from 'prosemirror-commands'
 import {
   Fragment,
   NodeRange,
-  Node as ProsemirrorNode,
+  type Node as ProsemirrorNode,
   Slice,
 } from 'prosemirror-model'
 import {
-  Command,
-  EditorState,
+  type Command,
+  type EditorState,
   Selection,
   TextSelection,
-  Transaction,
+  type Transaction,
 } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 
-import { ListAttributes } from '../types'
+import { type ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
 import { createAndFill } from '../utils/create-and-fill'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'

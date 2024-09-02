@@ -1,4 +1,4 @@
-import { Transaction } from 'prosemirror-state'
+import { type Transaction } from 'prosemirror-state'
 
 export function mapPos(tr: Transaction, pos: number) {
   let nextStepIndex = tr.steps.length

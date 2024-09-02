@@ -8,13 +8,17 @@ import {
   useCommands,
   useRemirror,
 } from '@remirror/react'
-import { ListAttributes, ListKind, isListNode } from 'prosemirror-flat-list'
-import React, { FC, PropsWithChildren, useEffect } from 'react'
 import {
-  ApplySchemaAttributes,
+  type ListAttributes,
+  type ListKind,
+  isListNode,
+} from 'prosemirror-flat-list'
+import React, { type FC, type PropsWithChildren, useEffect } from 'react'
+import {
+  type ApplySchemaAttributes,
   ExtensionTag,
   NodeExtension,
-  NodeExtensionSpec,
+  type NodeExtensionSpec,
 } from 'remirror'
 import {
   BlockquoteExtension,
@@ -40,7 +44,7 @@ const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
 }
 
 function ButtonGroup() {
-  const commands = useCommands()
+  const commands = useCommands<ListExtension>()
 
   const { indentList, dedentList } = commands
   const wrapInBulletList = () => commands.wrapInList({ kind: 'bullet' })

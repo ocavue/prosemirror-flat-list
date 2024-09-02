@@ -1,5 +1,5 @@
-import { NodeRange } from 'prosemirror-model'
-import { Transaction } from 'prosemirror-state'
+import { type NodeRange } from 'prosemirror-model'
+import { type Transaction } from 'prosemirror-state'
 import { liftTarget } from 'prosemirror-transform'
 
 export function safeLift(tr: Transaction, range: NodeRange): boolean {

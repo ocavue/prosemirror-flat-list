@@ -4,7 +4,7 @@ import {
   newlineInCode,
   splitBlock,
 } from 'prosemirror-commands'
-import { Command } from 'prosemirror-state'
+import { type Command } from 'prosemirror-state'
 
 /**
  * This command has the same behavior as the `Enter` keybinding from
