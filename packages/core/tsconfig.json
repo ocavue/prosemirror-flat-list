@@ -6,5 +6,5 @@
     "declarationDir": "dist-types",
     "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
   },
-  "include": ["."]
+  "include": ["./*.ts", "./*.cjs", "./*.mjs", "./src", "./test"]
 }

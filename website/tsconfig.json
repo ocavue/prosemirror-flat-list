@@ -9,9 +9,16 @@
   "references": [
     {
       "path": "../packages/core"
+    },
+    {
+      "path": "../packages/remirror-extension"
     }
   ],
   "include": [
-    "."
+    "./*.ts",
+    "./*.jsx",
+    "./*.mjs",
+    "./pages",
+    "./components",
   ]
 }

@@ -44,7 +44,7 @@ const Button: FC<PropsWithChildren<{ onClick: () => void }>> = ({
 }
 
 function ButtonGroup() {
-  const commands = useCommands()
+  const commands = useCommands<ListExtension>()
 
   const { indentList, dedentList } = commands
   const wrapInBulletList = () => commands.wrapInList({ kind: 'bullet' })
