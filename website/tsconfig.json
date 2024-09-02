@@ -1,24 +1,33 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
     "composite": true,
+    "declaration": true,
     "declarationDir": "dist-types",
-    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo",
+    "incremental": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
   },
-  "references": [
-    {
-      "path": "../packages/core"
-    },
-    {
-      "path": "../packages/remirror-extension"
-    }
-  ],
   "include": [
     "./*.ts",
     "./*.jsx",
     "./*.mjs",
     "./pages",
-    "./components",
+    "./components"
   ]
 }
