@@ -18,6 +18,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationMap": true,
+    "outDir": "temp",
     "paths": {
       "prosemirror-flat-list": [
         "./packages/core/src/index.ts"

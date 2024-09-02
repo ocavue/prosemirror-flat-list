@@ -9,7 +9,7 @@
     "dev": "nr -r --parallel dev",
     "test": "vitest",
     "api": "nr -r --stream build:tsc",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "typecheck": "tsc --build .",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "change": "changeset",
