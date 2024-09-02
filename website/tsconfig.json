@@ -1,14 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "composite": true,
-    "declaration": true,
-    "declarationDir": "dist-types",
-    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo",
-    "incremental": true,
-    "jsx": "preserve",
-    "noEmit": true,
-    "emitDeclarationOnly": false,
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,11 +8,15 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
+    "noEmit": true,
+    "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "jsx": "preserve",
+    "composite": true
   },
   "include": [
     "./*.ts",
@@ -29,5 +24,8 @@
     "./*.mjs",
     "./pages",
     "./components"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
