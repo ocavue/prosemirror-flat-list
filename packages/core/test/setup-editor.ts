@@ -26,7 +26,7 @@ export function setupTestingEditor() {
     view,
     add,
     nodes: { doc, p, blockquote, horizontalRule },
-    attributeNodes: { list },
+    attributeNodes: { list: untypedList },
     manager,
     schema,
   } = editor
@@ -57,19 +57,17 @@ export function setupTestingEditor() {
     }
   }
 
+  const list = (attributes: ListAttributes) => {
+    return untypedList(attributes as Record<string, unknown>)
+  }
+
   const bulletList = list({ kind: 'bullet' })
   const orderedList = list({ kind: 'ordered' })
   const ordered99List = list({ kind: 'ordered', order: 99 })
   const checkedTaskList = list({ kind: 'task', checked: true })
   const uncheckedTaskList = list({ kind: 'task', checked: false })
-  const collapsedToggleList = list({
-    kind: 'toggle',
-    collapsed: true,
-  } satisfies ListAttributes)
-  const expandedToggleList = list({
-    kind: 'toggle',
-    collapsed: false,
-  } satisfies ListAttributes)
+  const collapsedToggleList = list({ kind: 'toggle', collapsed: true })
+  const expandedToggleList = list({ kind: 'toggle', collapsed: false })
 
   return {
     manager,
