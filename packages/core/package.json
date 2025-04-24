@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "run-s build:tsup build:tsc build:api-extractor",
+    "build": "pnpm run build:tsup && pnpm run build:tsc && pnpm run build:api-extractor",
     "build:tsup": "tsup",
     "build:tsc": "tsc -b tsconfig.json",
     "build:api-extractor": "api-extractor run",
@@ -67,7 +67,6 @@
     "jest-prosemirror": "^3.0.0",
     "jest-remirror": "^3.0.1",
     "jsdom": "^25.0.1",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.47",
     "postcss-nesting": "^12.1.5",
     "react": "^18.3.1",
