@@ -320,17 +320,6 @@ custom string as a tag. See [[`ExtensionTag`]].
 NodeExtension.createTags
 ```
 
-## Interfaces
-
-### ToggleCollapsedOptions
-
-#### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
-| <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
-
 ## Commands
 
 ### DedentListOptions
@@ -352,6 +341,17 @@ NodeExtension.createTags
 | ------ | ------ | ------ | ------ |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
+
+### ToggleCollapsedOptions
+
+#### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
+| <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
 
 ## Schema
 

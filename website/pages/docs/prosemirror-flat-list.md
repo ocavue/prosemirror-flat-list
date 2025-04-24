@@ -1,95 +1,6 @@
 # prosemirror-flat-list
 
-## Interfaces
-
-### ToggleCollapsedOptions
-
-#### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
-| <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
-
-***
-
-### UnwrapListOptions
-
-#### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="kind-1"></a> `kind?` | `string` | If given, only this kind of list will be unwrap. |
-
-## Type Aliases
-
-### WrapInListGetAttrs\<T\>
-
-```ts
-type WrapInListGetAttrs<T> = 
-  | T
-  | (range: NodeRange) => T | null;
-```
-
-The list node attributes or a callback function to take the current
-selection block range and return list node attributes. If this callback
-function returns null, the command won't do anything.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* [`ListAttributes`](#listattributes) |
-
 ## Functions
-
-### createToggleListCommand()
-
-```ts
-function createToggleListCommand<T>(attrs: T): Command;
-```
-
-Returns a command function that wraps the selection in a list with the given
-type and attributes, or change the list kind if the selection is already in
-another kind of list, or unwrap the selected list if otherwise.
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` *extends* [`ListAttributes`](#listattributes) | [`ListAttributes`](#listattributes) |
-
-#### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `attrs` | `T` | **`Public`** The list node attributes to toggle. |
-
-#### Returns
-
-[`Command`](https://prosemirror.net/docs/ref/#state.Command)
-
-***
-
-### createUnwrapListCommand()
-
-```ts
-function createUnwrapListCommand(options?: UnwrapListOptions): Command;
-```
-
-Returns a command function that unwraps the list around the selection.
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `options?` | [`UnwrapListOptions`](#unwraplistoptions) |
-
-#### Returns
-
-[`Command`](https://prosemirror.net/docs/ref/#state.Command)
-
-***
 
 ### findListsRange()
 
@@ -219,6 +130,47 @@ otherwise `null` is returned.
 | ------ | ------ | ------ | ------ |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
+
+### ToggleCollapsedOptions
+
+#### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
+| <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
+
+***
+
+### UnwrapListOptions
+
+#### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="kind-1"></a> `kind?` | `string` | If given, only this kind of list will be unwrap. |
+
+***
+
+### WrapInListGetAttrs\<T\>
+
+```ts
+type WrapInListGetAttrs<T> = 
+  | T
+  | (range: NodeRange) => T | null;
+```
+
+The list node attributes or a callback function to take the current
+selection block range and return list node attributes. If this callback
+function returns null, the command won't do anything.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* [`ListAttributes`](#listattributes) |
 
 ***
 
@@ -429,6 +381,54 @@ Return a command function that toggle the `collapsed` attribute of the list node
 | Parameter | Type |
 | ------ | ------ |
 | `options` | [`ToggleCollapsedOptions`](#togglecollapsedoptions) |
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+***
+
+### createToggleListCommand()
+
+```ts
+function createToggleListCommand<T>(attrs: T): Command;
+```
+
+Returns a command function that wraps the selection in a list with the given
+type and attributes, or change the list kind if the selection is already in
+another kind of list, or unwrap the selected list if otherwise.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`ListAttributes`](#listattributes) | [`ListAttributes`](#listattributes) |
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `attrs` | `T` | The list node attributes to toggle. |
+
+#### Returns
+
+[`Command`](https://prosemirror.net/docs/ref/#state.Command)
+
+***
+
+### createUnwrapListCommand()
+
+```ts
+function createUnwrapListCommand(options?: UnwrapListOptions): Command;
+```
+
+Returns a command function that unwraps the list around the selection.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `options?` | [`UnwrapListOptions`](#unwraplistoptions) |
 
 #### Returns
 
