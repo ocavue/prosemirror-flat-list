@@ -18,7 +18,7 @@ import { zoomInRange } from '../utils/zoom-in-range'
 import { withVisibleSelection } from './set-safe-selection'
 
 /**
- * @public
+ * @public @group Commands
  */
 export interface IndentListOptions {
   /**

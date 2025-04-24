@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nr build:typedoc && next --port 3301",
-    "build": "nr build:typedoc && next build",
-    "build:typedoc": "nr -w api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
+    "dev": "pnpm run build:typedoc && next --port 3301",
+    "build": "pnpm run build:typedoc && next build",
+    "build:typedoc": "pnpm -w run api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
   },
   "devDependencies": {
     "@remirror/core": "^2.0.19",
@@ -26,10 +26,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remirror-extension-flat-list": "*",
-    "typedoc": "^0.26.11",
+    "typedoc": "^0.28.3",
     "typedoc-plugin-external-package-links": "^0.1.0",
-    "typedoc-plugin-markdown": "^4.2.10",
-    "typedoc-plugin-mdn-links": "^3.3.5",
+    "typedoc-plugin-markdown": "^4.6.3",
+    "typedoc-plugin-mdn-links": "^5.0.1",
     "typescript": "^5.6.3"
   }
 }

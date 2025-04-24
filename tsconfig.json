@@ -3,10 +3,7 @@
     "jsx": "react",
     "target": "es2018",
     "module": "esnext",
-    "lib": [
-      "esnext",
-      "DOM"
-    ],
+    "lib": ["esnext", "DOM"],
     "isolatedModules": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -20,37 +17,32 @@
     "declarationMap": true,
     "outDir": "temp",
     "paths": {
-      "prosemirror-flat-list": [
-        "./packages/core/src/index.ts"
-      ],
+      "prosemirror-flat-list": ["./packages/core/src/index.ts"],
       "remirror-extension-flat-list": [
         "./packages/remirror-extension/src/index.ts"
       ]
     },
-    "composite": true,
+    "composite": true
   },
-  "include": [
-    "./*.js",
-    "./*.ts",
-  ],
+  "include": ["./*.js", "./*.ts"],
   "references": [
     {
-      "path": "./packages/remirror-extension",
+      "path": "./packages/remirror-extension"
     },
     {
-      "path": "./packages/core",
+      "path": "./packages/core"
     },
     {
-      "path": "./examples/with-remirror",
+      "path": "./examples/with-remirror"
     },
     {
-      "path": "./examples/with-collapsable-ordered-list",
+      "path": "./examples/with-collapsable-ordered-list"
     },
     {
-      "path": "./examples/with-prosemirror",
+      "path": "./examples/with-prosemirror"
     },
     {
-      "path": "./website/tsconfig.json",
-    },
+      "path": "./website/tsconfig.json"
+    }
   ]
 }

@@ -18,10 +18,10 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Emit .d.ts files
-        run: nr --filter prosemirror-flat-list build
+        run: pnpm run api
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -31,10 +31,10 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Typecheck
-        run: nr typecheck
+        run: pnpm run typecheck
 
   test:
     runs-on: ${{ matrix.os }}
@@ -53,10 +53,10 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Test
-        run: nr test
+        run: pnpm run test
 
   deploy:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Deploy to Netlify (https://remirror-extension-flat-list.netlify.app/)
         uses: nwtgck/actions-netlify@v3.0

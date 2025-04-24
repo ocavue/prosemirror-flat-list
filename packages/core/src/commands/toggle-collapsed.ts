@@ -6,7 +6,7 @@ import { isListNode } from '../utils/is-list-node'
 import { setSafeSelection } from './set-safe-selection'
 
 /**
- * @public
+ * @public @group Commands
  */
 export interface ToggleCollapsedOptions {
   /**
@@ -27,10 +27,10 @@ export interface ToggleCollapsedOptions {
  *
  * @public @group Commands
  */
-export function createToggleCollapsedCommand({
-  collapsed = undefined,
-  isToggleable = defaultIsToggleable,
-}: ToggleCollapsedOptions = {}): Command {
+export function createToggleCollapsedCommand(
+  options: ToggleCollapsedOptions = {},
+): Command {
+  const { collapsed = undefined, isToggleable = defaultIsToggleable } = options
   const toggleCollapsed: Command = (state, dispatch) => {
     const { $from } = state.selection
 

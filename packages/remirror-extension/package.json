@@ -40,7 +40,7 @@
     "build:tsup": "tsup",
     "build:tsc": "tsc -b tsconfig.json",
     "build:api-extractor": "api-extractor run",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest"
   },
   "dependencies": {
@@ -51,7 +51,6 @@
     "@remirror/pm": "^2.0.5"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.23.0",
     "@microsoft/api-extractor": "^7.47.11",
     "@remirror/extension-blockquote": "^2.0.14",
     "@remirror/extension-hard-break": "^2.0.13",

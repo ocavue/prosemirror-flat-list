@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@antfu/ni':
-        specifier: ^0.23.0
-        version: 0.23.0
       '@changesets/cli':
         specifier: ^2.27.9
         version: 2.27.9
@@ -20,15 +17,12 @@ importers:
       eslint:
         specifier: ^9.14.0
         version: 9.14.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
       typedoc:
-        specifier: ^0.26.11
-        version: 0.26.11(typescript@5.6.3)
+        specifier: ^0.28.3
+        version: 0.28.3(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -43,7 +37,7 @@ importers:
         version: 1.2.3
       prosemirror-flat-list:
         specifier: '*'
-        version: 0.5.4
+        version: link:../../packages/core
       prosemirror-gapcursor:
         specifier: ^1.3.2
         version: 1.3.2
@@ -83,7 +77,7 @@ importers:
         version: 1.2.3
       prosemirror-flat-list:
         specifier: '*'
-        version: 0.5.4
+        version: link:../../packages/core
       prosemirror-gapcursor:
         specifier: ^1.3.2
         version: 1.3.2
@@ -126,7 +120,7 @@ importers:
         version: 2.0.35(@remirror/pm@2.0.9)(@types/node@20.17.5)(@types/react-dom@18.3.1)(@types/react@18.3.12)(jsdom@25.0.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prosemirror-flat-list:
         specifier: '*'
-        version: 0.5.4
+        version: link:../../packages/core
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -138,7 +132,7 @@ importers:
         version: 2.0.40(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@2.8.8)
       remirror-extension-flat-list:
         specifier: '*'
-        version: 0.2.1(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)
+        version: link:../../packages/remirror-extension
     devDependencies:
       '@types/react':
         specifier: ^18.3.12
@@ -257,7 +251,7 @@ importers:
         version: 2.0.40(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -278,11 +272,8 @@ importers:
         version: 2.0.19(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)
       prosemirror-flat-list:
         specifier: ^0.5.4
-        version: 0.5.4
+        version: link:../core
     devDependencies:
-      '@antfu/ni':
-        specifier: ^0.23.0
-        version: 0.23.0
       '@microsoft/api-extractor':
         specifier: ^7.47.11
         version: 7.47.11(@types/node@20.17.5)
@@ -375,7 +366,7 @@ importers:
         version: 2.0.40(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -432,7 +423,7 @@ importers:
         version: 2.13.4(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@2.13.4(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prosemirror-flat-list:
         specifier: '*'
-        version: 0.5.4
+        version: link:../packages/core
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -441,19 +432,19 @@ importers:
         version: 18.3.1(react@18.3.1)
       remirror-extension-flat-list:
         specifier: '*'
-        version: 0.2.1(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)
+        version: link:../packages/remirror-extension
       typedoc:
-        specifier: ^0.26.11
-        version: 0.26.11(typescript@5.6.3)
+        specifier: ^0.28.3
+        version: 0.28.3(typescript@5.6.3)
       typedoc-plugin-external-package-links:
         specifier: ^0.1.0
         version: 0.1.0
       typedoc-plugin-markdown:
-        specifier: ^4.2.10
-        version: 4.2.10(typedoc@0.26.11(typescript@5.6.3))
+        specifier: ^4.6.3
+        version: 4.6.3(typedoc@0.28.3(typescript@5.6.3))
       typedoc-plugin-mdn-links:
-        specifier: ^3.3.5
-        version: 3.3.5(typedoc@0.26.11(typescript@5.6.3))
+        specifier: ^5.0.1
+        version: 5.0.1(typedoc@0.28.3(typescript@5.6.3))
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -467,10 +458,6 @@ packages:
   '@ampproject/remapping@2.2.1':
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
     engines: {node: '>=6.0.0'}
-
-  '@antfu/ni@0.23.0':
-    resolution: {integrity: sha512-R5/GkA3PfGewAXLzz6lN5XagunF6PKeDtWt8dbZQXvHfebLS0qEczV+Azg/d+tKgSh6kRBpxvu8oSjARdPtw0A==}
-    hasBin: true
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
@@ -1020,6 +1007,7 @@ packages:
 
   '@eslint-types/unicorn@52.0.0':
     resolution: {integrity: sha512-1+Om/IekT0AwlPiARvhbtKsSgVMu3ZAtP99YCzhHkDSnF5f8sQegh8/3ZmMhlCnKipa7/x8qEC7Bn4rbaagnSA==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@eslint/compat@1.1.1':
     resolution: {integrity: sha512-lpHyRyplhGPL5mGEh6M9O5nnKk0Gz4bFI+Zu6tKlPpDUN7XshWvH9C/px4UVm87IAANE0W81CEsNGbS1KlzXpA==}
@@ -1070,6 +1058,9 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+
+  '@gerrit0/mini-shiki@3.3.0':
+    resolution: {integrity: sha512-frvArO0+s5Viq68uSod5SieLPVM2cLpXoQ1e07lURwgADXpL/MOypM7jPz9otks0g2DIe2YedDAeVrDyYJZRxA==}
 
   '@headlessui/react@1.7.18':
     resolution: {integrity: sha512-4i5DOrzwN4qSgNsL4Si61VMkUcWbcSKueUV7sFhpHzQcSShdlHENE5+QBntMSRvHt8NyoFO2AGG8si9lq+w4zQ==}
@@ -2124,20 +2115,20 @@ packages:
   '@seznam/compose-react-refs@1.0.6':
     resolution: {integrity: sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==}
 
-  '@shikijs/core@1.22.0':
-    resolution: {integrity: sha512-S8sMe4q71TJAW+qG93s5VaiihujRK6rqDFqBnxqvga/3LvqHEnxqBIOPkt//IdXVtHkQWKu4nOQNk0uBGicU7Q==}
+  '@shikijs/engine-oniguruma@3.3.0':
+    resolution: {integrity: sha512-l0vIw+GxeNU7uGnsu6B+Crpeqf+WTQ2Va71cHb5ZYWEVEPdfYwY5kXwYqRJwHrxz9WH+pjSpXQz+TJgAsrkA5A==}
 
-  '@shikijs/engine-javascript@1.22.0':
-    resolution: {integrity: sha512-AeEtF4Gcck2dwBqCFUKYfsCq0s+eEbCEbkUuFou53NZ0sTGnJnJ/05KHQFZxpii5HMXbocV9URYVowOP2wH5kw==}
+  '@shikijs/langs@3.3.0':
+    resolution: {integrity: sha512-zt6Kf/7XpBQKSI9eqku+arLkAcDQ3NHJO6zFjiChI8w0Oz6Jjjay7pToottjQGjSDCFk++R85643WbyINcuL+g==}
 
-  '@shikijs/engine-oniguruma@1.22.0':
-    resolution: {integrity: sha512-5iBVjhu/DYs1HB0BKsRRFipRrD7rqjxlWTj4F2Pf+nQSPqc3kcyqFFeZXnBMzDf0HdqaFVvhDRAGiYNvyLP+Mw==}
+  '@shikijs/themes@3.3.0':
+    resolution: {integrity: sha512-tXeCvLXBnqq34B0YZUEaAD1lD4lmN6TOHAhnHacj4Owh7Ptb/rf5XCDeROZt2rEOk5yuka3OOW2zLqClV7/SOg==}
 
-  '@shikijs/types@1.22.0':
-    resolution: {integrity: sha512-Fw/Nr7FGFhlQqHfxzZY8Cwtwk5E9nKDUgeLjZgt3UuhcM3yJR9xj3ZGNravZZok8XmEZMiYkSMTPlPkULB8nww==}
+  '@shikijs/types@3.3.0':
+    resolution: {integrity: sha512-KPCGnHG6k06QG/2pnYGbFtFvpVJmC3uIpXrAiPrawETifujPBv0Se2oUxm5qYgjCvGJS9InKvjytOdN+bGuX+Q==}
 
-  '@shikijs/vscode-textmate@9.3.0':
-    resolution: {integrity: sha512-jn7/7ky30idSkd/O5yDBfAnVt+JJpepofP/POZ1iMOxK59cOfqIgg/Dj0eFsjOTMw+4ycJN0uhZH/Eb0bs/EUA==}
+  '@shikijs/vscode-textmate@10.0.2':
+    resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -4320,6 +4311,7 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -4923,9 +4915,6 @@ packages:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
 
-  oniguruma-to-js@0.4.3:
-    resolution: {integrity: sha512-X0jWUcAlxORhOqqBREgPMgnshB7ZGYszBNspP+tS9hPD3l13CdaXcHbgImoHUHlrvGx/7AvFEkTRhAGYh+jzjQ==}
-
   optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
@@ -5200,9 +5189,6 @@ packages:
   prosemirror-example-setup@1.2.3:
     resolution: {integrity: sha512-+hXZi8+xbFvYM465zZH3rdZ9w7EguVKmUYwYLZjIJIjPK+I0nPTwn8j0ByW2avchVczRwZmOJGNvehblyIerSQ==}
 
-  prosemirror-flat-list@0.5.4:
-    resolution: {integrity: sha512-37hyy9ZIE9PktGQS+yI71icW3QuG7Dz/1CoPOEcZVrzG95r16f+VTiX8BzZ4h3h848uF2MKxCqY5LtU9ZoIUCg==}
-
   prosemirror-gapcursor@1.3.2:
     resolution: {integrity: sha512-wtjswVBd2vaQRrnYZaBCbyDqr232Ed4p2QPtRIUK5FuqHYKGWkEwl08oQM4Tw7DOR0FsasARV5uJFvMZWxdNxQ==}
 
@@ -5356,9 +5342,6 @@ packages:
   regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
 
-  regex@4.3.3:
-    resolution: {integrity: sha512-r/AadFO7owAq1QJVeZ/nq9jNS1vyZt+6t1p/E59B56Rn2GCya+gr1KSyOzNL/er+r+B7phv5jG2xU2Nz1YkmJg==}
-
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
@@ -5415,11 +5398,6 @@ packages:
 
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
-
-  remirror-extension-flat-list@0.2.1:
-    resolution: {integrity: sha512-tsDVRFwRmerLVOf6JPRKqqaDxoB9si6z7Kgdh8ZWEyr60EEmo7RIYnMlH5FCz3PvI0XZiEzGH7+c0foe/Mi8TA==}
-    peerDependencies:
-      '@remirror/pm': ^2.0.5
 
   remirror@2.0.40:
     resolution: {integrity: sha512-l60kVS9Ad+rlmLK7WxEaExcUXmNHX+jREH1ZhqGJ7Qv6Cr68He3rkbHeUQtJabGYYQ2ZfchJ/QfnEmQ3hHwaxQ==}
@@ -5579,9 +5557,6 @@ packages:
 
   shiki@0.14.7:
     resolution: {integrity: sha512-dNPAPrxSc87ua2sKJ3H5dQ/6ZaY8RNnaAqK+t0eG7p0Soi2ydiqbGOTaZCqaYvA/uZYfS1LJnemt3Q+mSfcPCg==}
-
-  shiki@1.22.0:
-    resolution: {integrity: sha512-/t5LlhNs+UOKQCYBtl5ZsH/Vclz73GIqT2yQsCBygr8L/ppTdmpL4w3kPLoZJbMKVWtoG77Ue1feOjZfDxvMkw==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -5995,23 +5970,23 @@ packages:
   typedoc-plugin-external-package-links@0.1.0:
     resolution: {integrity: sha512-1fnFUjCTBnfBgkirFnTaNBEHpestaxQNKDBkws8nKQdqVoEzd24+omrwMTdSAhyC0a24bNbEEiCBAgLzzWu4lA==}
 
-  typedoc-plugin-markdown@4.2.10:
-    resolution: {integrity: sha512-PLX3pc1/7z13UJm4TDE9vo9jWGcClFUErXXtd5LdnoLjV6mynPpqZLU992DwMGFSRqJFZeKbVyqlNNeNHnk2tQ==}
+  typedoc-plugin-markdown@4.6.3:
+    resolution: {integrity: sha512-86oODyM2zajXwLs4Wok2mwVEfCwCnp756QyhLGX2IfsdRYr1DXLCgJgnLndaMUjJD7FBhnLk2okbNE9PdLxYRw==}
     engines: {node: '>= 18'}
     peerDependencies:
-      typedoc: 0.26.x
+      typedoc: 0.28.x
 
-  typedoc-plugin-mdn-links@3.3.5:
-    resolution: {integrity: sha512-EsOmQ23eBYqFFEkjo/prud/h2O2QIPQwdVvpyocwn3SWWFCP1YfuTCs94/dDQG6Ikte7gik88ic7Md8fDvEmtw==}
+  typedoc-plugin-mdn-links@5.0.1:
+    resolution: {integrity: sha512-eofdcc2nZZpipz/ubjG+7UYMi6Xu95svUwnZ+ClJh6NJdrv7kAOerL9N3iDOpo5kwQeK86GqPWwnv6LUGo5Wrw==}
     peerDependencies:
-      typedoc: '>= 0.23.14 || 0.24.x || 0.25.x || 0.26.x'
+      typedoc: 0.27.x || 0.28.x
 
-  typedoc@0.26.11:
-    resolution: {integrity: sha512-sFEgRRtrcDl2FxVP58Ze++ZK2UQAEvtvvH8rRlig1Ja3o7dDaMHmaBfvJmdGnNEFaLTpQsN8dpvZaTqJSu/Ugw==}
-    engines: {node: '>= 18'}
+  typedoc@0.28.3:
+    resolution: {integrity: sha512-5svOCTfXvVSh6zbZKSQluZhR8yN2tKpTeHZxlmWpE6N5vc3R8k/jhg9nnD6n5tN9/ObuQTojkONrOxFdUFUG9w==}
+    engines: {node: '>= 18', pnpm: '>= 10'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x
+      typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x || 5.8.x
 
   typescript-eslint@8.12.2:
     resolution: {integrity: sha512-UbuVUWSrHVR03q9CWx+JDHeO6B/Hr9p4U5lRH++5tq/EbFq1faYZe50ZSBePptgfIKLEti0aPQ3hFgnPVcd8ZQ==}
@@ -6374,8 +6349,8 @@ packages:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
 
-  yaml@2.5.1:
-    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
+  yaml@2.7.1:
+    resolution: {integrity: sha512-10ULxpnOCQXxJvBgxsn9ptjq6uviG/htZKk9veJGhlqn3w/DxQ631zFF+nlQXLwmImeS5amR2dl2U8sg6U9jsQ==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -6409,8 +6384,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@antfu/ni@0.23.0': {}
 
   '@antfu/utils@0.7.10': {}
 
@@ -7030,6 +7003,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tabbable: 6.2.0
+
+  '@gerrit0/mini-shiki@3.3.0':
+    dependencies:
+      '@shikijs/engine-oniguruma': 3.3.0
+      '@shikijs/langs': 3.3.0
+      '@shikijs/themes': 3.3.0
+      '@shikijs/types': 3.3.0
+      '@shikijs/vscode-textmate': 10.0.2
 
   '@headlessui/react@1.7.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -8682,32 +8663,25 @@ snapshots:
 
   '@seznam/compose-react-refs@1.0.6': {}
 
-  '@shikijs/core@1.22.0':
+  '@shikijs/engine-oniguruma@3.3.0':
     dependencies:
-      '@shikijs/engine-javascript': 1.22.0
-      '@shikijs/engine-oniguruma': 1.22.0
-      '@shikijs/types': 1.22.0
-      '@shikijs/vscode-textmate': 9.3.0
-      '@types/hast': 3.0.4
-      hast-util-to-html: 9.0.3
+      '@shikijs/types': 3.3.0
+      '@shikijs/vscode-textmate': 10.0.2
 
-  '@shikijs/engine-javascript@1.22.0':
+  '@shikijs/langs@3.3.0':
     dependencies:
-      '@shikijs/types': 1.22.0
-      '@shikijs/vscode-textmate': 9.3.0
-      oniguruma-to-js: 0.4.3
+      '@shikijs/types': 3.3.0
 
-  '@shikijs/engine-oniguruma@1.22.0':
+  '@shikijs/themes@3.3.0':
     dependencies:
-      '@shikijs/types': 1.22.0
-      '@shikijs/vscode-textmate': 9.3.0
+      '@shikijs/types': 3.3.0
 
-  '@shikijs/types@1.22.0':
+  '@shikijs/types@3.3.0':
     dependencies:
-      '@shikijs/vscode-textmate': 9.3.0
+      '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
-  '@shikijs/vscode-textmate@9.3.0': {}
+  '@shikijs/vscode-textmate@10.0.2': {}
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -12364,10 +12338,6 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
-  oniguruma-to-js@0.4.3:
-    dependencies:
-      regex: 4.3.3
-
   optionator@0.9.3:
     dependencies:
       '@aashutoshrathi/word-wrap': 1.2.6
@@ -12532,12 +12502,12 @@ snapshots:
 
   possible-typed-array-names@1.0.0: {}
 
-  postcss-load-config@6.0.1(postcss@8.4.47)(yaml@2.5.1):
+  postcss-load-config@6.0.1(postcss@8.4.47)(yaml@2.7.1):
     dependencies:
       lilconfig: 3.1.2
     optionalDependencies:
       postcss: 8.4.47
-      yaml: 2.5.1
+      yaml: 2.7.1
 
   postcss-nesting@12.1.5(postcss@8.4.47):
     dependencies:
@@ -12631,16 +12601,6 @@ snapshots:
       prosemirror-menu: 1.2.4
       prosemirror-schema-list: 1.4.1
       prosemirror-state: 1.4.3
-
-  prosemirror-flat-list@0.5.4:
-    dependencies:
-      prosemirror-commands: 1.6.2
-      prosemirror-inputrules: 1.4.0
-      prosemirror-model: 1.23.0
-      prosemirror-safari-ime-span: 1.0.2
-      prosemirror-state: 1.4.3
-      prosemirror-transform: 1.10.2
-      prosemirror-view: 1.35.0
 
   prosemirror-gapcursor@1.3.2:
     dependencies:
@@ -12864,8 +12824,6 @@ snapshots:
 
   regenerator-runtime@0.13.11: {}
 
-  regex@4.3.3: {}
-
   regexp-tree@0.1.27: {}
 
   regexp.prototype.flags@1.5.2:
@@ -12986,16 +12944,6 @@ snapshots:
       '@types/mdast': 4.0.1
       mdast-util-to-markdown: 2.1.0
       unified: 11.0.5
-
-  remirror-extension-flat-list@0.2.1(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1):
-    dependencies:
-      '@remirror/core': 2.0.19(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)
-      '@remirror/pm': 2.0.9
-      prosemirror-flat-list: 0.5.4
-    transitivePeerDependencies:
-      - '@types/node'
-      - jsdom
-      - supports-color
 
   remirror@2.0.40(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@2.8.8):
     dependencies:
@@ -13266,15 +13214,6 @@ snapshots:
       jsonc-parser: 3.2.0
       vscode-oniguruma: 1.7.0
       vscode-textmate: 8.0.0
-
-  shiki@1.22.0:
-    dependencies:
-      '@shikijs/core': 1.22.0
-      '@shikijs/engine-javascript': 1.22.0
-      '@shikijs/engine-oniguruma': 1.22.0
-      '@shikijs/types': 1.22.0
-      '@shikijs/vscode-textmate': 9.3.0
-      '@types/hast': 3.0.4
 
   side-channel@1.0.6:
     dependencies:
@@ -13603,7 +13542,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1):
+  tsup@8.3.5(@microsoft/api-extractor@7.47.11(@types/node@20.17.5))(@swc/core@1.7.35(@swc/helpers@0.5.13))(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.1):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.24.0)
       cac: 6.7.14
@@ -13613,7 +13552,7 @@ snapshots:
       esbuild: 0.24.0
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.4.47)(yaml@2.5.1)
+      postcss-load-config: 6.0.1(postcss@8.4.47)(yaml@2.7.1)
       resolve-from: 5.0.0
       rollup: 4.24.3
       source-map: 0.8.0-beta.0
@@ -13688,22 +13627,22 @@ snapshots:
 
   typedoc-plugin-external-package-links@0.1.0: {}
 
-  typedoc-plugin-markdown@4.2.10(typedoc@0.26.11(typescript@5.6.3)):
+  typedoc-plugin-markdown@4.6.3(typedoc@0.28.3(typescript@5.6.3)):
     dependencies:
-      typedoc: 0.26.11(typescript@5.6.3)
+      typedoc: 0.28.3(typescript@5.6.3)
 
-  typedoc-plugin-mdn-links@3.3.5(typedoc@0.26.11(typescript@5.6.3)):
+  typedoc-plugin-mdn-links@5.0.1(typedoc@0.28.3(typescript@5.6.3)):
     dependencies:
-      typedoc: 0.26.11(typescript@5.6.3)
+      typedoc: 0.28.3(typescript@5.6.3)
 
-  typedoc@0.26.11(typescript@5.6.3):
+  typedoc@0.28.3(typescript@5.6.3):
     dependencies:
+      '@gerrit0/mini-shiki': 3.3.0
       lunr: 2.3.9
       markdown-it: 14.1.0
       minimatch: 9.0.5
-      shiki: 1.22.0
       typescript: 5.6.3
-      yaml: 2.5.1
+      yaml: 2.7.1
 
   typescript-eslint@8.12.2(eslint@9.14.0)(typescript@5.6.3):
     dependencies:
@@ -14127,7 +14066,7 @@ snapshots:
 
   yaml@1.10.2: {}
 
-  yaml@2.5.1: {}
+  yaml@2.7.1: {}
 
   yjs@13.6.1:
     dependencies:

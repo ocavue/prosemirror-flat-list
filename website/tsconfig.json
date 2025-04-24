@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -20,16 +16,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "composite": true
+    "composite": true,
+    "target": "ES2017"
   },
-  "include": [
-    "./*.ts",
-    "./*.jsx",
-    "./*.mjs",
-    "./pages",
-    "./components"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./*.ts", "./*.jsx", "./*.mjs", "./pages", "./components"],
+  "exclude": ["node_modules"]
 }

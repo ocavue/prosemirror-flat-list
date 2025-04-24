@@ -9,7 +9,7 @@ import { safeLiftFromTo } from '../utils/safe-lift'
 import { dedentOutOfList } from './dedent-list'
 
 /**
- * @public
+ * @public @group Commands
  */
 export interface UnwrapListOptions {
   /**
@@ -21,7 +21,7 @@ export interface UnwrapListOptions {
 /**
  * Returns a command function that unwraps the list around the selection.
  *
- * @public
+ * @public @group Commands
  */
 export function createUnwrapListCommand(options?: UnwrapListOptions): Command {
   const kind = options?.kind
