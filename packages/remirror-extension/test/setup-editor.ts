@@ -6,8 +6,6 @@ import { type ListAttributes } from 'prosemirror-flat-list'
 import { expect } from 'vitest'
 
 import { ListExtension } from '../src/extension'
-import '@remirror/pm/model'
-import 'prosemirror-model'
 
 export function setupTestingEditor() {
   const extensions = [new ListExtension(), new BlockquoteExtension()]
