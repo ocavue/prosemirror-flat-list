@@ -176,7 +176,7 @@ NodeExtension.createCommands
 ##### createExternalPlugins()
 
 ```ts
-createExternalPlugins(): ProsemirrorPlugin[];
+createExternalPlugins(): Plugin<any>[];
 ```
 
 Register third party plugins when this extension is placed into the
@@ -184,7 +184,7 @@ editor.
 
 ###### Returns
 
-`ProsemirrorPlugin`[]
+[`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)\<`any`\>[]
 
 ###### Remarks
 
