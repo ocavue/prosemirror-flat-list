@@ -37,4 +37,10 @@ const view = new EditorView(document.querySelector('#editor'), {
   }),
 })
 
-;(window as any)._view = view
+window.view = view
+
+declare global {
+  interface Window {
+    view?: EditorView
+  }
+}

@@ -107,4 +107,10 @@ function customListToDOM(options: ListToDOMOptions) {
   })
 }
 
-;(window as any)._view = view
+window.view = view
+
+declare global {
+  interface Window {
+    view?: EditorView
+  }
+}
