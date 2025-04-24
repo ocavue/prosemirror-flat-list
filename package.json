@@ -5,10 +5,10 @@
   "private": true,
   "packageManager": "pnpm@9.15.9",
   "scripts": {
-    "build": "nr -r --stream --sequential build",
-    "dev": "nr -r --parallel dev",
+    "build": "pnpm -r --stream --sequential run build",
+    "dev": "pnpm -r --parallel run dev",
     "test": "vitest",
-    "api": "nr -r --stream build:tsc",
+    "api": "pnpm -r --stream run build:tsc",
     "typecheck": "tsc --build .",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
