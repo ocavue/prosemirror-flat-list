@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "pnpm run build:typedoc && next --port 3301",
-    "build": "pnpm run build:typedoc && next build",
+    "build": "pnpm run build:typedoc && pnpm run build:next",
+    "build:next": "next build",
     "build:typedoc": "pnpm -w run api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
   },
   "devDependencies": {
@@ -19,7 +20,7 @@
     "@remirror/styles": "^3.0.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "next": "^15.0.3",
+    "next": "^15.3.1",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "prosemirror-flat-list": "*",
