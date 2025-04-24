@@ -1,8 +1,8 @@
 import { type NodeType } from 'prosemirror-model'
 
-import { getListType } from './get-list-type'
+import { getListTypeName } from './get-list-type-name'
 
 /** @public */
 export function isListType(type: NodeType): boolean {
-  return getListType(type.schema) === type
+  return getListTypeName(type.schema) === type.name
 }

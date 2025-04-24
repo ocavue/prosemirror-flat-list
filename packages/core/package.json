@@ -27,8 +27,8 @@
       "require": "./dist/prosemirror-flat-list.cjs",
       "import": "./dist/prosemirror-flat-list.js"
     },
-    "./style.css": "./dist/style.css",
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/style.css",
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"

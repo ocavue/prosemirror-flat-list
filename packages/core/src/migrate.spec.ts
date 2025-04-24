@@ -16,7 +16,7 @@ describe('migrateDocJSON', () => {
   const editor = renderEditor(extensions, {})
   const schema = editor.schema
 
-  const checkJSON = (json: any) => {
+  const checkJSON = (json: unknown) => {
     const node = schema.nodeFromJSON(json)
     node.check()
   }
