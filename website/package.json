@@ -16,7 +16,7 @@
     "@remirror/extension-heading": "^3.0.1",
     "@remirror/extension-link": "^3.0.1",
     "@remirror/pm": "^3.0.1",
-    "@remirror/react": "^3.0.1",
+    "@remirror/react": "^3.0.2",
     "@remirror/styles": "^3.0.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

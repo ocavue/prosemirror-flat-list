@@ -43,13 +43,13 @@
     "test": "vitest"
   },
   "dependencies": {
-    "prosemirror-commands": "^1.6.2",
-    "prosemirror-inputrules": "^1.4.0",
-    "prosemirror-model": "^1.23.0",
+    "prosemirror-commands": "^1.7.1",
+    "prosemirror-inputrules": "^1.5.0",
+    "prosemirror-model": "^1.25.1",
     "prosemirror-safari-ime-span": "^1.0.2",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-transform": "^1.10.2",
-    "prosemirror-view": "^1.35.0"
+    "prosemirror-transform": "^1.10.4",
+    "prosemirror-view": "^1.39.2"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.47.11",
@@ -64,8 +64,8 @@
     "@vitest/coverage-v8": "^3.1.2",
     "dedent": "^1.5.3",
     "execa": "^9.5.1",
-    "jest-prosemirror": "^3.0.0",
-    "jest-remirror": "^3.0.1",
+    "jest-prosemirror": "^3.0.1",
+    "jest-remirror": "^3.0.2",
     "jsdom": "^25.0.1",
     "postcss": "^8.4.47",
     "postcss-nesting": "^13.0.1",
@@ -75,7 +75,7 @@
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.1",
-    "remirror": "^3.0.1",
+    "remirror": "^3.0.2",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3",
     "unified": "^11.0.5",
