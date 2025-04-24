@@ -57,7 +57,7 @@
     "@remirror/extension-blockquote": "^3.0.1",
     "@remirror/extension-heading": "^3.0.1",
     "@remirror/extension-horizontal-rule": "^3.0.1",
-    "@remirror/pm": "^3.0.0",
+    "@remirror/pm": "^3.0.1",
     "@remirror/preset-core": "^3.0.1",
     "@types/dedent": "^0.7.2",
     "@types/node": "^20.17.5",

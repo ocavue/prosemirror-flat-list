@@ -8,7 +8,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@remirror/pm": "^3.0.0",
+    "@remirror/pm": "^3.0.1",
     "@remirror/react": "^3.0.1",
     "prosemirror-flat-list": "*",
     "react": "^18.3.1",
