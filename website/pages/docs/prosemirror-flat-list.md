@@ -457,7 +457,7 @@ Returns a command that split the current list node.
 ## createToggleCollapsedCommand()
 
 ```ts
-function createToggleCollapsedCommand(__namedParameters: ToggleCollapsedOptions): Command;
+function createToggleCollapsedCommand(options: ToggleCollapsedOptions): Command;
 ```
 
 Return a command function that toggle the `collapsed` attribute of the list node.
@@ -466,7 +466,7 @@ Return a command function that toggle the `collapsed` attribute of the list node
 
 | Parameter | Type |
 | ------ | ------ |
-| `__namedParameters` | [`ToggleCollapsedOptions`](#togglecollapsedoptions) |
+| `options` | [`ToggleCollapsedOptions`](#togglecollapsedoptions) |
 
 ### Returns
 
@@ -767,7 +767,7 @@ Handle DOM events for list.
 ## createListPlugins()
 
 ```ts
-function createListPlugins(__namedParameters: {
+function createListPlugins(options: {
   schema: Schema;
 }): Plugin<any>[];
 ```
@@ -786,8 +786,8 @@ to use if you want to customize some behavior.
 
 | Parameter | Type |
 | ------ | ------ |
-| `__namedParameters` | \{ `schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema); \} |
-| `__namedParameters.schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema) |
+| `options` | \{ `schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema); \} |
+| `options.schema` | [`Schema`](https://prosemirror.net/docs/ref/#model.Schema) |
 
 ### Returns
 
@@ -867,7 +867,7 @@ readonly [`TagParseRule`](https://prosemirror.net/docs/ref/#model.TagParseRule)[
 ## listToDOM()
 
 ```ts
-function listToDOM(__namedParameters: ListToDOMOptions): DOMOutputSpec;
+function listToDOM(options: ListToDOMOptions): DOMOutputSpec;
 ```
 
 Renders a list node to DOM output spec.
@@ -876,7 +876,7 @@ Renders a list node to DOM output spec.
 
 | Parameter | Type |
 | ------ | ------ |
-| `__namedParameters` | [`ListToDOMOptions`](#listtodomoptions) |
+| `options` | [`ListToDOMOptions`](#listtodomoptions) |
 
 ### Returns
 
