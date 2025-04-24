@@ -61,7 +61,7 @@
     "@remirror/preset-core": "^3.0.1",
     "@types/dedent": "^0.7.2",
     "@types/node": "^20.17.5",
-    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/coverage-v8": "^3.0.9",
     "dedent": "^1.5.3",
     "execa": "^9.5.1",
     "jest-prosemirror": "^3.0.0",
@@ -80,7 +80,7 @@
     "typescript": "^5.6.3",
     "unified": "^11.0.5",
     "vite": "^5.4.10",
-    "vitest": "^1.6.0"
+    "vitest": "^3.0.9"
   },
   "typedocOptions": {
     "entryPoints": [
