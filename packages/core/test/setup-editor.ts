@@ -57,8 +57,8 @@ export function setupTestingEditor() {
     }
   }
 
-  const list = (attributes:        ListAttributes) => {
-    return untypedList(attributes as          Record<string, unknown>)
+  const list = (attributes: ListAttributes) => {
+    return untypedList(attributes as Record<string, unknown>)
   }
 
   const bulletList = list({ kind: 'bullet' })

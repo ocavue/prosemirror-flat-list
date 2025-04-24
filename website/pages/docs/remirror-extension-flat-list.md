@@ -1,6 +1,4 @@
 # remirror-extension-flat-list
-<<<<<<< HEAD
-=======
 
 ## Classes
 
@@ -377,4 +375,3 @@ type ListKind = "bullet" | "ordered" | "task" | "toggle";
 ```
 
 All default list node kinds.
->>>>>>> c88db56ea8f749992d97dcbbc14795fdfed2b104
