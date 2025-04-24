@@ -17,12 +17,12 @@
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.9",
+    "@changesets/cli": "^2.29.2",
     "@ocavue/eslint-config": "^2.14.3",
     "eslint": "^9.25.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.5.3",
     "typedoc": "^0.28.3",
-    "typescript": "^5.6.3",
+    "typescript": "^5.8.2",
     "vitest": "^3.1.2"
   },
   "renovate": {
