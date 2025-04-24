@@ -10,31 +10,33 @@ A Remirror extension for creating lists. It's a simple wrapper around the API fr
 
 ### Constructors
 
-#### new ListExtension()
+#### Constructor
 
 ```ts
-new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Partial<ConditionalPick<PickPartial<EmptyShape>, StaticAnnotation>> & GetDynamic<EmptyShape> & BaseExtensionOptions]): ListExtension
+new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Partial<ConditionalPick<PickPartial<EmptyShape>, StaticAnnotation>> & GetDynamic<EmptyShape> & BaseExtensionOptions]): ListExtension;
 ```
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| ...`args` | [`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`] |
+| ...`args` | \[`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`\] |
 
 ##### Returns
 
-[`ListExtension`](index.md#listextension)
+[`ListExtension`](#listextension)
 
 ##### Inherited from
 
-`NodeExtension.constructor`
+```ts
+NodeExtension.constructor
+```
 
 ### Properties
 
 | Property | Modifier | Type | Default value | Description | Overrides |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| `disableExtraAttributes` | `static` | `boolean` | `true` | Whether to disable extra attributes for this extension. | `NodeExtension.disableExtraAttributes` |
+| <a id="disableextraattributes"></a> `disableExtraAttributes` | `static` | `boolean` | `true` | Whether to disable extra attributes for this extension. | `NodeExtension.disableExtraAttributes` |
 
 ### Accessors
 
@@ -43,7 +45,7 @@ new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Part
 ##### Get Signature
 
 ```ts
-get name(): "list"
+get name(): "list";
 ```
 
 The unique name of this extension.
@@ -68,7 +70,9 @@ class SimpleExtension extends Extension {
 
 ##### Overrides
 
-`NodeExtension.name`
+```ts
+NodeExtension.name
+```
 
 ### Methods
 
@@ -84,8 +88,10 @@ createCommands(): {
   toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
   toggleList: (attrs: ListAttributes) => CommandFunction<object>;
   unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
-  wrapInList: (getAttrs: ListAttributes | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
-}
+  wrapInList: (getAttrs: 
+     | ListAttributes
+    | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
+};
 ```
 
 Create and register commands for that can be called within the editor.
@@ -105,21 +111,23 @@ response to user actions.
   toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
   toggleList: (attrs: ListAttributes) => CommandFunction<object>;
   unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
-  wrapInList: (getAttrs: ListAttributes | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
+  wrapInList: (getAttrs: 
+     | ListAttributes
+    | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
 }
 ```
 
 | Name | Type |
 | ------ | ------ |
-| `dedentList` | (`props`?: [`DedentListOptions`](index.md#dedentlistoptions)) => `CommandFunction`\<`object`\> |
-| `indentList` | (`props`?: [`IndentListOptions`](index.md#indentlistoptions)) => `CommandFunction`\<`object`\> |
-| `moveList` | (`direction`: `"up"` \| `"down"`) => `CommandFunction`\<`object`\> |
-| `protectCollapsed` | () => `CommandFunction`\<`object`\> |
-| `splitList` | () => `CommandFunction`\<`object`\> |
-| `toggleCollapsed` | (`props`?: [`ToggleCollapsedOptions`](index.md#togglecollapsedoptions)) => `CommandFunction`\<`object`\> |
-| `toggleList` | (`attrs`: [`ListAttributes`](index.md#listattributes)) => `CommandFunction`\<`object`\> |
-| `unwrapList` | (`options`?: [`UnwrapListOptions`](../prosemirror-flat-list/index.md#unwraplistoptions)) => `CommandFunction`\<`object`\> |
-| `wrapInList` | (`getAttrs`: [`ListAttributes`](index.md#listattributes) \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| [`ListAttributes`](index.md#listattributes)) => `CommandFunction`\<`object`\> |
+| `dedentList()` | (`props?`: [`DedentListOptions`](#dedentlistoptions)) => `CommandFunction`\<`object`\> |
+| `indentList()` | (`props?`: [`IndentListOptions`](#indentlistoptions)) => `CommandFunction`\<`object`\> |
+| `moveList()` | (`direction`: `"up"` \| `"down"`) => `CommandFunction`\<`object`\> |
+| `protectCollapsed()` | () => `CommandFunction`\<`object`\> |
+| `splitList()` | () => `CommandFunction`\<`object`\> |
+| `toggleCollapsed()` | (`props?`: [`ToggleCollapsedOptions`](#togglecollapsedoptions)) => `CommandFunction`\<`object`\> |
+| `toggleList()` | (`attrs`: [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\> |
+| `unwrapList()` | (`options?`: [`UnwrapListOptions`](prosemirror-flat-list.md#unwraplistoptions)) => `CommandFunction`\<`object`\> |
+| `wrapInList()` | (`getAttrs`: \| [`ListAttributes`](#listattributes) \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\> |
 
 ##### Remarks
 
@@ -159,12 +167,14 @@ and can provide code completion for consumers of the extension.
 
 ##### Overrides
 
-`NodeExtension.createCommands`
+```ts
+NodeExtension.createCommands
+```
 
 #### createExternalPlugins()
 
 ```ts
-createExternalPlugins(): ProsemirrorPlugin[]
+createExternalPlugins(): ProsemirrorPlugin[];
 ```
 
 Register third party plugins when this extension is placed into the
@@ -182,12 +192,14 @@ support.
 
 ##### Overrides
 
-`NodeExtension.createExternalPlugins`
+```ts
+NodeExtension.createExternalPlugins
+```
 
 #### createInputRules()
 
 ```ts
-createInputRules(): InputRule[]
+createInputRules(): InputRule[];
 ```
 
 Register input rules which are activated if the regex matches as a user is
@@ -199,12 +211,14 @@ typing.
 
 ##### Overrides
 
-`NodeExtension.createInputRules`
+```ts
+NodeExtension.createInputRules
+```
 
 #### createKeymap()
 
 ```ts
-createKeymap(): KeyBindings
+createKeymap(): KeyBindings;
 ```
 
 Add keymap bindings for this extension.
@@ -215,12 +229,14 @@ Add keymap bindings for this extension.
 
 ##### Overrides
 
-`NodeExtension.createKeymap`
+```ts
+NodeExtension.createKeymap
+```
 
 #### createNodeSpec()
 
 ```ts
-createNodeSpec(): NodeExtensionSpec
+createNodeSpec(): NodeExtensionSpec;
 ```
 
 Provide a method for creating the schema. This is required in order to
@@ -266,12 +282,14 @@ extra attributes.
 
 ##### Overrides
 
-`NodeExtension.createNodeSpec`
+```ts
+NodeExtension.createNodeSpec
+```
 
 #### createTags()
 
 ```ts
-createTags(): "block"[]
+createTags(): "block"[];
 ```
 
 Dynamically create tags for the extension.
@@ -296,7 +314,9 @@ custom string as a tag. See [[`ExtensionTag`]].
 
 ##### Overrides
 
-`NodeExtension.createTags`
+```ts
+NodeExtension.createTags
+```
 
 ***
 
@@ -306,8 +326,8 @@ custom string as a tag. See [[`ExtensionTag`]].
 
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+| <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ***
 
@@ -317,8 +337,8 @@ custom string as a tag. See [[`ExtensionTag`]].
 
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+| <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ***
 
@@ -328,10 +348,10 @@ custom string as a tag. See [[`ExtensionTag`]].
 
 | Property | Type |
 | ------ | ------ |
-| `checked?` | `boolean` |
-| `collapsed?` | `boolean` |
-| `kind?` | `string` |
-| `order?` | `null` \| `number` |
+| <a id="checked"></a> `checked?` | `boolean` |
+| <a id="collapsed"></a> `collapsed?` | `boolean` |
+| <a id="kind"></a> `kind?` | `string` |
+| <a id="order"></a> `order?` | `null` \| `number` |
 
 ***
 
@@ -341,15 +361,15 @@ custom string as a tag. See [[`ExtensionTag`]].
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
-| `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
+| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
+| <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
 
 ***
 
 ## ListKind
 
 ```ts
-type ListKind: "bullet" | "ordered" | "task" | "toggle";
+type ListKind = "bullet" | "ordered" | "task" | "toggle";
 ```
 
 All default list node kinds.
