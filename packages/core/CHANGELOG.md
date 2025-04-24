@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.5
+
+### Patch Changes
+
+- bb20f2f: Update dependencies.
+
 ## 0.5.4
 
 ### Patch Changes

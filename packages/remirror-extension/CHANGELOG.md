@@ -1,5 +1,11 @@
 # remirror-extension-flat-list
 
+## 0.3.0
+
+### Minor Changes
+
+- 7654ff1: Update Remirror to v3.
+
 ## 0.2.1
 
 ### Patch Changes
