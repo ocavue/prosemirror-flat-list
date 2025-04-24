@@ -211,8 +211,8 @@ importers:
         specifier: ^9.5.1
         version: 9.5.1
       jest-prosemirror:
-        specifier: ^2.2.0
-        version: 2.2.0(@types/node@20.17.5)(jsdom@25.0.1)
+        specifier: ^3.0.0
+        version: 3.0.0(@types/node@20.17.5)(jsdom@25.0.1)
       jest-remirror:
         specifier: ^3.0.1
         version: 3.0.1(@types/node@20.17.5)(jsdom@25.0.1)
@@ -323,8 +323,8 @@ importers:
         specifier: ^9.5.1
         version: 9.5.1
       jest-prosemirror:
-        specifier: ^2.2.0
-        version: 2.2.0(@types/node@20.17.5)(jsdom@25.0.1)
+        specifier: ^3.0.0
+        version: 3.0.0(@types/node@20.17.5)(jsdom@25.0.1)
       jest-remirror:
         specifier: ^3.0.1
         version: 3.0.1(@types/node@20.17.5)(jsdom@25.0.1)
@@ -1007,7 +1007,6 @@ packages:
 
   '@eslint-types/unicorn@52.0.0':
     resolution: {integrity: sha512-1+Om/IekT0AwlPiARvhbtKsSgVMu3ZAtP99YCzhHkDSnF5f8sQegh8/3ZmMhlCnKipa7/x8qEC7Bn4rbaagnSA==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@eslint/compat@1.1.1':
     resolution: {integrity: sha512-lpHyRyplhGPL5mGEh6M9O5nnKk0Gz4bFI+Zu6tKlPpDUN7XshWvH9C/px4UVm87IAANE0W81CEsNGbS1KlzXpA==}
@@ -1245,14 +1244,6 @@ packages:
     resolution: {integrity: sha512-vt6WJG54n+KANaqxOfzIIU7aSfFHEWFbnGLsgxL7nASHqO0zezrNA2y2Rrp80zSeTW+wSpbmDM4uJyC9UW1qoA==}
     engines: {node: ^12.16.0 || >=13.7.0}
 
-  '@lingui/core@4.3.0':
-    resolution: {integrity: sha512-nx9UM3ndYaK9VG6xQpF0OD/n0W35o5EPbiIzxgNvdNzRFtv9l1Z3pBipHXurRuZX0oDepGhVyXFD0ykPDeF7jA==}
-    engines: {node: '>=16.0.0'}
-
-  '@lingui/message-utils@4.3.0':
-    resolution: {integrity: sha512-UtgO5pm6LpJKqmZctr2R2hT+qicb8UijFDG3dctKGBuwkkwunFZUswOLJ+AxfhaO652Vov/yf5qsymJ6UFXPBA==}
-    engines: {node: '>=16.0.0'}
-
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
 
@@ -1266,9 +1257,6 @@ packages:
     resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
     peerDependencies:
       react: '>=16'
-
-  '@messageformat/parser@5.0.0':
-    resolution: {integrity: sha512-WiDKhi8F0zQaFU8cXgqq69eYFarCnTVxKcvhAONufKf0oUxbqLMW6JX6rV4Hqh+BEQWGyKKKHY4g1XA6bCLylA==}
 
   '@microsoft/api-extractor-model@7.29.8':
     resolution: {integrity: sha512-t3Z/xcO6TRbMcnKGVMs4uMzv/gd5j0NhMiJIGjD4cJMeFJ1Hf8wnLSx37vxlRlL0GWlGJhnFgxvnaL6JlS+73g==}
@@ -1433,36 +1421,16 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  '@remirror/core-constants@2.0.2':
-    resolution: {integrity: sha512-dyHY+sMF0ihPus3O27ODd4+agdHMEmuRdyiZJ2CCWjPV5UFmn17ZbElvk6WOGVE4rdCJKZQCrPV2BcikOMLUGQ==}
-
   '@remirror/core-constants@3.0.0':
     resolution: {integrity: sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg==}
 
-  '@remirror/core-helpers@3.0.0':
-    resolution: {integrity: sha512-tusEgQJIqg4qKj6HSBUFcyRnWnziw3neh4T9wOmsPGHFC3w9kl5KSrDb9UAgE8uX6y32FnS7vJ955mWOl3n50A==}
-
   '@remirror/core-helpers@4.0.0':
     resolution: {integrity: sha512-w90bJ+SLim25DWLN0Y6KjBwDhSgyzWwPxazwHQj7s3Px9dF69sG4cq3nA8RP2TCq1CV4bZmtW4+hCV26pHvgeA==}
-
-  '@remirror/core-types@2.0.6':
-    resolution: {integrity: sha512-baoSrVd0ECjiCqx8MZ/vEBxVsFmbRlM/hpKUyhkiWlL3vxFr7s+LNb7Rjl+l6IYmm65A7CU+pBa2W4846cMoAg==}
-    peerDependencies:
-      '@remirror/pm': ^2.0.9
 
   '@remirror/core-types@3.0.0':
     resolution: {integrity: sha512-69Os/+iC5hqTEwix59ceX+FZ4T49f8Zqo477s0hdVCUcBmt5gxM/qxYwOv7PWUGt99TrkQ0gxWwvXT+ZMVOOtQ==}
     peerDependencies:
       '@remirror/pm': ^3.0.0
-
-  '@remirror/core-utils@2.0.13':
-    resolution: {integrity: sha512-5UggNc6Z2d7M8SVkstsVitID8DAHSKPrqet7Hfn4/dY+p4iMCOdwf9cLqcHMg3467k5/5/RvJPMTr9GQOEx7Hg==}
-    peerDependencies:
-      '@remirror/pm': ^2.0.7
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
 
   '@remirror/core-utils@3.0.0':
     resolution: {integrity: sha512-BCARvyyJmWj8eplrNFTDE+Y9/wDZ5bGtTHUrfYmzqqC6pNFvcnOPSugjKRUvBpHnUwElG9oJDpsQPsmbmKTYNw==}
@@ -1748,14 +1716,8 @@ packages:
   '@remirror/icons@3.0.0':
     resolution: {integrity: sha512-NOgd0ENWWlUOb8xH7xz3qpcW+OCVt0oxF2Lde1hOg/x67LyUbybofe6SwXpdx3TN8bdgSU5CzlNPeugGsGMdwg==}
 
-  '@remirror/messages@2.0.6':
-    resolution: {integrity: sha512-JVnfuzuul4tcvnjiSM7Jj6iKDOP4hfaw79SciZ7t+cc2+iWyAcDYSrFMDV4Q50T+2IfWTYlWtKGpIhG6sfZaWw==}
-
   '@remirror/messages@3.0.0':
     resolution: {integrity: sha512-HK0AkfghoJOTLqYlkKozX7uI96KvtstDOpirYNfMXgfpL0ubWN5m6B22W0GQmet27G6s8I9vRbyCjH8oXKdNFA==}
-
-  '@remirror/pm@2.0.9':
-    resolution: {integrity: sha512-B2/FpFMtNS6sEIKKsxzM6uLW/Zp+1PDfVxNmA7DRTg691v9Yhh5wYXwcg2mtcMTEiRELiPwjCR5kDHSIrzb6Ag==}
 
   '@remirror/pm@3.0.0':
     resolution: {integrity: sha512-cVZK42NmmcdkrwM3fGXywOL67NTO9lXD3Hii/+8fldX88BRECuiBm/siUM9tHwnq4Y3hmIxxFrQ6DtS23c3FKA==}
@@ -1889,9 +1851,6 @@ packages:
 
   '@remirror/theme@3.0.0':
     resolution: {integrity: sha512-TJkcpOV3iR8A80NjYczzsGcDfkBXR24cElH9vnuF57LUqZwsgX9QHfZG1QaBJIVy9Zl/hFWMBcSzQqj0+P4NnA==}
-
-  '@remirror/types@1.0.1':
-    resolution: {integrity: sha512-VlZQxwGnt1jtQ18D6JqdIF+uFZo525WEqrfp9BOc3COPpK4+AWCgdnAWL+ho6imWcoINlGjR/+3b6y5C1vBVEA==}
 
   '@remirror/types@2.0.0':
     resolution: {integrity: sha512-j7G+hpyJ3SsZts0RpANYrTkQSWyP1+uy3txZPWgDwXGv3R45wtqRfoDzGO45vFcE9aNno/ThGPvClORZjjbrpw==}
@@ -2639,10 +2598,6 @@ packages:
   clipboardy@1.2.2:
     resolution: {integrity: sha512-16KrBOV7bHmHdxcQiCvfUFYVFyEah4FI8vYT1Fr7CGSA4G+xBWMEfUEQJS1hxeHGtI9ju1Bzs9uXSbj5HZKArw==}
     engines: {node: '>=4'}
-
-  clsx@2.0.0:
-    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
-    engines: {node: '>=6'}
 
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
@@ -4018,14 +3973,6 @@ packages:
     resolution: {integrity: sha512-lecRtgm/rjIK0CQ7LPQwzCs2VwW6WAahA55YBuI+xqmhm7LAaxokSB8C97yJeYyT+HvQkH741StzpU41wohhWw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  jest-prosemirror@2.2.0:
-    resolution: {integrity: sha512-/OSpdeQNF0+AvGZRPJYUu/alIZ0boHqN79TI9Wz2fY+sLiMdsTTGVEOGl86O7mqnRUM9JkU8nNW+Tc0AQ7Pu5w==}
-    peerDependencies:
-      jest: '>= 24.9.0'
-    peerDependenciesMeta:
-      jest:
-        optional: true
-
   jest-prosemirror@3.0.0:
     resolution: {integrity: sha512-LtfvpRDGP0xjutFpzgsaKYt2pjLkufYz48uggHzohQZD20eliOGE0bxf+NvzXhuVmhAJH4cSi+vRp+w58Ralrw==}
     peerDependencies:
@@ -4608,9 +4555,6 @@ packages:
   mlly@1.4.2:
     resolution: {integrity: sha512-i/Ykufi2t1EZ6NaPLdfnZk2AX8cs0d+mTzVKuPfqPKPatxLApaBoxJQ9x1/uckXtrS/U5oisPMDkNs0yQTaBRg==}
 
-  moo@0.5.2:
-    resolution: {integrity: sha512-iSAJLHYKnX41mKcJKjqvnAN9sf0LMDTXDEvFv+ffuRR9a1MIuXLjMNL6EsnDHSkKLTWNqQQ5uo61P4EbU4NU+Q==}
-
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -5082,13 +5026,6 @@ packages:
   prosemirror-model@1.23.0:
     resolution: {integrity: sha512-Q/fgsgl/dlOAW9ILu4OOhYWQbc7TQd4BwKH/RwmUjyVf8682Be4zj3rOYdLnYEcGzyg8LL9Q5IWYKD8tdToreQ==}
 
-  prosemirror-paste-rules@2.0.8:
-    resolution: {integrity: sha512-k3wBSc4fwtrx/UbCaf8LzMugB+P/R/TvACRfPiLruHtOP0a6FJWsZ/GTV2DJX5mQ/xyuS/vDX+q7jIsSV1D5AQ==}
-    peerDependencies:
-      prosemirror-model: ^1.22.1
-      prosemirror-state: ^1.4.2
-      prosemirror-view: ^1.33.8
-
   prosemirror-paste-rules@3.0.0:
     resolution: {integrity: sha512-p2ayp2xtSTtDPZutoxZyK6UKJhJk0hEpIfdfVYfd3DSENE1Lyrcg96pju+ClgwXlTjPUykXx5DrsfRbHCY+gGQ==}
     peerDependencies:
@@ -5111,13 +5048,6 @@ packages:
   prosemirror-state@1.4.3:
     resolution: {integrity: sha512-goFKORVbvPuAQaXhpbemJFRKJ2aixr+AZMGiquiqKxaucC6hlpHNZHWgz5R7dS4roHiwq9vDctE//CZ++o0W1Q==}
 
-  prosemirror-suggest@2.0.7:
-    resolution: {integrity: sha512-Jww17dk2z1z3P90G0LXAlZtpgOHgtMa/l39G1Fzw2RWrS+1ki2L4X5tppbhKQkHSCtBe5u++udkxQ6tRDKN21A==}
-    peerDependencies:
-      prosemirror-model: ^1.22.1
-      prosemirror-state: ^1.4.2
-      prosemirror-view: ^1.33.8
-
   prosemirror-suggest@3.0.0:
     resolution: {integrity: sha512-cEYnJHOAnQ+ET7PKY1tY8SMSpyR2rQAuYfPEmVtet0V9exgHAeiaSEzyBcCSeLesxXJRIv8b9cofyqoqyMjlEw==}
     peerDependencies:
@@ -5130,13 +5060,6 @@ packages:
 
   prosemirror-test-builder@1.1.1:
     resolution: {integrity: sha512-DJ1+4TNTE9ZcYN/ozXCaWJVrGA99UttMoVvZuidvAotRg7FaiNtEYxL/vlDwfZDRnzJDXNYhmM3XPv3EweK7yA==}
-
-  prosemirror-trailing-node@2.0.9:
-    resolution: {integrity: sha512-YvyIn3/UaLFlFKrlJB6cObvUhmwFNZVhy1Q8OpW/avoTbD/Y7H5EcjK4AZFKhmuS6/N6WkGgt7gWtBWDnmFvHg==}
-    peerDependencies:
-      prosemirror-model: ^1.22.1
-      prosemirror-state: ^1.4.2
-      prosemirror-view: ^1.33.8
 
   prosemirror-trailing-node@3.0.0:
     resolution: {integrity: sha512-xiun5/3q0w5eRnGYfNlW1uU9W6x5MoFKWwq/0TIRgt09lv7Hcser2QYV8t4muXbEr+Fwo0geYn79Xs4GKywrRQ==}
@@ -5680,9 +5603,6 @@ packages:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
 
-  test-keyboard@2.0.6:
-    resolution: {integrity: sha512-BGsiAQDO4mqP7eiVakhBtxe65iK6eYnK6lSUDS1btH/8W7JL1N7k9yZjCeY1RO2YXe0QXhdVt5MrvBefnyIdaA==}
-
   test-keyboard@2.0.7:
     resolution: {integrity: sha512-zNIqacmY4G3OLychsccBuzX664JdzEsrl+zUMhtdhwWkcViq8KP4VtgreCXreFzHcvaqDjQBpzxU3X3LNl5s/A==}
 
@@ -5837,10 +5757,6 @@ packages:
     resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==}
     engines: {node: '>=10'}
 
-  type-fest@2.19.0:
-    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
-    engines: {node: '>=12.20'}
-
   type-fest@3.13.1:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
@@ -5981,9 +5897,6 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
-  unraw@2.0.1:
-    resolution: {integrity: sha512-tdOvLfRzHolwYcHS6HIX860MkK9LQ4+oLuNwFYL7bpgTEO64PZrcQxkisgwJYCfF8sKiWLwwu1c83DvMkbefIQ==}
-
   update-browserslist-db@1.1.0:
     resolution: {integrity: sha512-EdRAaAyk2cUE1wOf2DkEhzxqOQvFOoRJFNS6NeyJ01Gp2beMRpBAINjM2iDXE3KCuKhwnvHIQCJm6ThL2Z+HzQ==}
     hasBin: true
@@ -6115,9 +6028,6 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
-
-  w3c-keyname@2.2.6:
-    resolution: {integrity: sha512-f+fciywl1SJEniZHD6H+kUO8gOnwIr7f4ijKA6+ZvJFjeGi1r4PDLl53Ayud9O/rk64RqgoQine0feoeOU0kXg==}
 
   w3c-keyname@2.2.8:
     resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
@@ -7074,16 +6984,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@lingui/core@4.3.0':
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@lingui/message-utils': 4.3.0
-      unraw: 2.0.1
-
-  '@lingui/message-utils@4.3.0':
-    dependencies:
-      '@messageformat/parser': 5.0.0
-
   '@manypkg/find-root@1.1.0':
     dependencies:
       '@babel/runtime': 7.22.5
@@ -7127,10 +7027,6 @@ snapshots:
       '@types/mdx': 2.0.4
       '@types/react': 18.3.12
       react: 18.3.1
-
-  '@messageformat/parser@5.0.0':
-    dependencies:
-      moo: 0.5.2
 
   '@microsoft/api-extractor-model@7.29.8(@types/node@20.17.5)':
     dependencies:
@@ -7290,25 +7186,7 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@remirror/core-constants@2.0.2': {}
-
   '@remirror/core-constants@3.0.0': {}
-
-  '@remirror/core-helpers@3.0.0':
-    dependencies:
-      '@remirror/core-constants': 2.0.2
-      '@remirror/types': 1.0.1
-      '@types/object.omit': 3.0.0
-      '@types/object.pick': 1.3.2
-      '@types/throttle-debounce': 2.1.0
-      case-anything: 2.1.13
-      dash-get: 1.0.2
-      deepmerge: 4.3.1
-      fast-deep-equal: 3.1.3
-      make-error: 1.3.6
-      object.omit: 3.0.0
-      object.pick: 1.3.0
-      throttle-debounce: 3.0.1
 
   '@remirror/core-helpers@4.0.0':
     dependencies:
@@ -7327,35 +7205,11 @@ snapshots:
       object.pick: 1.3.0
       throttle-debounce: 3.0.1
 
-  '@remirror/core-types@2.0.6(@remirror/pm@2.0.9)':
-    dependencies:
-      '@remirror/core-constants': 2.0.2
-      '@remirror/pm': 2.0.9
-      '@remirror/types': 1.0.1
-
   '@remirror/core-types@3.0.0(@remirror/pm@3.0.0)':
     dependencies:
       '@remirror/core-constants': 3.0.0
       '@remirror/pm': 3.0.0
       '@remirror/types': 2.0.0
-
-  '@remirror/core-utils@2.0.13(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)':
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-constants': 2.0.2
-      '@remirror/core-helpers': 3.0.0
-      '@remirror/core-types': 2.0.6(@remirror/pm@2.0.9)
-      '@remirror/messages': 2.0.6
-      '@remirror/pm': 2.0.9
-      '@types/min-document': 2.19.0
-      css-in-js-utils: 3.1.0
-      get-dom-document: 0.1.3(jsdom@25.0.1)
-      min-document: 2.19.0
-      parenthesis: 3.1.8
-    optionalDependencies:
-      '@types/node': 20.17.5
-    transitivePeerDependencies:
-      - jsdom
 
   '@remirror/core-utils@3.0.0(@remirror/pm@3.0.0)(@types/node@20.17.5)(jsdom@25.0.1)':
     dependencies:
@@ -7969,12 +7823,6 @@ snapshots:
       '@babel/runtime': 7.22.5
       '@remirror/core-helpers': 4.0.0
 
-  '@remirror/messages@2.0.6':
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@lingui/core': 4.3.0
-      '@remirror/core-helpers': 3.0.0
-
   '@remirror/messages@3.0.0(@remirror/pm@3.0.0)':
     dependencies:
       '@babel/runtime': 7.22.5
@@ -7982,28 +7830,6 @@ snapshots:
       '@remirror/core-types': 3.0.0(@remirror/pm@3.0.0)
     transitivePeerDependencies:
       - '@remirror/pm'
-
-  '@remirror/pm@2.0.9':
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-constants': 2.0.2
-      '@remirror/core-helpers': 3.0.0
-      prosemirror-collab: 1.3.1
-      prosemirror-commands: 1.6.2
-      prosemirror-dropcursor: 1.8.1
-      prosemirror-gapcursor: 1.3.2
-      prosemirror-history: 1.4.1
-      prosemirror-inputrules: 1.4.0
-      prosemirror-keymap: 1.2.2
-      prosemirror-model: 1.23.0
-      prosemirror-paste-rules: 2.0.8(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0)
-      prosemirror-schema-list: 1.4.1
-      prosemirror-state: 1.4.3
-      prosemirror-suggest: 2.0.7(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0)
-      prosemirror-tables: 1.3.7
-      prosemirror-trailing-node: 2.0.9(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0)
-      prosemirror-transform: 1.10.2
-      prosemirror-view: 1.35.0
 
   '@remirror/pm@3.0.0':
     dependencies:
@@ -8269,10 +8095,6 @@ snapshots:
     transitivePeerDependencies:
       - '@remirror/pm'
       - supports-color
-
-  '@remirror/types@1.0.1':
-    dependencies:
-      type-fest: 2.19.0
 
   '@remirror/types@2.0.0':
     dependencies:
@@ -9055,8 +8877,6 @@ snapshots:
     dependencies:
       arch: 2.2.0
       execa: 0.8.0
-
-  clsx@2.0.0: {}
 
   clsx@2.1.1: {}
 
@@ -10718,27 +10538,6 @@ snapshots:
       jest-get-type: 29.4.3
       pretty-format: 29.7.0
 
-  jest-prosemirror@2.2.0(@types/node@20.17.5)(jsdom@25.0.1):
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-constants': 2.0.2
-      '@remirror/core-helpers': 3.0.0
-      '@remirror/core-types': 2.0.6(@remirror/pm@2.0.9)
-      '@remirror/core-utils': 2.0.13(@remirror/pm@2.0.9)(@types/node@20.17.5)(jsdom@25.0.1)
-      '@remirror/pm': 2.0.9
-      '@testing-library/dom': 9.3.1
-      '@types/stringify-object': 3.3.1
-      chalk: 4.1.2
-      jest-matcher-utils: 29.5.0
-      prosemirror-schema-basic: 1.2.3
-      prosemirror-tables: 1.3.7
-      prosemirror-test-builder: 1.1.1
-      stringify-object: 3.3.0
-      test-keyboard: 2.0.6(@remirror/pm@2.0.9)
-    transitivePeerDependencies:
-      - '@types/node'
-      - jsdom
-
   jest-prosemirror@3.0.0(@types/node@20.17.5)(jsdom@25.0.1):
     dependencies:
       '@babel/runtime': 7.22.5
@@ -11798,8 +11597,6 @@ snapshots:
       pkg-types: 1.0.3
       ufo: 1.3.2
 
-  moo@0.5.2: {}
-
   mri@1.2.0: {}
 
   ms@2.1.3: {}
@@ -11884,7 +11681,7 @@ snapshots:
     dependencies:
       '@headlessui/react': 1.7.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@popperjs/core': 2.11.8
-      clsx: 2.0.0
+      clsx: 2.1.1
       escape-string-regexp: 5.0.0
       flexsearch: 0.7.31
       focus-visible: 5.2.0
@@ -11908,7 +11705,7 @@ snapshots:
       '@napi-rs/simple-git': 0.1.9
       '@theguild/remark-mermaid': 0.0.5(react@18.3.1)
       '@theguild/remark-npm2yarn': 0.2.1
-      clsx: 2.0.0
+      clsx: 2.1.1
       github-slugger: 2.0.0
       graceful-fs: 4.2.11
       gray-matter: 4.0.3
@@ -12321,7 +12118,7 @@ snapshots:
   prosemirror-keymap@1.2.2:
     dependencies:
       prosemirror-state: 1.4.3
-      w3c-keyname: 2.2.6
+      w3c-keyname: 2.2.8
 
   prosemirror-menu@1.2.4:
     dependencies:
@@ -12333,16 +12130,6 @@ snapshots:
   prosemirror-model@1.23.0:
     dependencies:
       orderedmap: 2.1.0
-
-  prosemirror-paste-rules@2.0.8(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-constants': 2.0.2
-      '@remirror/core-helpers': 3.0.0
-      escape-string-regexp: 4.0.0
-      prosemirror-model: 1.23.0
-      prosemirror-state: 1.4.3
-      prosemirror-view: 1.35.0
 
   prosemirror-paste-rules@3.0.0(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
     dependencies:
@@ -12387,17 +12174,6 @@ snapshots:
       prosemirror-transform: 1.10.2
       prosemirror-view: 1.35.0
 
-  prosemirror-suggest@2.0.7(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-constants': 2.0.2
-      '@remirror/core-helpers': 3.0.0
-      '@remirror/types': 1.0.1
-      escape-string-regexp: 4.0.0
-      prosemirror-model: 1.23.0
-      prosemirror-state: 1.4.3
-      prosemirror-view: 1.35.0
-
   prosemirror-suggest@3.0.0(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
     dependencies:
       '@babel/runtime': 7.22.5
@@ -12422,14 +12198,6 @@ snapshots:
       prosemirror-model: 1.23.0
       prosemirror-schema-basic: 1.2.3
       prosemirror-schema-list: 1.4.1
-
-  prosemirror-trailing-node@2.0.9(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
-    dependencies:
-      '@remirror/core-constants': 2.0.2
-      escape-string-regexp: 4.0.0
-      prosemirror-model: 1.23.0
-      prosemirror-state: 1.4.3
-      prosemirror-view: 1.35.0
 
   prosemirror-trailing-node@3.0.0(prosemirror-model@1.23.0)(prosemirror-state@1.4.3)(prosemirror-view@1.35.0):
     dependencies:
@@ -13166,14 +12934,6 @@ snapshots:
       glob: 7.2.3
       minimatch: 3.1.2
 
-  test-keyboard@2.0.6(@remirror/pm@2.0.9):
-    dependencies:
-      '@babel/runtime': 7.22.5
-      '@remirror/core-helpers': 3.0.0
-      '@remirror/core-types': 2.0.6(@remirror/pm@2.0.9)
-    transitivePeerDependencies:
-      - '@remirror/pm'
-
   test-keyboard@2.0.7(@remirror/pm@3.0.0):
     dependencies:
       '@babel/runtime': 7.22.5
@@ -13312,8 +13072,6 @@ snapshots:
   type-fest@0.8.1: {}
 
   type-fest@1.4.0: {}
-
-  type-fest@2.19.0: {}
 
   type-fest@3.13.1: {}
 
@@ -13504,8 +13262,6 @@ snapshots:
 
   universalify@0.1.2: {}
 
-  unraw@2.0.1: {}
-
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
       browserslist: 4.23.3
@@ -13662,8 +13418,6 @@ snapshots:
       semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
-
-  w3c-keyname@2.2.6: {}
 
   w3c-keyname@2.2.8: {}
 
