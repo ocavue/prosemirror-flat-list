@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nr build:typedoc && next --port 3301",
-    "build": "nr build:typedoc && next build",
-    "build:typedoc": "nr -w api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
+    "dev": "pnpm run build:typedoc && next --port 3301",
+    "build": "pnpm run build:typedoc && next build",
+    "build:typedoc": "pnpm run api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
   },
   "devDependencies": {
     "@remirror/core": "^2.0.19",

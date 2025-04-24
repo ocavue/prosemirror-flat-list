@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@antfu/ni':
-        specifier: ^0.23.0
-        version: 0.23.0
       '@changesets/cli':
         specifier: ^2.27.9
         version: 2.27.9
@@ -20,9 +17,6 @@ importers:
       eslint:
         specifier: ^9.14.0
         version: 9.14.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -280,9 +274,6 @@ importers:
         specifier: ^0.5.4
         version: link:../core
     devDependencies:
-      '@antfu/ni':
-        specifier: ^0.23.0
-        version: 0.23.0
       '@microsoft/api-extractor':
         specifier: ^7.47.11
         version: 7.47.11(@types/node@20.17.5)
@@ -467,10 +458,6 @@ packages:
   '@ampproject/remapping@2.2.1':
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
     engines: {node: '>=6.0.0'}
-
-  '@antfu/ni@0.23.0':
-    resolution: {integrity: sha512-R5/GkA3PfGewAXLzz6lN5XagunF6PKeDtWt8dbZQXvHfebLS0qEczV+Azg/d+tKgSh6kRBpxvu8oSjARdPtw0A==}
-    hasBin: true
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
@@ -6397,8 +6384,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@antfu/ni@0.23.0': {}
 
   '@antfu/utils@0.7.10': {}
 

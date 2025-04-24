@@ -39,7 +39,7 @@
     "build:tsup": "tsup",
     "build:tsc": "tsc -b tsconfig.json",
     "build:api-extractor": "api-extractor run",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest"
   },
   "dependencies": {
