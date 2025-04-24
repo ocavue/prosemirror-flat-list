@@ -33,7 +33,7 @@ export function setupTestingEditor() {
 
   const markdown = (
     strings: TemplateStringsArray,
-    ...values: any[]
+    ...values: unknown[]
   ): TaggedProsemirrorNode => {
     const markdown = String.raw({ raw: strings }, ...values)
     return markdownToTaggedDoc(editor, markdown)
