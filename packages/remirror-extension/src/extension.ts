@@ -115,11 +115,13 @@ export class ListExtension extends NodeExtension {
  *
  * @public
  */
-export function alwaysTrue<T extends (...args: any[]) => boolean>(func: T): T {
-  return ((...args) => {
+export function alwaysTrue<T extends unknown[]>(
+  func: (...args: T) => boolean,
+): (...args: T) => boolean {
+  return (...args) => {
     func(...args)
     return true
-  }) as T
+  }
 }
 
 declare global {
