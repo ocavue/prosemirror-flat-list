@@ -20,7 +20,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "composite": true
+    "composite": true,
+    "target": "ES2017"
   },
   "include": [
     "./*.ts",

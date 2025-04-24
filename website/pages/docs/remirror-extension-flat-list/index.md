@@ -40,13 +40,15 @@ new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Part
 
 #### name
 
+##### Get Signature
+
 ```ts
 get name(): "list"
 ```
 
 The unique name of this extension.
 
-##### Remarks
+###### Remarks
 
 Every extension **must** have a name. The name should have a distinct type
 to allow for better type inference for end users. By convention the name
@@ -60,7 +62,7 @@ class SimpleExtension extends Extension {
 }
 ```
 
-##### Returns
+###### Returns
 
 `"list"`
 
