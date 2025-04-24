@@ -28,8 +28,8 @@
       "require": "./dist/remirror-extension-flat-list.cjs",
       "import": "./dist/remirror-extension-flat-list.js"
     },
-    "./style.css": "./dist/style.css",
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/style.css",
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
