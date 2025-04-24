@@ -2,46 +2,6 @@
 
 ## Interfaces
 
-### ListAttributes
-
-#### Properties
-
-| Property | Type |
-| ------ | ------ |
-| <a id="checked"></a> `checked?` | `boolean` |
-| <a id="collapsed"></a> `collapsed?` | `boolean` |
-| <a id="kind"></a> `kind?` | `string` |
-| <a id="order"></a> `order?` | `null` \| `number` |
-
-***
-
-### ListToDOMOptions
-
-#### Properties
-
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="getattributes"></a> `getAttributes?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `undefined` \| `string`\> | `undefined` | An optional function to get the attributes added to HTML element. |
-| <a id="getmarkers"></a> `getMarkers?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => \| `null` \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[] | `undefined` | An optional function to get elements inside `<div class="list-marker">`. Return `null` to hide the marker. |
-| <a id="nativelist"></a> `nativeList?` | `boolean` | `false` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element. You might want to use [joinListElements](#joinlistelements) to join the list elements afterward. |
-| <a id="node"></a> `node` | [`Node`](https://prosemirror.net/docs/ref/#model.Node) | `undefined` | The list node to be rendered. |
-
-***
-
-### ProsemirrorNodeJSON
-
-#### Properties
-
-| Property | Type |
-| ------ | ------ |
-| <a id="attrs"></a> `attrs?` | [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs) |
-| <a id="content"></a> `content?` | [`ProsemirrorNodeJSON`](#prosemirrornodejson)[] |
-| <a id="marks"></a> `marks?` | ( \| `string` \| \{ `attrs?`: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs); `type`: `string`; \})[] |
-| <a id="text"></a> `text?` | `string` |
-| <a id="type"></a> `type` | `string` |
-
-***
-
 ### ToggleCollapsedOptions
 
 #### Properties
@@ -827,6 +787,46 @@ See also https://github.com/ProseMirror/prosemirror/issues/934
 [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)
 
 ## Schema
+
+### ListAttributes
+
+#### Properties
+
+| Property | Type |
+| ------ | ------ |
+| <a id="checked"></a> `checked?` | `boolean` |
+| <a id="collapsed"></a> `collapsed?` | `boolean` |
+| <a id="kind"></a> `kind?` | `string` |
+| <a id="order"></a> `order?` | `null` \| `number` |
+
+***
+
+### ListToDOMOptions
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="getattributes"></a> `getAttributes?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `undefined` \| `string`\> | `undefined` | An optional function to get the attributes added to HTML element. |
+| <a id="getmarkers"></a> `getMarkers?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => \| `null` \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[] | `undefined` | An optional function to get elements inside `<div class="list-marker">`. Return `null` to hide the marker. |
+| <a id="nativelist"></a> `nativeList?` | `boolean` | `false` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element. You might want to use [joinListElements](#joinlistelements) to join the list elements afterward. |
+| <a id="node"></a> `node` | [`Node`](https://prosemirror.net/docs/ref/#model.Node) | `undefined` | The list node to be rendered. |
+
+***
+
+### ProsemirrorNodeJSON
+
+#### Properties
+
+| Property | Type |
+| ------ | ------ |
+| <a id="attrs"></a> `attrs?` | [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs) |
+| <a id="content"></a> `content?` | [`ProsemirrorNodeJSON`](#prosemirrornodejson)[] |
+| <a id="marks"></a> `marks?` | ( \| `string` \| \{ `attrs?`: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs); `type`: `string`; \})[] |
+| <a id="text"></a> `text?` | `string` |
+| <a id="type"></a> `type` | `string` |
+
+***
 
 ### ListKind
 

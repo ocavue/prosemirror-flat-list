@@ -322,19 +322,6 @@ NodeExtension.createTags
 
 ## Interfaces
 
-### ListAttributes
-
-#### Properties
-
-| Property | Type |
-| ------ | ------ |
-| <a id="checked"></a> `checked?` | `boolean` |
-| <a id="collapsed"></a> `collapsed?` | `boolean` |
-| <a id="kind"></a> `kind?` | `string` |
-| <a id="order"></a> `order?` | `null` \| `number` |
-
-***
-
 ### ToggleCollapsedOptions
 
 #### Properties
@@ -367,6 +354,19 @@ NodeExtension.createTags
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ## Schema
+
+### ListAttributes
+
+#### Properties
+
+| Property | Type |
+| ------ | ------ |
+| <a id="checked"></a> `checked?` | `boolean` |
+| <a id="collapsed"></a> `collapsed?` | `boolean` |
+| <a id="kind"></a> `kind?` | `string` |
+| <a id="order"></a> `order?` | `null` \| `number` |
+
+***
 
 ### ListKind
 
