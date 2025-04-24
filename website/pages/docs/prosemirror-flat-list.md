@@ -2,28 +2,6 @@
 
 ## Interfaces
 
-### DedentListOptions
-
-#### Properties
-
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
-
-***
-
-### IndentListOptions
-
-#### Properties
-
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
-
-***
-
 ### ListAttributes
 
 #### Properties
@@ -261,6 +239,28 @@ otherwise `null` is returned.
 `null` \| [`ProsemirrorNodeJSON`](#prosemirrornodejson)
 
 ## Commands
+
+### DedentListOptions
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
+
+### IndentListOptions
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
 
 ### backspaceCommand
 

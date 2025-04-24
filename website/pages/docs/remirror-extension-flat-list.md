@@ -322,28 +322,6 @@ NodeExtension.createTags
 
 ## Interfaces
 
-### DedentListOptions
-
-#### Properties
-
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
-
-***
-
-### IndentListOptions
-
-#### Properties
-
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
-
-***
-
 ### ListAttributes
 
 #### Properties
@@ -365,6 +343,28 @@ NodeExtension.createTags
 | ------ | ------ | ------ |
 | <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
 | <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
+
+## Commands
+
+### DedentListOptions
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
+
+### IndentListOptions
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ## Schema
 
