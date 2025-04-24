@@ -5,7 +5,9 @@ import {
 
 import { type ListAttributes } from '../types'
 
-/** @public */
+/**
+ * @public @group Schema
+ */
 export interface ListToDOMOptions {
   /**
    * The list node to be rendered.

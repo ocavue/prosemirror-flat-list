@@ -7,7 +7,9 @@ import type { Attrs, Node } from 'prosemirror-model'
  */
 export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
-/** @public */
+/**
+ * @public @group Schema
+ */
 export interface ListAttributes {
   kind?: string
   order?: number | null
@@ -15,7 +17,9 @@ export interface ListAttributes {
   collapsed?: boolean
 }
 
-/** @public */
+/**
+ * @public @group Schema
+ */
 export interface ProsemirrorNodeJSON {
   type: string
   marks?: Array<{ type: string; attrs?: Attrs } | string>
