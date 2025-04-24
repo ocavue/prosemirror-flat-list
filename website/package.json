@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm run build:typedoc && next --port 3301",
     "build": "pnpm run build:typedoc && pnpm run build:next",
-    "build:next": "next build --turbopack",
+    "build:next": "next build",
     "build:typedoc": "pnpm -w run api && typedoc && touch pages/docs/index.md && rm pages/docs/index.md"
   },
   "devDependencies": {
