@@ -18,7 +18,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Emit .d.ts files
-        run: pnpm run typecheck
+        run: pnpm run api
 
       - name: Lint
         run: pnpm run lint
