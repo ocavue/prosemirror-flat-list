@@ -51,10 +51,9 @@
   "hidePageHeader": true,
   "entryFileName": "index.md",
   "useCodeBlocks": true,
-  "excludeGroups": true,
   "typeDeclarationFormat": "table",
   "enumMembersFormat": "table",
   "propertiesFormat": "table",
   "parametersFormat": "table",
-  "outputFileStrategy": "modules"
+  "router": "module"
 }

@@ -1,48 +1,50 @@
 # remirror-extension-flat-list
 
-## ListExtension
+## Classes
+
+### ListExtension
 
 A Remirror extension for creating lists. It's a simple wrapper around the API from `prosemirror-flat-list`.
 
-### Extends
+#### Extends
 
 - [`NodeExtension`](https://remirror.io/docs/api/core/#class-nodeextension)
 
-### Constructors
+#### Constructors
 
-#### Constructor
+##### Constructor
 
 ```ts
 new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Partial<ConditionalPick<PickPartial<EmptyShape>, StaticAnnotation>> & GetDynamic<EmptyShape> & BaseExtensionOptions]): ListExtension;
 ```
 
-##### Parameters
+###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | ...`args` | \[`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`\] |
 
-##### Returns
+###### Returns
 
 [`ListExtension`](#listextension)
 
-##### Inherited from
+###### Inherited from
 
 ```ts
 NodeExtension.constructor
 ```
 
-### Properties
+#### Properties
 
 | Property | Modifier | Type | Default value | Description | Overrides |
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | <a id="disableextraattributes"></a> `disableExtraAttributes` | `static` | `boolean` | `true` | Whether to disable extra attributes for this extension. | `NodeExtension.disableExtraAttributes` |
 
-### Accessors
+#### Accessors
 
-#### name
+##### name
 
-##### Get Signature
+###### Get Signature
 
 ```ts
 get name(): "list";
@@ -68,15 +70,15 @@ class SimpleExtension extends Extension {
 
 `"list"`
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.name
 ```
 
-### Methods
+#### Methods
 
-#### createCommands()
+##### createCommands()
 
 ```ts
 createCommands(): {
@@ -99,7 +101,7 @@ Create and register commands for that can be called within the editor.
 These are typically used to create menu's actions and as a direct
 response to user actions.
 
-##### Returns
+###### Returns
 
 ```ts
 {
@@ -129,7 +131,7 @@ response to user actions.
 | `unwrapList()` | (`options?`: [`UnwrapListOptions`](prosemirror-flat-list.md#unwraplistoptions)) => `CommandFunction`\<`object`\> |
 | `wrapInList()` | (`getAttrs`: \| [`ListAttributes`](#listattributes) \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\> |
 
-##### Remarks
+###### Remarks
 
 The `createCommands` method should return an object with each key being
 unique within the editor. To ensure that this is the case it is
@@ -165,13 +167,13 @@ these commands.
 Another benefit of commands is that they are picked up by typescript
 and can provide code completion for consumers of the extension.
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createCommands
 ```
 
-#### createExternalPlugins()
+##### createExternalPlugins()
 
 ```ts
 createExternalPlugins(): ProsemirrorPlugin[];
@@ -180,23 +182,23 @@ createExternalPlugins(): ProsemirrorPlugin[];
 Register third party plugins when this extension is placed into the
 editor.
 
-##### Returns
+###### Returns
 
 `ProsemirrorPlugin`[]
 
-##### Remarks
+###### Remarks
 
 Some plugins (like the table plugin) consume several different plugins,
 creator method allows you to return a list of plugins you'd like to
 support.
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createExternalPlugins
 ```
 
-#### createInputRules()
+##### createInputRules()
 
 ```ts
 createInputRules(): InputRule[];
@@ -205,17 +207,17 @@ createInputRules(): InputRule[];
 Register input rules which are activated if the regex matches as a user is
 typing.
 
-##### Returns
+###### Returns
 
 [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createInputRules
 ```
 
-#### createKeymap()
+##### createKeymap()
 
 ```ts
 createKeymap(): KeyBindings;
@@ -223,17 +225,17 @@ createKeymap(): KeyBindings;
 
 Add keymap bindings for this extension.
 
-##### Returns
+###### Returns
 
 `KeyBindings`
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createKeymap
 ```
 
-#### createNodeSpec()
+##### createNodeSpec()
 
 ```ts
 createNodeSpec(): NodeExtensionSpec;
@@ -242,18 +244,18 @@ createNodeSpec(): NodeExtensionSpec;
 Provide a method for creating the schema. This is required in order to
 create a `NodeExtension`.
 
-##### Returns
+###### Returns
 
 `NodeExtensionSpec`
 
-##### Remarks
+###### Remarks
 
 A node schema defines the behavior of the content within the editor. This
 is very tied to the prosemirror implementation and the best place to learn
 more about it is in the
 [docs](https://prosemirror.net/docs/guide/#schema).
 
-##### Params
+###### Params
 
 hole - a method that is meant to indicate where extra attributes
 should be placed (if they exist).
@@ -280,13 +282,13 @@ class AwesomeExtension extends NodeExtension {
 The above example will have the `hole()` method call replaced with the
 extra attributes.
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createNodeSpec
 ```
 
-#### createTags()
+##### createTags()
 
 ```ts
 createTags(): "block"[];
@@ -300,11 +302,11 @@ This behavior is later grouped in the `Manager` and passed to the
 formatting and use the tag to identify which registered extensions are
 formatters.
 
-##### Returns
+###### Returns
 
 `"block"`[]
 
-##### Remarks
+###### Remarks
 
 Tags are also automatically added to the node and mark extensions as a
 group when they are found there.
@@ -312,17 +314,17 @@ group when they are found there.
 There are internally defined tags but it's also possible to define any
 custom string as a tag. See [[`ExtensionTag`]].
 
-##### Overrides
+###### Overrides
 
 ```ts
 NodeExtension.createTags
 ```
 
-***
+## Interfaces
 
-## DedentListOptions
+### DedentListOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
@@ -331,9 +333,9 @@ NodeExtension.createTags
 
 ***
 
-## IndentListOptions
+### IndentListOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
@@ -342,9 +344,9 @@ NodeExtension.createTags
 
 ***
 
-## ListAttributes
+### ListAttributes
 
-### Properties
+#### Properties
 
 | Property | Type |
 | ------ | ------ |
@@ -355,18 +357,18 @@ NodeExtension.createTags
 
 ***
 
-## ToggleCollapsedOptions
+### ToggleCollapsedOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
 | <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
 | <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
 
-***
+## Schema
 
-## ListKind
+### ListKind
 
 ```ts
 type ListKind = "bullet" | "ordered" | "task" | "toggle";
