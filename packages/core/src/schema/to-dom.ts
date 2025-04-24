@@ -38,12 +38,13 @@ export interface ListToDOMOptions {
  *
  * @public @group Schema
  */
-export function listToDOM({
-  node,
-  nativeList = false,
-  getMarkers = defaultMarkerGetter,
-  getAttributes = defaultAttributesGetter,
-}: ListToDOMOptions): DOMOutputSpec {
+export function listToDOM(options: ListToDOMOptions): DOMOutputSpec {
+  const {
+    node,
+    nativeList = false,
+    getMarkers = defaultMarkerGetter,
+    getAttributes = defaultAttributesGetter,
+  } = options
   const attrs = node.attrs as ListAttributes
   const markerHidden = node.firstChild?.type === node.type
   const markers = markerHidden ? null : getMarkers(node)
