@@ -1,9 +1,6 @@
-import {
-  type DOMOutputSpec,
-  type Node as ProsemirrorNode,
-} from 'prosemirror-model'
+import type { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 
-import { type ListAttributes } from '../types'
+import type { ListAttributes } from '../types'
 
 /**
  * @public @group Schema

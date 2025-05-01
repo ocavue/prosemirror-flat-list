@@ -1,4 +1,4 @@
-import { type ListAttributes, type ProsemirrorNode } from '../types'
+import type { ListAttributes, ProsemirrorNode } from '../types'
 
 import { isListNode } from './is-list-node'
 

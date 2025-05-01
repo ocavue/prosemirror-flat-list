@@ -1,4 +1,4 @@
-import { type NodeSelection, type Selection } from 'prosemirror-state'
+import type { NodeSelection, Selection } from 'prosemirror-state'
 
 import { isNodeSelection } from './is-node-selection'
 

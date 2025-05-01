@@ -6,10 +6,10 @@ import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import { HeadingExtension } from '@remirror/extension-heading'
 import { HorizontalRuleExtension } from '@remirror/extension-horizontal-rule'
 import { renderEditor, type TaggedProsemirrorNode } from 'jest-remirror'
-import { type Command } from 'prosemirror-state'
+import type { Command } from 'prosemirror-state'
 import { expect } from 'vitest'
 
-import { type ListAttributes } from '../src/types'
+import type { ListAttributes } from '../src/types'
 
 import { ListExtension } from './extension'
 import { markdownToTaggedDoc } from './markdown'

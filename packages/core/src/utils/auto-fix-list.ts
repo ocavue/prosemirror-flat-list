@@ -1,7 +1,7 @@
-import { type Transaction } from 'prosemirror-state'
+import type { Transaction } from 'prosemirror-state'
 import { canJoin, canSplit } from 'prosemirror-transform'
 
-import { type ProsemirrorNode } from '../types'
+import type { ProsemirrorNode } from '../types'
 
 import { isListNode } from './is-list-node'
 import { patchCommand } from './patch-command'

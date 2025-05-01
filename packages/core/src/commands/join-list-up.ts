@@ -1,9 +1,5 @@
 import { NodeRange, type ResolvedPos } from 'prosemirror-model'
-import {
-  type Command,
-  type EditorState,
-  type Transaction,
-} from 'prosemirror-state'
+import type { Command, EditorState, Transaction } from 'prosemirror-state'
 
 import { atTextblockStart } from '../utils/at-textblock-start'
 import { isListNode } from '../utils/is-list-node'

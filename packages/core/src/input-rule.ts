@@ -1,9 +1,9 @@
 import { InputRule } from 'prosemirror-inputrules'
-import { type Attrs } from 'prosemirror-model'
-import { type Transaction } from 'prosemirror-state'
+import type { Attrs } from 'prosemirror-model'
+import type { Transaction } from 'prosemirror-state'
 import { findWrapping } from 'prosemirror-transform'
 
-import { type ListAttributes } from './types'
+import type { ListAttributes } from './types'
 import { getListType } from './utils/get-list-type'
 import { isListNode } from './utils/is-list-node'
 import { parseInteger } from './utils/parse-integer'

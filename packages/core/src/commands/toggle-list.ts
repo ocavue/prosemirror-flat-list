@@ -1,7 +1,7 @@
 import { chainCommands } from 'prosemirror-commands'
-import { type Command } from 'prosemirror-state'
+import type { Command } from 'prosemirror-state'
 
-import { type ListAttributes } from '../types'
+import type { ListAttributes } from '../types'
 
 import { createUnwrapListCommand } from './unwrap-list'
 import { createWrapInListCommand } from './wrap-in-list'

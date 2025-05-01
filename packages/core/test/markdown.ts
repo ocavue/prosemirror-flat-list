@@ -6,10 +6,10 @@ import {
   type ProsemirrorNode,
 } from '@remirror/core'
 import dedent from 'dedent'
-import {
-  type RemirrorTestChain,
-  type TaggedContentWithText,
-  type TaggedProsemirrorNode,
+import type {
+  RemirrorTestChain,
+  TaggedContentWithText,
+  TaggedProsemirrorNode,
 } from 'jest-remirror'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'

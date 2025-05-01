@@ -1,9 +1,9 @@
-import {
-  type Attrs,
-  type Fragment,
-  type Mark,
-  type Node as ProsemirrorNode,
-  type NodeType,
+import type {
+  Attrs,
+  Fragment,
+  Mark,
+  Node as ProsemirrorNode,
+  NodeType,
 } from 'prosemirror-model'
 
 export function createAndFill(

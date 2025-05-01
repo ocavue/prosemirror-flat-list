@@ -1,5 +1,5 @@
-import { type Attrs } from 'prosemirror-model'
-import { type Transaction } from 'prosemirror-state'
+import type { Attrs } from 'prosemirror-model'
+import type { Transaction } from 'prosemirror-state'
 
 export function setNodeAttributes(
   tr: Transaction,

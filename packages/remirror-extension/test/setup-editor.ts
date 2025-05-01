@@ -2,7 +2,7 @@ import { BlockquoteExtension } from '@remirror/extension-blockquote'
 import '@remirror/preset-core'
 import 'jest-prosemirror'
 import { renderEditor, type TaggedProsemirrorNode } from 'jest-remirror'
-import { type ListAttributes } from 'prosemirror-flat-list'
+import type { ListAttributes } from 'prosemirror-flat-list'
 import { expect } from 'vitest'
 
 import { ListExtension } from '../src/extension'

@@ -1,4 +1,4 @@
-import { type ResolvedPos } from 'prosemirror-model'
+import type { ResolvedPos } from 'prosemirror-model'
 import {
   type Selection,
   TextSelection,

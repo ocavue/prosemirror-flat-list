@@ -1,6 +1,6 @@
-import { type ResolvedPos } from 'prosemirror-model'
+import type { ResolvedPos } from 'prosemirror-model'
 
-import { type ListAttributes } from '../types'
+import type { ListAttributes } from '../types'
 
 import { isListNode } from './is-list-node'
 

@@ -1,4 +1,4 @@
-import { type NodeRange } from 'prosemirror-model'
+import type { NodeRange } from 'prosemirror-model'
 
 import { cutByIndex } from './cut-by-index'
 

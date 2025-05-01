@@ -1,4 +1,4 @@
-import { type Schema } from 'prosemirror-model'
+import type { Schema } from 'prosemirror-model'
 import { Plugin } from 'prosemirror-state'
 
 import { ListDOMSerializer } from '../utils/list-serializer'

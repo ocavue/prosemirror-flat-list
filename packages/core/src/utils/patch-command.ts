@@ -1,4 +1,4 @@
-import { type Command, type Transaction } from 'prosemirror-state'
+import type { Command, Transaction } from 'prosemirror-state'
 
 export function patchCommand(patch: (tr: Transaction) => Transaction) {
   const withPatch = (command: Command): Command => {

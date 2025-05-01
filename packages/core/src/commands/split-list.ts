@@ -14,7 +14,7 @@ import {
 } from 'prosemirror-state'
 import { canSplit } from 'prosemirror-transform'
 
-import { type ListAttributes } from '../types'
+import type { ListAttributes } from '../types'
 import { withAutoFixList } from '../utils/auto-fix-list'
 import { createAndFill } from '../utils/create-and-fill'
 import { isBlockNodeSelection } from '../utils/is-block-node-selection'

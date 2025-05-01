@@ -1,5 +1,5 @@
-import { type TaggedProsemirrorNode } from 'jest-remirror'
-import { type Node as ProsemirrorNode } from 'prosemirror-model'
+import type { TaggedProsemirrorNode } from 'jest-remirror'
+import type { Node as ProsemirrorNode } from 'prosemirror-model'
 import { describe, expect, it } from 'vitest'
 
 import { setupTestingEditor } from '../../test/setup-editor'

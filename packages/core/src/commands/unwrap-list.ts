@@ -1,7 +1,7 @@
-import { type NodeRange } from 'prosemirror-model'
-import { type Command } from 'prosemirror-state'
+import type { NodeRange } from 'prosemirror-model'
+import type { Command } from 'prosemirror-state'
 
-import { type ListAttributes, type ProsemirrorNode } from '../types'
+import type { ListAttributes, ProsemirrorNode } from '../types'
 import { isListNode } from '../utils/is-list-node'
 import { isNodeSelection } from '../utils/is-node-selection'
 import { safeLiftFromTo } from '../utils/safe-lift'
