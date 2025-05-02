@@ -1,4 +1,4 @@
-import { type Node as ProsemirrorNode } from 'prosemirror-model'
+import type { Node as ProsemirrorNode } from 'prosemirror-model'
 
 import { isListType } from './is-list-type'
 

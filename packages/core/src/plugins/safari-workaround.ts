@@ -1,5 +1,5 @@
 import { imeSpan } from 'prosemirror-safari-ime-span'
-import { type Plugin } from 'prosemirror-state'
+import type { Plugin } from 'prosemirror-state'
 
 /**
  * Return a plugin as a workaround for a bug in Safari that causes the composition

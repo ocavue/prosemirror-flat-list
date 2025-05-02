@@ -45,13 +45,13 @@
   },
   "dependencies": {
     "@remirror/core": "^3.0.1",
-    "prosemirror-flat-list": "^0.5.4"
+    "prosemirror-flat-list": "^0.5.5"
   },
   "peerDependencies": {
     "@remirror/pm": "^2.0.5 || ^3.0.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.52.5",
+    "@microsoft/api-extractor": "^7.52.6",
     "@remirror/extension-blockquote": "^3.0.1",
     "@remirror/extension-hard-break": "^3.0.1",
     "@remirror/extension-heading": "^3.0.1",
@@ -63,7 +63,7 @@
     "@types/dedent": "^0.7.2",
     "@types/node": "^20.17.5",
     "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.6",
+    "@types/react-dom": "^18.3.7",
     "@vitest/coverage-v8": "^3.1.2",
     "dedent": "^1.5.3",
     "execa": "^9.5.2",
@@ -83,7 +83,7 @@
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "unified": "^11.0.5",
-    "vite": "^6.3.3",
+    "vite": "^6.3.4",
     "vitest": "^3.1.2"
   },
   "typedocOptions": {

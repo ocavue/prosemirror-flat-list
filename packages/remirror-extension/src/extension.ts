@@ -7,7 +7,7 @@ import {
   type NodeExtensionSpec,
   type ProsemirrorPlugin,
 } from '@remirror/core'
-import { type NodeRange } from '@remirror/pm/model'
+import type { NodeRange } from '@remirror/pm/model'
 import {
   createDedentListCommand,
   createIndentListCommand,

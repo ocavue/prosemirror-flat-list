@@ -1,4 +1,4 @@
-import { type DOMOutputSpec, type NodeSpec } from 'prosemirror-model'
+import type { DOMOutputSpec, NodeSpec } from 'prosemirror-model'
 
 import { createParseDomRules } from './parse-dom'
 import { listToDOM } from './to-dom'

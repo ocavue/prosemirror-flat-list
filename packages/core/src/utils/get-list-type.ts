@@ -1,4 +1,4 @@
-import { type NodeType, type Schema } from 'prosemirror-model'
+import type { NodeType, Schema } from 'prosemirror-model'
 
 import { getListTypeName } from './get-list-type-name'
 

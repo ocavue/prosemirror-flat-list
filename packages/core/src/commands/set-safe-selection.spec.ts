@@ -1,4 +1,4 @@
-import { type Command } from 'prosemirror-state'
+import type { Command } from 'prosemirror-state'
 import { describe, it } from 'vitest'
 
 import { setupTestingEditor } from '../../test/setup-editor'

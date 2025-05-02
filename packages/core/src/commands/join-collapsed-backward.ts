@@ -1,7 +1,7 @@
-import { type ResolvedPos } from 'prosemirror-model'
+import type { ResolvedPos } from 'prosemirror-model'
 import { type Command, TextSelection } from 'prosemirror-state'
 
-import { type ListAttributes } from '../types'
+import type { ListAttributes } from '../types'
 import { atTextblockStart } from '../utils/at-textblock-start'
 import { isListNode } from '../utils/is-list-node'
 

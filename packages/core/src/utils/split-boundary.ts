@@ -1,4 +1,4 @@
-import { type Transaction } from 'prosemirror-state'
+import type { Transaction } from 'prosemirror-state'
 
 /**
  * Split the node at the given position, and optionally, if `depth` is greater

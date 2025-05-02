@@ -1,5 +1,5 @@
 import { Fragment, NodeRange, Slice } from 'prosemirror-model'
-import { type Command, type Transaction } from 'prosemirror-state'
+import type { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 
 import { withAutoFixList } from '../utils/auto-fix-list'
