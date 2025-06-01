@@ -18,9 +18,9 @@
     "@remirror/pm": "^3.0.1",
     "@remirror/react": "^3.0.2",
     "@remirror/styles": "^3.0.0",
-    "@types/react": "^18.3.20",
+    "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
-    "next": "^15.3.1",
+    "next": "^15.3.3",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "prosemirror-flat-list": "*",
@@ -30,7 +30,7 @@
     "typedoc": "^0.28.3",
     "typedoc-plugin-external-package-links": "^0.1.0",
     "typedoc-plugin-markdown": "^4.6.3",
-    "typedoc-plugin-mdn-links": "^5.0.1",
-    "typescript": "^5.8.2"
+    "typedoc-plugin-mdn-links": "^5.0.2",
+    "typescript": "^5.8.3"
   }
 }
