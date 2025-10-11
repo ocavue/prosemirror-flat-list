@@ -1,3 +1,3 @@
-import { basic, react } from '@ocavue/eslint-config'
+import { defineESLintConfig } from '@ocavue/eslint-config'
 
-export default [...basic(), ...react()]
+export default defineESLintConfig()
