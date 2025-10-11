@@ -2,6 +2,6 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   format: ['cjs', 'esm'],
-  entry: { 'prosemirror-flat-list': 'src/index.ts' },
+  entry: { 'remirror-extension-flat-list': 'src/index.ts' },
   dts: { build: true },
 })
