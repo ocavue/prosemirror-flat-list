@@ -403,6 +403,9 @@ importers:
       prosekit:
         specifier: ^0.15.7
         version: 0.15.7(@shikijs/types@3.13.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.3)(prosemirror-state@1.4.3)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      prosemirror-flat-list:
+        specifier: workspace:^
+        version: link:../packages/core
       sharp:
         specifier: ^0.34.4
         version: 0.34.4
