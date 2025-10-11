@@ -2,5 +2,4 @@ packages:
   - 'packages/*'
   - 'examples/*'
   - 'website'
-  - 'website2'
 linkWorkspacePackages: deep
