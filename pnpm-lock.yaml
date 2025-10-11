@@ -21,8 +21,8 @@ importers:
         specifier: ^9.37.0
         version: 9.37.0(jiti@2.6.1)
       prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
+        specifier: ^3.6.2
+        version: 3.6.2
       typedoc:
         specifier: ^0.28.3
         version: 0.28.14(typescript@5.8.3)
@@ -132,7 +132,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       remirror:
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       remirror-extension-flat-list:
         specifier: '*'
         version: link:../../packages/remirror-extension
@@ -248,7 +248,7 @@ importers:
         version: 11.1.2
       remirror:
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(@microsoft/api-extractor@7.52.8(@types/node@20.17.5))(@swc/core@1.11.22)(jiti@2.6.1)(postcss@8.5.4)(typescript@5.8.3)(yaml@2.8.1)
@@ -360,7 +360,7 @@ importers:
         version: 11.1.2
       remirror:
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(@microsoft/api-extractor@7.52.8(@types/node@20.17.5))(@swc/core@1.11.22)(jiti@2.6.1)(postcss@8.5.4)(typescript@5.8.3)(yaml@2.8.1)
@@ -5225,8 +5225,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.5.3:
-    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -8426,7 +8426,7 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-code-block@3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)':
+  '@remirror/extension-code-block@3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)':
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
@@ -8437,7 +8437,7 @@ snapshots:
       '@types/refractor': 3.0.2
       refractor: 3.6.0
     optionalDependencies:
-      prettier: 3.5.3
+      prettier: 3.6.2
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
@@ -9024,7 +9024,7 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/preset-wysiwyg@3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)':
+  '@remirror/preset-wysiwyg@3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)':
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
@@ -9032,7 +9032,7 @@ snapshots:
       '@remirror/extension-blockquote': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-bold': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-code': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
-      '@remirror/extension-code-block': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+      '@remirror/extension-code-block': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       '@remirror/extension-drop-cursor': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-embed': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-find': 1.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
@@ -13142,7 +13142,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.5.3: {}
+  prettier@3.6.2: {}
 
   pretty-format@27.5.1:
     dependencies:
@@ -13623,7 +13623,7 @@ snapshots:
       mdast-util-to-markdown: 2.1.0
       unified: 11.0.5
 
-  remirror@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3):
+  remirror@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2):
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
@@ -13638,7 +13638,7 @@ snapshots:
       '@remirror/extension-bold': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-callout': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-code': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
-      '@remirror/extension-code-block': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+      '@remirror/extension-code-block': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       '@remirror/extension-collaboration': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-columns': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/extension-diff': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
@@ -13684,12 +13684,12 @@ snapshots:
       '@remirror/pm': 3.0.1
       '@remirror/preset-core': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       '@remirror/preset-formatting': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
-      '@remirror/preset-wysiwyg': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.5.3)
+      '@remirror/preset-wysiwyg': 3.0.1(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)(prettier@3.6.2)
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
       '@types/refractor': 3.0.2
       refractor: 3.6.0
     optionalDependencies:
-      prettier: 3.5.3
+      prettier: 3.6.2
     transitivePeerDependencies:
       - '@remirror/extension-react-tables'
       - '@types/node'

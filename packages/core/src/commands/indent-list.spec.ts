@@ -112,7 +112,6 @@ describe('indentList', () => {
       markdown`
         - A1
         - A2a
-
           - B1
 
           A2b<cursor>
@@ -121,7 +120,6 @@ describe('indentList', () => {
         - A1
 
         - A2a
-
           - B1
 
             A2b<cursor>
@@ -133,18 +131,15 @@ describe('indentList', () => {
       markdown`
         - A1
         - A2a
-
           - B1
 
           A2b<cursor>
-
           - B2
       `,
       markdown`
         - A1
 
         - A2a
-
           - B1
 
             A2b<cursor>
@@ -159,9 +154,7 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1a
-
           - B1a
-
             - C1
 
             B1b<start>
@@ -170,9 +163,7 @@ describe('indentList', () => {
       `,
       markdown`
         - A1a
-
           - B1a
-
             - C1
 
               B1b<start>
@@ -185,9 +176,7 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1a
-
           - B1a
-
             - C1
 
             B1b<start>
@@ -202,9 +191,7 @@ describe('indentList', () => {
       `,
       markdown`
         - A1a
-
           - B1a
-
             - C1
 
               B1b<start>
@@ -255,7 +242,6 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-
           - B<cursor>2a
 
             B2b
@@ -264,7 +250,6 @@ describe('indentList', () => {
       `,
       markdown`
         - A1
-
           - - B<cursor>2a
 
           - B2b
@@ -293,14 +278,11 @@ describe('indentList', () => {
         1. A1
 
         2. A<cursor>2
-
            - B1
       `,
       markdown`
         1. A1
-
            1. A<cursor>2
-
            - B1
       `,
     )
@@ -448,7 +430,6 @@ describe('indentList', () => {
       `,
       markdown`
         - A1
-
           - A2<cursor>
 
           A2
@@ -463,16 +444,13 @@ describe('indentList', () => {
         - A2<cursor>
 
           A2
-
           - B1
       `,
       markdown`
         - A1
-
           - A2<cursor>
 
           A2
-
           - B1
       `,
     )
@@ -483,26 +461,22 @@ describe('indentList', () => {
         - A1
 
         - A2
-
           - B1
 
           A2<cursor>
 
           A2
-
           - B1
       `,
       markdown`
         - A1
 
         - A2
-
           - B1
 
             A2<cursor>
 
           A2
-
           - B1
       `,
     )
@@ -520,7 +494,6 @@ describe('indentList', () => {
         - A1
 
           A1
-
           - <cursor>A2
       `,
     )
@@ -717,11 +690,8 @@ describe('indentList', () => {
       countSteps(
         markdown`
           - A1
-
             - B1
-
               - C1
-
                 - D1
 
                   D1b
@@ -733,13 +703,11 @@ describe('indentList', () => {
                 C1c
 
             - B2
-
               - C2
 
           - A2
 
           - A3
-
             - B3
 
               B3b
@@ -750,15 +718,11 @@ describe('indentList', () => {
         `,
         markdown`
           - A1
-
             - B1
-
               - C1
-
                 - D1
 
                   D1b
-
                   - <start>D2
 
                   C1b
@@ -766,13 +730,11 @@ describe('indentList', () => {
                   C1c
 
               - B2
-
                 - C2
 
             - A2
 
             - A3
-
               - B3
 
                 B3b
