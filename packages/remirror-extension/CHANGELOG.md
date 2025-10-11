@@ -1,5 +1,11 @@
 # remirror-extension-flat-list
 
+## 0.3.2
+
+### Patch Changes
+
+- 6a8454a: Include source map files in the bundle package.
+
 ## 0.3.1
 
 ### Patch Changes

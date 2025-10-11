@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.7
+
+### Patch Changes
+
+- 6a8454a: Include source map files in the bundle package.
+
 ## 0.5.6
 
 ### Patch Changes
