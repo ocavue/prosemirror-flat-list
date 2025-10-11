@@ -5,6 +5,8 @@ import starlightThemeNova from 'starlight-theme-nova'
 
 import preact from '@astrojs/preact';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
@@ -29,4 +31,8 @@ export default defineConfig({
       { label: 'API Reference', slug: 'reference' },
     ],
   }), preact()],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })
