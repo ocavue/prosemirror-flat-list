@@ -125,10 +125,10 @@ importers:
         specifier: '*'
         version: link:../../packages/core
       react:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
       remirror:
         specifier: ^3.0.3
@@ -138,10 +138,10 @@ importers:
         version: link:../../packages/remirror-extension
     devDependencies:
       '@types/react':
-        specifier: ^19.1.12
+        specifier: ^19.2.2
         version: 19.2.2
       '@types/react-dom':
-        specifier: ^19.1.9
+        specifier: ^19.2.1
         version: 19.2.1(@types/react@19.2.2)
       '@vitejs/plugin-react-swc':
         specifier: ^3.11.0
@@ -220,10 +220,10 @@ importers:
         specifier: ^25.0.1
         version: 25.0.1
       react:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
       rehype-stringify:
         specifier: ^10.0.1
@@ -262,7 +262,7 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@25.0.1)
       prosemirror-flat-list:
-        specifier: ^0.5.6
+        specifier: ^0.5.7
         version: link:../core
     devDependencies:
       '@remirror/extension-blockquote':
@@ -296,10 +296,10 @@ importers:
         specifier: ^20.17.5
         version: 20.17.5
       '@types/react':
-        specifier: ^19.1.12
+        specifier: ^19.2.2
         version: 19.2.2
       '@types/react-dom':
-        specifier: ^19.1.9
+        specifier: ^19.2.1
         version: 19.2.1(@types/react@19.2.2)
       '@vitest/coverage-v8':
         specifier: ^3.2.4
@@ -320,10 +320,10 @@ importers:
         specifier: ^1.25.3
         version: 1.25.3
       react:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.1
+        specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
       rehype-stringify:
         specifier: ^10.0.1
