@@ -1,4 +1,7 @@
-# Guide
+---
+title: Guide
+---
+
 
 ## Requirements
 

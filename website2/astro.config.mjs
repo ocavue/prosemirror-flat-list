@@ -11,8 +11,8 @@ export default defineConfig({
       plugins: [
         starlightThemeNova({
           nav: [
-            { label: 'Quick start', href: '/guide/getting-started' },
-            { label: 'External link', href: 'https://example.com' },
+            { label: 'Guide', href: '/guides' },
+            { label: 'Reference', href: '/reference' },
           ],
         }),
       ],
@@ -20,21 +20,12 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/withastro/starlight',
+          href: 'https://github.com/ocavue/prosemirror-flat-list',
         },
       ],
       sidebar: [
-        {
-          label: 'Guides',
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
-          ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
-        },
+        { label: 'Guide', slug: 'guides' },
+        { label: 'Reference', slug: 'reference' },
       ],
     }),
   ],
