@@ -24,28 +24,24 @@ describe('Keymap', () => {
     it('can handle nested list', () => {
       const doc1 = markdown`
         - A1
-
           - B1
 
           - <cursor>B2
       `
       const doc2 = markdown`
         - A1
-
           - B1
 
           <cursor>B2
       `
       const doc3 = markdown`
         - A1
-
           - B1
 
         <cursor>B2
       `
       const doc4 = markdown`
         - A1
-
           - B1<cursor>B2
       `
 
@@ -61,7 +57,6 @@ describe('Keymap', () => {
     it('can handle nested list with multiple children', () => {
       const doc1 = markdown`
         - A1
-
           - B1
 
           - <cursor>B2a
@@ -72,7 +67,6 @@ describe('Keymap', () => {
       `
       const doc2 = markdown`
         - A1
-
           - B1
 
           <cursor>B2a
@@ -83,7 +77,6 @@ describe('Keymap', () => {
       `
       const doc3 = markdown`
         - A1
-
           - B1<cursor>B2a
 
           B2b
@@ -101,7 +94,6 @@ describe('Keymap', () => {
     it('can handle cursor in the middle child', () => {
       const doc1 = markdown`
         - A1
-
           - B1
 
           - B2a
@@ -112,7 +104,6 @@ describe('Keymap', () => {
       `
       const doc2 = markdown`
         - A1
-
           - B1
 
           - B2a<cursor>B2b
@@ -127,7 +118,6 @@ describe('Keymap', () => {
     it('can handle cursor in the last child', () => {
       const doc1 = markdown`
         - A1
-
           - B1
 
           - B2a
@@ -138,7 +128,6 @@ describe('Keymap', () => {
       `
       const doc2 = markdown`
         - A1
-
           - B1
 
           - B2a
@@ -149,7 +138,6 @@ describe('Keymap', () => {
       `
       const doc3 = markdown`
         - A1
-
           - B1
 
           - B2a
