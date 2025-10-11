@@ -16,6 +16,8 @@
   "devDependencies": {
     "@astrojs/preact": "^4.1.1",
     "@astrojs/starlight": "^0.36.0",
+    "@egoist/tailwindcss-icons": "^1.9.0",
+    "@iconify-json/lucide": "^1.2.68",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.4",
     "preact": "^10.27.2",
