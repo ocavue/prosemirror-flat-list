@@ -15,7 +15,7 @@ import { listToDOM } from '../schema/to-dom'
  * @public @group Plugins
  */
 export class ListDOMSerializer extends DOMSerializer {
-  static nodesFromSchema(schema: Schema): {
+  static override nodesFromSchema(schema: Schema): {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec
   } {
     const nodes = DOMSerializer.nodesFromSchema(schema)
@@ -26,7 +26,7 @@ export class ListDOMSerializer extends DOMSerializer {
     }
   }
 
-  static fromSchema(schema: Schema): ListDOMSerializer {
+  static override fromSchema(schema: Schema): ListDOMSerializer {
     return (
       (schema.cached.listDomSerializer as ListDOMSerializer) ||
       (schema.cached.listDomSerializer = new ListDOMSerializer(
@@ -36,7 +36,7 @@ export class ListDOMSerializer extends DOMSerializer {
     )
   }
 
-  serializeFragment(
+  override serializeFragment(
     fragment: Fragment,
     options?: { document?: Document },
     target?: HTMLElement | DocumentFragment,
