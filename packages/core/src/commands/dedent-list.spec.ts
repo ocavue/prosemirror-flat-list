@@ -41,14 +41,12 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1a
 
             B1b<cursor>
       `,
       markdown`
         - A1
-
           - B1a
 
           B1b<cursor>
@@ -137,13 +135,11 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2<start>
 
           - B3
-
             - C1<end>
 
             B3
@@ -152,13 +148,11 @@ describe('dedentList', () => {
       `,
       markdown`
         - A1
-
           - B1
 
         - B2<start>
 
         - B3
-
           - C1<end>
 
             B3
@@ -171,7 +165,6 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2<cursor>
@@ -180,7 +173,6 @@ describe('dedentList', () => {
       `,
       markdown`
         - A1
-
           - B1
 
         - B2<cursor>
@@ -195,18 +187,15 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2
-
             - C1<start>
 
           - B3<end>
       `,
       markdown`
         - A1
-
           - B1
 
           - B2
@@ -221,20 +210,16 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2
-
             - C1<start>
 
           - B3<end>
-
             - C2
       `,
       markdown`
         - A1
-
           - B1
 
           - B2
@@ -242,7 +227,6 @@ describe('dedentList', () => {
           - C1<start>
 
         - B3<end>
-
           - - C2
       `,
     )
@@ -253,7 +237,6 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2<start>
@@ -268,13 +251,11 @@ describe('dedentList', () => {
       `,
       markdown`
         - A1
-
           - B1
 
         - B2<start>
 
         - B3<end>
-
           - B3
 
             B3
@@ -289,16 +270,13 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1<cursor>
-
             - C1
       `,
       markdown`
         - A1
 
         - B1<cursor>
-
           - - C1
       `,
     )
@@ -307,7 +285,6 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1<cursor>
-
           - B1
       `,
       markdown`
@@ -346,7 +323,6 @@ describe('dedentList', () => {
       `,
       markdown`
         - B1
-
           - B1
 
           A1
@@ -441,25 +417,19 @@ describe('dedentList', () => {
       createDedentListCommand(),
       markdown`
         - A1
-
           - B1
 
           - B2
-
             - C1
-
               - D1
 
                 D1<start>
 
         - A2
-
           - B3
-
             - C2
 
               C2
-
               - D2<end>
 
               C2
@@ -468,13 +438,10 @@ describe('dedentList', () => {
       `,
       markdown`
         - A1
-
           - B1
 
           - B2
-
             - C1
-
               - D1
 
               D1<start>
@@ -482,11 +449,9 @@ describe('dedentList', () => {
         A2
 
         - B3
-
           - C2
 
             C2
-
             - D2<end>
 
               C2

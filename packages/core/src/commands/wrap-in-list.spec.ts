@@ -118,7 +118,6 @@ describe('wrapInList', () => {
       `,
       markdown`
         - P1
-
           - P2<cursor>
 
           P3
@@ -138,7 +137,6 @@ describe('wrapInList', () => {
       `,
       markdown`
         - P1
-
           - P2<start>
 
           - P3<end>

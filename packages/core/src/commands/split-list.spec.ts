@@ -138,7 +138,6 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - A1
-
           - <cursor>
 
         paragraph
@@ -156,7 +155,6 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - A1
-
           - B1
 
           - <cursor>
@@ -165,7 +163,6 @@ describe('splitList', () => {
       `,
       markdown`
         - A1
-
           - B1
 
         - <cursor>
@@ -263,7 +260,6 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - Parent
-
           - 123<cursor>
 
             456
@@ -272,7 +268,6 @@ describe('splitList', () => {
       `,
       markdown`
         - Parent
-
           - 123
 
           - <cursor>
