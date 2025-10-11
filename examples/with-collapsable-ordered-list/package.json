@@ -2,8 +2,8 @@
   "name": "example-with-collapsable-ordered-list",
   "type": "module",
   "version": "0.0.0",
-  "description": "Example",
   "private": true,
+  "description": "Example",
   "scripts": {
     "dev": "vite --port 3304 --force --open",
     "build": "vite build"
