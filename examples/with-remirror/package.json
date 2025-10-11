@@ -12,14 +12,14 @@
     "@remirror/pm": "^3.0.1",
     "@remirror/react": "^3.0.3",
     "prosemirror-flat-list": "*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "remirror": "^3.0.3",
     "remirror-extension-flat-list": "*"
   },
   "devDependencies": {
-    "@types/react": "^18.3.26",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "typescript": "^5.9.2",
     "vite": "^6.3.6"
