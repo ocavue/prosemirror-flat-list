@@ -1,9 +1,6 @@
 {
   "extends": "@ocavue/tsconfig/es/root.json",
-  "include": [
-    "./*.js",
-    "./*.ts"
-  ],
+  "include": ["./*.js", "./*.ts"],
   "references": [
     {
       "path": "./packages/core"

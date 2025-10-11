@@ -7,9 +7,10 @@
   "description": "ProseMirror flat list monorepo",
   "scripts": {
     "build": "pnpm -r --stream --sequential run build",
+    "build:packages": "pnpm -r --stream --filter './packages/*' run build",
     "dev": "pnpm -r --parallel run dev",
     "test": "vitest",
-    "api": "pnpm -r --stream run build:tsc",
+    "api": "pnpm run build:packages && pnpm run typecheck",
     "typecheck": "tsc --build .",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
