@@ -1,7 +1,7 @@
 // @ts-check
 import starlight from '@astrojs/starlight'
-import starlightThemeNova from '@starlightjs/theme-nova'
 import { defineConfig } from 'astro/config'
+import starlightThemeNova from 'starlight-theme-nova'
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,10 +9,12 @@ export default defineConfig({
     starlight({
       title: 'prosemirror-flat-list',
       plugins: [
-        starlightThemeNova(
-          { label: 'Quick start', href: '/guide/getting-started' },
-          { label: 'External link', href: 'https://example.com' },
-        ),
+        starlightThemeNova({
+          nav: [
+            { label: 'Quick start', href: '/guide/getting-started' },
+            { label: 'External link', href: 'https://example.com' },
+          ],
+        }),
       ],
       social: [
         {
