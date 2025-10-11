@@ -1,3 +1,7 @@
+---
+title: API reference
+---
+
 # prosemirror-flat-list
 
 ## Functions

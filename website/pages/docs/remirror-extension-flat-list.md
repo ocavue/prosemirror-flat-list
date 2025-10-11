@@ -2,53 +2,41 @@
 
 ## Classes
 
-### ListExtension
+### ListExtension {#listextension}
 
 A Remirror extension for creating lists. It's a simple wrapper around the API from `prosemirror-flat-list`.
-
-#### Extends
-
-- [`NodeExtension`](https://remirror.io/docs/api/core/#class-nodeextension)
 
 #### Constructors
 
 ##### Constructor
 
-```ts
-new ListExtension(...args: [ConditionalPick<EmptyShape, StaticAnnotation> & Partial<ConditionalPick<PickPartial<EmptyShape>, StaticAnnotation>> & GetDynamic<EmptyShape> & BaseExtensionOptions]): ListExtension;
-```
+<dl>
 
-###### Parameters
+<dt>
 
-| Parameter | Type |
-| ------ | ------ |
-| ...`args` | \[`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`\] |
+<code data-typedoc-code>new <a id="constructor" href="#constructor">ListExtension</a>(...`args`: \[`ConditionalPick`\<`EmptyShape`, `StaticAnnotation`\> & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`ConditionalPick`\<`PickPartial`\<`EmptyShape`\>, `StaticAnnotation`\>\> & `GetDynamic`\<`EmptyShape`\> & `BaseExtensionOptions`\]): [`ListExtension`](#listextension)</code>
 
-###### Returns
+</dt>
 
-[`ListExtension`](#listextension)
-
-###### Inherited from
-
-```ts
-NodeExtension.constructor
-```
+</dl>
 
 #### Properties
 
 | Property | Modifier | Type | Default value | Description | Overrides |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="disableextraattributes"></a> `disableExtraAttributes` | `static` | `boolean` | `true` | Whether to disable extra attributes for this extension. | `NodeExtension.disableExtraAttributes` |
+| <a id="disableextraattributes"></a> `disableExtraAttributes` | `static` | `boolean` | `true` | Whether to disable extra attributes for this extension. |  |
 
 #### Accessors
 
-##### name
+<dl>
 
-###### Get Signature
+<dt>
 
-```ts
-get name(): "list";
-```
+<code data-typedoc-code>get <a id="name" href="#name">name</a>(): `"list"`</code>
+
+</dt>
+
+<dd>
 
 The unique name of this extension.
 
@@ -66,70 +54,38 @@ class SimpleExtension extends Extension {
 }
 ```
 
-###### Returns
+</dd>
 
-`"list"`
-
-###### Overrides
-
-```ts
-NodeExtension.name
-```
+</dl>
 
 #### Methods
 
-##### createCommands()
+<dl>
 
-```ts
-createCommands(): {
-  dedentList: (props?: DedentListOptions) => CommandFunction<object>;
-  indentList: (props?: IndentListOptions) => CommandFunction<object>;
-  moveList: (direction: "up" | "down") => CommandFunction<object>;
-  protectCollapsed: () => CommandFunction<object>;
-  splitList: () => CommandFunction<object>;
-  toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
-  toggleList: (attrs: ListAttributes) => CommandFunction<object>;
-  unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
-  wrapInList: (getAttrs: 
-     | ListAttributes
-    | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
-};
-```
+<dt>
+
+<code data-typedoc-code><a id="createcommands" href="#createcommands">createCommands</a>(): \{
+  `dedentList`: (`props?`: [`DedentListOptions`](#dedentlistoptions)) => `CommandFunction`\<`object`\>;
+  `indentList`: (`props?`: [`IndentListOptions`](#indentlistoptions)) => `CommandFunction`\<`object`\>;
+  `moveList`: (`direction`: `"up"` \| `"down"`) => `CommandFunction`\<`object`\>;
+  `protectCollapsed`: () => `CommandFunction`\<`object`\>;
+  `splitList`: () => `CommandFunction`\<`object`\>;
+  `toggleCollapsed`: (`props?`: [`ToggleCollapsedOptions`](#togglecollapsedoptions)) => `CommandFunction`\<`object`\>;
+  `toggleList`: (`attrs`: [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\>;
+  `unwrapList`: (`options?`: [`UnwrapListOptions`](prosemirror-flat-list.md#unwraplistoptions)) => `CommandFunction`\<`object`\>;
+  `wrapInList`: (`getAttrs`: 
+     \| [`ListAttributes`](#listattributes)
+    \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => [`ListAttributes`](#listattributes) \| `null`) => `CommandFunction`\<`object`\>;
+\}</code>
+
+</dt>
+
+<dd>
 
 Create and register commands for that can be called within the editor.
 
 These are typically used to create menu's actions and as a direct
 response to user actions.
-
-###### Returns
-
-```ts
-{
-  dedentList: (props?: DedentListOptions) => CommandFunction<object>;
-  indentList: (props?: IndentListOptions) => CommandFunction<object>;
-  moveList: (direction: "up" | "down") => CommandFunction<object>;
-  protectCollapsed: () => CommandFunction<object>;
-  splitList: () => CommandFunction<object>;
-  toggleCollapsed: (props?: ToggleCollapsedOptions) => CommandFunction<object>;
-  toggleList: (attrs: ListAttributes) => CommandFunction<object>;
-  unwrapList: (options?: UnwrapListOptions) => CommandFunction<object>;
-  wrapInList: (getAttrs: 
-     | ListAttributes
-    | (range: NodeRange) => null | ListAttributes) => CommandFunction<object>;
-}
-```
-
-| Name | Type |
-| ------ | ------ |
-| `dedentList()` | (`props?`: [`DedentListOptions`](#dedentlistoptions)) => `CommandFunction`\<`object`\> |
-| `indentList()` | (`props?`: [`IndentListOptions`](#indentlistoptions)) => `CommandFunction`\<`object`\> |
-| `moveList()` | (`direction`: `"up"` \| `"down"`) => `CommandFunction`\<`object`\> |
-| `protectCollapsed()` | () => `CommandFunction`\<`object`\> |
-| `splitList()` | () => `CommandFunction`\<`object`\> |
-| `toggleCollapsed()` | (`props?`: [`ToggleCollapsedOptions`](#togglecollapsedoptions)) => `CommandFunction`\<`object`\> |
-| `toggleList()` | (`attrs`: [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\> |
-| `unwrapList()` | (`options?`: [`UnwrapListOptions`](prosemirror-flat-list.md#unwraplistoptions)) => `CommandFunction`\<`object`\> |
-| `wrapInList()` | (`getAttrs`: \| [`ListAttributes`](#listattributes) \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `null` \| [`ListAttributes`](#listattributes)) => `CommandFunction`\<`object`\> |
 
 ###### Remarks
 
@@ -167,24 +123,22 @@ these commands.
 Another benefit of commands is that they are picked up by typescript
 and can provide code completion for consumers of the extension.
 
-###### Overrides
+</dd>
 
-```ts
-NodeExtension.createCommands
-```
+</dl>
 
-##### createExternalPlugins()
+<dl>
 
-```ts
-createExternalPlugins(): Plugin<any>[];
-```
+<dt>
+
+<code data-typedoc-code><a id="createexternalplugins" href="#createexternalplugins">createExternalPlugins</a>(): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)\<`any`\>[]</code>
+
+</dt>
+
+<dd>
 
 Register third party plugins when this extension is placed into the
 editor.
-
-###### Returns
-
-[`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)\<`any`\>[]
 
 ###### Remarks
 
@@ -192,61 +146,55 @@ Some plugins (like the table plugin) consume several different plugins,
 creator method allows you to return a list of plugins you'd like to
 support.
 
-###### Overrides
+</dd>
 
-```ts
-NodeExtension.createExternalPlugins
-```
+</dl>
 
-##### createInputRules()
+<dl>
 
-```ts
-createInputRules(): InputRule[];
-```
+<dt>
+
+<code data-typedoc-code><a id="createinputrules" href="#createinputrules">createInputRules</a>(): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]</code>
+
+</dt>
+
+<dd>
 
 Register input rules which are activated if the regex matches as a user is
 typing.
 
-###### Returns
+</dd>
 
-[`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)[]
+</dl>
 
-###### Overrides
+<dl>
 
-```ts
-NodeExtension.createInputRules
-```
+<dt>
 
-##### createKeymap()
+<code data-typedoc-code><a id="createkeymap" href="#createkeymap">createKeymap</a>(): `KeyBindings`</code>
 
-```ts
-createKeymap(): KeyBindings;
-```
+</dt>
+
+<dd>
 
 Add keymap bindings for this extension.
 
-###### Returns
+</dd>
 
-`KeyBindings`
+</dl>
 
-###### Overrides
+<dl>
 
-```ts
-NodeExtension.createKeymap
-```
+<dt>
 
-##### createNodeSpec()
+<code data-typedoc-code><a id="createnodespec" href="#createnodespec">createNodeSpec</a>(): `NodeExtensionSpec`</code>
 
-```ts
-createNodeSpec(): NodeExtensionSpec;
-```
+</dt>
+
+<dd>
 
 Provide a method for creating the schema. This is required in order to
 create a `NodeExtension`.
-
-###### Returns
-
-`NodeExtensionSpec`
 
 ###### Remarks
 
@@ -282,17 +230,19 @@ class AwesomeExtension extends NodeExtension {
 The above example will have the `hole()` method call replaced with the
 extra attributes.
 
-###### Overrides
+</dd>
 
-```ts
-NodeExtension.createNodeSpec
-```
+</dl>
 
-##### createTags()
+<dl>
 
-```ts
-createTags(): "block"[];
-```
+<dt>
+
+<code data-typedoc-code><a id="createtags" href="#createtags">createTags</a>(): `"block"`[]</code>
+
+</dt>
+
+<dd>
 
 Dynamically create tags for the extension.
 
@@ -302,10 +252,6 @@ This behavior is later grouped in the `Manager` and passed to the
 formatting and use the tag to identify which registered extensions are
 formatters.
 
-###### Returns
-
-`"block"`[]
-
 ###### Remarks
 
 Tags are also automatically added to the node and mark extensions as a
@@ -314,15 +260,13 @@ group when they are found there.
 There are internally defined tags but it's also possible to define any
 custom string as a tag. See [[`ExtensionTag`]].
 
-###### Overrides
+</dd>
 
-```ts
-NodeExtension.createTags
-```
+</dl>
 
 ## Commands
 
-### DedentListOptions
+### DedentListOptions {#dedentlistoptions}
 
 #### Properties
 
@@ -333,7 +277,7 @@ NodeExtension.createTags
 
 ***
 
-### IndentListOptions
+### IndentListOptions {#indentlistoptions}
 
 #### Properties
 
@@ -344,7 +288,7 @@ NodeExtension.createTags
 
 ***
 
-### ToggleCollapsedOptions
+### ToggleCollapsedOptions {#togglecollapsedoptions}
 
 #### Properties
 
@@ -355,7 +299,7 @@ NodeExtension.createTags
 
 ## Schema
 
-### ListAttributes
+### ListAttributes {#listattributes}
 
 #### Properties
 
@@ -364,14 +308,24 @@ NodeExtension.createTags
 | <a id="checked"></a> `checked?` | `boolean` |
 | <a id="collapsed"></a> `collapsed?` | `boolean` |
 | <a id="kind"></a> `kind?` | `string` |
-| <a id="order"></a> `order?` | `null` \| `number` |
+| <a id="order"></a> `order?` | `number` \| `null` |
 
 ***
 
-### ListKind
+### ListKind {#listkind}
 
-```ts
-type ListKind = "bullet" | "ordered" | "task" | "toggle";
-```
+<dl>
+
+<dt>
+
+<code data-typedoc-code>type <a id="listkind" href="#listkind">ListKind</a> = `"bullet"` \| `"ordered"` \| `"task"` \| `"toggle"`</code>
+
+</dt>
+
+<dd>
 
 All default list node kinds.
+
+</dd>
+
+</dl>

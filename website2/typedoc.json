@@ -1,0 +1,11 @@
+// https://typedoc.org/guides/options/
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "extends": ["../config/typedoc-base.json"],
+  "entryPointStrategy": "packages",
+  "entryPoints": ["../packages/core"],
+  "out": "content/docs/reference/",
+  "indexFrontmatter": {
+    "title": "API reference"
+  }
+}
