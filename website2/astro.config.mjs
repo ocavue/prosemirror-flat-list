@@ -11,8 +11,7 @@ export default defineConfig({
       plugins: [
         starlightThemeNova({
           nav: [
-            { label: 'Guide', href: '/guides' },
-            { label: 'Reference', href: '/reference' },
+            { label: 'docs', href: '/introduction' },
           ],
         }),
       ],
@@ -24,8 +23,9 @@ export default defineConfig({
         },
       ],
       sidebar: [
+        { label: 'Introduction', slug: 'introduction' },
         { label: 'Guide', slug: 'guides' },
-        { label: 'Reference', slug: 'reference' },
+        { label: 'API Reference', slug: 'reference' },
       ],
     }),
   ],
