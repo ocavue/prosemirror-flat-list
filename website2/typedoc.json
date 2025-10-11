@@ -4,7 +4,7 @@
   "extends": ["../config/typedoc-base.json"],
   "entryPointStrategy": "packages",
   "entryPoints": ["../packages/core"],
-  "out": "content/docs/reference/",
+  "out": "src/content/docs/reference/",
   "indexFrontmatter": {
     "title": "API reference"
   }
