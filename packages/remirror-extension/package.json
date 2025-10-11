@@ -32,14 +32,12 @@
     "./style.css": "./dist/style.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "pnpm run build:tsup && pnpm run build:tsc && pnpm run build:api-extractor",
-    "build:tsup": "tsup",
-    "build:tsc": "tsc -b tsconfig.json",
-    "build:api-extractor": "api-extractor run",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "prepublishOnly": "pnpm run build",
     "test": "vitest"
   },
@@ -80,6 +78,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "remirror": "^3.0.2",
+    "tsdown": "^0.15.6",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "unified": "^11.0.5",

@@ -31,7 +31,7 @@
     "./style.css": "./dist/style.css"
   },
   "files": [
-    "dist"
+    "dist", "src"
   ],
   "scripts": {
     "dev": "tsdown --watch",
