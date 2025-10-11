@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "change": "changeset",
-    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm run build && pnpm run api",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm run build",
     "ci:publish": "pnpm publish -r --no-git-checks"
   },
   "devDependencies": {

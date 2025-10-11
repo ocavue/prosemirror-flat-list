@@ -11,7 +11,7 @@
     "astro": "astro",
     "build": "pnpm run build:typedoc && pnpm run build:astro",
     "build:astro": "astro build",
-    "build:typedoc": "pnpm -w run api && typedoc"
+    "build:typedoc": "pnpm -w run build:packages && pnpm run typecheck && typedoc"
   },
   "devDependencies": {
     "@astrojs/preact": "^4.1.1",
