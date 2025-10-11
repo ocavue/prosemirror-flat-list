@@ -4,3 +4,5 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 @import 'tw-animate-css';
 @plugin "@egoist/tailwindcss-icons";
+
+@custom-variant dark (&:where(.dark, .dark *));
