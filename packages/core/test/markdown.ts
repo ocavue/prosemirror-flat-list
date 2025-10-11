@@ -84,7 +84,6 @@ function docToTaggedDoc(
 }
 
 export function markdownToTaggedDoc(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Unable to pass the type check without using any
   t: RemirrorTestChain<any>,
   markdown: string,
 ): TaggedProsemirrorNode {

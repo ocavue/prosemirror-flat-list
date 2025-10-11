@@ -22,6 +22,7 @@
     "astro": "^5.14.4",
     "preact": "^10.27.2",
     "prosekit": "^0.15.7",
+    "prosemirror-flat-list": "workspace:^",
     "sharp": "^0.34.4",
     "starlight-theme-nova": "^0.9.5",
     "tailwindcss": "^4.1.14",

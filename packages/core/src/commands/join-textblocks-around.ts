@@ -1,5 +1,3 @@
-/* eslint-disable prefer-const */
-
 import { type ResolvedPos, Slice } from 'prosemirror-model'
 import { TextSelection, type Transaction } from 'prosemirror-state'
 import { replaceStep, ReplaceStep } from 'prosemirror-transform'
