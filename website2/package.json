@@ -1,7 +1,9 @@
 {
   "name": "website2",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Website for prosemirror-flat-list",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,7 +13,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.36.0",
-    "astro": "^5.6.1",
-    "sharp": "^0.34.2"
+    "astro": "^5.14.4",
+    "sharp": "^0.34.4"
   }
 }
