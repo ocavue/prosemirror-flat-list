@@ -25,7 +25,7 @@ represents one or multiple sibling list nodes.
 
 </dl>
 
-***
+---
 
 ### isListNode() {#islistnode}
 
@@ -33,16 +33,16 @@ represents one or multiple sibling list nodes.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="islistnode" href="#islistnode">isListNode</a>(`node`: 
-  \| [`Node`](https://prosemirror.net/docs/ref/#model.Node)
-  \| `null`
-  \| `undefined`): `boolean`</code>
+<code data-typedoc-code><i>function</i> <a id="islistnode" href="#islistnode">isListNode</a>(`node`:
+\| [`Node`](https://prosemirror.net/docs/ref/#model.Node)
+\| `null`
+\| `undefined`): `boolean`</code>
 
 </dt>
 
 </dl>
 
-***
+---
 
 ### isListType() {#islisttype}
 
@@ -56,7 +56,7 @@ represents one or multiple sibling list nodes.
 
 </dl>
 
-***
+---
 
 ### joinListElements() {#joinlistelements}
 
@@ -76,7 +76,7 @@ Merge adjacent <ul> elements or adjacent <ol> elements into a single list elemen
 
 </dl>
 
-***
+---
 
 ### migrateDocJSON() {#migratedocjson}
 
@@ -104,44 +104,44 @@ otherwise `null` is returned.
 
 #### Properties
 
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
+| Property                  | Type     | Default value          | Description                         |
+| ------------------------- | -------- | ---------------------- | ----------------------------------- |
 | <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+| <a id="to"></a> `to?`     | `number` | `state.selection.to`   | A optional to position to indent.   |
 
-***
+---
 
 ### IndentListOptions {#indentlistoptions}
 
 #### Properties
 
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
+| Property                    | Type     | Default value          | Description                         |
+| --------------------------- | -------- | ---------------------- | ----------------------------------- |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+| <a id="to-1"></a> `to?`     | `number` | `state.selection.to`   | A optional to position to indent.   |
 
-***
+---
 
 ### ToggleCollapsedOptions {#togglecollapsedoptions}
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="collapsed-1"></a> `collapsed?` | `boolean` | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it. |
+| Property                                  | Type                                                                          | Description                                                                                                          |
+| ----------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| <a id="collapsed-1"></a> `collapsed?`     | `boolean`                                                                     | If this value exists, the command will set the `collapsed` attribute to this value instead of toggle it.             |
 | <a id="istoggleable"></a> `isToggleable?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => `boolean` | An optional function to accept a list node and return whether or not this node can toggle its `collapsed` attribute. |
 
-***
+---
 
 ### UnwrapListOptions {#unwraplistoptions}
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
+| Property                    | Type     | Description                                      |
+| --------------------------- | -------- | ------------------------------------------------ |
 | <a id="kind-1"></a> `kind?` | `string` | If given, only this kind of list will be unwrap. |
 
-***
+---
 
 ### WrapInListGetAttrs {#wrapinlistgetattrs}
 
@@ -149,9 +149,9 @@ otherwise `null` is returned.
 
 <dt>
 
-<code data-typedoc-code>type <a id="wrapinlistgetattrs" href="#wrapinlistgetattrs">WrapInListGetAttrs</a>\<T\> = 
-  \| `T`
-  \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `T` \| `null`</code>
+<code data-typedoc-code>type <a id="wrapinlistgetattrs" href="#wrapinlistgetattrs">WrapInListGetAttrs</a>\<T\> =
+\| `T`
+\| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `T` \| `null`</code>
 
 </dt>
 
@@ -165,7 +165,7 @@ function returns null, the command won't do anything.
 
 </dl>
 
-***
+---
 
 ### backspaceCommand {#backspacecommand}
 
@@ -192,7 +192,7 @@ Keybinding for `Backspace`. It's chained with following commands:
 
 </dl>
 
-***
+---
 
 ### deleteCommand {#deletecommand}
 
@@ -217,7 +217,7 @@ Keybinding for `Delete`. It's chained with following commands:
 
 </dl>
 
-***
+---
 
 ### enterCommand {#entercommand}
 
@@ -240,7 +240,7 @@ Keybinding for `Enter`. It's chained with following commands:
 
 </dl>
 
-***
+---
 
 ### joinCollapsedListBackward {#joincollapsedlistbackward}
 
@@ -262,7 +262,7 @@ to the first child of the collapsed list node (i.e. skip the hidden content).
 
 </dl>
 
-***
+---
 
 ### joinListUp {#joinlistup}
 
@@ -284,7 +284,7 @@ child of a list node, lift this child.
 
 </dl>
 
-***
+---
 
 ### listKeymap {#listkeymap}
 
@@ -293,11 +293,11 @@ child of a list node, lift this child.
 <dt>
 
 <code data-typedoc-code><i>const</i> <a id="listkeymap" href="#listkeymap">listKeymap</a>: \{
-  `Backspace`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Delete`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Enter`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Mod-[`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Mod-]`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
+`Backspace`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
+`Delete`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
+`Enter`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
+`Mod-[`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
+`Mod-]`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
 \}</code>
 
 </dt>
@@ -316,7 +316,7 @@ Returns an object containing the keymap for the list commands.
 
 </dl>
 
-***
+---
 
 ### protectCollapsed {#protectcollapsed}
 
@@ -344,7 +344,7 @@ delete.
 
 </dl>
 
-***
+---
 
 ### createDedentListCommand() {#creatededentlistcommand}
 
@@ -364,7 +364,7 @@ Returns a command function that decreases the indentation of selected list nodes
 
 </dl>
 
-***
+---
 
 ### createIndentListCommand() {#createindentlistcommand}
 
@@ -385,7 +385,7 @@ nodes.
 
 </dl>
 
-***
+---
 
 ### createMoveListCommand() {#createmovelistcommand}
 
@@ -405,7 +405,7 @@ Returns a command function that moves up or down selected list nodes.
 
 </dl>
 
-***
+---
 
 ### createSplitListCommand() {#createsplitlistcommand}
 
@@ -425,7 +425,7 @@ Returns a command that split the current list node.
 
 </dl>
 
-***
+---
 
 ### createToggleCollapsedCommand() {#createtogglecollapsedcommand}
 
@@ -445,7 +445,7 @@ Return a command function that toggle the `collapsed` attribute of the list node
 
 </dl>
 
-***
+---
 
 ### createToggleListCommand() {#createtogglelistcommand}
 
@@ -467,7 +467,7 @@ another kind of list, or unwrap the selected list if otherwise.
 
 </dl>
 
-***
+---
 
 ### createUnwrapListCommand() {#createunwraplistcommand}
 
@@ -487,7 +487,7 @@ Returns a command function that unwraps the list around the selection.
 
 </dl>
 
-***
+---
 
 ### createWrapInListCommand() {#createwrapinlistcommand}
 
@@ -517,8 +517,8 @@ type and attributes.
 <dt>
 
 <code data-typedoc-code>type <a id="listinputruleattributesgetter" href="#listinputruleattributesgetter">ListInputRuleAttributesGetter</a>\<T\> = (`options`: \{
-  `attributes?`: `T`;
-  `match`: `RegExpMatchArray`;
+`attributes?`: `T`;
+`match`: `RegExpMatchArray`;
 \}) => `T`</code>
 
 </dt>
@@ -531,7 +531,7 @@ A callback function to get the attributes for a list input rule.
 
 </dl>
 
-***
+---
 
 ### listInputRules {#listinputrules}
 
@@ -551,7 +551,7 @@ All input rules for lists.
 
 </dl>
 
-***
+---
 
 ### wrappingListInputRule() {#wrappinglistinputrule}
 
@@ -559,9 +559,9 @@ All input rules for lists.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="wrappinglistinputrule" href="#wrappinglistinputrule">wrappingListInputRule</a>\<T\>(`regexp`: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp), `getAttrs`: 
-  \| `T`
-  \| [`ListInputRuleAttributesGetter`](#listinputruleattributesgetter)\<`T`\>): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)</code>
+<code data-typedoc-code><i>function</i> <a id="wrappinglistinputrule" href="#wrappinglistinputrule">wrappingListInputRule</a>\<T\>(`regexp`: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp), `getAttrs`:
+\| `T`
+\| [`ListInputRuleAttributesGetter`](#listinputruleattributesgetter)\<`T`\>): [`InputRule`](https://prosemirror.net/docs/ref/#inputrules.InputRule)</code>
 
 </dt>
 
@@ -618,15 +618,15 @@ should not be serialized.
 <dt>
 
 <code data-typedoc-code><a id="serializefragment" href="#serializefragment">serializeFragment</a>(
-   `fragment`: [`Fragment`](https://prosemirror.net/docs/ref/#model.Fragment), 
-   `options?`: \{
-  `document?`: [`Document`](https://developer.mozilla.org/docs/Web/API/Document);
-\}, 
-   `target?`: 
-  \| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
-  \| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)): 
-  \| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
-  \| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)</code>
+`fragment`: [`Fragment`](https://prosemirror.net/docs/ref/#model.Fragment),
+`options?`: \{
+`document?`: [`Document`](https://developer.mozilla.org/docs/Web/API/Document);
+\},
+`target?`:
+\| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
+\| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)):
+\| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
+\| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)</code>
 
 </dt>
 
@@ -677,7 +677,7 @@ This can be useful as a base to build a custom serializer from.
 
 </dl>
 
-***
+---
 
 ### createListNodeView {#createlistnodeview}
 
@@ -698,7 +698,7 @@ list node get updated when its marker styling should changes.
 
 </dl>
 
-***
+---
 
 ### createListClipboardPlugin() {#createlistclipboardplugin}
 
@@ -719,7 +719,7 @@ clipboard. See [ListDOMSerializer](#listdomserializer).
 
 </dl>
 
-***
+---
 
 ### createListEventPlugin() {#createlisteventplugin}
 
@@ -739,7 +739,7 @@ Handle DOM events for list.
 
 </dl>
 
-***
+---
 
 ### createListPlugins() {#createlistplugins}
 
@@ -748,7 +748,7 @@ Handle DOM events for list.
 <dt>
 
 <code data-typedoc-code><i>function</i> <a id="createlistplugins" href="#createlistplugins">createListPlugins</a>(`options`: \{
-  `schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema);
+`schema`: [`Schema`](https://prosemirror.net/docs/ref/#model.Schema);
 \}): [`Plugin`](https://prosemirror.net/docs/ref/#state.Plugin)\<`any`\>[]</code>
 
 </dt>
@@ -769,7 +769,7 @@ to use if you want to customize some behavior.
 
 </dl>
 
-***
+---
 
 ### createListRenderingPlugin() {#createlistrenderingplugin}
 
@@ -789,7 +789,7 @@ Handle the list node rendering.
 
 </dl>
 
-***
+---
 
 ### createSafariInputMethodWorkaroundPlugin() {#createsafariinputmethodworkaroundplugin}
 
@@ -818,41 +818,41 @@ See also https://github.com/ProseMirror/prosemirror/issues/934
 
 #### Properties
 
-| Property | Type |
-| ------ | ------ |
-| <a id="checked"></a> `checked?` | `boolean` |
-| <a id="collapsed"></a> `collapsed?` | `boolean` |
-| <a id="kind"></a> `kind?` | `string` |
-| <a id="order"></a> `order?` | `number` \| `null` |
+| Property                            | Type               |
+| ----------------------------------- | ------------------ |
+| <a id="checked"></a> `checked?`     | `boolean`          |
+| <a id="collapsed"></a> `collapsed?` | `boolean`          |
+| <a id="kind"></a> `kind?`           | `string`           |
+| <a id="order"></a> `order?`         | `number` \| `null` |
 
-***
+---
 
 ### ListToDOMOptions {#listtodomoptions}
 
 #### Properties
 
-| Property | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| <a id="getattributes"></a> `getAttributes?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `string` \| `undefined`\> | `undefined` | An optional function to get the attributes added to HTML element. |
-| <a id="getmarkers"></a> `getMarkers?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[] \| `null` | `undefined` | An optional function to get elements inside `<div class="list-marker">`. Return `null` to hide the marker. |
-| <a id="nativelist"></a> `nativeList?` | `boolean` | `false` | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element. You might want to use [joinListElements](#joinlistelements) to join the list elements afterward. |
-| <a id="node"></a> `node` | [`Node`](https://prosemirror.net/docs/ref/#model.Node) | `undefined` | The list node to be rendered. |
+| Property                                    | Type                                                                                                                                                                                                 | Default value | Description                                                                                                                                                                 |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="getattributes"></a> `getAttributes?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `string` \| `undefined`\> | `undefined`   | An optional function to get the attributes added to HTML element.                                                                                                           |
+| <a id="getmarkers"></a> `getMarkers?`       | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => \| [`DOMOutputSpec`](https://prosemirror.net/docs/ref/#model.DOMOutputSpec)[] \| `null`                                          | `undefined`   | An optional function to get elements inside `<div class="list-marker">`. Return `null` to hide the marker.                                                                  |
+| <a id="nativelist"></a> `nativeList?`       | `boolean`                                                                                                                                                                                            | `false`       | If `true`, the list will be rendered as a native `<ul>` or `<ol>` element. You might want to use [joinListElements](#joinlistelements) to join the list elements afterward. |
+| <a id="node"></a> `node`                    | [`Node`](https://prosemirror.net/docs/ref/#model.Node)                                                                                                                                               | `undefined`   | The list node to be rendered.                                                                                                                                               |
 
-***
+---
 
 ### ProsemirrorNodeJSON {#prosemirrornodejson}
 
 #### Properties
 
-| Property | Type |
-| ------ | ------ |
-| <a id="attrs"></a> `attrs?` | [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs) |
-| <a id="content"></a> `content?` | [`ProsemirrorNodeJSON`](#prosemirrornodejson)[] |
-| <a id="marks"></a> `marks?` | ( \| `string` \| \{ `attrs?`: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs); `type`: `string`; \})[] |
-| <a id="text"></a> `text?` | `string` |
-| <a id="type"></a> `type` | `string` |
+| Property                        | Type                                                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| <a id="attrs"></a> `attrs?`     | [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs)                                                        |
+| <a id="content"></a> `content?` | [`ProsemirrorNodeJSON`](#prosemirrornodejson)[]                                                                 |
+| <a id="marks"></a> `marks?`     | ( \| `string` \| \{ `attrs?`: [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs); `type`: `string`; \})[] |
+| <a id="text"></a> `text?`       | `string`                                                                                                        |
+| <a id="type"></a> `type`        | `string`                                                                                                        |
 
-***
+---
 
 ### ListKind {#listkind}
 
@@ -872,7 +872,7 @@ All default list node kinds.
 
 </dl>
 
-***
+---
 
 ### createListSpec() {#createlistspec}
 
@@ -892,7 +892,7 @@ Return the spec for list node.
 
 </dl>
 
-***
+---
 
 ### createParseDomRules() {#createparsedomrules}
 
@@ -912,7 +912,7 @@ Returns a set of rules for parsing HTML into ProseMirror list nodes.
 
 </dl>
 
-***
+---
 
 ### listToDOM() {#listtodom}
 

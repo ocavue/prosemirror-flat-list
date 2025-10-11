@@ -2,7 +2,6 @@
 title: Guide
 ---
 
-
 ## Requirements
 
 You will need a ProseMirror project. Or you can use https://github.com/ocavue/prosemirror-playground to create a some
