@@ -32,7 +32,6 @@ export default defineConfig({
     }),
     preact(),
   ],
-
   vite: {
     plugins: [tailwindcss()],
   },
