@@ -1,15 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "rootDir": ".",
-    "composite": true,
-    "declarationDir": "dist-types",
-    "tsBuildInfoFile": "dist-types/tsconfig.tsbuildinfo"
-  },
+  "extends": "@ocavue/tsconfig/dom/app.json",
   "references": [
     {
       "path": "../core/tsconfig.json"
     }
-  ],
-  "include": ["./*.ts", "./*.cjs", "./*.mjs", "./src", "./test"]
+  ]
 }

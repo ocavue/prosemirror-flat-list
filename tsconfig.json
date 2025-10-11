@@ -1,36 +1,12 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "target": "es2018",
-    "module": "esnext",
-    "lib": ["esnext", "DOM"],
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowJs": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationMap": true,
-    "outDir": "temp",
-    "paths": {
-      "prosemirror-flat-list": ["./packages/core/src/index.ts"],
-      "remirror-extension-flat-list": [
-        "./packages/remirror-extension/src/index.ts"
-      ]
-    },
-    "composite": true
-  },
+  "extends": "@ocavue/tsconfig/es/root.json",
   "include": ["./*.js", "./*.ts"],
   "references": [
     {
-      "path": "./packages/remirror-extension"
+      "path": "./packages/core"
     },
     {
-      "path": "./packages/core"
+      "path": "./packages/remirror-extension"
     },
     {
       "path": "./examples/with-remirror"

@@ -35,13 +35,13 @@ import {
  * @public
  */
 export class ListExtension extends NodeExtension {
-  static disableExtraAttributes = true
+  static override disableExtraAttributes = true
 
   get name() {
     return 'list' as const
   }
 
-  createTags() {
+  override createTags() {
     return [ExtensionTag.Block]
   }
 
@@ -50,7 +50,7 @@ export class ListExtension extends NodeExtension {
     return createListSpec()
   }
 
-  createKeymap(): KeyBindings {
+  override createKeymap(): KeyBindings {
     const bindings: KeyBindings = {}
     for (const [key, command] of Object.entries(listKeymap)) {
       bindings[key] = convertCommand(command)
@@ -60,15 +60,15 @@ export class ListExtension extends NodeExtension {
     return bindings
   }
 
-  createExternalPlugins(): ProsemirrorPlugin[] {
+  override createExternalPlugins(): ProsemirrorPlugin[] {
     return createListPlugins({ schema: this.store.schema })
   }
 
-  createInputRules(): InputRule[] {
+  override createInputRules(): InputRule[] {
     return listInputRules
   }
 
-  createCommands() {
+  override createCommands() {
     return {
       indentList: (props?: IndentListOptions) => {
         return convertCommand(createIndentListCommand(props))

@@ -31,14 +31,14 @@
     "./style.css": "./dist/style.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "pnpm run build:tsup && pnpm run build:tsc && pnpm run build:api-extractor",
-    "build:tsup": "tsup",
-    "build:tsc": "tsc -b tsconfig.json",
-    "build:api-extractor": "api-extractor run",
+    "dev": "tsdown --watch",
+    "build": "pnpm run build:tsdown && pnpm run build:css",
+    "build:tsdown": "tsdown",
+    "build:css": "esbuild --target=chrome100 --bundle src/style.css --outfile=dist/style.css",
     "prepublishOnly": "pnpm run build",
     "test": "vitest"
   },
@@ -52,7 +52,6 @@
     "prosemirror-view": "^1.39.3"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.52.8",
     "@remirror/core": "^3.0.1",
     "@remirror/extension-blockquote": "^3.0.1",
     "@remirror/extension-heading": "^3.0.1",
@@ -63,12 +62,10 @@
     "@types/node": "^20.17.5",
     "@vitest/coverage-v8": "^3.1.4",
     "dedent": "^1.6.0",
-    "execa": "^9.6.0",
+    "esbuild": "^0.25.10",
     "jest-prosemirror": "^3.0.1",
     "jest-remirror": "^3.0.2",
     "jsdom": "^25.0.1",
-    "postcss": "^8.5.4",
-    "postcss-nesting": "^13.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rehype-stringify": "^10.0.1",
@@ -76,7 +73,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "remirror": "^3.0.2",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.15.6",
     "typescript": "^5.8.3",
     "unified": "^11.0.5",
     "vite": "^6.3.5",
