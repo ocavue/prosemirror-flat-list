@@ -3,8 +3,10 @@
   "$schema": "https://typedoc.org/schema.json",
   "plugin": [
     "typedoc-plugin-markdown",
+    "typedoc-plugin-md",
     "typedoc-plugin-mdn-links",
-    "typedoc-plugin-external-package-links"
+    "typedoc-plugin-external-package-links",
+    "typedoc-plugin-frontmatter"
   ],
   "githubPages": false,
   "disableSources": true,

@@ -1,4 +1,6 @@
-# ProseMirror Guide
+---
+title: Guide
+---
 
 ## Requirements
 

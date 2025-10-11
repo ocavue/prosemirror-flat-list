@@ -1,12 +1,8 @@
-import { DynamicEditor } from '../components/dynamic-editor.tsx'
+---
+title: Introduction
+---
 
-# ProseMirror Flat List
-
-**Powerful list for [ProseMirror] and [Remirror]**
-
-This project introduces a new [ProseMirror] list design different from the [prosemirror-schema-list].
-
-<DynamicEditor />
+prosemirror-flat-list introduces a new [ProseMirror] list design different from the [prosemirror-schema-list].
 
 ## Features
 
@@ -53,7 +49,7 @@ You can also use `wrappingListInputRule` function from this module to create you
 
 ### Migration
 
-If you want to migrate your existing documents that use [prosemirror-schema-list] or [@remirror/extension-list], you can use `migrateDocJSON` function from this module. It accepts an ProseMirror document JSON object and returns an updated document JSON object (or `null` if no migration is needed). It will replace all the old list nodes with the new list nodes. For example:
+If you want to migrate your existing documents that use [prosemirror-schema-list], you can use `migrateDocJSON` function from this module. It accepts an ProseMirror document JSON object and returns an updated document JSON object (or `null` if no migration is needed). It will replace all the old list nodes with the new list nodes. For example:
 
 ```typescript
 import { migrateDocJSON } from 'prosemirror-flat-list'
@@ -94,9 +90,5 @@ console.log(newDoc)
 ```
 
 [ProseMirror]: https://prosemirror.net/
-[Remirror]: https://remirror.io
 [prosemirror-schema-list]: https://github.com/ProseMirror/prosemirror-schema-list
-[@remirror/extension-list]: https://www.npmjs.com/package/@remirror/extension-list
-[Remirror]: https://github.com/remirror/remirror
 [prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/prosemirror-package
-[remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-package

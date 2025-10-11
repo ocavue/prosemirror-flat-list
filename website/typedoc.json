@@ -3,6 +3,9 @@
   "$schema": "https://typedoc.org/schema.json",
   "extends": ["../config/typedoc-base.json"],
   "entryPointStrategy": "packages",
-  "entryPoints": ["../packages/core", "../packages/remirror-extension"],
-  "out": "pages/docs"
+  "entryPoints": ["../packages/core"],
+  "out": "src/content/docs/reference/",
+  "indexFrontmatter": {
+    "title": "API reference"
+  }
 }

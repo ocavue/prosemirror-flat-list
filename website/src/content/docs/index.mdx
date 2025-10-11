@@ -1,0 +1,34 @@
+---
+title: prosemirror-flat-list
+description: Powerful list for ProseMirror
+template: splash
+hero:
+  tagline: Powerful list for ProseMirror
+  actions:
+    - text: Example Guide
+      link: /guides
+      icon: right-arrow
+    - text: Read the API reference
+      link: /reference
+      variant: secondary
+---
+
+import Editor from '../../components/demo-editor/editor.astro'
+import { Card, CardGrid } from '@astrojs/starlight/components'
+
+<Editor />
+
+<footer class="mt-16 text-center text-sm text-slate-500/80">
+  <span class="inline-flex text-balance">
+    <span>made with love by</span>
+    <span class="w-1"></span>
+    <a
+      class="font-medium text-slate-600 transition hover:text-slate-700"
+      href="https://github.com/ocavue"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      @ocavue
+    </a>
+  </span>
+</footer>

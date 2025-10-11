@@ -1,24 +1,9 @@
 {
+  "extends": "@ocavue/tsconfig/dom/app.json",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "noEmit": false,
-    "declaration": true,
-    "declarationDir": "temp",
-    "tsBuildInfoFile": "temp/tsconfig.tsbuildinfo",
-    "outDir": "temp",
-    "incremental": true,
-    "module": "esnext",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "composite": true,
-    "target": "ES2017"
-  },
-  "include": ["./*.ts", "./*.jsx", "./*.mjs", "./pages", "./components"],
-  "exclude": ["node_modules"]
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
 }
