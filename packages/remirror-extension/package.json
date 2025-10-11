@@ -1,7 +1,7 @@
 {
   "name": "remirror-extension-flat-list",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A Remirror extension based on prosemirror-flat-list",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
