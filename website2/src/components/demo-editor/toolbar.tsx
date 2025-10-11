@@ -1,5 +1,5 @@
 import type { Editor } from 'prosekit/core'
-import { useEditorDerivedValue } from 'prosekit/react'
+import { useEditorDerivedValue } from 'prosekit/preact'
 
 import Button from './button'
 import type { EditorExtension } from './extension'
