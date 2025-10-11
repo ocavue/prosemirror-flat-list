@@ -1,5 +1,11 @@
 # remirror-extension-flat-list
 
+## 0.3.1
+
+### Patch Changes
+
+- e66eb78: Release packages with new NPM OpenID Connect (OIDC) authentication. There are no changes to the API.
+
 ## 0.3.0
 
 ### Minor Changes

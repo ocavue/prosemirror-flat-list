@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.6
+
+### Patch Changes
+
+- e66eb78: Release packages with new NPM OpenID Connect (OIDC) authentication. There are no changes to the API.
+
 ## 0.5.5
 
 ### Patch Changes
