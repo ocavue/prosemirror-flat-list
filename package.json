@@ -17,7 +17,7 @@
     "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm run build",
     "ci:publish": "pnpm publish -r --no-git-checks",
-    "ci:publish:snapshot": "pkg-pr-new publish --pnpm prosemirror-flat-list"
+    "ci:publish:snapshot": "pkg-pr-new publish --pnpm ./packages/core"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",
