@@ -58,6 +58,20 @@ jobs:
       - name: Test
         run: pnpm run test
 
+  publish-snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: ./.github/actions/setup
+
+      - name: Build packages
+        run: pnpm run build:packages
+
+      - name: Publish snapshot packages
+        if: ${{ github.event_name == 'pull_request' }}
+        run: pnpm run ci:publish:snapshot
   deploy:
     runs-on: ubuntu-latest
 
