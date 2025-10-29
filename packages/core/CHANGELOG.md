@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.5.8
+
+### Patch Changes
+
+- d8b7cef: Parse list checkboxes following a newline.
+
 ## 0.5.7
 
 ### Patch Changes
