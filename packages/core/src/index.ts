@@ -65,12 +65,13 @@ export type {
   ProsemirrorNode,
   ProsemirrorNodeJSON,
 } from './types'
+export { findCheckboxInListItem } from './utils/find-checkbox-in-list-item'
 export { getListType } from './utils/get-list-type'
 export { isCollapsedListNode } from './utils/is-collapsed-list-node'
 export { isListNode } from './utils/is-list-node'
 export { isListType } from './utils/is-list-type'
 export { findListsRange, isListsRange } from './utils/list-range'
-export { ListDOMSerializer, joinListElements } from './utils/list-serializer'
+export { joinListElements, ListDOMSerializer } from './utils/list-serializer'
 export { parseInteger } from './utils/parse-integer'
 export { rangeToString } from './utils/range-to-string'
 export { unwrapListSlice } from './utils/unwrap-list-slice'
