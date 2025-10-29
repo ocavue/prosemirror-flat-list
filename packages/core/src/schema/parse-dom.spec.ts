@@ -114,6 +114,18 @@ describe('createParseDomRules', () => {
     expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
   })
 
+  it('can parse checkbox in paragraph', () => {
+    const content = /*html*/ `<ul><li><p><input type="checkbox" checked disabled>A1</p></li></ul>`
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
+
+  it('can parse checkbox after a newline', () => {
+    const content = /*html*/ `<ul><li><p>\n<input type="checkbox" checked disabled>A1</p></li></ul>`
+    const node = htmlToProsemirrorNode({ schema, content })
+    expect(node).toEqualRemirrorDocument(t.doc(t.checkedTaskList(t.p('A1'))))
+  })
+
   it('can parse checkbox in span and label', () => {
     const content = /*html*/ `
       <ul>
