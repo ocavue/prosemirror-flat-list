@@ -1,0 +1,4 @@
+{
+  "ignoreDeps": [],
+  "extends": ["github>ocavue/config-renovate"]
+}

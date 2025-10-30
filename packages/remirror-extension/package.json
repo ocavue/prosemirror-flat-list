@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@remirror/core": "^3.0.2",
-    "prosemirror-flat-list": "^0.5.7"
+    "prosemirror-flat-list": "^0.5.8"
   },
   "peerDependencies": {
     "@remirror/pm": "^2.0.5 || ^3.0.0"
@@ -74,8 +74,8 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "remirror": "^3.0.3",
-    "tsdown": "^0.15.11",
-    "typescript": "^5.9.2",
+    "tsdown": "^0.15.12",
+    "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "vite": "^6.4.1",
     "vitest": "^3.2.4"
