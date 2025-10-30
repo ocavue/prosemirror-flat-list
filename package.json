@@ -30,12 +30,5 @@
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
-  "renovate": {
-    "extends": [
-      "github>ocavue/config-renovate"
-    ],
-    "ignoreDeps": [],
-    "dependencyDashboard": true
-  },
   "pnpm": {}
 }
