@@ -65,7 +65,7 @@
     "dedent": "^1.7.0",
     "jest-prosemirror": "^3.0.1",
     "jest-remirror": "^3.0.3",
-    "jsdom": "^27.0.1",
+    "jsdom": "^27.1.0",
     "prosemirror-model": "^1.25.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

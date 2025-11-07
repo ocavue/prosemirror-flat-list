@@ -34,7 +34,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
+        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
 
   examples/with-collapsable-ordered-list:
     dependencies:
@@ -123,7 +123,7 @@ importers:
         version: 3.0.1
       '@remirror/react':
         specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       prosemirror-flat-list:
         specifier: '*'
         version: link:../../packages/core
@@ -135,7 +135,7 @@ importers:
         version: 19.2.0(react@19.2.0)
       remirror:
         specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
+        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
       remirror-extension-flat-list:
         specifier: '*'
         version: link:../../packages/remirror-extension
@@ -147,8 +147,8 @@ importers:
         specifier: ^19.2.2
         version: 19.2.2(@types/react@19.2.2)
       '@vitejs/plugin-react-swc':
-        specifier: ^4.2.0
-        version: 4.2.0(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
+        specifier: ^4.2.1
+        version: 4.2.1(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -182,22 +182,22 @@ importers:
     devDependencies:
       '@remirror/core':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-blockquote':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-heading':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-horizontal-rule':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm':
         specifier: ^3.0.1
         version: 3.0.1
       '@remirror/preset-core':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@types/dedent':
         specifier: ^0.7.2
         version: 0.7.2
@@ -206,22 +206,22 @@ importers:
         version: 20.17.5
       '@vitest/coverage-v8':
         specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))
+        version: 3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))
       dedent:
         specifier: ^1.7.0
         version: 1.7.0(babel-plugin-macros@3.1.0)
       esbuild:
-        specifier: ^0.25.11
-        version: 0.25.11
+        specifier: ^0.25.12
+        version: 0.25.12
       jest-prosemirror:
         specifier: ^3.0.1
-        version: 3.0.1(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.1(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       jest-remirror:
         specifier: ^3.0.3
-        version: 3.0.3(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.3(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       jsdom:
-        specifier: ^27.0.1
-        version: 27.0.1(postcss@8.5.4)
+        specifier: ^27.1.0
+        version: 27.1.0(postcss@8.5.4)
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -242,7 +242,7 @@ importers:
         version: 11.1.2
       remirror:
         specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
+        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
       tsdown:
         specifier: ^0.16.0
         version: 0.16.0(typescript@5.9.3)(unplugin-lightningcss@0.4.3)(unrun@0.2.1)
@@ -257,38 +257,38 @@ importers:
         version: 6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
+        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
 
   packages/remirror-extension:
     dependencies:
       '@remirror/core':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       prosemirror-flat-list:
         specifier: ^0.5.8
         version: link:../core
     devDependencies:
       '@remirror/extension-blockquote':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-hard-break':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-heading':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/extension-link':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm':
         specifier: ^3.0.1
         version: 3.0.1
       '@remirror/preset-core':
         specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/react':
         specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@remirror/styles':
         specifier: ^3.0.0
         version: 3.0.0(@emotion/css@11.11.2)(@emotion/react@11.11.1(@types/react@19.2.2)(react@19.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@19.2.2)(react@19.2.0))(@types/react@19.2.2)(react@19.2.0))(@types/react@19.2.2)(react@19.2.0)
@@ -306,19 +306,19 @@ importers:
         version: 19.2.2(@types/react@19.2.2)
       '@vitest/coverage-v8':
         specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))
+        version: 3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))
       dedent:
         specifier: ^1.7.0
         version: 1.7.0(babel-plugin-macros@3.1.0)
       jest-prosemirror:
         specifier: ^3.0.1
-        version: 3.0.1(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.1(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       jest-remirror:
         specifier: ^3.0.3
-        version: 3.0.3(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+        version: 3.0.3(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       jsdom:
-        specifier: ^27.0.1
-        version: 27.0.1(postcss@8.5.4)
+        specifier: ^27.1.0
+        version: 27.1.0(postcss@8.5.4)
       prosemirror-model:
         specifier: ^1.25.4
         version: 1.25.4
@@ -342,7 +342,7 @@ importers:
         version: 11.1.2
       remirror:
         specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
+        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
       tsdown:
         specifier: ^0.16.0
         version: 0.16.0(typescript@5.9.3)(unplugin-lightningcss@0.4.3)(unrun@0.2.1)
@@ -357,46 +357,46 @@ importers:
         version: 6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
+        version: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
 
   website:
     devDependencies:
       '@astrojs/preact':
-        specifier: ^4.1.2
-        version: 4.1.2(@babel/core@7.28.4)(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(preact@10.27.2)(yaml@2.8.1)
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.28.4)(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(preact@10.27.2)(yaml@2.8.1)
       '@astrojs/starlight':
-        specifier: ^0.36.1
-        version: 0.36.1(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: ^0.36.2
+        version: 0.36.2(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
       '@egoist/tailwindcss-icons':
         specifier: ^1.9.0
-        version: 1.9.0(tailwindcss@4.1.16)
+        version: 1.9.0(tailwindcss@4.1.17)
       '@iconify-json/lucide':
-        specifier: ^1.2.71
-        version: 1.2.71
+        specifier: ^1.2.72
+        version: 1.2.72
       '@tailwindcss/vite':
-        specifier: ^4.1.16
-        version: 4.1.16(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
+        specifier: ^4.1.17
+        version: 4.1.17(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
       astro:
-        specifier: ^5.15.2
-        version: 5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
+        specifier: ^5.15.4
+        version: 5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
       preact:
         specifier: ^10.27.2
         version: 10.27.2
       prosekit:
-        specifier: ^0.15.8
-        version: 0.15.8(@shikijs/types@3.13.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^0.16.1
+        version: 0.16.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       prosemirror-flat-list:
         specifier: workspace:^
         version: link:../packages/core
       sharp:
-        specifier: ^0.34.4
-        version: 0.34.4
+        specifier: ^0.34.5
+        version: 0.34.5
       starlight-theme-nova:
         specifier: ^0.9.5
-        version: 0.9.5(@astrojs/starlight@0.36.1(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)))(typescript@5.9.3)
+        version: 0.9.5(@astrojs/starlight@0.36.2(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)))(typescript@5.9.3)
       tailwindcss:
-        specifier: ^4.1.16
-        version: 4.1.16
+        specifier: ^4.1.17
+        version: 4.1.17
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
@@ -424,6 +424,9 @@ packages:
   '@aashutoshrathi/word-wrap@1.2.6':
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
+
+  '@acemir/cssom@0.9.20':
+    resolution: {integrity: sha512-YUSA5jW8qn/c6nZUlFsn2Nt5qFFRBcGTgL9CzbiZbJCtEFY0Nv/ycO3BHT9tLjus9++zOYWe5mLCRIesuay25g==}
 
   '@actions/core@1.11.1':
     resolution: {integrity: sha512-hXJCSrkwfA46Vd9Z3q4cpEpHB1rL5NG04+/rbqW9d3+CSvtB1tYe8UTpAlixa1vj0m/ULglfEK2UKxMGxCxv5A==}
@@ -540,8 +543,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/preact@4.1.2':
-    resolution: {integrity: sha512-WTi6or3F7uTuwod6F8F6UizJ0sa4XDBxSthTZgVp/p95Nv34CYFmLUscCD/HM1e8qcxhTtkI+1uIlrEEPTk9CA==}
+  '@astrojs/preact@4.1.3':
+    resolution: {integrity: sha512-Ph416wbgyumkmYr7erZ83l/d+LXdZethlHRRCbgoKEn8wo3Rkq13shKFp0QYXYSDYxVaA6UBdkdimeowy/lMLQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       preact: ^10.6.5
@@ -553,8 +556,8 @@ packages:
   '@astrojs/sitemap@3.6.0':
     resolution: {integrity: sha512-4aHkvcOZBWJigRmMIAJwRQXBS+ayoP5z40OklTXYXhUDhwusz+DyDl+nSshY6y9DvkVEavwNcFO8FD81iGhXjg==}
 
-  '@astrojs/starlight@0.36.1':
-    resolution: {integrity: sha512-Fmt8mIsAIZN18Y4YQDI6p521GsYGe4hYxh9jWmz0pHBXnS5J7Na3TSXNya4eyIymCcKkuiKFbs7b/knsdGVYPg==}
+  '@astrojs/starlight@0.36.2':
+    resolution: {integrity: sha512-QR8NfO7+7DR13kBikhQwAj3IAoptLLNs9DkyKko2M2l3PrqpcpVUnw1JBJ0msGDIwE6tBbua2UeBND48mkh03w==}
     peerDependencies:
       astro: ^5.5.0
 
@@ -795,8 +798,8 @@ packages:
   '@emnapi/core@1.5.0':
     resolution: {integrity: sha512-sbP8GzB1WDzacS8fgNPpHlp6C9VZe+SJP3F90W9rLemaQj2PzIuTEl1qDOYQf58YIpyjViI24y9aPWCjEzY2cg==}
 
-  '@emnapi/runtime@1.5.0':
-    resolution: {integrity: sha512-97/BJ3iXHww3djw6hYIfErCZFee7qCtrneuLa20UXFCOTCfBM2cvQHjWJ2EG0s0MtdNwInarqCTz35i4wWXHsQ==}
+  '@emnapi/runtime@1.7.0':
+    resolution: {integrity: sha512-oAYoQnCYaQZKVS53Fq23ceWMRxq5EhQsE0x0RdQ55jT7wagMu5k+fS39v1fiSLrtrLQlXwVINenqhLMtTrV/1Q==}
 
   '@emnapi/wasi-threads@1.1.0':
     resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
@@ -862,158 +865,158 @@ packages:
     resolution: {integrity: sha512-YAdE/IJSpwbOTiaURNCKECdAwqrJuFiZhylmesBcIRawtYKnBR2wxPhoIewMg+Yu+QuYvHfJNReWpoxGBKOChA==}
     engines: {node: '>=18'}
 
-  '@esbuild/aix-ppc64@0.25.11':
-    resolution: {integrity: sha512-Xt1dOL13m8u0WE8iplx9Ibbm+hFAO0GsU2P34UNoDGvZYkY8ifSiy6Zuc1lYxfG7svWE2fzqCUmFp5HCn51gJg==}
+  '@esbuild/aix-ppc64@0.25.12':
+    resolution: {integrity: sha512-Hhmwd6CInZ3dwpuGTF8fJG6yoWmsToE+vYgD4nytZVxcu1ulHpUQRAB1UJ8+N1Am3Mz4+xOByoQoSZf4D+CpkA==}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [aix]
 
-  '@esbuild/android-arm64@0.25.11':
-    resolution: {integrity: sha512-9slpyFBc4FPPz48+f6jyiXOx/Y4v34TUeDDXJpZqAWQn/08lKGeD8aDp9TMn9jDz2CiEuHwfhRmGBvpnd/PWIQ==}
+  '@esbuild/android-arm64@0.25.12':
+    resolution: {integrity: sha512-6AAmLG7zwD1Z159jCKPvAxZd4y/VTO0VkprYy+3N2FtJ8+BQWFXU+OxARIwA46c5tdD9SsKGZ/1ocqBS/gAKHg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [android]
 
-  '@esbuild/android-arm@0.25.11':
-    resolution: {integrity: sha512-uoa7dU+Dt3HYsethkJ1k6Z9YdcHjTrSb5NUy66ZfZaSV8hEYGD5ZHbEMXnqLFlbBflLsl89Zke7CAdDJ4JI+Gg==}
+  '@esbuild/android-arm@0.25.12':
+    resolution: {integrity: sha512-VJ+sKvNA/GE7Ccacc9Cha7bpS8nyzVv0jdVgwNDaR4gDMC/2TTRc33Ip8qrNYUcpkOHUT5OZ0bUcNNVZQ9RLlg==}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [android]
 
-  '@esbuild/android-x64@0.25.11':
-    resolution: {integrity: sha512-Sgiab4xBjPU1QoPEIqS3Xx+R2lezu0LKIEcYe6pftr56PqPygbB7+szVnzoShbx64MUupqoE0KyRlN7gezbl8g==}
+  '@esbuild/android-x64@0.25.12':
+    resolution: {integrity: sha512-5jbb+2hhDHx5phYR2By8GTWEzn6I9UqR11Kwf22iKbNpYrsmRB18aX/9ivc5cabcUiAT/wM+YIZ6SG9QO6a8kg==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [android]
 
-  '@esbuild/darwin-arm64@0.25.11':
-    resolution: {integrity: sha512-VekY0PBCukppoQrycFxUqkCojnTQhdec0vevUL/EDOCnXd9LKWqD/bHwMPzigIJXPhC59Vd1WFIL57SKs2mg4w==}
+  '@esbuild/darwin-arm64@0.25.12':
+    resolution: {integrity: sha512-N3zl+lxHCifgIlcMUP5016ESkeQjLj/959RxxNYIthIg+CQHInujFuXeWbWMgnTo4cp5XVHqFPmpyu9J65C1Yg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [darwin]
 
-  '@esbuild/darwin-x64@0.25.11':
-    resolution: {integrity: sha512-+hfp3yfBalNEpTGp9loYgbknjR695HkqtY3d3/JjSRUyPg/xd6q+mQqIb5qdywnDxRZykIHs3axEqU6l1+oWEQ==}
+  '@esbuild/darwin-x64@0.25.12':
+    resolution: {integrity: sha512-HQ9ka4Kx21qHXwtlTUVbKJOAnmG1ipXhdWTmNXiPzPfWKpXqASVcWdnf2bnL73wgjNrFXAa3yYvBSd9pzfEIpA==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [darwin]
 
-  '@esbuild/freebsd-arm64@0.25.11':
-    resolution: {integrity: sha512-CmKjrnayyTJF2eVuO//uSjl/K3KsMIeYeyN7FyDBjsR3lnSJHaXlVoAK8DZa7lXWChbuOk7NjAc7ygAwrnPBhA==}
+  '@esbuild/freebsd-arm64@0.25.12':
+    resolution: {integrity: sha512-gA0Bx759+7Jve03K1S0vkOu5Lg/85dou3EseOGUes8flVOGxbhDDh/iZaoek11Y8mtyKPGF3vP8XhnkDEAmzeg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [freebsd]
 
-  '@esbuild/freebsd-x64@0.25.11':
-    resolution: {integrity: sha512-Dyq+5oscTJvMaYPvW3x3FLpi2+gSZTCE/1ffdwuM6G1ARang/mb3jvjxs0mw6n3Lsw84ocfo9CrNMqc5lTfGOw==}
+  '@esbuild/freebsd-x64@0.25.12':
+    resolution: {integrity: sha512-TGbO26Yw2xsHzxtbVFGEXBFH0FRAP7gtcPE7P5yP7wGy7cXK2oO7RyOhL5NLiqTlBh47XhmIUXuGciXEqYFfBQ==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [freebsd]
 
-  '@esbuild/linux-arm64@0.25.11':
-    resolution: {integrity: sha512-Qr8AzcplUhGvdyUF08A1kHU3Vr2O88xxP0Tm8GcdVOUm25XYcMPp2YqSVHbLuXzYQMf9Bh/iKx7YPqECs6ffLA==}
+  '@esbuild/linux-arm64@0.25.12':
+    resolution: {integrity: sha512-8bwX7a8FghIgrupcxb4aUmYDLp8pX06rGh5HqDT7bB+8Rdells6mHvrFHHW2JAOPZUbnjUpKTLg6ECyzvas2AQ==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [linux]
 
-  '@esbuild/linux-arm@0.25.11':
-    resolution: {integrity: sha512-TBMv6B4kCfrGJ8cUPo7vd6NECZH/8hPpBHHlYI3qzoYFvWu2AdTvZNuU/7hsbKWqu/COU7NIK12dHAAqBLLXgw==}
+  '@esbuild/linux-arm@0.25.12':
+    resolution: {integrity: sha512-lPDGyC1JPDou8kGcywY0YILzWlhhnRjdof3UlcoqYmS9El818LLfJJc3PXXgZHrHCAKs/Z2SeZtDJr5MrkxtOw==}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [linux]
 
-  '@esbuild/linux-ia32@0.25.11':
-    resolution: {integrity: sha512-TmnJg8BMGPehs5JKrCLqyWTVAvielc615jbkOirATQvWWB1NMXY77oLMzsUjRLa0+ngecEmDGqt5jiDC6bfvOw==}
+  '@esbuild/linux-ia32@0.25.12':
+    resolution: {integrity: sha512-0y9KrdVnbMM2/vG8KfU0byhUN+EFCny9+8g202gYqSSVMonbsCfLjUO+rCci7pM0WBEtz+oK/PIwHkzxkyharA==}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [linux]
 
-  '@esbuild/linux-loong64@0.25.11':
-    resolution: {integrity: sha512-DIGXL2+gvDaXlaq8xruNXUJdT5tF+SBbJQKbWy/0J7OhU8gOHOzKmGIlfTTl6nHaCOoipxQbuJi7O++ldrxgMw==}
+  '@esbuild/linux-loong64@0.25.12':
+    resolution: {integrity: sha512-h///Lr5a9rib/v1GGqXVGzjL4TMvVTv+s1DPoxQdz7l/AYv6LDSxdIwzxkrPW438oUXiDtwM10o9PmwS/6Z0Ng==}
     engines: {node: '>=18'}
     cpu: [loong64]
     os: [linux]
 
-  '@esbuild/linux-mips64el@0.25.11':
-    resolution: {integrity: sha512-Osx1nALUJu4pU43o9OyjSCXokFkFbyzjXb6VhGIJZQ5JZi8ylCQ9/LFagolPsHtgw6himDSyb5ETSfmp4rpiKQ==}
+  '@esbuild/linux-mips64el@0.25.12':
+    resolution: {integrity: sha512-iyRrM1Pzy9GFMDLsXn1iHUm18nhKnNMWscjmp4+hpafcZjrr2WbT//d20xaGljXDBYHqRcl8HnxbX6uaA/eGVw==}
     engines: {node: '>=18'}
     cpu: [mips64el]
     os: [linux]
 
-  '@esbuild/linux-ppc64@0.25.11':
-    resolution: {integrity: sha512-nbLFgsQQEsBa8XSgSTSlrnBSrpoWh7ioFDUmwo158gIm5NNP+17IYmNWzaIzWmgCxq56vfr34xGkOcZ7jX6CPw==}
+  '@esbuild/linux-ppc64@0.25.12':
+    resolution: {integrity: sha512-9meM/lRXxMi5PSUqEXRCtVjEZBGwB7P/D4yT8UG/mwIdze2aV4Vo6U5gD3+RsoHXKkHCfSxZKzmDssVlRj1QQA==}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [linux]
 
-  '@esbuild/linux-riscv64@0.25.11':
-    resolution: {integrity: sha512-HfyAmqZi9uBAbgKYP1yGuI7tSREXwIb438q0nqvlpxAOs3XnZ8RsisRfmVsgV486NdjD7Mw2UrFSw51lzUk1ww==}
+  '@esbuild/linux-riscv64@0.25.12':
+    resolution: {integrity: sha512-Zr7KR4hgKUpWAwb1f3o5ygT04MzqVrGEGXGLnj15YQDJErYu/BGg+wmFlIDOdJp0PmB0lLvxFIOXZgFRrdjR0w==}
     engines: {node: '>=18'}
     cpu: [riscv64]
     os: [linux]
 
-  '@esbuild/linux-s390x@0.25.11':
-    resolution: {integrity: sha512-HjLqVgSSYnVXRisyfmzsH6mXqyvj0SA7pG5g+9W7ESgwA70AXYNpfKBqh1KbTxmQVaYxpzA/SvlB9oclGPbApw==}
+  '@esbuild/linux-s390x@0.25.12':
+    resolution: {integrity: sha512-MsKncOcgTNvdtiISc/jZs/Zf8d0cl/t3gYWX8J9ubBnVOwlk65UIEEvgBORTiljloIWnBzLs4qhzPkJcitIzIg==}
     engines: {node: '>=18'}
     cpu: [s390x]
     os: [linux]
 
-  '@esbuild/linux-x64@0.25.11':
-    resolution: {integrity: sha512-HSFAT4+WYjIhrHxKBwGmOOSpphjYkcswF449j6EjsjbinTZbp8PJtjsVK1XFJStdzXdy/jaddAep2FGY+wyFAQ==}
+  '@esbuild/linux-x64@0.25.12':
+    resolution: {integrity: sha512-uqZMTLr/zR/ed4jIGnwSLkaHmPjOjJvnm6TVVitAa08SLS9Z0VM8wIRx7gWbJB5/J54YuIMInDquWyYvQLZkgw==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [linux]
 
-  '@esbuild/netbsd-arm64@0.25.11':
-    resolution: {integrity: sha512-hr9Oxj1Fa4r04dNpWr3P8QKVVsjQhqrMSUzZzf+LZcYjZNqhA3IAfPQdEh1FLVUJSiu6sgAwp3OmwBfbFgG2Xg==}
+  '@esbuild/netbsd-arm64@0.25.12':
+    resolution: {integrity: sha512-xXwcTq4GhRM7J9A8Gv5boanHhRa/Q9KLVmcyXHCTaM4wKfIpWkdXiMog/KsnxzJ0A1+nD+zoecuzqPmCRyBGjg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [netbsd]
 
-  '@esbuild/netbsd-x64@0.25.11':
-    resolution: {integrity: sha512-u7tKA+qbzBydyj0vgpu+5h5AeudxOAGncb8N6C9Kh1N4n7wU1Xw1JDApsRjpShRpXRQlJLb9wY28ELpwdPcZ7A==}
+  '@esbuild/netbsd-x64@0.25.12':
+    resolution: {integrity: sha512-Ld5pTlzPy3YwGec4OuHh1aCVCRvOXdH8DgRjfDy/oumVovmuSzWfnSJg+VtakB9Cm0gxNO9BzWkj6mtO1FMXkQ==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [netbsd]
 
-  '@esbuild/openbsd-arm64@0.25.11':
-    resolution: {integrity: sha512-Qq6YHhayieor3DxFOoYM1q0q1uMFYb7cSpLD2qzDSvK1NAvqFi8Xgivv0cFC6J+hWVw2teCYltyy9/m/14ryHg==}
+  '@esbuild/openbsd-arm64@0.25.12':
+    resolution: {integrity: sha512-fF96T6KsBo/pkQI950FARU9apGNTSlZGsv1jZBAlcLL1MLjLNIWPBkj5NlSz8aAzYKg+eNqknrUJ24QBybeR5A==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [openbsd]
 
-  '@esbuild/openbsd-x64@0.25.11':
-    resolution: {integrity: sha512-CN+7c++kkbrckTOz5hrehxWN7uIhFFlmS/hqziSFVWpAzpWrQoAG4chH+nN3Be+Kzv/uuo7zhX716x3Sn2Jduw==}
+  '@esbuild/openbsd-x64@0.25.12':
+    resolution: {integrity: sha512-MZyXUkZHjQxUvzK7rN8DJ3SRmrVrke8ZyRusHlP+kuwqTcfWLyqMOE3sScPPyeIXN/mDJIfGXvcMqCgYKekoQw==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [openbsd]
 
-  '@esbuild/openharmony-arm64@0.25.11':
-    resolution: {integrity: sha512-rOREuNIQgaiR+9QuNkbkxubbp8MSO9rONmwP5nKncnWJ9v5jQ4JxFnLu4zDSRPf3x4u+2VN4pM4RdyIzDty/wQ==}
+  '@esbuild/openharmony-arm64@0.25.12':
+    resolution: {integrity: sha512-rm0YWsqUSRrjncSXGA7Zv78Nbnw4XL6/dzr20cyrQf7ZmRcsovpcRBdhD43Nuk3y7XIoW2OxMVvwuRvk9XdASg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [openharmony]
 
-  '@esbuild/sunos-x64@0.25.11':
-    resolution: {integrity: sha512-nq2xdYaWxyg9DcIyXkZhcYulC6pQ2FuCgem3LI92IwMgIZ69KHeY8T4Y88pcwoLIjbed8n36CyKoYRDygNSGhA==}
+  '@esbuild/sunos-x64@0.25.12':
+    resolution: {integrity: sha512-3wGSCDyuTHQUzt0nV7bocDy72r2lI33QL3gkDNGkod22EsYl04sMf0qLb8luNKTOmgF/eDEDP5BFNwoBKH441w==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [sunos]
 
-  '@esbuild/win32-arm64@0.25.11':
-    resolution: {integrity: sha512-3XxECOWJq1qMZ3MN8srCJ/QfoLpL+VaxD/WfNRm1O3B4+AZ/BnLVgFbUV3eiRYDMXetciH16dwPbbHqwe1uU0Q==}
+  '@esbuild/win32-arm64@0.25.12':
+    resolution: {integrity: sha512-rMmLrur64A7+DKlnSuwqUdRKyd3UE7oPJZmnljqEptesKM8wx9J8gx5u0+9Pq0fQQW8vqeKebwNXdfOyP+8Bsg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [win32]
 
-  '@esbuild/win32-ia32@0.25.11':
-    resolution: {integrity: sha512-3ukss6gb9XZ8TlRyJlgLn17ecsK4NSQTmdIXRASVsiS2sQ6zPPZklNJT5GR5tE/MUarymmy8kCEf5xPCNCqVOA==}
+  '@esbuild/win32-ia32@0.25.12':
+    resolution: {integrity: sha512-HkqnmmBoCbCwxUKKNPBixiWDGCpQGVsrQfJoVGYLPT41XWF8lHuE5N6WhVia2n4o5QK5M4tYr21827fNhi4byQ==}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [win32]
 
-  '@esbuild/win32-x64@0.25.11':
-    resolution: {integrity: sha512-D7Hpz6A2L4hzsRpPaCYkQnGOotdUpDzSGRIv9I+1ITdHROSFUWW95ZPZWQmGka1Fg7W3zFJowyn9WGwMJ0+KPA==}
+  '@esbuild/win32-x64@0.25.12':
+    resolution: {integrity: sha512-alJC0uCZpTFrSL0CCDjcgleBXPnCrEAhTBILpeAp7M/OFgoqtAetfBzX0xM00MUsVVPpVjlPuMbREqnZCXaTnA==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
@@ -1141,8 +1144,8 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/lucide@1.2.71':
-    resolution: {integrity: sha512-KL+3JHW+wN8QqT3CN+7e1SzTe+gIunFBuUICtVmdCmdVRx+MdGNkX4xJhXoYHfhYO2azrEhoGPG+It9k30aZkw==}
+  '@iconify-json/lucide@1.2.72':
+    resolution: {integrity: sha512-kq/ZDUtCdBfjGxIMaUI+Ctt3dC/0sHmrUyTU1i04+8ehlo3/PUGKqrJd4C9J/kQl1jfcHpaUPqGUFvgZ9orhQg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1159,124 +1162,135 @@ packages:
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
     engines: {node: '>=18'}
 
-  '@img/sharp-darwin-arm64@0.34.4':
-    resolution: {integrity: sha512-sitdlPzDVyvmINUdJle3TNHl+AG9QcwiAMsXmccqsCOMZNIdW2/7S26w0LyU8euiLVzFBL3dXPwVCq/ODnf2vA==}
+  '@img/sharp-darwin-arm64@0.34.5':
+    resolution: {integrity: sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [darwin]
 
-  '@img/sharp-darwin-x64@0.34.4':
-    resolution: {integrity: sha512-rZheupWIoa3+SOdF/IcUe1ah4ZDpKBGWcsPX6MT0lYniH9micvIU7HQkYTfrx5Xi8u+YqwLtxC/3vl8TQN6rMg==}
+  '@img/sharp-darwin-x64@0.34.5':
+    resolution: {integrity: sha512-YNEFAF/4KQ/PeW0N+r+aVVsoIY0/qxxikF2SWdp+NRkmMB7y9LBZAVqQ4yhGCm/H3H270OSykqmQMKLBhBJDEw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [darwin]
 
-  '@img/sharp-libvips-darwin-arm64@1.2.3':
-    resolution: {integrity: sha512-QzWAKo7kpHxbuHqUC28DZ9pIKpSi2ts2OJnoIGI26+HMgq92ZZ4vk8iJd4XsxN+tYfNJxzH6W62X5eTcsBymHw==}
+  '@img/sharp-libvips-darwin-arm64@1.2.4':
+    resolution: {integrity: sha512-zqjjo7RatFfFoP0MkQ51jfuFZBnVE2pRiaydKJ1G/rHZvnsrHAOcQALIi9sA5co5xenQdTugCvtb1cuf78Vf4g==}
     cpu: [arm64]
     os: [darwin]
 
-  '@img/sharp-libvips-darwin-x64@1.2.3':
-    resolution: {integrity: sha512-Ju+g2xn1E2AKO6YBhxjj+ACcsPQRHT0bhpglxcEf+3uyPY+/gL8veniKoo96335ZaPo03bdDXMv0t+BBFAbmRA==}
+  '@img/sharp-libvips-darwin-x64@1.2.4':
+    resolution: {integrity: sha512-1IOd5xfVhlGwX+zXv2N93k0yMONvUlANylbJw1eTah8K/Jtpi15KC+WSiaX/nBmbm2HxRM1gZ0nSdjSsrZbGKg==}
     cpu: [x64]
     os: [darwin]
 
-  '@img/sharp-libvips-linux-arm64@1.2.3':
-    resolution: {integrity: sha512-I4RxkXU90cpufazhGPyVujYwfIm9Nk1QDEmiIsaPwdnm013F7RIceaCc87kAH+oUB1ezqEvC6ga4m7MSlqsJvQ==}
+  '@img/sharp-libvips-linux-arm64@1.2.4':
+    resolution: {integrity: sha512-excjX8DfsIcJ10x1Kzr4RcWe1edC9PquDRRPx3YVCvQv+U5p7Yin2s32ftzikXojb1PIFc/9Mt28/y+iRklkrw==}
     cpu: [arm64]
     os: [linux]
 
-  '@img/sharp-libvips-linux-arm@1.2.3':
-    resolution: {integrity: sha512-x1uE93lyP6wEwGvgAIV0gP6zmaL/a0tGzJs/BIDDG0zeBhMnuUPm7ptxGhUbcGs4okDJrk4nxgrmxpib9g6HpA==}
+  '@img/sharp-libvips-linux-arm@1.2.4':
+    resolution: {integrity: sha512-bFI7xcKFELdiNCVov8e44Ia4u2byA+l3XtsAj+Q8tfCwO6BQ8iDojYdvoPMqsKDkuoOo+X6HZA0s0q11ANMQ8A==}
     cpu: [arm]
     os: [linux]
 
-  '@img/sharp-libvips-linux-ppc64@1.2.3':
-    resolution: {integrity: sha512-Y2T7IsQvJLMCBM+pmPbM3bKT/yYJvVtLJGfCs4Sp95SjvnFIjynbjzsa7dY1fRJX45FTSfDksbTp6AGWudiyCg==}
+  '@img/sharp-libvips-linux-ppc64@1.2.4':
+    resolution: {integrity: sha512-FMuvGijLDYG6lW+b/UvyilUWu5Ayu+3r2d1S8notiGCIyYU/76eig1UfMmkZ7vwgOrzKzlQbFSuQfgm7GYUPpA==}
     cpu: [ppc64]
     os: [linux]
 
-  '@img/sharp-libvips-linux-s390x@1.2.3':
-    resolution: {integrity: sha512-RgWrs/gVU7f+K7P+KeHFaBAJlNkD1nIZuVXdQv6S+fNA6syCcoboNjsV2Pou7zNlVdNQoQUpQTk8SWDHUA3y/w==}
+  '@img/sharp-libvips-linux-riscv64@1.2.4':
+    resolution: {integrity: sha512-oVDbcR4zUC0ce82teubSm+x6ETixtKZBh/qbREIOcI3cULzDyb18Sr/Wcyx7NRQeQzOiHTNbZFF1UwPS2scyGA==}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@img/sharp-libvips-linux-s390x@1.2.4':
+    resolution: {integrity: sha512-qmp9VrzgPgMoGZyPvrQHqk02uyjA0/QrTO26Tqk6l4ZV0MPWIW6LTkqOIov+J1yEu7MbFQaDpwdwJKhbJvuRxQ==}
     cpu: [s390x]
     os: [linux]
 
-  '@img/sharp-libvips-linux-x64@1.2.3':
-    resolution: {integrity: sha512-3JU7LmR85K6bBiRzSUc/Ff9JBVIFVvq6bomKE0e63UXGeRw2HPVEjoJke1Yx+iU4rL7/7kUjES4dZ/81Qjhyxg==}
+  '@img/sharp-libvips-linux-x64@1.2.4':
+    resolution: {integrity: sha512-tJxiiLsmHc9Ax1bz3oaOYBURTXGIRDODBqhveVHonrHJ9/+k89qbLl0bcJns+e4t4rvaNBxaEZsFtSfAdquPrw==}
     cpu: [x64]
     os: [linux]
 
-  '@img/sharp-libvips-linuxmusl-arm64@1.2.3':
-    resolution: {integrity: sha512-F9q83RZ8yaCwENw1GieztSfj5msz7GGykG/BA+MOUefvER69K/ubgFHNeSyUu64amHIYKGDs4sRCMzXVj8sEyw==}
+  '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
+    resolution: {integrity: sha512-FVQHuwx1IIuNow9QAbYUzJ+En8KcVm9Lk5+uGUQJHaZmMECZmOlix9HnH7n1TRkXMS0pGxIJokIVB9SuqZGGXw==}
     cpu: [arm64]
     os: [linux]
 
-  '@img/sharp-libvips-linuxmusl-x64@1.2.3':
-    resolution: {integrity: sha512-U5PUY5jbc45ANM6tSJpsgqmBF/VsL6LnxJmIf11kB7J5DctHgqm0SkuXzVWtIY90GnJxKnC/JT251TDnk1fu/g==}
+  '@img/sharp-libvips-linuxmusl-x64@1.2.4':
+    resolution: {integrity: sha512-+LpyBk7L44ZIXwz/VYfglaX/okxezESc6UxDSoyo2Ks6Jxc4Y7sGjpgU9s4PMgqgjj1gZCylTieNamqA1MF7Dg==}
     cpu: [x64]
     os: [linux]
 
-  '@img/sharp-linux-arm64@0.34.4':
-    resolution: {integrity: sha512-YXU1F/mN/Wu786tl72CyJjP/Ngl8mGHN1hST4BGl+hiW5jhCnV2uRVTNOcaYPs73NeT/H8Upm3y9582JVuZHrQ==}
+  '@img/sharp-linux-arm64@0.34.5':
+    resolution: {integrity: sha512-bKQzaJRY/bkPOXyKx5EVup7qkaojECG6NLYswgktOZjaXecSAeCWiZwwiFf3/Y+O1HrauiE3FVsGxFg8c24rZg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
 
-  '@img/sharp-linux-arm@0.34.4':
-    resolution: {integrity: sha512-Xyam4mlqM0KkTHYVSuc6wXRmM7LGN0P12li03jAnZ3EJWZqj83+hi8Y9UxZUbxsgsK1qOEwg7O0Bc0LjqQVtxA==}
+  '@img/sharp-linux-arm@0.34.5':
+    resolution: {integrity: sha512-9dLqsvwtg1uuXBGZKsxem9595+ujv0sJ6Vi8wcTANSFpwV/GONat5eCkzQo/1O6zRIkh0m/8+5BjrRr7jDUSZw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm]
     os: [linux]
 
-  '@img/sharp-linux-ppc64@0.34.4':
-    resolution: {integrity: sha512-F4PDtF4Cy8L8hXA2p3TO6s4aDt93v+LKmpcYFLAVdkkD3hSxZzee0rh6/+94FpAynsuMpLX5h+LRsSG3rIciUQ==}
+  '@img/sharp-linux-ppc64@0.34.5':
+    resolution: {integrity: sha512-7zznwNaqW6YtsfrGGDA6BRkISKAAE1Jo0QdpNYXNMHu2+0dTrPflTLNkpc8l7MUP5M16ZJcUvysVWWrMefZquA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [ppc64]
     os: [linux]
 
-  '@img/sharp-linux-s390x@0.34.4':
-    resolution: {integrity: sha512-qVrZKE9Bsnzy+myf7lFKvng6bQzhNUAYcVORq2P7bDlvmF6u2sCmK2KyEQEBdYk+u3T01pVsPrkj943T1aJAsw==}
+  '@img/sharp-linux-riscv64@0.34.5':
+    resolution: {integrity: sha512-51gJuLPTKa7piYPaVs8GmByo7/U7/7TZOq+cnXJIHZKavIRHAP77e3N2HEl3dgiqdD/w0yUfiJnII77PuDDFdw==}
+    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@img/sharp-linux-s390x@0.34.5':
+    resolution: {integrity: sha512-nQtCk0PdKfho3eC5MrbQoigJ2gd1CgddUMkabUj+rBevs8tZ2cULOx46E7oyX+04WGfABgIwmMC0VqieTiR4jg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [s390x]
     os: [linux]
 
-  '@img/sharp-linux-x64@0.34.4':
-    resolution: {integrity: sha512-ZfGtcp2xS51iG79c6Vhw9CWqQC8l2Ot8dygxoDoIQPTat/Ov3qAa8qpxSrtAEAJW+UjTXc4yxCjNfxm4h6Xm2A==}
+  '@img/sharp-linux-x64@0.34.5':
+    resolution: {integrity: sha512-MEzd8HPKxVxVenwAa+JRPwEC7QFjoPWuS5NZnBt6B3pu7EG2Ge0id1oLHZpPJdn3OQK+BQDiw9zStiHBTJQQQQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
 
-  '@img/sharp-linuxmusl-arm64@0.34.4':
-    resolution: {integrity: sha512-8hDVvW9eu4yHWnjaOOR8kHVrew1iIX+MUgwxSuH2XyYeNRtLUe4VNioSqbNkB7ZYQJj9rUTT4PyRscyk2PXFKA==}
+  '@img/sharp-linuxmusl-arm64@0.34.5':
+    resolution: {integrity: sha512-fprJR6GtRsMt6Kyfq44IsChVZeGN97gTD331weR1ex1c1rypDEABN6Tm2xa1wE6lYb5DdEnk03NZPqA7Id21yg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
 
-  '@img/sharp-linuxmusl-x64@0.34.4':
-    resolution: {integrity: sha512-lU0aA5L8QTlfKjpDCEFOZsTYGn3AEiO6db8W5aQDxj0nQkVrZWmN3ZP9sYKWJdtq3PWPhUNlqehWyXpYDcI9Sg==}
+  '@img/sharp-linuxmusl-x64@0.34.5':
+    resolution: {integrity: sha512-Jg8wNT1MUzIvhBFxViqrEhWDGzqymo3sV7z7ZsaWbZNDLXRJZoRGrjulp60YYtV4wfY8VIKcWidjojlLcWrd8Q==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
 
-  '@img/sharp-wasm32@0.34.4':
-    resolution: {integrity: sha512-33QL6ZO/qpRyG7woB/HUALz28WnTMI2W1jgX3Nu2bypqLIKx/QKMILLJzJjI+SIbvXdG9fUnmrxR7vbi1sTBeA==}
+  '@img/sharp-wasm32@0.34.5':
+    resolution: {integrity: sha512-OdWTEiVkY2PHwqkbBI8frFxQQFekHaSSkUIJkwzclWZe64O1X4UlUjqqqLaPbUpMOQk6FBu/HtlGXNblIs0huw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [wasm32]
 
-  '@img/sharp-win32-arm64@0.34.4':
-    resolution: {integrity: sha512-2Q250do/5WXTwxW3zjsEuMSv5sUU4Tq9VThWKlU2EYLm4MB7ZeMwF+SFJutldYODXF6jzc6YEOC+VfX0SZQPqA==}
+  '@img/sharp-win32-arm64@0.34.5':
+    resolution: {integrity: sha512-WQ3AgWCWYSb2yt+IG8mnC6Jdk9Whs7O0gxphblsLvdhSpSTtmu69ZG1Gkb6NuvxsNACwiPV6cNSZNzt0KPsw7g==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [win32]
 
-  '@img/sharp-win32-ia32@0.34.4':
-    resolution: {integrity: sha512-3ZeLue5V82dT92CNL6rsal6I2weKw1cYu+rGKm8fOCCtJTR2gYeUfY3FqUnIJsMUPIH68oS5jmZ0NiJ508YpEw==}
+  '@img/sharp-win32-ia32@0.34.5':
+    resolution: {integrity: sha512-FV9m/7NmeCmSHDD5j4+4pNI8Cp3aW+JvLoXcTUo0IqyjSfAZJ8dIUmijx1qaJsIiU+Hosw6xM5KijAWRJCSgNg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [ia32]
     os: [win32]
 
-  '@img/sharp-win32-x64@0.34.4':
-    resolution: {integrity: sha512-xIyj4wpYs8J18sVN3mSQjwrw7fKUqRw+Z5rnHNCy5fYTxigBz81u5mOMPmFumwjcn8+ld1ppptMBCLic1nz6ig==}
+  '@img/sharp-win32-x64@0.34.5':
+    resolution: {integrity: sha512-+29YMsqY2/9eFEiW93eqWnuLcWcufowXewwSNIT6UwZdUUCrM3oFjMWH/Z6/TMmb4hlFenmfAVbpWeup2jryCw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
@@ -1377,8 +1391,8 @@ packages:
   '@ocavue/tsconfig@0.5.0':
     resolution: {integrity: sha512-j7ys2K6hnUKTJNQL48ZrCxB64Arml48MBcdGt/EDQXvP8k/s1GvNUeBxUx7+hKXojOQ1L9E3FkpXwTg3DDjduA==}
 
-  '@ocavue/utils@0.7.1':
-    resolution: {integrity: sha512-gY/YWdyTPGx8YTT0q/0tQJs6kPJ2XeXRPfdzWLt+wefIOuwb1n5Nq3GwKM/AY+Wab3dbx6w+MkX8VSbrm3l6Xg==}
+  '@ocavue/utils@0.8.1':
+    resolution: {integrity: sha512-MdjR7B9HqonNmdUENjuPysZLsaU21d0QqNSFw41d9Qm9PbO+n+a/Cv7sP+SLvHglMNsHtudSg948sF9oxEa/Qg==}
 
   '@octokit/action@6.1.0':
     resolution: {integrity: sha512-lo+nHx8kAV86bxvOVOI3vFjX3gXPd/L7guAUbvs3pUvnR2KC+R7yjBkA1uACt4gYhs4LcWP3AXSGQzsbeN2XXw==}
@@ -1521,14 +1535,14 @@ packages:
       preact: ^10.4.0 || ^11.0.0-0
       vite: '>=2.0.0'
 
-  '@prosekit/basic@0.6.3':
-    resolution: {integrity: sha512-PhT5n5Z+86vXj9qXf3Vt74Jkq+7V0pksjDeB39UMWCOHagNY4mnDPCLLvHwlWQIvE6Lua5rEIwAUiPYNPtEBxA==}
+  '@prosekit/basic@0.6.4':
+    resolution: {integrity: sha512-spidp7QcD6ecjeF2/IVHxfOeratgxYHD6qPHbJTHFVZJHvoXBz3mYLnUbES+DUZveIjtQvHvTdaQXszHaYnBmw==}
 
-  '@prosekit/core@0.8.4':
-    resolution: {integrity: sha512-1m1OEY/Smj47gui8QMo5RAcUcyF0+vEdzNmO5C5rbeaj7vMsl3TYZqUyB4C6170wCnQvTHFPihqStfMUnQkEzQ==}
+  '@prosekit/core@0.8.5':
+    resolution: {integrity: sha512-ZZvtx110XHmhPnAUVpFiV3aFz+3wuQ4TIeWS7zGqSKFnL6JtomoEzqUtMgcBXqHQIZZ2JXlYcy5MFmNMhAm87Q==}
 
-  '@prosekit/extensions@0.11.7':
-    resolution: {integrity: sha512-qxN+3E6LzTDV0i5AwTQuMm4rdl0Di7K+PCfmWBgkbSXgvr7wAEggSRdN+waJ/cWgzI8Mf8cM+PuRnpjhTRfp8w==}
+  '@prosekit/extensions@0.12.0':
+    resolution: {integrity: sha512-bw2QwhXMJ7IsK7OvnYlLzpR2aFs1v+KYBG/VymOqRn8C+SSmHFgKDhBGeOhrhN1KKsXIHIYrKq5zShDG23sm5A==}
     peerDependencies:
       loro-crdt: '>= 0.16.7'
       loro-prosemirror: '>= 0.0.7'
@@ -1547,8 +1561,8 @@ packages:
   '@prosekit/lit@0.5.1':
     resolution: {integrity: sha512-N0UkJS0FGdcrSt1X8KLKh+AforU220gQhRDYUXJ1cH40/50sBN+hbPKDHo9uiiSErjb6/kQKpym8TYLbkYyg9g==}
 
-  '@prosekit/pm@0.1.12':
-    resolution: {integrity: sha512-3WtRhMlQumdC6StWnAUQaik0ntTwhj+djJsj9py0jT/zmEnB5ORS6jK8geCWyTuuc/GLGhWU/kPGQqtqRcR1LQ==}
+  '@prosekit/pm@0.1.13':
+    resolution: {integrity: sha512-rDn0w3o9sSLrUJTe2C2PLOw93/r+DQxvOyMGfi9Mb0tbw+vHNUhhNafW6//n5Rne5d3ASgAuJNezM58ZgbL51A==}
 
   '@prosekit/preact@0.6.0':
     resolution: {integrity: sha512-OI04XwN/bxpmEjBKjubdgHAeTU3xUdXYdMse+9/yrQOKIxs8ZZvFnDwDU61HgUzqdHzR89UG+zZfWgMhng7i7A==}
@@ -1569,32 +1583,32 @@ packages:
       react-dom:
         optional: true
 
-  '@prosekit/solid@0.5.2':
-    resolution: {integrity: sha512-81O2vKrEnJo0tDahS9eoiXyaYnw6LFnOhTbyNqJ2vpLNPLM1kUh0BOadH4I9vKMfGpt8InxzRWFjuFJ5BbD8/g==}
+  '@prosekit/solid@0.6.0':
+    resolution: {integrity: sha512-LsvtRwC+eRz2h7U32mvGyz8GYVkqWrcX28WXdyABQItyJeMvEyRNA8MCAYltO3UpIinI/6vbRGb91YTIH8WlWQ==}
     peerDependencies:
       solid-js: '>= 1.7.0'
     peerDependenciesMeta:
       solid-js:
         optional: true
 
-  '@prosekit/svelte@0.7.1':
-    resolution: {integrity: sha512-LwhF/oyqojgrdayoXeHJkahYPIIGRWvPElY1jYumhKXOq87TWE9/f8xZYRvEhgK3OXb6b1B4IpBUcRoxgBJ6Kg==}
+  '@prosekit/svelte@0.8.0':
+    resolution: {integrity: sha512-lBEE3SI+gjn+dbUQrfHx5wMCY7vhp/QbEhnGgG1ff2JhbmPmNfbtOL6eqdm4btMtmO3NbF6i29FmhlHGTEqshQ==}
     peerDependencies:
       svelte: '>= 5.0.0'
     peerDependenciesMeta:
       svelte:
         optional: true
 
-  '@prosekit/vue@0.5.1':
-    resolution: {integrity: sha512-3CltEzWLGjjLxRpMEOZCW4XL1OzBZKGIcGIcPpk809hoWHI3GXR/cwI1nvqTHhcJRlvBDDwwVrrU+KbsGaKH3g==}
+  '@prosekit/vue@0.6.0':
+    resolution: {integrity: sha512-/RnHx+3Ny8FtqqBo+8se/8oPJ+FuThKy+GpPBDvamyFR1pQrQQhY6AQjPVEj8GIzL3PCEUIihRF6K6GxAaF9BQ==}
     peerDependencies:
       vue: '>= 3.0.0'
     peerDependenciesMeta:
       vue:
         optional: true
 
-  '@prosekit/web@0.7.4':
-    resolution: {integrity: sha512-NynEPfOZwo7uqf+19wfMjP+X1Vp4e5pg1zsAj/RYObfvd/XW9FUXfLGgwzZNwwvMABm7n6OWvfwcBNryr/Zp4w==}
+  '@prosekit/web@0.7.5':
+    resolution: {integrity: sha512-m8cQjtKN4UoGvvpSJwU3lI1nPLtUxnL9nzG3AT/54vpTrise2SaN+2YfmX7ZeoMmu1NKweRcuRvfwDz+dAEABg==}
 
   '@prosemirror-adapter/core@0.4.6':
     resolution: {integrity: sha512-qbqd4u9IyDXXolFFmX1tzE000IpF9JbCiiwuSvqIh7lT9ZqjeMcyDVR/vxyM4oVY1sVyQQQj+WxHMAIhj7egVg==}
@@ -2245,9 +2259,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rolldown/pluginutils@1.0.0-beta.43':
-    resolution: {integrity: sha512-5Uxg7fQUCmfhax7FJke2+8B6cqgeUJUD9o2uXIKXhD+mG0mL6NObmVoi9wXEU1tY89mZKgAYA6fTbftx3q2ZPQ==}
-
   '@rolldown/pluginutils@1.0.0-beta.45':
     resolution: {integrity: sha512-Le9ulGCrD8ggInzWw/k2J8QcbPz7eGIOWqfJ2L+1R0Opm7n6J37s2hiDWlh6LJN0Lk9L5sUzMvRHKW7UxBZsQA==}
 
@@ -2373,17 +2384,20 @@ packages:
   '@shikijs/core@3.13.0':
     resolution: {integrity: sha512-3P8rGsg2Eh2qIHekwuQjzWhKI4jV97PhvYjYUzGqjvJfqdQPz+nMlfWahU24GZAyW1FxFI1sYjyhfh5CoLmIUA==}
 
-  '@shikijs/engine-javascript@3.13.0':
-    resolution: {integrity: sha512-Ty7xv32XCp8u0eQt8rItpMs6rU9Ki6LJ1dQOW3V/56PKDcpvfHPnYFbsx5FFUP2Yim34m/UkazidamMNVR4vKg==}
+  '@shikijs/core@3.15.0':
+    resolution: {integrity: sha512-8TOG6yG557q+fMsSVa8nkEDOZNTSxjbbR8l6lF2gyr6Np+jrPlslqDxQkN6rMXCECQ3isNPZAGszAfYoJOPGlg==}
 
-  '@shikijs/engine-oniguruma@3.13.0':
-    resolution: {integrity: sha512-O42rBGr4UDSlhT2ZFMxqM7QzIU+IcpoTMzb3W7AlziI1ZF7R8eS2M0yt5Ry35nnnTX/LTLXFPUjRFCIW+Operg==}
+  '@shikijs/engine-javascript@3.15.0':
+    resolution: {integrity: sha512-ZedbOFpopibdLmvTz2sJPJgns8Xvyabe2QbmqMTz07kt1pTzfEvKZc5IqPVO/XFiEbbNyaOpjPBkkr1vlwS+qg==}
 
-  '@shikijs/langs@3.13.0':
-    resolution: {integrity: sha512-672c3WAETDYHwrRP0yLy3W1QYB89Hbpj+pO4KhxK6FzIrDI2FoEXNiNCut6BQmEApYLfuYfpgOZaqbY+E9b8wQ==}
+  '@shikijs/engine-oniguruma@3.15.0':
+    resolution: {integrity: sha512-HnqFsV11skAHvOArMZdLBZZApRSYS4LSztk2K3016Y9VCyZISnlYUYsL2hzlS7tPqKHvNqmI5JSUJZprXloMvA==}
 
-  '@shikijs/themes@3.13.0':
-    resolution: {integrity: sha512-Vxw1Nm1/Od8jyA7QuAenaV78BG2nSr3/gCGdBkLpfLscddCkzkL36Q5b67SrLLfvAJTOUzW39x4FHVCFriPVgg==}
+  '@shikijs/langs@3.15.0':
+    resolution: {integrity: sha512-WpRvEFvkVvO65uKYW4Rzxs+IG0gToyM8SARQMtGGsH4GDMNZrr60qdggXrFOsdfOVssG/QQGEl3FnJ3EZ+8w8A==}
+
+  '@shikijs/themes@3.15.0':
+    resolution: {integrity: sha512-8ow2zWb1IDvCKjYb0KiLNrK4offFdkfNVPXb1OZykpLCzRU6j+efkY+Y7VQjNlNFXonSw+4AOdGYtmqykDbRiQ==}
 
   '@shikijs/transformers@3.13.0':
     resolution: {integrity: sha512-833lcuVzcRiG+fXvgslWsM2f4gHpjEgui1ipIknSizRuTgMkNZupiXE5/TVJ6eSYfhNBFhBZKkReKWO2GgYmqA==}
@@ -2395,6 +2409,9 @@ packages:
 
   '@shikijs/types@3.13.0':
     resolution: {integrity: sha512-oM9P+NCFri/mmQ8LoFGVfVyemm5Hi27330zuOBp0annwJdKH1kOLndw3zCtAVDehPLg9fKqoEx3Ht/wNZxolfw==}
+
+  '@shikijs/types@3.15.0':
+    resolution: {integrity: sha512-BnP+y/EQnhihgHy4oIAN+6FFtmfTekwOLsQbRw9hOKwqgNy8Bdsjq8B05oAt/ZgvIWWFrshV71ytOrlPfYjIJw==}
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
@@ -2495,65 +2512,65 @@ packages:
   '@swc/types@0.1.25':
     resolution: {integrity: sha512-iAoY/qRhNH8a/hBvm3zKj9qQ4oc2+3w1unPJa2XvTK3XjeLXtzcCingVPw/9e5mn1+0yPqxcBGp9Jf0pkfMb1g==}
 
-  '@tailwindcss/node@4.1.16':
-    resolution: {integrity: sha512-BX5iaSsloNuvKNHRN3k2RcCuTEgASTo77mofW0vmeHkfrDWaoFAFvNHpEgtu0eqyypcyiBkDWzSMxJhp3AUVcw==}
+  '@tailwindcss/node@4.1.17':
+    resolution: {integrity: sha512-csIkHIgLb3JisEFQ0vxr2Y57GUNYh447C8xzwj89U/8fdW8LhProdxvnVH6U8M2Y73QKiTIH+LWbK3V2BBZsAg==}
 
-  '@tailwindcss/oxide-android-arm64@4.1.16':
-    resolution: {integrity: sha512-8+ctzkjHgwDJ5caq9IqRSgsP70xhdhJvm+oueS/yhD5ixLhqTw9fSL1OurzMUhBwE5zK26FXLCz2f/RtkISqHA==}
+  '@tailwindcss/oxide-android-arm64@4.1.17':
+    resolution: {integrity: sha512-BMqpkJHgOZ5z78qqiGE6ZIRExyaHyuxjgrJ6eBO5+hfrfGkuya0lYfw8fRHG77gdTjWkNWEEm+qeG2cDMxArLQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
 
-  '@tailwindcss/oxide-darwin-arm64@4.1.16':
-    resolution: {integrity: sha512-C3oZy5042v2FOALBZtY0JTDnGNdS6w7DxL/odvSny17ORUnaRKhyTse8xYi3yKGyfnTUOdavRCdmc8QqJYwFKA==}
+  '@tailwindcss/oxide-darwin-arm64@4.1.17':
+    resolution: {integrity: sha512-EquyumkQweUBNk1zGEU/wfZo2qkp/nQKRZM8bUYO0J+Lums5+wl2CcG1f9BgAjn/u9pJzdYddHWBiFXJTcxmOg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@tailwindcss/oxide-darwin-x64@4.1.16':
-    resolution: {integrity: sha512-vjrl/1Ub9+JwU6BP0emgipGjowzYZMjbWCDqwA2Z4vCa+HBSpP4v6U2ddejcHsolsYxwL5r4bPNoamlV0xDdLg==}
+  '@tailwindcss/oxide-darwin-x64@4.1.17':
+    resolution: {integrity: sha512-gdhEPLzke2Pog8s12oADwYu0IAw04Y2tlmgVzIN0+046ytcgx8uZmCzEg4VcQh+AHKiS7xaL8kGo/QTiNEGRog==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@tailwindcss/oxide-freebsd-x64@4.1.16':
-    resolution: {integrity: sha512-TSMpPYpQLm+aR1wW5rKuUuEruc/oOX3C7H0BTnPDn7W/eMw8W+MRMpiypKMkXZfwH8wqPIRKppuZoedTtNj2tg==}
+  '@tailwindcss/oxide-freebsd-x64@4.1.17':
+    resolution: {integrity: sha512-hxGS81KskMxML9DXsaXT1H0DyA+ZBIbyG/sSAjWNe2EDl7TkPOBI42GBV3u38itzGUOmFfCzk1iAjDXds8Oh0g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
 
-  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.16':
-    resolution: {integrity: sha512-p0GGfRg/w0sdsFKBjMYvvKIiKy/LNWLWgV/plR4lUgrsxFAoQBFrXkZ4C0w8IOXfslB9vHK/JGASWD2IefIpvw==}
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.17':
+    resolution: {integrity: sha512-k7jWk5E3ldAdw0cNglhjSgv501u7yrMf8oeZ0cElhxU6Y2o7f8yqelOp3fhf7evjIS6ujTI3U8pKUXV2I4iXHQ==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-arm64-gnu@4.1.16':
-    resolution: {integrity: sha512-DoixyMmTNO19rwRPdqviTrG1rYzpxgyYJl8RgQvdAQUzxC1ToLRqtNJpU/ATURSKgIg6uerPw2feW0aS8SNr/w==}
+  '@tailwindcss/oxide-linux-arm64-gnu@4.1.17':
+    resolution: {integrity: sha512-HVDOm/mxK6+TbARwdW17WrgDYEGzmoYayrCgmLEw7FxTPLcp/glBisuyWkFz/jb7ZfiAXAXUACfyItn+nTgsdQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-arm64-musl@4.1.16':
-    resolution: {integrity: sha512-H81UXMa9hJhWhaAUca6bU2wm5RRFpuHImrwXBUvPbYb+3jo32I9VIwpOX6hms0fPmA6f2pGVlybO6qU8pF4fzQ==}
+  '@tailwindcss/oxide-linux-arm64-musl@4.1.17':
+    resolution: {integrity: sha512-HvZLfGr42i5anKtIeQzxdkw/wPqIbpeZqe7vd3V9vI3RQxe3xU1fLjss0TjyhxWcBaipk7NYwSrwTwK1hJARMg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-x64-gnu@4.1.16':
-    resolution: {integrity: sha512-ZGHQxDtFC2/ruo7t99Qo2TTIvOERULPl5l0K1g0oK6b5PGqjYMga+FcY1wIUnrUxY56h28FxybtDEla+ICOyew==}
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.17':
+    resolution: {integrity: sha512-M3XZuORCGB7VPOEDH+nzpJ21XPvK5PyjlkSFkFziNHGLc5d6g3di2McAAblmaSUNl8IOmzYwLx9NsE7bplNkwQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-x64-musl@4.1.16':
-    resolution: {integrity: sha512-Oi1tAaa0rcKf1Og9MzKeINZzMLPbhxvm7rno5/zuP1WYmpiG0bEHq4AcRUiG2165/WUzvxkW4XDYCscZWbTLZw==}
+  '@tailwindcss/oxide-linux-x64-musl@4.1.17':
+    resolution: {integrity: sha512-k7f+pf9eXLEey4pBlw+8dgfJHY4PZ5qOUFDyNf7SI6lHjQ9Zt7+NcscjpwdCEbYi6FI5c2KDTDWyf2iHcCSyyQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@tailwindcss/oxide-wasm32-wasi@4.1.16':
-    resolution: {integrity: sha512-B01u/b8LteGRwucIBmCQ07FVXLzImWESAIMcUU6nvFt/tYsQ6IHz8DmZ5KtvmwxD+iTYBtM1xwoGXswnlu9v0Q==}
+  '@tailwindcss/oxide-wasm32-wasi@4.1.17':
+    resolution: {integrity: sha512-cEytGqSSoy7zK4JRWiTCx43FsKP/zGr0CsuMawhH67ONlH+T79VteQeJQRO/X7L0juEUA8ZyuYikcRBf0vsxhg==}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
     bundledDependencies:
@@ -2564,24 +2581,24 @@ packages:
       - '@emnapi/wasi-threads'
       - tslib
 
-  '@tailwindcss/oxide-win32-arm64-msvc@4.1.16':
-    resolution: {integrity: sha512-zX+Q8sSkGj6HKRTMJXuPvOcP8XfYON24zJBRPlszcH1Np7xuHXhWn8qfFjIujVzvH3BHU+16jBXwgpl20i+v9A==}
+  '@tailwindcss/oxide-win32-arm64-msvc@4.1.17':
+    resolution: {integrity: sha512-JU5AHr7gKbZlOGvMdb4722/0aYbU+tN6lv1kONx0JK2cGsh7g148zVWLM0IKR3NeKLv+L90chBVYcJ8uJWbC9A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@tailwindcss/oxide-win32-x64-msvc@4.1.16':
-    resolution: {integrity: sha512-m5dDFJUEejbFqP+UXVstd4W/wnxA4F61q8SoL+mqTypId2T2ZpuxosNSgowiCnLp2+Z+rivdU0AqpfgiD7yCBg==}
+  '@tailwindcss/oxide-win32-x64-msvc@4.1.17':
+    resolution: {integrity: sha512-SKWM4waLuqx0IH+FMDUw6R66Hu4OuTALFgnleKbqhgGU30DY20NORZMZUKgLRjQXNN2TLzKvh48QXTig4h4bGw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@tailwindcss/oxide@4.1.16':
-    resolution: {integrity: sha512-2OSv52FRuhdlgyOQqgtQHuCgXnS8nFSYRp2tJ+4WZXKgTxqPy7SMSls8c3mPT5pkZ17SBToGM5LHEJBO7miEdg==}
+  '@tailwindcss/oxide@4.1.17':
+    resolution: {integrity: sha512-F0F7d01fmkQhsTjXezGBLdrl1KresJTcI3DB8EkScCldyKp3Msz4hub4uyYaVnk88BAS1g5DQjjF6F5qczheLA==}
     engines: {node: '>= 10'}
 
-  '@tailwindcss/vite@4.1.16':
-    resolution: {integrity: sha512-bbguNBcDxsRmi9nnlWJxhfDWamY3lmcyACHcdO1crxfzuLpOhHLLtEIN/nCbbAtj5rchUgQD17QVAKi1f7IsKg==}
+  '@tailwindcss/vite@4.1.17':
+    resolution: {integrity: sha512-4+9w8ZHOiGnpcGI6z1TVVfWaX/koK7fKeSYF3qlYg2xpBtbteP2ddBxiarL+HVgfSJGeK5RIxRQmKm4rTJJAwA==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
 
@@ -2895,8 +2912,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vitejs/plugin-react-swc@4.2.0':
-    resolution: {integrity: sha512-/tesahXD1qpkGC6FzMoFOJj0RyZdw9xLELOL+6jbElwmWfwOnIVy+IfpY+o9JfD9PKaR/Eyb6DNrvbXpuvA+8Q==}
+  '@vitejs/plugin-react-swc@4.2.1':
+    resolution: {integrity: sha512-SIZ/XxeS2naLw4L2vVvpTyujM2OY+Rf+y6nWETqfoBrZpI3SFdyNJof3nQ8HbLhXJ1Eh9e9c0JGYC8GYPhLkCw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^4 || ^5 || ^6 || ^7
@@ -2945,11 +2962,17 @@ packages:
   '@zag-js/dom-query@1.26.1':
     resolution: {integrity: sha512-AcdNV+Zn+Mrz6jq6IpgBJmiooFCuGBzhbbjjU6Drh3TfNDL7q2YXinrZydoD4EGDaFOQ1h71iChTtCZSHw/yNw==}
 
+  '@zag-js/dom-query@1.27.1':
+    resolution: {integrity: sha512-+oyhPQ6of1zCCK8iTaxxQc2FMFEJz1mr+1571vaSRdoxG31GhNkq/QDfUvQQnRR+2HV9yNiFk4hcjCDGqdXDTQ==}
+
   '@zag-js/interact-outside@1.26.1':
     resolution: {integrity: sha512-Kxyg8AuJq4WssVbFyCtY14O611DU7UEiKgDwiNBXdQ5V+XXd4BBBwrA5QK9pk/qjgxZawKOalwjcYsyWhFbwLQ==}
 
   '@zag-js/types@1.26.1':
     resolution: {integrity: sha512-MXRn8x0af7ZVJ50cxCoJU7hLZ3FmPnD53UQnjkYSmOcwr1eE0Wyt7bjGUP1Zv+6hPMTlyZ18XR2rnUkKAtr7/w==}
+
+  '@zag-js/types@1.27.1':
+    resolution: {integrity: sha512-t7AtcXElKEjvvRlC1gcDmKgtIeiOtCL3vWf8K8kq7nVhq29q7PHtXB5ywn+R+CWnqJOmIDezKZjC1emXZKF0OA==}
 
   '@zag-js/utils@1.26.1':
     resolution: {integrity: sha512-OeQia4UV/3osMdrhSa2NmhWvzlnlF1vxOBAdYP5R96ho0FpI15DvAaPQDvE94shzIMgzS4k0pqK5lZWK5FTmqw==}
@@ -3087,8 +3110,8 @@ packages:
   astro-theme-toggle@0.7.0:
     resolution: {integrity: sha512-HKZdtAWh8/IFvMS9yctF+ou51iFNtVaAjpa7Uw4dQMn591WWgFru7f4vmZwQUTttenSto01FjucPG9snDuBRhg==}
 
-  astro@5.15.2:
-    resolution: {integrity: sha512-xQQ+PiYJ7WpUJrHJpAb52TQAUCFmSR8lAtQr3tFfSIZoTQiEMFx3HITJ01t3eDUpHjja8J6JcYqgAhr9xygKQg==}
+  astro@5.15.4:
+    resolution: {integrity: sha512-0g/68hLHEJZF2nYUcZM5O0kOnzCsCIf8eA9+0jfBAxp4ycujrIHRgIOdZCFKL9GoTsn8AypWbziypH5aEIF+aA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3390,8 +3413,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cssstyle@5.3.1:
-    resolution: {integrity: sha512-g5PC9Aiph9eiczFpcgUhd9S4UUO3F+LHGRIi5NUMZ+4xtoIYbHNZwZnWA2JsFGe8OU8nl4WyaEFiZuGuxlutJQ==}
+  cssstyle@5.3.2:
+    resolution: {integrity: sha512-zDMqXh8Vs1CdRYZQ2M633m/SFgcjlu8RB8b/1h82i+6vpArF507NSYIWJHGlJaTWoS+imcnctmEz43txhbVkOw==}
     engines: {node: '>=20'}
 
   csstype@3.1.3:
@@ -3687,8 +3710,8 @@ packages:
   esast-util-from-js@2.0.1:
     resolution: {integrity: sha512-8Ja+rNJ0Lt56Pcf3TAmpBZjmx8ZcK5Ts4cAzIOjsjevg9oSXJnl6SUQ2EevU8tv3h6ZLWmoKL5H4fgWvdvfETw==}
 
-  esbuild@0.25.11:
-    resolution: {integrity: sha512-KohQwyzrKTQmhXDW1PjCv3Tyspn9n5GcY2RTDqeORIdIJY8yKIF7sTSopFmn/wpMPW4rdPXI0UE5LJLuq3bx0Q==}
+  esbuild@0.25.12:
+    resolution: {integrity: sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4594,9 +4617,9 @@ packages:
     resolution: {integrity: sha512-Hicd6JK5Njt2QB6XYFS7ok9e37O8AYk3jTcppG4YVQnYjOemymvTcmc7OWsmq/Qqj5TdRFO5/x/tIPmBeRtGHg==}
     engines: {node: '>=12.0.0'}
 
-  jsdom@27.0.1:
-    resolution: {integrity: sha512-SNSQteBL1IlV2zqhwwolaG9CwhIhTvVHWg3kTss/cLE7H/X4644mtPQqYvCfsSrGQWt9hSZcgOXX8bOZaMN+kA==}
-    engines: {node: '>=20'}
+  jsdom@27.1.0:
+    resolution: {integrity: sha512-Pcfm3eZ+eO4JdZCXthW9tCDT3nF4K+9dmeZ+5X39n+Kqz0DDIABRP5CAEOHRFZk8RGuC2efksTJxrjp8EXCunQ==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     peerDependencies:
       canvas: ^3.0.0
     peerDependenciesMeta:
@@ -5407,8 +5430,8 @@ packages:
   property-information@7.1.0:
     resolution: {integrity: sha512-TwEZ+X+yCJmYfL7TPUOcvBZ4QfoT5YenQiJuX//0th53DE6w0xxLEtfK3iyryQFddXuvkIk51EEgrJQ0WJkOmQ==}
 
-  prosekit@0.15.8:
-    resolution: {integrity: sha512-sRUzDm3Ts2axP5cW1RbiQbF0KZsZ7LrQS/grdWTVyg5YGCnrmVqbjsx0Lo9iGirbEWCOAf1FWkiOYPKGkztNQA==}
+  prosekit@0.16.1:
+    resolution: {integrity: sha512-zsGtJcGPnYZxi0F9UcGkxe3Fzci0mOhwBzbpTF4rg6a9jAvm5DvidLD5iBfJ2RAHF8dKdTlV+qHk16Q/+U7qRg==}
     peerDependencies:
       loro-crdt: '>= 0.16.7'
       loro-prosemirror: '>= 0.0.7'
@@ -5451,8 +5474,8 @@ packages:
   prosemirror-commands@1.7.1:
     resolution: {integrity: sha512-rT7qZnQtx5c0/y/KlYaGvtG411S97UaL6gdp6RIZ23DLHanMYLyfGBV5DtSnZdthQql7W+lEVbpSfwtO8T+L2w==}
 
-  prosemirror-drop-indicator@0.1.0:
-    resolution: {integrity: sha512-2owtnbsn6YcQdSletuC+RisMj7eAMn69Bpy0GZj3uUSabh6UmBPumN9Y4s8c76EqgORmxAyQy+I4+j0goHekOg==}
+  prosemirror-drop-indicator@0.1.2:
+    resolution: {integrity: sha512-reABU+U2S/X1/Ukf4yRbo0kj0ObasRiMJR2ia7v6DEU5cojCFrS5KnYX/12Q9SeZQfdaSO+97pFzRQeoy+nHSw==}
 
   prosemirror-dropcursor@1.8.2:
     resolution: {integrity: sha512-CCk6Gyx9+Tt2sbYk5NK0nB1ukHi2ryaRgadV/LvyNuO3ena1payM2z6Cg0vO1ebK8cxbzo41ku2DE5Axj1Zuiw==}
@@ -5839,9 +5862,6 @@ packages:
   round@2.0.1:
     resolution: {integrity: sha512-wzT6PF3wNEd2PCLTBQxteheeSwViBrD89E1XZjl4sj505C4LwTpqOQSNXLEROHDQw35NoylYbMxoUhgf2hb4qw==}
 
-  rrweb-cssom@0.8.0:
-    resolution: {integrity: sha512-guoltQEx+9aMf2gDZ0s62EcV8lsXR+0w8915TC3ITdn2YueuNjdAYh/levpU9nFaoChh9RUS5ZdQMrKfVEN9tw==}
-
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
@@ -5900,8 +5920,8 @@ packages:
     resolution: {integrity: sha512-RJRdvCo6IAnPdsvP/7m6bsQqNnn1FCBX5ZNtFL98MmFF/4xAIJTIg1YbHW5DC2W5SKZanrC6i4HsJqlajw/dZw==}
     engines: {node: '>= 0.4'}
 
-  sharp@0.34.4:
-    resolution: {integrity: sha512-FUH39xp3SBPnxWvd5iib1X8XY7J0K0X7d93sie9CJg2PO8/7gmg89Nve6OjItK53/MlAushNNxteBYfM6DEuoA==}
+  sharp@0.34.5:
+    resolution: {integrity: sha512-Ou9I5Ft9WNcCbXrU9cMgPBcCK8LiwLqcbywW3t4oDV37n1pzpuNLsYiAV8eODnjbtQlSDwZ2cUEeQz4E54Hltg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
 
   shebang-command@2.0.0:
@@ -5915,8 +5935,8 @@ packages:
   shiki-twoslash-renderer@0.1.0:
     resolution: {integrity: sha512-8ho1tRDDqTFg5RRJIKGihLSv0Z4zRQG/uWWa+HbxobbT479vZ1ZrNsMRj2CvnQGbHgKr+9cj6sSRChoCeXtEaA==}
 
-  shiki@3.13.0:
-    resolution: {integrity: sha512-aZW4l8Og16CokuCLf8CF8kq+KK2yOygapU5m3+hoGw0Mdosc6fPitjM+ujYarppj5ZIKGyPDPP1vqmQhr+5/0g==}
+  shiki@3.15.0:
+    resolution: {integrity: sha512-kLdkY6iV3dYbtPwS9KXU7mjfmDm25f5m0IPNFnaXO7TBPcvbUOY72PYXSuSqDzwp+vlH/d7MXpHlKO/x+QoLXw==}
 
   side-channel-list@1.0.0:
     resolution: {integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==}
@@ -6136,8 +6156,12 @@ packages:
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
-  tailwindcss@4.1.16:
-    resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
+  tagged-tag@1.0.0:
+    resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
+    engines: {node: '>=20'}
+
+  tailwindcss@4.1.17:
+    resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
 
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -6308,6 +6332,10 @@ packages:
   type-fest@4.41.0:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
+
+  type-fest@5.2.0:
+    resolution: {integrity: sha512-xxCJm+Bckc6kQBknN7i9fnP/xobQRsRQxR01CztFkp/h++yfVxUUcmMgfR2HttJx/dpWjS9ubVuyspJv24Q9DA==}
+    engines: {node: '>=20'}
 
   typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
@@ -6853,6 +6881,8 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
+  '@acemir/cssom@0.9.20': {}
+
   '@actions/core@1.11.1':
     dependencies:
       '@actions/exec': 1.1.1
@@ -6890,7 +6920,7 @@ snapshots:
       '@ariatype/aria-attributes': 1.0.2
       '@ariatype/aria-roles': 1.0.2
       '@preact/signals-core': 1.12.1
-      '@zag-js/dom-query': 1.26.1
+      '@zag-js/dom-query': 1.27.1
       just-kebab-case: 4.2.0
       just-map-values: 3.2.0
       server-dom-shim: 1.0.2
@@ -6916,7 +6946,7 @@ snapshots:
       '@aria-ui/core': 0.0.22
       '@floating-ui/dom': 1.7.4
       '@floating-ui/utils': 0.2.10
-      '@zag-js/dom-query': 1.26.1
+      '@zag-js/dom-query': 1.27.1
 
   '@aria-ui/popover@0.0.28':
     dependencies:
@@ -6924,12 +6954,12 @@ snapshots:
       '@aria-ui/overlay': 0.0.25
       '@aria-ui/presence': 0.0.20
       '@zag-js/dismissable': 1.26.1
-      '@zag-js/dom-query': 1.26.1
+      '@zag-js/dom-query': 1.27.1
 
   '@aria-ui/presence@0.0.20':
     dependencies:
       '@aria-ui/core': 0.0.22
-      '@zag-js/dom-query': 1.26.1
+      '@zag-js/dom-query': 1.27.1
 
   '@aria-ui/tooltip@0.0.30':
     dependencies:
@@ -7030,7 +7060,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
-      shiki: 3.13.0
+      shiki: 3.15.0
       smol-toml: 1.4.2
       unified: 11.0.5
       unist-util-remove-position: 5.0.0
@@ -7040,12 +7070,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.7(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/mdx@4.3.7(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.8
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -7059,7 +7089,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@4.1.2(@babel/core@7.28.4)(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(preact@10.27.2)(yaml@2.8.1)':
+  '@astrojs/preact@4.1.3(@babel/core@7.28.4)(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(preact@10.27.2)(yaml@2.8.1)':
     dependencies:
       '@preact/preset-vite': 2.10.2(@babel/core@7.28.4)(preact@10.27.2)(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
       '@preact/signals': 2.3.2(preact@10.27.2)
@@ -7091,17 +7121,17 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/starlight@0.36.1(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/starlight@0.36.2(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.8
-      '@astrojs/mdx': 4.3.7(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astrojs/mdx': 4.3.7(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
       '@astrojs/sitemap': 3.6.0
       '@pagefind/default-ui': 1.4.0
       '@types/hast': 3.0.4
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
-      astro-expressive-code: 0.41.3(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro-expressive-code: 0.41.3(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.4
@@ -7474,10 +7504,10 @@ snapshots:
 
   '@ctrl/tinycolor@4.2.0': {}
 
-  '@egoist/tailwindcss-icons@1.9.0(tailwindcss@4.1.16)':
+  '@egoist/tailwindcss-icons@1.9.0(tailwindcss@4.1.17)':
     dependencies:
       '@iconify/utils': 2.3.0
-      tailwindcss: 4.1.16
+      tailwindcss: 4.1.17
     transitivePeerDependencies:
       - supports-color
 
@@ -7487,7 +7517,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/runtime@1.5.0':
+  '@emnapi/runtime@1.7.0':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -7612,82 +7642,82 @@ snapshots:
       esquery: 1.6.0
       jsdoc-type-pratt-parser: 4.1.0
 
-  '@esbuild/aix-ppc64@0.25.11':
+  '@esbuild/aix-ppc64@0.25.12':
     optional: true
 
-  '@esbuild/android-arm64@0.25.11':
+  '@esbuild/android-arm64@0.25.12':
     optional: true
 
-  '@esbuild/android-arm@0.25.11':
+  '@esbuild/android-arm@0.25.12':
     optional: true
 
-  '@esbuild/android-x64@0.25.11':
+  '@esbuild/android-x64@0.25.12':
     optional: true
 
-  '@esbuild/darwin-arm64@0.25.11':
+  '@esbuild/darwin-arm64@0.25.12':
     optional: true
 
-  '@esbuild/darwin-x64@0.25.11':
+  '@esbuild/darwin-x64@0.25.12':
     optional: true
 
-  '@esbuild/freebsd-arm64@0.25.11':
+  '@esbuild/freebsd-arm64@0.25.12':
     optional: true
 
-  '@esbuild/freebsd-x64@0.25.11':
+  '@esbuild/freebsd-x64@0.25.12':
     optional: true
 
-  '@esbuild/linux-arm64@0.25.11':
+  '@esbuild/linux-arm64@0.25.12':
     optional: true
 
-  '@esbuild/linux-arm@0.25.11':
+  '@esbuild/linux-arm@0.25.12':
     optional: true
 
-  '@esbuild/linux-ia32@0.25.11':
+  '@esbuild/linux-ia32@0.25.12':
     optional: true
 
-  '@esbuild/linux-loong64@0.25.11':
+  '@esbuild/linux-loong64@0.25.12':
     optional: true
 
-  '@esbuild/linux-mips64el@0.25.11':
+  '@esbuild/linux-mips64el@0.25.12':
     optional: true
 
-  '@esbuild/linux-ppc64@0.25.11':
+  '@esbuild/linux-ppc64@0.25.12':
     optional: true
 
-  '@esbuild/linux-riscv64@0.25.11':
+  '@esbuild/linux-riscv64@0.25.12':
     optional: true
 
-  '@esbuild/linux-s390x@0.25.11':
+  '@esbuild/linux-s390x@0.25.12':
     optional: true
 
-  '@esbuild/linux-x64@0.25.11':
+  '@esbuild/linux-x64@0.25.12':
     optional: true
 
-  '@esbuild/netbsd-arm64@0.25.11':
+  '@esbuild/netbsd-arm64@0.25.12':
     optional: true
 
-  '@esbuild/netbsd-x64@0.25.11':
+  '@esbuild/netbsd-x64@0.25.12':
     optional: true
 
-  '@esbuild/openbsd-arm64@0.25.11':
+  '@esbuild/openbsd-arm64@0.25.12':
     optional: true
 
-  '@esbuild/openbsd-x64@0.25.11':
+  '@esbuild/openbsd-x64@0.25.12':
     optional: true
 
-  '@esbuild/openharmony-arm64@0.25.11':
+  '@esbuild/openharmony-arm64@0.25.12':
     optional: true
 
-  '@esbuild/sunos-x64@0.25.11':
+  '@esbuild/sunos-x64@0.25.12':
     optional: true
 
-  '@esbuild/win32-arm64@0.25.11':
+  '@esbuild/win32-arm64@0.25.12':
     optional: true
 
-  '@esbuild/win32-ia32@0.25.11':
+  '@esbuild/win32-ia32@0.25.12':
     optional: true
 
-  '@esbuild/win32-x64@0.25.11':
+  '@esbuild/win32-x64@0.25.12':
     optional: true
 
   '@eslint-community/eslint-utils@4.9.0(eslint@9.38.0(jiti@2.6.1))':
@@ -7786,7 +7816,7 @@ snapshots:
   '@expressive-code/plugin-shiki@0.41.3':
     dependencies:
       '@expressive-code/core': 0.41.3
-      shiki: 3.13.0
+      shiki: 3.15.0
 
   '@expressive-code/plugin-text-markers@0.41.3':
     dependencies:
@@ -7821,10 +7851,10 @@ snapshots:
 
   '@gerrit0/mini-shiki@3.13.0':
     dependencies:
-      '@shikijs/engine-oniguruma': 3.13.0
-      '@shikijs/langs': 3.13.0
-      '@shikijs/themes': 3.13.0
-      '@shikijs/types': 3.13.0
+      '@shikijs/engine-oniguruma': 3.15.0
+      '@shikijs/langs': 3.15.0
+      '@shikijs/themes': 3.15.0
+      '@shikijs/types': 3.15.0
       '@shikijs/vscode-textmate': 10.0.2
 
   '@humanfs/core@0.19.1': {}
@@ -7840,7 +7870,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify-json/lucide@1.2.71':
+  '@iconify-json/lucide@1.2.72':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7865,90 +7895,98 @@ snapshots:
 
   '@img/colour@1.0.0': {}
 
-  '@img/sharp-darwin-arm64@0.34.4':
+  '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-darwin-arm64': 1.2.3
+      '@img/sharp-libvips-darwin-arm64': 1.2.4
     optional: true
 
-  '@img/sharp-darwin-x64@0.34.4':
+  '@img/sharp-darwin-x64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-darwin-x64': 1.2.3
+      '@img/sharp-libvips-darwin-x64': 1.2.4
     optional: true
 
-  '@img/sharp-libvips-darwin-arm64@1.2.3':
+  '@img/sharp-libvips-darwin-arm64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-darwin-x64@1.2.3':
+  '@img/sharp-libvips-darwin-x64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-arm64@1.2.3':
+  '@img/sharp-libvips-linux-arm64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-arm@1.2.3':
+  '@img/sharp-libvips-linux-arm@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-ppc64@1.2.3':
+  '@img/sharp-libvips-linux-ppc64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-s390x@1.2.3':
+  '@img/sharp-libvips-linux-riscv64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-x64@1.2.3':
+  '@img/sharp-libvips-linux-s390x@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linuxmusl-arm64@1.2.3':
+  '@img/sharp-libvips-linux-x64@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linuxmusl-x64@1.2.3':
+  '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
     optional: true
 
-  '@img/sharp-linux-arm64@0.34.4':
+  '@img/sharp-libvips-linuxmusl-x64@1.2.4':
+    optional: true
+
+  '@img/sharp-linux-arm64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linux-arm64': 1.2.3
+      '@img/sharp-libvips-linux-arm64': 1.2.4
     optional: true
 
-  '@img/sharp-linux-arm@0.34.4':
+  '@img/sharp-linux-arm@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linux-arm': 1.2.3
+      '@img/sharp-libvips-linux-arm': 1.2.4
     optional: true
 
-  '@img/sharp-linux-ppc64@0.34.4':
+  '@img/sharp-linux-ppc64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linux-ppc64': 1.2.3
+      '@img/sharp-libvips-linux-ppc64': 1.2.4
     optional: true
 
-  '@img/sharp-linux-s390x@0.34.4':
+  '@img/sharp-linux-riscv64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linux-s390x': 1.2.3
+      '@img/sharp-libvips-linux-riscv64': 1.2.4
     optional: true
 
-  '@img/sharp-linux-x64@0.34.4':
+  '@img/sharp-linux-s390x@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linux-x64': 1.2.3
+      '@img/sharp-libvips-linux-s390x': 1.2.4
     optional: true
 
-  '@img/sharp-linuxmusl-arm64@0.34.4':
+  '@img/sharp-linux-x64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-arm64': 1.2.3
+      '@img/sharp-libvips-linux-x64': 1.2.4
     optional: true
 
-  '@img/sharp-linuxmusl-x64@0.34.4':
+  '@img/sharp-linuxmusl-arm64@0.34.5':
     optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-x64': 1.2.3
+      '@img/sharp-libvips-linuxmusl-arm64': 1.2.4
     optional: true
 
-  '@img/sharp-wasm32@0.34.4':
+  '@img/sharp-linuxmusl-x64@0.34.5':
+    optionalDependencies:
+      '@img/sharp-libvips-linuxmusl-x64': 1.2.4
+    optional: true
+
+  '@img/sharp-wasm32@0.34.5':
     dependencies:
-      '@emnapi/runtime': 1.5.0
+      '@emnapi/runtime': 1.7.0
     optional: true
 
-  '@img/sharp-win32-arm64@0.34.4':
+  '@img/sharp-win32-arm64@0.34.5':
     optional: true
 
-  '@img/sharp-win32-ia32@0.34.4':
+  '@img/sharp-win32-ia32@0.34.5':
     optional: true
 
-  '@img/sharp-win32-x64@0.34.4':
+  '@img/sharp-win32-x64@0.34.5':
     optional: true
 
   '@inquirer/external-editor@1.0.2(@types/node@20.17.5)':
@@ -8086,14 +8124,14 @@ snapshots:
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
       '@emnapi/core': 1.5.0
-      '@emnapi/runtime': 1.5.0
+      '@emnapi/runtime': 1.7.0
       '@tybys/wasm-util': 0.10.1
     optional: true
 
   '@napi-rs/wasm-runtime@1.0.7':
     dependencies:
       '@emnapi/core': 1.5.0
-      '@emnapi/runtime': 1.5.0
+      '@emnapi/runtime': 1.7.0
       '@tybys/wasm-util': 0.10.1
     optional: true
 
@@ -8147,7 +8185,7 @@ snapshots:
 
   '@ocavue/tsconfig@0.5.0': {}
 
-  '@ocavue/utils@0.7.1': {}
+  '@ocavue/utils@0.8.1': {}
 
   '@octokit/action@6.1.0':
     dependencies:
@@ -8299,11 +8337,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@prosekit/basic@0.6.3(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/basic@0.6.4(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/extensions': 0.11.7(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/pm': 0.1.12
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/extensions': 0.12.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/pm': 0.1.13
     transitivePeerDependencies:
       - '@shikijs/types'
       - '@types/hast'
@@ -8320,35 +8358,35 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/core@0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)':
+  '@prosekit/core@0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)':
     dependencies:
-      '@ocavue/utils': 0.7.1
-      '@prosekit/pm': 0.1.12
+      '@ocavue/utils': 0.8.1
+      '@prosekit/pm': 0.1.13
       clsx: 2.1.1
       just-clone: 6.2.0
       just-map-values: 3.2.0
       orderedmap: 2.1.1
       prosemirror-splittable: 0.1.1(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      type-fest: 4.41.0
+      type-fest: 5.2.0
     transitivePeerDependencies:
       - prosemirror-model
       - prosemirror-state
       - prosemirror-transform
 
-  '@prosekit/extensions@0.11.7(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/extensions@0.12.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@ocavue/utils': 0.7.1
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
+      '@ocavue/utils': 0.8.1
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
       prosemirror-changeset: 2.3.1
-      prosemirror-drop-indicator: 0.1.0
+      prosemirror-drop-indicator: 0.1.2
       prosemirror-dropcursor: 1.8.2
       prosemirror-flat-list: link:packages/core
       prosemirror-gapcursor: 1.4.0
-      prosemirror-highlight: 0.13.0(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      prosemirror-highlight: 0.13.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       prosemirror-search: 1.1.0
       prosemirror-tables: 1.8.1
-      shiki: 3.13.0
+      shiki: 3.15.0
     transitivePeerDependencies:
       - '@shikijs/types'
       - '@types/hast'
@@ -8361,9 +8399,9 @@ snapshots:
       - refractor
       - sugar-high
 
-  '@prosekit/lit@0.5.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/lit@0.5.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
     transitivePeerDependencies:
       - '@shikijs/types'
       - '@types/hast'
@@ -8380,7 +8418,7 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/pm@0.1.12':
+  '@prosekit/pm@0.1.13':
     dependencies:
       prosemirror-commands: 1.7.1
       prosemirror-history: 1.4.1
@@ -8391,11 +8429,11 @@ snapshots:
       prosemirror-transform: 1.10.4
       prosemirror-view: 1.41.3
 
-  '@prosekit/preact@0.6.0(@shikijs/types@3.13.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/preact@0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       '@prosemirror-adapter/core': 0.4.6
       '@prosemirror-adapter/preact': 0.4.6(preact@10.27.2)
     optionalDependencies:
@@ -8416,11 +8454,11 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/react@0.6.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@prosekit/react@0.6.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       '@prosemirror-adapter/core': 0.4.6
       '@prosemirror-adapter/react': 0.4.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     optionalDependencies:
@@ -8442,11 +8480,11 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/solid@0.5.2(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/solid@0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       '@prosemirror-adapter/core': 0.4.6
       '@prosemirror-adapter/solid': 0.4.6
     transitivePeerDependencies:
@@ -8465,11 +8503,11 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/svelte@0.7.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/svelte@0.8.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       '@prosemirror-adapter/core': 0.4.6
       '@prosemirror-adapter/svelte': 0.4.6
     transitivePeerDependencies:
@@ -8488,11 +8526,11 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/vue@0.5.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/vue@0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
       '@prosemirror-adapter/core': 0.4.6
       '@prosemirror-adapter/vue': 0.4.6
     transitivePeerDependencies:
@@ -8511,7 +8549,7 @@ snapshots:
       - y-prosemirror
       - yjs
 
-  '@prosekit/web@0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
+  '@prosekit/web@0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)':
     dependencies:
       '@aria-ui/core': 0.0.22
       '@aria-ui/listbox': 0.0.25
@@ -8521,11 +8559,11 @@ snapshots:
       '@aria-ui/presence': 0.0.20
       '@aria-ui/tooltip': 0.0.30
       '@floating-ui/dom': 1.7.4
-      '@ocavue/utils': 0.7.1
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/extensions': 0.11.7(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/pm': 0.1.12
-      '@zag-js/dom-query': 1.26.1
+      '@ocavue/utils': 0.8.1
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/extensions': 0.12.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/pm': 0.1.13
+      '@zag-js/dom-query': 1.27.1
       prosemirror-tables: 1.8.1
     transitivePeerDependencies:
       - '@shikijs/types'
@@ -8624,7 +8662,7 @@ snapshots:
       '@remirror/pm': 3.0.1
       '@remirror/types': 2.0.0
 
-  '@remirror/core-utils@3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/core-utils@3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core-constants': 3.0.0
@@ -8634,7 +8672,7 @@ snapshots:
       '@remirror/pm': 3.0.1
       '@types/min-document': 2.19.0
       css-in-js-utils: 3.1.0
-      get-dom-document: 0.1.3(jsdom@27.0.1(postcss@8.5.4))
+      get-dom-document: 0.1.3(jsdom@27.1.0(postcss@8.5.4))
       min-document: 2.19.0
       parenthesis: 3.1.8
     optionalDependencies:
@@ -8642,13 +8680,13 @@ snapshots:
     transitivePeerDependencies:
       - jsdom
 
-  '@remirror/core@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/core@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core-constants': 3.0.0
       '@remirror/core-helpers': 4.0.0
       '@remirror/core-types': 3.0.0(@remirror/pm@3.0.1)
-      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/icons': 3.0.0
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
@@ -8658,22 +8696,22 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/dom@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/dom@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
-      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - supports-color
 
-  '@remirror/extension-annotation@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-annotation@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
@@ -8681,10 +8719,10 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-bidi@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-bidi@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@types/direction': 1.0.0
@@ -8693,10 +8731,10 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-blockquote@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-blockquote@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -8705,20 +8743,20 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-bold@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-bold@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-callout@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-callout@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -8727,11 +8765,11 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-code-block@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)':
+  '@remirror/extension-code-block@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -8744,84 +8782,84 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-code@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-code@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-collaboration@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-collaboration@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-columns@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-columns@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-diff@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-diff@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-doc@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-doc@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-drop-cursor@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-drop-cursor@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-embed@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-embed@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@types/querystringify': 2.0.0
-      prosemirror-resizable-view: 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      prosemirror-resizable-view: 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       querystringify: 2.2.0
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-emoji@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-emoji@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
       '@ocavue/svgmoji-cjs': 0.1.1
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -8835,41 +8873,41 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-entity-reference@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-entity-reference@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - supports-color
 
-  '@remirror/extension-epic-mode@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-epic-mode@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-events@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-events@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-find@1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-find@1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
       '@types/string.prototype.matchall': 4.0.1
       escape-string-regexp: 4.0.0
@@ -8878,20 +8916,20 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-font-family@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-font-family@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-font-size@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-font-size@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       round: 2.0.1
@@ -8899,84 +8937,84 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-gap-cursor@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-gap-cursor@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-hard-break@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-hard-break@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-heading@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-heading@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-history@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-history@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-horizontal-rule@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-horizontal-rule@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-image@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-image@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
-      prosemirror-resizable-view: 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      prosemirror-resizable-view: 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - supports-color
 
-  '@remirror/extension-italic@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-italic@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-link@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-link@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       extract-domain: 2.2.1
@@ -8984,11 +9022,11 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-list@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-list@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -8997,10 +9035,10 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-markdown@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-markdown@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@types/marked': 4.3.2
@@ -9012,11 +9050,11 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-mention-atom@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-mention-atom@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -9025,11 +9063,11 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-mention@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-mention@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       escape-string-regexp: 4.0.0
@@ -9037,30 +9075,30 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-node-formatting@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-node-formatting@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-paragraph@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-paragraph@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-placeholder@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-placeholder@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -9069,11 +9107,11 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-positioner@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-positioner@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -9083,14 +9121,14 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-react-component@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/extension-react-component@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/core-constants': 3.0.0
       '@remirror/core-helpers': 4.0.0
       '@remirror/core-types': 3.0.0(@remirror/pm@3.0.1)
-      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       nanoevents: 5.1.13
@@ -9103,51 +9141,51 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-shortcuts@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-shortcuts@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-strike@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-strike@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-sub@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-sub@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-sup@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-sup@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-tables@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-tables@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -9156,20 +9194,20 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-text-case@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-text-case@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-text-color@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-text-color@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
@@ -9179,11 +9217,11 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-text-highlight@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-text-highlight@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
@@ -9191,40 +9229,40 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/extension-text@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-text@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-trailing-node@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-trailing-node@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-underline@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-underline@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
 
-  '@remirror/extension-whitespace@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/extension-whitespace@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
@@ -9266,53 +9304,53 @@ snapshots:
       prosemirror-transform: 1.10.4
       prosemirror-view: 1.41.3
 
-  '@remirror/preset-core@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/preset-core@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-doc': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-paragraph': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-doc': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-paragraph': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - supports-color
 
-  '@remirror/preset-formatting@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))':
+  '@remirror/preset-formatting@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-columns': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-font-size': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-node-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-sub': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-sup': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-case': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-highlight': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-whitespace': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-columns': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-font-size': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-node-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-sub': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-sup': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-case': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-highlight': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-whitespace': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - supports-color
 
-  '@remirror/preset-react@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/preset-react@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@remirror/pm': 3.0.1
       '@remirror/react-utils': 3.0.0(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       react: 19.2.0
@@ -9325,49 +9363,49 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/preset-wysiwyg@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)':
+  '@remirror/preset-wysiwyg@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-bidi': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-blockquote': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-code': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-code-block': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
-      '@remirror/extension-drop-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-embed': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-find': 1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-hard-break': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-horizontal-rule': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-image': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-link': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-list': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-shortcuts': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-trailing-node': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-bidi': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-blockquote': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-code': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-code-block': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
+      '@remirror/extension-drop-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-embed': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-find': 1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-hard-break': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-horizontal-rule': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-image': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-link': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-list': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-shortcuts': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-trailing-node': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
-      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
     transitivePeerDependencies:
       - '@types/node'
       - jsdom
       - prettier
       - supports-color
 
-  '@remirror/react-components@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/react-components@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
       '@floating-ui/react': 0.24.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/icons': 3.0.0
       '@remirror/messages': 3.0.0(@remirror/pm@3.0.1)
       '@remirror/pm': 3.0.1
-      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-hooks': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-hooks': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@remirror/react-utils': 3.0.0(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
       '@seznam/compose-react-refs': 1.0.6
@@ -9386,16 +9424,16 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/react-core@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/react-core@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@remirror/pm': 3.0.1
-      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/preset-react': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-renderer': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react@19.2.0)
+      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/preset-react': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-renderer': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react@19.2.0)
       '@remirror/react-utils': 3.0.0(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
       '@seznam/compose-react-refs': 1.0.6
@@ -9412,20 +9450,20 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/react-hooks@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/react-hooks@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/core-constants': 3.0.0
       '@remirror/core-helpers': 4.0.0
-      '@remirror/extension-emoji': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-mention': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-mention-atom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/extension-emoji': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-mention': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-mention-atom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
-      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@remirror/react-utils': 3.0.0(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       multishift: 2.0.10(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       use-isomorphic-layout-effect: 1.1.2(@types/react@19.2.2)(react@19.2.0)
@@ -9440,10 +9478,10 @@ snapshots:
       - jsdom
       - supports-color
 
-  '@remirror/react-renderer@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react@19.2.0)':
+  '@remirror/react-renderer@3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.2
@@ -9464,17 +9502,17 @@ snapshots:
     transitivePeerDependencies:
       - '@remirror/pm'
 
-  '@remirror/react@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@remirror/react@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/preset-react': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-components': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-hooks': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@remirror/react-renderer': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.0.1(postcss@8.5.4))(react@19.2.0)
+      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-react-component': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/preset-react': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-components': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-core': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-hooks': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@remirror/react-renderer': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(@types/react@19.2.2)(jsdom@27.1.0(postcss@8.5.4))(react@19.2.0)
       '@remirror/react-utils': 3.0.0(@remirror/pm@3.0.1)(@types/react@19.2.2)(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -9601,8 +9639,6 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.0.0-beta.46':
     optional: true
 
-  '@rolldown/pluginutils@1.0.0-beta.43': {}
-
   '@rolldown/pluginutils@1.0.0-beta.45':
     optional: true
 
@@ -9690,24 +9726,31 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.5
 
-  '@shikijs/engine-javascript@3.13.0':
+  '@shikijs/core@3.15.0':
     dependencies:
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
+      '@shikijs/vscode-textmate': 10.0.2
+      '@types/hast': 3.0.4
+      hast-util-to-html: 9.0.5
+
+  '@shikijs/engine-javascript@3.15.0':
+    dependencies:
+      '@shikijs/types': 3.15.0
       '@shikijs/vscode-textmate': 10.0.2
       oniguruma-to-es: 4.3.3
 
-  '@shikijs/engine-oniguruma@3.13.0':
+  '@shikijs/engine-oniguruma@3.15.0':
     dependencies:
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@shikijs/langs@3.13.0':
+  '@shikijs/langs@3.15.0':
     dependencies:
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
 
-  '@shikijs/themes@3.13.0':
+  '@shikijs/themes@3.15.0':
     dependencies:
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
 
   '@shikijs/transformers@3.13.0':
     dependencies:
@@ -9724,6 +9767,11 @@ snapshots:
       - supports-color
 
   '@shikijs/types@3.13.0':
+    dependencies:
+      '@shikijs/vscode-textmate': 10.0.2
+      '@types/hast': 3.0.4
+
+  '@shikijs/types@3.15.0':
     dependencies:
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
@@ -9817,7 +9865,7 @@ snapshots:
     dependencies:
       '@swc/counter': 0.1.3
 
-  '@tailwindcss/node@4.1.16':
+  '@tailwindcss/node@4.1.17':
     dependencies:
       '@jridgewell/remapping': 2.3.5
       enhanced-resolve: 5.18.3
@@ -9825,64 +9873,64 @@ snapshots:
       lightningcss: 1.30.2
       magic-string: 0.30.21
       source-map-js: 1.2.1
-      tailwindcss: 4.1.16
+      tailwindcss: 4.1.17
 
-  '@tailwindcss/oxide-android-arm64@4.1.16':
+  '@tailwindcss/oxide-android-arm64@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-darwin-arm64@4.1.16':
+  '@tailwindcss/oxide-darwin-arm64@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-darwin-x64@4.1.16':
+  '@tailwindcss/oxide-darwin-x64@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-freebsd-x64@4.1.16':
+  '@tailwindcss/oxide-freebsd-x64@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.16':
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm64-gnu@4.1.16':
+  '@tailwindcss/oxide-linux-arm64-gnu@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm64-musl@4.1.16':
+  '@tailwindcss/oxide-linux-arm64-musl@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-linux-x64-gnu@4.1.16':
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-linux-x64-musl@4.1.16':
+  '@tailwindcss/oxide-linux-x64-musl@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-wasm32-wasi@4.1.16':
+  '@tailwindcss/oxide-wasm32-wasi@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-win32-arm64-msvc@4.1.16':
+  '@tailwindcss/oxide-win32-arm64-msvc@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide-win32-x64-msvc@4.1.16':
+  '@tailwindcss/oxide-win32-x64-msvc@4.1.17':
     optional: true
 
-  '@tailwindcss/oxide@4.1.16':
+  '@tailwindcss/oxide@4.1.17':
     optionalDependencies:
-      '@tailwindcss/oxide-android-arm64': 4.1.16
-      '@tailwindcss/oxide-darwin-arm64': 4.1.16
-      '@tailwindcss/oxide-darwin-x64': 4.1.16
-      '@tailwindcss/oxide-freebsd-x64': 4.1.16
-      '@tailwindcss/oxide-linux-arm-gnueabihf': 4.1.16
-      '@tailwindcss/oxide-linux-arm64-gnu': 4.1.16
-      '@tailwindcss/oxide-linux-arm64-musl': 4.1.16
-      '@tailwindcss/oxide-linux-x64-gnu': 4.1.16
-      '@tailwindcss/oxide-linux-x64-musl': 4.1.16
-      '@tailwindcss/oxide-wasm32-wasi': 4.1.16
-      '@tailwindcss/oxide-win32-arm64-msvc': 4.1.16
-      '@tailwindcss/oxide-win32-x64-msvc': 4.1.16
+      '@tailwindcss/oxide-android-arm64': 4.1.17
+      '@tailwindcss/oxide-darwin-arm64': 4.1.17
+      '@tailwindcss/oxide-darwin-x64': 4.1.17
+      '@tailwindcss/oxide-freebsd-x64': 4.1.17
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 4.1.17
+      '@tailwindcss/oxide-linux-arm64-gnu': 4.1.17
+      '@tailwindcss/oxide-linux-arm64-musl': 4.1.17
+      '@tailwindcss/oxide-linux-x64-gnu': 4.1.17
+      '@tailwindcss/oxide-linux-x64-musl': 4.1.17
+      '@tailwindcss/oxide-wasm32-wasi': 4.1.17
+      '@tailwindcss/oxide-win32-arm64-msvc': 4.1.17
+      '@tailwindcss/oxide-win32-x64-msvc': 4.1.17
 
-  '@tailwindcss/vite@4.1.16(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))':
+  '@tailwindcss/vite@4.1.17(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))':
     dependencies:
-      '@tailwindcss/node': 4.1.16
-      '@tailwindcss/oxide': 4.1.16
-      tailwindcss: 4.1.16
+      '@tailwindcss/node': 4.1.17
+      '@tailwindcss/oxide': 4.1.17
+      tailwindcss: 4.1.17
       vite: 6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
 
   '@testing-library/dom@9.3.1':
@@ -10209,15 +10257,15 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vitejs/plugin-react-swc@4.2.0(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))':
+  '@vitejs/plugin-react-swc@4.2.1(vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))':
     dependencies:
-      '@rolldown/pluginutils': 1.0.0-beta.43
+      '@rolldown/pluginutils': 1.0.0-beta.46
       '@swc/core': 1.13.5
       vite: 6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -10232,7 +10280,7 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
+      vitest: 3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -10288,12 +10336,20 @@ snapshots:
     dependencies:
       '@zag-js/types': 1.26.1
 
+  '@zag-js/dom-query@1.27.1':
+    dependencies:
+      '@zag-js/types': 1.27.1
+
   '@zag-js/interact-outside@1.26.1':
     dependencies:
       '@zag-js/dom-query': 1.26.1
       '@zag-js/utils': 1.26.1
 
   '@zag-js/types@1.26.1':
+    dependencies:
+      csstype: 3.1.3
+
+  '@zag-js/types@1.27.1':
     dependencies:
       csstype: 3.1.3
 
@@ -10437,14 +10493,14 @@ snapshots:
 
   astring@1.8.4: {}
 
-  astro-expressive-code@0.41.3(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)):
+  astro-expressive-code@0.41.3(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      astro: 5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)
       rehype-expressive-code: 0.41.3
 
   astro-theme-toggle@0.7.0: {}
 
-  astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.4
@@ -10469,7 +10525,7 @@ snapshots:
       dlv: 1.1.3
       dset: 3.1.4
       es-module-lexer: 1.7.0
-      esbuild: 0.25.11
+      esbuild: 0.25.12
       estree-walker: 3.0.3
       flattie: 1.1.1
       fontace: 0.3.1
@@ -10490,7 +10546,7 @@ snapshots:
       prompts: 2.4.2
       rehype: 13.0.2
       semver: 7.7.3
-      shiki: 3.13.0
+      shiki: 3.15.0
       smol-toml: 1.4.2
       tinyexec: 1.0.1
       tinyglobby: 0.2.15
@@ -10509,7 +10565,7 @@ snapshots:
       zod-to-json-schema: 3.24.6(zod@3.25.76)
       zod-to-ts: 1.2.0(typescript@5.9.3)(zod@3.25.76)
     optionalDependencies:
-      sharp: 0.34.4
+      sharp: 0.34.5
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10818,7 +10874,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssstyle@5.3.1(postcss@8.5.4):
+  cssstyle@5.3.2(postcss@8.5.4):
     dependencies:
       '@asamuzakjp/css-color': 4.0.5
       '@csstools/css-syntax-patches-for-csstree': 1.0.14(postcss@8.5.4)
@@ -11165,34 +11221,34 @@ snapshots:
       esast-util-from-estree: 2.0.0
       vfile-message: 4.0.2
 
-  esbuild@0.25.11:
+  esbuild@0.25.12:
     optionalDependencies:
-      '@esbuild/aix-ppc64': 0.25.11
-      '@esbuild/android-arm': 0.25.11
-      '@esbuild/android-arm64': 0.25.11
-      '@esbuild/android-x64': 0.25.11
-      '@esbuild/darwin-arm64': 0.25.11
-      '@esbuild/darwin-x64': 0.25.11
-      '@esbuild/freebsd-arm64': 0.25.11
-      '@esbuild/freebsd-x64': 0.25.11
-      '@esbuild/linux-arm': 0.25.11
-      '@esbuild/linux-arm64': 0.25.11
-      '@esbuild/linux-ia32': 0.25.11
-      '@esbuild/linux-loong64': 0.25.11
-      '@esbuild/linux-mips64el': 0.25.11
-      '@esbuild/linux-ppc64': 0.25.11
-      '@esbuild/linux-riscv64': 0.25.11
-      '@esbuild/linux-s390x': 0.25.11
-      '@esbuild/linux-x64': 0.25.11
-      '@esbuild/netbsd-arm64': 0.25.11
-      '@esbuild/netbsd-x64': 0.25.11
-      '@esbuild/openbsd-arm64': 0.25.11
-      '@esbuild/openbsd-x64': 0.25.11
-      '@esbuild/openharmony-arm64': 0.25.11
-      '@esbuild/sunos-x64': 0.25.11
-      '@esbuild/win32-arm64': 0.25.11
-      '@esbuild/win32-ia32': 0.25.11
-      '@esbuild/win32-x64': 0.25.11
+      '@esbuild/aix-ppc64': 0.25.12
+      '@esbuild/android-arm': 0.25.12
+      '@esbuild/android-arm64': 0.25.12
+      '@esbuild/android-x64': 0.25.12
+      '@esbuild/darwin-arm64': 0.25.12
+      '@esbuild/darwin-x64': 0.25.12
+      '@esbuild/freebsd-arm64': 0.25.12
+      '@esbuild/freebsd-x64': 0.25.12
+      '@esbuild/linux-arm': 0.25.12
+      '@esbuild/linux-arm64': 0.25.12
+      '@esbuild/linux-ia32': 0.25.12
+      '@esbuild/linux-loong64': 0.25.12
+      '@esbuild/linux-mips64el': 0.25.12
+      '@esbuild/linux-ppc64': 0.25.12
+      '@esbuild/linux-riscv64': 0.25.12
+      '@esbuild/linux-s390x': 0.25.12
+      '@esbuild/linux-x64': 0.25.12
+      '@esbuild/netbsd-arm64': 0.25.12
+      '@esbuild/netbsd-x64': 0.25.12
+      '@esbuild/openbsd-arm64': 0.25.12
+      '@esbuild/openbsd-x64': 0.25.12
+      '@esbuild/openharmony-arm64': 0.25.12
+      '@esbuild/sunos-x64': 0.25.12
+      '@esbuild/win32-arm64': 0.25.12
+      '@esbuild/win32-ia32': 0.25.12
+      '@esbuild/win32-x64': 0.25.12
 
   escalade@3.2.0: {}
 
@@ -11612,9 +11668,9 @@ snapshots:
 
   get-caller-file@2.0.5: {}
 
-  get-dom-document@0.1.3(jsdom@27.0.1(postcss@8.5.4)):
+  get-dom-document@0.1.3(jsdom@27.1.0(postcss@8.5.4)):
     optionalDependencies:
-      jsdom: 27.0.1(postcss@8.5.4)
+      jsdom: 27.1.0(postcss@8.5.4)
 
   get-east-asian-width@1.4.0: {}
 
@@ -12273,13 +12329,13 @@ snapshots:
       jest-get-type: 29.4.3
       pretty-format: 29.7.0
 
-  jest-prosemirror@3.0.1(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4)):
+  jest-prosemirror@3.0.1(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4)):
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core-constants': 3.0.0
       '@remirror/core-helpers': 4.0.0
       '@remirror/core-types': 3.0.0(@remirror/pm@3.0.1)
-      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
       '@testing-library/dom': 9.3.1
       '@types/stringify-object': 3.3.1
@@ -12294,16 +12350,16 @@ snapshots:
       - '@types/node'
       - jsdom
 
-  jest-remirror@3.0.3(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4)):
+  jest-remirror@3.0.3(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4)):
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/dom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/dom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/pm': 3.0.1
-      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@testing-library/dom': 9.3.1
       '@types/sanitize-html': 2.9.0
-      jest-prosemirror: 3.0.1(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      jest-prosemirror: 3.0.1(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       sanitize-html: 2.10.0
       tiny-warning: 1.0.3
     optionalDependencies:
@@ -12329,10 +12385,11 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.1.0: {}
 
-  jsdom@27.0.1(postcss@8.5.4):
+  jsdom@27.1.0(postcss@8.5.4):
     dependencies:
+      '@acemir/cssom': 0.9.20
       '@asamuzakjp/dom-selector': 6.7.3
-      cssstyle: 5.3.1(postcss@8.5.4)
+      cssstyle: 5.3.2(postcss@8.5.4)
       data-urls: 6.0.0
       decimal.js: 10.6.0
       html-encoding-sniffer: 4.0.0
@@ -12340,7 +12397,6 @@ snapshots:
       https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
       parse5: 8.0.0
-      rrweb-cssom: 0.8.0
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 6.0.0
@@ -13436,19 +13492,19 @@ snapshots:
 
   property-information@7.1.0: {}
 
-  prosekit@0.15.8(@shikijs/types@3.13.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  prosekit@0.16.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
-      '@prosekit/basic': 0.6.3(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/core': 0.8.4(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
-      '@prosekit/extensions': 0.11.7(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/lit': 0.5.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/pm': 0.1.12
-      '@prosekit/preact': 0.6.0(@shikijs/types@3.13.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/react': 0.6.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@prosekit/solid': 0.5.2(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/svelte': 0.7.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/vue': 0.5.1(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
-      '@prosekit/web': 0.7.4(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/basic': 0.6.4(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/core': 0.8.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)
+      '@prosekit/extensions': 0.12.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/lit': 0.5.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/pm': 0.1.13
+      '@prosekit/preact': 0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(preact@10.27.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/react': 0.6.1(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@prosekit/solid': 0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/svelte': 0.8.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/vue': 0.6.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
+      '@prosekit/web': 0.7.5(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3)
     optionalDependencies:
       preact: 10.27.2
       react: 19.2.0
@@ -13479,9 +13535,9 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.10.4
 
-  prosemirror-drop-indicator@0.1.0:
+  prosemirror-drop-indicator@0.1.2:
     dependencies:
-      '@ocavue/utils': 0.7.1
+      '@ocavue/utils': 0.8.1
       prosemirror-model: 1.25.4
       prosemirror-state: 1.4.4
       prosemirror-view: 1.41.3
@@ -13511,9 +13567,9 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-view: 1.41.3
 
-  prosemirror-highlight@0.13.0(@shikijs/types@3.13.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3):
+  prosemirror-highlight@0.13.0(@shikijs/types@3.15.0)(@types/hast@3.0.4)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.4)(prosemirror-view@1.41.3):
     optionalDependencies:
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
       '@types/hast': 3.0.4
       prosemirror-model: 1.25.4
       prosemirror-state: 1.4.4
@@ -13558,11 +13614,11 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-view: 1.41.3
 
-  prosemirror-resizable-view@3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4)):
+  prosemirror-resizable-view@3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4)):
     dependencies:
       '@babel/runtime': 7.27.0
       '@remirror/core-helpers': 4.0.0
-      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       prosemirror-model: 1.25.4
       prosemirror-view: 1.41.3
     transitivePeerDependencies:
@@ -13890,68 +13946,68 @@ snapshots:
       mdast-util-to-markdown: 2.1.0
       unified: 11.0.5
 
-  remirror@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2):
+  remirror@3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2):
     dependencies:
       '@babel/runtime': 7.27.0
-      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/core-constants': 3.0.0
       '@remirror/core-helpers': 4.0.0
       '@remirror/core-types': 3.0.0(@remirror/pm@3.0.1)
-      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/dom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-annotation': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-bidi': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-blockquote': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-callout': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-code': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-code-block': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
-      '@remirror/extension-collaboration': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-columns': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-diff': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-doc': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-drop-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-embed': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-emoji': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-entity-reference': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-epic-mode': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-find': 1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-font-family': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-font-size': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-hard-break': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-horizontal-rule': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-image': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-link': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-list': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-markdown': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-mention': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-mention-atom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-node-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-paragraph': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-shortcuts': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-sub': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-sup': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-tables': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-case': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-text-highlight': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-trailing-node': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/extension-whitespace': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
+      '@remirror/core-utils': 3.0.0(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/dom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-annotation': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-bidi': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-blockquote': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-bold': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-callout': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-code': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-code-block': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
+      '@remirror/extension-collaboration': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-columns': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-diff': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-doc': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-drop-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-embed': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-emoji': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-entity-reference': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-epic-mode': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-events': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-find': 1.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-font-family': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-font-size': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-gap-cursor': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-hard-break': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-heading': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-history': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-horizontal-rule': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-image': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-italic': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-link': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-list': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-markdown': 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-mention': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-mention-atom': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-node-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-paragraph': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-placeholder': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-positioner': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-shortcuts': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-strike': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-sub': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-sup': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-tables': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-case': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-color': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-text-highlight': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-trailing-node': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-underline': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/extension-whitespace': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
       '@remirror/icons': 3.0.0
       '@remirror/pm': 3.0.1
-      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/preset-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))
-      '@remirror/preset-wysiwyg': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.0.1(postcss@8.5.4))(prettier@3.6.2)
+      '@remirror/preset-core': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/preset-formatting': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))
+      '@remirror/preset-wysiwyg': 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@27.1.0(postcss@8.5.4))(prettier@3.6.2)
       '@remirror/theme': 3.0.0(@remirror/pm@3.0.1)
       '@types/refractor': 3.0.2
       refractor: 3.6.0
@@ -14114,8 +14170,6 @@ snapshots:
       precision: 1.0.1
       round-precision: 1.0.0
 
-  rrweb-cssom@0.8.0: {}
-
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
@@ -14190,34 +14244,36 @@ snapshots:
       es-errors: 1.3.0
       es-object-atoms: 1.1.1
 
-  sharp@0.34.4:
+  sharp@0.34.5:
     dependencies:
       '@img/colour': 1.0.0
       detect-libc: 2.1.2
       semver: 7.7.3
     optionalDependencies:
-      '@img/sharp-darwin-arm64': 0.34.4
-      '@img/sharp-darwin-x64': 0.34.4
-      '@img/sharp-libvips-darwin-arm64': 1.2.3
-      '@img/sharp-libvips-darwin-x64': 1.2.3
-      '@img/sharp-libvips-linux-arm': 1.2.3
-      '@img/sharp-libvips-linux-arm64': 1.2.3
-      '@img/sharp-libvips-linux-ppc64': 1.2.3
-      '@img/sharp-libvips-linux-s390x': 1.2.3
-      '@img/sharp-libvips-linux-x64': 1.2.3
-      '@img/sharp-libvips-linuxmusl-arm64': 1.2.3
-      '@img/sharp-libvips-linuxmusl-x64': 1.2.3
-      '@img/sharp-linux-arm': 0.34.4
-      '@img/sharp-linux-arm64': 0.34.4
-      '@img/sharp-linux-ppc64': 0.34.4
-      '@img/sharp-linux-s390x': 0.34.4
-      '@img/sharp-linux-x64': 0.34.4
-      '@img/sharp-linuxmusl-arm64': 0.34.4
-      '@img/sharp-linuxmusl-x64': 0.34.4
-      '@img/sharp-wasm32': 0.34.4
-      '@img/sharp-win32-arm64': 0.34.4
-      '@img/sharp-win32-ia32': 0.34.4
-      '@img/sharp-win32-x64': 0.34.4
+      '@img/sharp-darwin-arm64': 0.34.5
+      '@img/sharp-darwin-x64': 0.34.5
+      '@img/sharp-libvips-darwin-arm64': 1.2.4
+      '@img/sharp-libvips-darwin-x64': 1.2.4
+      '@img/sharp-libvips-linux-arm': 1.2.4
+      '@img/sharp-libvips-linux-arm64': 1.2.4
+      '@img/sharp-libvips-linux-ppc64': 1.2.4
+      '@img/sharp-libvips-linux-riscv64': 1.2.4
+      '@img/sharp-libvips-linux-s390x': 1.2.4
+      '@img/sharp-libvips-linux-x64': 1.2.4
+      '@img/sharp-libvips-linuxmusl-arm64': 1.2.4
+      '@img/sharp-libvips-linuxmusl-x64': 1.2.4
+      '@img/sharp-linux-arm': 0.34.5
+      '@img/sharp-linux-arm64': 0.34.5
+      '@img/sharp-linux-ppc64': 0.34.5
+      '@img/sharp-linux-riscv64': 0.34.5
+      '@img/sharp-linux-s390x': 0.34.5
+      '@img/sharp-linux-x64': 0.34.5
+      '@img/sharp-linuxmusl-arm64': 0.34.5
+      '@img/sharp-linuxmusl-x64': 0.34.5
+      '@img/sharp-wasm32': 0.34.5
+      '@img/sharp-win32-arm64': 0.34.5
+      '@img/sharp-win32-ia32': 0.34.5
+      '@img/sharp-win32-x64': 0.34.5
 
   shebang-command@2.0.0:
     dependencies:
@@ -14230,20 +14286,20 @@ snapshots:
       '@aria-ui/core': 0.0.22
       '@aria-ui/tooltip': 0.0.30
       '@shikijs/twoslash': 3.13.0(typescript@5.9.3)
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
       '@types/hast': 3.0.4
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  shiki@3.13.0:
+  shiki@3.15.0:
     dependencies:
-      '@shikijs/core': 3.13.0
-      '@shikijs/engine-javascript': 3.13.0
-      '@shikijs/engine-oniguruma': 3.13.0
-      '@shikijs/langs': 3.13.0
-      '@shikijs/themes': 3.13.0
-      '@shikijs/types': 3.13.0
+      '@shikijs/core': 3.15.0
+      '@shikijs/engine-javascript': 3.15.0
+      '@shikijs/engine-oniguruma': 3.15.0
+      '@shikijs/langs': 3.15.0
+      '@shikijs/themes': 3.15.0
+      '@shikijs/types': 3.15.0
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
@@ -14350,13 +14406,13 @@ snapshots:
 
   stackback@0.0.2: {}
 
-  starlight-theme-nova@0.9.5(@astrojs/starlight@0.36.1(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)))(typescript@5.9.3):
+  starlight-theme-nova@0.9.5(@astrojs/starlight@0.36.2(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1)))(typescript@5.9.3):
     dependencies:
       '@aria-ui/core': 0.0.22
       '@pagefind/default-ui': 1.4.0
       '@shikijs/transformers': 3.13.0
       '@shikijs/twoslash': 3.13.0(typescript@5.9.3)
-      '@shikijs/types': 3.13.0
+      '@shikijs/types': 3.15.0
       '@types/hast': 3.0.4
       astro-theme-toggle: 0.7.0
       hast-util-is-element: 3.0.0
@@ -14364,7 +14420,7 @@ snapshots:
       remark-custom-header-id: 1.0.0
       shiki-twoslash-renderer: 0.1.0(typescript@5.9.3)
     optionalDependencies:
-      '@astrojs/starlight': 0.36.1(astro@5.15.2(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astrojs/starlight': 0.36.2(astro@5.15.4(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.40.0)(typescript@5.9.3)(yaml@2.8.1))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -14506,7 +14562,9 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwindcss@4.1.16: {}
+  tagged-tag@1.0.0: {}
+
+  tailwindcss@4.1.17: {}
 
   tapable@2.3.0: {}
 
@@ -14643,6 +14701,10 @@ snapshots:
   type-fest@3.13.1: {}
 
   type-fest@4.41.0: {}
+
+  type-fest@5.2.0:
+    dependencies:
+      tagged-tag: 1.0.0
 
   typed-array-buffer@1.0.3:
     dependencies:
@@ -14967,7 +15029,7 @@ snapshots:
 
   vite@6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1):
     dependencies:
-      esbuild: 0.25.11
+      esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
       postcss: 8.5.4
@@ -14984,7 +15046,7 @@ snapshots:
     optionalDependencies:
       vite: 6.4.1(@types/node@20.17.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
 
-  vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.0.1(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1):
+  vitest@3.2.4(@types/node@20.17.5)(jiti@2.6.1)(jsdom@27.1.0(postcss@8.5.4))(lightningcss@1.30.2)(yaml@2.8.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -15011,7 +15073,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 20.17.5
-      jsdom: 27.0.1(postcss@8.5.4)
+      jsdom: 27.1.0(postcss@8.5.4)
     transitivePeerDependencies:
       - jiti
       - less
