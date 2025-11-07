@@ -73,7 +73,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "remirror": "^3.0.3",
-    "tsdown": "^0.15.12",
+    "tsdown": "^0.16.0",
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "vite": "^6.4.1",
