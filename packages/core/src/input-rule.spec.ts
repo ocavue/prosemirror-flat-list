@@ -3,6 +3,7 @@ import { keyboard } from 'vitest-browser-commands/playwright'
 
 import { expectStateToEqual } from '../test/markdown'
 import { setupTestingEditor } from '../test/setup-editor'
+import type { ListAttributes } from './types'
 
 describe('input rules', () => {
   const t = setupTestingEditor()
@@ -39,12 +40,10 @@ describe('input rules', () => {
 
   it('can reset the attribute "collapsed" when changing list type', async () => {
     t.add(t.doc(t.collapsedToggleList(t.p('<a>'))))
-    const collapsedBefore: boolean = t.editor.state.doc.child(0).attrs.collapsed
-    expect(collapsedBefore).toBe(true)
+    expect((t.editor.state.doc.child(0).attrs as ListAttributes).collapsed).toBe(true)
     await keyboard.type('1. ')
     expectStateToEqual(t.editor.state, t.doc(t.orderedList(t.p('<a>'))))
-    const collapsedAfter: boolean = t.editor.state.doc.child(0).attrs.collapsed
-    expect(collapsedAfter).toBe(false)
+    expect((t.editor.state.doc.child(0).attrs as ListAttributes).collapsed).toBe(false)
   })
 
   it('can turn a paragraph into a sub-list', async () => {

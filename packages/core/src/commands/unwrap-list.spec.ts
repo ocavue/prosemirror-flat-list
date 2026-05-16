@@ -5,6 +5,7 @@ import { expectStateToEqual } from '../../test/markdown'
 import { setupTestingEditor } from '../../test/setup-editor'
 
 import { createUnwrapListCommand } from './unwrap-list'
+import type { ListAttributes } from '../types'
 
 describe('unwrapList', () => {
   const t = setupTestingEditor()
@@ -31,8 +32,8 @@ describe('unwrapList', () => {
     t.add(doc1)
     const selection = new NodeSelection(t.view.state.doc.resolve(1))
     expect(selection.node.type.name).toEqual('list')
-    const selectionKind: string = selection.node.attrs.kind
-    expect(selectionKind).toEqual('task')
+    const attrs = selection.node.attrs as ListAttributes
+    expect(attrs.kind).toEqual('task')
     t.view.dispatch(t.view.state.tr.setSelection(selection))
 
     expect(t.dispatchCommand(unwrapList)).toEqual(true)
