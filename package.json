@@ -20,6 +20,7 @@
     "ci:publish:snapshot": "pkg-pr-new publish --pnpm ./packages/core"
   },
   "devDependencies": {
+        "@types/node": "^22.0.0",
     "@changesets/cli": "^2.29.7",
     "@ocavue/eslint-config": "^4.5.7",
     "@ocavue/tsconfig": "^0.7.1",
