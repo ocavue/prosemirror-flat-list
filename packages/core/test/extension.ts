@@ -1,4 +1,4 @@
-import "@prosekit/pm/view/style/prosemirror.css"
+import '@prosekit/pm/view/style/prosemirror.css'
 
 import {
   defineBaseCommands,
@@ -11,7 +11,7 @@ import {
   withPriority,
   type BaseCommandsExtension,
   type Extension,
-  type Union
+  type Union,
 } from '@prosekit/core'
 import { inputRules } from '@prosekit/pm/inputrules'
 
@@ -40,16 +40,18 @@ type HeadingExtension = Extension<{ Nodes: { heading: HeadingAttrs } }>
 type HorizontalRuleExtension = Extension<{
   Nodes: { horizontalRule: Record<string, never> }
 }>
-type ListTestExtension = Union<[
- DocExtension,
- TextExtension,
- ParagraphExtension,
- BlockquoteExtension,
- HeadingExtension,
- HorizontalRuleExtension,
-  ListSpecExtension,
-  BaseCommandsExtension
-]>
+type ListTestExtension = Union<
+  [
+    DocExtension,
+    TextExtension,
+    ParagraphExtension,
+    BlockquoteExtension,
+    HeadingExtension,
+    HorizontalRuleExtension,
+    ListSpecExtension,
+    BaseCommandsExtension,
+  ]
+>
 
 function defineDoc(): DocExtension {
   return defineNodeSpec({ name: 'doc', content: 'block+', topNode: true })
