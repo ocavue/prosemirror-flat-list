@@ -76,8 +76,8 @@ The node type `list` has the following attributes.
 Next step should be add keybindings for the list node type.
 
 ```ts
-import { keymap } from 'prosemirror-keymap'
 import { listKeymap } from 'prosemirror-flat-list'
+import { keymap } from 'prosemirror-keymap'
 
 const listKeymapPlugin = keymap(listKeymap)
 ```
@@ -89,8 +89,8 @@ Make sure that you add this plugin before other plugins that handle the some key
 You can also add input rules for the list node type.
 
 ```ts
-import { inputRules } from 'prosemirror-inputrules'
 import { listInputRules } from 'prosemirror-flat-list'
+import { inputRules } from 'prosemirror-inputrules'
 
 const listInputRulePlugin = inputRules({ rules: listInputRules })
 ```

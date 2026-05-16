@@ -21,7 +21,7 @@ export function findCheckboxInListItem(
     return
   }
 
-  for (let child of node.children) {
+  for (const child of node.children) {
     const checkbox = findCheckboxInListItem(child, depth + 1, maxDepth)
     if (checkbox) {
       return checkbox

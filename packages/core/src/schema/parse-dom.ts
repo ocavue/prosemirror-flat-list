@@ -1,6 +1,6 @@
 import type { TagParseRule } from 'prosemirror-model'
 
-import type { ListAttributes, ListKind } from '../types'
+import type { ListAttributes } from '../types'
 import { findCheckboxInListItem } from '../utils/find-checkbox-in-list-item'
 import { parseInteger } from '../utils/parse-integer'
 
@@ -19,8 +19,7 @@ export function createParseDomRules(): readonly TagParseRule[] {
         }
 
         return {
-          kind: (element.getAttribute('data-list-kind') ||
-            'bullet') as ListKind,
+          kind: element.getAttribute('data-list-kind') || 'bullet',
           order: parseInteger(element.getAttribute('data-list-order')),
           checked: element.hasAttribute('data-list-checked'),
           collapsed: element.hasAttribute('data-list-collapsed'),
@@ -35,8 +34,7 @@ export function createParseDomRules(): readonly TagParseRule[] {
         }
 
         return {
-          kind: (element.getAttribute('data-list-kind') ||
-            'bullet') as ListKind,
+          kind: element.getAttribute('data-list-kind') || 'bullet',
           order: parseInteger(element.getAttribute('data-list-order')),
           checked: element.hasAttribute('data-list-checked'),
           collapsed: element.hasAttribute('data-list-collapsed'),

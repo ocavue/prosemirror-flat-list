@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 import { playwright } from '@vitest/browser-playwright'
-import { defineProject } from 'vitest/config'
 import { playwrightCommands } from 'vitest-browser-commands'
+import { defineProject } from 'vitest/config'
 
 export default defineProject({
   plugins: [playwrightCommands()],

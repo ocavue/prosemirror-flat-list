@@ -45,7 +45,7 @@ export function wrappingListInputRule<
       const $pos = tr.selection.$from
       const listNode = $pos.index(-1) === 0 && $pos.node(-1)
       if (listNode && isListNode(listNode)) {
-        const oldAttrs: Attrs = listNode.attrs as ListAttributes
+        const oldAttrs: Attrs = listNode.attrs
         const newAttrs: Attrs =
           typeof getAttrs === 'function'
             ? getAttrs({ match, attributes: oldAttrs as T })
