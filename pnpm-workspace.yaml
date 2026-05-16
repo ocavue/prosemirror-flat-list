@@ -8,3 +8,9 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 linkWorkspacePackages: deep
+blockExoticSubdeps: false
+overrides:
+  prosemirror-model: ^1.25.6
+  prosemirror-transform: ^1.12.0
+  prosemirror-view: ^1.41.8
+  prosemirror-history: ^1.5.0
