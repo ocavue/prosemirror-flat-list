@@ -19,8 +19,7 @@ export function createParseDomRules(): readonly TagParseRule[] {
         }
 
         return {
-          kind: (element.getAttribute('data-list-kind') ||
-            'bullet'),
+          kind: element.getAttribute('data-list-kind') || 'bullet',
           order: parseInteger(element.getAttribute('data-list-order')),
           checked: element.hasAttribute('data-list-checked'),
           collapsed: element.hasAttribute('data-list-collapsed'),
@@ -35,8 +34,7 @@ export function createParseDomRules(): readonly TagParseRule[] {
         }
 
         return {
-          kind: (element.getAttribute('data-list-kind') ||
-            'bullet'),
+          kind: element.getAttribute('data-list-kind') || 'bullet',
           order: parseInteger(element.getAttribute('data-list-order')),
           checked: element.hasAttribute('data-list-checked'),
           collapsed: element.hasAttribute('data-list-collapsed'),
