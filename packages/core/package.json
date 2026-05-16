@@ -63,7 +63,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "tsdown": "^0.22.0",
-    "typescript": "^6.0.3",
+    "typescript": "^5.0.0",
     "unified": "^11.0.5",
     "vite": "^7.3.3",
     "vitest": "^4.1.6",

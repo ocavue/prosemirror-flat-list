@@ -21,7 +21,7 @@
     "prosemirror-view": "^1.41.8"
   },
   "devDependencies": {
-    "typescript": "^6.0.3",
+    "typescript": "^5.0.0",
     "vite": "^7.3.3"
   }
 }
