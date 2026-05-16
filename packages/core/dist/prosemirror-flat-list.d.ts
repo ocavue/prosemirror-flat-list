@@ -1,5 +1,4 @@
 import { Attrs, DOMOutputSpec, DOMSerializer, Fragment, Node, Node as Node$1, NodeRange, NodeSpec, NodeType, ResolvedPos, Schema, Slice, TagParseRule } from "prosemirror-model";
-import * as prosemirror_state0 from "prosemirror-state";
 import { Command, EditorState, Plugin, Transaction } from "prosemirror-state";
 import { InputRule } from "prosemirror-inputrules";
 import { EditorView, NodeViewConstructor } from "prosemirror-view";
@@ -93,7 +92,7 @@ declare const joinListUp: Command;
  *
  * @public @group Commands
  */
-declare const enterCommand: prosemirror_state0.Command;
+declare const enterCommand: import("prosemirror-state").Command;
 /**
  * Keybinding for `Backspace`. It's chained with following commands:
  *
@@ -107,7 +106,7 @@ declare const enterCommand: prosemirror_state0.Command;
  * @public @group Commands
  *
  */
-declare const backspaceCommand: prosemirror_state0.Command;
+declare const backspaceCommand: import("prosemirror-state").Command;
 /**
  * Keybinding for `Delete`. It's chained with following commands:
  *
@@ -119,7 +118,7 @@ declare const backspaceCommand: prosemirror_state0.Command;
  * @public @group Commands
  *
  */
-declare const deleteCommand: prosemirror_state0.Command;
+declare const deleteCommand: import("prosemirror-state").Command;
 /**
  * Returns an object containing the keymap for the list commands.
  *
@@ -132,11 +131,11 @@ declare const deleteCommand: prosemirror_state0.Command;
  * @public @group Commands
  */
 declare const listKeymap: {
-  Enter: prosemirror_state0.Command;
-  Backspace: prosemirror_state0.Command;
-  Delete: prosemirror_state0.Command;
-  'Mod-[': prosemirror_state0.Command;
-  'Mod-]': prosemirror_state0.Command;
+  Enter: import("prosemirror-state").Command;
+  Backspace: import("prosemirror-state").Command;
+  Delete: import("prosemirror-state").Command;
+  'Mod-[': import("prosemirror-state").Command;
+  'Mod-]': import("prosemirror-state").Command;
 };
 //#endregion
 //#region src/commands/move-list.d.ts
@@ -251,6 +250,7 @@ declare function createToggleListCommand<T extends ListAttributes = ListAttribut
 /**
  * The list node attributes to toggle.
  */
+
 attrs: T): Command;
 //#endregion
 //#region src/commands/unwrap-list.d.ts

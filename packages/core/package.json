@@ -36,9 +36,7 @@
   ],
   "scripts": {
     "dev": "tsdown --watch",
-    "build": "pnpm run build:tsdown && pnpm run build:css",
-    "build:tsdown": "tsdown",
-    "build:css": "esbuild --target=chrome100 --bundle src/style.css --outfile=dist/style.css",
+    "build": "tsdown",
     "prepublishOnly": "pnpm run build",
     "test": "vitest"
   },
@@ -54,6 +52,7 @@
   "devDependencies": {
     "@prosekit/core": "^0.12.2",
     "@prosekit/pm": "^0.1.17",
+    "@tsdown/css": "^0.22.0",
     "@types/dedent": "^0.7.2",
     "@types/node": "^20.17.5",
     "@vitest/browser-playwright": "^4.1.6",
@@ -65,7 +64,7 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "tsdown": "^0.16.0",
+    "tsdown": "^0.22.0",
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "vite": "^6.4.1",
