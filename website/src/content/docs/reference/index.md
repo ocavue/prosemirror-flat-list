@@ -12,7 +12,7 @@ title: API reference
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="findlistsrange" href="#findlistsrange">findListsRange</a>(`$from`: [`ResolvedPos`](https://prosemirror.net/docs/ref/#model.ResolvedPos), `$to`: [`ResolvedPos`](https://prosemirror.net/docs/ref/#model.ResolvedPos)): [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange) \| `null`</code>
+<code data-typedoc-code><i>function</i> <a id="findlistsrange" href="#findlistsrange">findListsRange</a>(`$from`: [`ResolvedPos`](https://prosemirror.net/docs/ref/#model.ResolvedPos), `$to?`: [`ResolvedPos`](https://prosemirror.net/docs/ref/#model.ResolvedPos)): [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange) \| `null`</code>
 
 </dt>
 
@@ -151,7 +151,7 @@ otherwise `null` is returned.
 
 <code data-typedoc-code>type <a id="wrapinlistgetattrs" href="#wrapinlistgetattrs">WrapInListGetAttrs</a>\<T\> = 
   \| `T`
-  \| (`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `T` \| `null`</code>
+  \| ((`range`: [`NodeRange`](https://prosemirror.net/docs/ref/#model.NodeRange)) => `T` \| `null`)</code>
 
 </dt>
 
@@ -433,7 +433,7 @@ Returns a command that split the current list node.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="createtogglecollapsedcommand" href="#createtogglecollapsedcommand">createToggleCollapsedCommand</a>(`options`: [`ToggleCollapsedOptions`](#togglecollapsedoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)</code>
+<code data-typedoc-code><i>function</i> <a id="createtogglecollapsedcommand" href="#createtogglecollapsedcommand">createToggleCollapsedCommand</a>(`options?`: [`ToggleCollapsedOptions`](#togglecollapsedoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)</code>
 
 </dt>
 
@@ -510,7 +510,7 @@ type and attributes.
 
 ## Input Rules
 
-### ListInputRuleAttributesGetter() {#listinputruleattributesgetter}
+### ListInputRuleAttributesGetter {#listinputruleattributesgetter}
 
 <dl>
 
