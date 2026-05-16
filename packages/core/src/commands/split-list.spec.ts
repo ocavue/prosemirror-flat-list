@@ -1,6 +1,8 @@
 import { NodeSelection } from 'prosemirror-state'
 import { describe, expect, it } from 'vitest'
+import { keyboard } from 'vitest-browser-commands/playwright'
 
+import { expectStateToEqual } from '../../test/markdown'
 import { setupTestingEditor } from '../../test/setup-editor'
 
 import { enterCommand } from './keymap'
@@ -26,14 +28,14 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - 123
-        - 234<cursor>
+        - 234<a>
 
         paragraph
       `,
       markdown`
         - 123
         - 234
-        - <cursor>
+        - <a>
 
         paragraph
       `,
@@ -43,24 +45,24 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - 123
-        - 23<cursor>4
+        - 23<a>4
       `,
       markdown`
         - 123
         - 23
-        - <cursor>4
+        - <a>4
       `,
     )
 
     applyCommand(
       enterCommand,
       markdown`
-        - 1<cursor>23
+        - 1<a>23
         - 234
       `,
       markdown`
         - 1
-        - <cursor>23
+        - <a>23
         - 234
       `,
     )
@@ -71,14 +73,14 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - 123
-          - 456<cursor>
+          - 456<a>
 
         paragraph
       `,
       markdown`
         - 123
           - 456
-          - <cursor>
+          - <a>
 
         paragraph
       `,
@@ -90,14 +92,14 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - 123
-        - <cursor>
+        - <a>
 
         paragraph
       `,
       markdown`
         - 123
 
-        <cursor>
+        <a>
 
         paragraph
       `,
@@ -107,13 +109,13 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - 123
-        - <cursor>
+        - <a>
         - 456
       `,
       markdown`
         - 123
 
-        <cursor>
+        <a>
 
         - 456
       `,
@@ -122,11 +124,11 @@ describe('splitList', () => {
     applyCommand(
       enterCommand,
       markdown`
-        - <cursor>
+        - <a>
         - 123
       `,
       markdown`
-        <cursor>
+        <a>
 
         - 123
       `,
@@ -138,14 +140,14 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - A1
-          - <cursor>
+          - <a>
 
         paragraph
       `,
       markdown`
         - A1
 
-        - <cursor>
+        - <a>
 
         paragraph
       `,
@@ -157,7 +159,7 @@ describe('splitList', () => {
         - A1
           - B1
 
-          - <cursor>
+          - <a>
 
         paragraph
       `,
@@ -165,7 +167,7 @@ describe('splitList', () => {
         - A1
           - B1
 
-        - <cursor>
+        - <a>
 
         paragraph
       `,
@@ -176,7 +178,7 @@ describe('splitList', () => {
     applyCommand(
       enterCommand,
       markdown`
-        - <start>123<end>
+        - <a>123<b>
         - 456
       `,
       markdown`
@@ -191,13 +193,13 @@ describe('splitList', () => {
     applyCommand(
       enterCommand,
       doc(
-        checkedTaskList(p('<cursor>A1')),
+        checkedTaskList(p('<a>A1')),
         uncheckedTaskList(p('A2')),
         uncheckedTaskList(p('A3')),
       ),
       doc(
         uncheckedTaskList(p('')),
-        checkedTaskList(p('<cursor>A1')),
+        checkedTaskList(p('<a>A1')),
         uncheckedTaskList(p('A2')),
         uncheckedTaskList(p('A3')),
       ),
@@ -207,13 +209,13 @@ describe('splitList', () => {
       enterCommand,
       doc(
         uncheckedTaskList(p('A1')),
-        checkedTaskList(p('A2<cursor>')),
+        checkedTaskList(p('A2<a>')),
         uncheckedTaskList(p('A3')),
       ),
       doc(
         uncheckedTaskList(p('A1')),
         checkedTaskList(p('A2')),
-        uncheckedTaskList(p('<cursor>')),
+        uncheckedTaskList(p('<a>')),
         uncheckedTaskList(p('A3')),
       ),
     )
@@ -222,13 +224,13 @@ describe('splitList', () => {
       enterCommand,
       doc(
         uncheckedTaskList(p('A1')),
-        checkedTaskList(p('A<cursor>2')),
+        checkedTaskList(p('A<a>2')),
         uncheckedTaskList(p('A3')),
       ),
       doc(
         uncheckedTaskList(p('A1')),
         checkedTaskList(p('A')),
-        uncheckedTaskList(p('<cursor>2')),
+        uncheckedTaskList(p('<a>2')),
         uncheckedTaskList(p('A3')),
       ),
     )
@@ -238,7 +240,7 @@ describe('splitList', () => {
     applyCommand(
       enterCommand,
       markdown`
-        - 123<cursor>
+        - 123<a>
 
           456
 
@@ -247,7 +249,7 @@ describe('splitList', () => {
       markdown`
         - 123
 
-        - <cursor>
+        - <a>
 
           456
 
@@ -260,7 +262,7 @@ describe('splitList', () => {
       enterCommand,
       markdown`
         - Parent
-          - 123<cursor>
+          - 123<a>
 
             456
 
@@ -270,7 +272,7 @@ describe('splitList', () => {
         - Parent
           - 123
 
-          - <cursor>
+          - <a>
 
             456
 
@@ -279,25 +281,26 @@ describe('splitList', () => {
     )
   })
 
-  it('can create new paragraph when the caret is not inside the first child of the list', () => {
+  it('can create new paragraph when the caret is not inside the first child of the list', async () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
         bulletList(
           //
           p('123'),
-          p('456<cursor>'),
+          p('456<a>'),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         bulletList(
           //
           p('123'),
           p('456'),
-          p('<cursor>'),
+          p('<a>'),
         ),
       ),
     )
@@ -308,19 +311,20 @@ describe('splitList', () => {
         bulletList(
           //
           p('123'),
-          p('456<cursor>'),
+          p('456<a>'),
           p('789'),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         bulletList(
           //
           p('123'),
           p('456'),
-          p('<cursor>'),
+          p('<a>'),
           p('789'),
         ),
       ),
@@ -334,13 +338,14 @@ describe('splitList', () => {
           bulletList(
             //
             p('123'),
-            p('<cursor>456'),
+            p('<a>456'),
           ),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         bulletList(
           p('parent'),
@@ -348,7 +353,7 @@ describe('splitList', () => {
             //
             p('123'),
             p(''),
-            p('<cursor>456'),
+            p('<a>456'),
           ),
         ),
       ),
@@ -359,18 +364,19 @@ describe('splitList', () => {
         bulletList(
           //
           p('123'),
-          p('<cursor>'),
+          p('<a>'),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         bulletList(
           //
           p('123'),
           p(''),
-          p('<cursor>'),
+          p('<a>'),
         ),
       ),
     )
@@ -380,38 +386,40 @@ describe('splitList', () => {
         bulletList(
           //
           p('123'),
-          p('<cursor>'),
+          p('<a>'),
           p('456'),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         bulletList(
           //
           p('123'),
           p(''),
-          p('<cursor>'),
+          p('<a>'),
           p('456'),
         ),
       ),
     )
   })
 
-  it('can skip collapsed content', () => {
+  it('can skip collapsed content', async () => {
     // Cursor in the last paragraph of the item
     add(
       doc(
         collapsedToggleList(
           //
-          p('1<start>23<end>'),
+          p('1<a>23<b>'),
           p('456'),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         collapsedToggleList(
           //
@@ -420,19 +428,19 @@ describe('splitList', () => {
         ),
         expandedToggleList(
           //
-          p('<cursor>'),
+          p('<a>'),
         ),
       ),
     )
   })
 
-  it("won't effect non-list document", () => {
+  it("won't effect non-list document", async () => {
     applyCommand(
       enterCommand,
       markdown`
         # h1
 
-        1<cursor>23
+        1<a>23
       `,
       null,
     )
@@ -444,7 +452,7 @@ describe('splitList', () => {
 
         123
 
-        > 4<cursor>56
+        > 4<a>56
       `,
       null,
     )
@@ -455,27 +463,28 @@ describe('splitList', () => {
           p('123'),
           blockquote(
             //
-            p('4<cursor>56'),
+            p('4<a>56'),
           ),
         ),
       ),
     )
-    editor.press('Enter')
-    expect(editor.state).toEqualRemirrorState(
+    await keyboard.press('Enter')
+    expectStateToEqual(
+      editor.state,
       doc(
         blockquote(
           p('123'),
           blockquote(
             //
             p('4'),
-            p('<cursor>56'),
+            p('<a>56'),
           ),
         ),
       ),
     )
   })
 
-  it('can split list node for a block node selection', () => {
+  it('can split list node for a block node selection', async () => {
     add(markdown`
       # h1
 
@@ -483,10 +492,11 @@ describe('splitList', () => {
     `)
 
     let hrPos = -1
-    editor.doc.descendants((node, pos) => {
+    editor.state.doc.descendants((node, pos) => {
       if (node.type.name === 'horizontalRule') {
         hrPos = pos
       }
+      return true
     })
 
     expect(hrPos > -1).toBe(true)
@@ -499,13 +509,16 @@ describe('splitList', () => {
       }
     `)
 
-    editor.press('Enter')
+    await keyboard.press('Enter')
 
-    expect(editor.state).toEqualRemirrorState(markdown`
-      # h1
+    expectStateToEqual(
+      editor.state,
+      markdown`
+        # h1
 
-      1. ***
-      2. <cursor>\n
-    `)
+        1. ***
+        2. <a>\n
+      `,
+    )
   })
 })

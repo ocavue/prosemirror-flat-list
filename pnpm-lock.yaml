@@ -192,24 +192,6 @@ importers:
       '@prosekit/pm':
         specifier: https://pkg.pr.new/@prosekit/pm@1628
         version: https://pkg.pr.new/@prosekit/pm@1628
-      '@remirror/core':
-        specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)
-      '@remirror/extension-blockquote':
-        specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)
-      '@remirror/extension-heading':
-        specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)
-      '@remirror/extension-horizontal-rule':
-        specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)
-      '@remirror/pm':
-        specifier: ^3.0.1
-        version: 3.0.1
-      '@remirror/preset-core':
-        specifier: ^3.0.2
-        version: 3.0.2(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)
       '@types/dedent':
         specifier: ^0.7.2
         version: 0.7.2
@@ -228,21 +210,9 @@ importers:
       esbuild:
         specifier: ^0.25.12
         version: 0.25.12
-      jest-prosemirror:
-        specifier: ^3.0.1
-        version: 3.0.1(@types/node@20.17.5)(jsdom@29.1.1)
-      jest-remirror:
-        specifier: ^3.0.3
-        version: 3.0.3(@types/node@20.17.5)(jsdom@29.1.1)
       playwright:
         specifier: ^1.60.0
         version: 1.60.0
-      react:
-        specifier: ^19.2.0
-        version: 19.2.0
-      react-dom:
-        specifier: ^19.2.0
-        version: 19.2.0(react@19.2.0)
       rehype-stringify:
         specifier: ^10.0.1
         version: 10.0.1
@@ -255,9 +225,6 @@ importers:
       remark-rehype:
         specifier: ^11.1.2
         version: 11.1.2
-      remirror:
-        specifier: ^3.0.3
-        version: 3.0.3(@remirror/pm@3.0.1)(@types/node@20.17.5)(jsdom@29.1.1)(prettier@3.6.2)
       tsdown:
         specifier: ^0.16.0
         version: 0.16.0(typescript@5.9.3)

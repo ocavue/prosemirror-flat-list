@@ -1,19 +1,12 @@
-import { BlockquoteExtension } from '@remirror/extension-blockquote'
-import { HeadingExtension } from '@remirror/extension-heading'
-import { renderEditor } from 'jest-remirror'
+import { createTestEditor } from '@prosekit/core/test'
 import { describe, expect, it } from 'vitest'
 
-import { ListExtension } from '../test/extension'
+import { defineListTestExtension } from '../test/extension'
 
 import { migrateDocJSON } from './migrate'
 
 describe('migrateDocJSON', () => {
-  const extensions = [
-    new ListExtension(),
-    new BlockquoteExtension(),
-    new HeadingExtension({}),
-  ]
-  const editor = renderEditor(extensions, {})
+  const editor = createTestEditor({ extension: defineListTestExtension() })
   const schema = editor.schema
 
   const checkJSON = (json: unknown) => {

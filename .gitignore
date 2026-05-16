@@ -12,3 +12,5 @@ node_modules
 temp
 *.tsbuildinfo
 .astro/
+.vitest-attachments/
+__screenshots__/

@@ -21,7 +21,7 @@ export const createListNodeView: NodeViewConstructor = (node) => {
   // and adding an empty span as a child to the click target prevents that behavior
   // See https://github.com/ocavue/prosemirror-flat-list/issues/89
   if (browser.safari && node.attrs.kind === 'toggle') {
-    ;(dom as HTMLElement)
+    dom
       .querySelector('.list-marker-click-target')
       ?.appendChild(document.createElement('span'))
   }

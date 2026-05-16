@@ -109,14 +109,20 @@ function defineListKeymap() {
 }
 
 export function defineListTestExtension() {
+  // Node order matters: prosekit's defineNodeSpec uses addToStart, so the
+  // LAST node defined here ends up FIRST in the schema. ProseMirror's
+  // fillBefore picks the first matching block-group node as filler — if list
+  // is first, list.createAndFill recurses into another list infinitely. By
+  // putting paragraph last (and thus first in the schema), fillBefore picks
+  // paragraph and terminates.
   return union(
     defineDoc(),
     defineText(),
-    defineParagraph(),
     defineBlockquote(),
     defineHeading(),
     defineHorizontalRule(),
     defineListSpec(),
+    defineParagraph(),
     defineListPlugins(),
     defineListInputRules(),
     defineListKeymap(),

@@ -1,4 +1,3 @@
-import type { TaggedProsemirrorNode } from 'jest-remirror'
 import type { Node as ProsemirrorNode } from 'prosemirror-model'
 import { describe, expect, it } from 'vitest'
 
@@ -17,23 +16,11 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-        - A<cursor>2
+        - A<a>2
       `,
       markdown`
         - A1
-          - A<cursor>2
-      `,
-    )
-
-    t.applyCommand(
-      indentList,
-      markdown`
-        - A1
-        - ## A<cursor>2
-      `,
-      markdown`
-        - A1
-          - ## A<cursor>2
+          - A<a>2
       `,
     )
 
@@ -41,11 +28,23 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-        - > ## A<cursor>2
+        - ## A<a>2
       `,
       markdown`
         - A1
-          - > ## A<cursor>2
+          - ## A<a>2
+      `,
+    )
+
+    t.applyCommand(
+      indentList,
+      markdown`
+        - A1
+        - > ## A<a>2
+      `,
+      markdown`
+        - A1
+          - > ## A<a>2
       `,
     )
   })
@@ -55,13 +54,13 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-        - A2<start>
-        - A3<end>
+        - A2<a>
+        - A3<b>
       `,
       markdown`
         - A1
-          - A2<start>
-          - A3<end>
+          - A2<a>
+          - A3<b>
       `,
     )
   })
@@ -73,14 +72,14 @@ describe('indentList', () => {
         - A1
         - A2a
 
-          A2b<cursor>
+          A2b<a>
       `,
       markdown`
         - A1
 
         - A2a
 
-          A2b<cursor>
+          A2b<a>
       `,
     )
 
@@ -90,7 +89,7 @@ describe('indentList', () => {
         - A1
         - A2a
 
-          A2b<cursor>
+          A2b<a>
 
           A2c
       `,
@@ -99,7 +98,7 @@ describe('indentList', () => {
 
         - A2a
 
-          A2b<cursor>
+          A2b<a>
 
           A2c
       `,
@@ -114,7 +113,7 @@ describe('indentList', () => {
         - A2a
           - B1
 
-          A2b<cursor>
+          A2b<a>
       `,
       markdown`
         - A1
@@ -122,7 +121,7 @@ describe('indentList', () => {
         - A2a
           - B1
 
-            A2b<cursor>
+            A2b<a>
       `,
     )
 
@@ -133,7 +132,7 @@ describe('indentList', () => {
         - A2a
           - B1
 
-          A2b<cursor>
+          A2b<a>
           - B2
       `,
       markdown`
@@ -142,7 +141,7 @@ describe('indentList', () => {
         - A2a
           - B1
 
-            A2b<cursor>
+            A2b<a>
 
           - B2
       `,
@@ -157,18 +156,18 @@ describe('indentList', () => {
           - B1a
             - C1
 
-            B1b<start>
+            B1b<a>
 
-          A1b<end>
+          A1b<b>
       `,
       markdown`
         - A1a
           - B1a
             - C1
 
-              B1b<start>
+              B1b<a>
 
-            A1b<end>
+            A1b<b>
       `,
     )
 
@@ -179,7 +178,7 @@ describe('indentList', () => {
           - B1a
             - C1
 
-            B1b<start>
+            B1b<a>
 
           - B2
 
@@ -187,14 +186,14 @@ describe('indentList', () => {
 
           - B4
 
-          A1b<end>
+          A1b<b>
       `,
       markdown`
         - A1a
           - B1a
             - C1
 
-              B1b<start>
+              B1b<a>
 
             - B2
 
@@ -202,7 +201,7 @@ describe('indentList', () => {
 
             - B4
 
-            A1b<end>
+            A1b<b>
       `,
     )
   })
@@ -212,13 +211,13 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-        - A<start>2
-        - A<end>3
+        - A<a>2
+        - A<b>3
       `,
       markdown`
         - A1
-          - A<start>2
-          - A<end>3
+          - A<a>2
+          - A<b>3
       `,
     )
   })
@@ -228,11 +227,11 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-          - B<cursor>2
+          - B<a>2
       `,
       markdown`
         - A1
-          - - B<cursor>2
+          - - B<a>2
       `,
     )
   })
@@ -242,7 +241,7 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-          - B<cursor>2a
+          - B<a>2a
 
             B2b
 
@@ -250,7 +249,7 @@ describe('indentList', () => {
       `,
       markdown`
         - A1
-          - - B<cursor>2a
+          - - B<a>2a
 
           - B2b
 
@@ -264,11 +263,11 @@ describe('indentList', () => {
       indentList,
       markdown`
         - [ ] A1
-        - [x] A<cursor>2
+        - [x] A<a>2
       `,
       markdown`
         - [ ] A1
-          - [x] A<cursor>2
+          - [x] A<a>2
       `,
     )
 
@@ -277,12 +276,12 @@ describe('indentList', () => {
       markdown`
         1. A1
 
-        2. A<cursor>2
+        2. A<a>2
            - B1
       `,
       markdown`
         1. A1
-           1. A<cursor>2
+           1. A<a>2
            - B1
       `,
     )
@@ -292,13 +291,13 @@ describe('indentList', () => {
       markdown`
         - [x] A1
           - B1
-        - [x] A<cursor>2
+        - [x] A<a>2
           1. B2
       `,
       markdown`
         - [x] A1
           - B1
-          - [x] A<cursor>2
+          - [x] A<a>2
           1. B2
       `,
     )
@@ -310,7 +309,7 @@ describe('indentList', () => {
       markdown`
         - A1
         - A2
-        - A3<cursor>
+        - A3<a>
           - B1
           - B2
           - B3
@@ -318,7 +317,7 @@ describe('indentList', () => {
       markdown`
         - A1
         - A2
-          - A3<cursor>
+          - A3<a>
           - B1
           - B2
           - B3
@@ -333,7 +332,7 @@ describe('indentList', () => {
         t.bulletList(t.p('A1')),
         t.bulletList(t.p('A2')),
         t.collapsedToggleList(
-          t.p('A3<cursor>'),
+          t.p('A3<a>'),
           t.bulletList(t.p('B1')),
           t.bulletList(t.p('B2')),
           t.bulletList(t.p('B3')),
@@ -344,7 +343,7 @@ describe('indentList', () => {
         t.bulletList(
           t.p('A2'),
           t.collapsedToggleList(
-            t.p('A3<cursor>'),
+            t.p('A3<a>'),
             t.bulletList(t.p('B1')),
             t.bulletList(t.p('B2')),
             t.bulletList(t.p('B3')),
@@ -364,7 +363,7 @@ describe('indentList', () => {
           t.bulletList(t.p('B2')),
           t.bulletList(t.p('B3')),
         ),
-        t.p('<cursor>'),
+        t.p('<a>'),
       ),
       t.doc(
         t.expandedToggleList(
@@ -372,7 +371,7 @@ describe('indentList', () => {
           t.bulletList(t.p('B1')),
           t.bulletList(t.p('B2')),
           t.bulletList(t.p('B3')),
-          t.p('<cursor>'),
+          t.p('<a>'),
         ),
       ),
     )
@@ -383,16 +382,16 @@ describe('indentList', () => {
       indentList,
       markdown`
         - A1
-        - <start>A2
-        - A3<end>
+        - <a>A2
+        - A3<b>
           - B1
           - B2
           - B3
       `,
       markdown`
         - A1
-          - <start>A2
-          - A3<end>
+          - <a>A2
+          - A3<b>
           - B1
           - B2
           - B3
@@ -404,15 +403,15 @@ describe('indentList', () => {
       markdown`
         - A1
           - B1
-        - A2<start>
-          - B2<end>
+        - A2<a>
+          - B2<b>
             - C1
       `,
       markdown`
         - A1
           - B1
-          - A2<start>
-            - B2<end>
+          - A2<a>
+            - B2<b>
             - C1
       `,
     )
@@ -424,13 +423,13 @@ describe('indentList', () => {
       markdown`
         - A1
 
-        - A2<cursor>
+        - A2<a>
 
           A2
       `,
       markdown`
         - A1
-          - A2<cursor>
+          - A2<a>
 
           A2
       `,
@@ -441,14 +440,14 @@ describe('indentList', () => {
       markdown`
         - A1
 
-        - A2<cursor>
+        - A2<a>
 
           A2
           - B1
       `,
       markdown`
         - A1
-          - A2<cursor>
+          - A2<a>
 
           A2
           - B1
@@ -463,7 +462,7 @@ describe('indentList', () => {
         - A2
           - B1
 
-          A2<cursor>
+          A2<a>
 
           A2
           - B1
@@ -474,7 +473,7 @@ describe('indentList', () => {
         - A2
           - B1
 
-            A2<cursor>
+            A2<a>
 
           A2
           - B1
@@ -488,13 +487,13 @@ describe('indentList', () => {
 
           A1
 
-        - <cursor>A2
+        - <a>A2
       `,
       markdown`
         - A1
 
           A1
-          - <cursor>A2
+          - <a>A2
       `,
     )
   })
@@ -505,12 +504,12 @@ describe('indentList', () => {
       markdown`
         - A1
 
-        P1<cursor>
+        P1<a>
       `,
       markdown`
         - A1
 
-          P1<cursor>
+          P1<a>
       `,
     )
 
@@ -519,18 +518,18 @@ describe('indentList', () => {
       markdown`
         - A1
 
-        P1<start>
+        P1<a>
 
-        P2<end>
+        P2<b>
 
         P3
       `,
       markdown`
         - A1
 
-          P1<start>
+          P1<a>
 
-          P2<end>
+          P2<b>
 
         P3
       `,
@@ -544,7 +543,7 @@ describe('indentList', () => {
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
         /*6*/
-        t.bulletList(/*7*/ t.p('A2<cursor>') /*11*/),
+        t.bulletList(/*7*/ t.p('A2<a>') /*11*/),
         /*12*/
         t.bulletList(/*13*/ t.p('A3') /*17*/),
         /*18*/
@@ -561,7 +560,7 @@ describe('indentList', () => {
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
         /*6*/
-        t.bulletList(/*7*/ t.p('A2<cursor>') /*11*/),
+        t.bulletList(/*7*/ t.p('A2<a>') /*11*/),
         /*12*/
         t.bulletList(/*13*/ t.p('A3') /*17*/),
         /*18*/
@@ -582,20 +581,20 @@ describe('indentList', () => {
       markdown`
         - A1
           - B1
-          - <start>B2
+          - <a>B2
         - A2
           - B3
-            - C1<end>
+            - C1<b>
               - D1
           - B4
       `,
       markdown`
         - A1
           - B1
-            - <start>B2
+            - <a>B2
           - A2
             - B3
-              - C1<end>
+              - C1<b>
               - D1
           - B4
       `,
@@ -603,33 +602,32 @@ describe('indentList', () => {
   })
 
   it('only needs one step for some of the most comment indent action', () => {
-    const countSteps = (
-      doc: TaggedProsemirrorNode,
-      expected: TaggedProsemirrorNode,
-    ) => {
+    const countSteps = (doc: ProsemirrorNode, expected: ProsemirrorNode) => {
       t.add(doc)
       const state = t.view.state
       const command = createIndentListCommand()
-      let count = -1
-      let actual: ProsemirrorNode | null = null
+      const captured: { count: number; actual: ProsemirrorNode | null } = {
+        count: -1,
+        actual: null,
+      }
       command(state, (tr) => {
-        count = tr.steps.length
-        actual = tr.doc
+        captured.count = tr.steps.length
+        captured.actual = tr.doc
       })
-      expect(actual).not.equal(null)
-      expect(actual).toEqualRemirrorDocument(expected)
-      return count
+      if (!captured.actual) throw new Error('expected command to dispatch')
+      expect(captured.actual.toJSON()).toEqual(expected.toJSON())
+      return captured.count
     }
 
     expect(
       countSteps(
         markdown`
           - A1
-          - A2<cursor>
+          - A2<a>
         `,
         markdown`
           - A1
-            - A2<cursor>
+            - A2<a>
         `,
       ),
     ).toBe(1)
@@ -638,12 +636,12 @@ describe('indentList', () => {
       countSteps(
         markdown`
           - A1
-          - [ ] A2<cursor>
+          - [ ] A2<a>
           - [x] A3
         `,
         markdown`
           - A1
-            - [ ] A2<cursor>
+            - [ ] A2<a>
           - [x] A3
         `,
       ),
@@ -653,14 +651,14 @@ describe('indentList', () => {
       countSteps(
         markdown`
           1. A1
-          2. <start>A2
-          3. A3<end>
+          2. <a>A2
+          3. A3<b>
           4. A4
         `,
         markdown`
           1. A1
-             1. <start>A2
-             2. A3<end>
+             1. <a>A2
+             2. A3<b>
           2. A4
         `,
       ),
@@ -671,16 +669,16 @@ describe('indentList', () => {
         markdown`
           1. A1
              - B1
-             - <start>B2
+             - <a>B2
              - B3
-             - B4<end>
+             - B4<b>
         `,
         markdown`
           1. A1
              - B1
-               - <start>B2
+               - <a>B2
                - B3
-               - B4<end>
+               - B4<b>
         `,
       ),
     ).toBe(1)
@@ -696,7 +694,7 @@ describe('indentList', () => {
 
                   D1b
 
-                - <start>D2
+                - <a>D2
 
                 C1b
 
@@ -712,7 +710,7 @@ describe('indentList', () => {
 
               B3b
 
-            - B4<end>
+            - B4<b>
 
             A3b
         `,
@@ -723,7 +721,7 @@ describe('indentList', () => {
                 - D1
 
                   D1b
-                  - <start>D2
+                  - <a>D2
 
                   C1b
 
@@ -739,7 +737,7 @@ describe('indentList', () => {
 
                 B3b
 
-              - B4<end>
+              - B4<b>
 
             A3b
         `,

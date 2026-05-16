@@ -10,19 +10,19 @@ describe('toggleList', () => {
   const toggleList = createToggleListCommand({ kind: 'ordered' })
 
   it('can toggle list', () => {
-    const doc1 = doc(p('P1<cursor>'), p('P2'))
-    const doc2 = doc(orderedList(p('P1<cursor>')), p('P2'))
+    const doc1 = doc(p('P1<a>'), p('P2'))
+    const doc2 = doc(orderedList(p('P1<a>')), p('P2'))
 
     t.applyCommand(toggleList, doc1, doc2)
     t.applyCommand(toggleList, doc2, doc1)
   })
 
   it('can toggle list with multiple selected paragraphs', () => {
-    const doc1 = doc(p('P1'), p('<start>P2'), p('P3<end>'), p('P4'))
+    const doc1 = doc(p('P1'), p('<a>P2'), p('P3<b>'), p('P4'))
     const doc2 = doc(
       p('P1'),
-      orderedList(p('<start>P2')),
-      orderedList(p('P3<end>')),
+      orderedList(p('<a>P2')),
+      orderedList(p('P3<b>')),
       p('P4'),
     )
 
@@ -34,9 +34,9 @@ describe('toggleList', () => {
     const toggleBullet = createToggleListCommand({ kind: 'bullet' })
     const toggleTask = createToggleListCommand({ kind: 'task' })
 
-    const doc1 = doc(p('P1<cursor>'), p('P2'))
-    const doc2 = doc(uncheckedTaskList(p('P1<cursor>')), p('P2'))
-    const doc3 = doc(bulletList(p('P1<cursor>')), p('P2'))
+    const doc1 = doc(p('P1<a>'), p('P2'))
+    const doc2 = doc(uncheckedTaskList(p('P1<a>')), p('P2'))
+    const doc3 = doc(bulletList(p('P1<a>')), p('P2'))
 
     t.applyCommand(toggleTask, doc1, doc2)
     t.applyCommand(toggleBullet, doc2, doc3)

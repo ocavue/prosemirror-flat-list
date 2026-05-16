@@ -15,12 +15,12 @@ describe('moveList', () => {
       moveUp,
       markdown`
         - A1
-        - A2<start>
-        - A3<end>
+        - A2<a>
+        - A3<b>
       `,
       markdown`
-        - A2<start>
-        - A3<end>
+        - A2<a>
+        - A3<b>
         - A1
       `,
     )
@@ -32,14 +32,14 @@ describe('moveList', () => {
       markdown`
         - A1
         - A2
-          - B1<start>
-          - B2<end>
+          - B1<a>
+          - B2<b>
           - B3
       `,
       markdown`
         - A1
-        - B1<start>
-        - B2<end>
+        - B1<a>
+        - B2<b>
         - A2
           - B3
       `,
@@ -50,14 +50,14 @@ describe('moveList', () => {
     t.applyCommand(
       moveDown,
       markdown`
-        - A1<start>
-        - A2<end>
+        - A1<a>
+        - A2<b>
         - A3
       `,
       markdown`
         - A3
-        - A1<start>
-        - A2<end>
+        - A1<a>
+        - A2<b>
       `,
     )
   })
@@ -68,16 +68,16 @@ describe('moveList', () => {
       markdown`
         - A1
         - A2
-          - B1<start>
-          - B2<end>
+          - B1<a>
+          - B2<b>
         - A3
       `,
       markdown`
         - A1
         - A2
         - A3
-        - B1<start>
-        - B2<end>
+        - B1<a>
+        - B2<b>
       `,
     )
   })
