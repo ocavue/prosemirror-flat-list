@@ -8,8 +8,7 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 linkWorkspacePackages: deep
-# TODO: remove the content below
-blockExoticSubdeps: false
+# TODO: remove overrides
 overrides:
   prosemirror-model: ^1.25.6
   prosemirror-transform: ^1.12.0

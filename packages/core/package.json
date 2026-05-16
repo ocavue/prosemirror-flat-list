@@ -52,8 +52,8 @@
     "prosemirror-view": "^1.41.3"
   },
   "devDependencies": {
-    "@prosekit/core": "https://pkg.pr.new/@prosekit/core@1628",
-    "@prosekit/pm": "https://pkg.pr.new/@prosekit/pm@1628",
+    "@prosekit/core": "^0.12.2",
+    "@prosekit/pm": "^0.1.17",
     "@types/dedent": "^0.7.2",
     "@types/node": "^20.17.5",
     "@vitest/browser-playwright": "^4.1.6",
