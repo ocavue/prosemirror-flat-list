@@ -20,10 +20,10 @@
     "ci:publish:snapshot": "pkg-pr-new publish --pnpm ./packages/core"
   },
   "devDependencies": {
-        "@types/node": "^22.0.0",
-    "@changesets/cli": "^2.29.7",
+    "@changesets/cli": "^2.31.0",
     "@ocavue/eslint-config": "^4.5.7",
     "@ocavue/tsconfig": "^0.7.1",
+    "@types/node": "^22.0.0",
     "eslint": "^10.4.0",
     "pkg-pr-new": "^0.0.73",
     "prettier": "^3.6.2",
