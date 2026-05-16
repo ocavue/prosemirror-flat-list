@@ -57,7 +57,6 @@
     "@vitest/browser-playwright": "^4.1.6",
     "@vitest/coverage-v8": "^4.1.6",
     "dedent": "^1.7.2",
-    "esbuild": "^0.25.12",
     "playwright": "^1.60.0",
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.1",
