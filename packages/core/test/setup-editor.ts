@@ -91,12 +91,8 @@ export function setupTestingEditor() {
     ...values: unknown[]
   ): ProseMirrorNode => {
     const src = String.raw({ raw: strings }, ...values)
-    // TODO: Drop @ts-expect-error once prosekit's NodeAction/MarkAction types
-    // allow assignment to the generic record shape that markdownToTaggedDoc
-    // expects (contravariant attrs typing).
-    // @ts-expect-error contravariant attrs typing
-    const nodes: Record<string, NodeAction> = n
-    const marks: Record<string, MarkAction> = m
+    const nodes: Record<string, NodeAction<any>> = n
+    const marks: Record<string, MarkAction<any>> = m
     return markdownToTaggedDoc(editor.schema, nodes, marks, src)
   }
 
