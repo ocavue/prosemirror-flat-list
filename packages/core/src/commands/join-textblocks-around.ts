@@ -5,14 +5,18 @@ import { replaceStep, ReplaceStep } from 'prosemirror-transform'
 // prettier-ignore
 // https://github.com/prosemirror/prosemirror-commands/blob/e607d5abda0fcc399462e6452a82450f4118702d/src/commands.ts#L94
 function joinTextblocksAround(tr: Transaction, $cut: ResolvedPos, dispatch?: (tr: Transaction) => void) {
-  let before = $cut.nodeBefore!, beforeText = before, beforePos = $cut.pos - 1
+  const before = $cut.nodeBefore!
+  let beforeText = before
+  let beforePos = $cut.pos - 1
   for (; !beforeText.isTextblock; beforePos--) {
     if (beforeText.type.spec.isolating) return false
     const child = beforeText.lastChild
     if (!child) return false
     beforeText = child
   }
-  let after = $cut.nodeAfter!, afterText = after, afterPos = $cut.pos + 1
+  const after = $cut.nodeAfter!
+  let afterText = after
+  let afterPos = $cut.pos + 1
   for (; !afterText.isTextblock; afterPos++) {
     if (afterText.type.spec.isolating) return false
     const child = afterText.firstChild
