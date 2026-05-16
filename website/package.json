@@ -19,7 +19,7 @@
     "@astrojs/starlight": "^0.36.2",
     "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/lucide": "^1.2.72",
-    "@tailwindcss/vite": "^4.1.17",
+    "@tailwindcss/vite": "^4.3.0",
     "astro": "^5.15.4",
     "preact": "^10.27.2",
     "prosekit": "^0.16.1",
