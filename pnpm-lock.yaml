@@ -155,9 +155,6 @@ importers:
       '@tsdown/css':
         specifier: ^0.22.0
         version: 0.22.0(jiti@2.6.1)(postcss@8.5.4)(tsdown@0.22.0)(yaml@2.8.1)
-      '@types/dedent':
-        specifier: ^0.7.2
-        version: 0.7.2
       '@types/node':
         specifier: ^20.17.5
         version: 20.17.5
@@ -168,8 +165,8 @@ importers:
         specifier: ^4.1.6
         version: 4.1.6(@vitest/browser@4.1.6)(vitest@4.1.6)
       dedent:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.2
+        version: 1.7.2
       esbuild:
         specifier: ^0.25.12
         version: 0.25.12
@@ -1807,9 +1804,6 @@ packages:
   '@types/debug@4.1.7':
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
 
-  '@types/dedent@0.7.2':
-    resolution: {integrity: sha512-kRiitIeUg1mPV9yH4VUJ/1uk2XjyANfeL8/7rH1tsjvHeO9PJLBHJIYsFWmAvmGj5u8rj+1TZx7PZzW2qLw3Lw==}
-
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
 
@@ -2386,8 +2380,8 @@ packages:
     resolution: {integrity: sha512-+8VxcR21HhTy8nOt6jf20w0c9CADrw1O8d+VZ/YzzCt4bJ3uBjw+D1q2osAB8RnpwwaeYBxy0HyKQxD5JBMuuQ==}
     engines: {node: '>=14.16'}
 
-  dedent@1.7.0:
-    resolution: {integrity: sha512-HGFtf8yhuhGhqO07SV79tRp+br4MnbdjeVxotpn1QBl30pcLLCQjX5b2295ll0fv8RKDKsmWYrl05usHM9CewQ==}
+  dedent@1.7.2:
+    resolution: {integrity: sha512-WzMx3mW98SN+zn3hgemf4OzdmyNhhhKz5Ay0pUfQiMQ3e1g+xmTJWp/pKdwKVXhdSkAEGIIzqeuWrL3mV/AXbA==}
     peerDependencies:
       babel-plugin-macros: ^3.1.0
     peerDependenciesMeta:
@@ -6906,8 +6900,6 @@ snapshots:
     dependencies:
       '@types/ms': 0.7.31
 
-  '@types/dedent@0.7.2': {}
-
   '@types/deep-eql@4.0.2': {}
 
   '@types/esrecurse@4.3.1': {}
@@ -7609,7 +7601,7 @@ snapshots:
 
   decode-uri-component@0.4.1: {}
 
-  dedent@1.7.0: {}
+  dedent@1.7.2: {}
 
   deep-is@0.1.4: {}
 
