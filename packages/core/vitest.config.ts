@@ -8,6 +8,7 @@ export default defineProject({
   test: {
     name: 'prosemirror-flat-list',
     globals: true,
+    fileParallelism: false,
     browser: {
       enabled: true,
       provider: playwright({
@@ -18,7 +19,6 @@ export default defineProject({
       }),
       headless: !process.env.DEBUG,
       instances: [{ browser: 'chromium' }],
-      fileParallelism: true,
     },
   },
 })
