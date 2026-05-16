@@ -6,8 +6,12 @@ import {
   defineKeymap,
   defineNodeSpec,
   definePlugin,
+  Priority,
   union,
+  withPriority,
+  type BaseCommandsExtension,
   type Extension,
+  type Union
 } from '@prosekit/core'
 import { inputRules } from '@prosekit/pm/inputrules'
 
@@ -36,6 +40,16 @@ type HeadingExtension = Extension<{ Nodes: { heading: HeadingAttrs } }>
 type HorizontalRuleExtension = Extension<{
   Nodes: { horizontalRule: Record<string, never> }
 }>
+type ListTestExtension = Union<[
+ DocExtension,
+ TextExtension,
+ ParagraphExtension,
+ BlockquoteExtension,
+ HeadingExtension,
+ HorizontalRuleExtension,
+  ListSpecExtension,
+  BaseCommandsExtension
+]>
 
 function defineDoc(): DocExtension {
   return defineNodeSpec({ name: 'doc', content: 'block+', topNode: true })
@@ -110,21 +124,15 @@ function defineListKeymap() {
   return defineKeymap(listKeymap)
 }
 
-export function defineListTestExtension() {
-  // Node order matters: prosekit's defineNodeSpec uses addToStart, so the
-  // LAST node defined here ends up FIRST in the schema. ProseMirror's
-  // fillBefore picks the first matching block-group node as filler — if list
-  // is first, list.createAndFill recurses into another list infinitely. By
-  // putting paragraph last (and thus first in the schema), fillBefore picks
-  // paragraph and terminates.
+export function defineListTestExtension(): ListTestExtension {
   return union(
+    withPriority(defineParagraph(), Priority.high),
     defineDoc(),
     defineText(),
     defineBlockquote(),
     defineHeading(),
     defineHorizontalRule(),
     defineListSpec(),
-    defineParagraph(),
     defineListPlugins(),
     defineListInputRules(),
     defineListKeymap(),
@@ -132,5 +140,3 @@ export function defineListTestExtension() {
     defineBaseCommands(),
   )
 }
-
-export type ListTestExtension = ReturnType<typeof defineListTestExtension>
