@@ -8,6 +8,7 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 linkWorkspacePackages: deep
+strictPeerDependencies: true
 # TODO: remove overrides
 overrides:
   prosemirror-model: ^1.25.6
