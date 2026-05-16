@@ -1,6 +1,0 @@
-// https://typedoc.org/guides/options/
-{
-  "$schema": "https://typedoc.org/schema.json",
-  "extends": ["../../config/typedoc-base.json"],
-  "entryPoints": ["./src/index.ts"]
-}

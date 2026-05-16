@@ -1,6 +1,6 @@
 # ProseMirror Flat List
 
-**Powerful list for [ProseMirror] and [Remirror]**
+**Powerful list for [ProseMirror]**
 
 ## Documentation
 
@@ -8,20 +8,15 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 
 ## Packages
 
-| Package                        | Version                                                                                                                                                                |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [prosemirror-flat-list]        | [![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list)               |
-| [remirror-extension-flat-list] | [![NPM version](https://img.shields.io/npm/v/remirror-extension-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/remirror-extension-flat-list) |
+| Package                 | Version                                                                                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [prosemirror-flat-list] | [![NPM version](https://img.shields.io/npm/v/prosemirror-flat-list?color=a1b858&style=flat-square)](https://www.npmjs.com/package/prosemirror-flat-list) |
 
 ## Examples
 
 - Example with [ProseMirror]
 
   [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-prosemirror)
-
-- Example with [Remirror]
-
-  [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-flat-list/tree/master/examples/with-remirror)
 
 - Custom collapsable ordered list node
 
@@ -40,10 +35,6 @@ Visit https://prosemirror-flat-list.netlify.app to view online demo and full doc
 [MIT]
 
 [ProseMirror]: https://prosemirror.net/
-[Remirror]: https://remirror.io
 [prosemirror-schema-list]: https://github.com/ProseMirror/prosemirror-schema-list
-[@remirror/extension-list]: https://www.npmjs.com/package/@remirror/extension-list
-[Remirror]: https://github.com/remirror/remirror
 [prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/core
-[remirror-extension-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/remirror-extension
 [MIT]: https://github.com/ocavue/prosemirror-flat-list/blob/master/LICENSE
