@@ -82,7 +82,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^7.0.0
+        specifier: ^7.3.3
         version: 7.3.3(@types/node@24.12.4)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.9.0)
 
   examples/with-prosemirror:
@@ -122,7 +122,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^7.0.0
+        specifier: ^7.3.3
         version: 7.3.3(@types/node@24.12.4)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.9.0)
 
   packages/core:
@@ -195,7 +195,7 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
       vite:
-        specifier: ^7.0.0
+        specifier: ^7.3.3
         version: 7.3.3(@types/node@22.19.19)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.9.0)
       vitest:
         specifier: ^4.1.6
