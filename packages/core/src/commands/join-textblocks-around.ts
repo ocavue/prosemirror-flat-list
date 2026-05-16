@@ -8,18 +8,18 @@ function joinTextblocksAround(tr: Transaction, $cut: ResolvedPos, dispatch?: (tr
   let before = $cut.nodeBefore!, beforeText = before, beforePos = $cut.pos - 1
   for (; !beforeText.isTextblock; beforePos--) {
     if (beforeText.type.spec.isolating) return false
-    let child = beforeText.lastChild
+    const child = beforeText.lastChild
     if (!child) return false
     beforeText = child
   }
   let after = $cut.nodeAfter!, afterText = after, afterPos = $cut.pos + 1
   for (; !afterText.isTextblock; afterPos++) {
     if (afterText.type.spec.isolating) return false
-    let child = afterText.firstChild
+    const child = afterText.firstChild
     if (!child) return false
     afterText = child
   }
-  let step = replaceStep(tr.doc, beforePos, afterPos, Slice.empty) as ReplaceStep | null
+  const step = replaceStep(tr.doc, beforePos, afterPos, Slice.empty) as ReplaceStep | null
   if (!step || step.from != beforePos ||
       step instanceof ReplaceStep && step.slice.size >= afterPos - beforePos) return false
   if (dispatch) {

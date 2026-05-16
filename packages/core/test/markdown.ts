@@ -68,7 +68,7 @@ export function markdownToTaggedDoc(
 ): ProseMirrorNode {
   let src = dedent(markdown)
   for (const tag of SELECTION_TAGS) {
-    src = src.replaceAll(`<${tag}>`, `\\<${tag}\\>`)
+    src = src.replaceAll(`<${tag}>`, String.raw`\<${tag}\>`)
   }
   const html = markdownToHtml(src)
   const plain = nodeFromHTML(html, { schema })
