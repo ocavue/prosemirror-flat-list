@@ -4,12 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  prosemirror-model: ^1.25.6
-  prosemirror-transform: ^1.12.0
-  prosemirror-view: ^1.41.8
-  prosemirror-history: ^1.5.0
-
 importers:
 
   .:
@@ -3621,10 +3615,10 @@ packages:
       '@types/hast': ^3.0.0
       highlight.js: ^11.9.0
       lowlight: ^3.1.0
-      prosemirror-model: ^1.25.6
+      prosemirror-model: ^1.19.3
       prosemirror-state: ^1.4.3
-      prosemirror-transform: ^1.12.0
-      prosemirror-view: ^1.41.8
+      prosemirror-transform: ^1.8.0
+      prosemirror-view: ^1.32.4
       refractor: ^5.0.0
       sugar-high: ^0.6.1 || ^0.7.0 || ^0.8.0 || ^0.9.0 || ^1.0.0
     peerDependenciesMeta:
@@ -3686,9 +3680,9 @@ packages:
   prosemirror-splittable@0.1.1:
     resolution: {integrity: sha512-mUaOrp4aT2rPZNyZMRCSd+JrVuUU+w7+SFg+l8r6JFtF/ECkA+ZVXxXO0c9vLQ0VWG8UcfszQaD+X+cxKuA2Uw==}
     peerDependencies:
-      prosemirror-model: ^1.25.6
+      prosemirror-model: ^1.21.0
       prosemirror-state: ^1.4.3
-      prosemirror-transform: ^1.12.0
+      prosemirror-transform: ^1.9.0
     peerDependenciesMeta:
       prosemirror-model:
         optional: true
