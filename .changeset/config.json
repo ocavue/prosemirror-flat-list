@@ -6,6 +6,5 @@
   "linked": [],
   "access": "restricted",
   "baseBranch": "master",
-  "updateInternalDependencies": "minor",
-  "ignore": ["example-with-remirror"]
+  "updateInternalDependencies": "minor"
 }

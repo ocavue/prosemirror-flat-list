@@ -86,22 +86,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Deploy to Netlify (https://remirror-extension-flat-list.netlify.app/)
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: './examples/with-remirror/dist'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: 'Deploy from GitHub Actions'
-          enable-pull-request-comment: true
-          enable-commit-comment: false
-          overwrites-pull-request-comment: true
-          alias: ${{ github.head_ref }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
-
       - name: Deploy to Netlify (https://prosemirror-flat-list.netlify.app/)
         uses: nwtgck/actions-netlify@v3.0
         with:

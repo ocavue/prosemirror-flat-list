@@ -6,12 +6,6 @@
       "path": "./packages/core"
     },
     {
-      "path": "./packages/remirror-extension"
-    },
-    {
-      "path": "./examples/with-remirror"
-    },
-    {
       "path": "./examples/with-collapsable-ordered-list"
     },
     {
