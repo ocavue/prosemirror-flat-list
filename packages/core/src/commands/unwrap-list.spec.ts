@@ -3,9 +3,9 @@ import { describe, expect, it } from 'vitest'
 
 import { expectStateToEqual } from '../../test/markdown'
 import { setupTestingEditor } from '../../test/setup-editor'
+import type { ListAttributes } from '../types'
 
 import { createUnwrapListCommand } from './unwrap-list'
-import type { ListAttributes } from '../types'
 
 describe('unwrapList', () => {
   const t = setupTestingEditor()
