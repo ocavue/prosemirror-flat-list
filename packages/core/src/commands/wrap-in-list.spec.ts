@@ -19,7 +19,7 @@ describe('wrapInList', () => {
       markdown`
         P1
 
-        P2<cursor>
+        P2<a>
       `,
       markdown`
         P1
@@ -35,9 +35,9 @@ describe('wrapInList', () => {
       markdown`
         P1
 
-        P2<start>
+        P2<a>
 
-        P3<end>
+        P3<b>
       `,
       markdown`
         P1
@@ -54,7 +54,7 @@ describe('wrapInList', () => {
       markdown`
         - P1
 
-        - P2<cursor>
+        - P2<a>
       `,
       markdown`
         - P1
@@ -70,9 +70,9 @@ describe('wrapInList', () => {
       markdown`
         - P1
 
-        - P2<start>
+        - P2<a>
 
-        1. P3<end>
+        1. P3<b>
       `,
       markdown`
         - P1
@@ -86,7 +86,7 @@ describe('wrapInList', () => {
     t.applyCommand(
       wrapInBulletList,
       markdown`
-        - P1<cursor>
+        - P1<a>
 
           P2
 
@@ -95,7 +95,7 @@ describe('wrapInList', () => {
           P4
       `,
       markdown`
-        - P1<cursor>
+        - P1<a>
 
           P2
 
@@ -112,13 +112,13 @@ describe('wrapInList', () => {
       markdown`
         - P1
 
-          P2<cursor>
+          P2<a>
 
           P3
       `,
       markdown`
         - P1
-          - P2<cursor>
+          - P2<a>
 
           P3
       `,
@@ -131,15 +131,15 @@ describe('wrapInList', () => {
       markdown`
         - P1
 
-          P2<start>
+          P2<a>
 
-          P3<end>
+          P3<b>
       `,
       markdown`
         - P1
-          - P2<start>
+          - P2<a>
 
-          - P3<end>
+          - P3<b>
       `,
     )
   })
@@ -156,6 +156,6 @@ describe('wrapInList', () => {
 
     wrapInBulletList(view.state, view.dispatch.bind(view), view)
 
-    expect(view.state.doc).toEqualRemirrorDocument(doc2)
+    expect(view.state.doc.toJSON()).toEqual(doc2.toJSON())
   })
 })

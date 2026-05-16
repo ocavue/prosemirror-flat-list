@@ -55,6 +55,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Install Playwright Chromium
+        run: pnpm --filter prosemirror-flat-list exec playwright install --with-deps chromium
+
       - name: Test
         run: pnpm run test
 

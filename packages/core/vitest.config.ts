@@ -1,16 +1,24 @@
+/// <reference types="vitest/config" />
+import { playwright } from '@vitest/browser-playwright'
 import { defineProject } from 'vitest/config'
+import { playwrightCommands } from 'vitest-browser-commands'
 
-export default defineProject(() => ({
+export default defineProject({
+  plugins: [playwrightCommands()],
   test: {
-    environment: 'jsdom',
+    name: 'prosemirror-flat-list',
     globals: true,
-    setupFiles: ['./test/setup-vitest.ts'],
-    coverage: {
-      reporter: ['json', 'html'],
-      all: true,
-      src: ['./src'],
-      exclude: ['**/*.spec.*'],
+    fileParallelism: false,
+    browser: {
+      enabled: true,
+      provider: playwright({
+        contextOptions: {
+          permissions: ['clipboard-read', 'clipboard-write'],
+          reducedMotion: 'reduce',
+        },
+      }),
+      headless: !process.env.DEBUG,
+      instances: [{ browser: 'chromium' }],
     },
-    deps: {},
   },
-}))
+})

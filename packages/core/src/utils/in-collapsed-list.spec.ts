@@ -8,17 +8,14 @@ describe('inCollapsedList', () => {
   const t = setupTestingEditor()
 
   it('returns false in a normal paragraph', () => {
-    t.add(t.doc(t.p('Hello world<cursor>')))
+    t.add(t.doc(t.p('Hello world<a>')))
     expect(inCollapsedList(t.view.state.selection.$from)).toBe(false)
   })
 
   it('returns true in a collapsed list node', () => {
     t.add(
       t.doc(
-        t.collapsedToggleList(
-          t.p('Visible content<cursor>'),
-          t.p('Hidden content'),
-        ),
+        t.collapsedToggleList(t.p('Visible content<a>'), t.p('Hidden content')),
       ),
     )
     expect(inCollapsedList(t.view.state.selection.$from)).toBe(true)
@@ -27,10 +24,7 @@ describe('inCollapsedList', () => {
   it('returns false in a expanded list node', () => {
     t.add(
       t.doc(
-        t.expandedToggleList(
-          t.p('Visible content'),
-          t.p('Visible content<cursor>'),
-        ),
+        t.expandedToggleList(t.p('Visible content'), t.p('Visible content<a>')),
       ),
     )
     expect(inCollapsedList(t.view.state.selection.$from)).toBe(false)

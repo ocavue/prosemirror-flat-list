@@ -1,21 +1,25 @@
 import {
-  type AnyExtension,
-  type Fragment,
-  htmlToProsemirrorNode,
-  isProsemirrorNode,
-  type ProsemirrorNode,
-} from '@remirror/core'
+  type MarkAction,
+  type NodeAction,
+  type NodeChild,
+  nodeFromHTML,
+} from '@prosekit/core'
+import { extractSelection } from '@prosekit/core/test'
+import type { ProseMirrorNode, Schema } from '@prosekit/pm/model'
+import type { Selection } from '@prosekit/pm/state'
 import dedent from 'dedent'
-import type {
-  RemirrorTestChain,
-  TaggedContentWithText,
-  TaggedProsemirrorNode,
-} from 'jest-remirror'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
+import { expect } from 'vitest'
+
+export { extractSelection }
+
+const SELECTION_TAGS = ['a', 'b'] as const
+
+let processor: ReturnType<typeof createProcessor> | null = null
 
 function createProcessor() {
   return unified()
@@ -25,75 +29,65 @@ function createProcessor() {
     .use(rehypeStringify)
 }
 
-let processor: ReturnType<typeof createProcessor> | null = null
-
 function markdownToHtml(markdown: string): string {
-  if (!processor) {
-    processor = createProcessor()
-  }
+  processor ??= createProcessor()
   return String(processor.processSync(markdown))
 }
 
-function textNodeToTaggedTextNode(
-  t: RemirrorTestChain<AnyExtension>,
-  node: ProsemirrorNode,
-): TaggedContentWithText {
-  let tagged: TaggedContentWithText = node.text!
-  if (node.marks?.length) {
-    for (const mark of node.marks) {
-      const withMark = t.attributeMarks[mark.type.name](mark.attrs)(tagged)
-      if (withMark.length !== 1) {
-        throw new Error('Unexpected length')
-      }
-      tagged = withMark[0]
-    }
-  }
-  return tagged
-}
-
-function fragmentToArray(fragment: Fragment) {
-  const content = []
-  for (let i = 0; i < fragment.childCount; i++) {
-    content.push(fragment.child(i))
-  }
-  return content
-}
-
-function nodeToTaggedNode(
-  t: RemirrorTestChain<AnyExtension>,
-  node: ProsemirrorNode,
-): TaggedContentWithText {
+function rebuildThroughActions(
+  node: ProseMirrorNode,
+  nodes: Record<string, NodeAction>,
+  marks: Record<string, MarkAction>,
+): NodeChild {
   if (node.isText) {
-    return textNodeToTaggedTextNode(t, node)
+    const text = node.text ?? ''
+    if (node.marks.length === 0) return text
+    let result: NodeChild = text
+    for (const mark of node.marks) {
+      result = marks[mark.type.name](mark.attrs, result)
+    }
+    return result
   }
-  const content = fragmentToArray(node.content).map((node) =>
-    nodeToTaggedNode(t, node),
-  )
-  return t.attributeNodes[node.type.name](node.attrs)(...content)
-}
 
-function docToTaggedDoc(
-  t: RemirrorTestChain<AnyExtension>,
-  doc: ProsemirrorNode,
-): TaggedProsemirrorNode {
-  const taggedDoc = nodeToTaggedNode(t, doc)
-  if (!isProsemirrorNode(taggedDoc)) {
-    throw new Error('Unexpected tagged doc type')
+  const builder = nodes[node.type.name]
+  if (!builder) {
+    throw new Error(`No test-editor builder for node type "${node.type.name}"`)
   }
-  return taggedDoc
+  const children: NodeChild[] = []
+  node.content.forEach((child) => {
+    children.push(rebuildThroughActions(child, nodes, marks))
+  })
+  return builder(node.attrs, ...children)
 }
 
 export function markdownToTaggedDoc(
-  t: RemirrorTestChain<any>,
+  schema: Schema,
+  nodes: Record<string, NodeAction>,
+  marks: Record<string, MarkAction>,
   markdown: string,
-): TaggedProsemirrorNode {
-  markdown = tags.reduce(
-    (str, tag) => str.replaceAll(`<${tag}>`, `\\<${tag}\\>`),
-    dedent(markdown),
-  )
-  const html = markdownToHtml(markdown)
-  const doc = htmlToProsemirrorNode({ content: html, schema: t.schema })
-  return docToTaggedDoc(t as RemirrorTestChain<AnyExtension>, doc)
+): ProseMirrorNode {
+  let src = dedent(markdown)
+  for (const tag of SELECTION_TAGS) {
+    src = src.replaceAll(`<${tag}>`, `\\<${tag}\\>`)
+  }
+  const html = markdownToHtml(src)
+  const plain = nodeFromHTML(html, { schema })
+  const rebuilt = rebuildThroughActions(plain, nodes, marks)
+  if (typeof rebuilt === 'string' || Array.isArray(rebuilt)) {
+    throw new TypeError(
+      'Expected the top-level rebuild to return a single node',
+    )
+  }
+  return rebuilt
 }
 
-const tags = ['cursor', 'node', 'start', 'end', 'anchor', 'all', 'gap'] as const
+export function expectStateToEqual(
+  state: { doc: ProseMirrorNode; selection: Selection },
+  expected: ProseMirrorNode,
+): void {
+  expect(state.doc.toJSON()).toEqual(expected.toJSON())
+  const expectedSelection = extractSelection(expected)
+  if (expectedSelection) {
+    expect(state.selection.toJSON()).toEqual(expectedSelection.toJSON())
+  }
+}

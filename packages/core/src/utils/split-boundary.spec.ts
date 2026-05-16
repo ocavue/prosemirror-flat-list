@@ -1,4 +1,4 @@
-import type { TaggedProsemirrorNode } from 'jest-remirror'
+import type { ProseMirrorNode } from '@prosekit/pm/model'
 import { describe, expect, it } from 'vitest'
 
 import { setupTestingEditor } from '../../test/setup-editor'
@@ -14,15 +14,15 @@ describe('splitBoundary', () => {
     pos,
     depth,
   }: {
-    before: TaggedProsemirrorNode
-    after?: TaggedProsemirrorNode
+    before: ProseMirrorNode
+    after?: ProseMirrorNode
     pos?: number
     depth: number
   }) => {
-    const tr = t.add(before).tr
+    const tr = t.add(before).state.tr
     pos = pos ?? tr.selection.$from.pos
     splitBoundary(tr, pos, depth)
-    expect(tr.doc).toEqualRemirrorDocument(after ?? before)
+    expect(tr.doc.toJSON()).toEqual((after ?? before).toJSON())
   }
 
   it.each([

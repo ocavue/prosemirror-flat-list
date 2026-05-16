@@ -27,13 +27,13 @@ describe('setSafeSelection', () => {
         collapsedToggleList(
           //
           p('123'),
-          p('45<cursor>6'),
+          p('45<a>6'),
         ),
       ),
       doc(
         collapsedToggleList(
           //
-          p('123<cursor>'),
+          p('123<a>'),
           p('456'),
         ),
       ),
@@ -50,7 +50,7 @@ describe('setSafeSelection', () => {
               collapsedToggleList(
                 //
                 p('123'),
-                p('45<cursor>6'),
+                p('45<a>6'),
               ),
             ),
           ),
@@ -62,7 +62,7 @@ describe('setSafeSelection', () => {
             bulletList(
               collapsedToggleList(
                 //
-                p('123<cursor>'),
+                p('123<a>'),
                 p('456'),
               ),
             ),
@@ -78,14 +78,14 @@ describe('setSafeSelection', () => {
       doc(
         collapsedToggleList(
           //
-          p('12<cursor>3'),
+          p('12<a>3'),
           p('456'),
         ),
       ),
       doc(
         collapsedToggleList(
           //
-          p('12<cursor>3'),
+          p('12<a>3'),
           p('456'),
         ),
       ),
@@ -99,18 +99,18 @@ describe('setSafeSelection', () => {
         collapsedToggleList(
           //
           p('123'),
-          p('45<start>6'),
+          p('45<a>6'),
         ),
         expandedToggleList(
           //
-          p('12<end>3'),
+          p('12<b>3'),
           p('456'),
         ),
       ),
       doc(
         collapsedToggleList(
           //
-          p('123<cursor>'),
+          p('123<a>'),
           p('456'),
         ),
         expandedToggleList(
@@ -128,13 +128,13 @@ describe('setSafeSelection', () => {
       doc(
         expandedToggleList(
           //
-          p('1<start>23'),
+          p('1<a>23'),
           p('456'),
         ),
         collapsedToggleList(
           //
           p('123'),
-          p('4<end>56'),
+          p('4<b>56'),
         ),
       ),
       doc(
@@ -145,7 +145,7 @@ describe('setSafeSelection', () => {
         ),
         collapsedToggleList(
           //
-          p('123<cursor>'),
+          p('123<a>'),
           p('456'),
         ),
       ),
