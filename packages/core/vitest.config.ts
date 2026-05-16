@@ -7,7 +7,6 @@ export default defineProject({
   plugins: [playwrightCommands()],
   test: {
     name: 'prosemirror-flat-list',
-    setupFiles: ['./test/setup-vitest.ts'],
     globals: true,
     browser: {
       enabled: true,
