@@ -22,7 +22,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.3",
     "preact": "^10.29.1",
-    "prosekit": "^0.16.3",
+    "prosekit": "^0.21.1",
     "prosemirror-flat-list": "workspace:^",
     "sharp": "^0.34.5",
     "starlight-theme-nova": "^0.11.10",
