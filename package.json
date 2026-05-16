@@ -28,7 +28,7 @@
     "pkg-pr-new": "^0.0.73",
     "prettier": "^3.8.3",
     "typedoc": "^0.28.19",
-    "typescript": "^5.0.0",
+    "typescript": "^5.9.3",
     "vitest": "^4.1.6"
   }
 }
