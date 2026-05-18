@@ -2,14 +2,10 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig([
   {
-    format: ['cjs', 'esm'],
-    entry: { 'prosemirror-flat-list': 'src/index.ts' },
-    dts: { build: true, incremental: true },
-    platform: 'neutral',
-  },
-  {
-    entry: ['src/style.css'],
-    platform: 'browser',
+    format: ['esm'],
+    entry: ['src/index.ts', 'src/style.css'],
     target: 'chrome100',
-  },
+    dts: { build: true, incremental: true },
+    platform: 'browser',
+  }
 ])
