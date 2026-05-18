@@ -1,74 +1,80 @@
-import type { Editor } from 'prosekit/core'
-import { useEditorDerivedValue } from 'prosekit/preact'
+import { defineUpdateHandler, type Editor } from '@prosekit/core'
+import { useEffect, useState } from 'preact/hooks'
 
 import Button from './button'
 import type { EditorExtension } from './extension'
 
 function getToolbarItems(editor: Editor<EditorExtension>) {
-  return {
-    bullet: {
+  return [
+    {
+      label: 'Bullet',
+      tooltip: 'Toggle bullet list',
       isActive: editor.nodes.list.isActive({ kind: 'bullet' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'bullet' }),
       command: () => editor.commands.toggleList({ kind: 'bullet' }),
     },
-    ordered: {
+    {
+      label: 'Ordered',
+      tooltip: 'Toggle ordered list',
       isActive: editor.nodes.list.isActive({ kind: 'ordered' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'ordered' }),
       command: () => editor.commands.toggleList({ kind: 'ordered' }),
     },
-    task: {
+    {
+      label: 'Task',
+      tooltip: 'Toggle task list',
       isActive: editor.nodes.list.isActive({ kind: 'task' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'task' }),
       command: () => editor.commands.toggleList({ kind: 'task' }),
     },
-    toggle: {
+    {
+      label: 'Toggle',
+      tooltip: 'Toggle collapsible list',
       isActive: editor.nodes.list.isActive({ kind: 'toggle' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'toggle' }),
       command: () => editor.commands.toggleList({ kind: 'toggle' }),
     },
-  }
+  ]
 }
 
-export default function Toolbar() {
-  const items = useEditorDerivedValue(getToolbarItems)
+export default function Toolbar({
+  editor,
+}: {
+  editor: Editor<EditorExtension>
+}) {
+  const [items, setItems] = useState(() => getToolbarItems(editor))
+
+  useEffect(() => {
+    return editor.use(
+      defineUpdateHandler(() => {
+        const newItems = getToolbarItems(editor)
+        setItems((oldItems) => {
+          const changed = oldItems.some((oldItem, index) => {
+            const newItem = newItems[index]
+            return (
+              oldItem.isActive !== newItem.isActive ||
+              oldItem.canExec !== newItem.canExec
+            )
+          })
+          return changed ? newItems : oldItems
+        })
+      }),
+    )
+  }, [editor])
 
   return (
-    <div className="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
-      <Button
-        pressed={items.bullet.isActive}
-        disabled={!items.bullet.canExec}
-        onClick={items.bullet.command}
-        tooltip="Bullet"
-      >
-        <div className="i-lucide-list size-5 block" />
-      </Button>
-
-      <Button
-        pressed={items.ordered.isActive}
-        disabled={!items.ordered.canExec}
-        onClick={items.ordered.command}
-        tooltip="Ordered"
-      >
-        <div className="i-lucide-list-ordered size-5 block" />
-      </Button>
-
-      <Button
-        pressed={items.task.isActive}
-        disabled={!items.task.canExec}
-        onClick={items.task.command}
-        tooltip="Task"
-      >
-        <div className="i-lucide-list-checks size-5 block" />
-      </Button>
-
-      <Button
-        pressed={items.toggle.isActive}
-        disabled={!items.toggle.canExec}
-        onClick={items.toggle.command}
-        tooltip="Toggle"
-      >
-        <div className="i-lucide-list-collapse size-5 block" />
-      </Button>
+    <div className="flex flex-wrap items-center gap-1 border-b border-gray-200 bg-gray-50/50 px-2 py-1.5 dark:border-gray-800 dark:bg-gray-900/40">
+      {items.map((item) => (
+        <Button
+          key={item.label}
+          pressed={item.isActive}
+          disabled={!item.canExec}
+          onClick={item.command}
+          tooltip={item.tooltip}
+        >
+          {item.label}
+        </Button>
+      ))}
     </div>
   )
 }
