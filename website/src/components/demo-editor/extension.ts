@@ -133,7 +133,6 @@ function defineListInputRules() {
 
 export function defineExtension() {
   return union([
-
     defineListSpec(),
     defineListCommands(),
     defineListPlugins(),
@@ -144,7 +143,6 @@ export function defineExtension() {
     defineDoc(),
     defineText(),
     defineParagraphSpec(),
-
   ])
 }
 
