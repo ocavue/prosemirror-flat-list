@@ -5,3 +5,6 @@ packages:
 linkWorkspacePackages: deep
 strictPeerDependencies: true
 ignoreWorkspaceRootCheck: true
+allowBuilds:
+  esbuild: false
+  sharp: false
