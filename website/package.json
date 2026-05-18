@@ -21,7 +21,7 @@
     "@iconify-json/lucide": "^1.2.108",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.3",
-    "preact": "^10.29.1",
+    "preact": "^10.29.2",
     "prosekit": "^0.21.1",
     "prosemirror-flat-list": "workspace:^",
     "sharp": "^0.34.5",
