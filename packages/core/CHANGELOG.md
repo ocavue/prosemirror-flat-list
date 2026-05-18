@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.6.0
+
+### Minor Changes
+
+- b265dd0: `prosemirror-flat-list` is now a pure ESM package.
+
 ## 0.5.8
 
 ### Patch Changes
