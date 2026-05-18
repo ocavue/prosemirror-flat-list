@@ -5,28 +5,36 @@ import Button from './button'
 import type { EditorExtension } from './extension'
 
 function getToolbarItems(editor: Editor<EditorExtension>) {
-  return {
-    bullet: {
+  return [
+    {
+      label: 'Bullet',
+      tooltip: 'Toggle bullet list',
       isActive: editor.nodes.list.isActive({ kind: 'bullet' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'bullet' }),
       command: () => editor.commands.toggleList({ kind: 'bullet' }),
     },
-    ordered: {
+    {
+      label: 'Ordered',
+      tooltip: 'Toggle ordered list',
       isActive: editor.nodes.list.isActive({ kind: 'ordered' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'ordered' }),
       command: () => editor.commands.toggleList({ kind: 'ordered' }),
     },
-    task: {
+    {
+      label: 'Task',
+      tooltip: 'Toggle task list',
       isActive: editor.nodes.list.isActive({ kind: 'task' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'task' }),
       command: () => editor.commands.toggleList({ kind: 'task' }),
     },
-    toggle: {
+    {
+      label: 'Toggle',
+      tooltip: 'Toggle collapsible list',
       isActive: editor.nodes.list.isActive({ kind: 'toggle' }),
       canExec: editor.commands.toggleList.canExec({ kind: 'toggle' }),
       command: () => editor.commands.toggleList({ kind: 'toggle' }),
     },
-  }
+  ]
 }
 
 export default function Toolbar({
@@ -41,20 +49,13 @@ export default function Toolbar({
       defineUpdateHandler(() => {
         const newItems = getToolbarItems(editor)
         setItems((oldItems) => {
-          let changed = false
-          for (const key of Object.keys(
-            oldItems,
-          ) as (keyof typeof oldItems)[]) {
-            const oldItem = oldItems[key]
-            const newItem = newItems[key]
-            if (
+          const changed = oldItems.some((oldItem, index) => {
+            const newItem = newItems[index]
+            return (
               oldItem.isActive !== newItem.isActive ||
               oldItem.canExec !== newItem.canExec
-            ) {
-              changed = true
-              break
-            }
-          }
+            )
+          })
           return changed ? newItems : oldItems
         })
       }),
@@ -63,41 +64,17 @@ export default function Toolbar({
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-gray-200 bg-gray-50/50 px-2 py-1.5 dark:border-gray-800 dark:bg-gray-900/40">
-      <Button
-        pressed={items.bullet.isActive}
-        disabled={!items.bullet.canExec}
-        onClick={items.bullet.command}
-        tooltip="Toggle bullet list"
-      >
-        Bullet
-      </Button>
-
-      <Button
-        pressed={items.ordered.isActive}
-        disabled={!items.ordered.canExec}
-        onClick={items.ordered.command}
-        tooltip="Toggle ordered list"
-      >
-        Ordered
-      </Button>
-
-      <Button
-        pressed={items.task.isActive}
-        disabled={!items.task.canExec}
-        onClick={items.task.command}
-        tooltip="Toggle task list"
-      >
-        Task
-      </Button>
-
-      <Button
-        pressed={items.toggle.isActive}
-        disabled={!items.toggle.canExec}
-        onClick={items.toggle.command}
-        tooltip="Toggle collapsible list"
-      >
-        Toggle
-      </Button>
+      {items.map((item) => (
+        <Button
+          key={item.label}
+          pressed={item.isActive}
+          disabled={!item.canExec}
+          onClick={item.command}
+          tooltip={item.tooltip}
+        >
+          {item.label}
+        </Button>
+      ))}
     </div>
   )
 }
