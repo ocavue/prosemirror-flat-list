@@ -16,7 +16,7 @@ export default defineConfig({
           nav: [{ label: 'docs', href: '/introduction' }],
         }),
       ],
-      customCss: ['./src/styles/tailwindcss.css'],
+      customCss: ['./src/styles/tailwind.css'],
       social: [
         {
           icon: 'github',
@@ -34,5 +34,5 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
-  },
+  }
 })
