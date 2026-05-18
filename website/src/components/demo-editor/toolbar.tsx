@@ -29,8 +29,8 @@ function getToolbarItems(editor: Editor<EditorExtension>) {
   }
 }
 
-export default function Toolbar() {
-  const items = useEditorDerivedValue(getToolbarItems)
+export default function Toolbar({ editor }: { editor: Editor<EditorExtension> }) {
+  const items = getToolbarItems(editor)
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-gray-200 bg-gray-50/50 px-2 py-1.5 dark:border-gray-800 dark:bg-gray-900/40">

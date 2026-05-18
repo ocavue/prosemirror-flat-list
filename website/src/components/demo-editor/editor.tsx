@@ -3,7 +3,6 @@ import "prosemirror-flat-list/style.css"
 
 import { useMemo } from 'preact/hooks'
 import { createEditor, type NodeJSON } from '@prosekit/core'
-import { ProseKit } from 'prosekit/preact'
 
 import { defineExtension } from './extension'
 import Toolbar from './toolbar'
@@ -14,9 +13,8 @@ export default function Editor() {
   }, [])
 
   return (
-    <ProseKit editor={editor}>
       <div className="flex h-full w-full min-h-36 flex-col overflow-hidden rounded-lg border border-gray-200 bg-white text-gray-900 shadow-sm ring-1 ring-black/5 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50 dark:ring-white/5">
-        <Toolbar />
+        <Toolbar editor={editor} />
         <div className="relative flex-1 overflow-y-auto">
           <div
             ref={editor.mount}
@@ -24,7 +22,6 @@ export default function Editor() {
           ></div>
         </div>
       </div>
-    </ProseKit>
   )
 }
 
