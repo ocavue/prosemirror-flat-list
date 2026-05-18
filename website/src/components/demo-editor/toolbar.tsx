@@ -1,5 +1,5 @@
-import type { Editor } from '@prosekit/core'
-import { useEditorDerivedValue } from 'prosekit/preact'
+import { defineUpdateHandler, type Editor } from '@prosekit/core'
+import { useEffect, useState } from 'preact/hooks'
 
 import Button from './button'
 import type { EditorExtension } from './extension'
@@ -29,8 +29,37 @@ function getToolbarItems(editor: Editor<EditorExtension>) {
   }
 }
 
-export default function Toolbar({ editor }: { editor: Editor<EditorExtension> }) {
-  const items = getToolbarItems(editor)
+export default function Toolbar({
+  editor,
+}: {
+  editor: Editor<EditorExtension>
+}) {
+  const [items, setItems] = useState(() => getToolbarItems(editor))
+
+  useEffect(() => {
+    return editor.use(
+      defineUpdateHandler(() => {
+        const newItems = getToolbarItems(editor)
+        setItems((oldItems) => {
+          let changed = false
+          for (const key of Object.keys(
+            oldItems,
+          ) as (keyof typeof oldItems)[]) {
+            const oldItem = oldItems[key]
+            const newItem = newItems[key]
+            if (
+              oldItem.isActive !== newItem.isActive ||
+              oldItem.canExec !== newItem.canExec
+            ) {
+              changed = true
+              break
+            }
+          }
+          return changed ? newItems : oldItems
+        })
+      }),
+    )
+  }, [editor])
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-gray-200 bg-gray-50/50 px-2 py-1.5 dark:border-gray-800 dark:bg-gray-900/40">
