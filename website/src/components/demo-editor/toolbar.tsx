@@ -1,4 +1,4 @@
-import type { Editor } from 'prosekit/core'
+import type { Editor } from '@prosekit/core'
 import { useEditorDerivedValue } from 'prosekit/preact'
 
 import Button from './button'

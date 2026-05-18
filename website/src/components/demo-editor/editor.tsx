@@ -2,7 +2,7 @@ import '@prosekit/pm/view/style/prosemirror.css'
 import "prosemirror-flat-list/style.css"
 
 import { useMemo } from 'preact/hooks'
-import { createEditor, type NodeJSON } from 'prosekit/core'
+import { createEditor, type NodeJSON } from '@prosekit/core'
 import { ProseKit } from 'prosekit/preact'
 
 import { defineExtension } from './extension'
