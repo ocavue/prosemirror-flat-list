@@ -133,15 +133,18 @@ function defineListInputRules() {
 
 export function defineExtension() {
   return union([
-    defineDoc(),
-    defineText(),
-    defineParagraphSpec(),
-    defineBaseCommands(),
+
     defineListSpec(),
     defineListCommands(),
     defineListPlugins(),
     defineListKeymap(),
     defineListInputRules(),
+
+    defineBaseCommands(),
+    defineDoc(),
+    defineText(),
+    defineParagraphSpec(),
+
   ])
 }
 
