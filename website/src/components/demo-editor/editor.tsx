@@ -15,12 +15,12 @@ export default function Editor() {
 
   return (
     <ProseKit editor={editor}>
-      <div className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white">
+      <div className="flex h-full w-full min-h-36 flex-col overflow-hidden rounded-lg border border-gray-200 bg-white text-gray-900 shadow-sm ring-1 ring-black/5 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50 dark:ring-white/5">
         <Toolbar />
-        <div className="relative w-full flex-1 box-border overflow-y-scroll">
+        <div className="relative flex-1 overflow-y-auto">
           <div
             ref={editor.mount}
-            className="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
+            className="ProseMirror box-border min-h-full px-[max(2rem,calc(50%-20rem))] py-6 leading-relaxed outline-none [&_span[data-mention=tag]]:text-violet-500 [&_span[data-mention=user]]:text-blue-500"
           ></div>
         </div>
       </div>

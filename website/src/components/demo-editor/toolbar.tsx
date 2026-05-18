@@ -33,41 +33,41 @@ export default function Toolbar() {
   const items = useEditorDerivedValue(getToolbarItems)
 
   return (
-    <div className="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
+    <div className="flex flex-wrap items-center gap-1 border-b border-gray-200 bg-gray-50/50 px-2 py-1.5 dark:border-gray-800 dark:bg-gray-900/40">
       <Button
         pressed={items.bullet.isActive}
         disabled={!items.bullet.canExec}
         onClick={items.bullet.command}
-        tooltip="Bullet"
+        tooltip="Toggle bullet list"
       >
-        <div className="i-lucide-list size-5 block" />
+        Bullet
       </Button>
 
       <Button
         pressed={items.ordered.isActive}
         disabled={!items.ordered.canExec}
         onClick={items.ordered.command}
-        tooltip="Ordered"
+        tooltip="Toggle ordered list"
       >
-        <div className="i-lucide-list-ordered size-5 block" />
+        Ordered
       </Button>
 
       <Button
         pressed={items.task.isActive}
         disabled={!items.task.canExec}
         onClick={items.task.command}
-        tooltip="Task"
+        tooltip="Toggle task list"
       >
-        <div className="i-lucide-list-checks size-5 block" />
+        Task
       </Button>
 
       <Button
         pressed={items.toggle.isActive}
         disabled={!items.toggle.canExec}
         onClick={items.toggle.command}
-        tooltip="Toggle"
+        tooltip="Toggle collapsible list"
       >
-        <div className="i-lucide-list-collapse size-5 block" />
+        Toggle
       </Button>
     </div>
   )
