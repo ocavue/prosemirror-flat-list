@@ -18,14 +18,14 @@
     "list"
   ],
   "sideEffects": false,
-  "main": "./dist/prosemirror-flat-list.js",
-  "module": "./dist/prosemirror-flat-list.js",
-  "types": "./dist/prosemirror-flat-list.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/prosemirror-flat-list.d.ts",
-      "require": "./dist/prosemirror-flat-list.cjs",
-      "import": "./dist/prosemirror-flat-list.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./dist/style.css": "./dist/style.css",
     "./style.css": "./dist/style.css"

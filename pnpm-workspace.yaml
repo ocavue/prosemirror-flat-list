@@ -2,10 +2,9 @@ packages:
   - 'packages/*'
   - 'examples/*'
   - 'website'
-allowBuilds:
-  '@swc/core': false
-  esbuild: false
-  sharp: false
-  unrs-resolver: false
 linkWorkspacePackages: deep
 strictPeerDependencies: true
+ignoreWorkspaceRootCheck: true
+allowBuilds:
+  esbuild: false
+  sharp: false
