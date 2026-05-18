@@ -1,5 +1,5 @@
-import 'prosekit/basic/style.css'
-import 'prosekit/basic/typography.css'
+import '@prosekit/pm/view/style/prosemirror.css'
+import "prosemirror-flat-list/style.css"
 
 import { useMemo } from 'preact/hooks'
 import { createEditor, type NodeJSON } from 'prosekit/core'

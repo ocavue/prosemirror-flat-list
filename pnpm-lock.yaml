@@ -212,6 +212,12 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.39.2
         version: 0.39.2(astro@6.3.3(@types/node@24.12.4)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.4)(yaml@2.9.0))(typescript@6.0.3)
+      '@prosekit/core':
+        specifier: ^0.12.2
+        version: 0.12.2(prosemirror-model@1.25.6)(prosemirror-state@1.4.4)(prosemirror-transform@1.12.0)
+      '@prosekit/pm':
+        specifier: ^0.1.17
+        version: 0.1.17
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@7.3.3(@types/node@24.12.4)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.9.0))
@@ -225,7 +231,7 @@ importers:
         specifier: ^0.21.1
         version: 0.21.1(@shikijs/types@4.0.2)(@types/hast@3.0.4)(preact@10.29.2)(prosemirror-model@1.25.6)(prosemirror-state@1.4.4)(prosemirror-transform@1.12.0)(prosemirror-view@1.41.8)
       prosemirror-flat-list:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../packages/core
       sharp:
         specifier: ^0.34.5
