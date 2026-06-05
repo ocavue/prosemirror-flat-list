@@ -6,7 +6,7 @@ import { setupTestingEditor } from '../../test/setup-editor'
 describe('Clipboard', () => {
   const t = setupTestingEditor()
 
-  it('can paste some deeply nested list nodes', () => {
+  it('can paste some deeply nested list nodes', async () => {
     t.add(
       t.doc(
         t.bulletList(
@@ -23,7 +23,7 @@ describe('Clipboard', () => {
       ),
     )
 
-    const copied = t.copy()
+    const copied = await t.copy()
     expect(copied.html).toMatchInlineSnapshot(
       `"<ul data-pm-slice="2 2 []"><li class="prosemirror-flat-list" data-list-kind="bullet"><p>D1</p></li><li class="prosemirror-flat-list" data-list-kind="bullet"><p>D2</p></li></ul>"`,
     )
@@ -41,7 +41,7 @@ describe('Clipboard', () => {
     )
   })
 
-  it('can paste the text from a deeply nested list', () => {
+  it('can paste the text from a deeply nested list', async () => {
     t.add(
       t.doc(
         t.bulletList(
@@ -58,7 +58,7 @@ describe('Clipboard', () => {
       ),
     )
 
-    const copied = t.copy()
+    const copied = await t.copy()
     expect(copied.html).toMatchInlineSnapshot(
       `"<p data-pm-slice="1 1 []">D1</p>"`,
     )
@@ -69,7 +69,7 @@ describe('Clipboard', () => {
     expectStateToEqual(t.editor.state, t.doc(t.p('D1')))
   })
 
-  it('can keep the checkbox state when pasting into a bullet list', () => {
+  it('can keep the checkbox state when pasting into a bullet list', async () => {
     t.add(
       t.doc(
         t.bulletList(t.p('Bullet 1')),
@@ -79,7 +79,7 @@ describe('Clipboard', () => {
       ),
     )
 
-    const copied = t.copy()
+    const copied = await t.copy()
 
     t.add(
       t.doc(
@@ -101,7 +101,7 @@ describe('Clipboard', () => {
     )
   })
 
-  it('can keep the checkbox state when pasting into a sub bullet list', () => {
+  it('can keep the checkbox state when pasting into a sub bullet list', async () => {
     t.add(
       t.doc(
         t.bulletList(t.p('Bullet 1')),
@@ -111,7 +111,7 @@ describe('Clipboard', () => {
       ),
     )
 
-    const copied = t.copy()
+    const copied = await t.copy()
 
     t.add(
       t.doc(

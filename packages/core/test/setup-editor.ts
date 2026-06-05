@@ -1,8 +1,14 @@
 import type { MarkAction, NodeAction, NodeChild } from '@prosekit/core'
-import { createTestEditor } from '@prosekit/core/test'
+import {
+  createTestEditor,
+  pasteHTML as pasteHTMLToView,
+  readClipboardHTML,
+  readClipboardText,
+} from '@prosekit/core/test'
 import type { ProseMirrorNode } from '@prosekit/pm/model'
 import type { Command } from '@prosekit/pm/state'
 import { expect } from 'vitest'
+import { keyboard } from 'vitest-browser-commands/playwright'
 
 import type { ListAttributes } from '../src/types'
 
@@ -53,23 +59,17 @@ export function setupTestingEditor() {
     )
   }
 
-  const copy = (): { html: string; text: string } => {
-    const view = editor.view
-    const slice = view.state.selection.content()
-    const { dom, text } = view.serializeForClipboard(slice)
-    return { html: dom.innerHTML, text }
+  const copy = async (): Promise<{ html: string; text: string }> => {
+    editor.view.dom.focus()
+    await keyboard.press('ControlOrMeta+C')
+    return {
+      html: (await readClipboardHTML()) ?? '',
+      text: (await readClipboardText()) ?? '',
+    }
   }
 
   const pasteHTML = (html: string) => {
-    const view = editor.view
-    const dataTransfer = new DataTransfer()
-    dataTransfer.setData('text/html', html)
-    const event = new ClipboardEvent('paste', {
-      clipboardData: dataTransfer,
-      bubbles: true,
-      cancelable: true,
-    })
-    view.dom.dispatchEvent(event)
+    pasteHTMLToView(editor.view, html)
   }
 
   const applyCommand = (
