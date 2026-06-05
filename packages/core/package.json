@@ -50,8 +50,8 @@
     "prosemirror-view": "^1.41.8"
   },
   "devDependencies": {
-    "@prosekit/core": "^0.12.2",
-    "@prosekit/pm": "^0.1.17",
+    "@prosekit/core": "^0.12.3",
+    "@prosekit/pm": "^0.1.18",
     "@tsdown/css": "^0.22.0",
     "@types/node": "^22.0.0",
     "@vitest/browser-playwright": "^4.1.6",
