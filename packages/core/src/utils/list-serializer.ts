@@ -18,7 +18,7 @@ export class ListDOMSerializer extends DOMSerializer {
   static override nodesFromSchema(schema: Schema): {
     [node: string]: (node: ProsemirrorNode) => DOMOutputSpec
   } {
-    const nodes = DOMSerializer.nodesFromSchema(schema)
+    const nodes = super.nodesFromSchema(schema)
     return {
       ...nodes,
       list: (node) =>
