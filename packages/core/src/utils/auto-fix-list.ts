@@ -21,7 +21,7 @@ export function* getTransactionRanges(
       }
 
       map.forEach((_oldStart, _oldEnd, newStart, newEnd) =>
-        ranges.push(newStart, newEnd),
+      {  ranges.push(newStart, newEnd)},
       )
     }
 
