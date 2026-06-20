@@ -8,9 +8,9 @@ export function setNodeAttributes(
   newAttrs: Attrs,
 ): boolean {
   let needUpdate = false
-  for (const key of Object.keys(newAttrs)) {
-    if (newAttrs[key] !== oldAttrs[key]) {
-      tr.setNodeAttribute(pos, key, newAttrs[key])
+  for (const [key, newValue] of Object.entries(newAttrs)) {
+    if (newValue !== oldAttrs[key]) {
+      tr.setNodeAttribute(pos, key, newValue)
       needUpdate = true
     }
   }

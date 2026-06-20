@@ -27,7 +27,7 @@ describe('parseInteger', () => {
     // @ts-expect-error: wrong parameter type
     expect(parseInteger({ object: 'object' })).toBe(null)
     // @ts-expect-error: wrong parameter type
-    expect(parseInteger(Number.NaN)).toBe(null)
+    expect(parseInteger(NaN)).toBe(null)
   })
 
   it('can parse number', () => {
