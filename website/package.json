@@ -24,7 +24,7 @@
     "preact": "^10.29.2",
     "prosemirror-flat-list": "workspace:*",
     "sharp": "^0.34.5",
-    "starlight-theme-nova": "^0.11.10",
+    "starlight-theme-nova": "^0.11.11",
     "tailwindcss": "^4.3.0",
     "typedoc": "^0.28.19",
     "typedoc-plugin-external-package-links": "^0.2.0",
