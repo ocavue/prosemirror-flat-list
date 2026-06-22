@@ -15,12 +15,12 @@
     "postinstall": "astro sync"
   },
   "devDependencies": {
-    "@astrojs/preact": "^5.1.3",
-    "@astrojs/starlight": "^0.39.2",
+    "@astrojs/preact": "^5.1.5",
+    "@astrojs/starlight": "^0.39.3",
     "@prosekit/core": "^0.13.0-beta.3",
     "@prosekit/pm": "^0.1.19-beta.0",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.3",
+    "astro": "^6.4.8",
     "preact": "^10.29.2",
     "prosemirror-flat-list": "workspace:*",
     "sharp": "^0.34.5",
