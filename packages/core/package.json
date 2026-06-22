@@ -54,8 +54,8 @@
     "@prosekit/pm": "^0.1.19-beta.0",
     "@tsdown/css": "^0.22.0",
     "@types/node": "^22.0.0",
-    "@vitest/browser-playwright": "^4.1.6",
-    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/browser-playwright": "^4.1.9",
+    "@vitest/coverage-v8": "^4.1.9",
     "dedent": "^1.7.2",
     "playwright": "^1.60.0",
     "rehype-stringify": "^10.0.1",
@@ -65,8 +65,8 @@
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
     "unified": "^11.0.5",
-    "vite": "^7.3.3",
-    "vitest": "^4.1.6",
+    "vite": "^7.3.5",
+    "vitest": "^4.1.9",
     "vitest-browser-commands": "^0.2.1"
   },
   "typedocOptions": {
