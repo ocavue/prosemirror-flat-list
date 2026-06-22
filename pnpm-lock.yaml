@@ -24,11 +24,11 @@ importers:
         specifier: ^10.5.0
         version: 10.5.0(jiti@2.7.0)
       pkg-pr-new:
-        specifier: ^0.0.73
-        version: 0.0.73
+        specifier: ^0.0.75
+        version: 0.0.75
       prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
+        specifier: ^3.8.4
+        version: 3.8.4
       typedoc:
         specifier: ^0.28.19
         version: 0.28.19(typescript@6.0.3)
@@ -237,7 +237,7 @@ importers:
         specifier: ^0.11.11
         version: 0.11.11(@astrojs/starlight@0.39.3(astro@6.4.8(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4)(yaml@2.9.0))(typescript@6.0.3))(typescript@6.0.3)
       tailwindcss:
-        specifier: ^4.3.0
+        specifier: ^4.3.1
         version: 4.3.1
       typedoc:
         specifier: ^0.28.19
@@ -3378,8 +3378,8 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
 
-  pkg-pr-new@0.0.73:
-    resolution: {integrity: sha512-/4iUn/yiDo5Fur+wGBASVPUTPPzcu422+BA0KeyTtDNX7uPuDfB/Lul9vGLXyk6Y2lULZ9YIxfqnNTGiImRLbw==}
+  pkg-pr-new@0.0.75:
+    resolution: {integrity: sha512-u9mdErTewKSMsr+ceCt8VcNuNP0ro5AXiPXhUVApuEyqr2Zlvt+DdCFBcm+yGWN8mhOdZJ27meIDbnoZgfzpOw==}
     hasBin: true
 
   playwright-core@1.60.0:
@@ -3453,8 +3453,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+  prettier@3.8.4:
+    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -8234,7 +8234,7 @@ snapshots:
 
   pify@4.0.1: {}
 
-  pkg-pr-new@0.0.73: {}
+  pkg-pr-new@0.0.75: {}
 
   playwright-core@1.60.0: {}
 
@@ -8287,7 +8287,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.8.3: {}
+  prettier@3.8.4: {}
 
   prismjs@1.30.0: {}
 
