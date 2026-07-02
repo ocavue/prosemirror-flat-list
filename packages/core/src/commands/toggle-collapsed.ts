@@ -30,7 +30,7 @@ export interface ToggleCollapsedOptions {
 export function createToggleCollapsedCommand(
   options: ToggleCollapsedOptions = {},
 ): Command {
-  const { collapsed = undefined, isToggleable = defaultIsToggleable } = options
+  const { collapsed, isToggleable = defaultIsToggleable } = options
   const toggleCollapsed: Command = (state, dispatch) => {
     const { $from } = state.selection
 
