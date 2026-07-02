@@ -65,7 +65,7 @@
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
     "unified": "^11.0.5",
-    "vite": "^7.3.5",
+    "vite": "^8.0.0",
     "vitest": "^4.1.9",
     "vitest-browser-commands": "^0.2.1"
   },
