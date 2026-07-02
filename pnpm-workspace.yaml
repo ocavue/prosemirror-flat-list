@@ -8,3 +8,5 @@ ignoreWorkspaceRootCheck: true
 allowBuilds:
   esbuild: false
   sharp: false
+minimumReleaseAgeExclude:
+  - starlight-theme-nova@0.12.1
