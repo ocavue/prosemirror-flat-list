@@ -1,17 +1,5 @@
 import type { Attrs, Node } from 'prosemirror-model'
 
-declare module 'prosemirror-model' {
-  interface AttributeSpec {
-    /**
-     * When `true`, a new list node created by splitting an existing one (e.g.
-     * by pressing `Enter`) inherits this attribute from the node being split.
-     * This follows the same convention as the `prosemirror-splittable`
-     * package.
-     */
-    splittable?: boolean
-  }
-}
-
 /**
  * All default list node kinds.
  *

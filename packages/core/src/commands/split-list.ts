@@ -5,6 +5,7 @@ import {
   type Node as ProsemirrorNode,
   Slice,
 } from 'prosemirror-model'
+import { inheritSplittableAttrs } from 'prosemirror-splittable'
 import {
   type Command,
   type EditorState,
@@ -37,17 +38,12 @@ export function createSplitListCommand(): Command {
 }
 
 function deriveListAttributes(listNode: ProsemirrorNode): ListAttributes {
-  // The new list node only inherits `kind` and the attributes whose spec is
-  // marked as `splittable`; per-item state (for example `checked`) resets.
-  const derived: Record<string, unknown> = {
+  // The new list node only inherits `kind` and the attributes marked as
+  // `splittable`; per-item state (for example `checked`) resets.
+  return {
     kind: (listNode.attrs as ListAttributes).kind,
+    ...inheritSplittableAttrs(listNode, listNode.type),
   }
-  for (const [name, spec] of Object.entries(listNode.type.spec.attrs ?? {})) {
-    if (spec.splittable) {
-      derived[name] = listNode.attrs[name]
-    }
-  }
-  return derived
 }
 
 const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {

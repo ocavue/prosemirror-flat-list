@@ -25,7 +25,7 @@ import {
 import type { ListAttributes } from '../src/types'
 
 // Mirrors a schema consumer extending the list node with a custom attribute
-// marked `splittable`, e.g. ProseKit's `defineNodeAttr({ splittable: true })`.
+// marked `splittable`.
 export type TestListAttributes = ListAttributes & { marker?: string | null }
 
 type ListSpecExtension = Extension<{
