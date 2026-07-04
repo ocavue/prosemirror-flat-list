@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.7.0
+
+### Minor Changes
+
+- 4c3e633: Inherit list attributes marked as `splittable` when splitting a list node.
+
 ## 0.6.0
 
 ### Minor Changes
