@@ -10,9 +10,7 @@ import type { Command } from '@prosekit/pm/state'
 import { expect } from 'vitest'
 import { keyboard } from 'vitest-browser-commands/playwright'
 
-import type { ListAttributes } from '../src/types'
-
-import { defineListTestExtension } from './extension'
+import { defineListTestExtension, type TestListAttributes } from './extension'
 import { expectStateToEqual, markdownToTaggedDoc } from './markdown'
 
 export function setupTestingEditor() {
@@ -28,7 +26,7 @@ export function setupTestingEditor() {
   const n = editor.nodes
   const m = editor.marks
 
-  const listWithAttrs = (attrs: ListAttributes) => {
+  const listWithAttrs = (attrs: TestListAttributes) => {
     return (...children: NodeChild[]) => n.list(attrs, ...children)
   }
 
@@ -109,6 +107,7 @@ export function setupTestingEditor() {
 
     n,
     m,
+    listWithAttrs,
 
     doc,
     p,

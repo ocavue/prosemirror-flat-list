@@ -21,7 +21,20 @@ describe('splitList', () => {
     expandedToggleList,
     checkedTaskList,
     uncheckedTaskList,
+    listWithAttrs,
   } = setupTestingEditor()
+
+  const starBulletList = listWithAttrs({ kind: 'bullet', marker: '*' })
+  const checkedStarTaskList = listWithAttrs({
+    kind: 'task',
+    marker: '*',
+    checked: true,
+  })
+  const uncheckedStarTaskList = listWithAttrs({
+    kind: 'task',
+    marker: '*',
+    checked: false,
+  })
 
   it('can split non-empty item', () => {
     applyCommand(
@@ -233,6 +246,37 @@ describe('splitList', () => {
         uncheckedTaskList(p('<a>2')),
         uncheckedTaskList(p('A3')),
       ),
+    )
+  })
+
+  it('inherits splittable attributes', () => {
+    // At the end of an item
+    applyCommand(
+      enterCommand,
+      doc(starBulletList(p('A1<a>'))),
+      doc(starBulletList(p('A1')), starBulletList(p('<a>'))),
+    )
+
+    // In the middle of an item
+    applyCommand(
+      enterCommand,
+      doc(starBulletList(p('A<a>1'))),
+      doc(starBulletList(p('A')), starBulletList(p('<a>1'))),
+    )
+
+    // At the start of an item
+    applyCommand(
+      enterCommand,
+      doc(starBulletList(p('<a>A1'))),
+      doc(starBulletList(p('')), starBulletList(p('<a>A1'))),
+    )
+  })
+
+  it('resets non-splittable attributes while inheriting splittable ones', () => {
+    applyCommand(
+      enterCommand,
+      doc(checkedStarTaskList(p('A1<a>'))),
+      doc(checkedStarTaskList(p('A1')), uncheckedStarTaskList(p('<a>'))),
     )
   })
 

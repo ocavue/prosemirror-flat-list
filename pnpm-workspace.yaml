@@ -10,3 +10,4 @@ allowBuilds:
   sharp: false
 minimumReleaseAgeExclude:
   - starlight-theme-nova@0.12.1
+  - prosemirror-splittable@1.1.0
