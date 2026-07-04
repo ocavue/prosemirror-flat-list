@@ -37,8 +37,17 @@ export function createSplitListCommand(): Command {
 }
 
 function deriveListAttributes(listNode: ProsemirrorNode): ListAttributes {
-  // For the new list node, we don't want to inherit any list attribute (For example: `checked`) other than `kind`
-  return { kind: (listNode.attrs as ListAttributes).kind }
+  // The new list node only inherits `kind` and the attributes whose spec is
+  // marked as `splittable`; per-item state (for example `checked`) resets.
+  const derived: Record<string, unknown> = {
+    kind: (listNode.attrs as ListAttributes).kind,
+  }
+  for (const [name, spec] of Object.entries(listNode.type.spec.attrs ?? {})) {
+    if (spec.splittable) {
+      derived[name] = listNode.attrs[name]
+    }
+  }
+  return derived
 }
 
 const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {

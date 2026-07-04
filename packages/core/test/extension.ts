@@ -4,6 +4,7 @@ import {
   defineBaseCommands,
   defineBaseKeymap,
   defineKeymap,
+  defineNodeAttr,
   defineNodeSpec,
   definePlugin,
   Priority,
@@ -23,8 +24,15 @@ import {
 } from '../src/index'
 import type { ListAttributes } from '../src/types'
 
+// Mirrors a schema consumer extending the list node with a custom attribute
+// marked `splittable`, e.g. ProseKit's `defineNodeAttr({ splittable: true })`.
+export type TestListAttributes = ListAttributes & { marker?: string | null }
+
 type ListSpecExtension = Extension<{
   Nodes: { list: ListAttributes }
+}>
+type ListMarkerExtension = Extension<{
+  Nodes: { list: { marker?: string | null } }
 }>
 
 type DocExtension = Extension<{ Nodes: { doc: Record<string, never> } }>
@@ -49,6 +57,7 @@ type ListTestExtension = Union<
     HeadingExtension,
     HorizontalRuleExtension,
     ListSpecExtension,
+    ListMarkerExtension,
     BaseCommandsExtension,
   ]
 >
@@ -114,6 +123,15 @@ function defineListSpec(): ListSpecExtension {
   })
 }
 
+function defineListMarkerAttr(): ListMarkerExtension {
+  return defineNodeAttr<'list', 'marker', string | null>({
+    type: 'list',
+    attr: 'marker',
+    default: null,
+    splittable: true,
+  })
+}
+
 function defineListPlugins() {
   return definePlugin((ctx) => createListPlugins({ schema: ctx.schema }))
 }
@@ -135,6 +153,7 @@ export function defineListTestExtension(): ListTestExtension {
     defineHeading(),
     defineHorizontalRule(),
     defineListSpec(),
+    defineListMarkerAttr(),
     defineListPlugins(),
     defineListInputRules(),
     defineListKeymap(),
