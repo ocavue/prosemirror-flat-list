@@ -25,6 +25,7 @@ export function createListSpec(): NodeSpec {
     attrs: {
       kind: {
         default: 'bullet',
+        splittable: true,
       },
       order: {
         default: null,

@@ -38,12 +38,9 @@ export function createSplitListCommand(): Command {
 }
 
 function deriveListAttributes(listNode: ProsemirrorNode): ListAttributes {
-  // The new list node only inherits `kind` and the attributes marked as
-  // `splittable`; per-item state (for example `checked`) resets.
-  return {
-    kind: (listNode.attrs as ListAttributes).kind,
-    ...inheritSplittableAttrs(listNode, listNode.type),
-  }
+  // The new list node only inherits the attributes marked as `splittable`
+  // (`kind` by default); per-item state (for example `checked`) resets.
+  return inheritSplittableAttrs(listNode, listNode.type) ?? {}
 }
 
 const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {
