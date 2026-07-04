@@ -15,8 +15,7 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  * @public @group Commands
  */
 export type WrapInListGetAttrs<T extends ListAttributes> =
-  | T
-  | ((range: NodeRange) => T | null)
+  T | ((range: NodeRange) => T | null)
 
 /**
  * Returns a command function that wraps the selection in a list with the given
