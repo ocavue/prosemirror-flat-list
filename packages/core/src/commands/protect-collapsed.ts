@@ -1,4 +1,4 @@
-import type { Command } from 'prosemirror-state'
+import { AllSelection, type Command } from 'prosemirror-state'
 
 import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
 
@@ -13,10 +13,17 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  * instead. Therefore the user can clearly know what content he is trying to
  * delete.
  *
+ * An explicit select-all (an `AllSelection`) is not protected: it covers the
+ * whole document, hidden content included, so deleting it is intentional.
+ *
  * @public @group Commands
  *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {
+  if (state.selection instanceof AllSelection) {
+    return false
+  }
+
   const tr = state.tr
   let found = false
   const { from, to } = state.selection
