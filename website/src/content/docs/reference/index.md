@@ -340,6 +340,9 @@ In such case, we will stop the delete action and expand the collapsed items
 instead. Therefore the user can clearly know what content he is trying to
 delete.
 
+An explicit select-all (an `AllSelection`) is not protected: it covers the
+whole document, hidden content included, so deleting it is intentional.
+
 </dd>
 
 </dl>
