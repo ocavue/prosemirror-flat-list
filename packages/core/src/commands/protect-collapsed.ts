@@ -20,15 +20,16 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {
-  if (state.selection instanceof AllSelection) {
+  const {selection, doc} = state
+  if (selection instanceof AllSelection) {
     return false
   }
 
   const tr = state.tr
   let found = false
-  const { from, to } = state.selection
+  const { from, to } = selection
 
-  state.doc.nodesBetween(from, to, (node, pos, parent, index) => {
+  doc.nodesBetween(from, to, (node, pos, parent, index) => {
     if (found && !dispatch) {
       return false
     }
@@ -38,7 +39,7 @@ export const protectCollapsed: Command = (state, dispatch): boolean => {
         return false
       }
 
-      const $pos = state.doc.resolve(pos)
+      const $pos = doc.resolve(pos)
       tr.setNodeAttribute($pos.before($pos.depth), 'collapsed', false)
     }
   })
