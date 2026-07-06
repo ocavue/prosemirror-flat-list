@@ -78,9 +78,9 @@ export function createParseDomRules(): readonly TagParseRule[] {
 
           if (element.firstChild?.nodeType === 3 /* document.TEXT_NODE */) {
             const textContent = element.firstChild.textContent
-            if (textContent && /^\[[\sx|]]\s{1,2}/.test(textContent)) {
+            if (textContent && /^\[[\sx|]\]\s{1,2}/.test(textContent)) {
               element.firstChild.textContent = textContent.replace(
-                /^\[[\sx|]]\s{1,2}/,
+                /^\[[\sx|]\]\s{1,2}/,
                 '',
               )
               return {

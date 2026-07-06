@@ -101,7 +101,7 @@ export const listInputRules: InputRule[] = [
       order: order != null && order >= 2 ? order : null,
     }
   }),
-  wrappingListInputRule<ListAttributes>(/^\s?\[([\sXx]?)]\s$/, ({ match }) => {
+  wrappingListInputRule<ListAttributes>(/^\s?\[([\sX]?)\]\s$/i, ({ match }) => {
     return {
       kind: 'task',
       checked: ['x', 'X'].includes(match[1]),
