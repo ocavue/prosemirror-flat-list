@@ -20,7 +20,7 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {
-  const {selection, doc} = state
+  const { selection, doc } = state
   if (selection instanceof AllSelection) {
     return false
   }
