@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.7.1
+
+### Patch Changes
+
+- 147f0f3: `protectCollapsed` no longer blocks deletion when the whole document is selected with an `AllSelection`.
+
 ## 0.7.0
 
 ### Minor Changes
