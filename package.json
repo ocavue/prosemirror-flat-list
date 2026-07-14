@@ -25,9 +25,9 @@
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^22.0.0",
     "eslint": "^10.6.0",
-    "pkg-pr-new": "^0.0.75",
+    "pkg-pr-new": "^0.0.78",
     "prettier": "^3.9.4",
-    "typedoc": "^0.28.19",
+    "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   }

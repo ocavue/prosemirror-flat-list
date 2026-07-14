@@ -43,16 +43,16 @@
   "dependencies": {
     "prosemirror-commands": "^1.7.1",
     "prosemirror-inputrules": "^1.5.1",
-    "prosemirror-model": "^1.25.9",
+    "prosemirror-model": "^1.25.11",
     "prosemirror-safari-ime-span": "^1.0.2",
     "prosemirror-splittable": "^1.1.0",
     "prosemirror-state": "^1.4.4",
     "prosemirror-transform": "^1.12.0",
-    "prosemirror-view": "^1.42.0"
+    "prosemirror-view": "^1.42.1"
   },
   "devDependencies": {
-    "@prosekit/core": "^0.13.0-beta.5",
-    "@prosekit/pm": "^0.1.19-beta.2",
+    "@prosekit/core": "^0.13.0-beta.6",
+    "@prosekit/pm": "^0.1.19-beta.3",
     "@tsdown/css": "^0.22.3",
     "@types/node": "^22.0.0",
     "@vitest/browser-playwright": "^4.1.9",
