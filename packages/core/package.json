@@ -48,17 +48,17 @@
     "prosemirror-splittable": "^1.1.0",
     "prosemirror-state": "^1.4.4",
     "prosemirror-transform": "^1.12.0",
-    "prosemirror-view": "^1.42.1"
+    "prosemirror-view": "^1.42.2"
   },
   "devDependencies": {
-    "@prosekit/core": "^0.13.0-beta.6",
-    "@prosekit/pm": "^0.1.19-beta.3",
+    "@prosekit/core": "^0.13.0-beta.7",
+    "@prosekit/pm": "^0.1.19-beta.4",
     "@tsdown/css": "^0.22.3",
     "@types/node": "^22.0.0",
-    "@vitest/browser-playwright": "^4.1.9",
-    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/browser-playwright": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10",
     "dedent": "^1.7.2",
-    "playwright": "^1.61.1",
+    "playwright": "^1.62.0",
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
@@ -66,8 +66,8 @@
     "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
     "unified": "^11.0.5",
-    "vite": "^8.1.3",
-    "vitest": "^4.1.9",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10",
     "vitest-browser-commands": "^0.2.1"
   },
   "typedocOptions": {

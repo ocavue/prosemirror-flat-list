@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.10.0",
+  "packageManager": "pnpm@11.18.0",
   "description": "ProseMirror flat list monorepo",
   "scripts": {
     "build": "pnpm -r --stream --sequential run build",
@@ -20,15 +20,15 @@
     "ci:publish:snapshot": "pkg-pr-new publish --pnpm ./packages/core"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.31.0",
-    "@ocavue/eslint-config": "^4.11.0",
+    "@changesets/cli": "^2.31.1",
+    "@ocavue/eslint-config": "^4.12.1",
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^22.0.0",
-    "eslint": "^10.6.0",
-    "pkg-pr-new": "^0.0.78",
-    "prettier": "^3.9.4",
+    "eslint": "^10.0.0",
+    "pkg-pr-new": "^0.0.82",
+    "prettier": "^3.9.6",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   }
 }

@@ -5,9 +5,7 @@ packages:
 linkWorkspacePackages: deep
 strictPeerDependencies: true
 ignoreWorkspaceRootCheck: true
+dedupePeer: true
 allowBuilds:
   esbuild: false
   sharp: false
-minimumReleaseAgeExclude:
-  - '@ocavue/eslint-config@4.11.0'
-  - eslint-plugin-unicorn@71.0.0
