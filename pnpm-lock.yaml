@@ -80,7 +80,7 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.1.3
-        version: 8.1.3(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+        version: 8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
 
   examples/with-prosemirror:
     dependencies:
@@ -123,7 +123,7 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.1.3
-        version: 8.1.3(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+        version: 8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
 
   packages/core:
     dependencies:
@@ -211,10 +211,10 @@ importers:
     devDependencies:
       '@astrojs/preact':
         specifier: ^6.0.2
-        version: 6.0.2(@babel/core@7.29.0(supports-color@7.2.0))(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(preact@10.29.7)(rollup@4.60.4)(supports-color@7.2.0)(yaml@2.9.0)
+        version: 6.0.2(@babel/core@7.29.0(supports-color@7.2.0))(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(preact@10.29.7)(rollup@4.60.4)(supports-color@7.2.0)(yaml@2.9.0)
       '@astrojs/starlight':
         specifier: ^0.41.5
-        version: 0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)
+        version: 0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)
       '@prosekit/core':
         specifier: ^0.13.0-beta.7
         version: 0.13.0-beta.7(prosemirror-model@1.25.11)(prosemirror-state@1.4.4)(prosemirror-transform@1.12.0)
@@ -226,7 +226,7 @@ importers:
         version: 4.3.3(vite@8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       astro:
         specifier: ^7.1.0
-        version: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
+        version: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
       preact:
         specifier: ^10.29.7
         version: 10.29.7(preact-render-to-string@6.7.0)
@@ -235,10 +235,10 @@ importers:
         version: link:../packages/core
       sharp:
         specifier: ^0.35.3
-        version: 0.35.3(@types/node@24.12.4)
+        version: 0.35.3(@types/node@22.19.19)
       starlight-theme-nova:
         specifier: ^0.12.2
-        version: 0.12.2(@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3))(satteri@0.9.4)(supports-color@7.2.0)(typescript@6.0.3)
+        version: 0.12.2(@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3))(satteri@0.9.4)(supports-color@7.2.0)(typescript@6.0.3)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -4716,13 +4716,13 @@ snapshots:
       hast-util-from-html: 2.0.3
       satteri: 0.9.4
 
-  '@astrojs/mdx@7.0.0(@astrojs/markdown-satteri@0.3.5)(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)':
+  '@astrojs/mdx@7.0.0(@astrojs/markdown-satteri@0.3.5)(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.0
       '@astrojs/markdown-remark': 7.2.0(supports-color@7.2.0)
       '@mdx-js/mdx': 3.1.1(supports-color@7.2.0)
       acorn: 8.16.0
-      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
+      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
       es-module-lexer: 2.1.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4738,7 +4738,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@6.0.2(@babel/core@7.29.0(supports-color@7.2.0))(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(preact@10.29.7)(rollup@4.60.4)(supports-color@7.2.0)(yaml@2.9.0)':
+  '@astrojs/preact@6.0.2(@babel/core@7.29.0(supports-color@7.2.0))(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(preact@10.29.7)(rollup@4.60.4)(supports-color@7.2.0)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.2
       '@preact/preset-vite': 2.10.5(@babel/core@7.29.0(supports-color@7.2.0))(preact@10.29.7)(rollup@4.60.4)(supports-color@7.2.0)(vite@8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
@@ -4746,7 +4746,7 @@ snapshots:
       devalue: 5.8.1
       preact: 10.29.7(preact-render-to-string@6.7.0)
       preact-render-to-string: 6.7.0(preact@10.29.7)
-      vite: 8.1.3(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      vite: 8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -4774,17 +4774,17 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 4.4.3
 
-  '@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)':
+  '@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)':
     dependencies:
       '@astrojs/markdown-satteri': 0.3.5
-      '@astrojs/mdx': 7.0.0(@astrojs/markdown-satteri@0.3.5)(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)
+      '@astrojs/mdx': 7.0.0(@astrojs/markdown-satteri@0.3.5)(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)
       '@astrojs/sitemap': 3.7.2
       '@pagefind/default-ui': 1.5.2
       '@types/hast': 3.0.5
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
-      astro-expressive-code: 0.44.0(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))
+      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
+      astro-expressive-code: 0.44.0(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.4
@@ -6571,15 +6571,15 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.44.0(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)):
+  astro-expressive-code@0.44.0(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)):
     dependencies:
-      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
+      astro: 7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0)
       rehype-expressive-code: 0.44.0
       url-extras: 0.1.0
 
   astro-theme-toggle@0.8.1: {}
 
-  astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0):
+  astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler-rs': 0.3.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
       '@astrojs/internal-helpers': 0.10.2
@@ -6629,13 +6629,13 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.7.4
       unstorage: 1.17.5
-      vite: 8.1.3(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      vite: 8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
       vitefu: 1.1.3(vite@8.1.3(@types/node@22.19.19)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 22.0.0
       zod: 4.4.3
     optionalDependencies:
-      sharp: 0.35.3(@types/node@24.12.4)
+      sharp: 0.35.3(@types/node@22.19.19)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -9066,7 +9066,7 @@ snapshots:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.6.0
 
-  sharp@0.35.3(@types/node@24.12.4):
+  sharp@0.35.3(@types/node@22.19.19):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -9097,7 +9097,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.3
       '@img/sharp-win32-ia32': 0.35.3
       '@img/sharp-win32-x64': 0.35.3
-      '@types/node': 24.12.4
+      '@types/node': 22.19.19
 
   shebang-command@2.0.0:
     dependencies:
@@ -9198,7 +9198,7 @@ snapshots:
 
   stackback@0.0.2: {}
 
-  starlight-theme-nova@0.12.2(@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3))(satteri@0.9.4)(supports-color@7.2.0)(typescript@6.0.3):
+  starlight-theme-nova@0.12.2(@astrojs/starlight@0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3))(satteri@0.9.4)(supports-color@7.2.0)(typescript@6.0.3):
     dependencies:
       '@aria-ui/core': 0.2.1
       '@aria-ui/utils': 0.1.7
@@ -9214,7 +9214,7 @@ snapshots:
       satteri-custom-header-id: 0.1.0(satteri@0.9.4)
       shiki-twoslash-renderer: 0.3.5(supports-color@7.2.0)(typescript@6.0.3)
     optionalDependencies:
-      '@astrojs/starlight': 0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.4)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)
+      '@astrojs/starlight': 0.41.5(astro@7.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@22.19.19)(jiti@2.7.0)(rollup@4.60.4)(yaml@2.9.0))(supports-color@7.2.0)(typescript@6.0.3)
     transitivePeerDependencies:
       - satteri
       - supports-color
@@ -9563,20 +9563,6 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 22.19.19
-      esbuild: 0.28.1
-      fsevents: 2.3.3
-      jiti: 2.7.0
-      yaml: 2.9.0
-
-  vite@8.1.3(@types/node@24.12.4)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0):
-    dependencies:
-      lightningcss: 1.32.0
-      picomatch: 4.0.4
-      postcss: 8.5.16
-      rolldown: 1.1.3
-      tinyglobby: 0.2.17
-    optionalDependencies:
-      '@types/node': 24.12.4
       esbuild: 0.28.1
       fsevents: 2.3.3
       jiti: 2.7.0
