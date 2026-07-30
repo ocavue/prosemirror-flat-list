@@ -48,11 +48,11 @@
     "prosemirror-splittable": "^1.1.0",
     "prosemirror-state": "^1.4.4",
     "prosemirror-transform": "^1.12.0",
-    "prosemirror-view": "^1.42.1"
+    "prosemirror-view": "^1.42.2"
   },
   "devDependencies": {
-    "@prosekit/core": "^0.13.0-beta.6",
-    "@prosekit/pm": "^0.1.19-beta.3",
+    "@prosekit/core": "^0.13.0-beta.7",
+    "@prosekit/pm": "^0.1.19-beta.4",
     "@tsdown/css": "^0.22.3",
     "@types/node": "^22.0.0",
     "@vitest/browser-playwright": "^4.1.10",
