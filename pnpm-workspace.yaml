@@ -9,3 +9,5 @@ dedupePeer: true
 allowBuilds:
   esbuild: false
   sharp: false
+minimumReleaseAgeExclude:
+  - '@ocavue/eslint-config'
