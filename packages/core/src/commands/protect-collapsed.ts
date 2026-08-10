@@ -16,7 +16,9 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  * An explicit select-all (an `AllSelection`) is not protected: it covers the
  * whole document, hidden content included, so deleting it is intentional.
  *
- * @public @group Commands
+ * @public
+*
+* @group Commands
  *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {

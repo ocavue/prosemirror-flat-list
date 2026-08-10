@@ -3,12 +3,16 @@ import type { Attrs, Node } from 'prosemirror-model'
 /**
  * All default list node kinds.
  *
- * @public @group Schema
+ * @public
+*
+* @group Schema
  */
 export type ListKind = 'bullet' | 'ordered' | 'task' | 'toggle'
 
 /**
- * @public @group Schema
+ * @public
+*
+* @group Schema
  */
 export interface ListAttributes {
   kind?: string
@@ -18,7 +22,9 @@ export interface ListAttributes {
 }
 
 /**
- * @public @group Schema
+ * @public
+*
+* @group Schema
  */
 export interface ProsemirrorNodeJSON {
   type: string

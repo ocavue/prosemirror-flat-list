@@ -11,7 +11,9 @@ import { createWrapInListCommand } from './wrap-in-list'
  * type and attributes, or change the list kind if the selection is already in
  * another kind of list, or unwrap the selected list if otherwise.
  *
- * @public @group Commands
+ * @public
+*
+* @group Commands
  */
 export function createToggleListCommand<
   T extends ListAttributes = ListAttributes,

@@ -12,7 +12,9 @@ import { listToDOM } from '../schema/to-dom'
  * A custom DOM serializer class that can serialize flat list nodes into native
  * HTML list elements (i.e. `<ul>` and `<ol>`).
  *
- * @public @group Plugins
+ * @public
+*
+* @group Plugins
  */
 export class ListDOMSerializer extends DOMSerializer {
   static override nodesFromSchema(schema: Schema): {

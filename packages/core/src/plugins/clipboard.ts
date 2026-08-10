@@ -8,7 +8,9 @@ import { unwrapListSlice } from '../utils/unwrap-list-slice'
  * Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
  * clipboard. See {@link ListDOMSerializer}.
  *
- * @public @group Plugins
+ * @public
+*
+* @group Plugins
  */
 export function createListClipboardPlugin(schema: Schema): Plugin {
   return new Plugin({
