@@ -12,8 +12,8 @@ import { parseInteger } from './utils/parse-integer'
  * A callback function to get the attributes for a list input rule.
  *
  * @public
-*
-* @group Input Rules
+ *
+ * @group Input Rules
  */
 export type ListInputRuleAttributesGetter<
   T extends ListAttributes = ListAttributes,
@@ -34,8 +34,8 @@ export type ListInputRuleAttributesGetter<
  * when a given string is typed.
  *
  * @public
-*
-* @group Input Rules
+ *
+ * @group Input Rules
  */
 export function wrappingListInputRule<
   T extends ListAttributes = ListAttributes,
@@ -91,8 +91,8 @@ export function wrappingListInputRule<
  * All input rules for lists.
  *
  * @public
-*
-* @group Input Rules
+ *
+ * @group Input Rules
  */
 export const listInputRules: InputRule[] = [
   wrappingListInputRule<ListAttributes>(/^\s?([*-])\s$/, {

@@ -21,8 +21,8 @@ import { createSplitListCommand } from './split-list'
  * - {@link createSplitListCommand}
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export const enterCommand = chainCommands(
   protectCollapsed,
@@ -40,8 +40,8 @@ export const enterCommand = chainCommands(
  * - [selectNodeBackward](https://prosemirror.net/docs/ref/#commands.selectNodeBackward)
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  *
  */
 export const backspaceCommand = chainCommands(
@@ -62,8 +62,8 @@ export const backspaceCommand = chainCommands(
  * - [selectNodeForward](https://prosemirror.net/docs/ref/#commands.selectNodeForward)
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  *
  */
 export const deleteCommand = chainCommands(
@@ -83,8 +83,8 @@ export const deleteCommand = chainCommands(
  * - `Mod-]`: Increase indentation. See {@link createIndentListCommand}.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export const listKeymap = {
   Enter: enterCommand,

@@ -10,8 +10,8 @@ import { dedentOutOfList } from './dedent-list'
 
 /**
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export interface UnwrapListOptions {
   /**
@@ -24,8 +24,8 @@ export interface UnwrapListOptions {
  * Returns a command function that unwraps the list around the selection.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export function createUnwrapListCommand(options?: UnwrapListOptions): Command {
   const kind = options?.kind

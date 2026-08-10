@@ -13,8 +13,8 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  * function returns null, the command won't do anything.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export type WrapInListGetAttrs<T extends ListAttributes> =
   T | ((range: NodeRange) => T | null)
@@ -24,8 +24,8 @@ export type WrapInListGetAttrs<T extends ListAttributes> =
  * type and attributes.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export function createWrapInListCommand<
   T extends ListAttributes = ListAttributes,

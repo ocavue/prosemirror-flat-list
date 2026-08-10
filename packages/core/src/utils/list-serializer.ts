@@ -13,8 +13,8 @@ import { listToDOM } from '../schema/to-dom'
  * HTML list elements (i.e. `<ul>` and `<ol>`).
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export class ListDOMSerializer extends DOMSerializer {
   static override nodesFromSchema(schema: Schema): {

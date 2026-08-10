@@ -6,8 +6,8 @@ import { handleListMarkerMouseDown } from '../dom-events'
  * Handle DOM events for list.
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export function createListEventPlugin(): Plugin {
   return new Plugin({

@@ -8,8 +8,8 @@ import type { Plugin } from 'prosemirror-state'
  * See also https://github.com/ProseMirror/prosemirror/issues/934
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export function createSafariInputMethodWorkaroundPlugin(): Plugin {
   return imeSpan

@@ -8,8 +8,8 @@ import { parseInteger } from '../utils/parse-integer'
  * Returns a set of rules for parsing HTML into ProseMirror list nodes.
  *
  * @public
-*
-* @group Schema
+ *
+ * @group Schema
  */
 export function createParseDomRules(): readonly TagParseRule[] {
   return [

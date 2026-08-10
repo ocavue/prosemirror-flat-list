@@ -18,8 +18,8 @@ import { createSafariInputMethodWorkaroundPlugin } from './safari-workaround'
  * - {@link createSafariInputMethodWorkaroundPlugin}
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export function createListPlugins(options: { schema: Schema }): Plugin[] {
   const { schema } = options

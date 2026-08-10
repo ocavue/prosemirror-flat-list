@@ -18,8 +18,8 @@ import { withVisibleSelection } from './set-safe-selection'
 
 /**
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export interface DedentListOptions {
   /**
@@ -41,8 +41,8 @@ export interface DedentListOptions {
  * Returns a command function that decreases the indentation of selected list nodes.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export function createDedentListCommand(options?: DedentListOptions): Command {
   const dedentListCommand: Command = (state, dispatch): boolean => {

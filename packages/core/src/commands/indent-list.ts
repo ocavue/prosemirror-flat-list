@@ -19,8 +19,8 @@ import { withVisibleSelection } from './set-safe-selection'
 
 /**
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export interface IndentListOptions {
   /**
@@ -43,8 +43,8 @@ export interface IndentListOptions {
  * nodes.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export function createIndentListCommand(options?: IndentListOptions): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {

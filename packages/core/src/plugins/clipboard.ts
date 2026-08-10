@@ -9,8 +9,8 @@ import { unwrapListSlice } from '../utils/unwrap-list-slice'
  * clipboard. See {@link ListDOMSerializer}.
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export function createListClipboardPlugin(schema: Schema): Plugin {
   return new Plugin({

@@ -8,8 +8,8 @@ import * as browser from './utils/browser'
  * list node get updated when its marker styling should changes.
  *
  * @public
-*
-* @group Plugins
+ *
+ * @group Plugins
  */
 export const createListNodeView: NodeViewConstructor = (node) => {
   let prevNode = node

@@ -11,8 +11,8 @@ import { safeLift } from '../utils/safe-lift'
  * child of a list node, lift this child.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  */
 export const joinListUp: Command = (state, dispatch, view) => {
   const $cursor = atTextblockStart(state, view)

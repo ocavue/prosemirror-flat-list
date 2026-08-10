@@ -17,8 +17,8 @@ import { isCollapsedListNode } from '../utils/is-collapsed-list-node'
  * whole document, hidden content included, so deleting it is intentional.
  *
  * @public
-*
-* @group Commands
+ *
+ * @group Commands
  *
  */
 export const protectCollapsed: Command = (state, dispatch): boolean => {
