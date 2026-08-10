@@ -26,14 +26,14 @@ export interface IndentListOptions {
   /**
    * A optional from position to indent.
    *
-   * @defaultValue `state.selection.from`
+   * @default `state.selection.from`
    */
   from?: number
 
   /**
    * A optional to position to indent.
    *
-   * @defaultValue `state.selection.to`
+   * @default `state.selection.to`
    */
   to?: number
 }
