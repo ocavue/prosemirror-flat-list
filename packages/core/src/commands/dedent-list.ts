@@ -25,14 +25,14 @@ export interface DedentListOptions {
   /**
    * A optional from position to indent.
    *
-   * @default `state.selection.from`
+   * @defaultValue `state.selection.from`
    */
   from?: number
 
   /**
    * A optional to position to indent.
    *
-   * @default `state.selection.to`
+   * @defaultValue `state.selection.to`
    */
   to?: number
 }

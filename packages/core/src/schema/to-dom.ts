@@ -18,7 +18,7 @@ export interface ListToDOMOptions {
    * You might want to use {@link joinListElements} to join the list elements
    * afterward.
    *
-   * @default false
+   * @defaultValue false
    */
   nativeList?: boolean
 
