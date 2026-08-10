@@ -9,7 +9,7 @@ import { listToDOM } from './to-dom'
  *
  * @internal
  *
- * @gorup Schema
+ * @group Schema
  */
 export const flatListGroup = 'flatList'
 
