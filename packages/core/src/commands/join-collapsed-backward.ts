@@ -12,7 +12,9 @@ import { joinTextblocksAround } from './join-textblocks-around'
  * collapsed list node right before the cursor, move current block and append it
  * to the first child of the collapsed list node (i.e. skip the hidden content).
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  */
 export const joinCollapsedListBackward: Command = (state, dispatch, view) => {
   const $cursor = atTextblockStart(state, view)

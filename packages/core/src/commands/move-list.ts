@@ -9,7 +9,9 @@ import { safeLift } from '../utils/safe-lift'
 /**
  * Returns a command function that moves up or down selected list nodes.
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  *
  */
 export function createMoveListCommand(direction: 'up' | 'down'): Command {

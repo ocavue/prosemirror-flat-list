@@ -28,7 +28,9 @@ import { enterWithoutLift } from './enter-without-lift'
 /**
  * Returns a command that split the current list node.
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  *
  */
 export function createSplitListCommand(): Command {

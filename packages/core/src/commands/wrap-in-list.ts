@@ -12,7 +12,9 @@ import { setNodeAttributes } from '../utils/set-node-attributes'
  * selection block range and return list node attributes. If this callback
  * function returns null, the command won't do anything.
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  */
 export type WrapInListGetAttrs<T extends ListAttributes> =
   T | ((range: NodeRange) => T | null)
@@ -21,7 +23,9 @@ export type WrapInListGetAttrs<T extends ListAttributes> =
  * Returns a command function that wraps the selection in a list with the given
  * type and attributes.
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  */
 export function createWrapInListCommand<
   T extends ListAttributes = ListAttributes,

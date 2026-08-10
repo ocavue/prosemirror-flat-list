@@ -18,7 +18,9 @@ import { zoomInRange } from '../utils/zoom-in-range'
 import { withVisibleSelection } from './set-safe-selection'
 
 /**
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  */
 export interface IndentListOptions {
   /**
@@ -40,7 +42,9 @@ export interface IndentListOptions {
  * Returns a command function that increases the indentation of selected list
  * nodes.
  *
- * @public @group Commands
+ * @public
+ *
+ * @group Commands
  */
 export function createIndentListCommand(options?: IndentListOptions): Command {
   const indentListCommand: Command = (state, dispatch): boolean => {

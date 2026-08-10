@@ -7,14 +7,18 @@ import { listToDOM } from './to-dom'
  * The default group name for list nodes. This is used to find the list node
  * type from the schema.
  *
- * @internal Schema
+ * @internal
+ *
+ * @group Schema
  */
 export const flatListGroup = 'flatList'
 
 /**
  * Return the spec for list node.
  *
- *  @public @group Schema
+ * @public
+ *
+ * @group Schema
  */
 export function createListSpec(): NodeSpec {
   return {
