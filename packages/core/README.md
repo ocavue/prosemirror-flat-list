@@ -95,6 +95,6 @@ console.log(newDoc)
 [prosemirror-schema-list]: https://github.com/ProseMirror/prosemirror-schema-list
 [prosemirror-flat-list]: https://github.com/ocavue/prosemirror-flat-list/tree/master/packages/prosemirror-package
 
-## [API Reference](https://doc.deno.land/https://esm.sh/prosemirror-flat-list)
+## [API Reference](https://npmx.dev/package-docs/prosemirror-flat-list)
 
 ## [Changelog](https://github.com/ocavue/prosemirror-flat-list/blob/master/packages/core/CHANGELOG.md)
