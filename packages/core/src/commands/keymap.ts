@@ -25,7 +25,7 @@ import { createSplitListCommand } from './split-list'
  *
  * @group Commands
  */
-export const enterCommand = createEnterCommand()
+export const enterCommand = /* @__PURE__ */ createEnterCommand()
 
 function createEnterCommand(options?: ListKeymapOptions): Command {
   return chainCommands(protectCollapsed, createSplitListCommand(options))
@@ -46,7 +46,7 @@ function createEnterCommand(options?: ListKeymapOptions): Command {
  * @group Commands
  *
  */
-export const backspaceCommand = chainCommands(
+export const backspaceCommand = /* @__PURE__ */ chainCommands(
   protectCollapsed,
   deleteSelection,
   joinListUp,
@@ -68,7 +68,7 @@ export const backspaceCommand = chainCommands(
  * @group Commands
  *
  */
-export const deleteCommand = chainCommands(
+export const deleteCommand = /* @__PURE__ */ chainCommands(
   protectCollapsed,
   deleteSelection,
   joinTextblockForward,
@@ -126,4 +126,4 @@ export function createListKeymap(
  *
  * @group Commands
  */
-export const listKeymap = createListKeymap()
+export const listKeymap = /* @__PURE__ */ createListKeymap()

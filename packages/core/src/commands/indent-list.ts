@@ -3,7 +3,7 @@ import type { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 
 import type { ListAttributes } from '../types'
-import { joinsHiddenWrapper, withAutoFixList } from '../utils/auto-fix-list'
+import { withAutoFixList } from '../utils/auto-fix-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -218,8 +218,8 @@ function indentNodeRange(
  * The wrap branch of `indentNodeRange` leaves a list node with a hidden
  * marker: either the new list node (when the range starts with a list node) or
  * `range.parent` (when the range is the first content of a list node).
- * `withAutoFixList` then joins it into the node before it when
- * `joinsHiddenWrapper` allows. Returns `true` if that join will happen.
+ * `withAutoFixList` then joins it into the node before it when that node is a
+ * list node (see `isListJoinable`). Returns `true` if that join will happen.
  */
 function willWrapperBeJoined(
   range: NodeRange,
@@ -230,5 +230,5 @@ function willWrapperBeJoined(
     ? [parent, startIndex]
     : [$from.node(depth - 1), $from.index(depth - 1)]
   const before = index >= 1 && container.maybeChild(index - 1)
-  return !!before && joinsHiddenWrapper(before)
+  return !!before && isListNode(before)
 }

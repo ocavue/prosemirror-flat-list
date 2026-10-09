@@ -72,22 +72,11 @@ export function findBoundaries(
   return joinable.sort((a, b) => b - a)
 }
 
-/**
- * Returns `true` if `fixList` joins a hidden wrapper into the node before it.
- *
- * @internal
- */
-export function joinsHiddenWrapper(
-  before: ProsemirrorNode | null | undefined,
-): boolean {
-  return isListNode(before)
-}
-
 function isListJoinable(
   before: ProsemirrorNode,
   after: ProsemirrorNode,
 ): boolean {
-  return joinsHiddenWrapper(before) && isHiddenWrapper(after)
+  return isListNode(before) && isHiddenWrapper(after)
 }
 
 function isListSplitable(
@@ -130,4 +119,4 @@ function fixList(tr: Transaction): Transaction {
 }
 
 /** @internal */
-export const withAutoFixList = patchCommand(fixList)
+export const withAutoFixList = /* @__PURE__ */ patchCommand(fixList)
