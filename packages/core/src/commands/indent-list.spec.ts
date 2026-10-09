@@ -10,6 +10,9 @@ describe('indentList', () => {
   const markdown = t.markdown
 
   const indentList = createIndentListCommand()
+  const strictIndentList = createIndentListCommand({
+    preventHiddenWrapper: true,
+  })
 
   it('can indent a list node and append it to the previous list node', () => {
     t.applyCommand(
@@ -232,6 +235,28 @@ describe('indentList', () => {
       markdown`
         - A1
           - - B<a>2
+      `,
+    )
+  })
+
+  it('can add ambitious indentations at the start of the document', () => {
+    t.applyCommand(
+      indentList,
+      t.doc(t.bulletList(t.p('A<a>'))),
+      t.doc(t.bulletList(t.bulletList(t.p('A<a>')))),
+    )
+
+    t.applyCommand(
+      indentList,
+      markdown`
+        - B<a>
+          - D
+          - E
+      `,
+      markdown`
+        - - B<a>
+          - D
+          - E
       `,
     )
   })
@@ -743,5 +768,273 @@ describe('indentList', () => {
         `,
       ),
     ).toBeGreaterThan(1)
+  })
+
+  it('should not indent a block without a previous list sibling when preventHiddenWrapper is true', () => {
+    t.applyCommand(strictIndentList, t.doc(t.bulletList(t.p('A<a>'))), null)
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - B<a>
+          - D
+          - E
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        X
+
+        - B<a>
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A
+          - B<a>
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        1. A<a>
+        2. B
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - [ ] A<a>
+        - [x] B
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      t.doc(t.expandedToggleList(t.p('B'), t.bulletList(t.p('C<a>')))),
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      t.doc(t.collapsedToggleList(t.p('B<a>'), t.bulletList(t.p('C')))),
+      null,
+    )
+
+    // A pre-existing hidden wrapper is left alone.
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - - B<a>
+        - C
+      `,
+      null,
+    )
+  })
+
+  it('should not indent multiple list nodes when the first one has no previous list sibling', () => {
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A
+          - B<a>
+        - C<b>
+      `,
+      null,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A<a>
+        - B<b>
+      `,
+      null,
+    )
+  })
+
+  it('should not split the list when preventHiddenWrapper is true', () => {
+    const before = markdown`
+      - A1
+        - B<a>2a
+
+          B2b
+
+          B2c
+    `
+    t.add(before)
+    let dispatched = false
+    const result = strictIndentList(t.view.state, () => {
+      dispatched = true
+    })
+    expect(result).toBe(false)
+    expect(dispatched).toBe(false)
+    expect(t.editor.state.doc.toJSON()).toEqual(before.toJSON())
+  })
+
+  it('can indent list nodes into the previous list sibling when preventHiddenWrapper is true', () => {
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A
+        - B<a>
+      `,
+      markdown`
+        - A
+          - B<a>
+      `,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A
+        - B<a>
+          - D
+          - E
+      `,
+      markdown`
+        - A
+          - B<a>
+          - D
+          - E
+      `,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - A
+        - B<a>
+        - C<b>
+      `,
+      markdown`
+        - A
+          - B<a>
+          - C<b>
+      `,
+    )
+
+    // A pre-existing hidden wrapper is left alone.
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - - B
+
+        X
+
+        - Y
+        - Z<a>
+      `,
+      markdown`
+        - - B
+
+        X
+
+        - Y
+          - Z<a>
+      `,
+    )
+  })
+
+  it('can keep attributes when preventHiddenWrapper is true', () => {
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        1. A
+        2. B<a>
+      `,
+      markdown`
+        1. A
+           1. B<a>
+      `,
+    )
+
+    t.applyCommand(
+      strictIndentList,
+      markdown`
+        - [ ] A
+        - [x] B<a>
+      `,
+      markdown`
+        - [ ] A
+          - [x] B<a>
+      `,
+    )
+  })
+
+  it('can expand a collapsed list node if something is indent into it when preventHiddenWrapper is true', () => {
+    // Same as without the option: the target toggle becomes expanded.
+    t.applyCommand(
+      strictIndentList,
+      t.doc(
+        t.collapsedToggleList(t.p('A')),
+        t.collapsedToggleList(t.p('B<a>'), t.bulletList(t.p('C'))),
+      ),
+      t.doc(
+        t.expandedToggleList(
+          t.p('A'),
+          t.collapsedToggleList(t.p('B<a>'), t.bulletList(t.p('C'))),
+        ),
+      ),
+    )
+  })
+
+  it('can accept custom positions when preventHiddenWrapper is true', () => {
+    t.applyCommand(
+      createIndentListCommand({ preventHiddenWrapper: true, from: 13, to: 17 }),
+      t.doc(
+        /*0*/
+        t.bulletList(/*1*/ t.p('A1') /*5*/),
+        /*6*/
+        t.bulletList(/*7*/ t.p('A2') /*11*/),
+        /*12*/
+        t.bulletList(/*13*/ t.p('A3<a>') /*17*/),
+        /*18*/
+      ),
+      t.doc(
+        t.bulletList(t.p('A1')),
+        t.bulletList(t.p('A2'), t.bulletList(t.p('A3<a>'))),
+      ),
+    )
+
+    t.applyCommand(
+      createIndentListCommand({ preventHiddenWrapper: true, from: 1, to: 5 }),
+      t.doc(
+        /*0*/
+        t.bulletList(/*1*/ t.p('A1') /*5*/),
+        /*6*/
+        t.bulletList(/*7*/ t.p('A2') /*11*/),
+        /*12*/
+        t.bulletList(/*13*/ t.p('A3<a>') /*17*/),
+        /*18*/
+      ),
+      null,
+    )
+
+    t.applyCommand(
+      createIndentListCommand({ preventHiddenWrapper: true, from: 1, to: 11 }),
+      t.doc(
+        /*0*/
+        t.bulletList(/*1*/ t.p('A1') /*5*/),
+        /*6*/
+        t.bulletList(/*7*/ t.p('A2') /*11*/),
+        /*12*/
+        t.bulletList(/*13*/ t.p('A3<a>') /*17*/),
+        /*18*/
+      ),
+      null,
+    )
   })
 })
