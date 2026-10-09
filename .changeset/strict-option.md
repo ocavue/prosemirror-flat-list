@@ -1,5 +1,5 @@
 ---
-'prosemirror-flat-list': minor
+'prosemirror-flat-list': patch
 ---
 
 Add a `strict` option to `createIndentListCommand`, `createDedentListCommand` and `createSplitListCommand`, and a `createListKeymap(options)` function that passes it to all three.
