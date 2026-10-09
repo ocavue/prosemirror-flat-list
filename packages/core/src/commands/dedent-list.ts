@@ -35,6 +35,16 @@ export interface DedentListOptions {
    * @defaultValue `state.selection.to`
    */
   to?: number
+
+  /**
+   * When `true`, never leave a hidden wrapper (a list node whose first child
+   * is a list node) in the document. Children that would need such a wrapper
+   * to keep their depth move one level up instead. This keeps every block at
+   * most one level deeper than the block before it.
+   *
+   * @defaultValue `false`
+   */
+  preventHiddenWrapper?: boolean
 }
 
 /**
@@ -56,7 +66,8 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     const range = findListsRange($from, $to)
     if (!range) return false
 
-    if (dedentRange(range, tr)) {
+    const strict = !!options?.preventHiddenWrapper
+    if (dedentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true
     }
@@ -69,6 +80,7 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
 function dedentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
@@ -80,23 +92,23 @@ function dedentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? dedentRange(contentRange, tr) : false
+      return contentRange ? dedentRange(contentRange, tr, strict) : false
     } else {
-      return splitAndDedentRange(range, tr, startIndex + 1)
+      return splitAndDedentRange(range, tr, strict, startIndex + 1)
     }
   }
 
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
   if (!endBoundary) {
-    fixEndBoundary(range, tr)
+    fixEndBoundary(range, tr, strict)
     const endOfParent = $to.end(depth)
     range = new NodeRange(
       tr.doc.resolve($from.pos),
       tr.doc.resolve(endOfParent),
       depth,
     )
-    return dedentRange(range, tr, undefined, true)
+    return dedentRange(range, tr, strict, undefined, true)
   }
 
   if (
@@ -104,10 +116,10 @@ function dedentRange(
     range.endIndex === range.parent.childCount &&
     isListNode(range.parent)
   ) {
-    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr)
+    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, strict)
   }
 
-  return dedentNodeRange(range, tr)
+  return dedentNodeRange(range, tr, strict)
 }
 
 /**
@@ -116,6 +128,7 @@ function dedentRange(
 function splitAndDedentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   splitIndex: number,
 ): boolean {
   const { $from, $to, depth } = range
@@ -128,7 +141,7 @@ function splitAndDedentRange(
   const getRange2From = mapPos(tr, splitPos + 1)
   const getRange2To = mapPos(tr, $to.pos)
 
-  dedentRange(range1, tr, undefined, true)
+  dedentRange(range1, tr, strict, undefined, true)
 
   let range2 = tr.doc
     .resolve(getRange2From())
@@ -136,22 +149,37 @@ function splitAndDedentRange(
 
   if (range2 && range2.depth >= depth) {
     range2 = new NodeRange(range2.$from, range2.$to, depth)
-    dedentRange(range2, tr, true, undefined)
+    dedentRange(range2, tr, strict, true, undefined)
   }
   return true
 }
 
-export function dedentNodeRange(range: NodeRange, tr: Transaction) {
+export function dedentNodeRange(
+  range: NodeRange,
+  tr: Transaction,
+  strict = false,
+) {
   if (isListNode(range.parent)) {
-    return safeLiftRange(tr, range)
+    return safeLiftRange(tr, range, strict)
   } else if (isListsRange(range)) {
     return dedentOutOfList(tr, range)
   } else {
-    return safeLiftRange(tr, range)
+    return safeLiftRange(tr, range, strict)
   }
 }
 
-function safeLiftRange(tr: Transaction, range: NodeRange): boolean {
+function safeLiftRange(
+  tr: Transaction,
+  range: NodeRange,
+  strict: boolean,
+): boolean {
+  if (strict && wouldWrapSiblingsInHiddenList(range)) {
+    // Lift the trailing siblings together with the range, so they move one
+    // level up instead of keeping their depth inside a hidden wrapper.
+    const endOfParent = range.$to.end(range.depth)
+    range = new NodeRange(range.$from, tr.doc.resolve(endOfParent), range.depth)
+    return safeLift(tr, range)
+  }
   if (moveRangeSiblings(tr, range)) {
     const $from = tr.doc.resolve(range.$from.pos)
     const $to = tr.doc.resolve(range.$to.pos)
@@ -212,7 +240,11 @@ function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
   return false
 }
 
-function fixEndBoundary(range: NodeRange, tr: Transaction): void {
+function fixEndBoundary(
+  range: NodeRange,
+  tr: Transaction,
+  strict: boolean,
+): void {
   if (range.endIndex - range.startIndex >= 2) {
     range = new NodeRange(
       range.$to.doc.resolve(
@@ -225,7 +257,7 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
 
   const contentRange = zoomInRange(range)
   if (contentRange) {
-    fixEndBoundary(contentRange, tr)
+    fixEndBoundary(contentRange, tr, strict)
     range = new NodeRange(
       tr.doc.resolve(range.$from.pos),
       tr.doc.resolve(range.$to.pos),
@@ -233,7 +265,31 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
     )
   }
 
+  // In strict mode, keep the trailing siblings where they are. They stay
+  // inside the outer item that is lifted, so they move one level up with it
+  // instead of keeping their depth inside a hidden wrapper.
+  if (strict && wouldWrapSiblingsInHiddenList(range)) return
+
   moveRangeSiblings(tr, range)
+}
+
+/**
+ * Returns `true` if `moveRangeSiblings` would wrap the siblings after `range`
+ * in a new list node whose first child is a list node (a hidden wrapper).
+ */
+function wouldWrapSiblingsInHiddenList(range: NodeRange): boolean {
+  const { $to, depth, end, parent, endIndex } = range
+  if (end >= $to.end(depth)) return false
+  const lastChild = parent.maybeChild(endIndex - 1)
+  if (!lastChild) return false
+  const canAppend = lastChild.canReplace(
+    lastChild.childCount,
+    lastChild.childCount,
+    parent.content,
+    endIndex,
+    parent.childCount,
+  )
+  return !canAppend && isListNode(parent.child(endIndex))
 }
 
 export function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
