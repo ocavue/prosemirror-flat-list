@@ -305,10 +305,11 @@ describe('indentList', () => {
 
   it('can customize the attributes of a list node with a hidden marker', () => {
     const indentWithBulletWrapper = createIndentListCommand({
-      getHiddenListAttrs: (node) =>
-        node.attrs.kind === 'task' || node.attrs.kind === 'toggle'
+      getHiddenListAttrs: (node) => {
+        return node.attrs.kind === 'task' || node.attrs.kind === 'toggle'
           ? { ...node.attrs, kind: 'bullet', checked: false, collapsed: false }
-          : node.attrs,
+          : node.attrs
+      },
     })
 
     // The first item has no previous list node, so a new list node wraps it.
