@@ -107,7 +107,7 @@ otherwise `null` is returned.
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="preventhiddenwrapper"></a> `preventHiddenWrapper?` | `boolean` | `false` | When `true`, never leave a hidden wrapper (a list node whose first child is a list node) in the document. Children that would need such a wrapper to keep their depth move one level up instead. This keeps every block at most one level deeper than the block before it. |
+| <a id="strict"></a> `strict?` | `boolean` | `false` | When `true`, never leave a hidden wrapper (a list node whose first child is a list node) in the document. Children that would need such a wrapper to keep their depth move one level up instead. This keeps every block at most one level deeper than the block before it. |
 | <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ***
@@ -119,7 +119,7 @@ otherwise `null` is returned.
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="preventhiddenwrapper-1"></a> `preventHiddenWrapper?` | `boolean` | `false` | When `true`, refuse to indent a block if the indent would leave a hidden wrapper (a list node whose first child is a list node) in the document. In practice the command returns `false` when the block has no previous list sibling to move into. This keeps every block at most one level deeper than the block before it. |
+| <a id="strict-1"></a> `strict?` | `boolean` | `false` | When `true`, refuse to indent a block if the indent would leave a hidden wrapper (a list node whose first child is a list node) in the document. In practice the command returns `false` when the block has no previous list sibling to move into. This keeps every block at most one level deeper than the block before it. |
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ***
