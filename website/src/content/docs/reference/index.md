@@ -118,7 +118,9 @@ otherwise `null` is returned.
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
+| <a id="gethiddenlistattrs"></a> `getHiddenListAttrs?` | (`node`: [`Node`](https://prosemirror.net/docs/ref/#model.Node)) => [`Attrs`](https://prosemirror.net/docs/ref/#model.Attrs) | A function that returns `node.attrs` unchanged. | Returns the attributes for a list node whose marker is hidden after the indent, because its first child is a list node. This applies to the new wrapper list node, and to an existing list node whose first paragraph was wrapped. It is useful when a hidden marker still has a meaning, for example a task checkbox in Markdown. |
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+| <a id="wrap"></a> `wrap?` | `boolean` | `true` | Whether to wrap the range with a new list node when there is no previous list node to indent into (for example, the first item of a list). The new list node's marker is hidden. Set it to `false` to make the command do nothing in this case. |
 
 ***
 
