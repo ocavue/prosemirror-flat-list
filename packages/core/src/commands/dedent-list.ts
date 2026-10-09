@@ -174,7 +174,7 @@ function safeLiftRange(
   range: NodeRange,
   strict: boolean,
 ): boolean {
-  if (strict && planTrailingSiblings(range) === 'hide') {
+  if (strict && planTrailingSiblings(range) === TrailingSiblings.Hide) {
     // Lift the trailing siblings together with the range, so they move one
     // level up instead of keeping their depth inside a hidden wrapper.
     const endOfParent = range.$to.end(range.depth)
@@ -190,24 +190,32 @@ function safeLiftRange(
 }
 
 /**
- * What happens to the siblings after `range` when the range is lifted out of
- * its parent list node:
- *
- * - `'none'`: there are no siblings after the range.
- * - `'append'`: they become children of the last item in the range.
- * - `'wrap'`: they are wrapped in a new list node to keep their depth. The new
- *   node shows a marker, because its first child is not a list node.
- * - `'hide'`: like `'wrap'`, but the new node hides its marker, because its
- *   first child is a list node.
+ * What happens to the siblings after a range when the range is lifted out of
+ * its parent list node.
  */
-function planTrailingSiblings(
-  range: NodeRange,
-): 'none' | 'append' | 'wrap' | 'hide' {
+const enum TrailingSiblings {
+  /** There are no siblings after the range. */
+  None,
+  /** They become children of the last item in the range. */
+  Append,
+  /**
+   * They are wrapped in a new list node to keep their depth. The new node
+   * shows a marker, because its first child is not a list node.
+   */
+  Wrap,
+  /**
+   * Like `Wrap`, but the new node hides its marker, because its first child
+   * is a list node.
+   */
+  Hide,
+}
+
+function planTrailingSiblings(range: NodeRange): TrailingSiblings {
   const { $to, depth, end, parent, endIndex } = range
-  if (end >= $to.end(depth)) return 'none'
+  if (end >= $to.end(depth)) return TrailingSiblings.None
 
   const lastChild = parent.maybeChild(endIndex - 1)
-  if (!lastChild) return 'none'
+  if (!lastChild) return TrailingSiblings.None
 
   const canAppend = lastChild.canReplace(
     lastChild.childCount,
@@ -216,20 +224,22 @@ function planTrailingSiblings(
     endIndex,
     parent.childCount,
   )
-  if (canAppend) return 'append'
+  if (canAppend) return TrailingSiblings.Append
 
-  return isListNode(parent.child(endIndex)) ? 'hide' : 'wrap'
+  return isListNode(parent.child(endIndex))
+    ? TrailingSiblings.Hide
+    : TrailingSiblings.Wrap
 }
 
 function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
   const plan = planTrailingSiblings(range)
-  if (plan === 'none') return false
+  if (plan === TrailingSiblings.None) return false
 
   const listType = getListType(tr.doc.type.schema)
   const { $to, depth, end } = range
   const endOfParent = $to.end(depth)
 
-  if (plan === 'append') {
+  if (plan === TrailingSiblings.Append) {
     tr.step(
       new ReplaceAroundStep(
         end - 1,
@@ -285,7 +295,7 @@ function fixEndBoundary(
   // In strict mode, keep the trailing siblings where they are. They stay
   // inside the outer item that is lifted, so they move one level up with it
   // instead of keeping their depth inside a hidden wrapper.
-  if (strict && planTrailingSiblings(range) === 'hide') return
+  if (strict && planTrailingSiblings(range) === TrailingSiblings.Hide) return
 
   moveRangeSiblings(tr, range)
 }
