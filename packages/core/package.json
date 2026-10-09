@@ -54,7 +54,7 @@
     "@prosekit/core": "^0.13.0-beta.7",
     "@prosekit/pm": "^0.1.19-beta.4",
     "@tsdown/css": "^0.22.14",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
     "dedent": "^1.7.2",
