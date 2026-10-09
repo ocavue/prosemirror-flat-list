@@ -44,9 +44,16 @@ export {
   type ListClickHandler,
 } from './dom-events'
 export {
+  bulletListInputRule,
+  createListInputRuleHandler,
   listInputRules,
+  orderedListInputRule,
+  taskListInputRule,
+  toggleListInputRule,
   wrappingListInputRule,
   type ListInputRuleAttributesGetter,
+  type ListInputRuleHandler,
+  type ListInputRuleOptions,
 } from './input-rule'
 export { migrateDocJSON } from './migrate'
 export { createListNodeView } from './node-view'
