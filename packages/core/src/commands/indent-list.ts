@@ -3,7 +3,7 @@ import type { Command, Transaction } from 'prosemirror-state'
 import { ReplaceAroundStep } from 'prosemirror-transform'
 
 import type { ListAttributes } from '../types'
-import { withAutoFixList } from '../utils/auto-fix-list'
+import { joinsHiddenWrapper, withAutoFixList } from '../utils/auto-fix-list'
 import {
   atEndBlockBoundary,
   atStartBlockBoundary,
@@ -38,11 +38,10 @@ export interface IndentListOptions {
   to?: number
 
   /**
-   * When `true`, refuse to indent a block if the indent would leave a hidden
-   * wrapper (a list node whose first child is a list node) in the document.
-   * In practice the command returns `false` when the block has no previous
-   * list sibling to move into. This keeps every block at most one level deeper
-   * than the block before it.
+   * When `true`, the command never leaves a list node whose first child is a
+   * list node (a list node with a hidden marker). It returns `false` instead
+   * of indenting a block that has no previous list sibling to move into, so a
+   * block is never more than one level deeper than the block before it.
    *
    * @defaultValue `false`
    */
@@ -153,6 +152,8 @@ function splitAndIndentRange(
 
 /**
  * Increase the indentation of a block range.
+ *
+ * In strict mode, a `false` return means that no step was added to `tr`.
  */
 function indentNodeRange(
   range: NodeRange,
@@ -161,7 +162,7 @@ function indentNodeRange(
 ): boolean {
   const listType = getListType(tr.doc.type.schema)
   const { parent, startIndex } = range
-  const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
+  const prevChild = startIndex >= 1 && parent.maybeChild(startIndex - 1)
 
   // If the previous node before the range is a list node, move the range into
   // the previous list node as its children
@@ -214,26 +215,20 @@ function indentNodeRange(
 }
 
 /**
- * The wrap branch of `indentNodeRange` turns a list node into a hidden wrapper.
- * `withAutoFixList` removes that wrapper only if it can join it into a previous
- * list sibling. Returns `true` if that join will happen.
+ * The wrap branch of `indentNodeRange` leaves a list node with a hidden
+ * marker: either the new list node (when the range starts with a list node) or
+ * `range.parent` (when the range is the first content of a list node).
+ * `withAutoFixList` then joins it into the node before it when
+ * `joinsHiddenWrapper` allows. Returns `true` if that join will happen.
  */
 function willWrapperBeJoined(
   range: NodeRange,
   isFirstChildListNode: boolean,
 ): boolean {
-  // Wrapping a range that starts with a list node creates a new list node
-  // whose first child is a list node. Its previous sibling is not a list node
-  // (otherwise the "move into previous list" branch would run), so it is
-  // never joined.
-  if (isFirstChildListNode) return false
-
-  // Otherwise `range.parent` is a list node and becomes the hidden wrapper.
-  // It is joined only if its own previous sibling is a list node.
-  const { $from, depth } = range
-  if (depth < 1) return false
-  const grandparent = $from.node(depth - 1)
-  const index = $from.index(depth - 1)
-  const prev = grandparent.maybeChild(index - 1)
-  return !!prev && isListNode(prev)
+  const { $from, depth, parent, startIndex } = range
+  const [container, index] = isFirstChildListNode
+    ? [parent, startIndex]
+    : [$from.node(depth - 1), $from.index(depth - 1)]
+  const before = index >= 1 && container.maybeChild(index - 1)
+  return !!before && joinsHiddenWrapper(before)
 }

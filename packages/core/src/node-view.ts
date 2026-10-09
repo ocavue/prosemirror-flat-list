@@ -2,6 +2,7 @@ import { type Node as ProsemirrorNode, DOMSerializer } from 'prosemirror-model'
 import type { NodeViewConstructor } from 'prosemirror-view'
 
 import * as browser from './utils/browser'
+import { isHiddenWrapper } from './utils/is-hidden-wrapper'
 
 /**
  * A simple node view that is used to render the list node. It ensures that the
@@ -13,7 +14,7 @@ import * as browser from './utils/browser'
  */
 export const createListNodeView: NodeViewConstructor = (node) => {
   let prevNode = node
-  const prevNested = node.firstChild?.type === node.type
+  const prevNested = isHiddenWrapper(node)
   const prevSingleChild = node.childCount === 1
 
   const spec = node.type.spec.toDOM!(node)
@@ -30,7 +31,7 @@ export const createListNodeView: NodeViewConstructor = (node) => {
 
   const update = (node: ProsemirrorNode): boolean => {
     if (!node.sameMarkup(prevNode)) return false
-    const nested = node.firstChild?.type === node.type
+    const nested = isHiddenWrapper(node)
     const singleChild = node.childCount === 1
     if (prevNested !== nested || prevSingleChild !== singleChild) return false
     prevNode = node

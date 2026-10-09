@@ -1,10 +1,10 @@
-import { describe, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { keyboard } from 'vitest-browser-commands/playwright'
 
 import { expectStateToEqual } from '../../test/markdown'
 import { setupTestingEditor } from '../../test/setup-editor'
 
-import { backspaceCommand } from './keymap'
+import { backspaceCommand, createListKeymap, listKeymap } from './keymap'
 
 describe('Keymap', () => {
   const t = setupTestingEditor()
@@ -189,6 +189,79 @@ describe('Keymap', () => {
           ),
         ),
       )
+    })
+  })
+
+  describe('createListKeymap', () => {
+    const strictKeymap = createListKeymap({ strict: true })
+
+    it('has the same keys as the default keymap', () => {
+      expect(Object.keys(strictKeymap)).toEqual(Object.keys(listKeymap))
+    })
+
+    it('passes the strict option to the indent command', () => {
+      const before = markdown`
+        - A1<a>
+        - A2
+      `
+      t.applyCommand(
+        listKeymap['Mod-]'],
+        before,
+        markdown`
+          - - A1<a>
+          - A2
+        `,
+      )
+      t.applyCommand(strictKeymap['Mod-]'], before, null)
+    })
+
+    it('passes the strict option to the dedent command', () => {
+      const before = markdown`
+        - A1
+          - B1<a>
+            - C1
+          - B2
+      `
+      t.applyCommand(
+        listKeymap['Mod-['],
+        before,
+        markdown`
+          - A1
+
+          - B1<a>
+            - - C1
+            - B2
+        `,
+      )
+      t.applyCommand(
+        strictKeymap['Mod-['],
+        before,
+        markdown`
+          - A1
+
+          - B1<a>
+            - C1
+            - B2
+        `,
+      )
+    })
+
+    it('passes the strict option to the split command', () => {
+      const before = markdown`
+        - A1
+          - <a>
+
+        paragraph
+      `
+      const after = markdown`
+        - A1
+
+        - <a>
+
+        paragraph
+      `
+      t.applyCommand(listKeymap.Enter, before, after)
+      t.applyCommand(strictKeymap.Enter, before, after)
     })
   })
 })

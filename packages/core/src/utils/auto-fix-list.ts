@@ -3,6 +3,7 @@ import { canJoin, canSplit } from 'prosemirror-transform'
 
 import type { ProsemirrorNode } from '../types'
 
+import { isHiddenWrapper } from './is-hidden-wrapper'
 import { isListNode } from './is-list-node'
 import { patchCommand } from './patch-command'
 
@@ -71,11 +72,22 @@ export function findBoundaries(
   return joinable.sort((a, b) => b - a)
 }
 
+/**
+ * Returns `true` if `fixList` joins a hidden wrapper into the node before it.
+ *
+ * @internal
+ */
+export function joinsHiddenWrapper(
+  before: ProsemirrorNode | null | undefined,
+): boolean {
+  return isListNode(before)
+}
+
 function isListJoinable(
   before: ProsemirrorNode,
   after: ProsemirrorNode,
 ): boolean {
-  return isListNode(before) && isListNode(after) && isListNode(after.firstChild)
+  return joinsHiddenWrapper(before) && isHiddenWrapper(after)
 }
 
 function isListSplitable(

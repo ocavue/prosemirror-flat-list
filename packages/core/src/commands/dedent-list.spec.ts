@@ -879,4 +879,83 @@ describe('dedentList', () => {
       ),
     )
   })
+
+  it('can unwrap multiple list nodes with children', () => {
+    // Only the selected list nodes are unwrapped. By default, the children of
+    // the last one keep their depth inside a hidden wrapper; in strict mode
+    // they move one level up.
+    const before1 = markdown`
+      - A1<a>
+        - B1
+      - A2<b>
+        - B2
+    `
+    t.applyCommand(
+      createDedentListCommand(),
+      before1,
+      markdown`
+        A1<a>
+
+        - B1
+
+        A2<b>
+
+        - - B2
+      `,
+    )
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      before1,
+      markdown`
+        A1<a>
+
+        - B1
+
+        A2<b>
+
+        - B2
+      `,
+    )
+
+    const before2 = markdown`
+      - A1
+      - A2<a>
+        - B2
+      - A3<b>
+        - B3
+      - A4
+    `
+    t.applyCommand(
+      createDedentListCommand(),
+      before2,
+      markdown`
+        - A1
+
+        A2<a>
+
+        - B2
+
+        A3<b>
+
+        - - B3
+        - A4
+      `,
+    )
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      before2,
+      markdown`
+        - A1
+
+        A2<a>
+
+        - B2
+
+        A3<b>
+
+        - B3
+        - A4
+      `,
+    )
+  })
 })

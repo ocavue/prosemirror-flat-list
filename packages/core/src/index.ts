@@ -11,14 +11,20 @@ export { joinCollapsedListBackward } from './commands/join-collapsed-backward'
 export { joinListUp } from './commands/join-list-up'
 export {
   backspaceCommand,
+  createListKeymap,
   deleteCommand,
   enterCommand,
   listKeymap,
+  type ListKeymapOptions,
 } from './commands/keymap'
 export { createMoveListCommand } from './commands/move-list'
 export { protectCollapsed } from './commands/protect-collapsed'
 export { setSafeSelection } from './commands/set-safe-selection'
-export { createSplitListCommand, doSplitList } from './commands/split-list'
+export {
+  createSplitListCommand,
+  doSplitList,
+  type SplitListOptions,
+} from './commands/split-list'
 export {
   createToggleCollapsedCommand,
   type ToggleCollapsedOptions,

@@ -26,6 +26,23 @@ import { dedentNodeRange } from './dedent-list'
 import { enterWithoutLift } from './enter-without-lift'
 
 /**
+ * @public
+ *
+ * @group Commands
+ */
+export interface SplitListOptions {
+  /**
+   * When `true`, the command never leaves a list node whose first child is a
+   * list node (a list node with a hidden marker). `Enter` in an empty list
+   * node dedents it, so this is the `strict` option of
+   * `createDedentListCommand`.
+   *
+   * @defaultValue `false`
+   */
+  strict?: boolean
+}
+
+/**
  * Returns a command that split the current list node.
  *
  * @public
@@ -33,9 +50,13 @@ import { enterWithoutLift } from './enter-without-lift'
  * @group Commands
  *
  */
-export function createSplitListCommand(): Command {
+export function createSplitListCommand(options?: SplitListOptions): Command {
+  const strict = options?.strict ?? false
   return withAutoFixList(
-    chainCommands(splitBlockNodeSelectionInListCommand, splitListCommand),
+    chainCommands(
+      splitBlockNodeSelectionInListCommand,
+      createSplitListInnerCommand(strict),
+    ),
   )
 }
 
@@ -89,68 +110,70 @@ const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {
   return true
 }
 
-const splitListCommand: Command = (state, dispatch): boolean => {
-  if (isBlockNodeSelection(state.selection)) {
-    return false
-  }
-
-  const { $from, $to } = state.selection
-
-  if (!$from.sameParent($to)) {
-    return false
-  }
-
-  if ($from.depth < 2) {
-    return false
-  }
-
-  const listDepth = $from.depth - 1
-  const listNode = $from.node(listDepth)
-
-  if (!isListNode(listNode)) {
-    return false
-  }
-
-  const parent = $from.parent
-
-  const indexInList = $from.index(listDepth)
-  const parentEmpty = parent.content.size === 0
-
-  // When the cursor is inside the first child of the list:
-  //    If the parent block is empty, dedent the list;
-  //    otherwise split and create a new list node.
-  // When the cursor is inside the second or further children of the list:
-  //    Create a new paragraph.
-  if (indexInList === 0) {
-    if (parentEmpty) {
-      const $listEnd = state.doc.resolve($from.end(listDepth))
-
-      const listParentDepth = listDepth - 1
-      const listParent = $from.node(listParentDepth)
-      const indexInListParent = $from.index(listParentDepth)
-      const isLastChildInListParent =
-        indexInListParent === listParent.childCount - 1
-
-      // If the list is the last child of the list parent, we want to dedent
-      // the whole list; otherwise, we only want to dedent the list content
-      // (and thus unwrap these content from the list node)
-      const range = isLastChildInListParent
-        ? new NodeRange($from, $listEnd, listParentDepth)
-        : new NodeRange($from, $listEnd, listDepth)
-      const tr = state.tr
-      if (range && dedentNodeRange(range, tr, false)) {
-        dispatch?.(tr)
-        return true
-      }
+function createSplitListInnerCommand(strict: boolean): Command {
+  return (state, dispatch): boolean => {
+    if (isBlockNodeSelection(state.selection)) {
       return false
-    } else {
-      return doSplitList(state, listNode, dispatch)
     }
-  } else {
-    if (parentEmpty) {
-      return enterWithoutLift(state, dispatch)
-    } else {
+
+    const { $from, $to } = state.selection
+
+    if (!$from.sameParent($to)) {
       return false
+    }
+
+    if ($from.depth < 2) {
+      return false
+    }
+
+    const listDepth = $from.depth - 1
+    const listNode = $from.node(listDepth)
+
+    if (!isListNode(listNode)) {
+      return false
+    }
+
+    const parent = $from.parent
+
+    const indexInList = $from.index(listDepth)
+    const parentEmpty = parent.content.size === 0
+
+    // When the cursor is inside the first child of the list:
+    //    If the parent block is empty, dedent the list;
+    //    otherwise split and create a new list node.
+    // When the cursor is inside the second or further children of the list:
+    //    Create a new paragraph.
+    if (indexInList === 0) {
+      if (parentEmpty) {
+        const $listEnd = state.doc.resolve($from.end(listDepth))
+
+        const listParentDepth = listDepth - 1
+        const listParent = $from.node(listParentDepth)
+        const indexInListParent = $from.index(listParentDepth)
+        const isLastChildInListParent =
+          indexInListParent === listParent.childCount - 1
+
+        // If the list is the last child of the list parent, we want to dedent
+        // the whole list; otherwise, we only want to dedent the list content
+        // (and thus unwrap these content from the list node)
+        const range = isLastChildInListParent
+          ? new NodeRange($from, $listEnd, listParentDepth)
+          : new NodeRange($from, $listEnd, listDepth)
+        const tr = state.tr
+        if (range && dedentNodeRange(range, tr, strict)) {
+          dispatch?.(tr)
+          return true
+        }
+        return false
+      } else {
+        return doSplitList(state, listNode, dispatch)
+      }
+    } else {
+      if (parentEmpty) {
+        return enterWithoutLift(state, dispatch)
+      } else {
+        return false
+      }
     }
   }
 }

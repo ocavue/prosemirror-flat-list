@@ -1,6 +1,7 @@
 import type { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 
 import type { ListAttributes } from '../types'
+import { isHiddenWrapper } from '../utils/is-hidden-wrapper'
 
 /**
  * @public
@@ -49,7 +50,7 @@ export function listToDOM(options: ListToDOMOptions): DOMOutputSpec {
     getAttributes = defaultAttributesGetter,
   } = options
   const attrs = node.attrs as ListAttributes
-  const markerHidden = node.firstChild?.type === node.type
+  const markerHidden = isHiddenWrapper(node)
   const markers = markerHidden ? null : getMarkers(node)
   const domAttrs = getAttributes(node)
   const contentContainer: DOMOutputSpec = ['div', { class: 'list-content' }, 0]

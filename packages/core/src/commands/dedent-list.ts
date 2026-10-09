@@ -37,10 +37,11 @@ export interface DedentListOptions {
   to?: number
 
   /**
-   * When `true`, never leave a hidden wrapper (a list node whose first child
-   * is a list node) in the document. Children that would need such a wrapper
-   * to keep their depth move one level up instead. This keeps every block at
-   * most one level deeper than the block before it.
+   * When `true`, the command never leaves a list node whose first child is a
+   * list node (a list node with a hidden marker). The blocks after the
+   * dedented block move one level up with it instead of keeping their depth
+   * inside such a node, so a block is never more than one level deeper than
+   * the block before it.
    *
    * @defaultValue `false`
    */
@@ -173,7 +174,7 @@ function safeLiftRange(
   range: NodeRange,
   strict: boolean,
 ): boolean {
-  if (strict && wouldWrapSiblingsInHiddenList(range)) {
+  if (strict && planTrailingSiblings(range) === 'hide') {
     // Lift the trailing siblings together with the range, so they move one
     // level up instead of keeping their depth inside a hidden wrapper.
     const endOfParent = range.$to.end(range.depth)
@@ -188,56 +189,72 @@ function safeLiftRange(
   return safeLift(tr, range)
 }
 
-function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
-  const listType = getListType(tr.doc.type.schema)
+/**
+ * What happens to the siblings after `range` when the range is lifted out of
+ * its parent list node:
+ *
+ * - `'none'`: there are no siblings after the range.
+ * - `'append'`: they become children of the last item in the range.
+ * - `'wrap'`: they are wrapped in a new list node to keep their depth. The new
+ *   node shows a marker, because its first child is not a list node.
+ * - `'hide'`: like `'wrap'`, but the new node hides its marker, because its
+ *   first child is a list node.
+ */
+function planTrailingSiblings(
+  range: NodeRange,
+): 'none' | 'append' | 'wrap' | 'hide' {
   const { $to, depth, end, parent, endIndex } = range
+  if (end >= $to.end(depth)) return 'none'
+
+  const lastChild = parent.maybeChild(endIndex - 1)
+  if (!lastChild) return 'none'
+
+  const canAppend = lastChild.canReplace(
+    lastChild.childCount,
+    lastChild.childCount,
+    parent.content,
+    endIndex,
+    parent.childCount,
+  )
+  if (canAppend) return 'append'
+
+  return isListNode(parent.child(endIndex)) ? 'hide' : 'wrap'
+}
+
+function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
+  const plan = planTrailingSiblings(range)
+  if (plan === 'none') return false
+
+  const listType = getListType(tr.doc.type.schema)
+  const { $to, depth, end } = range
   const endOfParent = $to.end(depth)
 
-  if (end < endOfParent) {
-    // There are siblings after the lifted items, which must become
-    // children of the last item
-    const lastChild = parent.maybeChild(endIndex - 1)
-    if (!lastChild) return false
-
-    const canAppend =
-      endIndex < parent.childCount &&
-      lastChild.canReplace(
-        lastChild.childCount,
-        lastChild.childCount,
-        parent.content,
-        endIndex,
-        parent.childCount,
-      )
-
-    if (canAppend) {
-      tr.step(
-        new ReplaceAroundStep(
-          end - 1,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 1, 0),
-          0,
-          true,
-        ),
-      )
-      return true
-    } else {
-      tr.step(
-        new ReplaceAroundStep(
-          end,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 0, 0),
-          1,
-          true,
-        ),
-      )
-      return true
-    }
+  if (plan === 'append') {
+    tr.step(
+      new ReplaceAroundStep(
+        end - 1,
+        endOfParent,
+        end,
+        endOfParent,
+        new Slice(Fragment.from(listType.create(null)), 1, 0),
+        0,
+        true,
+      ),
+    )
+  } else {
+    tr.step(
+      new ReplaceAroundStep(
+        end,
+        endOfParent,
+        end,
+        endOfParent,
+        new Slice(Fragment.from(listType.create(null)), 0, 0),
+        1,
+        true,
+      ),
+    )
   }
-  return false
+  return true
 }
 
 function fixEndBoundary(
@@ -268,28 +285,9 @@ function fixEndBoundary(
   // In strict mode, keep the trailing siblings where they are. They stay
   // inside the outer item that is lifted, so they move one level up with it
   // instead of keeping their depth inside a hidden wrapper.
-  if (strict && wouldWrapSiblingsInHiddenList(range)) return
+  if (strict && planTrailingSiblings(range) === 'hide') return
 
   moveRangeSiblings(tr, range)
-}
-
-/**
- * Returns `true` if `moveRangeSiblings` would wrap the siblings after `range`
- * in a new list node whose first child is a list node (a hidden wrapper).
- */
-function wouldWrapSiblingsInHiddenList(range: NodeRange): boolean {
-  const { $to, depth, end, parent, endIndex } = range
-  if (end >= $to.end(depth)) return false
-  const lastChild = parent.maybeChild(endIndex - 1)
-  if (!lastChild) return false
-  const canAppend = lastChild.canReplace(
-    lastChild.childCount,
-    lastChild.childCount,
-    parent.content,
-    endIndex,
-    parent.childCount,
-  )
-  return !canAppend && isListNode(parent.child(endIndex))
 }
 
 export function dedentOutOfList(tr: Transaction, range: NodeRange): boolean {
