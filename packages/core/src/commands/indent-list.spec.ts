@@ -303,6 +303,86 @@ describe('indentList', () => {
     )
   })
 
+  it('can customize the attributes of a list node with a hidden marker', () => {
+    const indentWithBulletWrapper = createIndentListCommand({
+      getHiddenListAttrs: (node) =>
+        node.attrs.kind === 'task' || node.attrs.kind === 'toggle'
+          ? { ...node.attrs, kind: 'bullet', checked: false, collapsed: false }
+          : node.attrs,
+    })
+
+    // The first item has no previous list node, so a new list node wraps it.
+    t.applyCommand(
+      indentWithBulletWrapper,
+      t.doc(t.uncheckedTaskList(t.p('<a>A1')), t.checkedTaskList(t.p('A2'))),
+      t.doc(
+        t.bulletList(t.uncheckedTaskList(t.p('<a>A1'))),
+        t.checkedTaskList(t.p('A2')),
+      ),
+    )
+
+    // A task with sub tasks: the old task node becomes the wrapper.
+    t.applyCommand(
+      indentWithBulletWrapper,
+      t.doc(t.uncheckedTaskList(t.p('<a>A1'), t.checkedTaskList(t.p('B1')))),
+      t.doc(
+        t.bulletList(
+          t.uncheckedTaskList(t.p('<a>A1')),
+          t.checkedTaskList(t.p('B1')),
+        ),
+      ),
+    )
+
+    // A list node split from the old task node keeps its attributes.
+    t.applyCommand(
+      indentWithBulletWrapper,
+      t.doc(t.uncheckedTaskList(t.p('<a>A1'), t.p('A2'))),
+      t.doc(
+        t.bulletList(t.uncheckedTaskList(t.p('<a>A1'))),
+        t.uncheckedTaskList(t.p('A2')),
+      ),
+    )
+
+    // Ordered lists are unchanged by this callback.
+    t.applyCommand(
+      indentWithBulletWrapper,
+      t.doc(t.orderedList(t.p('<a>A1')), t.orderedList(t.p('A2'))),
+      t.doc(
+        t.orderedList(t.orderedList(t.p('<a>A1'))),
+        t.orderedList(t.p('A2')),
+      ),
+    )
+  })
+
+  it('can skip the wrap', () => {
+    const indentWithoutWrap = createIndentListCommand({ wrap: false })
+
+    t.applyCommand(
+      indentWithoutWrap,
+      t.doc(t.uncheckedTaskList(t.p('<a>A1'))),
+      null,
+    )
+
+    t.applyCommand(
+      indentWithoutWrap,
+      t.doc(t.uncheckedTaskList(t.p('<a>A1'), t.checkedTaskList(t.p('B1')))),
+      null,
+    )
+
+    // Indenting into a previous list node still works.
+    t.applyCommand(
+      indentWithoutWrap,
+      markdown`
+        - [ ] A1
+        - [ ] A<a>2
+      `,
+      markdown`
+        - [ ] A1
+          - [ ] A<a>2
+      `,
+    )
+  })
+
   it('can keep the indentation of sub list nodes', () => {
     t.applyCommand(
       indentList,
