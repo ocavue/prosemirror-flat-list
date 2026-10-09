@@ -138,7 +138,7 @@ const splitListCommand: Command = (state, dispatch): boolean => {
         ? new NodeRange($from, $listEnd, listParentDepth)
         : new NodeRange($from, $listEnd, listDepth)
       const tr = state.tr
-      if (range && dedentNodeRange(range, tr)) {
+      if (range && dedentNodeRange(range, tr, false)) {
         dispatch?.(tr)
         return true
       }

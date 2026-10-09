@@ -574,9 +574,9 @@ describe('dedentList', () => {
     )
   })
 
-  it('can move trailing siblings up together when preventHiddenWrapper is true', () => {
+  it('can move trailing siblings up together in strict mode', () => {
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
           - B<a>
@@ -592,7 +592,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
 
@@ -611,7 +611,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
           - B<a>
@@ -629,7 +629,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
           - B<a>
@@ -645,9 +645,9 @@ describe('dedentList', () => {
     )
   })
 
-  it('can unwrap a list node and move its children up when preventHiddenWrapper is true', () => {
+  it('can unwrap a list node and move its children up in strict mode', () => {
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A<a>
           - C
@@ -660,7 +660,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A<a>
           - C
@@ -692,7 +692,7 @@ describe('dedentList', () => {
     `
     t.applyCommand(createDedentListCommand(), before1, after1)
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       before1,
       after1,
     )
@@ -711,13 +711,13 @@ describe('dedentList', () => {
     `
     t.applyCommand(createDedentListCommand(), before2, after2)
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       before2,
       after2,
     )
   })
 
-  it('can dedent a blockquote inside a list when preventHiddenWrapper is true', () => {
+  it('can dedent a blockquote inside a list in strict mode', () => {
     t.applyCommand(
       createDedentListCommand(),
       markdown`
@@ -738,7 +738,7 @@ describe('dedentList', () => {
 
     // Pins a side effect, not a desired behavior: the trailing list leaves the blockquote.
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
 
@@ -778,7 +778,7 @@ describe('dedentList', () => {
 
     // Pins a side effect, not a desired behavior: the trailing list leaves the blockquote.
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - A
 
@@ -799,9 +799,9 @@ describe('dedentList', () => {
     )
   })
 
-  it('can keep attributes when preventHiddenWrapper is true', () => {
+  it('can keep attributes in strict mode', () => {
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         1. A
            1. B<a>
@@ -817,7 +817,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       markdown`
         - [ ] A
           - [ ] B<a>
@@ -833,7 +833,7 @@ describe('dedentList', () => {
     )
 
     t.applyCommand(
-      createDedentListCommand({ preventHiddenWrapper: true }),
+      createDedentListCommand({ strict: true }),
       t.doc(
         t.bulletList(
           t.p('A'),

@@ -11,7 +11,7 @@ describe('indentList', () => {
 
   const indentList = createIndentListCommand()
   const strictIndentList = createIndentListCommand({
-    preventHiddenWrapper: true,
+    strict: true,
   })
 
   it('can indent a list node and append it to the previous list node', () => {
@@ -770,7 +770,7 @@ describe('indentList', () => {
     ).toBeGreaterThan(1)
   })
 
-  it('should not indent a block without a previous list sibling when preventHiddenWrapper is true', () => {
+  it('should not indent a block without a previous list sibling in strict mode', () => {
     t.applyCommand(strictIndentList, t.doc(t.bulletList(t.p('A<a>'))), null)
 
     t.applyCommand(
@@ -864,7 +864,7 @@ describe('indentList', () => {
     )
   })
 
-  it('should not split the list when preventHiddenWrapper is true', () => {
+  it('should not split the list in strict mode', () => {
     const before = markdown`
       - A1
         - B<a>2a
@@ -883,7 +883,7 @@ describe('indentList', () => {
     expect(t.editor.state.doc.toJSON()).toEqual(before.toJSON())
   })
 
-  it('can indent list nodes into the previous list sibling when preventHiddenWrapper is true', () => {
+  it('can indent list nodes into the previous list sibling in strict mode', () => {
     t.applyCommand(
       strictIndentList,
       markdown`
@@ -948,7 +948,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can keep attributes when preventHiddenWrapper is true', () => {
+  it('can keep attributes in strict mode', () => {
     t.applyCommand(
       strictIndentList,
       markdown`
@@ -974,7 +974,7 @@ describe('indentList', () => {
     )
   })
 
-  it('can expand a collapsed list node if something is indent into it when preventHiddenWrapper is true', () => {
+  it('can expand a collapsed list node if something is indent into it in strict mode', () => {
     // Same as without the option: the target toggle becomes expanded.
     t.applyCommand(
       strictIndentList,
@@ -991,9 +991,9 @@ describe('indentList', () => {
     )
   })
 
-  it('can accept custom positions when preventHiddenWrapper is true', () => {
+  it('can accept custom positions in strict mode', () => {
     t.applyCommand(
-      createIndentListCommand({ preventHiddenWrapper: true, from: 13, to: 17 }),
+      createIndentListCommand({ strict: true, from: 13, to: 17 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -1010,7 +1010,7 @@ describe('indentList', () => {
     )
 
     t.applyCommand(
-      createIndentListCommand({ preventHiddenWrapper: true, from: 1, to: 5 }),
+      createIndentListCommand({ strict: true, from: 1, to: 5 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),
@@ -1024,7 +1024,7 @@ describe('indentList', () => {
     )
 
     t.applyCommand(
-      createIndentListCommand({ preventHiddenWrapper: true, from: 1, to: 11 }),
+      createIndentListCommand({ strict: true, from: 1, to: 11 }),
       t.doc(
         /*0*/
         t.bulletList(/*1*/ t.p('A1') /*5*/),

@@ -46,7 +46,7 @@ export interface IndentListOptions {
    *
    * @defaultValue `false`
    */
-  preventHiddenWrapper?: boolean
+  strict?: boolean
 }
 
 /**
@@ -69,7 +69,7 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false
 
-    const strict = !!options?.preventHiddenWrapper
+    const strict = !!options?.strict
     if (indentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true

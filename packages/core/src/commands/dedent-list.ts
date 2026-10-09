@@ -44,7 +44,7 @@ export interface DedentListOptions {
    *
    * @defaultValue `false`
    */
-  preventHiddenWrapper?: boolean
+  strict?: boolean
 }
 
 /**
@@ -66,7 +66,7 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     const range = findListsRange($from, $to)
     if (!range) return false
 
-    const strict = !!options?.preventHiddenWrapper
+    const strict = !!options?.strict
     if (dedentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true
@@ -157,7 +157,7 @@ function splitAndDedentRange(
 export function dedentNodeRange(
   range: NodeRange,
   tr: Transaction,
-  strict = false,
+  strict: boolean,
 ) {
   if (isListNode(range.parent)) {
     return safeLiftRange(tr, range, strict)

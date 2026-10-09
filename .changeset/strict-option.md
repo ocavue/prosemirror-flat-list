@@ -2,7 +2,7 @@
 'prosemirror-flat-list': minor
 ---
 
-Add a `preventHiddenWrapper` option to `createIndentListCommand` and `createDedentListCommand`.
+Add a `strict` option to `createIndentListCommand` and `createDedentListCommand`.
 
 A hidden wrapper is a list node whose first child is a list node; its marker is not rendered. With the option on, a block can never end up more than one level deeper than the block before it:
 
