@@ -23,8 +23,9 @@ export class ListDOMSerializer extends DOMSerializer {
     const nodes = super.nodesFromSchema(schema)
     return {
       ...nodes,
-      list: (node) =>
-        listToDOM({ node, nativeList: true, getMarkers: () => null }),
+      list: (node) => {
+        return listToDOM({ node, nativeList: true, getMarkers: () => null })
+      },
     }
   }
 

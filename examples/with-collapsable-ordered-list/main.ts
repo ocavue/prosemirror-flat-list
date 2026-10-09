@@ -58,12 +58,13 @@ function customCreateListEventPlugin() {
   return new Plugin({
     props: {
       handleDOMEvents: {
-        mousedown: (view, event) =>
-          handleListMarkerMouseDown({
+        mousedown: (view, event) => {
+          return handleListMarkerMouseDown({
             view,
             event,
             onListClick: customListClickHandler,
-          }),
+          })
+        },
       },
     },
   })

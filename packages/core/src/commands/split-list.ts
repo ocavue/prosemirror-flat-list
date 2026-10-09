@@ -50,8 +50,7 @@ const splitBlockNodeSelectionInListCommand: Command = (state, dispatch) => {
     return false
   }
 
-  const selection = state.selection
-  const { $to, node } = selection
+  const { $to, node } = state.selection
   const parent = $to.parent
 
   // We only cover the case that
