@@ -39,7 +39,7 @@ export function setSafeSelection(tr: Transaction): Transaction {
   return tr
 }
 
-export const withSafeSelection = patchCommand(setSafeSelection)
+export const withSafeSelection = /* @__PURE__ */ patchCommand(setSafeSelection)
 
 function getCollapsedPosition($pos: ResolvedPos, minDepth: number) {
   for (let depth = minDepth; depth <= $pos.depth; depth++) {
@@ -67,4 +67,5 @@ export function setVisibleSelection(tr: Transaction): Transaction {
   return tr
 }
 
-export const withVisibleSelection = patchCommand(setVisibleSelection)
+export const withVisibleSelection =
+  /* @__PURE__ */ patchCommand(setVisibleSelection)

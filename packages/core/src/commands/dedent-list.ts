@@ -35,6 +35,17 @@ export interface DedentListOptions {
    * @defaultValue `state.selection.to`
    */
   to?: number
+
+  /**
+   * When `true`, the command never leaves a list node whose first child is a
+   * list node (a list node with a hidden marker). The blocks after the
+   * dedented block move one level up with it instead of keeping their depth
+   * inside such a node, so a block is never more than one level deeper than
+   * the block before it.
+   *
+   * @defaultValue `false`
+   */
+  strict?: boolean
 }
 
 /**
@@ -56,7 +67,8 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     const range = findListsRange($from, $to)
     if (!range) return false
 
-    if (dedentRange(range, tr)) {
+    const strict = options?.strict ?? false
+    if (dedentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true
     }
@@ -69,6 +81,7 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
 function dedentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
@@ -80,23 +93,23 @@ function dedentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? dedentRange(contentRange, tr) : false
+      return contentRange ? dedentRange(contentRange, tr, strict) : false
     } else {
-      return splitAndDedentRange(range, tr, startIndex + 1)
+      return splitAndDedentRange(range, tr, strict, startIndex + 1)
     }
   }
 
   endBoundary = endBoundary || atEndBlockBoundary($to, depth + 1)
 
   if (!endBoundary) {
-    fixEndBoundary(range, tr)
+    fixEndBoundary(range, tr, strict)
     const endOfParent = $to.end(depth)
     range = new NodeRange(
       tr.doc.resolve($from.pos),
       tr.doc.resolve(endOfParent),
       depth,
     )
-    return dedentRange(range, tr, undefined, true)
+    return dedentRange(range, tr, strict, undefined, true)
   }
 
   if (
@@ -104,10 +117,10 @@ function dedentRange(
     range.endIndex === range.parent.childCount &&
     isListNode(range.parent)
   ) {
-    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr)
+    return dedentNodeRange(new NodeRange($from, $to, depth - 1), tr, strict)
   }
 
-  return dedentNodeRange(range, tr)
+  return dedentNodeRange(range, tr, strict)
 }
 
 /**
@@ -116,6 +129,7 @@ function dedentRange(
 function splitAndDedentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   splitIndex: number,
 ): boolean {
   const { $from, $to, depth } = range
@@ -128,7 +142,7 @@ function splitAndDedentRange(
   const getRange2From = mapPos(tr, splitPos + 1)
   const getRange2To = mapPos(tr, $to.pos)
 
-  dedentRange(range1, tr, undefined, true)
+  dedentRange(range1, tr, strict, undefined, true)
 
   let range2 = tr.doc
     .resolve(getRange2From())
@@ -136,22 +150,37 @@ function splitAndDedentRange(
 
   if (range2 && range2.depth >= depth) {
     range2 = new NodeRange(range2.$from, range2.$to, depth)
-    dedentRange(range2, tr, true, undefined)
+    dedentRange(range2, tr, strict, true, undefined)
   }
   return true
 }
 
-export function dedentNodeRange(range: NodeRange, tr: Transaction) {
+export function dedentNodeRange(
+  range: NodeRange,
+  tr: Transaction,
+  strict: boolean,
+) {
   if (isListNode(range.parent)) {
-    return safeLiftRange(tr, range)
+    return safeLiftRange(tr, range, strict)
   } else if (isListsRange(range)) {
     return dedentOutOfList(tr, range)
   } else {
-    return safeLiftRange(tr, range)
+    return safeLiftRange(tr, range, strict)
   }
 }
 
-function safeLiftRange(tr: Transaction, range: NodeRange): boolean {
+function safeLiftRange(
+  tr: Transaction,
+  range: NodeRange,
+  strict: boolean,
+): boolean {
+  if (strict && planTrailingSiblings(range) === 'hide') {
+    // Lift the trailing siblings together with the range, so they move one
+    // level up instead of keeping their depth inside a hidden wrapper.
+    const endOfParent = range.$to.end(range.depth)
+    range = new NodeRange(range.$from, tr.doc.resolve(endOfParent), range.depth)
+    return safeLift(tr, range)
+  }
   if (moveRangeSiblings(tr, range)) {
     const $from = tr.doc.resolve(range.$from.pos)
     const $to = tr.doc.resolve(range.$to.pos)
@@ -160,59 +189,79 @@ function safeLiftRange(tr: Transaction, range: NodeRange): boolean {
   return safeLift(tr, range)
 }
 
-function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
-  const listType = getListType(tr.doc.type.schema)
+/**
+ * What happens to the siblings after `range` when the range is lifted out of
+ * its parent list node:
+ *
+ * - `'none'`: there are no siblings after the range.
+ * - `'append'`: they become children of the last item in the range.
+ * - `'wrap'`: they are wrapped in a new list node to keep their depth. The new
+ *   node shows a marker, because its first child is not a list node.
+ * - `'hide'`: like `'wrap'`, but the new node hides its marker, because its
+ *   first child is a list node.
+ */
+function planTrailingSiblings(
+  range: NodeRange,
+): 'none' | 'append' | 'wrap' | 'hide' {
   const { $to, depth, end, parent, endIndex } = range
-  const endOfParent = $to.end(depth)
+  if (end >= $to.end(depth)) return 'none'
 
-  if (end < endOfParent) {
-    // There are siblings after the lifted items, which must become
-    // children of the last item
-    const lastChild = parent.maybeChild(endIndex - 1)
-    if (!lastChild) return false
+  const lastChild = parent.maybeChild(endIndex - 1)
+  if (!lastChild) return 'none'
 
-    const canAppend =
-      endIndex < parent.childCount &&
-      lastChild.canReplace(
-        lastChild.childCount,
-        lastChild.childCount,
-        parent.content,
-        endIndex,
-        parent.childCount,
-      )
+  const canAppend = lastChild.canReplace(
+    lastChild.childCount,
+    lastChild.childCount,
+    parent.content,
+    endIndex,
+    parent.childCount,
+  )
+  if (canAppend) return 'append'
 
-    if (canAppend) {
-      tr.step(
-        new ReplaceAroundStep(
-          end - 1,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 1, 0),
-          0,
-          true,
-        ),
-      )
-      return true
-    } else {
-      tr.step(
-        new ReplaceAroundStep(
-          end,
-          endOfParent,
-          end,
-          endOfParent,
-          new Slice(Fragment.from(listType.create(null)), 0, 0),
-          1,
-          true,
-        ),
-      )
-      return true
-    }
-  }
-  return false
+  return isListNode(parent.child(endIndex)) ? 'hide' : 'wrap'
 }
 
-function fixEndBoundary(range: NodeRange, tr: Transaction): void {
+function moveRangeSiblings(tr: Transaction, range: NodeRange): boolean {
+  const plan = planTrailingSiblings(range)
+  if (plan === 'none') return false
+
+  const listType = getListType(tr.doc.type.schema)
+  const { $to, depth, end } = range
+  const endOfParent = $to.end(depth)
+
+  if (plan === 'append') {
+    tr.step(
+      new ReplaceAroundStep(
+        end - 1,
+        endOfParent,
+        end,
+        endOfParent,
+        new Slice(Fragment.from(listType.create(null)), 1, 0),
+        0,
+        true,
+      ),
+    )
+  } else {
+    tr.step(
+      new ReplaceAroundStep(
+        end,
+        endOfParent,
+        end,
+        endOfParent,
+        new Slice(Fragment.from(listType.create(null)), 0, 0),
+        1,
+        true,
+      ),
+    )
+  }
+  return true
+}
+
+function fixEndBoundary(
+  range: NodeRange,
+  tr: Transaction,
+  strict: boolean,
+): void {
   if (range.endIndex - range.startIndex >= 2) {
     range = new NodeRange(
       range.$to.doc.resolve(
@@ -225,13 +274,18 @@ function fixEndBoundary(range: NodeRange, tr: Transaction): void {
 
   const contentRange = zoomInRange(range)
   if (contentRange) {
-    fixEndBoundary(contentRange, tr)
+    fixEndBoundary(contentRange, tr, strict)
     range = new NodeRange(
       tr.doc.resolve(range.$from.pos),
       tr.doc.resolve(range.$to.pos),
       range.depth,
     )
   }
+
+  // In strict mode, keep the trailing siblings where they are. They stay
+  // inside the outer item that is lifted, so they move one level up with it
+  // instead of keeping their depth inside a hidden wrapper.
+  if (strict && planTrailingSiblings(range) === 'hide') return
 
   moveRangeSiblings(tr, range)
 }

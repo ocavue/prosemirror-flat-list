@@ -3,6 +3,7 @@ import { canJoin, canSplit } from 'prosemirror-transform'
 
 import type { ProsemirrorNode } from '../types'
 
+import { isHiddenWrapper } from './is-hidden-wrapper'
 import { isListNode } from './is-list-node'
 import { patchCommand } from './patch-command'
 
@@ -75,7 +76,7 @@ function isListJoinable(
   before: ProsemirrorNode,
   after: ProsemirrorNode,
 ): boolean {
-  return isListNode(before) && isListNode(after) && isListNode(after.firstChild)
+  return isListNode(before) && isHiddenWrapper(after)
 }
 
 function isListSplitable(
@@ -118,4 +119,4 @@ function fixList(tr: Transaction): Transaction {
 }
 
 /** @internal */
-export const withAutoFixList = patchCommand(fixList)
+export const withAutoFixList = /* @__PURE__ */ patchCommand(fixList)

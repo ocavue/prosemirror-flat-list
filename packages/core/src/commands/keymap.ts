@@ -6,6 +6,7 @@ import {
   selectNodeBackward,
   selectNodeForward,
 } from 'prosemirror-commands'
+import type { Command } from 'prosemirror-state'
 
 import { createDedentListCommand } from './dedent-list'
 import { createIndentListCommand } from './indent-list'
@@ -24,10 +25,11 @@ import { createSplitListCommand } from './split-list'
  *
  * @group Commands
  */
-export const enterCommand = chainCommands(
-  protectCollapsed,
-  createSplitListCommand(),
-)
+export const enterCommand = /* @__PURE__ */ createEnterCommand()
+
+function createEnterCommand(options?: ListKeymapOptions): Command {
+  return chainCommands(protectCollapsed, createSplitListCommand(options))
+}
 
 /**
  * Keybinding for `Backspace`. It's chained with following commands:
@@ -44,7 +46,7 @@ export const enterCommand = chainCommands(
  * @group Commands
  *
  */
-export const backspaceCommand = chainCommands(
+export const backspaceCommand = /* @__PURE__ */ chainCommands(
   protectCollapsed,
   deleteSelection,
   joinListUp,
@@ -66,12 +68,27 @@ export const backspaceCommand = chainCommands(
  * @group Commands
  *
  */
-export const deleteCommand = chainCommands(
+export const deleteCommand = /* @__PURE__ */ chainCommands(
   protectCollapsed,
   deleteSelection,
   joinTextblockForward,
   selectNodeForward,
 )
+
+/**
+ * @public
+ *
+ * @group Commands
+ */
+export interface ListKeymapOptions {
+  /**
+   * The `strict` option passed to {@link createSplitListCommand},
+   * {@link createDedentListCommand} and {@link createIndentListCommand}.
+   *
+   * @defaultValue `false`
+   */
+  strict?: boolean
+}
 
 /**
  * Returns an object containing the keymap for the list commands.
@@ -86,14 +103,27 @@ export const deleteCommand = chainCommands(
  *
  * @group Commands
  */
-export const listKeymap = {
-  Enter: enterCommand,
+export function createListKeymap(
+  options?: ListKeymapOptions,
+): Record<string, Command> {
+  return {
+    Enter: createEnterCommand(options),
 
-  Backspace: backspaceCommand,
+    Backspace: backspaceCommand,
 
-  Delete: deleteCommand,
+    Delete: deleteCommand,
 
-  'Mod-[': createDedentListCommand(),
+    'Mod-[': createDedentListCommand(options),
 
-  'Mod-]': createIndentListCommand(),
+    'Mod-]': createIndentListCommand(options),
+  }
 }
+
+/**
+ * The keymap returned by {@link createListKeymap} with the default options.
+ *
+ * @public
+ *
+ * @group Commands
+ */
+export const listKeymap = /* @__PURE__ */ createListKeymap()

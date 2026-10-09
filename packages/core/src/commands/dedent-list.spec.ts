@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { setupTestingEditor } from '../../test/setup-editor'
 
 import { createDedentListCommand } from './dedent-list'
+import { enterCommand } from './keymap'
 
 describe('dedentList', () => {
   const t = setupTestingEditor()
@@ -534,5 +535,427 @@ describe('dedentList', () => {
         `,
       ),
     ).toBe(1)
+  })
+
+  it('can keep the depth of trailing siblings with a hidden wrapper by default', () => {
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A
+          - B<a>
+            - C
+          - D
+      `,
+      markdown`
+        - A
+        - B<a>
+          - - C
+          - D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A
+
+          X<a>
+          - D
+          - E
+      `,
+      markdown`
+        - A
+
+        X<a>
+
+        - - - D
+            - E
+      `,
+    )
+  })
+
+  it('can move trailing siblings up together in strict mode', () => {
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+          - B<a>
+            - C
+          - D
+      `,
+      markdown`
+        - A
+        - B<a>
+          - C
+          - D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+
+          X<a>
+          - D
+          - E
+      `,
+      markdown`
+        - A
+
+        X<a>
+
+        - D
+        - E
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+          - B<a>
+            - C
+              - E
+          - D
+      `,
+      markdown`
+        - A
+        - B<a>
+          - C
+            - E
+          - D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+          - B<a>
+            - C
+              - E
+      `,
+      markdown`
+        - A
+        - B<a>
+          - C
+            - E
+      `,
+    )
+  })
+
+  it('can unwrap a list node and move its children up in strict mode', () => {
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A<a>
+          - C
+      `,
+      markdown`
+        A<a>
+
+        - C
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A<a>
+          - C
+        - B
+      `,
+      markdown`
+        A<a>
+
+        - C
+        - B
+      `,
+    )
+  })
+
+  it('can keep the default result when it has no hidden wrapper', () => {
+    // The new list node wraps a paragraph, so its marker is visible.
+    const before1 = markdown`
+      - A
+        - B<a>
+
+          B2
+          - C
+    `
+    const after1 = markdown`
+      - A
+      - B<a>
+        - B2
+          - C
+    `
+    t.applyCommand(createDedentListCommand(), before1, after1)
+    t.applyCommand(createDedentListCommand({ strict: true }), before1, after1)
+
+    const before2 = markdown`
+      - A
+        - B<a>
+          - C
+        - D<b>
+    `
+    const after2 = markdown`
+      - A
+      - B<a>
+        - C
+      - D<b>
+    `
+    t.applyCommand(createDedentListCommand(), before2, after2)
+    t.applyCommand(createDedentListCommand({ strict: true }), before2, after2)
+  })
+
+  it('can dedent a blockquote inside a list in strict mode', () => {
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A
+
+          > Q<a>
+          >
+          > - D
+      `,
+      markdown`
+        - A
+
+          Q<a>
+
+          > - - D
+      `,
+    )
+
+    // Pins a side effect, not a desired behavior: the trailing list leaves the blockquote.
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+
+          > Q<a>
+          >
+          > - D
+      `,
+      markdown`
+        - A
+
+          Q<a>
+          - D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand(),
+      markdown`
+        - A
+
+          > Q1
+          >
+          > Q2<a>
+          >
+          > - D
+      `,
+      markdown`
+        - A
+
+          > Q1
+
+          Q2<a>
+
+          > - - D
+      `,
+    )
+
+    // Pins a side effect, not a desired behavior: the trailing list leaves the blockquote.
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - A
+
+          > Q1
+          >
+          > Q2<a>
+          >
+          > - D
+      `,
+      markdown`
+        - A
+
+          > Q1
+
+          Q2<a>
+          - D
+      `,
+    )
+  })
+
+  it('can keep attributes in strict mode', () => {
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        1. A
+           1. B<a>
+              1. C
+           2. D
+      `,
+      markdown`
+        1. A
+        2. B<a>
+           1. C
+           2. D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      markdown`
+        - [ ] A
+          - [ ] B<a>
+            - [x] C
+          - [ ] D
+      `,
+      markdown`
+        - [ ] A
+        - [ ] B<a>
+          - [x] C
+          - [ ] D
+      `,
+    )
+
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      t.doc(
+        t.bulletList(
+          t.p('A'),
+          t.bulletList(
+            t.p('B<a>'),
+            t.collapsedToggleList(t.p('C'), t.bulletList(t.p('F'))),
+          ),
+          t.collapsedToggleList(t.p('D'), t.bulletList(t.p('G'))),
+        ),
+      ),
+      t.doc(
+        t.bulletList(t.p('A')),
+        t.bulletList(
+          t.p('B<a>'),
+          t.collapsedToggleList(t.p('C'), t.bulletList(t.p('F'))),
+          t.collapsedToggleList(t.p('D'), t.bulletList(t.p('G'))),
+        ),
+      ),
+    )
+  })
+
+  it('should not change Enter in an empty nested list node', () => {
+    t.applyCommand(
+      enterCommand,
+      t.doc(
+        t.bulletList(
+          t.p('A'),
+          t.bulletList(t.p('<a>')),
+          t.bulletList(t.p('D')),
+        ),
+      ),
+      t.doc(t.bulletList(t.p('A'), t.p('<a>'), t.bulletList(t.p('D')))),
+    )
+
+    t.applyCommand(
+      enterCommand,
+      t.doc(
+        t.bulletList(
+          t.p('A'),
+          t.bulletList(t.p('<a>'), t.bulletList(t.p('C'))),
+          t.bulletList(t.p('D')),
+        ),
+      ),
+      t.doc(
+        t.bulletList(
+          t.p('A'),
+          t.p('<a>'),
+          t.bulletList(t.p('C')),
+          t.bulletList(t.p('D')),
+        ),
+      ),
+    )
+  })
+
+  it('can unwrap multiple list nodes with children', () => {
+    // Only the selected list nodes are unwrapped. By default, the children of
+    // the last one keep their depth inside a hidden wrapper; in strict mode
+    // they move one level up.
+    const before1 = markdown`
+      - A1<a>
+        - B1
+      - A2<b>
+        - B2
+    `
+    t.applyCommand(
+      createDedentListCommand(),
+      before1,
+      markdown`
+        A1<a>
+
+        - B1
+
+        A2<b>
+
+        - - B2
+      `,
+    )
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      before1,
+      markdown`
+        A1<a>
+
+        - B1
+
+        A2<b>
+
+        - B2
+      `,
+    )
+
+    const before2 = markdown`
+      - A1
+      - A2<a>
+        - B2
+      - A3<b>
+        - B3
+      - A4
+    `
+    t.applyCommand(
+      createDedentListCommand(),
+      before2,
+      markdown`
+        - A1
+
+        A2<a>
+
+        - B2
+
+        A3<b>
+
+        - - B3
+        - A4
+      `,
+    )
+    t.applyCommand(
+      createDedentListCommand({ strict: true }),
+      before2,
+      markdown`
+        - A1
+
+        A2<a>
+
+        - B2
+
+        A3<b>
+
+        - B3
+        - A4
+      `,
+    )
   })
 })

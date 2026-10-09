@@ -36,6 +36,16 @@ export interface IndentListOptions {
    * @defaultValue `state.selection.to`
    */
   to?: number
+
+  /**
+   * When `true`, the command never leaves a list node whose first child is a
+   * list node (a list node with a hidden marker). It returns `false` instead
+   * of indenting a block that has no previous list sibling to move into, so a
+   * block is never more than one level deeper than the block before it.
+   *
+   * @defaultValue `false`
+   */
+  strict?: boolean
 }
 
 /**
@@ -58,7 +68,8 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false
 
-    if (indentRange(range, tr)) {
+    const strict = options?.strict ?? false
+    if (indentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true
     }
@@ -71,6 +82,7 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
 function indentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   startBoundary?: boolean,
   endBoundary?: boolean,
 ): boolean {
@@ -82,9 +94,9 @@ function indentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? indentRange(contentRange, tr) : false
+      return contentRange ? indentRange(contentRange, tr, strict) : false
     } else {
-      return splitAndIndentRange(range, tr, startIndex + 1)
+      return splitAndIndentRange(range, tr, strict, startIndex + 1)
     }
   }
 
@@ -94,13 +106,13 @@ function indentRange(
     const { startIndex, endIndex } = range
     if (endIndex - startIndex === 1) {
       const contentRange = zoomInRange(range)
-      return contentRange ? indentRange(contentRange, tr) : false
+      return contentRange ? indentRange(contentRange, tr, strict) : false
     } else {
-      return splitAndIndentRange(range, tr, endIndex - 1)
+      return splitAndIndentRange(range, tr, strict, endIndex - 1)
     }
   }
 
-  return indentNodeRange(range, tr)
+  return indentNodeRange(range, tr, strict)
 }
 
 /**
@@ -109,6 +121,7 @@ function indentRange(
 function splitAndIndentRange(
   range: NodeRange,
   tr: Transaction,
+  strict: boolean,
   splitIndex: number,
 ): boolean {
   const { $from, $to, depth } = range
@@ -121,25 +134,35 @@ function splitAndIndentRange(
   const getRange2From = mapPos(tr, splitPos + 1)
   const getRange2To = mapPos(tr, $to.pos)
 
-  indentRange(range1, tr, undefined, true)
+  const ok1 = indentRange(range1, tr, strict, undefined, true)
+  // In strict mode, the whole selection must be indentable. The caller drops
+  // `tr` when we return `false`, so partial steps are discarded.
+  if (strict && !ok1) return false
 
   const range2 = tr.doc
     .resolve(getRange2From())
     .blockRange(tr.doc.resolve(getRange2To()))
 
   if (range2) {
-    indentRange(range2, tr, true, undefined)
+    const ok2 = indentRange(range2, tr, strict, true, undefined)
+    if (strict && !ok2) return false
   }
   return true
 }
 
 /**
  * Increase the indentation of a block range.
+ *
+ * In strict mode, a `false` return means that no step was added to `tr`.
  */
-function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
+function indentNodeRange(
+  range: NodeRange,
+  tr: Transaction,
+  strict: boolean,
+): boolean {
   const listType = getListType(tr.doc.type.schema)
   const { parent, startIndex } = range
-  const prevChild = startIndex >= 1 && parent.child(startIndex - 1)
+  const prevChild = startIndex >= 1 && parent.maybeChild(startIndex - 1)
 
   // If the previous node before the range is a list node, move the range into
   // the previous list node as its children
@@ -164,6 +187,9 @@ function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
   const isParentListNode = isListNode(parent)
   const isFirstChildListNode = isListNode(parent.maybeChild(startIndex))
   if ((startIndex === 0 && isParentListNode) || isFirstChildListNode) {
+    if (strict && !willWrapperBeJoined(range, isFirstChildListNode)) {
+      return false
+    }
     const { start, end } = range
     const listAttrs: ListAttributes | null = isFirstChildListNode
       ? parent.child(startIndex).attrs
@@ -186,4 +212,23 @@ function indentNodeRange(range: NodeRange, tr: Transaction): boolean {
 
   // Otherwise we cannot indent
   return false
+}
+
+/**
+ * The wrap branch of `indentNodeRange` leaves a list node with a hidden
+ * marker: either the new list node (when the range starts with a list node) or
+ * `range.parent` (when the range is the first content of a list node).
+ * `withAutoFixList` then joins it into the node before it when that node is a
+ * list node (see `isListJoinable`). Returns `true` if that join will happen.
+ */
+function willWrapperBeJoined(
+  range: NodeRange,
+  isFirstChildListNode: boolean,
+): boolean {
+  const { $from, depth, parent, startIndex } = range
+  const [container, index] = isFirstChildListNode
+    ? [parent, startIndex]
+    : [$from.node(depth - 1), $from.index(depth - 1)]
+  const before = index >= 1 && container.maybeChild(index - 1)
+  return !!before && isListNode(before)
 }

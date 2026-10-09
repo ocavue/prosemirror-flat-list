@@ -6,6 +6,7 @@ import { expectStateToEqual } from '../../test/markdown'
 import { setupTestingEditor } from '../../test/setup-editor'
 
 import { enterCommand } from './keymap'
+import { createSplitListCommand } from './split-list'
 
 describe('splitList', () => {
   const {
@@ -563,6 +564,61 @@ describe('splitList', () => {
         1. ***
         2. <a>\n
       `,
+    )
+  })
+
+  it('can dedent the last empty sub item in strict mode', () => {
+    const splitList = createSplitListCommand({ strict: true })
+
+    applyCommand(
+      splitList,
+      markdown`
+        - A1
+          - <a>
+
+        paragraph
+      `,
+      markdown`
+        - A1
+
+        - <a>
+
+        paragraph
+      `,
+    )
+
+    applyCommand(
+      splitList,
+      markdown`
+        - A1
+          - B1
+
+          - <a>
+
+        paragraph
+      `,
+      markdown`
+        - A1
+          - B1
+
+        - <a>
+
+        paragraph
+      `,
+    )
+
+    applyCommand(
+      splitList,
+      doc(
+        bulletList(
+          p('A1'),
+          bulletList(p('<a>'), bulletList(p('B1'))),
+          bulletList(p('B2')),
+        ),
+      ),
+      doc(
+        bulletList(p('A1'), p('<a>'), bulletList(p('B1')), bulletList(p('B2'))),
+      ),
     )
   })
 })
