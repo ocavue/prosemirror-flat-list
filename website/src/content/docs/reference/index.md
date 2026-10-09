@@ -107,7 +107,7 @@ otherwise `null` is returned.
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | <a id="from"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="strict"></a> `strict?` | `boolean` | `false` | When `true`, never leave a hidden wrapper (a list node whose first child is a list node) in the document. Children that would need such a wrapper to keep their depth move one level up instead. This keeps every block at most one level deeper than the block before it. |
+| <a id="strict"></a> `strict?` | `boolean` | `false` | When `true`, the command never leaves a list node whose first child is a list node (a list node with a hidden marker). The blocks after the dedented block move one level up with it instead of keeping their depth inside such a node, so a block is never more than one level deeper than the block before it. |
 | <a id="to"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
 
 ***
@@ -119,8 +119,28 @@ otherwise `null` is returned.
 | Property | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | <a id="from-1"></a> `from?` | `number` | `state.selection.from` | A optional from position to indent. |
-| <a id="strict-1"></a> `strict?` | `boolean` | `false` | When `true`, refuse to indent a block if the indent would leave a hidden wrapper (a list node whose first child is a list node) in the document. In practice the command returns `false` when the block has no previous list sibling to move into. This keeps every block at most one level deeper than the block before it. |
+| <a id="strict-1"></a> `strict?` | `boolean` | `false` | When `true`, the command never leaves a list node whose first child is a list node (a list node with a hidden marker). It returns `false` instead of indenting a block that has no previous list sibling to move into, so a block is never more than one level deeper than the block before it. |
 | <a id="to-1"></a> `to?` | `number` | `state.selection.to` | A optional to position to indent. |
+
+***
+
+### ListKeymapOptions {#listkeymapoptions}
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="strict-2"></a> `strict?` | `boolean` | `false` | The `strict` option passed to [createSplitListCommand](#createsplitlistcommand), [createDedentListCommand](#creatededentlistcommand) and [createIndentListCommand](#createindentlistcommand). |
+
+***
+
+### SplitListOptions {#splitlistoptions}
+
+#### Properties
+
+| Property | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="strict-3"></a> `strict?` | `boolean` | `false` | When `true`, the command never leaves a list node whose first child is a list node (a list node with a hidden marker). `Enter` in an empty list node dedents it, so this is the `strict` option of `createDedentListCommand`. |
 
 ***
 
@@ -294,25 +314,13 @@ child of a list node, lift this child.
 
 <dt>
 
-<code data-typedoc-code><i>const</i> <a id="listkeymap" href="#listkeymap">listKeymap</a>: \{
-  `Backspace`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Delete`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Enter`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Mod-[`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-  `Mod-]`: [`Command`](https://prosemirror.net/docs/ref/#state.Command);
-\}</code>
+<code data-typedoc-code><i>const</i> <a id="listkeymap" href="#listkeymap">listKeymap</a>: [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`Command`](https://prosemirror.net/docs/ref/#state.Command)\></code>
 
 </dt>
 
 <dd>
 
-Returns an object containing the keymap for the list commands.
-
-- `Enter`: See [enterCommand](#entercommand).
-- `Backspace`: See [backspaceCommand](#backspacecommand).
-- `Delete`: See [deleteCommand](#deletecommand).
-- `Mod-[`: Decrease indentation. See [createDedentListCommand](#creatededentlistcommand).
-- `Mod-]`: Increase indentation. See [createIndentListCommand](#createindentlistcommand).
+The keymap returned by [createListKeymap](#createlistkeymap) with the default options.
 
 </dd>
 
@@ -392,6 +400,32 @@ nodes.
 
 ***
 
+### createListKeymap() {#createlistkeymap}
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code><i>function</i> <a id="createlistkeymap" href="#createlistkeymap">createListKeymap</a>(`options?`: [`ListKeymapOptions`](#listkeymapoptions)): [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`Command`](https://prosemirror.net/docs/ref/#state.Command)\></code>
+
+</dt>
+
+<dd>
+
+Returns an object containing the keymap for the list commands.
+
+- `Enter`: See [enterCommand](#entercommand).
+- `Backspace`: See [backspaceCommand](#backspacecommand).
+- `Delete`: See [deleteCommand](#deletecommand).
+- `Mod-[`: Decrease indentation. See [createDedentListCommand](#creatededentlistcommand).
+- `Mod-]`: Increase indentation. See [createIndentListCommand](#createindentlistcommand).
+
+</dd>
+
+</dl>
+
+***
+
 ### createMoveListCommand() {#createmovelistcommand}
 
 <dl>
@@ -418,7 +452,7 @@ Returns a command function that moves up or down selected list nodes.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="createsplitlistcommand" href="#createsplitlistcommand">createSplitListCommand</a>(): [`Command`](https://prosemirror.net/docs/ref/#state.Command)</code>
+<code data-typedoc-code><i>function</i> <a id="createsplitlistcommand" href="#createsplitlistcommand">createSplitListCommand</a>(`options?`: [`SplitListOptions`](#splitlistoptions)): [`Command`](https://prosemirror.net/docs/ref/#state.Command)</code>
 
 </dt>
 
