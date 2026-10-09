@@ -186,7 +186,7 @@ export const toggleListInputRule: ListInputRuleOptions = {
  *
  * @group Input Rules
  */
-export const listInputRules: InputRule[] = [
+export const listInputRules: InputRule[] = /* @__PURE__ */ [
   bulletListInputRule,
   orderedListInputRule,
   taskListInputRule,
