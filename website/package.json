@@ -17,8 +17,8 @@
   "devDependencies": {
     "@astrojs/preact": "^6.0.3",
     "@astrojs/starlight": "^0.42.0",
-    "@prosekit/core": "^0.13.0-beta.7",
-    "@prosekit/pm": "^0.1.19-beta.4",
+    "@prosekit/core": "^0.13.3",
+    "@prosekit/pm": "^0.1.20",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.0",
     "preact": "^10.29.8",
