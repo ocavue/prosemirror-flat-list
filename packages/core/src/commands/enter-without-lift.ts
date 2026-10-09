@@ -12,7 +12,7 @@ import type { Command } from 'prosemirror-state'
  *
  * @internal
  */
-export const enterWithoutLift: Command = chainCommands(
+export const enterWithoutLift: Command = /* @__PURE__ */ chainCommands(
   newlineInCode,
   createParagraphNear,
   splitBlock,
