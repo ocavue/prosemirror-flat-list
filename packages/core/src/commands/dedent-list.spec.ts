@@ -691,11 +691,7 @@ describe('dedentList', () => {
           - C
     `
     t.applyCommand(createDedentListCommand(), before1, after1)
-    t.applyCommand(
-      createDedentListCommand({ strict: true }),
-      before1,
-      after1,
-    )
+    t.applyCommand(createDedentListCommand({ strict: true }), before1, after1)
 
     const before2 = markdown`
       - A
@@ -710,11 +706,7 @@ describe('dedentList', () => {
       - D<b>
     `
     t.applyCommand(createDedentListCommand(), before2, after2)
-    t.applyCommand(
-      createDedentListCommand({ strict: true }),
-      before2,
-      after2,
-    )
+    t.applyCommand(createDedentListCommand({ strict: true }), before2, after2)
   })
 
   it('can dedent a blockquote inside a list in strict mode', () => {
