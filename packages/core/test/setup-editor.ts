@@ -37,8 +37,9 @@ export function setupTestingEditor() {
 
   const bulletList = listWithAttrs({ kind: 'bullet' })
   const orderedList = listWithAttrs({ kind: 'ordered' })
-  const ordered99List = (...children: NodeChild[]) =>
-    n.list({ kind: 'ordered', order: 99 }, ...children)
+  const ordered99List = (...children: NodeChild[]) => {
+    return n.list({ kind: 'ordered', order: 99 }, ...children)
+  }
   const checkedTaskList = listWithAttrs({ kind: 'task', checked: true })
   const uncheckedTaskList = listWithAttrs({ kind: 'task', checked: false })
   const collapsedToggleList = listWithAttrs({ kind: 'toggle', collapsed: true })
