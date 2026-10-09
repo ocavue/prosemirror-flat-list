@@ -627,7 +627,8 @@ should not be serialized.
 \}, 
    `target?`: 
   \| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
-  \| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)): 
+  \| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)
+): 
   \| [`HTMLElement`](https://developer.mozilla.org/docs/Web/API/HTMLElement)
   \| [`DocumentFragment`](https://developer.mozilla.org/docs/Web/API/DocumentFragment)</code>
 
