@@ -69,7 +69,7 @@ export function createIndentListCommand(options?: IndentListOptions): Command {
     const range = findListsRange($from, $to) || $from.blockRange($to)
     if (!range) return false
 
-    const strict = !!options?.strict
+    const strict = options?.strict ?? false
     if (indentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true

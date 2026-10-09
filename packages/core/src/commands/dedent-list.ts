@@ -66,7 +66,7 @@ export function createDedentListCommand(options?: DedentListOptions): Command {
     const range = findListsRange($from, $to)
     if (!range) return false
 
-    const strict = !!options?.strict
+    const strict = options?.strict ?? false
     if (dedentRange(range, tr, strict)) {
       dispatch?.(tr)
       return true
