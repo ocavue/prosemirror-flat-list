@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.7.3
+
+### Patch Changes
+
+- f9f89ab: Export the list input rule handler and the built-in rule definitions.
+
 ## 0.7.2
 
 ### Patch Changes
