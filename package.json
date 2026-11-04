@@ -31,6 +31,6 @@
     "prettier": "^3.9.9",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.3"
+    "vitest": "^5.1.0"
   }
 }
