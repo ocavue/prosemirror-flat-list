@@ -2,7 +2,6 @@ import { Attrs, DOMOutputSpec, DOMSerializer, Fragment, Node, Node as Node$1, No
 import { Command, EditorState, Plugin, Transaction } from "prosemirror-state";
 import { InputRule } from "prosemirror-inputrules";
 import { EditorView, NodeViewConstructor } from "prosemirror-view";
-//#region src/commands/dedent-list.d.ts
 /**
  * @public
  *
@@ -40,8 +39,6 @@ interface DedentListOptions {
  * @group Commands
  */
 export declare function createDedentListCommand(options?: DedentListOptions): Command;
-//#endregion
-//#region src/commands/enter-without-lift.d.ts
 /**
  * This command has the same behavior as the `Enter` keybinding from
  * `prosemirror-commands`, but without the `liftEmptyBlock` command.
@@ -49,8 +46,6 @@ export declare function createDedentListCommand(options?: DedentListOptions): Co
  * @internal
  */
 export declare const enterWithoutLift: Command;
-//#endregion
-//#region src/commands/indent-list.d.ts
 /**
  * @public
  *
@@ -88,8 +83,6 @@ interface IndentListOptions {
  * @group Commands
  */
 export declare function createIndentListCommand(options?: IndentListOptions): Command;
-//#endregion
-//#region src/commands/join-collapsed-backward.d.ts
 /**
  * If the selection is empty and at the start of a block, and there is a
  * collapsed list node right before the cursor, move current block and append it
@@ -100,8 +93,6 @@ export declare function createIndentListCommand(options?: IndentListOptions): Co
  * @group Commands
  */
 export declare const joinCollapsedListBackward: Command;
-//#endregion
-//#region src/commands/join-list-up.d.ts
 /**
  * If the text cursor is at the start of the first child of a list node, lift
  * all content inside the list. If the text cursor is at the start of the last
@@ -112,8 +103,6 @@ export declare const joinCollapsedListBackward: Command;
  * @group Commands
  */
 export declare const joinListUp: Command;
-//#endregion
-//#region src/commands/keymap.d.ts
 /**
  * Keybinding for `Enter`. It's chained with following commands:
  *
@@ -191,8 +180,6 @@ export declare function createListKeymap(options?: ListKeymapOptions): Record<st
  * @group Commands
  */
 export declare const listKeymap: Record<string, Command>;
-//#endregion
-//#region src/commands/move-list.d.ts
 /**
  * Returns a command function that moves up or down selected list nodes.
  *
@@ -202,8 +189,6 @@ export declare const listKeymap: Record<string, Command>;
  *
  */
 export declare function createMoveListCommand(direction: 'up' | 'down'): Command;
-//#endregion
-//#region src/commands/protect-collapsed.d.ts
 /**
  * This command will protect the collapsed items from being deleted.
  *
@@ -224,16 +209,12 @@ export declare function createMoveListCommand(direction: 'up' | 'down'): Command
  *
  */
 export declare const protectCollapsed: Command;
-//#endregion
-//#region src/commands/set-safe-selection.d.ts
 /**
  * If one of the selection's end points is inside a collapsed node, move the selection outside of it
  *
  * @internal
  */
 export declare function setSafeSelection(tr: Transaction): Transaction;
-//#endregion
-//#region src/commands/split-list.d.ts
 /**
  * @public
  *
@@ -263,8 +244,6 @@ export declare function createSplitListCommand(options?: SplitListOptions): Comm
  * @internal
  */
 export declare function doSplitList(state: EditorState, listNode: Node$1, dispatch?: (tr: Transaction) => void): boolean;
-//#endregion
-//#region src/types.d.ts
 /**
  * All default list node kinds.
  *
@@ -299,8 +278,6 @@ interface ProsemirrorNodeJSON {
   content?: ProsemirrorNodeJSON[];
   attrs?: Attrs;
 }
-//#endregion
-//#region src/commands/toggle-collapsed.d.ts
 /**
  * @public
  *
@@ -326,8 +303,6 @@ interface ToggleCollapsedOptions {
  * @group Commands
  */
 export declare function createToggleCollapsedCommand(options?: ToggleCollapsedOptions): Command;
-//#endregion
-//#region src/commands/toggle-list.d.ts
 /**
  * Returns a command function that wraps the selection in a list with the given
  * type and attributes, or change the list kind if the selection is already in
@@ -342,8 +317,6 @@ export declare function createToggleListCommand<T extends ListAttributes = ListA
  * The list node attributes to toggle.
  */
 attrs: T): Command;
-//#endregion
-//#region src/commands/unwrap-list.d.ts
 /**
  * @public
  *
@@ -363,8 +336,6 @@ interface UnwrapListOptions {
  * @group Commands
  */
 export declare function createUnwrapListCommand(options?: UnwrapListOptions): Command;
-//#endregion
-//#region src/commands/wrap-in-list.d.ts
 /**
  * The list node attributes or a callback function to take the current
  * selection block range and return list node attributes. If this callback
@@ -384,8 +355,6 @@ type WrapInListGetAttrs<T extends ListAttributes> = T | ((range: NodeRange) => T
  * @group Commands
  */
 export declare function createWrapInListCommand<T extends ListAttributes = ListAttributes>(getAttrs: WrapInListGetAttrs<T>): Command;
-//#endregion
-//#region src/dom-events.d.ts
 /** @internal */
 export declare function handleListMarkerMouseDown({ view, event, onListClick }: {
   view: EditorView;
@@ -396,8 +365,6 @@ export declare function handleListMarkerMouseDown({ view, event, onListClick }: 
 type ListClickHandler = (node: Node$1) => ListAttributes;
 /** @internal */
 export declare const defaultListClickHandler: ListClickHandler;
-//#endregion
-//#region src/input-rule.d.ts
 /**
  * A callback function to get the attributes for a list input rule.
  *
@@ -479,8 +446,6 @@ export declare const toggleListInputRule: ListInputRuleOptions;
  * @group Input Rules
  */
 export declare const listInputRules: InputRule[];
-//#endregion
-//#region src/migrate.d.ts
 /**
  * Migrate a ProseMirror document JSON object from the old list structure to the
  * new. A new document JSON object is returned if the document is updated,
@@ -489,8 +454,6 @@ export declare const listInputRules: InputRule[];
  * @public
  */
 export declare function migrateDocJSON(docJSON: ProsemirrorNodeJSON): ProsemirrorNodeJSON | null;
-//#endregion
-//#region src/node-view.d.ts
 /**
  * A simple node view that is used to render the list node. It ensures that the
  * list node get updated when its marker styling should changes.
@@ -500,8 +463,6 @@ export declare function migrateDocJSON(docJSON: ProsemirrorNodeJSON): Prosemirro
  * @group Plugins
  */
 export declare const createListNodeView: NodeViewConstructor;
-//#endregion
-//#region src/plugins/clipboard.d.ts
 /**
  * Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
  * clipboard. See {@link ListDOMSerializer}.
@@ -511,8 +472,6 @@ export declare const createListNodeView: NodeViewConstructor;
  * @group Plugins
  */
 export declare function createListClipboardPlugin(schema: Schema): Plugin;
-//#endregion
-//#region src/plugins/event.d.ts
 /**
  * Handle DOM events for list.
  *
@@ -521,8 +480,6 @@ export declare function createListClipboardPlugin(schema: Schema): Plugin;
  * @group Plugins
  */
 export declare function createListEventPlugin(): Plugin;
-//#endregion
-//#region src/plugins/rendering.d.ts
 /**
  * Handle the list node rendering.
  *
@@ -531,8 +488,6 @@ export declare function createListEventPlugin(): Plugin;
  * @group Plugins
  */
 export declare function createListRenderingPlugin(): Plugin;
-//#endregion
-//#region src/plugins/safari-workaround.d.ts
 /**
  * Return a plugin as a workaround for a bug in Safari that causes the composition
  * based IME to remove the empty HTML element with CSS `position: relative`.
@@ -544,8 +499,6 @@ export declare function createListRenderingPlugin(): Plugin;
  * @group Plugins
  */
 export declare function createSafariInputMethodWorkaroundPlugin(): Plugin;
-//#endregion
-//#region src/plugins/index.d.ts
 /**
  * This function returns an array of plugins that are required for list to work.
  *
@@ -564,8 +517,6 @@ export declare function createSafariInputMethodWorkaroundPlugin(): Plugin;
 export declare function createListPlugins(options: {
   schema: Schema;
 }): Plugin[];
-//#endregion
-//#region src/schema/node-spec.d.ts
 /**
  * The default group name for list nodes. This is used to find the list node
  * type from the schema.
@@ -583,8 +534,6 @@ export declare const flatListGroup = "flatList";
  * @group Schema
  */
 export declare function createListSpec(): NodeSpec;
-//#endregion
-//#region src/schema/parse-dom.d.ts
 /**
  * Returns a set of rules for parsing HTML into ProseMirror list nodes.
  *
@@ -593,8 +542,6 @@ export declare function createListSpec(): NodeSpec;
  * @group Schema
  */
 export declare function createParseDomRules(): readonly TagParseRule[];
-//#endregion
-//#region src/schema/to-dom.d.ts
 /**
  * @public
  *
@@ -643,8 +590,6 @@ export declare function defaultAttributesGetter(node: Node$1): {
   'data-list-collapsable': string | undefined;
   style: string | undefined;
 };
-//#endregion
-//#region src/utils/find-checkbox-in-list-item.d.ts
 /**
  * Finds a `<input type="checkbox">` element from a `<li>` element. It will stop
  * searching if it reaches a sub-list.
@@ -652,30 +597,20 @@ export declare function defaultAttributesGetter(node: Node$1): {
  * @internal
  */
 export declare function findCheckboxInListItem(node: Element, depth?: number, maxDepth?: number): HTMLInputElement | void;
-//#endregion
-//#region src/utils/get-list-type.d.ts
 /** @internal */
 export declare function getListType(schema: Schema): NodeType;
-//#endregion
-//#region src/utils/is-collapsed-list-node.d.ts
 /**
  * @internal
  */
 export declare function isCollapsedListNode(node: Node): boolean;
-//#endregion
-//#region src/utils/is-list-node.d.ts
 /**
  * @public
  */
 export declare function isListNode(node: Node$1 | null | undefined): boolean;
-//#endregion
-//#region src/utils/is-list-type.d.ts
 /**
  * @public
  */
 export declare function isListType(type: NodeType): boolean;
-//#endregion
-//#region src/utils/list-range.d.ts
 /**
  * Returns a minimal block range that includes the given two positions and
  * represents one or multiple sibling list nodes.
@@ -685,8 +620,6 @@ export declare function isListType(type: NodeType): boolean;
 export declare function findListsRange($from: ResolvedPos, $to?: ResolvedPos): NodeRange | null;
 /** @internal */
 export declare function isListsRange(range: NodeRange): boolean;
-//#endregion
-//#region src/utils/list-serializer.d.ts
 /**
  * A custom DOM serializer class that can serialize flat list nodes into native
  * HTML list elements (i.e. `<ul>` and `<ol>`).
@@ -710,20 +643,14 @@ export declare class ListDOMSerializer extends DOMSerializer {
  * @public
  */
 export declare function joinListElements<T extends Element | DocumentFragment>(parent: T): T;
-//#endregion
-//#region src/utils/parse-integer.d.ts
 /** @internal */
 export declare function parseInteger(attr: string | null | undefined): number | null;
-//#endregion
-//#region src/utils/range-to-string.d.ts
 /**
  * Return a debugging string that describes this range.
  *
  * @internal
  */
 export declare function rangeToString(range: NodeRange): string;
-//#endregion
-//#region src/utils/unwrap-list-slice.d.ts
 /**
  * Reduce the open depth of a slice if it only contains a single list node. When
  * copying some text from a deep nested list node, we don't want to paste the
@@ -732,6 +659,5 @@ export declare function rangeToString(range: NodeRange): string;
  * @internal
  */
 export declare function unwrapListSlice(slice: Slice): Slice;
-//#endregion
 export type { DedentListOptions, IndentListOptions, ListAttributes, ListClickHandler, ListInputRuleAttributesGetter, ListInputRuleHandler, ListInputRuleOptions, ListKeymapOptions, ListKind, ListToDOMOptions, Node as ProsemirrorNode, ProsemirrorNodeJSON, SplitListOptions, ToggleCollapsedOptions, UnwrapListOptions, WrapInListGetAttrs };
 //# sourceMappingURL=index.d.ts.map

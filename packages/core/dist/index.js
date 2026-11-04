@@ -5,7 +5,7 @@ import { chainCommands, createParagraphNear, deleteSelection, joinTextblockBackw
 import { inheritSplittableAttrs } from "prosemirror-splittable";
 import { InputRule } from "prosemirror-inputrules";
 import { imeSpan } from "prosemirror-safari-ime-span";
-//#region src/utils/find-checkbox-in-list-item.ts
+// src/utils/find-checkbox-in-list-item.ts
 /**
 * Finds a `<input type="checkbox">` element from a `<li>` element. It will stop
 * searching if it reaches a sub-list.
@@ -25,8 +25,7 @@ function findCheckboxInListItem(node, depth = 0, maxDepth = 3) {
 		if (checkbox) return checkbox;
 	}
 }
-//#endregion
-//#region src/utils/parse-integer.ts
+// src/utils/parse-integer.ts
 /** @internal */
 function parseInteger(attr) {
 	if (attr == null) return null;
@@ -34,8 +33,7 @@ function parseInteger(attr) {
 	if (Number.isSafeInteger(int)) return int;
 	return null;
 }
-//#endregion
-//#region src/schema/parse-dom.ts
+// src/schema/parse-dom.ts
 /**
 * Returns a set of rules for parsing HTML into ProseMirror list nodes.
 *
@@ -118,8 +116,7 @@ function createParseDomRules() {
 		}
 	];
 }
-//#endregion
-//#region src/schema/to-dom.ts
+// src/schema/to-dom.ts
 /**
 * Renders a list node to DOM output spec.
 *
@@ -195,8 +192,7 @@ function defaultAttributesGetter(node) {
 		style: attrs.order != null ? `--prosemirror-flat-list-order: ${attrs.order};` : void 0
 	};
 }
-//#endregion
-//#region src/schema/node-spec.ts
+// src/schema/node-spec.ts
 /**
 * The default group name for list nodes. This is used to find the list node
 * type from the schema.
@@ -234,8 +230,7 @@ function createListSpec() {
 		parseDOM: createParseDomRules()
 	};
 }
-//#endregion
-//#region src/utils/get-list-type-name.ts
+// src/utils/get-list-type-name.ts
 const key = "PROSEMIRROR_FLAT_LIST_TYPE_NAME";
 /** @internal */
 function getListTypeName(schema) {
@@ -251,16 +246,14 @@ function getListTypeName(schema) {
 	}
 	return name;
 }
-//#endregion
-//#region src/utils/is-list-type.ts
+// src/utils/is-list-type.ts
 /**
 * @public
 */
 function isListType(type) {
 	return getListTypeName(type.schema) === type.name;
 }
-//#endregion
-//#region src/utils/is-list-node.ts
+// src/utils/is-list-node.ts
 /**
 * @public
 */
@@ -268,8 +261,7 @@ function isListNode(node) {
 	if (!node) return false;
 	return isListType(node.type);
 }
-//#endregion
-//#region src/utils/is-hidden-wrapper.ts
+// src/utils/is-hidden-wrapper.ts
 /**
 * Returns `true` if `node` is a list node whose first child is also a list
 * node. Such a node renders no marker: it only adds one level of indentation
@@ -280,8 +272,7 @@ function isListNode(node) {
 function isHiddenWrapper(node) {
 	return isListNode(node) && isListNode(node?.firstChild);
 }
-//#endregion
-//#region src/utils/patch-command.ts
+// src/utils/patch-command.ts
 function patchCommand(patch) {
 	const withPatch = (command) => {
 		const patchedCommand = (state, dispatch, view) => {
@@ -291,8 +282,7 @@ function patchCommand(patch) {
 	};
 	return withPatch;
 }
-//#endregion
-//#region src/utils/auto-fix-list.ts
+// src/utils/auto-fix-list.ts
 /** @internal */
 function* getTransactionRanges(tr) {
 	const ranges = [];
@@ -346,8 +336,7 @@ function fixList(tr) {
 }
 /** @internal */
 const withAutoFixList = /* @__PURE__ */ patchCommand(fixList);
-//#endregion
-//#region src/utils/block-boundary.ts
+// src/utils/block-boundary.ts
 function atStartBlockBoundary($pos, depth) {
 	for (let d = depth; d <= $pos.depth; d++) {
 		if ($pos.node(d).isTextblock) continue;
@@ -362,14 +351,12 @@ function atEndBlockBoundary($pos, depth) {
 	}
 	return true;
 }
-//#endregion
-//#region src/utils/get-list-type.ts
+// src/utils/get-list-type.ts
 /** @internal */
 function getListType(schema) {
 	return schema.nodes[getListTypeName(schema)];
 }
-//#endregion
-//#region src/utils/list-range.ts
+// src/utils/list-range.ts
 /**
 * Returns a minimal block range that includes the given two positions and
 * represents one or multiple sibling list nodes.
@@ -392,8 +379,7 @@ function isListsRange(range) {
 	for (let i = startIndex; i < endIndex; i++) if (!isListNode(parent.child(i))) return false;
 	return true;
 }
-//#endregion
-//#region src/utils/map-pos.ts
+// src/utils/map-pos.ts
 function mapPos(tr, pos) {
 	let nextStepIndex = tr.steps.length;
 	const getPos = () => {
@@ -406,8 +392,7 @@ function mapPos(tr, pos) {
 	};
 	return getPos;
 }
-//#endregion
-//#region src/utils/safe-lift.ts
+// src/utils/safe-lift.ts
 function safeLift(tr, range) {
 	const target = liftTarget(range);
 	if (target == null) return false;
@@ -421,8 +406,7 @@ function safeLiftFromTo(tr, from, to) {
 	if (!range) return false;
 	return safeLift(tr, range);
 }
-//#endregion
-//#region src/utils/zoom-in-range.ts
+// src/utils/zoom-in-range.ts
 /**
 * Returns a deeper block range if possible
 */
@@ -433,16 +417,14 @@ function zoomInRange(range) {
 	if (deeper && deeper.depth > depth) return deeper;
 	return null;
 }
-//#endregion
-//#region src/utils/is-collapsed-list-node.ts
+// src/utils/is-collapsed-list-node.ts
 /**
 * @internal
 */
 function isCollapsedListNode(node) {
 	return !!(isListNode(node) && node.attrs.collapsed);
 }
-//#endregion
-//#region src/utils/set-node-attributes.ts
+// src/utils/set-node-attributes.ts
 function setNodeAttributes(tr, pos, oldAttrs, newAttrs) {
 	let needUpdate = false;
 	for (const [key, newValue] of Object.entries(newAttrs)) if (newValue !== oldAttrs[key]) {
@@ -451,8 +433,7 @@ function setNodeAttributes(tr, pos, oldAttrs, newAttrs) {
 	}
 	return needUpdate;
 }
-//#endregion
-//#region src/utils/set-list-attributes.ts
+// src/utils/set-list-attributes.ts
 function setListAttributes(tr, pos, attrs) {
 	const node = tr.doc.resolve(pos).nodeAfter;
 	if (node && isListNode(node)) {
@@ -464,8 +445,7 @@ function setListAttributes(tr, pos, attrs) {
 	}
 	return false;
 }
-//#endregion
-//#region src/commands/set-safe-selection.ts
+// src/commands/set-safe-selection.ts
 function moveOutOfCollapsed($pos, minDepth) {
 	for (let depth = minDepth; depth <= $pos.depth; depth++) if (isCollapsedListNode($pos.node(depth)) && $pos.index(depth) >= 1) {
 		const before = $pos.posAtIndex(1, depth);
@@ -505,8 +485,7 @@ function setVisibleSelection(tr) {
 	return tr;
 }
 const withVisibleSelection = /* @__PURE__ */ patchCommand(setVisibleSelection);
-//#endregion
-//#region src/commands/dedent-list.ts
+// src/commands/dedent-list.ts
 /**
 * Returns a command function that decreases the indentation of selected list nodes.
 *
@@ -629,8 +608,7 @@ function dedentOutOfList(tr, range) {
 	tr.step(new ReplaceAroundStep(start, end, start + 1, end - 1, new Slice(Fragment.empty, 0, 0), 0, true));
 	return true;
 }
-//#endregion
-//#region src/commands/enter-without-lift.ts
+// src/commands/enter-without-lift.ts
 /**
 * This command has the same behavior as the `Enter` keybinding from
 * `prosemirror-commands`, but without the `liftEmptyBlock` command.
@@ -638,8 +616,7 @@ function dedentOutOfList(tr, range) {
 * @internal
 */
 const enterWithoutLift = /* @__PURE__ */ chainCommands(newlineInCode, createParagraphNear, splitBlock);
-//#endregion
-//#region src/utils/in-collapsed-list.ts
+// src/utils/in-collapsed-list.ts
 function inCollapsedList($pos) {
 	for (let depth = $pos.depth; depth >= 0; depth--) {
 		const node = $pos.node(depth);
@@ -649,8 +626,7 @@ function inCollapsedList($pos) {
 	}
 	return false;
 }
-//#endregion
-//#region src/commands/indent-list.ts
+// src/commands/indent-list.ts
 /**
 * Returns a command function that increases the indentation of selected list
 * nodes.
@@ -751,15 +727,13 @@ function willWrapperBeJoined(range, isFirstChildListNode) {
 	const before = index >= 1 && container.maybeChild(index - 1);
 	return !!before && isListNode(before);
 }
-//#endregion
-//#region src/utils/at-textblock-start.ts
+// src/utils/at-textblock-start.ts
 function atTextblockStart(state, view) {
 	const { $cursor } = state.selection;
 	if (!$cursor || (view ? !view.endOfTextblock("backward", state) : $cursor.parentOffset > 0)) return null;
 	return $cursor;
 }
-//#endregion
-//#region src/commands/join-textblocks-around.ts
+// src/commands/join-textblocks-around.ts
 function joinTextblocksAround(tr, $cut, dispatch) {
 	let beforeText = $cut.nodeBefore;
 	let beforePos = $cut.pos - 1;
@@ -786,8 +760,7 @@ function joinTextblocksAround(tr, $cut, dispatch) {
 	}
 	return true;
 }
-//#endregion
-//#region src/commands/join-collapsed-backward.ts
+// src/commands/join-collapsed-backward.ts
 /**
 * If the selection is empty and at the start of a block, and there is a
 * collapsed list node right before the cursor, move current block and append it
@@ -822,8 +795,7 @@ function findCutBefore($pos) {
 	}
 	return null;
 }
-//#endregion
-//#region src/commands/join-list-up.ts
+// src/commands/join-list-up.ts
 /**
 * If the text cursor is at the start of the first child of a list node, lift
 * all content inside the list. If the text cursor is at the start of the last
@@ -862,8 +834,7 @@ function liftParent(state, dispatch, $cursor) {
 	const range = $cursor.blockRange();
 	if (range && safeLift(tr, range)) dispatch(tr);
 }
-//#endregion
-//#region src/commands/protect-collapsed.ts
+// src/commands/protect-collapsed.ts
 /**
 * This command will protect the collapsed items from being deleted.
 *
@@ -901,31 +872,26 @@ const protectCollapsed = (state, dispatch) => {
 	if (found) dispatch?.(tr);
 	return found;
 };
-//#endregion
-//#region src/utils/create-and-fill.ts
+// src/utils/create-and-fill.ts
 function createAndFill(type, attrs, content, marks) {
 	const node = type.createAndFill(attrs, content, marks);
 	if (!node) throw new RangeError(`Failed to create '${type.name}' node`);
 	node.check();
 	return node;
 }
-//#endregion
-//#region src/utils/is-node-selection.ts
+// src/utils/is-node-selection.ts
 function isNodeSelection(selection) {
 	return Boolean(selection.node);
 }
-//#endregion
-//#region src/utils/is-block-node-selection.ts
+// src/utils/is-block-node-selection.ts
 function isBlockNodeSelection(selection) {
 	return isNodeSelection(selection) && selection.node.type.isBlock;
 }
-//#endregion
-//#region src/utils/is-text-selection.ts
+// src/utils/is-text-selection.ts
 function isTextSelection(value) {
 	return Boolean(value && value instanceof TextSelection);
 }
-//#endregion
-//#region src/commands/split-list.ts
+// src/commands/split-list.ts
 /**
 * Returns a command that split the current list node.
 *
@@ -1029,8 +995,7 @@ function doSplitList(state, listNode, dispatch) {
 	dispatch?.(tr.split($from.pos, 2, typesAfter).scrollIntoView());
 	return true;
 }
-//#endregion
-//#region src/commands/keymap.ts
+// src/commands/keymap.ts
 /**
 * Keybinding for `Enter`. It's chained with following commands:
 *
@@ -1105,13 +1070,11 @@ function createListKeymap(options) {
 * @group Commands
 */
 const listKeymap = /* @__PURE__ */ createListKeymap();
-//#endregion
-//#region src/utils/cut-by-index.ts
+// src/utils/cut-by-index.ts
 function cutByIndex(fragment, from, to) {
 	return fragment.cutByIndex(from, to);
 }
-//#endregion
-//#region src/commands/move-list.ts
+// src/commands/move-list.ts
 /**
 * Returns a command function that moves up or down selected list nodes.
 *
@@ -1163,8 +1126,7 @@ function doMoveList(tr, direction, canDedent, dispatch) {
 	} else if (canDedent && isListNode(parent)) return safeLift(tr, range) && doMoveList(tr, direction, false, dispatch);
 	else return false;
 }
-//#endregion
-//#region src/commands/toggle-collapsed.ts
+// src/commands/toggle-collapsed.ts
 /**
 * Return a command function that toggle the `collapsed` attribute of the list node.
 *
@@ -1196,8 +1158,7 @@ function createToggleCollapsedCommand(options = {}) {
 function defaultIsToggleable(node) {
 	return node.attrs.kind === "toggle" && node.childCount >= 2 && !isListNode(node.firstChild);
 }
-//#endregion
-//#region src/commands/unwrap-list.ts
+// src/commands/unwrap-list.ts
 /**
 * Returns a command function that unwraps the list around the selection.
 *
@@ -1249,8 +1210,7 @@ function isTargetListsRange(range, kind) {
 	for (let i = startIndex; i < endIndex; i++) if (!isTargetList(parent.child(i), kind)) return false;
 	return true;
 }
-//#endregion
-//#region src/commands/wrap-in-list.ts
+// src/commands/wrap-in-list.ts
 /**
 * Returns a command function that wraps the selection in a list with the given
 * type and attributes.
@@ -1300,8 +1260,7 @@ function rangeAllowInlineContent(range) {
 	for (let i = startIndex; i < endIndex; i++) if (parent.child(i).inlineContent) return true;
 	return false;
 }
-//#endregion
-//#region src/commands/toggle-list.ts
+// src/commands/toggle-list.ts
 /**
 * Returns a command function that wraps the selection in a list with the given
 * type and attributes, or change the list kind if the selection is already in
@@ -1316,8 +1275,7 @@ function createToggleListCommand(attrs) {
 	const wrapInList = createWrapInListCommand(attrs);
 	return chainCommands(unwrapList, wrapInList);
 }
-//#endregion
-//#region src/dom-events.ts
+// src/dom-events.ts
 /** @internal */
 function handleListMarkerMouseDown({ view, event, onListClick = defaultListClickHandler }) {
 	const target = event.target;
@@ -1355,8 +1313,7 @@ const defaultListClickHandler = (node) => {
 	};
 	else return attrs;
 };
-//#endregion
-//#region src/input-rule.ts
+// src/input-rule.ts
 /**
 * Build the handler behind {@link wrappingListInputRule}: it deletes the
 * matched text, then updates the attributes of the list node the textblock
@@ -1470,8 +1427,7 @@ const listInputRules = /* @__PURE__ */ [
 	taskListInputRule,
 	toggleListInputRule
 ].map(({ regexp, getAttrs }) => wrappingListInputRule(regexp, getAttrs));
-//#endregion
-//#region src/migrate.ts
+// src/migrate.ts
 function migrateNodes(nodes) {
 	const content = [];
 	let updated = false;
@@ -1517,16 +1473,14 @@ function migrateDocJSON(docJSON) {
 	const [migrated, updated] = migrateNode(docJSON);
 	return updated ? migrated : null;
 }
-//#endregion
-//#region src/utils/browser.ts
+// src/utils/browser.ts
 const nav = typeof navigator != "undefined" ? navigator : null;
 const agent = nav && nav.userAgent || "";
 const ie_edge = /Edge\/(\d+)/.exec(agent);
 const ie_upto10 = /MSIE \d/.exec(agent);
 const ie_11up = /Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(agent);
 const safari = !!!(ie_upto10 || ie_11up || ie_edge) && !!nav && /Apple Computer/.test(nav.vendor);
-//#endregion
-//#region src/node-view.ts
+// src/node-view.ts
 /**
 * A simple node view that is used to render the list node. It ensures that the
 * list node get updated when its marker styling should changes.
@@ -1556,8 +1510,7 @@ const createListNodeView = (node) => {
 		update
 	};
 };
-//#endregion
-//#region src/utils/list-serializer.ts
+// src/utils/list-serializer.ts
 /**
 * A custom DOM serializer class that can serialize flat list nodes into native
 * HTML list elements (i.e. `<ul>` and `<ol>`).
@@ -1606,8 +1559,7 @@ function joinListElements(parent) {
 	}
 	return parent;
 }
-//#endregion
-//#region src/utils/unwrap-list-slice.ts
+// src/utils/unwrap-list-slice.ts
 /**
 * Reduce the open depth of a slice if it only contains a single list node. When
 * copying some text from a deep nested list node, we don't want to paste the
@@ -1619,8 +1571,7 @@ function unwrapListSlice(slice) {
 	while (slice.openStart >= 2 && slice.openEnd >= 2 && slice.content.childCount === 1 && isListNode(slice.content.child(0))) slice = new Slice(slice.content.child(0).content, slice.openStart - 1, slice.openEnd - 1);
 	return slice;
 }
-//#endregion
-//#region src/plugins/clipboard.ts
+// src/plugins/clipboard.ts
 /**
 * Serialize list nodes into native HTML list elements (i.e. `<ul>`, `<ol>`) to
 * clipboard. See {@link ListDOMSerializer}.
@@ -1635,8 +1586,7 @@ function createListClipboardPlugin(schema) {
 		transformCopied: unwrapListSlice
 	} });
 }
-//#endregion
-//#region src/plugins/event.ts
+// src/plugins/event.ts
 /**
 * Handle DOM events for list.
 *
@@ -1650,8 +1600,7 @@ function createListEventPlugin() {
 		event
 	}) } } });
 }
-//#endregion
-//#region src/plugins/rendering.ts
+// src/plugins/rendering.ts
 /**
 * Handle the list node rendering.
 *
@@ -1662,8 +1611,7 @@ function createListEventPlugin() {
 function createListRenderingPlugin() {
 	return new Plugin({ props: { nodeViews: { list: createListNodeView } } });
 }
-//#endregion
-//#region src/plugins/safari-workaround.ts
+// src/plugins/safari-workaround.ts
 /**
 * Return a plugin as a workaround for a bug in Safari that causes the composition
 * based IME to remove the empty HTML element with CSS `position: relative`.
@@ -1677,8 +1625,7 @@ function createListRenderingPlugin() {
 function createSafariInputMethodWorkaroundPlugin() {
 	return imeSpan;
 }
-//#endregion
-//#region src/plugins/index.ts
+// src/plugins/index.ts
 /**
 * This function returns an array of plugins that are required for list to work.
 *
@@ -1703,8 +1650,7 @@ function createListPlugins(options) {
 		createSafariInputMethodWorkaroundPlugin()
 	];
 }
-//#endregion
-//#region src/utils/range-to-string.ts
+// src/utils/range-to-string.ts
 /**
 * Return a debugging string that describes this range.
 *
@@ -1714,7 +1660,6 @@ function rangeToString(range) {
 	const { parent, startIndex, endIndex } = range;
 	return cutByIndex(parent.content, startIndex, endIndex).toString();
 }
-//#endregion
 export { ListDOMSerializer, backspaceCommand, bulletListInputRule, createDedentListCommand, createIndentListCommand, createListClipboardPlugin, createListEventPlugin, createListInputRuleHandler, createListKeymap, createListNodeView, createListPlugins, createListRenderingPlugin, createListSpec, createMoveListCommand, createParseDomRules, createSafariInputMethodWorkaroundPlugin, createSplitListCommand, createToggleCollapsedCommand, createToggleListCommand, createUnwrapListCommand, createWrapInListCommand, defaultAttributesGetter, defaultListClickHandler, defaultMarkerGetter, deleteCommand, doSplitList, enterCommand, enterWithoutLift, findCheckboxInListItem, findListsRange, flatListGroup, getListType, handleListMarkerMouseDown, isCollapsedListNode, isListNode, isListType, isListsRange, joinCollapsedListBackward, joinListElements, joinListUp, listInputRules, listKeymap, listToDOM, migrateDocJSON, orderedListInputRule, parseInteger, protectCollapsed, rangeToString, setSafeSelection, taskListInputRule, toggleListInputRule, unwrapListSlice, wrappingListInputRule };
 
 //# sourceMappingURL=index.js.map
