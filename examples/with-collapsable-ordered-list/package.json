@@ -18,7 +18,7 @@
     "prosemirror-model": "^1.25.12",
     "prosemirror-schema-basic": "^1.2.5",
     "prosemirror-state": "^1.4.4",
-    "prosemirror-view": "^1.42.6"
+    "prosemirror-view": "^1.42.9"
   },
   "devDependencies": {
     "@ocavue/tsconfig": "^0.7.1",
