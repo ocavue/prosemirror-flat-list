@@ -1,5 +1,5 @@
 import { type Node as ProsemirrorNode, DOMSerializer } from 'prosemirror-model'
-import type { NodeViewConstructor } from 'prosemirror-view'
+import type { NodeViewConstructor, ViewMutationRecord } from 'prosemirror-view'
 
 import * as browser from './utils/browser'
 import { isHiddenWrapper } from './utils/is-hidden-wrapper'
@@ -38,5 +38,18 @@ export const createListNodeView: NodeViewConstructor = (node) => {
     return true
   }
 
-  return { dom, contentDOM, update }
+  const marker = dom.querySelector('.list-marker')
+
+  // The marker holds no document content, so attribute changes inside it
+  // (for example the inline `caret-color` that Playwright writes before a
+  // screenshot) are skipped instead of redrawing the whole list.
+  const ignoreMutation = (mutation: ViewMutationRecord): boolean => {
+    return (
+      mutation.type === 'attributes' &&
+      marker != null &&
+      marker.contains(mutation.target)
+    )
+  }
+
+  return { dom, contentDOM, update, ignoreMutation }
 }
