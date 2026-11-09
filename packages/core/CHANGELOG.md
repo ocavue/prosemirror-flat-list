@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.7.4
+
+### Patch Changes
+
+- 412555f: The list node view now ignores attribute changes inside the list marker, so they no longer redraw the whole list.
+
 ## 0.7.3
 
 ### Patch Changes
