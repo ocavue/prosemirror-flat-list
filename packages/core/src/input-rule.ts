@@ -140,7 +140,7 @@ export const bulletListInputRule: ListInputRuleOptions = {
  * @internal
  */
 export const orderedListInputRule: ListInputRuleOptions = {
-  regexp: /^\s?(\d+)\.\s$/,
+  regexp: /^\s?(\d{1,9})\.\s$/,
   getAttrs: ({ match }) => {
     const order = parseInteger(match[1])
     return {

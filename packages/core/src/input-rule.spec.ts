@@ -33,6 +33,15 @@ describe('input rules', () => {
     expectStateToEqual(t.editor.state, t.doc(t.ordered99List(t.p('<a>'))))
   })
 
+  it('does not turn a paragraph into an ordered list when the number fills the input rule window', async () => {
+    // Input rules only see the last 500 characters before the caret, so `^`
+    // matches at the start of that window, not at the start of the paragraph.
+    const text = 'a' + '1'.repeat(499) + '.'
+    t.add(t.doc(t.p(`${text}<a>`)))
+    await keyboard.type(' ')
+    expectStateToEqual(t.editor.state, t.doc(t.p(`${text} <a>`)))
+  })
+
   it('can change list type', async () => {
     t.add(t.doc(t.uncheckedTaskList(t.p('<a>'))))
     await keyboard.type('1. ')
