@@ -9,5 +9,9 @@ dedupePeers: true
 allowBuilds:
   esbuild: false
   sharp: false
+overrides:
+  prosemirror-view: 1.43.0-beta4
+
 minimumReleaseAgeExclude:
   - '@ocavue/eslint-config'
+  - prosemirror-view@1.43.0-beta4
