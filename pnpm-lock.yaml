@@ -6,7 +6,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  prosemirror-view: 1.43.0-beta4
+  prosemirror-view: 1.43.0
 
 importers:
 
@@ -73,8 +73,8 @@ importers:
         specifier: ^1.4.4
         version: 1.4.4
       prosemirror-view:
-        specifier: 1.43.0-beta4
-        version: 1.43.0-beta4
+        specifier: 1.43.0
+        version: 1.43.0
     devDependencies:
       '@ocavue/tsconfig':
         specifier: ^0.7.1
@@ -116,8 +116,8 @@ importers:
         specifier: ^1.4.4
         version: 1.4.4
       prosemirror-view:
-        specifier: 1.43.0-beta4
-        version: 1.43.0-beta4
+        specifier: 1.43.0
+        version: 1.43.0
     devDependencies:
       '@ocavue/tsconfig':
         specifier: ^0.7.1
@@ -153,8 +153,8 @@ importers:
         specifier: ^1.12.5
         version: 1.12.5
       prosemirror-view:
-        specifier: 1.43.0-beta4
-        version: 1.43.0-beta4
+        specifier: 1.43.0
+        version: 1.43.0
     devDependencies:
       '@prosekit/core':
         specifier: ^0.13.5
@@ -3558,8 +3558,8 @@ packages:
   prosemirror-transform@1.12.5:
     resolution: {integrity: sha512-3EBXZBM4h3MKuWvs9sQ7IA0/v6jCqCZ4wC08PIvzY1VSQWDL90KEyfg5C0Ex52UJesf/QVogxvuBsZdKmLc3NQ==}
 
-  prosemirror-view@1.43.0-beta4:
-    resolution: {integrity: sha512-iiMAtAYMR8Y0/upYv5EztBsMS+eC0vz+u/YiI7uvi9VvPPvhQmDsk4gZcs7DKoi9030kXt9We+chDrI3o9pwoA==}
+  prosemirror-view@1.43.0:
+    resolution: {integrity: sha512-MZOUuhD+Gv7Cp7UlgvyhptUfb920NkLBgymhyhaM8xp+JXQyLhkssS2EXZvMI3ZU3vRoz5z7mRC32udVgNYHqg==}
 
   punycode.js@2.3.1:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
@@ -5509,7 +5509,7 @@ snapshots:
       prosemirror-model: 1.25.13
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.5
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
 
   '@quansync/fs@1.0.0':
     dependencies:
@@ -7950,7 +7950,7 @@ snapshots:
     dependencies:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.5
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
 
   prosemirror-example-setup@1.2.3:
     dependencies:
@@ -7969,13 +7969,13 @@ snapshots:
       prosemirror-keymap: 1.2.3
       prosemirror-model: 1.25.13
       prosemirror-state: 1.4.4
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
 
   prosemirror-history@1.5.1:
     dependencies:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.5
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
       rope-sequence: 1.3.4
 
   prosemirror-inputrules@1.5.1:
@@ -8002,7 +8002,7 @@ snapshots:
   prosemirror-safari-ime-span@1.0.2:
     dependencies:
       prosemirror-state: 1.4.4
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
 
   prosemirror-schema-basic@1.2.5:
     dependencies:
@@ -8024,13 +8024,13 @@ snapshots:
     dependencies:
       prosemirror-model: 1.25.13
       prosemirror-transform: 1.12.5
-      prosemirror-view: 1.43.0-beta4
+      prosemirror-view: 1.43.0
 
   prosemirror-transform@1.12.5:
     dependencies:
       prosemirror-model: 1.25.13
 
-  prosemirror-view@1.43.0-beta4:
+  prosemirror-view@1.43.0:
     dependencies:
       prosemirror-model: 1.25.13
       prosemirror-state: 1.4.4

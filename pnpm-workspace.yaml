@@ -10,8 +10,8 @@ allowBuilds:
   esbuild: false
   sharp: false
 overrides:
-  prosemirror-view: 1.43.0-beta4
+  prosemirror-view: 1.43.0
 
 minimumReleaseAgeExclude:
   - '@ocavue/eslint-config'
-  - prosemirror-view@1.43.0-beta4
+  - prosemirror-view@1.43.0
