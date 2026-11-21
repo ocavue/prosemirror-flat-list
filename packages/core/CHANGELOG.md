@@ -1,5 +1,11 @@
 # prosemirror-flat-list
 
+## 0.7.5
+
+### Patch Changes
+
+- 7f40285: Fix an issue where typing in a long paragraph could turn it into an ordered list. The ordered list input rule now accepts at most 9 digits.
+
 ## 0.7.4
 
 ### Patch Changes
